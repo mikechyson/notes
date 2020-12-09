@@ -1,0 +1,16 @@
+\documentclass{article} % say
+\usepackage{tikz}
+\begin{document}
+\tikzset{help lines/.style=very thin}
+
+
+\begin{tikzpicture}
+  [Karl’s grid/.style ={help lines,color=#1!50}, Karl’s grid/.default=blue]
+  \draw[Karl's grid] (-1.4,-1.4) grid (1.4,1.4);
+  \draw (-1.5,0) -- (1.5,0);
+  \draw (0,-1.5) -- (0,1.5);
+  \draw (0,0) circle [radius=1cm];
+
+\end{tikzpicture}.
+
+\end{document}

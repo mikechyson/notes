@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-11-16 Sat 20:10 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mike Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4221670">1. homebrew</a></li>
+<li><a href="#org537bc1e">2. terminal client color</a></li>
+<li><a href="#orge68ed17">3. terminal meta key</a></li>
+<li><a href="#org000f11d">4. set terminal hostname</a></li>
+<li><a href="#org40b3b30">5. correct spelling automatically off</a></li>
+<li><a href="#orgd6bba5a">6. emacs</a>
+<ul>
+<li><a href="#org0db3233">6.1. install</a></li>
+<li><a href="#org6f8c2b0">6.2. command as meta</a></li>
+<li><a href="#orgd863aa3">6.3. add elpa repository</a></li>
+<li><a href="#org2d349e3">6.4. python ide</a>
+<ul>
+<li><a href="#orgad1a352">6.4.1. install jedi, flake8</a></li>
+</ul>
+</li>
+<li><a href="#org5e87cfa">6.5. pep8</a></li>
+<li><a href="#orgb0c216c">6.6. htmlize</a></li>
+<li><a href="#org04a8e3f">6.7. latex</a></li>
+</ul>
+</li>
+<li><a href="#orgf4d6b93">7. cap lock as ctrl</a></li>
+<li><a href="#org8b7bf36">8. pycharm</a></li>
+<li><a href="#org3915d00">9. git</a></li>
+<li><a href="#orgd49cf60">10. shortcut</a>
+<ul>
+<li><a href="#orgafe4deb">10.1. safari</a></li>
+</ul>
+</li>
+<li><a href="#orgf26c4c6">11. anaconda</a>
+<ul>
+<li><a href="#org542b0cf">11.1. packages</a>
+<ul>
+<li><a href="#org676981a">11.1.1. tensorflow</a></li>
+<li><a href="#org76b0c68">11.1.2. jieba</a></li>
+<li><a href="#org584512d">11.1.3. numpy</a></li>
+<li><a href="#org4d522f0">11.1.4. scipy</a></li>
+<li><a href="#orgcec5f60">11.1.5. sympy</a></li>
+<li><a href="#orga60793e">11.1.6. pyecharts</a></li>
+<li><a href="#org88ef6f3">11.1.7. sklearn(scikit-learn)</a></li>
+<li><a href="#org012f4fc">11.1.8. matplotlib</a></li>
+<li><a href="#orgd42163f">11.1.9. pandas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgef668ee">12. vscode</a>
+<ul>
+<li><a href="#org6443dcc">12.1. plugins</a></li>
+<li><a href="#orgd5af99d">12.2. auto save</a></li>
+<li><a href="#org3fc8a75">12.3. interpreter</a></li>
+<li><a href="#org2960648">12.4. turn off parameter hint</a></li>
+<li><a href="#org8972f26">12.5. speed up quick suggestions</a></li>
+<li><a href="#orgcdf17af">12.6. format</a></li>
+</ul>
+</li>
+<li><a href="#org511019e">13. python on spark</a>
+<ul>
+<li><a href="#org83aa927">13.1. download jdk</a></li>
+<li><a href="#orgf39b95c">13.2. download spark</a></li>
+<li><a href="#org5ddd45d">13.3. copy</a></li>
+<li><a href="#org0940806">13.4. home path</a></li>
+</ul>
+</li>
+<li><a href="#org1ab992e">14. shorcut</a></li>
+<li><a href="#org398afe8">15. mactex</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4221670" class="outline-2">
+<h2 id="org4221670"><span class="section-number-2">1</span> homebrew</h2>
+</div>
+<div id="outline-container-org537bc1e" class="outline-2">
+<h2 id="org537bc1e"><span class="section-number-2">2</span> terminal client color</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+add the following line into .bash_profile:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #483d8b;">export</span> <span style="color: #a0522d;">CLICOLOR</span>=1
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge68ed17" class="outline-2">
+<h2 id="orge68ed17"><span class="section-number-2">3</span> terminal meta key</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Terminal -&gt; Preferences -&gt; Keyboard -&gt; Use Option as Meta Key
+</p>
+</div>
+</div>
+
+<div id="outline-container-org000f11d" class="outline-2">
+<h2 id="org000f11d"><span class="section-number-2">4</span> set terminal hostname</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+scutil --set HostName &lt;hostname&gt;
+# scutil: system configuation util
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org40b3b30" class="outline-2">
+<h2 id="org40b3b30"><span class="section-number-2">5</span> correct spelling automatically off</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+System Preferences -&gt; Keyboard -&gt; Text -&gt; Correct spelling automatically off
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd6bba5a" class="outline-2">
+<h2 id="orgd6bba5a"><span class="section-number-2">6</span> emacs</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org0db3233" class="outline-3">
+<h3 id="org0db3233"><span class="section-number-3">6.1</span> install</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+<pre class="src src-sh">brew cask install emacs
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6f8c2b0" class="outline-3">
+<h3 id="org6f8c2b0"><span class="section-number-3">6.2</span> command as meta</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+C-h v mac-option-modifier -&gt; customize -&gt; super
+C-h v mac-command-modifier -&gt; customize -&gt; meta
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd863aa3" class="outline-3">
+<h3 id="orgd863aa3"><span class="section-number-3">6.3</span> add elpa repository</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+add following to init file:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #a020f0;">setq</span> package-archives '((<span style="color: #8b2252;">"gnu"</span> . <span style="color: #8b2252;">"https://elpa.gnu.org/packages/"</span>)
+                         (<span style="color: #8b2252;">"melpa"</span> . <span style="color: #8b2252;">"https://melpa.org/packages/"</span>)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d349e3" class="outline-3">
+<h3 id="org2d349e3"><span class="section-number-3">6.4</span> python ide</h3>
+<div class="outline-text-3" id="text-6-4">
+</div>
+<div id="outline-container-orgad1a352" class="outline-4">
+<h4 id="orgad1a352"><span class="section-number-4">6.4.1</span> install jedi, flake8</h4>
+<div class="outline-text-4" id="text-6-4-1">
+<pre class="example">
+pip install flake8 jedi
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e87cfa" class="outline-3">
+<h3 id="org5e87cfa"><span class="section-number-3">6.5</span> pep8</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+M-x package-install py-autopep8
+</p>
+
+<p>
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb0c216c" class="outline-3">
+<h3 id="orgb0c216c"><span class="section-number-3">6.6</span> htmlize</h3>
+<div class="outline-text-3" id="text-6-6">
+<p>
+need in org export to html with source code part
+M-x package-install htmlize
+</p>
+</div>
+</div>
+
+<div id="outline-container-org04a8e3f" class="outline-3">
+<h3 id="org04a8e3f"><span class="section-number-3">6.7</span> latex</h3>
+<div class="outline-text-3" id="text-6-7">
+<p>
+M-x package-install RET auctex RET
+M-x package-install RET auctex-latexmk RET
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf4d6b93" class="outline-2">
+<h2 id="orgf4d6b93"><span class="section-number-2">7</span> cap lock as ctrl</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+System Preferences -&gt; Keyboard -&gt; Modifier Keys
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8b7bf36" class="outline-2">
+<h2 id="org8b7bf36"><span class="section-number-2">8</span> pycharm</h2>
+</div>
+
+
+<div id="outline-container-org3915d00" class="outline-2">
+<h2 id="org3915d00"><span class="section-number-2">9</span> git</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-sh">brew install git
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd49cf60" class="outline-2">
+<h2 id="orgd49cf60"><span class="section-number-2">10</span> shortcut</h2>
+<div class="outline-text-2" id="text-10">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">MEANING</th>
+<th scope="col" class="org-left">SHORTCUT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">max</td>
+<td class="org-left">Command + Ctrl + f</td>
+</tr>
+
+<tr>
+<td class="org-left">min</td>
+<td class="org-left">Command + m</td>
+</tr>
+
+<tr>
+<td class="org-left">spotlight search</td>
+<td class="org-left">Command + space</td>
+</tr>
+
+<tr>
+<td class="org-left">capture</td>
+<td class="org-left">Command + Shift + 4</td>
+</tr>
+
+<tr>
+<td class="org-left">close window</td>
+<td class="org-left">Command + w</td>
+</tr>
+
+<tr>
+<td class="org-left">exit app</td>
+<td class="org-left">Command + q</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-orgafe4deb" class="outline-3">
+<h3 id="orgafe4deb"><span class="section-number-3">10.1</span> safari</h3>
+<div class="outline-text-3" id="text-10-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">MEANING</th>
+<th scope="col" class="org-left">SHORTCUT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">bookmark sidebar</td>
+<td class="org-left">Ctrl + Command + 1</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf26c4c6" class="outline-2">
+<h2 id="orgf26c4c6"><span class="section-number-2">11</span> anaconda</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Do not use conda command, use pip command.
+the repository with pip is much richer than that of conda.
+There is one problem: the package install with pip will not be seen in the anaconda-navigator windows.
+But this do not effect the use of the package.
+</p>
+</div>
+
+<div id="outline-container-org542b0cf" class="outline-3">
+<h3 id="org542b0cf"><span class="section-number-3">11.1</span> packages</h3>
+<div class="outline-text-3" id="text-11-1">
+</div>
+<div id="outline-container-org676981a" class="outline-4">
+<h4 id="org676981a"><span class="section-number-4">11.1.1</span> tensorflow</h4>
+<div class="outline-text-4" id="text-11-1-1">
+<p>
+pip install tensorflow
+</p>
+</div>
+</div>
+<div id="outline-container-org76b0c68" class="outline-4">
+<h4 id="org76b0c68"><span class="section-number-4">11.1.2</span> jieba</h4>
+<div class="outline-text-4" id="text-11-1-2">
+<p>
+pip install jieba
+</p>
+</div>
+</div>
+
+<div id="outline-container-org584512d" class="outline-4">
+<h4 id="org584512d"><span class="section-number-4">11.1.3</span> numpy</h4>
+</div>
+<div id="outline-container-org4d522f0" class="outline-4">
+<h4 id="org4d522f0"><span class="section-number-4">11.1.4</span> scipy</h4>
+</div>
+<div id="outline-container-orgcec5f60" class="outline-4">
+<h4 id="orgcec5f60"><span class="section-number-4">11.1.5</span> sympy</h4>
+</div>
+<div id="outline-container-orga60793e" class="outline-4">
+<h4 id="orga60793e"><span class="section-number-4">11.1.6</span> pyecharts</h4>
+</div>
+<div id="outline-container-org88ef6f3" class="outline-4">
+<h4 id="org88ef6f3"><span class="section-number-4">11.1.7</span> sklearn(scikit-learn)</h4>
+</div>
+<div id="outline-container-org012f4fc" class="outline-4">
+<h4 id="org012f4fc"><span class="section-number-4">11.1.8</span> matplotlib</h4>
+</div>
+<div id="outline-container-orgd42163f" class="outline-4">
+<h4 id="orgd42163f"><span class="section-number-4">11.1.9</span> pandas</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgef668ee" class="outline-2">
+<h2 id="orgef668ee"><span class="section-number-2">12</span> vscode</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org6443dcc" class="outline-3">
+<h3 id="org6443dcc"><span class="section-number-3">12.1</span> plugins</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+Code Runner
+Markdown All in One
+Markdown Preview Enhanced
+Python
+egg-jump-definition
+vscode-elm-jump
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd5af99d" class="outline-3">
+<h3 id="orgd5af99d"><span class="section-number-3">12.2</span> auto save</h3>
+<div class="outline-text-3" id="text-12-2">
+<p>
+Settings -&gt; autosave -&gt; afterdelay
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3fc8a75" class="outline-3">
+<h3 id="org3fc8a75"><span class="section-number-3">12.3</span> interpreter</h3>
+<div class="outline-text-3" id="text-12-3">
+<p>
+Settings -&gt; search python.pythonPath -&gt; /anaconda3/envs/ai/bin/python
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2960648" class="outline-3">
+<h3 id="org2960648"><span class="section-number-3">12.4</span> turn off parameter hint</h3>
+<div class="outline-text-3" id="text-12-4">
+<p>
+Settings -&gt; search editor.parammeterHints -&gt; disable 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8972f26" class="outline-3">
+<h3 id="org8972f26"><span class="section-number-3">12.5</span> speed up quick suggestions</h3>
+<div class="outline-text-3" id="text-12-5">
+<p>
+Settings -&gt; search editor.quickSuggestionsDelay -&gt; change from 10 to 1
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcdf17af" class="outline-3">
+<h3 id="orgcdf17af"><span class="section-number-3">12.6</span> format</h3>
+<div class="outline-text-3" id="text-12-6">
+<p>
+Settings -&gt; search format -&gt; Format On Save(check), Format On Type(check)
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org511019e" class="outline-2">
+<h2 id="org511019e"><span class="section-number-2">13</span> python on spark</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org83aa927" class="outline-3">
+<h3 id="org83aa927"><span class="section-number-3">13.1</span> download jdk</h3>
+</div>
+<div id="outline-container-orgf39b95c" class="outline-3">
+<h3 id="orgf39b95c"><span class="section-number-3">13.2</span> download spark</h3>
+</div>
+<div id="outline-container-org5ddd45d" class="outline-3">
+<h3 id="org5ddd45d"><span class="section-number-3">13.3</span> copy</h3>
+<div class="outline-text-3" id="text-13-3">
+<p>
+copy bin/python/pyspark to /python_path/site-packages
+</p>
+</div>
+</div>
+<div id="outline-container-org0940806" class="outline-3">
+<h3 id="org0940806"><span class="section-number-3">13.4</span> home path</h3>
+<div class="outline-text-3" id="text-13-4">
+<p>
+export SPARK_HOME=&#x2026;
+export SPARK_HOME=&#x2026;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1ab992e" class="outline-2">
+<h2 id="org1ab992e"><span class="section-number-2">14</span> shorcut</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+Preferences -&gt; Keyboard -&gt; Shortcut
+</p>
+</div>
+</div>
+<div id="outline-container-org398afe8" class="outline-2">
+<h2 id="org398afe8"><span class="section-number-2">15</span> mactex</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mike Chyson</p>
+<p class="date">Created: 2019-11-16 Sat 20:10</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

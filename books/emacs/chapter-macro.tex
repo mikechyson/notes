@@ -1,0 +1,56 @@
+
+\chapter{Macro}
+In Emacs, a macro is simply a group of recorded keystrokes you can play back over and over again.
+Macros are a great way to save yourself repetitive work.
+
+\section{Commands}
+
+\begin{description}
+\item[C-x (] Start a macro definition.
+\item[C-x )] End a macro definition.
+\item[C-x e] Call the last defined macro.
+\item[C-x C-k e] Edit a keyboard macro.
+\item[C-x C-k C-d] Delete current macro from keyboard macro ring.
+\item[C-x C-k C-t] Swap first two elements on keyboard macro ring.
+\item[C-x C-k C-p] Move to previous keyboard macro in keyboard macro ring.
+\item[C-x C-k C-n] Move to next keyboard macro in keyboard macro ring.
+\item[C-x C-k b] Offer to bind last macro to a key.
+\item[C-x C-k n] Assign a name to the last keyboard macro defined.
+\item[C-x C-k r] Apply last keyboard macro to all lines in the region.
+\item[C-x q] Query user during kbd macro execution.
+\item[C-M-c] Exit from the innermost recursive edit or minibuffer.
+\end{description}
+
+
+\section{Writting Interactive Macro}
+\begin{enumerate}
+\item Use \verb|C-x (| to start a macro definition.
+\item Use \verb|C-x q| to insert a query during kbd macro.
+\item Use \verb|C-r| to start a recursive edit during executing the macro.
+\item Use \verb|C-M-c| to exit the recursive edit.
+\item Use \verb|Y| to continue to the next interactive edit or others.
+\end{enumerate}
+
+\section{Tips for Creating Good Macros}
+
+Good macros work in all situations.
+Here are some tips:
+\begin{enumerate}
+\item Use commands that are absolute rather than relative.
+\item Type the search argument (C-s) rather than using the command to repeat the last search (C-s C-s).
+\item Add extra commands (typically C-a and C-e ) that aren't strictly necessary, just to make sure that you're positioned correctly on the line.
+\end{enumerate}
+
+
+
+\section{Naming, Saving, and Executing Your Macros}
+
+\begin{enumerate}
+\item Define a macro.
+\item name it with \verb|C-x C-k n|.
+\item Open a file.
+\item \verb|M-x insert-kbd-macro RET <macroname> RET|.
+\item add \verb|(load-file "<your macro file>")| to .emacs.
+\item add \verb|(global-set-key "\C-x\C-k<your key>" '<your macro name>)| to .emacs.
+\end{enumerate}
+

@@ -1,0 +1,204 @@
+% Created 2019-09-05 Thu 14:44
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{Hack Chyson}
+\date{\today}
+\title{learning-gun-emacs}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.2.2 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{{\bfseries\sffamily DONE} Customizing Emacs}
+\label{sec-1}
+three ways to customize Emacs: \\
+\begin{enumerate}
+\item Options \\
+\item Custom \\
+\item Lisp code \\
+\end{enumerate}
+
+No matter what method you use, though, the .emacs startup file is modified. Custom modifies it for you when you save settings through that interface. The Options menu invokes Custom behind the scenes; when you choose Save Options, Custom again modifies .emacs. \\
+
+\subsection{Using Custom}
+\label{sec-1-1}
+\begin{center}
+\begin{tabular}{lll}
+Bounding & Function & Description\\
+\hline
+ & customize & \\
+\end{tabular}
+\end{center}
+
+
+\subsection{Configuration Load Order When Start Up}
+\label{sec-1-2}
+Loading order: \\
+\begin{enumerate}
+\item site-start.el \\
+\item configuration \\
+\begin{enumerate}
+\item .emacs.elc (compiled version of .emacs.el) \\
+\item .emacs.el \\
+\item .emacs \\
+\end{enumerate}
+\item default.el \\
+\end{enumerate}
+
+
+\subsection{Customizing Your Key Bindings}
+\label{sec-1-3}
+\begin{center}
+\begin{tabular}{ll}
+Term & Description\\
+\hline
+keymap & a collection of key bindings\\
+global-map & the most basic default key bindings\\
+local-map & specific to a single buffer\\
+ctl-x-map & keymap for C-x\\
+esc-map & keymap for Esc\\
+\end{tabular}
+\end{center}
+
+
+When you type a key, Emacs first looks it up in the current buffer's local map (if any). If it doesn't find an entry there, it looks in global-map. \\
+
+What happens with commands that are bound to multiple keystrokes? \\
+The answer is that the keys C-x , Esc , and C-c are actually bound to special internal functions that cause Emacs to wait for another key to be pressed and then to look up that key's binding in another map. \\
+
+Caution: You can use Meta in place of Esc , but the bindings are still stored in the esc-map . \\
+
+Three ways to define your own key bindings: \\
+\begin{verbatim}
+(define-key keymap "keystroke" 'command-name)
+(global-set-key "keystroke" 'command-name)
+(local-set-key "keystroke" 'command-name)
+\end{verbatim}
+
+
+Special character conventions: \\
+\begin{verbatim}
+| Special Character | Definition                  |
+|-------------------+-----------------------------|
+| \C-x              | C-x (where x is any letter) |
+| \C-[ or \e        | Esc                         |
+| \M                | Meta                        |
+| \C-j or \n        | Newline                     |
+| \C-m or \r        | Enter                       |
+| \C-i or \t        | Tab                         |
+\end{verbatim}
+Note that control characters are case-insensitive — that is, \C-A is the same thing as \C-a. However, the characters that follow control characters may be case-sensitive; \C-ae could be different from \C-aE . \\
+
+The function define-key is the most general because it can be used to bind keys in any keymap. \\
+
+\begin{verbatim}
+(global-set-key "\C-xl" 'goto-line)
+equal to
+(define-key global-map "\C-xl" 'goto-line)
+(define-key ctl-x-map "l" 'goto-line)
+\end{verbatim}
+
+Two ways to make the change in your .emacs to take effect: \\
+\begin{center}
+\begin{tabular}{lll}
+Bounding & Function & Description\\
+\hline
+ & eval-buffer & \\
+C-x C-e & eval-last-sexp & \\
+\end{tabular}
+\end{center}
+
+
+To unset key bindings: \\
+\begin{verbatim}
+(global-unset key "\C-xl")
+(define-key ctl-x-map "l" nil)
+\end{verbatim}
+
+\subsection{Setting Emacs Variables}
+\label{sec-1-4}
+To set the value of a variable, use the setq function in your .emacs. \\
+\begin{verbatim}
+(setq variable-name variable-value)
+\end{verbatim}
+
+
+Several Emacs variables can have different values for each buffer (local values) as well as a default value. Such variables assume their default values in buffers where the local values are not specified. \\
+
+When you set the value of a variable with setq , you are actually setting the local value. The way to set default values is to use setq-default instead of setq. \\
+\begin{verbatim}
+(setq-default variable-name variable-value)
+\end{verbatim}
+
+
+Unfortunately, there is no general way to tell whether a variable has just one global value or hasdefault and local values (except, of course, by looking at the Lisp code for the mode). Therefore the best strategy is to use a plain setq , unless you find from experience that a particular variable doesn't seem to take on the value you setq it to — in which case you should use setq-default . \\
+
+
+\begin{center}
+\begin{tabular}{lll}
+Variable & Description & Default\\
+\hline
+kill-ring-max &  & 60\\
+auto-save-interval &  & 300\\
+case-fold-search &  & t\\
+shell-file-name & decide which shell to start & /bin/bash\\
+dired-garbage-files-regexp &  & \\
+tab-width &  & 4\\
+auto-mode-alist &  & \\
+major-mode &  & \\
+inhibit-default-init &  & nil\\
+compile-command &  & make -k\\
+compilation-error-regexp-alist &  & \\
+\end{tabular}
+\end{center}
+
+\subsection{Starting Modes via Auto-Mode Customization}
+\label{sec-1-5}
+The assocations of suffix and major mode are contained in a variable auto-mode-alist . \\
+auto-mode-alist is a list of pairs (regexp . mode ), where regexp is a regular expression and mode is the name of a function that invokes a major mode. \\
+
+Syntax: \\
+\begin{verbatim}
+(setq auto-mode-alist (cons '("<suffix>" . <major-mode>) auto-mode-alist))
+\end{verbatim}
+
+
+\subsection{Functions}
+\label{sec-1-6}
+\begin{center}
+\begin{tabular}{lll}
+Bounding & Function & Description\\
+\hline
+edit-tab-stops &  & \\
+\end{tabular}
+\end{center}
+
+\subsection{Making word abbreviations part of your startup}
+\label{sec-1-7}
+To define word abbreviation and make them part of your startup, add these lines to your .emacs file: \\
+\begin{verbatim}
+(setq-default abbrev-mode t)
+(read-abbrev-file "~/.emacs.d/.abbrev_defs")
+(setq save-abbrevs t)
+\end{verbatim}
+% Emacs 25.2.2 (Org mode 8.2.10)
+\end{document}

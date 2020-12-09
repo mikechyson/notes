@@ -1,0 +1,32 @@
+\chapter{Footnotes}
+
+\begin{lstlisting}
+  \footnote{hello world}
+  \section[title without footnote]{This is a section\protect\footnote{section footnote}}
+
+  \footnote[number]{text}
+
+  \footnotemark[number] % produces a superscripted number in the text as a
+  % footnote mark. If the optional argument wasn't given, it's also stepping and using
+  % the internal footnote counter. No footnote will be generated.
+
+  \footnotetext[number]{text} % generates a footnote without putting a
+  % footnote mark into the text without stepping the internal footnote counter.
+
+  \footnoterule % used to alter the footnote line
+
+  \renewcommand{\footnoterule}{\noindent\smash{\rule[3pt]{\textwidth}{0.4pt}}}
+  % \rule[raising]{width}{height} draws a line, here 0.4 pt thick, and as wide as the text, raised a bit by 3 pt.
+  % \smash , let the line pretend to have a height and a depth of zero, so it's occupying no vertical space at all.
+\end{lstlisting}
+
+Example:
+\begin{lstlisting}
+  Hello World\footnote{hello world}
+\end{lstlisting}
+\begin{tcolorbox}
+Hello World\footnote{hello world}.  
+\end{tcolorbox}
+
+
+

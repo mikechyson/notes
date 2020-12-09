@@ -1,0 +1,33 @@
+
+\chapter{Static files}
+
+\section{Customize you app's look and feel}
+
+\verb|polls/static/polls/style.css|:
+\begin{lstlisting}
+li a {
+    color: green;
+}
+
+body {
+    background: white url("images/background.jpeg") no-repeat;
+    background-size: 100% 100%;
+}
+\end{lstlisting}
+
+Add the following at the top of \verb|polls/static/polls/index.html|:
+\begin{lstlisting}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+\end{lstlisting}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{style.png}
+  \caption{Style}
+  \label{fig:style}
+\end{figure}
+
+

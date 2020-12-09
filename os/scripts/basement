@@ -1,0 +1,82 @@
+* awk
+Abbreviation: Alfred Aho, Peter Weinberger, Brain Kernighan
+
+** sum
+ <command> | awk -F ' ' '{sum+=$1} END {print "sum = ",sum}'
+
+** average
+ <command> | awk -F ' ' '{sum+=$1} END {print "average = ",sum/NR}'
+
+NR: The total number of input records seen so far.
+
+** max
+The following is wrong, because the ">" sign compare with alphabet!!!
+ <command> | awk -F ' ' 'BEGIN {max=0} {if ($1 > max) max=$1 fi} END {print "max = ", max}'
+
+for example:
+[michael@michael test]$ cat data | awk -F ' ' 'BEGIN {max=0} {if ($2 > max) max=$2 fi} END {print "max = ", max}'
+max =  9
+[michael@michael test]$ cat data
+1 2
+2 3
+3 3
+4 5
+5 9
+6 10
+1 1
+1 21
+
+
+
+It should be:
+ <command> | awk -F ' ' 'BEGIN {max=0} {if ($1+0 > max+0) max=$1 fi} END {print "max = ", max}'
+
+for example:
+[michael@michael test]$ cat data | awk -F ' ' 'BEGIN {max=0} {if ($1+0 > max+0) max=$1 fi} END {print "max = ", max}'
+max =  13
+[michael@michael test]$ cat data
+10 2
+2 3
+3 3
+4 111
+5 9
+6 10
+13 14
+11 21
+
+
+** min
+ <command> | awk -F ' ' 'BEGIN {min=999999} {if ($1+0 < min+0) min=$1 fi} END {print "min = ", min}'
+
+
+* array
+** define an array
+array_name=(value1 value2 value3)
+
+** read element value
+${array_name[index]}
+
+** get all elements
+${array_name[*]}
+${array_name[@]}
+
+
+* for
+for i in S1U_10{0..9} GN_{HTTP,DNS,IM,PDP,EMAIL}; do echo $i; done
+
+[michael@michael scripts]$ for i in S1U_10{0..9} GN_{HTTP,DNS,IM,PDP,EMAIL}; do echo $i; done
+S1U_100
+S1U_101
+S1U_102
+S1U_103
+S1U_104
+S1U_105
+S1U_106
+S1U_107
+S1U_108
+S1U_109
+GN_HTTP
+GN_DNS
+GN_IM
+GN_PDP
+GN_EMAIL

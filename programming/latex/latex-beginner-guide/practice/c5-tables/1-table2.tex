@@ -1,0 +1,22 @@
+\documentclass{article}
+\newcommand{\head}[1]{\textbf{#1}}
+\begin{document}
+
+\begin{tabbing}
+  Family \= \head{Command} \= \head{Declaration} \= \head{Example}\\
+  \> \verb|\textrm{...}| \> \verb|\rmfamily| \> \rmfamily Example text\\
+  \> \verb|\textsf{...}| \> \verb|\sffamily| \> \sffamily Example text\\
+  \> \verb|\texttt{...}| \> \verb|\ttfamily| \> \ttfamily Example text
+\end{tabbing}
+
+\begin{tabbing}
+  % \kill at the end of a line causes this line to have no output.
+  Family \= \verb|\textrm{...}| \= \head{Declaration} \= \kill 
+  Family \> \head{Command} \> \head{Declaration} \> \head{Example}\\
+  \> \verb|\textrm{...}| \> \verb|\rmfamily| \> \rmfamily Example text\\
+  \> \verb|\textsf{...}| \> \verb|\sffamily| \> \sffamily Example text\\
+  \> \verb|\texttt{...}| \> \verb|\ttfamily| \> \ttfamily Example text
+\end{tabbing}
+
+
+\end{document}

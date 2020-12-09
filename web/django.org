@@ -1,0 +1,66 @@
+* install django
+#+BEGIN_SRC sh
+python -m pip install Django
+#+END_SRC
+
+* create my website
+#+BEGIN_SRC sh
+django-admin startproject mysite
+#+END_SRC
+
+
+[[file:pics/mysite.png]]
+
+** alter the settings.py to allow all hosts
+#+BEGIN_SRC python
+ALLOWED_HOSTS = ['*']
+#+END_SRC
+
+** start server
+#+BEGIN_SRC sh
+python manager.py runserver 0:80
+#+END_SRC
+
+[[file:pics/success.png]]
+
+
+* create ai app
+
+#+BEGIN_SRC sh
+python manage.py startapp ai
+#+END_SRC
+
+
+** write the view
+ai/view.py
+#+BEGIN_SRC py
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("Mike Chyson's Blog")
+#+END_SRC
+
+ai/urls.py
+#+BEGIN_SRC python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+#+END_SRC
+
+
+mysite/urls.py
+#+BEGIN_SRC py
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path(ai/', include(ai.urls')),
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index')
+]
+#+END_SRC

@@ -1,0 +1,4 @@
+* list
+* tree
+* graph
+* hypergraph

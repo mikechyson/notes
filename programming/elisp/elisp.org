@@ -1,0 +1,356 @@
+How to learn a programming language?
+1. learn the fundamentals
+2. teach yourself to go further
+
+
+Learn with doing!
+If you don't have a running Emacs besides you, you can still read this book(Introduce to Emacs Lisp),
+but in this case, it is best to treat is as a novel or a travel guide to a country not yet visited:
+interesting, but not the same as being there.
+
+
+Pick up the habit of browing through source code.
+You can learn it and mine it for ideas.
+
+
+IMPORTANT
+How to learn
+You are not expected to learn everything the first time.
+You need make only a nodding acquaintence with some of the items.
+You need to be alert what is important, and concentrate on it.
+
+Learn with a companion like a reference manual or google.
+
+Build your own reference manual. (IMPORTANT)
+
+Lisp was first developed in the late 1950s at the MIT for reseach in AI.
+
+
+* Lisp Processing
+Lisp: LISt Processing
+
+** Lisp Lists
+#+BEGIN_SRC emacs-lisp
+'(rose vilot daisy buttercup)
+#+END_SRC
+parentheses are boundaries;
+whitespace are separators;
+
+
+In Lisp, both data and programs are both words, numbers or other lists, separated by whitespace and surrounded by parentheses.
+#+BEGIN_SRC emacs-lisp
+'(this list has (a list inside of it))
+#+END_SRC
+
+*** Lisp Atoms
+Words are called atoms. (usually indivisible)
+
+An empty list is considered both an atom and a list at the same time. (like this: ())
+
+A printed representation of both atoms and lists are called symbolic expression or s-expression.
+Lisp programming is mostly about symbols (and sometimes numbers) within lists.
+
+*** Whitespace in Lists
+The amount of whitespace is a list does not matter.
+
+** Run a Program
+If you run a Lisp program, the computer will do one of three things:
+1. do nothing except return to you the list itself
+2. send you a error message
+3. treat the first symbol in the list as a command to do something.
+
+The single apostrophe, ' is called a quote;
+when it precede a list, it tells Lisp to do nothing with the list, other than take it as it is written.
+(quote is a function)
+(all the first symbol in a list is a function)
+
+Lisp interpreter: a program to interprete Lisp.
+
+** Generate an Error Message (Notice this view)
+Generating an error message is a harmless activity.
+Indeed, we will often try to generate error message intentionally.
+
+Once you understand the jargon, error messages can be informative.
+Instead of being called "error" message, they should be called "help" messages.
+They are like signposts to a traveler in a strange country;
+deciphering them can be hard, but once understood, they can point the way.
+
+
+** Symbol Names and Function Definitions
+#+BEGIN_SRC emacs-lisp
+(+ 2 2)
+#+END_SRC
+The simbol ("+") is used as a way of locating the definition or set of definitions.
+
+One set of instructions can be attached to several names;
+A symbol can have only one function definition attached to it at a time.
+
+** The Lisp Interpreter
+fundamental:
+1. quote? yes, the interpreter just gives us the list.
+2. the first element in the list has function definition? yes, the interpreter carries out the instructions in the function definition.
+3. the interperter prints an error.
+
+
+A macro is a construction defined in Lisp, which differ from a function in that
+it translate a Lisp expression into another expression that is to be evaluated in place of the original expression.
+
+** Evaluation
+The Lisp interpreter works on an expression, the term for the activity is called evaluation.
+
+Evaluating a symbolic expression most commonly causes the Lisp interpreter to 
+1. return a value
+2. and perhaps carry out a side effect
+3. or else produce an error
+
+If you evaluate a number, you get the number itself.
+
+** Variables
+A symbol can have a value attached to it just as it can have a function definition attached to it.
+The function definition is a set of instructions that a computer will obey.
+A value is something, such as number or a name, that can vary.
+A symbol that has a value is often called a variable
+
+A symbol can have both a function definition and a value attached to it at the same time.
+
+In or not in a list determine the symbol is a variable or function.
+
+** Arguments
+#+BEGIN_SRC emacs-lisp
+(+ 2 2)
+#+END_SRC
+The number added by + called the arguments of the function +. 
+These numbers are the information that is given to or passed to the function.
+
+arguments: information presented to a function.
+
+The type of data that should be passed to a function depends on what kind of information it uses.
+
+An argument can be symbol that returns a value when it is evaluated.
+
+In Emacs, locations in a buffer are recorded as markers.
+When the mark is set, its position is kept as a markter.
+
+
+A string between double quotes evaluates to itself.
+
+[2019-03-21 Thu]
+* Practicing Evaluation
+Whenever you give an editing command to Emacs Lisp,
+you are evaluating an expression.
+This is how Emacs works.
+
+** Buffer Names
+A file is information recorded permanently in the computer (unless you delete it).
+A buffer is information inside of Emacs that will vanish at the end of the editing session (or when you kill the buffer).
+
+Usually, a buffer contains information that you have copied from a file.
+Changes to the buffer do not change the file, until you save the buffer.
+
+** Getting Buffers
+
+** Switching Buffers
+
+** Buffer Size and the Location of Point
+The current position of the cursor is called point.
+
+* How to Write Function Definitions
+A symbol that has a function definition is called a function.
+(properly speaking, the definition is the function and the symbol refers to it)
+
+#+BEGIN_EXAMPLE
+EXTENSION:
+All functions are defined in terms of other functions, except for a few primitive functions
+that are written in the C programming language.
+The primitive functions are written in C so we can run GNU Emacs on any computer that can run C.
+#+END_EXAMPLE
+
+Note:
+when you write code in Emacs Lisp, you do not distinguish between the use of functions
+written in C and the use of functions written in Emacs Lisp.
+
+** The defun Macro
+The code that tells the computer what to do is called the function definition.
+
+A function definition has five parts following the word defun:
+1. The name of the symbol to which the function definition should be attached.
+2. A list of arguments that will be passed to the function.
+3. Documentation describing the function.
+4. Optionally, an expression to make the function interactive.
+5. The code tht instructs the computer what to do.
+
+Think of the five parts of a function definition in a template, with slots for each part:
+#+BEGIN_SRC emacs-lisp
+(defun functions-name (arguments...)
+  "optional-documentation..."
+  (interactive argument-passing-info) ;optional
+  body...)
+#+END_SRC
+
+Example:
+#+BEGIN_SRC emacs-lisp
+(defun multiply-by-seven (number)
+  "Multiply NUMBER by seven."
+  (* 7 number))
+
+(multiply-by-seven 3)
+#+END_SRC
+
+The name you use in an argument list is private to that particular definition.
+
+When you write a documentation string, make the first line a complete sentence
+since some commands, such as apropos, print only the first line.
+(In Python, the first line is recommended a brief descritpion.)
+
+Note:
+Although =number= was in side parentheses in the function definition,
+the argument passed to the =multiply-by-seven= function is not in parentheses.
+The parentheses are written in the function definition so the computer can 
+figure out where the argument list ends and the rest of the function definition begins.
+
+Installing a function is the process that tells the Lisp interpreter the definition of the function.
+
+** Install a Function Definition
+In Lisp, everything on a line that follows a semicolon is a comment.
+The end of the line is the end of the comment. 
+
+** Make a Function Interactive
+
+#+BEGIN_SRC emacs-lisp
+(defun multiply-by-seven (number)
+  "Multiply NUMBER by seven."
+  (interactive "p")
+  (message "The result is %d" (* 7 number)))
+
+(multiply-by-seven 3)
+#+END_SRC
+
+When you call an interactive function interactivly, the value returned is
+not automatically displayed in the echo area.
+This is because you often call an interactive function for its side effects.
+If the returned value is displayed in the echo area each time you typed a key,
+it would be very distracting.
+
+The value returned be =message= is what appears in the echo area
+when you evaluate an expression whose first element is =message=;
+but when embedded in a function, =message= prints the text as a side effect without quotes.
+
+
+
+ 
+** Install Code Permanently
+Four ways:
+1. put it in your .emacs file (for yourself use)
+2. use load function
+3. put it in site-init.el (for everyone use)
+4. send it to Free Software Foundation (for all users)
+
+** let
+In Emacs Lisp, scoping is dynamic, not lexcial.
+
+simple and complex template thought.
+
+simple template:
+#+BEGIN_SRC emacs-lisp
+(let varlist body...)
+#+END_SRC
+
+complex template:
+#+BEGIN_SRC emacs-lisp
+(let ((variable value)
+      (variable value)
+      ...)
+  body...)
+#+END_SRC
+
+** Truth and Falsehood in Emacs Lisp
+"false" is just nil.
+Anything else -- anything at all -- is "true".
+
+In Emacs Lisp, the symbol nil has two meanings:
+1. the empty list
+2. false
+
+If some other usefull value is not available for a test that returns true,
+then Lisp interpreter will return the symbol t for true.
+
+** save-excursion
+The cursor appears to be on top of a character; point is immediately before the character.
+Each buffer has its own value for point.
+
+The mark is another position in the buffer.
+If you set another mark, the position of the previous mark is saved in the mark ring.
+
+The part of the buffer between point and mark is called region.
+
+* A Few Buffer-Related Functions
+The files that contain Lisp code are conventionally called libraries.
+Each library contains functions that related to a particular topic or activity.
+
+A shorten function works the same, but it does not contain the code for a complex option.
+
+A function can be understood by looking at it as series of filled-in templates.
+
+
+
+* A Few More Complex Functions
+#+BEGIN_SRC emacs-lisp
+(defun beginning-of-buffer (&optinal arg)
+  "Move point to the beginning of the buffer;
+leave mark at the previous position.
+With \\[universial-argument] prefix,
+do not set mark at previous position.
+With numberic arg N,
+put point N/10 of the way from the beginning."
+#+END_SRC
+M-7 M-< will move the cursor to a point 70% of the way though the buffer.
+
+The keyword &optional is used to tell the Lisp interpreter that an augument is optinal.
+
+This '\\' tells the Lisp interpreter to substitute whatever key is currently bound to the '[...]'.
+
+* Narrowing and Widening
+Narrowing is a feature that makes it possible for you to focus on a specific part of a buffer,
+and work without accidentally changing other parts.
+
+* car, cdr, cons: Fundamental Functions
+car: Contents of the Address part of the Register
+cdr: Contents of the Decrement part of the Register
+
+When you name new functions consider very carefully what you are doing,
+since you may be stuck with the names for far longer than you expect.
+
+
+
+* Cutting and Sorting Text
+Whenever you cut or clip text out of a buffer with a "kill" command in GNU Emacs, 
+it is stored in a list and you can bring it back with a "yank" command.
+
+#+BEGIN_EXAMPLE
+Note:
+The use of the word “kill” in Emacs for processes which specifically do not destroy the values of the entities is an unfortunate historical accident. 
+A much more appropriate word would be “clip” since that is what the kill commands do; 
+they clip text out of a buffer and put it into storage from which it can be brought back. 
+#+END_EXAMPLE
+
+The list that holds the pieces of text is called the "kill ring" (clip ring).
+
+A Lisp macro enables you to define new control constructs and other language features. 
+It tells the interpreter how to compute another Lisp expression which will in turn compute the value. 
+
+
+The "when" macro is an "if" without a "else" clause;
+The "unless" macro is an "if" without a "then" clause;
+
+
+Normally, whenever a function is executed, Emacs sets the value of "this-command" to the function being executed.
+At the same time, Emacs sets the value of "last-command" to the previous value of "this-command".
+
+* How Lists are Implemented
+A list is kept using a series of pair of pointers.
+I the series, the first pointer in each pair points to an atom or to another list, 
+and the second pointer in each pair points to the next pair,
+or to the symbol nil, which markds the end of the list.
+
+A pointer itself is quite simply the electronic address of what is pointed to.
+

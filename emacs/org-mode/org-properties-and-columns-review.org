@@ -1,0 +1,218 @@
+A property is a key-value pair associated with an entry.
+Keys are case-insensitive.
+
+Properties can be conveniently edited and viewed in column view.
+
+* Property syntax
+  :PROPERTIES:
+  :END:
+#+BEGIN_EXAMPLE
+     * CD collection
+     ** Classic
+     *** Goldberg Variations
+         :PROPERTIES:
+         :Title:     Goldberg Variations
+         :Composer:  J.S. Bach
+         :Artist:    Glen Gould
+         :Publisher: Deutsche Grammophon
+         :NDisks:    1
+         :END:
+#+END_EXAMPLE
+
+You may define the allowed values for a particular property ‘:Xyz:’ by setting a property ‘:Xyz_ALL:’. 
+This special property is inherited, so if you set it in a level 1 entry, it will apply to the entire tree.
+#+BEGIN_EXAMPLE
+     * CD collection
+       :PROPERTIES:
+       :NDisks_ALL:  1 2 3 4
+       :Publisher_ALL: "Deutsche Grammophon" Philips EMI
+       :END:
+#+END_EXAMPLE
+
+
+If you want to set properties that can be inherited by any entry in a file, use a line like 
+#+BEGIN_EXAMPLE
+  #+PROPERTY: NDisks_ALL 1 2 3 4
+#+END_EXAMPLE
+
+
+
+If you want to add to the value of an existing property, append a + to the property name. 
+The following results in the property var having the value “foo=1 bar=2”.
+#+BEGIN_EXAMPLE
+     #+PROPERTY: var  foo=1
+     #+PROPERTY: var+ bar=2
+#+END_EXAMPLE
+
+
+| Key Bounding | Functions           | Description                                                            |
+|--------------+---------------------+------------------------------------------------------------------------|
+| C-c C-x p    | org-set-property    | Set a property                                                         |
+| C-c C-c      | org-property-action | With the cursor in a property drawer, this executes property commands. |
+| S-LEFT       |                     | Switch property at point to the previous allowed value.                |
+| S-RIGHT      |                     | Switch property at point to the next allowed value.                    |
+
+
+
+| Variable                     | Description                                      |
+|------------------------------+--------------------------------------------------|
+| org-use-property-inheritance | Determine the property inheritance.              |
+| org-global-properties        | Property values can be inherited by all entries. |
+|                              |                                                  |
+
+
+* Special properties
+Special properties provide an alternative access method to Org mode features.
+This interface exists so that you can include these states in a column view, or to use them in queries.
+
+The following property names are special and should not be used as keys in the properties drawer: 
+#+BEGIN_EXAMPLE
+     ALLTAGS      All tags, including inherited ones.
+     BLOCKED      "t" if task is currently blocked by children or siblings.
+     CLOCKSUM     The sum of CLOCK intervals in the subtree.  org-clock-sum must be run first to compute the values in the current buffer.
+     CLOCKSUM_T   The sum of CLOCK intervals in the subtree for today. org-clock-sum-today must be run first to compute the values in the current buffer.
+     CLOSED       When was this entry closed?
+     DEADLINE     The deadline time string, without the angular brackets.
+     FILE         The filename the entry is located in.
+     ITEM         The headline of the entry.
+     PRIORITY     The priority of the entry, a string with a single letter.
+     SCHEDULED    The scheduling timestamp, without the angular brackets.
+     TAGS         The tags defined directly in the headline.
+     TIMESTAMP    The first keyword-less timestamp in the entry.
+     TIMESTAMP_IA The first inactive timestamp in the entry.
+     TODO         The TODO keyword of the entry.
+#+END_EXAMPLE
+
+* Property inheritance
+Org does not turn property inheritance on by default.
+| Variable                     |
+|------------------------------|
+| org-use-property-inheritance |
+
+Org mode has a few properties for which inheritance is hard-coded, at least for the special applications for which they are used: 
+#+BEGIN_EXAMPLE
+COLUMNS
+CATEGORY
+ARCHIVE
+LOGGING
+#+END_EXAMPLE
+
+
+* Column view
+A great way to view and edit properties is column view.
+In column view, each outline node is turned into a table row. 
+Columns in this table provide access to properties of the entries.
+Org mode implements columns by overlaying a tabular structure over the headline of each item.  
+
+** Defining columns
+Setting up a column view first requires defining the columns. 
+
+| Variable                   |
+|----------------------------|
+| org-columns-default-format |
+
+*** Scope of column definitions
+To define a column format for an entire file, use a line like
+#+BEGIN_EXAMPLE
+     #+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+#+END_EXAMPLE
+
+To specify a format that only applies to a specific tree, add a :COLUMNS: property to the top node of that tree, for example:
+#+BEGIN_EXAMPLE
+     ** Top node for columns view
+        :PROPERTIES:
+        :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+        :END:
+#+END_EXAMPLE
+
+
+If a :COLUMNS: property is present in an entry, it defines columns for the entry itself, and for the entire subtree below it. 
+
+*** Column attributes
+A column definition sets the attributes of a column. The general definition looks like this:
+#+BEGIN_EXAMPLE
+%[width]property[(title)][{summary-type}]
+#+END_EXAMPLE
+Except for the percent sign and the property name, all items are optional. 
+
+The individual parts have the following meaning: 
+#+BEGIN_EXAMPLE
+     width           An integer specifying the width of the column in characters. If omitted, the width will be determined automatically.
+     property        The property that should be edited in this column.
+                     Special properties representing meta data are allowed here as well
+     title           The header text for the column.  If omitted, the property name is used.
+     {summary-type}  The summary type.  If specified, the column values for parent nodes are computed from the children.
+                     Supported summary types are:
+                     {+}       Sum numbers in this column.
+                     {+;%.1f}  Like ‘+’, but format result with ‘%.1f’.
+                     {$}       Currency, short for ‘+;%.2f’.
+                     {min}     Smallest number in column.
+                     {max}     Largest number.
+                     {mean}    Arithmetic mean of numbers.
+                     {X}       Checkbox status, ‘[X]’ if all children are ‘[X]’.
+                     {X/}      Checkbox status, ‘[n/m]’.
+                     {X%}      Checkbox status, ‘[n%]’.
+                     {:}       Sum times, HH:MM, plain numbers are hours.
+                     {:min}    Smallest time value in column.
+                     {:max}    Largest time value.
+                     {:mean}   Arithmetic mean of time values.
+                     {@min}    Minimum age (in days/hours/mins/seconds).
+                     {@max}    Maximum age (in days/hours/mins/seconds).
+                     {@mean}   Arithmetic mean of ages (in days/hours/mins/seconds).
+                     {est+}    Add ‘low-high’ estimates.
+#+END_EXAMPLE
+
+
+
+Example:
+
+#+BEGIN_EXAMPLE
+     :COLUMNS:  %25ITEM %9Approved(Approved?){X} %Owner %11Status %10Time_Estimate{:} %CLOCKSUM %CLOCKSUM_T
+     :Owner_ALL:    Tammy Mark Karl Lisa Don
+     :Status_ALL:   "In progress" "Not started yet" "Finished" ""
+     :Approved_ALL: "[ ]" "[X]"
+#+END_EXAMPLE
+
+
+
+** TODO Using column view
+
+*** Turning column view on and off
+| Key Bounding | Functions   | Description         |
+|--------------+-------------+---------------------|
+| C-c C-x C-c  | org-columns | Turn on clumn view. |
+|              |             |                     |
+
+#+BEGIN_EXAMPLE
+Core: org-columns-map (variable)
+
+| ! :  33  |  " :  34  |  # :  35  |  $ :  36  |  % :  37  |  & :  38  |  ' :  39  |  ( :  40  |  ) :  41  |  * :  42  | 
+| + :  43  |  , :  44  |  - :  45  |  . :  46  |  / :  47  |  0 :  48  |  1 :  49  |  2 :  50  |  3 :  51  |  4 :  52  | 
+| 5 :  53  |  6 :  54  |  7 :  55  |  8 :  56  |  9 :  57  |  : :  58  |  ; :  59  |  < :  60  |  = :  61  |  > :  62  | 
+| ? :  63  |  @ :  64  |  A :  65  |  B :  66  |  C :  67  |  D :  68  |  E :  69  |  F :  70  |  G :  71  |  H :  72  | 
+| I :  73  |  J :  74  |  K :  75  |  L :  76  |  M :  77  |  N :  78  |  O :  79  |  P :  80  |  Q :  81  |  R :  82  | 
+| S :  83  |  T :  84  |  U :  85  |  V :  86  |  W :  87  |  X :  88  |  Y :  89  |  Z :  90  |  [ :  91  |  \ :  92  | 
+| ] :  93  |  ^ :  94  |  _ :  95  |  ` :  96  |  a :  97  |  b :  98  |  c :  99  |  d : 100  |  e : 101  |  f : 102  | 
+| g : 103  |  h : 104  |  i : 105  |  j : 106  |  k : 107  |  l : 108  |  m : 109  |  n : 110  |  o : 111  |  p : 112  | 
+| q : 113  |  r : 114  |  s : 115  |  t : 116  |  u : 117  |  v : 118  |  w : 119  |  x : 120  |  y : 121  |  z : 122  | 
+| { : 123  |  | : 124  |  } : 125  |  ~ : 126  |
+
+#+END_EXAMPLE
+
+| Key Bounding | Functions                         | Description                                                     | Mode & Cursor                       |
+|--------------+-----------------------------------+-----------------------------------------------------------------+-------------------------------------|
+| r/g          | org-columns-redo                  | Construct the column display again.                             | On column view line (all the below) |
+| q            | org-column-quit                   | Exit column view                                                |                                     |
+| 0..9         |                                   | Directly select the Nth allowed value, 0 select the 10th value. |                                     |
+| n            | org-column-next-allowd-value      | Switch to the nextallowed value of the field.                   |                                     |
+| p            | org-column-previous-allowed-value | Switch to the previous allowed value of the field.              |                                     |
+| e            | org-column-edit-value             | Edit the property at point                                      |                                     |
+| C-c C-c      | org-column-set-tags-or-toggle     | When there is a checkbox at point, toggle it.                   |                                     |
+| v            | org-columns-show-value            | View the full value of this property.                           |                                     |
+| a            | org-column-edit-allowed           | Edit the list of allowed values for this property.              |                                     |
+| <            | org-column-narrow                 |                                                                 |                                     |
+| >            | org-column-widen                  |                                                                 |                                     |
+| M-S-RIGHT    |                                   | Insert a new column, to the left of the current column.         |                                     |
+| M-S-LEFT     | org-column-delete                 | Delete the current column.                                      |                                     |
+
+

@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\newcommand{\TUG}{TeX Users Group}
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\keywordwithoption}[2][\bfseries]{{#1#2}}
+\begin{document}
+\emph{emphasized}
+\textit{italic}
+\textbf{bold}
+\textsl{slanted}
+\textsc{small cap}
+\textup{up}
+\textmd{medium}
+\textsf{sans-serif}
+\texttt{typewritter}
+\textrm{roman}
+\tiny{tiny}
+\scriptsize{scriptsize}
+\footnotesize{footnotesize}
+\small{small}
+\normalsize{normalsize}
+\large{large}
+\Large{Large}
+\LARGE{LARGE}
+\huge{huge}
+\Huge{Huge}
+
+\begin{huge}
+  huge environment
+\end{huge}
+
+\normalsize{}
+\section{\TUG}
+\keyword{scope}
+\keywordwithoption[\itshape]{declaration}
+\keywordwithoption{declaration}
+
+\parbox{2cm}{TUG is a acronym. TUG is a acronym.}
+
+
+\parbox[t][2cm][b]{2cm}{\bfseries TUG is a acronym. TUG is a acronym.}
+
+\mbox{hello world}
+
+
+\begin{minipage}{1.0\linewidth}
+  TUG is a acronym.
+\end{minipage}
+
+\section{accent}
+ça va
+Héléne
+\end{document}
+

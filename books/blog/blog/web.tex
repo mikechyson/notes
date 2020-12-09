@@ -1,0 +1,23 @@
+
+\chapter{Web}
+
+\section{Common Header and Footer}
+
+In developing my blog, there is a need to write common headers and footer for all the index pages.
+At first, I copy the common header and footer to every index page, because there are only 5 index pages in my blog.
+But soon I find the weakness this method.
+If I change the header or footer, I need to copy them every again.
+It's time consuming and error prone.
+
+Here is another method I take.
+\begin{enumerate}
+\item Extract the header and footer into separate file, say \verb|header.html| and \verb|footer.html|.
+\item use the code \verb|{% include header.html %}| to include the html file where you want to include the html episode.
+\end{enumerate}
+
+
+\begin{tcolorbox}
+  Note:
+  The \verb|header.html| and the \verb|footer.html| does not contain the all html attributes.
+  It is just the episode of the index page.
+\end{tcolorbox}

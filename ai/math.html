@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-07-18 Thu 06:16 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Hack Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org42332a5">1. <span class="done DONE">DONE</span> Taylor's formula(泰勒公式）</a></li>
+<li><a href="#org8c848ae">2. <span class="done DONE">DONE</span> Hessian Matrix</a>
+<ul>
+<li><a href="#org171c175">2.1. 二阶函数的Hessian Matrix</a></li>
+<li><a href="#orgcc26f87">2.2. 多元函数的Hessian Matrix</a></li>
+</ul>
+</li>
+<li><a href="#org3a9a51b">3. <span class="done DONE">DONE</span> 期望，方差，标准差，协方差</a>
+<ul>
+<li><a href="#orgc014518">3.1. 期望(expected value):</a></li>
+<li><a href="#org6d232c5">3.2. 方差(deviation)</a></li>
+<li><a href="#orgfeb7e4d">3.3. 标准差</a></li>
+<li><a href="#orgad718d2">3.4. 协方差(covariance)</a></li>
+</ul>
+</li>
+<li><a href="#org50a0cb0">4. <span class="done DONE">DONE</span> 信息熵</a>
+<ul>
+<li><a href="#org402fe2a">4.1. 热力学的熵</a></li>
+<li><a href="#org8f5c652">4.2. 信息熵</a></li>
+<li><a href="#orge3a4ffd">4.3. 高斯分布是最大熵分布</a></li>
+</ul>
+</li>
+<li><a href="#org5520194">5. <span class="done DONE">DONE</span> 贝叶斯条件概率</a></li>
+<li><a href="#org5e318f7">6. <span class="done DONE">DONE</span> 导数</a>
+<ul>
+<li><a href="#org7f453b2">6.1. 常数和基本初等函数的求导公式</a></li>
+<li><a href="#org9ec65e2">6.2. 和差积商的求导法则</a></li>
+<li><a href="#org8dbc391">6.3. 反函数求导法则</a></li>
+<li><a href="#org25861ba">6.4. 复合函数求导法则</a></li>
+</ul>
+</li>
+<li><a href="#org73b2999">7. <span class="done DONE">DONE</span> 高斯分布（正态分布）</a></li>
+<li><a href="#org01f343a">8. sigmoid</a></li>
+<li><a href="#orga8e353a">9. tanh</a></li>
+<li><a href="#orga985feb">10. ReLU</a></li>
+<li><a href="#orge9dbf44">11. 卷积(convolution)</a></li>
+<li><a href="#org5dee2d1">12. 拉格朗日乘数法</a></li>
+<li><a href="#org92bffeb">13. 对角矩阵</a></li>
+<li><a href="#org05d87be">14. 单位矩阵</a></li>
+<li><a href="#org9daa1c7">15. 初等变换</a></li>
+<li><a href="#orge11194e">16. 逆矩阵</a></li>
+<li><a href="#org3757bb2">17. 正交矩阵</a></li>
+<li><a href="#org615314d">18. 特征值</a>
+<ul>
+<li><a href="#orgd0fde02">18.1. 理解</a></li>
+<li><a href="#org507bc56">18.2. 特征分解</a></li>
+</ul>
+</li>
+<li><a href="#org2aa37ef">19. 相似矩阵</a></li>
+<li><a href="#org354dfe2">20. 矩阵SVD分解</a></li>
+<li><a href="#org9fc45bd">21. 泛函</a></li>
+<li><a href="#org7e6d0f2">22. Universal Approximation Theorem</a></li>
+<li><a href="#orgc5437dd">23. Tensor</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org42332a5" class="outline-2">
+<h2 id="org42332a5"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Taylor's formula(泰勒公式）</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+泰勒公式是将一个在x=x0处具有n阶导数的函数f（x）利用关于\((x-x_0)\) 的n次多项式来逼近函数的方法。<br />
+</p>
+\begin{equation}
+f(x) = \frac{f(x_0)}{0!} + \frac{f'(x_0)}{1!}(x-x_0) + \frac{f''(x_0)}{2!}(x-x_0)^2 + \cdots + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + R_n(x)
+\end{equation}
+<p>
+其中\(R_n(x)\) 是\((x-x_0)^n\) 的高阶无穷小。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org8c848ae" class="outline-2">
+<h2 id="org8c848ae"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> Hessian Matrix</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Hessian 是标量函数或标量场的二阶方阵。它描述多元函数的局部曲率。<br />
+</p>
+</div>
+<div id="outline-container-org171c175" class="outline-3">
+<h3 id="org171c175"><span class="section-number-3">2.1</span> 二阶函数的Hessian Matrix</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+二元函数\(f(x_1,x_2)\) 在\(X^{(0)}\) 即\((x_1^{(0)},x_2^{(0)})\) 处的泰勒展开式为：<br />
+</p>
+\begin{equation}
+f(x_1,x_2) = f(x_1^{(0)},x_2^{(0)}) + 
+\left.\frac{\partial f}{\partial x_1}\right|_{X^{(0)}} \Delta x_1 +
+\left.\frac{\partial f}{\partial x_2}\right|_{X^{(0)}} \Delta x_2 + 
+\left[\frac{1}{2}\left.\frac{\partial^2f}{\partial x_1^2}\right|_{X^{(0)}}\Delta x_1^2 +
+\left.\frac{\partial^2f}{\partial x_1 \partial x_2} \right|_{X^{(0)}} \Delta x_1 \Delta x_2 +
+\left.\frac{\partial^2f}{\partial x_2 \partial x_1}\right|_{X^{(0)}}\Delta x_2 \Delta x_1 +
+\left.\frac{1}{2}\frac{\partial^2f}{\partial x_2^2}\right|_{X^{(0)}}\Delta x_2^2\right] + \cdots
+\end{equation}
+<p>
+其中\(\Delta x_1 = x_1 - x_1^{(0)}\) , \(\Delta x_2 = x_2 - x_2^{(0)}\) .<br />
+</p>
+
+<p>
+将上式写成矩阵形式：<br />
+</p>
+\begin{equation}
+f(X) = f(X^{(0)}) + \nabla f(X^{(0)})^T \Delta X + \frac{1}{2}\Delta X^T G(X^{(0)})\Delta X + \cdots
+\end{equation}
+<p>
+其中<br />
+</p>
+\begin{equation}
+\Delta f(X^{(0)}) = \left (\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2} \right )
+\end{equation}
+
+\begin{equation}
+G(X^{(0)}) = 
+\left.
+\begin{pmatrix}
+\frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2f}{\partial x_1 \partial x_2} \\
+\frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2f}{\partial x_1^2} 
+\end{pmatrix}
+\right|_{X{(0)}}
+\end{equation}
+
+\begin{equation}
+\Delta X = 
+\begin{pmatrix}
+\Delta x_1 \\
+\Delta x_2
+\end{pmatrix}
+\end{equation}
+</div>
+</div>
+<div id="outline-container-orgcc26f87" class="outline-3">
+<h3 id="orgcc26f87"><span class="section-number-3">2.2</span> 多元函数的Hessian Matrix</h3>
+<div class="outline-text-3" id="text-2-2">
+\begin{equation}
+G(X^{(0)}) = 
+\left.
+\begin{pmatrix}
+\frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2f}{\partial x_1 \partial x_2} & \cdots & \frac{\partial^2f}{\partial x_1 \partial x_n} \\
+\frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2f}{\partial x_1^2} & \cdots & \frac{\partial^2f}{\partial x_2 \partial x_n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^2 f}{\partial x_n \partial x_1} & \frac{\partial^2f}{\partial x_n \partial x_2} & \cdots & \frac{\partial^2f}{\partial x_n^2} \\
+\end{pmatrix}
+\right|_{X{(0)}}
+\end{equation}
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org3a9a51b" class="outline-2">
+<h2 id="org3a9a51b"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> 期望，方差，标准差，协方差</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgc014518" class="outline-3">
+<h3 id="orgc014518"><span class="section-number-3">3.1</span> 期望(expected value):</h3>
+<div class="outline-text-3" id="text-3-1">
+\begin{equation}
+E(X) = \sum_i x_i P(x_i) \\
+E(X) = \int_a^b xP(x)dx
+\end{equation}
+<p>
+期望常用字母\(\mu\) 来表示。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org6d232c5" class="outline-3">
+<h3 id="org6d232c5"><span class="section-number-3">3.2</span> 方差(deviation)</h3>
+<div class="outline-text-3" id="text-3-2">
+\begin{equation}
+D(X) = \sum_i  (x_i - E(X) )^2 P(x_i) \\
+D(X) = \int_a^b  (x - E(X) )^2 P(x)dx
+\end{equation}
+<p>
+方差常用\(\sigma^2\) 来表示。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgfeb7e4d" class="outline-3">
+<h3 id="orgfeb7e4d"><span class="section-number-3">3.3</span> 标准差</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+方差开方得到标准差\(\sigma\) 。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgad718d2" class="outline-3">
+<h3 id="orgad718d2"><span class="section-number-3">3.4</span> 协方差(covariance)</h3>
+<div class="outline-text-3" id="text-3-4">
+\begin{equation}
+Cov(X,Y) = E( (X - E(X)) (Y-E(Y)) ) \\
+= E(XY) - 2E(X)E(Y) + E(X)(Y) \\
+= E(XY) - E(X)(Y)
+\end{equation}
+<p>
+协方差是衡量线性独立的无量纲的数。<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org50a0cb0" class="outline-2">
+<h2 id="org50a0cb0"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> 信息熵</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+信息熵的概念很重要。<br />
+IT (information technology)从名字中也明白其重要性了，<br />
+在接触ai的过程中国呢，尤其感觉如是。<br />
+</p>
+</div>
+
+<div id="outline-container-org402fe2a" class="outline-3">
+<h3 id="org402fe2a"><span class="section-number-3">4.1</span> 热力学的熵</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+熵，热力学中表征物质状态的参量之一，其物理意义是体系混乱程度的度量。<br />
+</p>
+
+<p>
+从微观角度看，\(S=kln\Omega\) ,其中\(\Omega\) 是微观状态数。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8f5c652" class="outline-3">
+<h3 id="org8f5c652"><span class="section-number-3">4.2</span> 信息熵</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+信息熵是从热力学中熵的概念引出来的，用来度量确定事件所需的信息量。<br />
+信息熵越大，代表了越混乱。<br />
+</p>
+
+<p>
+信息熵的计算公式为：<br />
+</p>
+\begin{equation}
+\label{info_entr}
+H(X) = -\sum_{i=1}^n P(x_i)log_2P(x_i)
+\end{equation}
+<p>
+其中，X表示随机变量，随机变量的取值为\((x_1, ..., x_n)\) , \(P(x_i)\) 表示事件\(x_i\) 发生的概率，且有\(\sum P(x_i)=1\) ，信息熵的单位为bit。<br />
+</p>
+
+<p>
+事件\(x_i\) 的信息量和它发生的概率有直接的关系，需要确定一件小概率事件，需要的大量的信息，<br />
+所以信息量函数应与事件概率成单调递减关系，同时两个独立事件\(x_i, x_j\) 满足：\[P(x_i,x_j) = P(x_i)P(x_j)\]<br />
+</p>
+
+<p>
+满足这两个条件的函数为：\[ -log_2P(x_i)\]<br />
+（取对数可以把累乘变为累加。）<br />
+</p>
+
+<p>
+所以信息量函数为：\[info(x_i) = -log_2P(x_i)\]<br />
+信息熵为信息量的期望。<br />
+</p>
+
+<p>
+信息量函数曲线图如下：<br />
+<img src="pics/entropy_info.png" alt="entropy_info.png" /><br />
+从图中可以看出，概率越小，确定其发生的信息量越大，或者说，如果小概率事件发生了，则其会携带大量信息。<br />
+</p>
+
+<p>
+假设事件X，\(P(x_1)\) 为事件\(x_1\) 发生的概率，\(P(x_2)\) 为事件\(x_2\) 发生的概率，其中，\(P(x_1) + P(x_2) = 1\) ,<br />
+当\(P(x_i)\) 取不同的值时，信息熵曲线如下：<br />
+<img src="pics/entropy_double.png" alt="entropy_double.png" /><br />
+</p>
+
+
+<p>
+从图中可以看出，当\(P(x_1)\) 的概率为0.5时，这个时候信息熵最大，混乱程度最大，<br />
+同时，如果需bit来存储时，需要的bit也越多。<br />
+</p>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orge3a4ffd" class="outline-3">
+<h3 id="orge3a4ffd"><span class="section-number-3">4.3</span> 高斯分布是最大熵分布</h3>
+</div>
+</div>
+<div id="outline-container-org5520194" class="outline-2">
+<h2 id="org5520194"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> 贝叶斯条件概率</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+bayes公式：<br />
+</p>
+\begin{equation}
+P(AB)=P(A)\cdot P(B|A) = P(B)\cdot P(A|B)
+\end{equation}
+<p>
+用来描述两个条件概率之间的关系。<br />
+即当你无法判断一个事物的的本质的时候，可以依靠与该事物相关的事件来判断该事物本质属性的概率。<br />
+用数学表达就是：支持某项属性的事件发生的越多，则该属性成立的可能性就越大。<br />
+</p>
+
+<p>
+bayes公式的变体：<br />
+</p>
+\begin{equation}
+P(B|A) = \frac{P(A|B) \cdot P(B)}{P(A)}
+\end{equation}
+
+
+<p>
+多特征值的变体：（符号无关性质得出）<br />
+</p>
+\begin{equation}
+P(B|A_{1}\cdots A_{n}) = \frac{P(A_{1}\cdots A_{n}|B) \cdot P(B)}{P(A_{1}\cdots A_{n})}
+\end{equation}
+</div>
+</div>
+
+
+<div id="outline-container-org5e318f7" class="outline-2">
+<h2 id="org5e318f7"><span class="section-number-2">6</span> <span class="done DONE">DONE</span> 导数</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org7f453b2" class="outline-3">
+<h3 id="org7f453b2"><span class="section-number-3">6.1</span> 常数和基本初等函数的求导公式</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+常数和幂函数：<br />
+</p>
+\begin{equation}
+(C)' = 0 \\
+(x^\mu)' = \mu x^{\mu-1}
+\end{equation}
+<p>
+三角函数：<br />
+</p>
+\begin{equation}
+(\sin x)' = \cos x \\
+(\cos x)' = -\sin x \\
+(\tan x)' = \sec^2x \\
+(\cot x)' = -\csc^2x
+\end{equation}
+<p>
+指数函数：<br />
+</p>
+\begin{equation}
+(a^x)' = a^x\ln a \quad (a>0, a\ne 1) \\
+(e^x)' = e^x
+\end{equation}
+<p>
+对数函数：<br />
+</p>
+\begin{equation}
+(\log_ax)' = \frac{1}{x\ln a} \quad (a>0,a\ne 1) \\
+(\ln x)' = \frac{1}{x}
+\end{equation}
+<p>
+反三角函数：<br />
+</p>
+\begin{equation}
+(\arcsin x)' = \frac{1}{\sqrt{1-x^2}} \\
+(\arccos x)' = - \frac{1}{\sqrt{1-x^2}} \\
+(\arctan x)' = \frac{1}{1+x^2} \\
+(\mathrm{arccot}\ x)' = -\frac{1}{1+x^2} 
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org9ec65e2" class="outline-3">
+<h3 id="org9ec65e2"><span class="section-number-3">6.2</span> 和差积商的求导法则</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+设\(u = u(x), v=v(x)\) 都可导，则<br />
+</p>
+\begin{equation}
+(u\pm v)' = u' \pm v' \\
+(Cu)' = Cu' \quad (C是常数) \\
+(uv)' = u'v + uv' \\
+(\frac{u}{v})' = \frac{u'v-uv'}{v^2} \quad (v \ne 0)
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org8dbc391" class="outline-3">
+<h3 id="org8dbc391"><span class="section-number-3">6.3</span> 反函数求导法则</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+设\(x=f(x)\) 在区间\(I_y\) 内单调、可导切\(f'(y)\ne 0\) ，则它的反函数\(y=f^{-1}(x)\) 在\(I_x =f(I_y)\) 内可导，且<br />
+</p>
+\begin{equation}
+\frac{dy}{dx} = \frac{1}{\frac{dx}{dy}}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org25861ba" class="outline-3">
+<h3 id="org25861ba"><span class="section-number-3">6.4</span> 复合函数求导法则</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+设\(y=f(u)\) ，且\(u=g(x)\) 且\(f(u)\) 及\(g(x)\) 都可导，则复合函数\(y=f[g(x)]\) 的导数为<br />
+</p>
+\begin{equation}
+\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}
+\end{equation}
+</div>
+</div>
+</div>
+<div id="outline-container-org73b2999" class="outline-2">
+<h2 id="org73b2999"><span class="section-number-2">7</span> <span class="done DONE">DONE</span> 高斯分布（正态分布）</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+高斯分布：<br />
+\[
+\frac{1}{\sqrt{2\pi\sigma^{2}}}exp({-\frac{(x-\mu)^2}{2\sigma^2}})
+\]<br />
+其中，\(\mu\) 为均值， \(\sigma\) 为标准差。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org01f343a" class="outline-2">
+<h2 id="org01f343a"><span class="section-number-2">8</span> sigmoid</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+在信息科学中，由于其单增以及反函数单增等性质，Sigmoid函数常被用作神经网络的阈值函数，将变量映射到0,1之间。<br />
+</p>
+\begin{equation}
+S(x) = \frac{1}{1+e^{-x}}
+\end{equation}
+
+<p>
+其对x的导数可用自身表示：<br />
+</p>
+\begin{equation}
+\frac{\mathrm{d}S}{\mathrm{d}x} = \frac{e^{-x}}{(1+e^{-x})^2} \\ 
+= \frac{1}{1+e^{-x}} \cdot \frac{e^{-x}}{1+e^{-x}} \\
+= \frac{1}{1+e^{-x}} \cdot (1- \frac{1}{1+e^{-x}}) \\
+= S(x) \cdot (1-S(x))
+\end{equation}
+
+
+<div class="figure">
+<p><img src="pics/sigmoid.png" alt="sigmoid.png" /><br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga8e353a" class="outline-2">
+<h2 id="orga8e353a"><span class="section-number-2">9</span> tanh</h2>
+<div class="outline-text-2" id="text-9">
+\begin{equation}
+tanh(x) = \frac{1-e^{-2x}}{1+e^{-2x}}
+\end{equation}
+
+
+<div class="figure">
+<p><img src="pics/tanh.png" alt="tanh.png" /><br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga985feb" class="outline-2">
+<h2 id="orga985feb"><span class="section-number-2">10</span> ReLU</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+rectified linear unit<br />
+</p>
+\begin{equation}
+f(x) = \begin{cases}
+0 & (x \le 0) \\
+x & (x > 0)
+\end{cases}
+\end{equation}
+
+<div class="figure">
+<p><img src="pics/relu.png" alt="relu.png" /><br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge9dbf44" class="outline-2">
+<h2 id="orge9dbf44"><span class="section-number-2">11</span> 卷积(convolution)</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+卷积是一种算子，类比加法算子，减法算子等，代表了特定的运算。<br />
+卷积是两个函数的运算表示，运算规则为（假设连续）：<br />
+假设有函数f(x)和g(x)，都可积分，则<br />
+</p>
+\begin{equation}
+(f\ast g)(x) = \int_{-\infty}^{+\infty} f(\tau)g(x-\tau)d\tau
+\end{equation}
+
+<p>
+理解：<br />
+\(g(x=\tau)\) 可以看作函数的对称与平移，其意义为，将g反转后从\(-\infty\) 到\(+\infty\) 平移，对交集的积分。<br />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/dynamic-convolution.gif" alt="dynamic-convolution.gif" /><br />
+</p>
+</div>
+
+<p>
+(参考：<a href="https://en.wikipedia.org/wiki/Convolution">https://en.wikipedia.org/wiki/Convolution</a>)<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org5dee2d1" class="outline-2">
+<h2 id="org5dee2d1"><span class="section-number-2">12</span> 拉格朗日乘数法</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+要求函数\(z=f(x,y)\) 在附加条件\(\varphi(x,y) = 0\) 下的可能极值点，<br />
+可以先作拉格朗日函数<br />
+</p>
+\begin{equation}
+L(x,y) = f(x,y) + \lambda \varphi(x,y)
+\end{equation}
+<p>
+其中 \(\lambda\) 为参数。求其对x与y的一阶偏导数，并使之为零，<br />
+然后与条件联立起来：<br />
+</p>
+\begin{equation}
+\begin{cases}
+f_x(x,y) + \lambda\varphi_x(x,y) = 0 \\
+f_y(x,y) + \lambda\varphi_y(x,y) = 0 \\
+\varphi(x,y) = 0
+\end{cases}
+\end{equation}
+<p>
+由这方程组解出\(x,y,\lambda\) ，这样得到的 \((x,y)\) 就是函数 \(f(x,y)\) 在附加条件<br />
+\(\varphi(x,y)=0\) 下的可能极值点。<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org92bffeb" class="outline-2">
+<h2 id="org92bffeb"><span class="section-number-2">13</span> 对角矩阵</h2>
+<div class="outline-text-2" id="text-13">
+\begin{equation}
+\Lambda = \begin{bmatrix}
+\lambda_1 & 0 & \cdots & 0 \\
+0 & \lambda_2 & \cdots & 0 \\
+\vdots & \vdots & \ & \vdots \\
+0 & 0 & \cdots & \lambda_n
+\end{bmatrix}
+\end{equation}
+<p>
+也记作 \(\Lambda = \mathrm{diag}(\lambda_1,\lambda_2,\cdots,\lambda_n)\) .<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org05d87be" class="outline-2">
+<h2 id="org05d87be"><span class="section-number-2">14</span> 单位矩阵</h2>
+<div class="outline-text-2" id="text-14">
+\begin{equation}
+E = \begin{bmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ & \vdots \\
+0 & 0 & \cdots & 1
+\end{bmatrix}
+
+\end{equation}
+</div>
+</div>
+<div id="outline-container-org9daa1c7" class="outline-2">
+<h2 id="org9daa1c7"><span class="section-number-2">15</span> 初等变换</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+以下三种成为初等行变换：<br />
+</p>
+<ol class="org-ol">
+<li>对换两行<br /></li>
+<li>以数 \(k\ne 0\) 乘某一行的所有元<br /></li>
+<li>把某一行所有元的k倍加到另一行对应元上<br /></li>
+</ol>
+<p>
+对应可得初等列变换，初等行变换和初等列变换，统称初等变换。<br />
+</p>
+
+<p>
+如果矩阵A经有限次初等行变换变成矩阵B，称矩阵A与矩阵B行等价，记作 \(A\stackrel{r}{\sim}B\) ；<br />
+如果矩阵A经有限次初等列变换变成矩阵B，称矩阵A与矩阵B列等价，记作 \(A\stackrel{c}{\sim}B\) ；<br />
+如果矩阵A经有限次初等变换变成矩阵B，称矩阵A与矩阵B等价，记作 \(A\sim B\) .<br />
+</p>
+
+<p>
+定理：设A与B为\(m\times n\) 矩阵，那么<br />
+</p>
+<ol class="org-ol">
+<li>\(A\stackrel{r}{\sim}B\) 的充要条件是存在m阶可逆矩阵P，使 \(PA = B\) ;<br /></li>
+<li>\(A\stackrel{c}{\sim}B\) 的充要条件是存在n阶可逆矩阵P，使 \(AQ = B\) ;<br /></li>
+<li>\(A\sim B\) 的充要条件是存在m阶可逆矩阵P及n阶可逆矩阵Q，使 \(PAQ = B\) .<br /></li>
+</ol>
+
+<p>
+方阵A可逆的充要条件是 \(A\sim E\) .<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orge11194e" class="outline-2">
+<h2 id="orge11194e"><span class="section-number-2">16</span> 逆矩阵</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+对于n阶矩阵A，如果有一个n阶矩阵B，使<br />
+\[AB=BA=E\]<br />
+则说矩阵A是可逆的，把B称为A的逆矩阵。<br />
+A的逆矩阵记作 \(A^{-1}\) .<br />
+</p>
+
+<p>
+定理1: 若矩阵A可逆，则 \(|A| \ne 0\) .<br />
+定理2: 若 \(|A| \ne 0\) , 则A可逆，且 \[A^{-1} = \frac{1}{|A|}A^{\ast}\] 其中\(A^{\ast}\) 为矩阵A的伴随矩阵。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org3757bb2" class="outline-2">
+<h2 id="org3757bb2"><span class="section-number-2">17</span> 正交矩阵</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+如果n阶矩阵A满足<br />
+\[
+A^TA=E \quad(i.e. \ A^{-1} = A^T)
+\]<br />
+那么称A为正交矩阵。<br />
+</p>
+
+<p>
+若P为正交矩阵，则线性变换 \(y=Px\) 称为正交变换。<br />
+（经正交变换，线段程度保持不变）<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org615314d" class="outline-2">
+<h2 id="org615314d"><span class="section-number-2">18</span> 特征值</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+设A是n阶矩阵，如果数 \(\lambda\) 和n维非零列向量x使关系式<br />
+</p>
+\begin{equation}
+\label{eigen}
+Ax = \lambda x
+\end{equation}
+<p>
+成立，那么这样的数 \(\lambda\) 称为矩阵A的特征值，非零向量x称为A的对应于特征值 \(\lambda\) 的特征向量。<br />
+</p>
+
+<p>
+\((\ref{eigen})\) 式也可写成<br />
+</p>
+\begin{equation}
+(A-\lambda E)x = 0
+\end{equation}
+
+<p>
+它有非零解的充要条件是<br />
+</p>
+\begin{equation}
+|A-\lambda E| = 0
+\end{equation}
+<p>
+即<br />
+</p>
+\begin{equation}
+\begin{vmatrix}
+a_{11} - \lambda & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} - \lambda & \cdots & a_{2n} \\
+\vdots & \vdots & \ & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} - \lambda
+\end{vmatrix}
+ = 0
+\end{equation}
+
+<p>
+设矩阵 \(A=(a_{ij})\) 的特征值为 \(\lambda_1 , \lambda_2 , \cdots, \lambda_n\) ，则<br />
+</p>
+<ol class="org-ol">
+<li>\(\lambda_1 + \lambda_2 + \cdots + \lambda_n = a_{11} + a_{22} + \cdots + a_{nn}\) <br /></li>
+<li>\(\lambda_1 \lambda_2 \cdots \lambda_n = |A|\)<br /></li>
+</ol>
+
+<p>
+定理：设\(\lambda_1,\lambda_2,\cdots,\lambda_m\) 是方阵A的m个特征值，\(p_1,p_2,\cdots,p_m\) 依次是与之对应<br />
+的特征向量，如果\(\lambda_1,\lambda_2,\cdots,\lambda_m\) 各不相同，则$p_1,p_2,&ctdot;,p_m$线性无关。<br />
+</p>
+</div>
+
+<div id="outline-container-orgd0fde02" class="outline-3">
+<h3 id="orgd0fde02"><span class="section-number-3">18.1</span> 理解</h3>
+<div class="outline-text-3" id="text-18-1">
+<p>
+\((\ref{eigen})\) 式中，将x看作n维空间的一个基，A看作变换矩阵，<br />
+则其含义为：在变换矩阵作用下，x变换为映射空间中的\(\lambda x\) ，<br />
+即进行了缩放变换。<br />
+</p>
+
+<p>
+如果将所有特征向量作为基，则组成特征空间。<br />
+如果将数据映射到特征空间，能从另一方面反应数据的分布信息。<br />
+比如，如果特征值有相同的，则在特征空间中，某个基上是无复杂数据分布规律的。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org507bc56" class="outline-3">
+<h3 id="org507bc56"><span class="section-number-3">18.2</span> 特征分解</h3>
+<div class="outline-text-3" id="text-18-2">
+<p>
+设A有n个不同的特征值，于是有<br />
+</p>
+\begin{equation}
+Ap_i = \lambda_i p_i \quad (i=1,2,\cdots,n)
+\end{equation}
+<p>
+对上式进行简化<br />
+</p>
+\begin{equation}
+Ap_i = \lambda_i p_i \quad (i=1,2,\cdots,n) \quad \Longrightarrow \\ 
+\ \\
+A(p_1,p_2,\cdots,p_n) = (\lambda_1 p_1, \lambda_2 p_2, \cdots, \lambda_n p_n) 
+=(p_1,p_2,\cdots,p_n)
+\begin{bmatrix}
+\lambda_1 & \ & \ & \ \\
+\ & \lambda_2 & \ & \ \\
+\ & \ & \cdots & \ \\
+\ & \ & \ & \lambda_n
+\end{bmatrix}
+\quad \Longrightarrow \\
+AP = P\Lambda \quad \Longrightarrow \\
+A = P^{-1}\Lambda P
+\end{equation}
+
+<p>
+其中<br />
+</p>
+\begin{equation}
+P=(p_1,p_2,\cdots,p_n) \\
+\Lambda = \begin{bmatrix}
+\lambda_1 & \ & \ & \ \\
+\ & \lambda_2 & \ & \ \\
+\ & \ & \cdots & \ \\
+\ & \ & \ & \lambda_n
+\end{bmatrix}
+\end{equation}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2aa37ef" class="outline-2">
+<h2 id="org2aa37ef"><span class="section-number-2">19</span> 相似矩阵</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+设A、B都是n阶矩阵，若存在可逆矩阵P，使<br />
+</p>
+\begin{equation}
+P^{-1}AP = B
+\end{equation}
+<p>
+则称B是A的相似矩阵，或说矩阵A与B相似。对A进行运算 \(P^{-1}AP\) 称为对A进行相似变换。<br />
+</p>
+
+<p>
+定理：若n阶矩阵A与B相似，则A与B的特征多项式相同，从而A与B的特征值相同。<br />
+推论：若n阶矩阵A与对角矩阵相似，则对角线上的n个值即A的n个特征值。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org354dfe2" class="outline-2">
+<h2 id="org354dfe2"><span class="section-number-2">20</span> 矩阵SVD分解</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+SVD: singualr value decomposition<br />
+</p>
+
+\begin{equation}
+A = UDV^T
+\end{equation}
+<p>
+假设A是一个m*n的矩阵，那么U是一个m*m的矩阵，D是一个m*n的矩阵，V是一个n*n的矩阵。<br />
+矩阵U和V都是正交矩阵，D是对角矩阵。<br />
+对角矩阵D的对角线上的元素被称为A的奇异值。<br />
+矩阵U的列向量被称为左奇异向量，矩阵V的列向量被称为右奇异向量。<br />
+</p>
+
+<p>
+A的左奇异向量是\(AA^T\) 的特征向量；<br />
+A的右奇异向量是\(A^TA\) 的特征向量；<br />
+A的非零特征值是\(A^TA\) 的特征值的平方根，也是\(AA^T\) 特征值的平方根。<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org9fc45bd" class="outline-2">
+<h2 id="org9fc45bd"><span class="section-number-2">21</span> 泛函</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+函数到实数的映射。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7e6d0f2" class="outline-2">
+<h2 id="org7e6d0f2"><span class="section-number-2">22</span> Universal Approximation Theorem</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+A feed-forward network with a single hidden layer containing a finite number of neurons can<br />
+approximate continuous functions on compact subsets of \(R^n\) , under mild assumptions on the activation function.<br />
+</p>
+
+<p>
+Let \(\varphi\) : R \(\rightarrow\) R be a nonconstant, bounded, and continous functions.<br />
+Let \(I_m\) denote the m-dimensional unit hypercube \([0,1]^m\) .<br />
+The space of real-value continous function on \(I_m\) is denoted by \(C(I_m)\) .<br />
+Then, given any \(\varepsilon > 0\) and function \(f \in C(I_m)\) ,<br />
+there exist an integer N, real constants \(\upsilon_i, b_i \in R\) and real vectors \(\omega_i \in R^m\) for \(i = 1, \cdots, N\) , such that we may define:<br />
+</p>
+\begin{equation}
+F(x) = \sum_{i=1}^{N}\upsilon_i\varphi(\omega_i^Tx+b_i)
+\end{equation}
+<p>
+as an approximate realization of the function f; that is<br />
+</p>
+\begin{equation}
+|F(x) - f(x)| < \varepsilon
+\end{equation}
+<p>
+for all \(x \in I_m\) .<br />
+In other words, functions of the form \(F(x)\) are dense in \(C(I_m)\) .<br />
+</p>
+
+<p>
+This still holds when replacing \(I_m\) with any compact subset of \(R^m\) .<br />
+</p>
+
+
+
+<p>
+Kurt Hornik showed in 1991 that it is not the specific choice of the activation function, but rather the multilayer feedforward architecture itself which gives neural networks the potential of being universal approximators. The output units are always assumed to be linear. For notational convenience, only the single output case will be shown. The general case can easily be deduced from the single output case.<br />
+</p>
+
+<p>
+In 2017 Lu et al. proved universal approximation theorem for width-bounded deep neural networks.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc5437dd" class="outline-2">
+<h2 id="orgc5437dd"><span class="section-number-2">23</span> Tensor</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+In mathematics, a tensor is a geometric object that maps in a multi-linear manner geometric vectors, scalars, and other tensors to a resulting tensor.<br />
+Vectors and scalars are considered as the simplest tensors.<br />
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Hack Chyson</p>
+<p class="date">Created: 2019-07-18 Thu 06:16</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

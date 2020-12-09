@@ -1,0 +1,27 @@
+* Sbcl
+http://www.sbcl.org/platform-table.html
+tar xjf sbcl-1.4.3-x86-linux-binary.tar.bz2 
+cd sbcl-1.4.3-x86-linux/
+less INSTALL
+INSTALL_ROOT=/usr/local sh install.sh 
+
+* Quicklisp
+Quicklisp is library manager for Common Lisp.
+
+https://www.quicklisp.org/beta/#installation
+
+1. download quicklisp.lisp
+2. sbcl --load quicklisp.lisp
+   bash: /usr/local/bin/sbcl: /lib/ld-linux.so.2: bad ELF interpreter: No such file or directory
+   yum install glibc.i686
+
+
+
+* Slime
+https://common-lisp.net/project/slime/doc/html/Installation.html#Installing-from-Git
+
+1. settting up the MELPA repository
+2. M-x package-install RET slime RET
+3. type sbcl
+4. (setq inferior-lisp-program "/usr/local/bin/sbcl") (in .emacs)
+

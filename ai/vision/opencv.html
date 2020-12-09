@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>opencv</title>
+<!-- 2019-11-04 Mon 11:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Hack Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">opencv</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. INTRODUCTION</a></li>
+<li><a href="#sec-2">2. PYTHON AND REQUIRED PACKAGES</a></li>
+<li><a href="#sec-3">3. IMAGE BASICS</a></li>
+<li><a href="#sec-4">4. IMAGE PROCESSING</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Image Arithmatic</a></li>
+<li><a href="#sec-4-2">4.2. Bitwise Operations</a></li>
+<li><a href="#sec-4-3">4.3. Masking</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. HISTOGRAMS</a></li>
+<li><a href="#sec-6">6. SMOOTHING AND BLURRING</a>
+<ul>
+<li><a href="#sec-6-1">6.1. Averaging</a></li>
+<li><a href="#sec-6-2">6.2. Gaussian</a></li>
+<li><a href="#sec-6-3">6.3. Median</a></li>
+<li><a href="#sec-6-4">6.4. Bilateral</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. THRESHOLDING</a>
+<ul>
+<li><a href="#sec-7-1">7.1. Simple Thresholding</a></li>
+<li><a href="#sec-7-2">7.2. Adaptive Thresholding</a></li>
+<li><a href="#sec-7-3">7.3. OTSU</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. GRADIENTS AND EDGE DETECTION</a>
+<ul>
+<li><a href="#sec-8-1">8.1. Canny</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. CONTOURS</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> INTRODUCTION</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The goal of computer vision is to understand the story unfolding in a picture.<br  />
+</p>
+
+
+<p>
+Possible applications:<br  />
+</p>
+<ol class="org-ol">
+<li>facial recoginition<br  />
+</li>
+<li>constructing a 3D representation from many images<br  />
+</li>
+<li>surveillance<br  />
+</li>
+<li>analyze histology images for cancer risk factors<br  />
+</li>
+</ol>
+<p>
+&#x2026;<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> PYTHON AND REQUIRED PACKAGES</h2>
+<div class="outline-text-2" id="text-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Packages</th>
+<th scope="col" class="left">Installation</th>
+<th scope="col" class="left">Import</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">numpy</td>
+<td class="left">pip install numpy</td>
+<td class="left">numpy</td>
+</tr>
+
+<tr>
+<td class="left">scipy</td>
+<td class="left">pip install scipy</td>
+<td class="left">scipy</td>
+</tr>
+
+<tr>
+<td class="left">matplotlib</td>
+<td class="left">pip install matplotlib</td>
+<td class="left">matplotlib</td>
+</tr>
+
+<tr>
+<td class="left">opencv</td>
+<td class="left">pip install opencv-python</td>
+<td class="left">cv2</td>
+</tr>
+
+<tr>
+<td class="left">mahotas</td>
+<td class="left">pip install mahotas</td>
+<td class="left">mahotas</td>
+</tr>
+
+<tr>
+<td class="left">scikit-learn</td>
+<td class="left">pip install scikit-learn</td>
+<td class="left">sklearn</td>
+</tr>
+
+<tr>
+<td class="left">scikit-image</td>
+<td class="left">pip install scikit-image</td>
+<td class="left">skimage</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> IMAGE BASICS</h2>
+<div class="outline-text-2" id="text-3">
+
+<div class="figure">
+<p><img src="pics/c4_rgb.png" alt="c4_rgb.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> IMAGE PROCESSING</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Image Arithmatic</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+We all know basic arithmetic operations like addition and subtraction. But when working with images, we need to keep in mind the limits of our color space and data type.<br  />
+However, be sure to keep in mind that there is a difference between OpenCV and NumPy addition. NumPy will perform modulo arithmetic and "wrap around". OpenCV, on the other hand, will perform clipping and ensure pixel values never fall outside the range [0, 255].<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Bitwise Operations</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Bitwise operations operate in a binary manner and are represented as grayscale images. A given pixel is turned "off" if it has a value of zero, and it is turned "on" if the pixel has a value greater than zero.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Masking</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Using a mask allows us to focus only on the portions of the image that interests us.<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> HISTOGRAMS</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+A histogram represents the distribution of pixel intensities in an iamge. It can be visualized as a graph (or plot) that gives a high-level intuition of the intensity (pixel value) distribution.<br  />
+</p>
+
+<p>
+When plotting the histogram, the X-axis serves as our "bins". If we construct a histogram with 256 bins, then we are effectively counting the number of times each pixel value occurs. In contrast, if we use only 2 (equally spaced) bins, then we are counting the number of times a pixel is in the range [0, 128) or [128, 255]. The number of pixels binned to the x-axis value is then plotted on the y-axis.<br  />
+</p>
+
+<p>
+By simply examining the histogram of an image, you get a general understanding regarding the contrast, brightness, and intensity distribution.<br  />
+</p>
+
+<p>
+Histogram equalization improves the contrast of an image by "streching" the distribution of pixels.<br  />
+Consider a histogram with a large peak at the center of it. Applying histogram equalization will stretch the peak out towards the corner of the image, thus improving the global contrast of the image. Histogram equalization is applied to grayscale images.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> SMOOTHING AND BLURRING</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Blurring means that each pixel in the image is mixed in with its surrounding pixel intensities. This "mixture" of pixels in a neihborhood becomes our blurred pixel.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Averaging</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+As the name suggests, we are going to define a k × k sliding window on top of our image, where k is always an odd number. This window is going to slide from left-to-right and from top-to-bottom. The pixel at the center of this matrix (we have to use an odd number, otherwise there would not be a true "center") is then set to be the average of all other pixels surrounding it.<br  />
+We call this sliding window a "convolution kernel" or just a "kernel".<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Gaussian</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Gaussian blurring is similar to average blurring, but instead of using a simple mean, we are now using a weighted mean, where neihborhood pixels that are closer to the central pixel contribute more "weight" to the average.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Median</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Traditionally, the median blur method has been most effective when removing salt-and-pepper noise. This type of noise is exactly what it sounds like: imagine taking a photograph, putting it on your dining room table, and sprinkling salt and pepper on top of it. Using the median blur method, you could remove the salt and pepper from your image.<br  />
+We replace the central pixel with the median of the neighborhood.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> Bilateral</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+In order to reduce noise while still maintaining edges, we can use bilateral blurring. Bilateral blurring accomplishes this by introducing two Gaussian distributions.<br  />
+The first Gaussian function only considers spatial neighbors, that is, pixels that appear close together in the (x, y) coordinate space of the image. The second Gaussian then models the pixel intensity of the neighborhood, ensuring that only pixels with similar intensity are included in the actual computation of the blur.<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> THRESHOLDING</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Thresholding is the binarization of an image. In general, we seek to convert a grayscale image to a binary image, where the pixels are either 0 or 255.<br  />
+Normally, we use thresholding to focus on objects or areas of particular interest in an image.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Simple Thresholding</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Manually set a threshold T.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Adaptive Thresholding</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+to overcome:<br  />
+</p>
+<ol class="org-ol">
+<li>manually supply of threshold value T<br  />
+</li>
+<li>having just one T might not suffice<br  />
+</li>
+</ol>
+
+<p>
+We can use adaptive thresholding, which considers small neighbors of pixels and then finds an optimal threshold value T for each neighbor. This method allows us to handle cases where there may be dramatic ranges of pixel intensities and the optimal value of T may change for different parts of the image.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> OTSU</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+Otsu’s method assumes there are two peaks in the grayscale histogram of the image. It then tries to find an optimal value to separate these two peaks – thus our value of T.<br  />
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> GRADIENTS AND EDGE DETECTION</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Formally, edge detection embodies mathematical methods to find points in an image where the brightness of pixel intensities changes distictly.<br  />
+</p>
+
+<p>
+The first thing we are going to do is find the "gradient" of the grayscale image, allowing us to find edge-like regions in the x and y direction.<br  />
+</p>
+</div>
+
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Canny</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+The Canny edge detector is a multi-step process. It involves blurring the image to remove noise, computing Sobel gradient images in the x and y direction, suppressing edges, and finally a hysteresis thresholding stage that determines if a pixel is "edge-like" or not.<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> CONTOURS</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+OpenCV provides methods to find "curves" in an image, called contours. A contour is a curve of points, with no gaps in the curve.<br  />
+</p>
+
+<p>
+In order to find contours in an image, you need to first obtain a binarization of the image, using either edge detection methods or thresholding.<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Hack Chyson</p>
+<p class="date">Created: 2019-11-04 Mon 11:04</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.2 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

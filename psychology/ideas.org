@@ -1,0 +1,11 @@
+* divide and conquer
+* space and time
+* invariant
+* cache or bridge
+* cross domain
+Sperduti first applied neural networks to directed acyclic graphs, which motivated early studies on GNNs.
+Encouraged by the success of CNNs in the computer vision domain, a large number of methods that re-define the notion of convolution for graph data are developed.
+
+* write a paper
+analysis the observation
+evaluate the design choice

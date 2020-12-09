@@ -1,0 +1,207 @@
+* configure hosts
+note: ambari need FQDN(full qualified domain name)
+vi /etc/hosts
+192.168.122.175 node1.test node1
+192.168.122.97  node2.test node2
+192.168.122.44  node3.test node3
+
+* ssh passwordless login
+node1: 
+ssh-keygen
+ssh-copy-id localhost node2 node3
+
+
+* ntp to synchronizing time
+all nodes:
+yum install ntp
+systemctl start ntpd
+systemctl enable ntpd
+
+
+
+* stop firewall
+all nodes:
+systemctl stop firewalld
+systemctl disable firewalld
+
+* stop SELinux
+all nodes:
+setenforce 0
+vi /etc/sysconfig/selinux
+SELINUX=disabled
+
+
+* make local repo 
+host:
+** install httpd
+yum install httpd
+systemctl start httpd
+systemctl enable httpd
+
+firewall-cmd --add-service=http 
+firewall-cmd --permanent --add-service=http
+
+** repo tools
+yum install yum-utils createrepo
+
+** download and unpack resources
+cd /var/www/html
+mkdir ambari
+cd ambari
+wget http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.6.0.0/ambari-2.6.0.0-centos7.tar.gz
+wget http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.6.3.0/HDP-2.6.3.0-centos7-rpm.tar.gz
+wget http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos7/HDP-UTILS-1.1.0.21-centos7.tar.gz
+
+tar -zxvf ambari-2.6.0.0-centos7.tar.gz
+tar -zxvf HDP-2.6.3.0-centos7-rpm.tar.gz
+mkdir HDP-UTILS
+mv HDP-UTILS-1.1.0.21-centos7.tar.gz /var/www/html/ambari/HDP-UTILS/
+tar -zxvf HDP-UTILS-1.1.0.21-centos7.tar.gz
+
+visit the following url to make it work
+http://localhost/ambari
+
+node1:
+** add repo
+cd /etc/yum.repos.d/
+vi ambari.repo
+
+[ambari-2.6.0.0]
+name=ambari Version - ambari-2.6.0.0
+baseurl=http://192.168.1.105/ambari/ambari/centos7/2.6.0.0-267
+gpgcheck=1
+gpgkey=http://192.168.1.105/ambari/ambari/centos7/2.6.0.0-267/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+vi hdp.repo
+
+[HDP-2.6.3.0]
+name=HDP Version - HDP-2.6.3.0
+baseurl=http://192.168.1.105/ambari/HDP/centos7/2.6.3.0-235
+gpgcheck=1
+gpgkey=http://192.168.1.105/ambari/HDP/centos7/2.6.3.0-235/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+ 
+[HDP-UTILS-1.1.0.21]
+name=HDP Utils Version - HDP-UTILS-1.1.0.21
+baseurl=http://192.168.1.105/ambari/HDP-UTILS
+gpgcheck=1
+gpgkey=http://192.168.1.105/ambari/HDP-UTILS/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+
+yum repolist
+
+
+* mariadb
+node1:
+yum install mariadb-server
+systemctl start mariadb
+systemctl enable mariadb
+
+mysql_secure_installation
+
+
+mysql -u root -p
+
+** create ambari database
+create database ambari character set utf8 ;  
+CREATE USER 'ambari'@'%'IDENTIFIED BY 'hack1107';
+GRANT ALL PRIVILEGES ON *.* TO 'ambari'@'%';
+FLUSH PRIVILEGES;
+
+
+create database hive character set utf8 ;  
+CREATE USER 'hive'@'%'IDENTIFIED BY 'hack1107';
+GRANT ALL PRIVILEGES ON *.* TO 'hive'@'%';
+FLUSH PRIVILEGES;
+
+create database oozie character set utf8 ;  
+CREATE USER 'oozie'@'%'IDENTIFIED BY 'hack1107';
+GRANT ALL PRIVILEGES ON *.* TO 'oozie'@'%';
+FLUSH PRIVILEGES;
+
+
+** java driver
+yum install mysql-connector-java
+
+
+* jdk
+all nodes:
+rpm -qa | grep java
+rpm -e --nodeps ...
+rpm -ivh jdk-11.0.1_linux-x64_bin.rpm 
+
+* install ambari
+node1:
+yum install ambari
+
+
+[root@node1 yum.repos.d]# ambari-server setup
+Using python  /usr/bin/python
+Setup ambari-server
+Checking SELinux...
+SELinux status is 'disabled'
+Customize user account for ambari-server daemon [y/n] (n)? y
+Enter user account for ambari-server daemon (root):ambari
+Adjusting ambari-server permissions and ownership...
+Checking firewall status...
+Checking JDK...
+[1] Oracle JDK 1.8 + Java Cryptography Extension (JCE) Policy Files 8
+[2] Oracle JDK 1.7 + Java Cryptography Extension (JCE) Policy Files 7
+[3] Custom JDK
+==============================================================================
+Enter choice (1): 3
+WARNING: JDK must be installed on all hosts and JAVA_HOME must be valid on all hosts.
+WARNING: JCE Policy files are required for configuring Kerberos security. If you plan to use Kerberos,please make sure JCE Unlimited Strength Jurisdiction Policy Files are valid on all hosts.
+Path to JAVA_HOME: /usr/java/jdk-11.0.1
+Validating JDK on Ambari Server...done.
+Completing setup...
+Configuring database...
+Enter advanced database configuration [y/n] (n)? y
+Configuring database...
+==============================================================================
+Choose one of the following options:
+[1] - PostgreSQL (Embedded)
+[2] - Oracle
+[3] - MySQL / MariaDB
+[4] - PostgreSQL
+[5] - Microsoft SQL Server (Tech Preview)
+[6] - SQL Anywhere
+[7] - BDB
+==============================================================================
+Enter choice (1): 3
+Hostname (localhost): 
+Port (3306): 
+Database name (ambari): 
+Username (ambari): 
+Enter Database Password (bigdata): 
+Re-enter password: 
+Configuring ambari database...
+Configuring remote database connection properties...
+WARNING: Before starting Ambari Server, you must run the following DDL against the database to create the schema: /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql
+Proceed with configuring remote database connection properties [y/n] (y)? y
+
+
+
+* load data into mariadb
+[root@node1 yum.repos.d]# mysql -u ambari -p 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 13
+Server version: 5.5.60-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use ambari
+Database changed
+MariaDB [ambari]> source /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql 
+
+
+* start ambari
+ambari-server start

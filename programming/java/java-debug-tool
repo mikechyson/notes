@@ -1,0 +1,39 @@
+* jps
+jvm process status tool
+
+lvmid: local virtual machine identifier
+-q:(quite)
+-m:(main)
+-l:(long)
+-v:(jvm parameter)
+
+* jstat 
+jvm statistics monitoring tool
+
+* jinfo
+configuration info for java
+awt: abstract window toolkit
+
+* jmap
+memory map for java
+
+* jhat
+jvm heap dump brower
+
+* jstack
+stack trace for java
+
+
+* jvisualvm
+
+** plugins
+Tools --> Plugins
+
+
+** remote jmx
+jmx: java management extensions
+-Dcom.sun.management.jmxremote=true 
+-Dcom.sun.management.jmxremote.port=9090 
+-Dcom.sun.management.jmxremote.ssl=false 
+-Dcom.sun.management.jmxremote.authenticate=false
+-Djava.rmi.server.hostname=172.23.77.8

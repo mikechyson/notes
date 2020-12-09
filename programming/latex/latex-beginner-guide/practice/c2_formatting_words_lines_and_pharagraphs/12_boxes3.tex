@@ -1,0 +1,15 @@
+\documentclass{article}
+\begin{document}
+Text line
+%% The command \quad produces some space.
+%% It is used to separate the boxes here.
+%% fbox is used to visualize the box
+\quad\fbox{\parbox[b]{1.8cm}{this parbox is aligned at its bottom line}} % bottom
+\quad\fbox{\parbox{1.5cm}{center-aligned parbox}}                        
+\quad\fbox{\parbox[t]{2cm}{another parbox aligned at its top line}} % top
+
+\quad\fbox{\parbox[b][4cm][c]{2cm}{test test test}}
+\quad\fbox{\parbox[b][4cm][t]{2cm}{test test test}}
+\quad\fbox{\parbox[b][4cm][b]{2cm}{test test test}}
+\quad\fbox{\parbox[b][4cm][s]{2cm}{test test test}}
+\end{document}

@@ -1,0 +1,4662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-05-07 Thu 22:04 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mike Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc3ce3ec">1. <span class="done DONE">DONE</span> Emacs Basics</a>
+<ul>
+<li><a href="#orga34b3ba">1.1. Introducing Emacs</a></li>
+<li><a href="#orgb56d2ef">1.2. Understanding Files and Buffers</a></li>
+<li><a href="#org6dca038">1.3. A Word About Modes</a></li>
+<li><a href="#orgec0efbc">1.4. Emacs commands</a></li>
+<li><a href="#orgc98af5c">1.5. File</a></li>
+<li><a href="#org138b4d7">1.6. Leaving Emacs</a></li>
+<li><a href="#orga3f6957">1.7. Getting Help</a></li>
+<li><a href="#orgcf7426a">1.8. Version</a></li>
+<li><a href="#org2257e2a">1.9. Access Menus With Keyboard</a></li>
+</ul>
+</li>
+<li><a href="#orgaef65fe">2. <span class="done DONE">DONE</span> Editing</a>
+<ul>
+<li><a href="#org746e0d8">2.1. Moving the Cursor</a>
+<ul>
+<li><a href="#org42ca287">2.1.1. Basic Cursor Motion</a></li>
+<li><a href="#org32f0c0c">2.1.2. Moving a Screen (or More) at a Time</a></li>
+</ul>
+</li>
+<li><a href="#org164cc0b">2.2. Deleting Text</a></li>
+<li><a href="#org024283a">2.3. The Kill Ring</a></li>
+<li><a href="#orgd2234b1">2.4. Marking Text to Delete, Move, or Copy</a></li>
+<li><a href="#orga9de7b0">2.5. Editing Tricks and Shortcuts</a>
+<ul>
+<li><a href="#org1c6e5ae">2.5.1. Fixing Transpositions</a></li>
+<li><a href="#orga63e130">2.5.2. Changing Capitalization</a></li>
+</ul>
+</li>
+<li><a href="#org4294b52">2.6. Undoing Changes</a></li>
+</ul>
+</li>
+<li><a href="#org00357b9">3. <span class="done DONE">DONE</span> Search and Replace</a>
+<ul>
+<li><a href="#org0e8f240">3.1. Different Kinds of Searches</a>
+<ul>
+<li><a href="#org33e13fe">3.1.1. Incremental Search&#xa0;&#xa0;&#xa0;<span class="tag"><span class="checked">checked</span></span></a></li>
+<li><a href="#org5a7d769">3.1.2. Word Search</a></li>
+</ul>
+</li>
+<li><a href="#orge1aa78a">3.2. Search and Replace</a>
+<ul>
+<li><a href="#orgaea1bea">3.2.1. Recursive Editing</a></li>
+<li><a href="#org56bab2b">3.2.2. Regular Expressions for Search and Replacement Operations</a></li>
+</ul>
+</li>
+<li><a href="#org64f5a14">3.3. Checking Spelling Using Ispell</a></li>
+<li><a href="#org80a1cbb">3.4. Word Abbreviations</a></li>
+</ul>
+</li>
+<li><a href="#orgb5ba61f">4. <span class="done DONE">DONE</span> Using Buffers, Windows, and Frames</a>
+<ul>
+<li><a href="#org14f1631">4.1. Understanding Buffers, Windows, and Frames</a></li>
+<li><a href="#org2a29375">4.2. Working with Multiple Buffers</a></li>
+<li><a href="#orgf9dda33">4.3. Working wiht Windows</a></li>
+<li><a href="#org400ab12">4.4. Working with Frames</a></li>
+<li><a href="#org8e1e838">4.5. More About Buffers</a></li>
+<li><a href="#orgdc69c5c">4.6. Holding Your Place with Bookmarks</a></li>
+</ul>
+</li>
+<li><a href="#orga3e72a0">5. <span class="done DONE">DONE</span> Emacs Working Environment</a>
+<ul>
+<li><a href="#org694a859">5.1. Executing Commands in Shell Buffers</a></li>
+<li><a href="#org7b2e7fa">5.2. Using Dired, the Directory Editor</a></li>
+<li><a href="#org1cdeaa2">5.3. Reading Manpages in Emacs</a></li>
+<li><a href="#org82974ec">5.4. Using Time Management Tools</a></li>
+</ul>
+</li>
+<li><a href="#org4d50040">6. <span class="done DONE">DONE</span> Writing Macros (C-x C-k)</a>
+<ul>
+<li><a href="#org56510f8">6.1. Macro</a></li>
+<li><a href="#org2d79180">6.2. Tips for Creating Good Macros</a></li>
+<li><a href="#orgb74c7cc">6.3. Naming, Saving, and Executing Your Macros</a></li>
+</ul>
+</li>
+<li><a href="#orgb3f1f67">7. <span class="done DONE">DONE</span> Simple text Formatting and Specialized Editing</a>
+<ul>
+<li><a href="#orgaab72a6">7.1. Changing Tabs to Spaces(and Vice Versa)</a></li>
+<li><a href="#orgbcdcf40">7.2. Indenting Text</a></li>
+<li><a href="#org6130aee">7.3. Centering Text</a></li>
+<li><a href="#orgcba23f2">7.4. Using Outline Mode (C-c)</a></li>
+<li><a href="#org4dcfaee">7.5. Rectangle Editing (C-x r)</a></li>
+</ul>
+</li>
+<li><a href="#org84d0f20">8. <span class="done DONE">DONE</span> The Help System (C-h C-h or C-h ?)</a></li>
+<li><a href="#orgbee30c4">9. <span class="done DONE">DONE</span> Common Commands</a></li>
+<li><a href="#org669032d">10. <span class="done DONE">DONE</span> Customizing Emacs</a>
+<ul>
+<li><a href="#org6ce8d94">10.1. Using Custom</a></li>
+<li><a href="#org2d6f0d2">10.2. Configuration Load Order When Start Up</a></li>
+<li><a href="#org8f22fe1">10.3. Customizing Your Key Bindings</a></li>
+<li><a href="#org4fe37af">10.4. Setting Emacs Variables</a></li>
+<li><a href="#orgfc8baad">10.5. Starting Modes via Auto-Mode Customization</a></li>
+<li><a href="#orgf92e81f">10.6. Functions</a></li>
+<li><a href="#org14c3b10">10.7. Making word abbreviations part of your startup</a></li>
+</ul>
+</li>
+<li><a href="#orgcf37a68">11. <span class="done DONE">DONE</span> Mode</a></li>
+<li><a href="#org6ca4787">12. <span class="done DONE">DONE</span> Version Control</a>
+<ul>
+<li><a href="#org39e71c4">12.1. The Uses of Version Control</a></li>
+<li><a href="#org47136ef">12.2. Version Control Concepts</a></li>
+<li><a href="#org1b4b1bd">12.3. How VC Helps with Basci Operations</a></li>
+<li><a href="#org39c0e9c">12.4. Editing Comment Buffers</a></li>
+<li><a href="#org850c912">12.5. VC Command Summary</a></li>
+<li><a href="#org21a45b1">12.6. VC Mode Indicators</a></li>
+<li><a href="#orgcb8c72f">12.7. When VC Gets Confused</a></li>
+<li><a href="#org35a4e24">12.8. Customizing VC</a></li>
+<li><a href="#org7a81fd5">12.9. What VC Is Not</a></li>
+<li><a href="#org3355edc">12.10. Using VC Effectively</a></li>
+<li><a href="#orgf9d6df6">12.11. Comparing with Ediff</a>
+<ul>
+<li><a href="#orgad6bd79">12.11.1. Starting Ediff</a></li>
+<li><a href="#orge2d810d">12.11.2. Using Ediff</a></li>
+<li><a href="#org7cf8e41">12.11.3. Customize Ediff</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org0c27da5">13. <span class="todo TODO">TODO</span> Computer Language Support</a>
+<ul>
+<li><a href="#orgb495a6e">13.1. Compiling and Debugging</a></li>
+<li><a href="#org9d81ae7">13.2. Writing Code</a>
+<ul>
+<li><a href="#orgfdcc124">13.2.1. Language Modes</a></li>
+<li><a href="#org93bf883">13.2.2. Indenting Code</a></li>
+<li><a href="#orgaae34a4">13.2.3. etags</a></li>
+<li><a href="#org514dfe5">13.2.4. Fonts and Font-lock Mode</a></li>
+</ul>
+</li>
+<li><a href="#orgb9a3a12">13.3. The Lisp Modes</a>
+<ul>
+<li><a href="#orge4682fb">13.3.1. 9.3.1 Bindings</a></li>
+<li><a href="#orgd49cea3">13.3.2. 9.3.2 Indentation in Lisp Modes</a></li>
+<li><a href="#org91bef89">13.3.3. 9.3.3 Emacs Lisp Mode Differences</a></li>
+<li><a href="#org0fa355c">13.3.4. 9.3.4 Lisp Mode Differences</a></li>
+<li><a href="#org2f80707">13.3.5. 9.3.5 Working With Lisp Fragments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc3ce3ec" class="outline-2">
+<h2 id="orgc3ce3ec"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Emacs Basics</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orga34b3ba" class="outline-3">
+<h3 id="orga34b3ba"><span class="section-number-3">1.1</span> Introducing Emacs</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Emacs is important because of the integration of different things you need to do. Any editor, no matter how simpler or complex, has the same basic functions. If you can learn one, you can learn any of them. Learning to use an editor is basically a matter of learning finger habit. Good finger habits can make you an incredibly fast typist. Intellectually, it's possible to absorb a lot from one reading, but you can form only a few new habit each day. Don't feel obliged  to learn them all at once; pick something, practice it, and move on to the next topic. Time spent developing good habits is time well spent.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb56d2ef" class="outline-3">
+<h3 id="orgb56d2ef"><span class="section-number-3">1.2</span> Understanding Files and Buffers</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+You don't really edit files. Instead, Emacs copies the content of a file into a temporary buffer and you edit that. The file on disk doesn't change until you save the buffer.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6dca038" class="outline-3">
+<h3 id="org6dca038"><span class="section-number-3">1.3</span> A Word About Modes</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+mode: Emacs becomes sensitive to the task at hand. Modes allows Emacs to the kind of editor you want for different tasks. A buffer can be in only one major mode at a time.<br />
+minor modes: defines a particular aspect of Emacs's behavior and can be turned on and off within a major mode.<br />
+</p>
+
+<p>
+If you are good at Lisp programming, you can add your own modes. Emacs is almost infinitely extensible.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgec0efbc" class="outline-3">
+<h3 id="orgec0efbc"><span class="section-number-3">1.4</span> Emacs commands</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+How do you give commands?<br />
+Each command has a formal name, which is the name of a Lisp routine. Some command names are quite long. As a result, we need some way to abbreviate commands. Emacs ties a command name to a short sequence of keystrokes. This tying of commands to keystrokes is known as binding.<br />
+</p>
+
+<p>
+The author of Emacs try to bind the most frequently used commands to the key sequences that are the easiest to reach:<br />
+</p>
+<ol class="org-ol">
+<li>The most commonly used commands are bound to C-n(where n is any character).<br /></li>
+<li>Slightly less commonly used commands are bound to M-n.<br /></li>
+<li>Other commonly used commands are bound to C-x something.<br /></li>
+<li>Some specialized commands are bound to C-c something. These commands often relate to one of the more specialized modes, such as Java or HTML mode.<br /></li>
+<li>typing M-x long-command-name Enter.(This works for any command really)<br /></li>
+</ol>
+
+<p>
+You should define your own key bindings if you find yourself using the long form of a command all the time.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc98af5c" class="outline-3">
+<h3 id="orgc98af5c"><span class="section-number-3">1.5</span> File</h3>
+<div class="outline-text-3" id="text-1-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x C-f</td>
+<td class="org-left">find-file</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-v</td>
+<td class="org-left">find-alternate-file</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x i</td>
+<td class="org-left">insert-file</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-s</td>
+<td class="org-left">save-buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-w</td>
+<td class="org-left">write-file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org138b4d7" class="outline-3">
+<h3 id="org138b4d7"><span class="section-number-3">1.6</span> Leaving Emacs</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+C-x C-c<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orga3f6957" class="outline-3">
+<h3 id="orga3f6957"><span class="section-number-3">1.7</span> Getting Help</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+C-h C-h<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcf7426a" class="outline-3">
+<h3 id="orgcf7426a"><span class="section-number-3">1.8</span> Version</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+M-x version<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2257e2a" class="outline-3">
+<h3 id="org2257e2a"><span class="section-number-3">1.9</span> Access Menus With Keyboard</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+F10<br />
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgaef65fe" class="outline-2">
+<h2 id="orgaef65fe"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> Editing</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Emacs offers lots of ways to move around in files. The more ways you learn, the fewer keystrokes you'll need to get to the part of the file you want to edit. Learning any editor is primarily a matter of forming certain finger habits rather than memorizing what the book says. You will learn the right finger habits only if you start typing.<br />
+</p>
+</div>
+
+<div id="outline-container-org746e0d8" class="outline-3">
+<h3 id="org746e0d8"><span class="section-number-3">2.1</span> Moving the Cursor</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+It's easier to memorize commands if you remember what the letters stand for.<br />
+</p>
+</div>
+
+<div id="outline-container-org42ca287" class="outline-4">
+<h4 id="org42ca287"><span class="section-number-4">2.1.1</span> Basic Cursor Motion</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Boudning</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-f</td>
+<td class="org-left">forward-char</td>
+</tr>
+
+<tr>
+<td class="org-left">C-b</td>
+<td class="org-left">backward-char</td>
+</tr>
+
+<tr>
+<td class="org-left">M-f</td>
+<td class="org-left">forward-word</td>
+</tr>
+
+<tr>
+<td class="org-left">M-b</td>
+<td class="org-left">backward-word</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-n</td>
+<td class="org-left">next-line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-p</td>
+<td class="org-left">previous-line</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-a</td>
+<td class="org-left">beginning-of-line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-e</td>
+<td class="org-left">end-of-line</td>
+</tr>
+
+<tr>
+<td class="org-left">M-a</td>
+<td class="org-left">backward-sentence</td>
+</tr>
+
+<tr>
+<td class="org-left">M-e</td>
+<td class="org-left">forward-sentence</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-}</td>
+<td class="org-left">forward-paragraph</td>
+</tr>
+
+<tr>
+<td class="org-left">M-{</td>
+<td class="org-left">backward-paragraph</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x ]</td>
+<td class="org-left">forward-page</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x [</td>
+<td class="org-left">backward-page</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Ctrl command generally move in small units than their associated Meta commands.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org32f0c0c" class="outline-4">
+<h4 id="org32f0c0c"><span class="section-number-4">2.1.2</span> Moving a Screen (or More) at a Time</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-v</td>
+<td class="org-left">scroll-up-command</td>
+</tr>
+
+<tr>
+<td class="org-left">M-v</td>
+<td class="org-left">scroll-down-command</td>
+</tr>
+
+<tr>
+<td class="org-left">M-&gt;</td>
+<td class="org-left">end-of-buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">M-&lt;</td>
+<td class="org-left">beginning-of-buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">goto-line</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">goto-char</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-v</td>
+<td class="org-left">scroll-other-window</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org164cc0b" class="outline-3">
+<h3 id="org164cc0b"><span class="section-number-3">2.2</span> Deleting Text</h3>
+<div class="outline-text-3" id="text-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Del</td>
+<td class="org-left">delete-backward-char</td>
+</tr>
+
+<tr>
+<td class="org-left">C-d</td>
+<td class="org-left">delete-char</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-Del</td>
+<td class="org-left">backward-kill-word</td>
+</tr>
+
+<tr>
+<td class="org-left">M-d</td>
+<td class="org-left">kill-word</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-k</td>
+<td class="org-left">kill-line</td>
+</tr>
+
+<tr>
+<td class="org-left">M-k</td>
+<td class="org-left">kill-sentence</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x Del</td>
+<td class="org-left">backward-kill-sentence</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org024283a" class="outline-3">
+<h3 id="org024283a"><span class="section-number-3">2.3</span> The Kill Ring</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+In Emacs, killing is not fatal, but in fact, quite the opposite. Text that has been killed is not gone forever but is hidden in an area called the kill ring. The kill ring is an internal storage area where Emacs put things you've copied or deleted.<br />
+</p>
+
+<p>
+What exactly goes into the kill ring?<br />
+About the only thing that Emacs doesn't save in the kill ring is single characters, deleted with Del or C-d.<br />
+</p>
+
+<p>
+Emacs is clever about what it puts into the kill ring. When it is assembling a big block of text from a group of deletions, it always assembles the text correctly.<br />
+</p>
+
+<p>
+Emacs stops assembling these blocks of text as soon as you give any comand that isn't a kill command.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Bounding</td>
+<td class="org-left">Function</td>
+</tr>
+
+<tr>
+<td class="org-left">C-y</td>
+<td class="org-left">yank</td>
+</tr>
+
+<tr>
+<td class="org-left">M-y</td>
+<td class="org-left">yank-pop</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orgd2234b1" class="outline-3">
+<h3 id="orgd2234b1"><span class="section-number-3">2.4</span> Marking Text to Delete, Move, or Copy</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+In Emacs, you select text by defining an area called a region. To define a region, you use a secondary pointer called a mark. You set the mark at one end of the region by pressing C-Space or C-@, then move the cursor to the other end of the region.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-Space</td>
+<td class="org-left">set-mark-command</td>
+</tr>
+
+<tr>
+<td class="org-left">C-@</td>
+<td class="org-left">set-mark-command</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-x</td>
+<td class="org-left">exchange-point-and-mark</td>
+</tr>
+
+<tr>
+<td class="org-left">M-h</td>
+<td class="org-left">mark-paragraph</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x h</td>
+<td class="org-left">mark-whole-buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-p</td>
+<td class="org-left">mark-page</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-w</td>
+<td class="org-left">kill-region</td>
+</tr>
+
+<tr>
+<td class="org-left">M-w</td>
+<td class="org-left">kill-ring-save</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orga9de7b0" class="outline-3">
+<h3 id="orga9de7b0"><span class="section-number-3">2.5</span> Editing Tricks and Shortcuts</h3>
+<div class="outline-text-3" id="text-2-5">
+</div>
+<div id="outline-container-org1c6e5ae" class="outline-4">
+<h4 id="org1c6e5ae"><span class="section-number-4">2.5.1</span> Fixing Transpositions</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-t</td>
+<td class="org-left">transpose-char</td>
+</tr>
+
+<tr>
+<td class="org-left">M-t</td>
+<td class="org-left">transpose-word</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-t</td>
+<td class="org-left">transpose-lines</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">transpose-sentence</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">transpose-paragraph</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga63e130" class="outline-4">
+<h4 id="orga63e130"><span class="section-number-4">2.5.2</span> Changing Capitalization</h4>
+<div class="outline-text-4" id="text-2-5-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-c</td>
+<td class="org-left">capitalize-word</td>
+<td class="org-left">base on the point</td>
+</tr>
+
+<tr>
+<td class="org-left">M-u</td>
+<td class="org-left">upcase-word</td>
+<td class="org-left">base on the point</td>
+</tr>
+
+<tr>
+<td class="org-left">M-l</td>
+<td class="org-left">downcase-word</td>
+<td class="org-left">base on the point</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4294b52" class="outline-3">
+<h3 id="org4294b52"><span class="section-number-3">2.6</span> Undoing Changes</h3>
+<div class="outline-text-3" id="text-2-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">revert-buffer</td>
+<td class="org-left">Replace current buffer text with the text of the visited file on disk.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">recover-file</td>
+<td class="org-left">Visit file FILE, but get contents from its last auto-save file.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">backup file</td>
+<td class="org-left">the same as the name of the file, with a tilde(~) added.</td>
+</tr>
+
+<tr>
+<td class="org-left">auto-save file</td>
+<td class="org-left">the same as the name of the file, with a sharp(#) added to the beginning and the end.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org00357b9" class="outline-2">
+<h2 id="org00357b9"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> Search and Replace</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org0e8f240" class="outline-3">
+<h3 id="org0e8f240"><span class="section-number-3">3.1</span> Different Kinds of Searches</h3>
+<div class="outline-text-3" id="text-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Kind</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">simple search</td>
+<td class="org-left">You give Emacs a search string, and it finds the next occurrence.</td>
+</tr>
+
+<tr>
+<td class="org-left">incremental search</td>
+<td class="org-left">Emacs starts to search the file as soon as you type the first character of a search string. It continues to search as you type more characters.</td>
+</tr>
+
+<tr>
+<td class="org-left">word search</td>
+<td class="org-left">A word search is like a simple search, except that Emacs searches only for full words and phrases.</td>
+</tr>
+
+<tr>
+<td class="org-left">regular search</td>
+<td class="org-left">To search for patterns, you can use a regular expression search.</td>
+</tr>
+
+<tr>
+<td class="org-left">incremental regular expression search</td>
+<td class="org-left">This search procedure is a combination of an incremental search and a regular expression search.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+By default, searches are case-insensitive. One exception: if you type any uppercase letters, Emacs makes the whole search string case-sensitive.<br />
+</p>
+
+<p>
+Don't be intimidated by the wealth of searches that are available. In practice, you'll probably settle on one search command and one replace command and use these for 99 percent of your work. However, if you know what's available, you'll be able to make use of the other search commands when they become useful.<br />
+</p>
+</div>
+
+<div id="outline-container-org33e13fe" class="outline-4">
+<h4 id="org33e13fe"><span class="section-number-4">3.1.1</span> Incremental Search&#xa0;&#xa0;&#xa0;<span class="tag"><span class="checked">checked</span></span></h4>
+<div class="outline-text-4" id="text-3-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-s</td>
+<td class="org-left">isearch-forward</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-r</td>
+<td class="org-left">isearch-backward</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Enter</td>
+<td class="org-left">isearch-exit</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-s C-w</td>
+<td class="org-left">isearch-yank-word</td>
+<td class="org-left">search the word under the cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">C-s M-y</td>
+<td class="org-left">isearch-yank-kill</td>
+<td class="org-left">pull string from kill into search string</td>
+</tr>
+
+<tr>
+<td class="org-left">C-s C-s</td>
+<td class="org-left">isearch-repeat-forward</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-r C-r</td>
+<td class="org-left">isearch-repeat-backward</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5a7d769" class="outline-4">
+<h4 id="org5a7d769"><span class="section-number-4">3.1.2</span> Word Search</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">word-search-forward</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">word-search-backward</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge1aa78a" class="outline-3">
+<h3 id="orge1aa78a"><span class="section-number-3">3.2</span> Search and Replace</h3>
+<div class="outline-text-3" id="text-3-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">replace-string</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-%</td>
+<td class="org-left">query-replace</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgaea1bea" class="outline-4">
+<h4 id="orgaea1bea"><span class="section-number-4">3.2.1</span> Recursive Editing</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+To start a recursive edit while in query-replae, press C-r. When you start a recursive edit, square brackets([]) appear on the mode line. C-M-c to exit the recursive mode.<br />
+</p>
+
+<p>
+In fact, you can start a recursive edit at any time, not just when you're in a query-replace. The command M-x recursive-edit Enter puts you into a recursive edit; C-M-c takes you out of the recursive edit and brings you back to what you were doing before.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org56bab2b" class="outline-4">
+<h4 id="org56bab2b"><span class="section-number-4">3.2.2</span> Regular Expressions for Search and Replacement Operations</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-M-s</td>
+<td class="org-left">isearch-forward-regexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-r</td>
+<td class="org-left">isearch-backward-regexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-%</td>
+<td class="org-left">query-replace-regexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org64f5a14" class="outline-3">
+<h3 id="org64f5a14"><span class="section-number-3">3.3</span> Checking Spelling Using Ispell</h3>
+<div class="outline-text-3" id="text-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-$</td>
+<td class="org-left">ispell-word</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ispell-buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-i</td>
+<td class="org-left">ispell-complete-word</td>
+<td class="org-left">shadowed in org mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<div id="outline-container-org80a1cbb" class="outline-3">
+<h3 id="org80a1cbb"><span class="section-number-3">3.4</span> Word Abbreviations</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+When you define abbreviations, never use abbreviations that are words in their own right or Emacs may expand the word when you don't want it to, because expansion takes place without asking.<br />
+</p>
+
+<p>
+Emacs classifies abbreviations according to which modes they work in. Global abbreviations work in all modes. Local abbreviations work only in the mode in which they were defined.<br />
+</p>
+
+<p>
+First, you should enable minor mode: abbrev-mode.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x a i g</td>
+<td class="org-left">inverse-add-global-abbrev</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x a i l</td>
+<td class="org-left">inverse-add-mode-abbrev</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">list-abbrevs</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">edit-abbrevs</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">kill-all-abbrevs</td>
+<td class="org-left">disables word abbreviation for the current session</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">unexpand-abbrev</td>
+<td class="org-left">undo the last word abbreviation</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb5ba61f" class="outline-2">
+<h2 id="orgb5ba61f"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> Using Buffers, Windows, and Frames</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org14f1631" class="outline-3">
+<h3 id="org14f1631"><span class="section-number-3">4.1</span> Understanding Buffers, Windows, and Frames</h3>
+<div class="outline-text-3" id="text-4-1">
+
+<div class="figure">
+<p><img src="pics/frame-windows.png" alt="frame-windows.png" /><br />
+</p>
+</div>
+
+<p>
+Emacs call GUI window frames. Emacs windows are split screens. Both windows and frames are ways to display a buffer. Emacs creates its own specialized buffers. The name of these internal buffers generally have the format <b>buffer name</b><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2a29375" class="outline-3">
+<h3 id="org2a29375"><span class="section-number-3">4.2</span> Working with Multiple Buffers</h3>
+<div class="outline-text-3" id="text-4-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x b</td>
+<td class="org-left">switch-to-buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-b</td>
+<td class="org-left">list-buffers</td>
+<td class="org-left">C-h m to get a help about this mode</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x k</td>
+<td class="org-left">kill-buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x s</td>
+<td class="org-left">save-some-buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgf9dda33" class="outline-3">
+<h3 id="orgf9dda33"><span class="section-number-3">4.3</span> Working wiht Windows</h3>
+<div class="outline-text-3" id="text-4-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x o</td>
+<td class="org-left">other-window</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 0</td>
+<td class="org-left">delete-window</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 1</td>
+<td class="org-left">delete-other-window</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 2</td>
+<td class="org-left">split-window-vertically</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 3</td>
+<td class="org-left">split-window-right</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x &gt;</td>
+<td class="org-left">scroll-right</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x &lt;</td>
+<td class="org-left">scroll-left</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x ^</td>
+<td class="org-left">enlarge-window</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">shrink-window</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x }</td>
+<td class="org-left">enlarge-window-horizontally</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x {</td>
+<td class="org-left">shrink-window-horizontally</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x -</td>
+<td class="org-left">shrink-window-if-large-than-buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x +</td>
+<td class="org-left">balance-window</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org400ab12" class="outline-3">
+<h3 id="org400ab12"><span class="section-number-3">4.4</span> Working with Frames</h3>
+<div class="outline-text-3" id="text-4-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Bounding</td>
+<td class="org-left">Function</td>
+<td class="org-left">Description</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 5 o</td>
+<td class="org-left">other-frame</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 5 0</td>
+<td class="org-left">delete-frame</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 5 1</td>
+<td class="org-left">delete-other-frame</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 5 2</td>
+<td class="org-left">make-frame-command</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org8e1e838" class="outline-3">
+<h3 id="org8e1e838"><span class="section-number-3">4.5</span> More About Buffers</h3>
+<div class="outline-text-3" id="text-4-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">rename-buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-q</td>
+<td class="org-left">read-only-mode</td>
+<td class="org-left">toggle read only mode</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 4 r</td>
+<td class="org-left">find-file-read-only-other-window</td>
+<td class="org-left">open a file as read-only in a new window</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 5 r</td>
+<td class="org-left">find-file-read-only-other-frame</td>
+<td class="org-left">open a file as read-only in a new frame</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgdc69c5c" class="outline-3">
+<h3 id="orgdc69c5c"><span class="section-number-3">4.6</span> Holding Your Place with Bookmarks</h3>
+<div class="outline-text-3" id="text-4-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x r m</td>
+<td class="org-left">bookmark-set</td>
+<td class="org-left">mark the point</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x r b</td>
+<td class="org-left">bookmark-jump</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x r l</td>
+<td class="org-left">bookmark-bmenu-list</td>
+<td class="org-left">C-h m for help</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">bookmark-rename</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">bookmark-delete</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">bookmark-save</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga3e72a0" class="outline-2">
+<h2 id="orga3e72a0"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> Emacs Working Environment</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org694a859" class="outline-3">
+<h3 id="org694a859"><span class="section-number-3">5.1</span> Executing Commands in Shell Buffers</h3>
+<div class="outline-text-3" id="text-5-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-!</td>
+<td class="org-left">shell-command</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">shell</td>
+<td class="org-left">In shell mode, precede control characters with C-c</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+M-| : shell-command-on-region<br />
+</p>
+
+<p>
+You can have multiple shell buffers running at once; just use the command M-x rename-uniquely to rename your shell buffer. Then type M-x shell to open a new one.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7b2e7fa" class="outline-3">
+<h3 id="org7b2e7fa"><span class="section-number-3">5.2</span> Using Dired, the Directory Editor</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Remember, in the directory editor you are working directly with files, not with buffers.<br />
+</p>
+
+
+<p>
+Operation:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Hack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">v</td>
+<td class="org-left">dired-view-file</td>
+<td class="org-left">read-only, q to quit</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">RET</td>
+<td class="org-left">dired-find-file</td>
+<td class="org-left">C-x b to get back</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">x</td>
+<td class="org-left">dired-do-flagged-delete</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">D</td>
+<td class="org-left">dired-do-delete</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C</td>
+<td class="org-left">dired-do-copy</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">R</td>
+<td class="org-left">dired-do-rename</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">%l</td>
+<td class="org-left">dired-downcase</td>
+<td class="org-left">Rename all marked (or next ARG) files to lower case.</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">%u</td>
+<td class="org-left">dired-upcase</td>
+<td class="org-left">Rename all marked (or next ARG) files to upper case.</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Z</td>
+<td class="org-left">dired-do-compress</td>
+<td class="org-left">compress or uncompress marked or next ARG) files</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">=</td>
+<td class="org-left">dired-diff</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">!</td>
+<td class="org-left">dired-do-shell-command</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">g</td>
+<td class="org-left">revert-buffer</td>
+<td class="org-left">Replace current buffer text with the text of the visited file on disk.</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">+</td>
+<td class="org-left">dired-create-directory</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Q</td>
+<td class="org-left">dired-do-query-replace</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">A</td>
+<td class="org-left">dired-do-find-regexp</td>
+<td class="org-left">Find all matches for REGEXP in all marked files.</td>
+<td class="org-left">very usefull</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<p>
+Marking: (Once you mark files with an asterisk, emacs assumes that any command you issue is meant for these files.)<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">m</td>
+<td class="org-left">dired-mark</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">3m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">marks this file and the next two files</td>
+</tr>
+
+<tr>
+<td class="org-left">M-Del</td>
+<td class="org-left">dired-unmark-all-files</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">t</td>
+<td class="org-left">dired-toggle-marks</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">* *</td>
+<td class="org-left">dired-mark-excutables</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">* @</td>
+<td class="org-left">dired-mark-symlinks</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">* /</td>
+<td class="org-left">dired-mark-directories</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">% m</td>
+<td class="org-left">dired-mark-files-regexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">% g</td>
+<td class="org-left">dired-mark-files-containing-regexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">dired-flag-garbage-files</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">dired-flag-file-deletion</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">#</td>
+<td class="org-left">dired-flag-auto-save-files</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">~</td>
+<td class="org-left">dired-flag-backup-files</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">u</td>
+<td class="org-left">dired-unmark</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Del</td>
+<td class="org-left">dired-unmark-backward</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Navigating:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">^</td>
+<td class="org-left">dired-up-directory</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&gt;</td>
+<td class="org-left">dired-next-dirline</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;</td>
+<td class="org-left">dired-prev-dirline</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">i</td>
+<td class="org-left">dired-maybe-insert-subdir</td>
+<td class="org-left">Insert this subdirectory into the same dired buffer.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org1cdeaa2" class="outline-3">
+<h3 id="org1cdeaa2"><span class="section-number-3">5.3</span> Reading Manpages in Emacs</h3>
+<div class="outline-text-3" id="text-5-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">man</td>
+<td class="org-left">like man in unix-like</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<div id="outline-container-org82974ec" class="outline-3">
+<h3 id="org82974ec"><span class="section-number-3">5.4</span> Using Time Management Tools</h3>
+<div class="outline-text-3" id="text-5-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">calendar</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4d50040" class="outline-2">
+<h2 id="org4d50040"><span class="section-number-2">6</span> <span class="done DONE">DONE</span> Writing Macros (C-x C-k)</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+In Emacs, a macro is simply a group of recorded keystrokes you can play back over and over again. Macros are a great way to save yourself repetitive work.<br />
+</p>
+
+<p>
+The key to using macros well is:<br />
+</p>
+<ol class="org-ol">
+<li>recognizing when you're doing repetitive work.<br /></li>
+<li>figuring out a set of keystrokes that will do exactly what you want.<br /></li>
+</ol>
+</div>
+
+<div id="outline-container-org56510f8" class="outline-3">
+<h3 id="org56510f8"><span class="section-number-3">6.1</span> Macro</h3>
+<div class="outline-text-3" id="text-6-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x (</td>
+<td class="org-left">kmacro-start-macro</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x )</td>
+<td class="org-left">kmacro-end-macro</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x e</td>
+<td class="org-left">kmacro-end-and-call-macro</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-k e</td>
+<td class="org-left">edit-kbd-macro</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-k C-d</td>
+<td class="org-left">kmacro-delete-ring-head</td>
+<td class="org-left">delete</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-k C-t</td>
+<td class="org-left">kmacro-swap-ring</td>
+<td class="org-left">transpose</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-k C-p</td>
+<td class="org-left">kmacro-cycle-ring-previous</td>
+<td class="org-left">previous</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-k C-n</td>
+<td class="org-left">kmacro-cycle-ring-next</td>
+<td class="org-left">next</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-k b</td>
+<td class="org-left">kmacro-bind-to-key</td>
+<td class="org-left">binding a macro command to a key in this way works for only one session.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-k n</td>
+<td class="org-left">kmacro-name-last-macro</td>
+<td class="org-left">name</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">insert-kbd-macro</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-k r</td>
+<td class="org-left">apply-macro-to-region-lines</td>
+<td class="org-left">region; automatically applied on each line</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x q</td>
+<td class="org-left">kbd-macro-query</td>
+<td class="org-left">query user during kbd macro execution</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-x q</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">to enter recursive edit</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-c</td>
+<td class="org-left">exit-recursive-edit</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+A macro ring, much like the kill ring, allows you to access a number of macros during an Emacs session.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org2d79180" class="outline-3">
+<h3 id="org2d79180"><span class="section-number-3">6.2</span> Tips for Creating Good Macros</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Good macros work in all situations.<br />
+Tips:<br />
+</p>
+<ol class="org-ol">
+<li>use commands that are absolute rather than relative.<br /></li>
+<li>type the search argument (as in C-s searchstring ) rather than using the command to repeat the last search (C-s C-s ).<br /></li>
+<li>add extra commands (typically C-a and C-e ) that aren't strictly necessary, just to make sure that you're positioned correctly on the line.<br /></li>
+</ol>
+
+<p>
+Good macros have three parts:<br />
+</p>
+<ol class="org-ol">
+<li>They find the place you want the macro to start working (often using search).<br /></li>
+<li>They do the work that needs to be done on the text.<br /></li>
+<li>They prepare themselves to repeat.<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgb74c7cc" class="outline-3">
+<h3 id="orgb74c7cc"><span class="section-number-3">6.3</span> Naming, Saving, and Executing Your Macros</h3>
+<div class="outline-text-3" id="text-6-3">
+<pre class="example">
+1. define a macro
+2. name it with C-x C-k n
+3. open a file
+4. M-x insert-kbd-macro Enter macroname Enter
+5. add (load-file "&lt;your macro file&gt;") to .emacs
+6. add (global-set-key "\C-x\C-k&lt;your key&gt;" '&lt;your macro name&gt;) to .emacs
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb3f1f67" class="outline-2">
+<h2 id="orgb3f1f67"><span class="section-number-2">7</span> <span class="done DONE">DONE</span> Simple text Formatting and Specialized Editing</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgaab72a6" class="outline-3">
+<h3 id="orgaab72a6"><span class="section-number-3">7.1</span> Changing Tabs to Spaces(and Vice Versa)</h3>
+<div class="outline-text-3" id="text-7-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">untabify</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">tabify</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orgbcdcf40" class="outline-3">
+<h3 id="orgbcdcf40"><span class="section-number-3">7.2</span> Indenting Text</h3>
+<div class="outline-text-3" id="text-7-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-q</td>
+<td class="org-left">fill-paragraph</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-o</td>
+<td class="org-left">split-line</td>
+<td class="org-left">Split current line, moving portion beyond point vertically down.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org6130aee" class="outline-3">
+<h3 id="org6130aee"><span class="section-number-3">7.3</span> Centering Text</h3>
+<div class="outline-text-3" id="text-7-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-o M-s</td>
+<td class="org-left">center-line</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-o M-S</td>
+<td class="org-left">center-paragraph</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">center-region</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orgcba23f2" class="outline-3">
+<h3 id="orgcba23f2"><span class="section-number-3">7.4</span> Using Outline Mode (C-c)</h3>
+<div class="outline-text-3" id="text-7-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c C-n</td>
+<td class="org-left">outline-next-visible-heading</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-p</td>
+<td class="org-left">outline-previous-visible-heading</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-f</td>
+<td class="org-left">outline-forward-same-level</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-b</td>
+<td class="org-left">outline-backward-same-level</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-u</td>
+<td class="org-left">outline-up-heading</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-c C-k</td>
+<td class="org-left">outline-show-brances</td>
+<td class="org-left">show all subheadings of this heading, but not their bodies</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c Tab</td>
+<td class="org-left">outline-show-children</td>
+<td class="org-left">show all direct subheadings of this heading</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-c @</td>
+<td class="org-left">outline-mark-subtree</td>
+<td class="org-left">mark the current header and all subleveles</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org4dcfaee" class="outline-3">
+<h3 id="org4dcfaee"><span class="section-number-3">7.5</span> Rectangle Editing (C-x r)</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+Before working with columns, select the buffer with C-x h and untabify it by typing M-x untabify. Rectangle editing works best with files that do not contain tab characters.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x r k</td>
+<td class="org-left">kill-rectangle</td>
+<td class="org-left">kill</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x r y</td>
+<td class="org-left">yank-rectangle</td>
+<td class="org-left">yank</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x r c</td>
+<td class="org-left">clear-rectangle</td>
+<td class="org-left">clear, blank out the region-rectangle</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x r o</td>
+<td class="org-left">open-rectagnle</td>
+<td class="org-left">open</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x r r r</td>
+<td class="org-left">copy-rectangle-to-register</td>
+<td class="org-left">Copy rectangle to register r (where r is any character)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x r i r</td>
+<td class="org-left">insert-register</td>
+<td class="org-left">Insert rectangle from register r (where r is any character).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org84d0f20" class="outline-2">
+<h2 id="org84d0f20"><span class="section-number-2">8</span> <span class="done DONE">DONE</span> The Help System (C-h C-h or C-h ?)</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+C-h b produces quite a lot of output.<br />
+If you want to limit this output to only those key bindings with a particular prefix, type that prefix followed by C-h.<br />
+For example:<br />
+</p>
+<pre class="example">
+C-x C-h
+C-c C-h
+</pre>
+
+<p>
+Many of the more complicated emacs commands include their own sets of help keystrokes.<br />
+These commands often have their own help functionality, but help is invoked with ? rather than the standard help key.<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgbee30c4" class="outline-2">
+<h2 id="orgbee30c4"><span class="section-number-2">9</span> <span class="done DONE">DONE</span> Common Commands</h2>
+<div class="outline-text-2" id="text-9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Functions</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-/</td>
+<td class="org-left">undo</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-q</td>
+<td class="org-left">quoted-insert</td>
+<td class="org-left">useful for inserting control characters.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-n</td>
+<td class="org-left">digit-argument</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u</td>
+<td class="org-left">universal-argument</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M--</td>
+<td class="org-left">negative-argument</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-l</td>
+<td class="org-left">recenter</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-g</td>
+<td class="org-left">keyboard-quit</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x Esc Esc</td>
+<td class="org-left">repeat-complex-command</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x M-:</td>
+<td class="org-left">repeat-complex-command</td>
+<td class="org-left">You can use the minibuffer history commands M-n and M-p to get different commands to edit and resubmit.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x z</td>
+<td class="org-left">repeat</td>
+<td class="org-left">Repeat most recently executed command.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-/</td>
+<td class="org-left">dabbrev-expand</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-m</td>
+<td class="org-left">back-to-indentation</td>
+<td class="org-left">Move point to the first non-whitespace character on this line.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-\</td>
+<td class="org-left">indent-region</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x Tab</td>
+<td class="org-left">indent-rigidly</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-g M-g</td>
+<td class="org-left">goto-line</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-e</td>
+<td class="org-left">eval-last-sexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-f</td>
+<td class="org-left">forward-sexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-b</td>
+<td class="org-left">backward-sexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-h</td>
+<td class="org-left">mark-defun</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-c C-x C-v</td>
+<td class="org-left">org-toggle-inline-images</td>
+<td class="org-left">in org mode</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-p</td>
+<td class="org-left">previous-history-element</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-n</td>
+<td class="org-left">next-history-element</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-r</td>
+<td class="org-left">previous-matching-history-element</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-s</td>
+<td class="org-left">next-matching-history-element</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-j</td>
+<td class="org-left">indent-new-comment-line</td>
+<td class="org-left">Break line at point and indent, continuing comment if within one.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">rgrep</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org669032d" class="outline-2">
+<h2 id="org669032d"><span class="section-number-2">10</span> <span class="done DONE">DONE</span> Customizing Emacs</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+three ways to customize Emacs:<br />
+</p>
+<ol class="org-ol">
+<li>Options<br /></li>
+<li>Custom<br /></li>
+<li>Lisp code<br /></li>
+</ol>
+
+<p>
+No matter what method you use, though, the .emacs startup file is modified. Custom modifies it for you when you save settings through that interface. The Options menu invokes Custom behind the scenes; when you choose Save Options, Custom again modifies .emacs.<br />
+</p>
+</div>
+
+<div id="outline-container-org6ce8d94" class="outline-3">
+<h3 id="org6ce8d94"><span class="section-number-3">10.1</span> Using Custom</h3>
+<div class="outline-text-3" id="text-10-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">customize</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org2d6f0d2" class="outline-3">
+<h3 id="org2d6f0d2"><span class="section-number-3">10.2</span> Configuration Load Order When Start Up</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Loading order:<br />
+</p>
+<ol class="org-ol">
+<li>site-start.el<br /></li>
+<li>configuration<br />
+<ol class="org-ol">
+<li>.emacs.elc (compiled version of .emacs.el)<br /></li>
+<li>.emacs.el<br /></li>
+<li>.emacs<br /></li>
+</ol></li>
+<li>default.el<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org8f22fe1" class="outline-3">
+<h3 id="org8f22fe1"><span class="section-number-3">10.3</span> Customizing Your Key Bindings</h3>
+<div class="outline-text-3" id="text-10-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Term</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">keymap</td>
+<td class="org-left">a collection of key bindings</td>
+</tr>
+
+<tr>
+<td class="org-left">global-map</td>
+<td class="org-left">the most basic default key bindings</td>
+</tr>
+
+<tr>
+<td class="org-left">local-map</td>
+<td class="org-left">specific to a single buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">ctl-x-map</td>
+<td class="org-left">keymap for C-x</td>
+</tr>
+
+<tr>
+<td class="org-left">esc-map</td>
+<td class="org-left">keymap for Esc</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+When you type a key, Emacs first looks it up in the current buffer's local map (if any). If it doesn't find an entry there, it looks in global-map.<br />
+</p>
+
+<p>
+What happens with commands that are bound to multiple keystrokes?<br />
+The answer is that the keys C-x , Esc , and C-c are actually bound to special internal functions that cause Emacs to wait for another key to be pressed and then to look up that key's binding in another map.<br />
+</p>
+
+<p>
+Caution: You can use Meta in place of Esc , but the bindings are still stored in the esc-map .<br />
+</p>
+
+<p>
+Three ways to define your own key bindings:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(define-key keymap <span style="color: #ffa07a;">"keystroke"</span> 'command-name)
+(global-set-key <span style="color: #ffa07a;">"keystroke"</span> 'command-name)
+(local-set-key <span style="color: #ffa07a;">"keystroke"</span> 'command-name)
+</pre>
+</div>
+
+
+<p>
+Special character conventions:<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Special Character</th>
+<th scope="col" class="org-left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\C-x</td>
+<td class="org-left">C-x (where x is any letter)</td>
+</tr>
+
+<tr>
+<td class="org-left">\C-[ or \e</td>
+<td class="org-left">Esc</td>
+</tr>
+
+<tr>
+<td class="org-left">\M</td>
+<td class="org-left">Meta</td>
+</tr>
+
+<tr>
+<td class="org-left">\C-j or \n</td>
+<td class="org-left">Newline</td>
+</tr>
+
+<tr>
+<td class="org-left">\C-m or \r</td>
+<td class="org-left">Enter</td>
+</tr>
+
+<tr>
+<td class="org-left">\C-i or \t</td>
+<td class="org-left">Tab</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Note that control characters are case-insensitive — that is, \C-A is the same thing as \C-a. However, the characters that follow control characters may be case-sensitive; \C-ae could be different from \C-aE .<br />
+</p>
+
+<p>
+The function define-key is the most general because it can be used to bind keys in any keymap.<br />
+</p>
+
+<pre class="example">
+(global-set-key "\C-xl" 'goto-line)
+equal to
+(define-key global-map "\C-xl" 'goto-line)
+(define-key ctl-x-map "l" 'goto-line)
+</pre>
+
+<p>
+Two ways to make the change in your .emacs to take effect:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">eval-buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-e</td>
+<td class="org-left">eval-last-sexp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+To unset key bindings:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-unset key <span style="color: #ffa07a;">"\C-xl"</span>)
+(define-key ctl-x-map <span style="color: #ffa07a;">"l"</span> nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4fe37af" class="outline-3">
+<h3 id="org4fe37af"><span class="section-number-3">10.4</span> Setting Emacs Variables</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+To set the value of a variable, use the setq function in your .emacs.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #20b2aa; font-weight: bold;">setq</span> variable-name variable-value)
+</pre>
+</div>
+
+
+<p>
+Several Emacs variables can have different values for each buffer (local values) as well as a default value. Such variables assume their default values in buffers where the local values are not specified.<br />
+</p>
+
+<p>
+When you set the value of a variable with setq , you are actually setting the local value. The way to set default values is to use setq-default instead of setq.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #20b2aa; font-weight: bold;">setq-default</span> variable-name variable-value)
+</pre>
+</div>
+
+
+<p>
+Unfortunately, there is no general way to tell whether a variable has just one global value or hasdefault and local values (except, of course, by looking at the Lisp code for the mode). Therefore the best strategy is to use a plain setq , unless you find from experience that a particular variable doesn't seem to take on the value you setq it to — in which case you should use setq-default .<br />
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Variable</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">kill-ring-max</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">60</td>
+</tr>
+
+<tr>
+<td class="org-left">auto-save-interval</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">300</td>
+</tr>
+
+<tr>
+<td class="org-left">case-fold-search</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">t</td>
+</tr>
+
+<tr>
+<td class="org-left">shell-file-name</td>
+<td class="org-left">decide which shell to start</td>
+<td class="org-left">/bin/bash</td>
+</tr>
+
+<tr>
+<td class="org-left">dired-garbage-files-regexp</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">tab-width</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">4</td>
+</tr>
+
+<tr>
+<td class="org-left">auto-mode-alist</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">major-mode</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">inhibit-default-init</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">nil</td>
+</tr>
+
+<tr>
+<td class="org-left">compile-command</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">make -k</td>
+</tr>
+
+<tr>
+<td class="org-left">compilation-error-regexp-alist</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgfc8baad" class="outline-3">
+<h3 id="orgfc8baad"><span class="section-number-3">10.5</span> Starting Modes via Auto-Mode Customization</h3>
+<div class="outline-text-3" id="text-10-5">
+<p>
+The assocations of suffix and major mode are contained in a variable auto-mode-alist .<br />
+auto-mode-alist is a list of pairs (regexp . mode ), where regexp is a regular expression and mode is the name of a function that invokes a major mode.<br />
+</p>
+
+<p>
+Syntax:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #20b2aa; font-weight: bold;">setq</span> auto-mode-alist (cons '(<span style="color: #ffa07a;">"&lt;suffix&gt;"</span> . &lt;major-mode&gt;) auto-mode-alist))
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf92e81f" class="outline-3">
+<h3 id="orgf92e81f"><span class="section-number-3">10.6</span> Functions</h3>
+<div class="outline-text-3" id="text-10-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">edit-tab-stops</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org14c3b10" class="outline-3">
+<h3 id="org14c3b10"><span class="section-number-3">10.7</span> Making word abbreviations part of your startup</h3>
+<div class="outline-text-3" id="text-10-7">
+<p>
+To define word abbreviation and make them part of your startup, add these lines to your .emacs file:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python">(setq-default abbrev-mode t)
+(read-abbrev-<span style="color: #76ee00;">file</span> <span style="color: #ffa07a;">"~/.emacs.d/.abbrev_defs"</span>)
+(setq save-abbrevs t)
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcf37a68" class="outline-2">
+<h2 id="orgcf37a68"><span class="section-number-2">11</span> <span class="done DONE">DONE</span> Mode</h2>
+<div class="outline-text-2" id="text-11">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Mode</th>
+<th scope="col" class="org-left">Major or Minor</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">org-mode</td>
+<td class="org-left">major</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">flyspell-mode</td>
+<td class="org-left">minor</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">flyspell-prog-mode</td>
+<td class="org-left">minor</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">abbrev-mode</td>
+<td class="org-left">minor</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org6ca4787" class="outline-2">
+<h2 id="org6ca4787"><span class="section-number-2">12</span> <span class="done DONE">DONE</span> Version Control</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org39e71c4" class="outline-3">
+<h3 id="org39e71c4"><span class="section-number-3">12.1</span> The Uses of Version Control</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+Historically, Emacs evolved largely in a Unix environment alongside the SCCS and RCS systems,<br />
+and its built-in support for version control reflects their approach and terminolgy.<br />
+</p>
+
+<p>
+RCS: Revision Control System<br />
+SCCS: Source Code Control System<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org47136ef" class="outline-3">
+<h3 id="org47136ef"><span class="section-number-3">12.2</span> Version Control Concepts</h3>
+<div class="outline-text-3" id="text-12-2">
+<p>
+To make a file version-controlled, you must register it.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Terminology</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">register</td>
+<td class="org-left">Tell the version control system to treat the file contents as an initial version and begin maintaining a change history for it.</td>
+</tr>
+
+<tr>
+<td class="org-left">check out</td>
+<td class="org-left">Notifies the version control system that you're modifying it.</td>
+</tr>
+
+<tr>
+<td class="org-left">work file</td>
+<td class="org-left">the working copy you've checked out</td>
+</tr>
+
+<tr>
+<td class="org-left">revert</td>
+<td class="org-left">Throw away your changes and undo the check-out operation.</td>
+</tr>
+
+<tr>
+<td class="org-left">check in</td>
+<td class="org-left">Adds the changes permanently to the saved change history as a new revision of the file.</td>
+</tr>
+
+<tr>
+<td class="org-left">change commnets</td>
+<td class="org-left">explanation of the change to the change history when you check in a registered file</td>
+</tr>
+
+<tr>
+<td class="org-left">revision number</td>
+<td class="org-left">identifies its place in the history.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<div id="outline-container-org1b4b1bd" class="outline-3">
+<h3 id="org1b4b1bd"><span class="section-number-3">12.3</span> How VC Helps with Basci Operations</h3>
+<div class="outline-text-3" id="text-12-3">
+<p>
+VC's interface is much simpler.<br />
+The simplicity comes from noticing that whatever state your version-controlled file is in, there is normally just one logical thing to do next.<br />
+Indeed, VC mode has just one basic command: C-x v v (for vc-next-action).<br />
+</p>
+
+<p>
+Rules:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">State</th>
+<th scope="col" class="org-left">Next Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">unregistered</td>
+<td class="org-left">register</td>
+</tr>
+
+<tr>
+<td class="org-left">not checked out</td>
+<td class="org-left">check out</td>
+</tr>
+
+<tr>
+<td class="org-left">made changes</td>
+<td class="org-left">check in</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+the traditional version control cycle:<br />
+<img src="./pictures/traditional-vc-cycle.png" alt="traditional-vc-cycle.png" /><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org39c0e9c" class="outline-3">
+<h3 id="org39c0e9c"><span class="section-number-3">12.4</span> Editing Comment Buffers</h3>
+<div class="outline-text-3" id="text-12-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">log-edit-done</td>
+<td class="org-left">Finish editing the log message and commit the files.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<div id="outline-container-org850c912" class="outline-3">
+<h3 id="org850c912"><span class="section-number-3">12.5</span> VC Command Summary</h3>
+<div class="outline-text-3" id="text-12-5">
+<p>
+(prefix: C-x v)<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x v v</td>
+<td class="org-left">vc-next-action</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x v d</td>
+<td class="org-left">vc-dir</td>
+<td class="org-left">Show the VC status for "interesting" files in and  below DIR.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x v =</td>
+<td class="org-left">vc-diff</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x v u</td>
+<td class="org-left">vc-revert</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x v ~</td>
+<td class="org-left">vc-revision-other-window</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x v l</td>
+<td class="org-left">vc-print-log</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x v i</td>
+<td class="org-left">vc-register</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x v c</td>
+<td class="org-left">vc-rollback</td>
+<td class="org-left">Roll back (remove) the most recent changeset committed to the repository.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x v a</td>
+<td class="org-left">vc-update-change-log</td>
+<td class="org-left">not implemented in Git</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">vc-rename-file</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">vc-clear-context</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org21a45b1" class="outline-3">
+<h3 id="org21a45b1"><span class="section-number-3">12.6</span> VC Mode Indicators</h3>
+<div class="outline-text-3" id="text-12-6">
+<p>
+not registered state:<br />
+<img src="./pictures/vc-not-registered-indicator.png" alt="vc-not-registered-indicator.png" /><br />
+</p>
+
+<p>
+unmodified state:<br />
+<img src="./pictures/vc-not-changed-indicator.png" alt="vc-not-changed-indicator.png" /><br />
+</p>
+
+
+<p>
+modified but not commited state:<br />
+<img src="./pictures/vc-changed-indicator.png" alt="vc-changed-indicator.png" /><br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgcb8c72f" class="outline-3">
+<h3 id="orgcb8c72f"><span class="section-number-3">12.7</span> When VC Gets Confused</h3>
+<div class="outline-text-3" id="text-12-7">
+<p>
+Multiuser environments being what they are, VC's cached information and assumptions about permissions occasionally lead it down the wrong path. This situation almost always occurs because someone has manually changed a file's permissions behind VC's back. If you think that this situation has occurred, call vc-clear-context. This command forces VC to throw away all its cached-in-memory assumptions about the version control state of the files you are working with.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org35a4e24" class="outline-3">
+<h3 id="org35a4e24"><span class="section-number-3">12.8</span> Customizing VC</h3>
+<div class="outline-text-3" id="text-12-8">
+<p>
+C-h a cv-<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7a81fd5" class="outline-3">
+<h3 id="org7a81fd5"><span class="section-number-3">12.9</span> What VC Is Not</h3>
+<div class="outline-text-3" id="text-12-9">
+<p>
+It's not necessarily adequate by itself for large multiple-component, multiple-directory projects.<br />
+</p>
+
+<p>
+deficiencies:<br />
+</p>
+<ol class="org-ol">
+<li>It is not integrated with a change request or problem-report system.<br /></li>
+<li>Its only way of grouping project files is by directory subtree.<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org3355edc" class="outline-3">
+<h3 id="org3355edc"><span class="section-number-3">12.10</span> Using VC Effectively</h3>
+<div class="outline-text-3" id="text-12-10">
+<p>
+To use VC effectively, check in your changes early and often! By checking changes in often, you'll find you can afford to experiment more, because you'll know how to revert to a known good state quickly if need be.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgf9d6df6" class="outline-3">
+<h3 id="orgf9d6df6"><span class="section-number-3">12.11</span> Comparing with Ediff</h3>
+<div class="outline-text-3" id="text-12-11">
+</div>
+<div id="outline-container-orgad6bd79" class="outline-4">
+<h4 id="orgad6bd79"><span class="section-number-4">12.11.1</span> Starting Ediff</h4>
+<div class="outline-text-4" id="text-12-11-1">
+<p>
+ediff-revision<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge2d810d" class="outline-4">
+<h4 id="orge2d810d"><span class="section-number-4">12.11.2</span> Using Ediff</h4>
+<div class="outline-text-4" id="text-12-11-2">
+<p>
+    Move around      |      Toggle features      |        Manipulate<br />
+<code>====================|===========================|============================</code><br />
+p,DEL -previous diff |     | -vert/horiz split   |a/b -copy A/B's region to B/A<br />
+n,SPC -next diff     |     h -highlighting       | rx -restore buf X's old diff<br />
+    j -jump to diff  |     @ -auto-refinement    |  * -refine current region<br />
+   gx -goto X's point|    ## -ignore whitespace  |  ! -update diff regions<br />
+  C-l -recenter      |    #c -ignore case        |<br />
+  v/V -scroll up/dn  | #f/#h -focus/hide regions | wx -save buf X<br />
+  &lt;/&gt; -scroll lt/rt  |     X -read-only in buf X | wd -save diff output<br />
+    ~ -swap variants |     m -wide display       |<br />
+<code>====================|===========================|============================</code><br />
+    R -show registry |     = -compare regions    |  M   -show session group<br />
+    D -diff output   |     E -browse Ediff manual|  G   -send bug report<br />
+    i -status info   |     ? -help off           |  z/q -suspend/quit<br />
+</p>
+<hr />
+<p>
+For help on a specific command:  Click Button 2 over it; or Put the cursor over it and type RET.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7cf8e41" class="outline-4">
+<h4 id="org7cf8e41"><span class="section-number-4">12.11.3</span> Customize Ediff</h4>
+<div class="outline-text-4" id="text-12-11-3">
+<p>
+Tools -&gt; Compare -&gt; Ediff Miscellanea -&gt; Customize Ediff<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org0c27da5" class="outline-2">
+<h2 id="org0c27da5"><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> Computer Language Support</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+The task of programming usually breaks down into a cycle of think-write-debug. You would undoubtedly find an environment much more productive if the boundaries between the cycle phases were erased.<br />
+</p>
+</div>
+
+<div id="outline-container-orgb495a6e" class="outline-3">
+<h3 id="orgb495a6e"><span class="section-number-3">13.1</span> Compiling and Debugging</h3>
+<div class="outline-text-3" id="text-13-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x c</td>
+<td class="org-left">compile</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x `</td>
+<td class="org-left">next-error</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-n</td>
+<td class="org-left">compilation-next-error</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-p</td>
+<td class="org-left">compilation-previous-error</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">compilation-goto-error</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Space</td>
+<td class="org-left">scroll-down</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">del</td>
+<td class="org-left">scroll-up</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+To start at the first error message again, type C-x ` with a prefix argument (i.e., C-u C-x ` ).<br />
+</p>
+
+<p>
+How does Emacs interpret the error message?<br />
+It uses the variable compilation-error-regexp-alist.<br />
+Emacs tries to parse (analyze) an error message with each of the regular expressions in the list until it finds one that extracts the filename and line number where the error occurred.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9d81ae7" class="outline-3">
+<h3 id="org9d81ae7"><span class="section-number-3">13.2</span> Writing Code</h3>
+<div class="outline-text-3" id="text-13-2">
+<p>
+All modes have two basic components:<br />
+</p>
+<ol class="org-ol">
+<li>an Emacs Lisp packages that implements the mode<br /></li>
+<li>a function that invokes it<br /></li>
+</ol>
+</div>
+
+<div id="outline-container-orgfdcc124" class="outline-4">
+<h4 id="orgfdcc124"><span class="section-number-4">13.2.1</span> Language Modes</h4>
+<div class="outline-text-4" id="text-13-2-1">
+<p>
+Many of the language modes are "hooked" into Emacs so that if you visit a file with the proper filename suffix, you will automatically be put in the correct mode.<br />
+</p>
+
+<p>
+to set up Emacs to invoke a mode automatically when you visit a file with suffix:<br />
+</p>
+<ol class="org-ol">
+<li>(autoload '&lt;function&gt; "&lt;filename&gt;" "&lt;description&gt;" t)<br /></li>
+<li>(setq auto-mode-alist (cons '("&lt;suffix&gt;" . &lt;mode&gt;) auto-mode-alist))<br /></li>
+</ol>
+
+<p>
+for example:<br />
+(autoload 'php-mode "php-mode" "PHP editing mode." t)<br />
+(setq auto-mode-alist (cons '("\\.php$" . php-mode) auto-mode-alist))<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org93bf883" class="outline-4">
+<h4 id="org93bf883"><span class="section-number-4">13.2.2</span> Indenting Code</h4>
+<div class="outline-text-4" id="text-13-2-2">
+<p>
+Some language modes have extra functionality attached to characters that terminate statements,like semicolons or right curly braces, so that when you type them, Emacs automatically indents the current line.<br />
+Emacs documentation calls this behavior electric .<br />
+</p>
+
+
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      TAB&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      indent-for-tab-command&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Indent&nbsp;the&nbsp;current&nbsp;line&nbsp;or&nbsp;region,&nbsp;or&nbsp;&nbsp;<br />
+      insert&nbsp;a&nbsp;tab,&nbsp;as&nbsp;appropriate.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-j&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      newline-and-indent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Insert&nbsp;a&nbsp;newline,&nbsp;then&nbsp;indent&nbsp;according<br />
+      to&nbsp;major&nbsp;mode.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-\&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      indent-region&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Indent&nbsp;each&nbsp;nonblank&nbsp;line&nbsp;in&nbsp;the&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      region.&nbsp;&nbsp;A&nbsp;numeric&nbsp;prefix&nbsp;argument&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      specifies&nbsp;a&nbsp;column:&nbsp;indent&nbsp;each&nbsp;line&nbsp;to<br />
+      that&nbsp;column.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      M-m&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      back-to-indentation&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Move&nbsp;point&nbsp;to&nbsp;the&nbsp;first&nbsp;non-whitespace&nbsp;<br />
+      character&nbsp;on&nbsp;this&nbsp;line.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      M-^&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      delete-indentation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Join&nbsp;this&nbsp;line&nbsp;to&nbsp;previous&nbsp;and&nbsp;fix&nbsp;up&nbsp;&nbsp;<br />
+      whitespace&nbsp;at&nbsp;join.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orgaae34a4" class="outline-4">
+<h4 id="orgaae34a4"><span class="section-number-4">13.2.3</span> etags</h4>
+<div class="outline-text-4" id="text-13-2-3">
+<p>
+etags is basically a multifile search facility that knows about C and Perl function definitions as well as searching in general.<br />
+</p>
+
+<p>
+etags uses tag tables , which contain lists of function names for each file in a directory<br />
+along with information on where the functions' definitions are located within the files.<br />
+</p>
+
+
+<p>
+to use etags, you must first invoke the separate etags program in your current directory to create the tag table.<br />
+its arguments are the files for which you want tag information.<br />
+the output of etags is the file TAGS, which is the tag table.<br />
+after you have created the tag table, you need to make it known to emacs.<br />
+</p>
+
+
+<p>
+example procedure:<br />
+</p>
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      1.&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      etags&nbsp;*.[ch]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      in&nbsp;shell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      2.&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      M-x&nbsp;visit-tags-table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+etags usages:<br />
+</p>
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      M-.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      xref-find-definitions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Find&nbsp;the&nbsp;definition&nbsp;of&nbsp;the&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      identifier&nbsp;at&nbsp;point.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-x&nbsp;4&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      xref-find-definitions-other-window&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      M-,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      xref-pop-marker-stack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Pop&nbsp;back&nbsp;to&nbsp;where&nbsp;M-.&nbsp;was&nbsp;last<br />
+      invoked.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      tags-search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Search&nbsp;through&nbsp;all&nbsp;files&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      listed&nbsp;in&nbsp;tags&nbsp;table&nbsp;for&nbsp;match<br />
+      for&nbsp;REGEXP.&nbsp;&nbsp;Stops&nbsp;when&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      match&nbsp;is&nbsp;found.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      tags-loop-continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Continue&nbsp;last&nbsp;M-x&nbsp;tags-search&nbsp;<br />
+      or&nbsp;M-x&nbsp;tags-query-replace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      command.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      tags-query-replace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      xref-find-apropos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Find&nbsp;all&nbsp;meaningful&nbsp;symbols&nbsp;&nbsp;&nbsp;<br />
+      that&nbsp;match&nbsp;PATTERN.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      list-tags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Display&nbsp;list&nbsp;of&nbsp;tags&nbsp;in&nbsp;file&nbsp;&nbsp;<br />
+      FILE.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org514dfe5" class="outline-4">
+<h4 id="org514dfe5"><span class="section-number-4">13.2.4</span> Fonts and Font-lock Mode</h4>
+<div class="outline-text-4" id="text-13-2-4">
+<p>
+The use of fonts to help present code is very popular that it is now universial.<br />
+Unlike the indentation and formatting, nothing in the code itself changes.<br />
+</p>
+
+
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      font-lock-mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      toggle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      list-faces-display&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      modify-face&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      customize-face&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+(global-font-lock-mode t)<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb9a3a12" class="outline-3">
+<h3 id="orgb9a3a12"><span class="section-number-3">13.3</span> The Lisp Modes</h3>
+<div class="outline-text-3" id="text-13-3">
+<p>
+Emacs has three Lisp modes:<br />
+</p>
+<ol class="org-ol">
+<li>emacs-lisp-mode<br /></li>
+</ol>
+<p>
+used for editing emacs lisp code (.emacs or .el)<br />
+</p>
+<ol class="org-ol">
+<li>lisp-mode<br /></li>
+</ol>
+<p>
+used for editing lisp code for Lisps other than GNU Emacs Lisp (.l or .lisp)<br />
+</p>
+<ol class="org-ol">
+<li>lisp-interaction-mode<br /></li>
+</ol>
+<p>
+for typing and evaluating Lisp forms.<br />
+Like Lisp mode except that M-x eval-print-last-sexp evals the Lisp expression before point, and prints its value into the buffer, advancing point.<br />
+</p>
+
+<p>
+All three modes have the same basic functionality; they differ only in the support they give to running Lisp code.<br />
+</p>
+</div>
+
+
+<div id="outline-container-orge4682fb" class="outline-4">
+<h4 id="orge4682fb"><span class="section-number-4">13.3.1</span> 9.3.1 Bindings</h4>
+<div class="outline-text-4" id="text-13-3-1">
+<p>
+(generality: C-M-)<br />
+</p>
+
+<p>
+S-expression commands<br />
+</p>
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      C-M-b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      backward-sexp&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      move&nbsp;backward&nbsp;by&nbsp;on&nbsp;S-expression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      forward-sexp&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      move&nbsp;forward&nbsp;by&nbsp;one&nbsp;S-expression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      transpose-sexps&nbsp;
+    </td>
+    <td align="left" valign="top">
+      transpose&nbsp;the&nbsp;two&nbsp;S-expression&nbsp;around&nbsp;the&nbsp;cursor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-Space&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      mark-sexp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      the&nbsp;place&nbsp;mark&nbsp;goes&nbsp;is&nbsp;the&nbsp;same&nbsp;place&nbsp;C-M-f&nbsp;would&nbsp;move&nbsp;to&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      kill-sexp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Kill&nbsp;the&nbsp;sexp&nbsp;(balanced&nbsp;expression)&nbsp;following&nbsp;point&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      M--&nbsp;C-M-k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      backward&nbsp;kill&nbsp;S-expression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+commands for moving in lists<br />
+</p>
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      C-M-n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      forward-list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Move&nbsp;forward&nbsp;across&nbsp;one&nbsp;balanced&nbsp;group&nbsp;of&nbsp;parentheses&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      backward-list&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      down-list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Move&nbsp;forward&nbsp;down&nbsp;one&nbsp;level&nbsp;of&nbsp;parentheses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      backward-up-list&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Move&nbsp;backward&nbsp;out&nbsp;of&nbsp;one&nbsp;level&nbsp;of&nbsp;parentheses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      up-list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Move&nbsp;forward&nbsp;out&nbsp;of&nbsp;one&nbsp;level&nbsp;of&nbsp;parentheses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+commands for working with functions<br />
+</p>
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      C-M-a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      beginning-of-defun&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Move&nbsp;backward&nbsp;to&nbsp;the&nbsp;beginning&nbsp;of&nbsp;a&nbsp;defun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      end-of-defun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Move&nbsp;forward&nbsp;to&nbsp;next&nbsp;end&nbsp;of&nbsp;defun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      mark-defun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Put&nbsp;mark&nbsp;at&nbsp;end&nbsp;of&nbsp;this&nbsp;defun,&nbsp;point&nbsp;at&nbsp;beginning.&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      The&nbsp;defun&nbsp;marked&nbsp;is&nbsp;the&nbsp;one&nbsp;that&nbsp;contains&nbsp;point&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      follows&nbsp;point.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgd49cea3" class="outline-4">
+<h4 id="orgd49cea3"><span class="section-number-4">13.3.2</span> 9.3.2 Indentation in Lisp Modes</h4>
+<div class="outline-text-4" id="text-13-3-2">
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      TAB&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      indent-for-tab-command&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Indent&nbsp;the&nbsp;current&nbsp;line&nbsp;or&nbsp;region,<br />
+      or&nbsp;insert&nbsp;a&nbsp;tab,&nbsp;as&nbsp;appropriate.&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-j&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      newline-and-indent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Insert&nbsp;a&nbsp;newline,&nbsp;then&nbsp;indent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      according&nbsp;to&nbsp;major&nbsp;mode.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-q&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      indent-sexp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Indent&nbsp;each&nbsp;line&nbsp;of&nbsp;the&nbsp;list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      starting&nbsp;just&nbsp;after&nbsp;point.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+
+<p>
+nest:<br />
+The basic indentation is 2; this value is used whenever code on the next line goes down a level in nesting.<br />
+</p>
+
+<p>
+function call:<br />
+The indentation convention for function calls is that if there are arguments on lines after the line where the function name and first argument appear, the additional arguments line up with the first one.<br />
+</p>
+
+<p>
+EXAMPLE:<br />
+(function-name arg1<br />
+	       arg2<br />
+	       arg3<br />
+	       &#x2026;)<br />
+</p>
+
+<p>
+list elements:<br />
+line up<br />
+</p>
+
+<p>
+EXAMPLE:<br />
+(hello<br />
+ world<br />
+ michael)<br />
+</p>
+
+<p>
+right parentheses:<br />
+multiple right parentheses are put on the same line immediately following each other, instead of on separate lines.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org91bef89" class="outline-4">
+<h4 id="org91bef89"><span class="section-number-4">13.3.3</span> 9.3.3 Emacs Lisp Mode Differences</h4>
+<div class="outline-text-4" id="text-13-3-3">
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      C-M-x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      eval-defun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      evaluate&nbsp;the&nbsp;top-level&nbsp;form&nbsp;containing&nbsp;point,&nbsp;or&nbsp;after&nbsp;point.&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      completion-at-point&nbsp;
+    </td>
+    <td align="left" valign="top">
+      perform&nbsp;completion&nbsp;on&nbsp;the&nbsp;text&nbsp;around&nbsp;point.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0fa355c" class="outline-4">
+<h4 id="org0fa355c"><span class="section-number-4">13.3.4</span> 9.3.4 Lisp Mode Differences</h4>
+<div class="outline-text-4" id="text-13-3-4">
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      C-c&nbsp;C-z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      run-lisp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      run&nbsp;an&nbsp;inferior&nbsp;lisp&nbsp;process,&nbsp;input&nbsp;and&nbsp;output&nbsp;via&nbsp;buffer&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      '*inferior-lisp*'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-M-x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      lisp-eval-defun&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Send&nbsp;the&nbsp;current&nbsp;defun&nbsp;to&nbsp;the&nbsp;Lisp&nbsp;process&nbsp;made&nbsp;by&nbsp;C-c&nbsp;C-z.&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org2f80707" class="outline-4">
+<h4 id="org2f80707"><span class="section-number-4">13.3.5</span> 9.3.5 Working With Lisp Fragments</h4>
+<div class="outline-text-4" id="text-13-3-5">
+<p>
+Emacs Lisp mode is probably the best thing to use if you are editing entire files of Emacs Lisp code.<br />
+If you are editing "little" pieces of lisp code, emacs has more powerful features you can use that further blur the line between writing and running code.<br />
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org0a688d8"></a>9.3.5.1 Commands for evaluating a line of lisp<br />
+<div class="outline-text-5" id="text-13-3-5-1">
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      M-:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      eval-expression&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      evaluate&nbsp;EXP&nbsp;and&nbsp;print&nbsp;value&nbsp;in&nbsp;the&nbsp;echo&nbsp;area.&nbsp;You<br />
+      can&nbsp;use&nbsp;the&nbsp;symbol&nbsp;completion&nbsp;command&nbsp;C-M-i&nbsp;while&nbsp;<br />
+      you&nbsp;are&nbsp;using&nbsp;eval-expression.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      C-x&nbsp;C-e&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      eval-last-sexp&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      evaluate&nbsp;sexp&nbsp;before&nbsp;point;&nbsp;print&nbsp;value&nbsp;in&nbsp;the&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      echo&nbsp;area&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+M-: is an excellent, quick way to check the values of Emacs variables and to experiment with "internal" Emacs functions that aren't bound to keys or that require arguments.<br />
+</p>
+
+<p>
+C-x C-e is handy for testing single lines of code in an Emacs Lisp file.<br />
+</p>
+</div>
+</li>
+
+
+<li><a id="orgb94ec88"></a>9.3.5.2 Using Lisp interaction mode<br />
+<div class="outline-text-5" id="text-13-3-5-2">
+<p>
+An even more powerful feature is Lisp interaction mode.<br />
+This is the mode the default buffer <b>scatch</b> is in.<br />
+</p>
+
+<p>
+lisp interaction mode is identical to emacs lisp mode except for one important feature:<br />
+C-j is bound to the command eval-print-last-sexp.<br />
+</p>
+<!-- This HTML table template is generated by emacs 26.3 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      C-j&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      eval-print-last-sexp&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Evaluate&nbsp;sexp&nbsp;before&nbsp;point;&nbsp;print&nbsp;value&nbsp;<br />
+      into&nbsp;current&nbsp;buffer.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+C-j in Lisp interaction mode gives you an excellent way to play with, incrementally develop, and debug Emacs Lisp code, and since Emacs Lisp is "true" Lisp, it is even useful for developing some bits of code for other Lisp systems.<br />
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mike Chyson</p>
+<p class="date">Created: 2020-05-07 Thu 22:04</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+\chapter{TeX Mode}
+Emacs comes with a package for editing TeX and LaTeX files. However, this package is extremely limited in its functionality. A far better package called \keyword{AUC TeX} can help you write your papers dfficiently.
+
+\section{Installation}
+The modern and stronly recommended way of installing AUCTeX is by using the Emacs package integrated in Emacs and greater(ELPA). Simply do \verb|M-x list-packages RET|, mark the auctex package for installation with \verb|i| and hit \verb|x| to execute the installation procedure. That's all.
+
+But on my CentOS 8, there is no \keyword{auctex} on MELPA repository, So I compile it from source.
+
+\begin{enumerate}
+\item Download the source file. \href{http://ftp.gnu.org/pub/gnu/auctex/auctex-12.2.zip}{auctex}
+\item Unzip the source file.
+\item change to the unzipped directory
+\item \verb|./configure|
+\item \verb|make|
+\item \verb|make install|
+\end{enumerate}
+
+
+To uninstall AUCTeX, \verb|make uninstall|.
+
+
+\begin{tcolorbox}
+  Note: AUCTeX is more strict on the \LaTeX !
+  There is a error saying \verb|! Undefined control sequence. l.1218 \ExplSyntaxOn|.
+  I comment \keyword{ExplSyntexOn} out to solve the problem Temperately
+\end{tcolorbox}
+
+
+\section{Common Commands}
+
+\begin{description}
+\item[C-c \{] Make a pair of braces.
+\item[C-c C-s] Insert a sectioning command.
+\item[C-c C-e] Insert a environment.
+\item[C-M-a] Move point to the \verb|\begin| of the current environment.
+\item[C-M-e] Move point to the \verb|\end| of the current environment.
+\item[M-RET] Insert an item.
+\item[C-M-i] Complete TeX symbol before point.
+\item[C-c C-m] Prompt for the name of a TeX macro.
+\item[C-c *] Mark the current section.
+\item[C-c .] Mark the current environment.
+\item[C-c \%] Add or remove ‘\%’ from the beginning of each line in the current paragraph.
+\item[C-c C-q C-p or M-q] Fill and indent the current paragraph.
+\item[C-c C-q C-e] Fill and indent the current environment.
+\item[C-c C-q C-s] Fill and indent the current section.
+\end{description}
+
+\section{Folding Macros and Environments}
+
+A popular complaint about markup languages like TeX and LaTeX is that there is too much clutter in the source text and that one cannot focus well on the content.
+With AUCTeX’s folding functionality you can collapse those items and replace them by a fixed string, the content of one of their arguments, or a mixture of both.
+In order to use this feature, you have to activate \verb|TeX-fold-mode| which will activate the auto-reveal feature and the necessary commands to hide and show macros and environments.
+You can activate the mode in a certain buffer by typing the command \verb|M-x TeX-fold-mode RET| or using the keyboard shortcut \verb|C-c C-o C-f|.
+If you want to use it every time you edit a LaTeX document, add it to a hook:
+
+\lstset{language=Lisp}
+\begin{lstlisting}
+  (add-hook 'LaTeX-mode-hook (lambda () (TeX-fold-mode 1)))
+\end{lstlisting}
+
+
+If it should be activated in all AUCTeX modes, use \verb|TeX-mode-hook| instead of \verb|LaTeX-mode-hook|.
+
+Once the mode is active there are several commands available to hide and show macros, environments and comments:
+\begin{description}
+\item[C-c C-o C-b] Hide all foldable items in the current buffer according to the setting of \verb|TeX-fold-type-list|.
+\item[C-c C-o C-r] Hide all configured macros in the marked region.
+\item[C-c C-o C-p] Hide all configured macros in the pararaph containing point.
+\item[C-c C-o C-e] Hide the current environment.
+\item[C-c C-o C-c] Hide the comment point is located on.
+\item[C-c C-o b] Permanently unfold all macros and environments in the current buffer.
+\item[C-c C-o r] Permanently unfold all macros and environments in the marked region.
+\item[C-c C-o p] Permanently unfold all macros and environments in the pararaph containing point.
+\item[C-c C-o i] Permanently show the macros or environment on which point currently is located.
+\item[C-c C-o C-o] Hide or show items according to the current context.
+\end{description}
+
+\section{Narrowing}
+
+\begin{description}
+\item[C-x n g] Make text outside current group invisible.
+\item[C-x n e] Make text outside current environment invisible.
+\item[C-x n w] Unnarrow.
+\end{description}
+
+
+\section{Documentation about Macros and Packages}
+\begin{description}
+\item[C-c ?] Get documentation about the packages installed on your system, using ‘texdoc’ to find the manuals. 
+\end{description}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "emacs"
+%%% End:

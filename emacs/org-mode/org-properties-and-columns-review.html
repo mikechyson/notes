@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-02 Tue 09:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Hack Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgaec1d4b">1. Column view</a>
+<ul>
+<li><a href="#org57a7569">1.1. Defining columns</a>
+<ul>
+<li><a href="#org9bf0f7f">1.1.1. Scope of column definitions</a></li>
+<li><a href="#orgdf9b542">1.1.2. Column attributes</a></li>
+</ul>
+</li>
+<li><a href="#orgf27a111">1.2. Using column view</a>
+<ul>
+<li><a href="#org8480962">1.2.1. Turning column view on and off</a></li>
+<li><a href="#org277a596">1.2.2. Editing values</a></li>
+<li><a href="#org1861570">1.2.3. Modifying the table structure</a></li>
+<li><a href="#orga2308fa">1.2.4. <span class="todo TODO">TODO</span> Capturing column view</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaec1d4b" class="outline-2">
+<h2 id="orgaec1d4b"><span class="section-number-2">1</span> Column view</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A great way to view and edit properties is column view.<br />
+In column view, each outline node is turned into a table row.<br />
+Columns in this table provide access to properties of the entries.<br />
+Org mode implements columns by overlaying a tabular structure over the headline of each item.<br />
+</p>
+</div>
+
+<div id="outline-container-org57a7569" class="outline-3">
+<h3 id="org57a7569"><span class="section-number-3">1.1</span> Defining columns</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Setting up a column view first requires defining the columns.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">org-columns-default-format</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org9bf0f7f" class="outline-4">
+<h4 id="org9bf0f7f"><span class="section-number-4">1.1.1</span> Scope of column definitions</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+To define a column format for an entire file, use a line like<br />
+</p>
+<pre class="example">
+#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+</pre>
+
+<p>
+To specify a format that only applies to a specific tree, add a :COLUMNS: property to the top node of that tree, for example:<br />
+</p>
+<pre class="example">
+** Top node for columns view
+   :PROPERTIES:
+   :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+   :END:
+</pre>
+
+
+<p>
+If a :COLUMNS: property is present in an entry, it defines columns for the entry itself, and for the entire subtree below it.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdf9b542" class="outline-4">
+<h4 id="orgdf9b542"><span class="section-number-4">1.1.2</span> Column attributes</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+A column definition sets the attributes of a column. The general definition looks like this:<br />
+</p>
+<pre class="example">
+%[width]property[(title)][{summary-type}]
+</pre>
+<p>
+Except for the percent sign and the property name, all items are optional.<br />
+</p>
+
+<p>
+The individual parts have the following meaning:<br />
+</p>
+<pre class="example">
+width           An integer specifying the width of the column in characters. If omitted, the width will be determined automatically.
+property        The property that should be edited in this column.
+                Special properties representing meta data are allowed here as well
+title           The header text for the column.  If omitted, the property name is used.
+{summary-type}  The summary type.  If specified, the column values for parent nodes are computed from the children.
+                Supported summary types are:
+                {+}       Sum numbers in this column.
+                {+;%.1f}  Like ‘+’, but format result with ‘%.1f’.
+                {$}       Currency, short for ‘+;%.2f’.
+                {min}     Smallest number in column.
+                {max}     Largest number.
+                {mean}    Arithmetic mean of numbers.
+                {X}       Checkbox status, ‘[X]’ if all children are ‘[X]’.
+                {X/}      Checkbox status, ‘[n/m]’.
+                {X%}      Checkbox status, ‘[n%]’.
+                {:}       Sum times, HH:MM, plain numbers are hours.
+                {:min}    Smallest time value in column.
+                {:max}    Largest time value.
+                {:mean}   Arithmetic mean of time values.
+                {@min}    Minimum age (in days/hours/mins/seconds).
+                {@max}    Maximum age (in days/hours/mins/seconds).
+                {@mean}   Arithmetic mean of ages (in days/hours/mins/seconds).
+                {est+}    Add ‘low-high’ estimates.
+</pre>
+
+
+
+<p>
+Example:<br />
+</p>
+
+<pre class="example">
+:COLUMNS:  %25ITEM %9Approved(Approved?){X} %Owner %11Status %10Time_Estimate{:} %CLOCKSUM %CLOCKSUM_T
+:Owner_ALL:    Tammy Mark Karl Lisa Don
+:Status_ALL:   "In progress" "Not started yet" "Finished" ""
+:Approved_ALL: "[ ]" "[X]"
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgf27a111" class="outline-3">
+<h3 id="orgf27a111"><span class="section-number-3">1.2</span> Using column view</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<b>C-h f org-columns TAB TAB</b><br />
+</p>
+</div>
+
+<div id="outline-container-org8480962" class="outline-4">
+<h4 id="org8480962"><span class="section-number-4">1.2.1</span> Turning column view on and off</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+<code>C-c C-x C-c</code> (<code>org-columns</code>)<br />
+Turn on column view.<br />
+If the cursor is before the first headline in the file, or the function called with the universal prefix argument, column view is turned on for the entire file, using the #+COLUMNS definition.<br />
+If the cursor is somewhere inside the outline, this command searches the hierarchy, up from point, for a :COLUMNS: property that defines a format.<br />
+When one is found, the column view table is established for the tree starting at the entry that contains the :COLUMNS: property.<br />
+If no such property is found, the format is taken from the #+COLUMNS line or from the variable org-columns-default-format, and column view is established for the current entry and its subtree.<br />
+</p>
+
+
+<p>
+<code>r/g</code> (<code>org-column-redo</code>)<br />
+Recreate the column view, to include recent changes made in the buffer.<br />
+</p>
+
+<p>
+<code>q</code> (<code>org-column-quit</code>)<br />
+Exit column view.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org277a596" class="outline-4">
+<h4 id="org277a596"><span class="section-number-4">1.2.2</span> Editing values</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+<code>1..9,0</code><br />
+Directly select the Nth allowed value, 0 selects the 10th value.<br />
+</p>
+
+
+<p>
+<code>n     (org-column-next-allowed-value)</code><br />
+<code>p     (org-columns-previous-allowed-value)</code><br />
+Switch to the next/previous allowed value of the field.<br />
+For this, you have to have specified allowed values for a property.<br />
+</p>
+
+
+<p>
+<code>e     (org-columns-edit-value)</code><br />
+Edit the property at point.<br />
+</p>
+
+
+<p>
+<code>C-c C-c     (org-columns-set-tags-or-toggle)</code><br />
+When there is a checkbox at point, toggle it.<br />
+</p>
+
+
+<p>
+<code>v     (org-columns-show-value)</code><br />
+View the full value of this property.<br />
+This is useful if the width of the column is smaller than that of the value.<br />
+</p>
+
+<p>
+<code>a     (org-columns-edit-allowed)</code><br />
+Edit the list of allowed values for this property.<br />
+If the list is found in the hierarchy, the modified value is stored there.<br />
+If no list is found, the new value is stored in the first entry that is part of the current column view.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1861570" class="outline-4">
+<h4 id="org1861570"><span class="section-number-4">1.2.3</span> Modifying the table structure</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+<code>&lt;     (org-columns-narrow)</code><br />
+<code>&gt;     (org-columns-widen)</code><br />
+Make the column narrower/wider by one character.<br />
+</p>
+
+
+<p>
+<code>M-S-&lt;RIGHT&gt;     (org-columns-new)</code><br />
+Insert a new column, to the left of the current column.<br />
+</p>
+
+<p>
+<code>M-S-&lt;LEFT&gt;     (org-columns-delete)</code><br />
+Delete the current column.<br />
+</p>
+
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 23:47]</span></span><br />
+</p>
+</div>
+</div>
+<div id="outline-container-orga2308fa" class="outline-4">
+<h4 id="orga2308fa"><span class="section-number-4">1.2.4</span> <span class="todo TODO">TODO</span> Capturing column view</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+Since column view is just an overlay over a buffer, it cannot be exported or printed directly.<br />
+If you want to capture a column view, use a columnview dynamic block.<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Hack Chyson</p>
+<p class="date">Created: 2019-04-02 Tue 09:34</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

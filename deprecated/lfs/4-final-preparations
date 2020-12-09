@@ -1,0 +1,66 @@
+* create $LFS/tools directory
+The tool program are temporary and will not be part of the LFS system, so separate it out:
+mkdir -v $LFS/tools
+
+to enable the toolchain so that it always refers to /tools:
+ln -sv $LFS/tools /
+('/tools' -> '/mnt/lfs/tools')
+
+
+
+* adding the LFS user
+groupadd lfs
+useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+
+passwd lfs (I user lfs as the password)
+chown -v lfs $LFS/tools
+chown -v lfs $LFS/sources
+
+ls - lfs
+
+
+
+
+* settting up the environment
+** .bash_profile
+----------------------------------------------------
+cat > ~/.bash_profile << "EOF"
+exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
+EOF
+---------------------------------------------------
+
+The exec env -i.../bin/bash command in the .bash_profile file replaces the running shell with
+a new one with a completely empty environment, except for the HOME, TERM, and PS1 variables. 
+
+env: run a program in a modified environment
+-i, --ignore-environment
+
+** .bashrc
+The new instance of the shell is a non-login shell,
+which does not read the /etc/profile or .bash_profile files, but rather reads the .bashrc file instead.
+------------------------------------------------------------
+cat > ~/.bashrc << "EOF"
+set +h		
+umask 022
+LFS=/mnt/lfs
+LC_ALL=POSIX
+LFS_TGT=$(uname -m)-lfs-linux-gnu
+PATH=/tools/bin:/bin:/usr/bin
+export LFS LC_ALL LFS_TGT PATH
+EOF
+------------------------------------------------------------
+
+set +h: turn off bash's hash function
+The LC_ALL variable controls the localization of certain programs,
+making their messages follow the conventions of a specified country.
+
+
+
+** source it
+source ~/.bash_profile
+
+
+
+* SBU
+SBU: standard build units
+The time to compile Binutils is referred to as the SBU.

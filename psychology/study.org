@@ -1,0 +1,20 @@
+Develop a habbit of reading papers.
+Record the math expressions because is the concise and accurate.
+
+Programming = data structure + algorithm
+When you are repeating doing a work, the work can be simplified. Find the invariant part and variant part. Exact the pattern then.
+There's no reason to remember a special set of commands when the ones you already know work.
+
+Knowledge is the base of the ability.
+
+A technical book can be classified in:
+1. About theory
+2. About practice
+3. Combining theory and practice
+The learning process should be: learn the theory and practice it interactively.
+
+Practice is the only criterion for testing truth.
+
+
+
+以某个知识点展开，从头到尾的读，花费的时间太长了。要根据情况来做判断，是系统学习还是以点展开。

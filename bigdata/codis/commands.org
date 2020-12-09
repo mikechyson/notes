@@ -1,0 +1,8 @@
+* clean codis
+./redis-cli -h <host> -p <port> keys "labelCache_2"  | xargs ./redis-cli -h <host> -p <port> del
+
+* get all keys
+hgetall "lable*"
+
+
+

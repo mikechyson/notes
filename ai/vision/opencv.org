@@ -1,0 +1,97 @@
+* INTRODUCTION
+The goal of computer vision is to understand the story unfolding in a picture.
+
+
+Possible applications:
+1. facial recoginition
+2. constructing a 3D representation from many images
+3. surveillance
+4. analyze histology images for cancer risk factors
+...
+* PYTHON AND REQUIRED PACKAGES
+| Packages     | Installation              | Import     |
+|--------------+---------------------------+------------|
+| numpy        | pip install numpy         | numpy      |
+| scipy        | pip install scipy         | scipy      |
+| matplotlib   | pip install matplotlib    | matplotlib |
+| opencv       | pip install opencv-python | cv2        |
+| mahotas      | pip install mahotas       | mahotas    |
+| scikit-learn | pip install scikit-learn  | sklearn    |
+| scikit-image | pip install scikit-image  | skimage    |
+
+* IMAGE BASICS
+[[file:pics/c4_rgb.png]]
+
+
+* IMAGE PROCESSING
+** Image Arithmatic
+We all know basic arithmetic operations like addition and subtraction. But when working with images, we need to keep in mind the limits of our color space and data type.
+However, be sure to keep in mind that there is a difference between OpenCV and NumPy addition. NumPy will perform modulo arithmetic and "wrap around". OpenCV, on the other hand, will perform clipping and ensure pixel values never fall outside the range [0, 255].
+** Bitwise Operations
+Bitwise operations operate in a binary manner and are represented as grayscale images. A given pixel is turned "off" if it has a value of zero, and it is turned "on" if the pixel has a value greater than zero.
+** Masking
+Using a mask allows us to focus only on the portions of the image that interests us.
+
+* HISTOGRAMS
+A histogram represents the distribution of pixel intensities in an iamge. It can be visualized as a graph (or plot) that gives a high-level intuition of the intensity (pixel value) distribution.
+
+When plotting the histogram, the X-axis serves as our "bins". If we construct a histogram with 256 bins, then we are effectively counting the number of times each pixel value occurs. In contrast, if we use only 2 (equally spaced) bins, then we are counting the number of times a pixel is in the range [0, 128) or [128, 255]. The number of pixels binned to the x-axis value is then plotted on the y-axis.
+
+By simply examining the histogram of an image, you get a general understanding regarding the contrast, brightness, and intensity distribution.
+
+Histogram equalization improves the contrast of an image by "streching" the distribution of pixels.  
+Consider a histogram with a large peak at the center of it. Applying histogram equalization will stretch the peak out towards the corner of the image, thus improving the global contrast of the image. Histogram equalization is applied to grayscale images.
+
+* SMOOTHING AND BLURRING
+Blurring means that each pixel in the image is mixed in with its surrounding pixel intensities. This "mixture" of pixels in a neihborhood becomes our blurred pixel.
+
+** Averaging
+As the name suggests, we are going to define a k × k sliding window on top of our image, where k is always an odd number. This window is going to slide from left-to-right and from top-to-bottom. The pixel at the center of this matrix (we have to use an odd number, otherwise there would not be a true "center") is then set to be the average of all other pixels surrounding it.
+We call this sliding window a "convolution kernel" or just a "kernel".
+
+** Gaussian
+Gaussian blurring is similar to average blurring, but instead of using a simple mean, we are now using a weighted mean, where neihborhood pixels that are closer to the central pixel contribute more "weight" to the average.
+
+** Median
+Traditionally, the median blur method has been most effective when removing salt-and-pepper noise. This type of noise is exactly what it sounds like: imagine taking a photograph, putting it on your dining room table, and sprinkling salt and pepper on top of it. Using the median blur method, you could remove the salt and pepper from your image.
+We replace the central pixel with the median of the neighborhood.
+
+** Bilateral
+In order to reduce noise while still maintaining edges, we can use bilateral blurring. Bilateral blurring accomplishes this by introducing two Gaussian distributions.
+The first Gaussian function only considers spatial neighbors, that is, pixels that appear close together in the (x, y) coordinate space of the image. The second Gaussian then models the pixel intensity of the neighborhood, ensuring that only pixels with similar intensity are included in the actual computation of the blur.
+
+* THRESHOLDING
+
+Thresholding is the binarization of an image. In general, we seek to convert a grayscale image to a binary image, where the pixels are either 0 or 255.
+Normally, we use thresholding to focus on objects or areas of particular interest in an image.
+
+** Simple Thresholding
+Manually set a threshold T.
+
+** Adaptive Thresholding
+to overcome:
+1. manually supply of threshold value T
+2. having just one T might not suffice
+
+We can use adaptive thresholding, which considers small neighbors of pixels and then finds an optimal threshold value T for each neighbor. This method allows us to handle cases where there may be dramatic ranges of pixel intensities and the optimal value of T may change for different parts of the image.
+
+** OTSU
+Otsu’s method assumes there are two peaks in the grayscale histogram of the image. It then tries to find an optimal value to separate these two peaks – thus our value of T. 
+
+
+
+* GRADIENTS AND EDGE DETECTION
+Formally, edge detection embodies mathematical methods to find points in an image where the brightness of pixel intensities changes distictly.
+
+The first thing we are going to do is find the "gradient" of the grayscale image, allowing us to find edge-like regions in the x and y direction.
+
+
+** Canny
+The Canny edge detector is a multi-step process. It involves blurring the image to remove noise, computing Sobel gradient images in the x and y direction, suppressing edges, and finally a hysteresis thresholding stage that determines if a pixel is "edge-like" or not.
+
+* CONTOURS
+OpenCV provides methods to find "curves" in an image, called contours. A contour is a curve of points, with no gaps in the curve.
+
+In order to find contours in an image, you need to first obtain a binarization of the image, using either edge detection methods or thresholding.
+
+

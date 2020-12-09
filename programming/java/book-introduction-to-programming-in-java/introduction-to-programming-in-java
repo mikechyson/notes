@@ -1,0 +1,67 @@
+* Elements of Programming
+Writing a program is easier than writing a piece of text.
+The ability to program is a lifetime skill that you can continually refine well into the future.
+Programming languages are characterized by no more than a few dozen vocabulary words and rules of grammar.
+
+** 1.1 Your First Program
+Programmers use the term code to refer to program text and the term coding to refer to the act of creating and editing the code.
+*** Creating a program(filename.java):
+A Java program is nothing more than a sequence of characters, stored in a file with a .java extension.
+*** Compiling a program(javac):
+A compiler is an application that translates a program from the Java language to a language more suitable for executing on the computer. 
+The compiler takes a file with a .java extension as input (your program) and produces a file with the same name but with a .class extension (the computer-language version).
+*** Executing a program(java):
+This is the exciting part, where your program takes control of your computer.
+It is more accurate to say that a part of the Java system known as the Java Virtual Machine (JVM) directs your computer to follow your instructions.
+
+
+comments: // or /*, and */, for human interpretation, ignored by compiler.
+
+tabs, spaces, and newline are all whitespace characters, Java compilers consider all whitespace in program text to be equivalent.
+
+
+One way  to get used to java bug messages is to intentionally introduce mistakes into a simple program and then see what happens. 
+Whatever the error message says, you should treat the compiler as a friend, for it is just trying to tell you that something is wrong with your program.
+
+
+** 1.2 Built-in Types of Data
+a data type is a set of values and a set of operations defined on those values.
+
+8 primitive data types:
+
++-------------------------+
+|byte, short, int, long   |
++-------------------------+
+|float, double            |
++-------------------------+
+|char                     |
++-------------------------+
+|boolean                  |
++-------------------------+
+
+Understanding data types (values and operations on them) is an essential step in beginning to program.
+
+*** Definitions
++-----------------------+--------------------------------------------------------+
+|identifier             |We use identifiers to name variables                    |
++-----------------------+--------------------------------------------------------+
+|literal                |a source-code representation of a data-type value       |
++-----------------------+--------------------------------------------------------+
+|variable               |a name that we use to refer to a data-type value        |
++-----------------------+--------------------------------------------------------+
+|declaration statement  |associates a variable name with a type at compile time  |
++-----------------------+--------------------------------------------------------+
+|assignment statement   |associates a data-type value with a variable            |
++-----------------------+--------------------------------------------------------+
+|initialization         |give the variable a initial value                       |
++-----------------------+--------------------------------------------------------+
+|expression             |a literal, a variable, or a sequence of operations on   |
+|                       |literals and/or variables that produces a value         |
++-----------------------+--------------------------------------------------------+
+
+
+*** Characters and Strings
+A char is an alphanumeric character or symbol.
+There are 216 different possible character values.
+
+A String is a sequence of characters.

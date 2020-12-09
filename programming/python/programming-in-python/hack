@@ -1,0 +1,59 @@
+* sys
+sys.argv[0]
+sys.argv[1]
+sys.float_info.epsilon
+
+* dir()
+dir(__builtins__)
+
+* base
+binary: 0b
+octal: 0o
+hexadecimal: 0x
+
+* data type
+When an object is created using its data type, there are three possible use cases:
+1. no argument, create an object with a default value
+2. a single argument
+   - same type, create a new shallo copy of the original object
+   - different type, type conversion
+3. two or more arguments,
+
+(2145).int_length()
+
+
+* floating-point number
+David Gay's algorithm
+
+* decimal.Decimal
+sutiable for financial calculations
+
+* equal float
+def equal_float(a, b):
+    return abs(a - b) <= sys.float_info.epsilon
+
+* help
+help(sys.float_info)
+help(str)
+* math module
+the math module is very dependent on the underlying math library that python was compiled against.
+
+
+* cmath module for complex number
+
+* strings
+s[::-1] # reverse
+
+* locale
+import locale
+locale.setlocale(locale.LC_ALL, '')
+
+Passing an empty string as the locale tells Python to try to automatically determine the user's locale.
+
+* encode and decode
+'hello'.encode('utf8')
+b'hello'.decode('utf8')
+
+
+
+

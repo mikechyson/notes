@@ -1,0 +1,1722 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>lib</title>
+<!-- 2019-12-09 Mon 15:32 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">lib</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Numpy</a>
+<ul>
+<li><a href="#sec-1-1">1.1. import</a></li>
+<li><a href="#sec-1-2">1.2. shape</a></li>
+<li><a href="#sec-1-3">1.3. 数组转矩阵</a></li>
+<li><a href="#sec-1-4">1.4. 创建等间隔一维数组</a></li>
+<li><a href="#sec-1-5">1.5. 创建单位矩阵</a></li>
+<li><a href="#sec-1-6">1.6. 创建零矩阵</a></li>
+<li><a href="#sec-1-7">1.7. 矩阵切片</a></li>
+<li><a href="#sec-1-8">1.8. 矩阵运算</a></li>
+<li><a href="#sec-1-9">1.9. 矩阵截取clip</a></li>
+<li><a href="#sec-1-10">1.10. 转置</a></li>
+<li><a href="#sec-1-11">1.11. 统计函数</a></li>
+<li><a href="#sec-1-12">1.12. 随机数和随机样本</a></li>
+<li><a href="#sec-1-13">1.13. line space</a></li>
+<li><a href="#sec-1-14">1.14. save and load</a></li>
+<li><a href="#sec-1-15">1.15. 判断两个矩阵是否相同</a></li>
+<li><a href="#sec-1-16">1.16. vstack and hstack</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Sympy</a>
+<ul>
+<li><a href="#sec-2-1">2.1. import</a></li>
+<li><a href="#sec-2-2">2.2. derivative</a></li>
+<li><a href="#sec-2-3">2.3. integrate</a></li>
+<li><a href="#sec-2-4">2.4. plot</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. matplotlib</a>
+<ul>
+<li><a href="#sec-3-1">3.1. import</a></li>
+<li><a href="#sec-3-2">3.2. plot</a></li>
+<li><a href="#sec-3-3">3.3. scatter</a></li>
+<li><a href="#sec-3-4">3.4. hist</a></li>
+<li><a href="#sec-3-5">3.5. multiple figures</a></li>
+<li><a href="#sec-3-6">3.6. 3d surface</a></li>
+<li><a href="#sec-3-7">3.7. contourf</a></li>
+<li><a href="#sec-3-8">3.8. quiver</a></li>
+<li><a href="#sec-3-9">3.9. label, title</a></li>
+<li><a href="#sec-3-10">3.10. style</a></li>
+<li><a href="#sec-3-11">3.11. subplot</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. scikit-learn (sklearn)</a>
+<ul>
+<li><a href="#sec-4-1">4.1. LabelEncoder, LabelBinarizer, OneHotEncoder</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Pandas</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Construction</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Tensorflow</a>
+<ul>
+<li><a href="#sec-6-1">6.1. basic</a>
+<ul>
+<li><a href="#sec-6-1-1">6.1.1. import</a></li>
+<li><a href="#sec-6-1-2">6.1.2. matrix</a></li>
+<li><a href="#sec-6-1-3">6.1.3. variable</a></li>
+<li><a href="#sec-6-1-4">6.1.4. placeholder</a></li>
+<li><a href="#sec-6-1-5">6.1.5. matrix functions</a></li>
+<li><a href="#sec-6-1-6">6.1.6. scope</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-2">6.2. simple demo</a></li>
+<li><a href="#sec-6-3">6.3. graph</a></li>
+<li><a href="#sec-6-4">6.4. save</a></li>
+<li><a href="#sec-6-5">6.5. load</a></li>
+<li><a href="#sec-6-6">6.6. optimizer</a>
+<ul>
+<li><a href="#sec-6-6-1">6.6.1. SGD</a></li>
+<li><a href="#sec-6-6-2">6.6.2. RMSprop</a></li>
+<li><a href="#sec-6-6-3">6.6.3. Adagrad</a></li>
+<li><a href="#sec-6-6-4">6.6.4. Adadelta</a></li>
+<li><a href="#sec-6-6-5">6.6.5. Adam</a></li>
+<li><a href="#sec-6-6-6">6.6.6. Adamax</a></li>
+<li><a href="#sec-6-6-7">6.6.7. Nadam</a></li>
+<li><a href="#sec-6-6-8">6.6.8. TFOptimizer</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-7">6.7. loss</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. OpenCV</a>
+<ul>
+<li><a href="#sec-7-1">7.1. 读取图片</a></li>
+<li><a href="#sec-7-2">7.2. 获取图片属性</a>
+<ul>
+<li><a href="#sec-7-2-1">7.2.1. 获取row, column, channels</a></li>
+<li><a href="#sec-7-2-2">7.2.2. 获取pixels总数目</a></li>
+<li><a href="#sec-7-2-3">7.2.3. datatype</a></li>
+</ul>
+</li>
+<li><a href="#sec-7-3">7.3. ROI</a></li>
+<li><a href="#sec-7-4">7.4. 获取某个channel</a></li>
+<li><a href="#sec-7-5">7.5. 读取视频或摄像头</a></li>
+<li><a href="#sec-7-6">7.6. 颜色转化</a></li>
+<li><a href="#sec-7-7">7.7. 写文字</a></li>
+<li><a href="#sec-7-8">7.8. 画框</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. Keras</a>
+<ul>
+<li><a href="#sec-8-1">8.1. Sequential</a></li>
+<li><a href="#sec-8-2">8.2. Functional API</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. dlib</a></li>
+<li><a href="#sec-10">10. skikit-image</a></li>
+<li><a href="#sec-11">11. imutils</a></li>
+<li><a href="#sec-12">12. mxnet</a></li>
+<li><a href="#sec-13">13. h5py</a></li>
+<li><a href="#sec-14">14. pickle</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Numpy</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+numpy: Numerical Python<br  />
+是高性能科学计算和数据分析的基础包。<br  />
+部分功能如下：<br  />
+</p>
+<ul class="org-ul">
+<li>向量，矩阵的计算<br  />
+</li>
+<li>用整组数据进行快速运算的标准数学函数（无需写循环）<br  />
+</li>
+<li>线性代数，随机数，傅立叶变换<br  />
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> import</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> shape</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+shape是属性，所以是shape而不是shape()<br  />
+shape的确定，从外到内，例如<br  />
+</p>
+<pre class="example">
+[[1],[1]] # shape: (2,1)
+[ [ [1,1] ] [ [1,1] ] ] # shape (2,1,2)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 数组转矩阵</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #ffcc80;">lst</span> = [[1,2],[3,4]]
+<span style="color: #ffcc80;">lst</span> = [[1,2],[3,4]]
+&gt;&gt;&gt; <span style="color: #ffcc80;">arr1</span> = np.array(lst)
+<span style="color: #ffcc80;">arr1</span> = np.array(lst)
+&gt;&gt;&gt; arr1
+arr1
+array([[1, 2],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>  [3, 4]])
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 创建等间隔一维数组</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+
+<pre class="src src-python">np.arange(2,20,2)
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">arange: array range</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">array([ 2,  4,  6,  8, 10, 12, 14, 16, 18])</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 创建单位矩阵</h3>
+<div class="outline-text-3" id="text-1-5">
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; np.ones([2,3], dtype=<span style="color: #ff8A65;">int</span>)
+array([[1, 1, 1],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>  [1, 1, 1]])
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 创建零矩阵</h3>
+<div class="outline-text-3" id="text-1-6">
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; np.zeros([2,3])
+array([[0., 0., 0.],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>  [0., 0., 0.]])
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> 矩阵切片</h3>
+<div class="outline-text-3" id="text-1-7">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+
+np.random.seed(1)  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">&#20351;&#27599;&#27425;&#36816;&#34892;&#31243;&#24207;&#20135;&#29983;&#30340;&#38543;&#21363;&#26679;&#26412;&#30456;&#21516;</span>
+<span style="color: #ffcc80;">sample</span> = np.random.randint(1, 10, [2, 2])
+<span style="color: #fff59d;">print</span>(sample)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[[6 9]</span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[6 1]]</span>
+
+<span style="color: #fff59d;">print</span>(sample[0, :])  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[6 9]</span>
+
+<span style="color: #fff59d;">print</span>(sample[:, 0])  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[6 6]</span>
+
+<span style="color: #fff59d;">print</span>(sample[1, 1])  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">1</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> 矩阵运算</h3>
+<div class="outline-text-3" id="text-1-8">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">add, subtract, multiply, divide, reciprocal, power, mod, dot</span>
+np.random.seed(1)
+<span style="color: #ffcc80;">a</span> = np.random.randint(1, 10, [2, 2])
+<span style="color: #ffcc80;">b</span> = np.random.randint(1, 10, [2, 2])
+<span style="color: #fff59d;">print</span>(a)
+<span style="color: #fff59d;">print</span>(b)
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[[6 9]</span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[6 1]]</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[[1 2]</span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[8 7]]</span>
+
+<span style="color: #ffcc80;">c</span> = np.subtract(a, b)
+<span style="color: #fff59d;">print</span>(c)
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[[ 5  7]</span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[-2 -6]]</span>
+<span style="color: #ffcc80;">c</span> = a - b
+<span style="color: #fff59d;">print</span>(c)
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[[ 5  7]</span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[-2 -6]]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> 矩阵截取clip</h3>
+<div class="outline-text-3" id="text-1-9">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">a</span>=np.arange(1,13).reshape((3,4))
+<span style="color: #fff59d;">print</span>(a)
+<span style="color: #fff59d;">print</span>(np.clip(a,5,9))<span style="color: #b0bec5;">#</span><span style="color: #b0bec5;">&#26368;&#23567;5&#65292;&#26368;&#22823;9&#65292;&#23567;&#20110;5&#30340;&#37117;&#25104;&#20102;5&#65292;&#22823;&#20110;9&#30340;&#37117;&#25104;&#20102;9</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> 转置</h3>
+<div class="outline-text-3" id="text-1-10">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">A</span>=np.arange(1,10).reshape(3,3)
+<span style="color: #fff59d;">print</span>(A)
+<span style="color: #fff59d;">print</span>(np.transpose(A))
+<span style="color: #fff59d;">print</span>(A.T)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> 统计函数</h3>
+<div class="outline-text-3" id="text-1-11">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">mean, max, min, std, median, sum</span>
+<span style="color: #ffcc80;">a</span> = np.arange(5)
+<span style="color: #fff59d;">print</span>(a)
+<span style="color: #fff59d;">print</span>(np.mean(a))
+<span style="color: #fff59d;">print</span>(np.<span style="color: #ff8A65;">max</span>(a))
+<span style="color: #fff59d;">print</span>(np.std(a))
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[0 1 2 3 4]</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">2.0</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">4</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">1.4142135623730951</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> 随机数和随机样本</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+一些源码：<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Some aliases:</span>
+<span style="color: #ffcc80;">ranf</span> = <span style="color: #ffcc80;">random</span> = <span style="color: #ffcc80;">sample</span> = random_sample
+<span style="color: #ff8A65;">__all__</span>.extend([<span style="color: #9ccc65;">'ranf'</span>, <span style="color: #9ccc65;">'random'</span>, <span style="color: #9ccc65;">'sample'</span>])
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">&#20135;&#29983;[0,1)&#20043;&#38388;&#30340;&#22343;&#21248;&#20998;&#24067;&#30340;&#19968;&#20010;&#38543;&#21363;&#25968;</span>
+<span style="color: #fff59d;">print</span>(np.random.rand())
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">&#36820;&#22238;&#26631;&#20934;&#27491;&#22826;&#20998;&#24067;&#30340;&#19968;&#20010;&#38543;&#26426;&#25968;</span>
+<span style="color: #fff59d;">print</span>(np.random.randn())
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">&#38543;&#21363;&#25972;&#25968;</span>
+<span style="color: #fff59d;">print</span>(np.random.randint(1, 10))
+</pre>
+</div>
+
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Results are from the "continuous uniform" distribution over the</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">stated interval.  To sample :math:`Unif[a, b), b &gt; a` multiply</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">the output of `random_sample` by `(b-a)` and add `a`::</span>
+<span style="color: #b0bec5;">#    </span><span style="color: #b0bec5;">(b - a) * random_sample() + a</span>
+
+<span style="color: #fff59d;">print</span>(np.random.random_sample([3, 3, 3]))
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[[[0.80848879 0.07742857 0.18408582]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[0.71534262 0.92277854 0.02594712]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[0.94654033 0.78486133 0.0861656 ]]</span>
+<span style="color: #b0bec5;"># </span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[[0.78783097 0.50163162 0.00963713]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[0.27947727 0.36261856 0.20622495]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[0.81018606 0.66324607 0.44896777]]</span>
+<span style="color: #b0bec5;"># </span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[[0.02874924 0.50940814 0.41704826]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[0.67650676 0.94305175 0.51620809]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[0.7300231  0.59682459 0.63704211]]]</span>
+
+
+
+<span style="color: #fff59d;">print</span>(np.random.randint(1, 10, [3, 3, 3]))
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">[[[3 4 6]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[8 7 6]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[9 4 1]]</span>
+<span style="color: #b0bec5;"># </span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[[4 6 4]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[1 8 6]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[7 4 2]]</span>
+<span style="color: #b0bec5;"># </span>
+<span style="color: #b0bec5;">#  </span><span style="color: #b0bec5;">[[6 8 7]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[5 8 7]</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">[8 4 5]]]</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-13" class="outline-3">
+<h3 id="sec-1-13"><span class="section-number-3">1.13</span> line space</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+主要用于图形绘制中的坐标轴<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">x</span> = np.linspace(-2, 1, 10)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-14" class="outline-3">
+<h3 id="sec-1-14"><span class="section-number-3">1.14</span> save and load</h3>
+<div class="outline-text-3" id="text-1-14">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+
+np.random.seed(1)
+<span style="color: #ffcc80;">a</span> = np.random.randint(1, 10, [2, 2])
+<span style="color: #ffcc80;">b</span> = np.random.randint(1, 10, [2, 2])
+
+np.save(<span style="color: #9ccc65;">'a.npy'</span>, a)
+<span style="color: #ffcc80;">a_load</span> = np.load(<span style="color: #9ccc65;">'a.npy'</span>)
+<span style="color: #fff59d;">print</span>(a_load)
+
+np.savez(<span style="color: #9ccc65;">'ab.npz'</span>, a, b)
+<span style="color: #ffcc80;">ab</span> = np.load(<span style="color: #9ccc65;">'ab.npz'</span>)
+
+<span style="color: #fff59d;">print</span>(ab[<span style="color: #9ccc65;">'arr_0'</span>])
+
+np.savez(<span style="color: #9ccc65;">'ab.npz'</span>, a=a, b=b)
+<span style="color: #ffcc80;">ab</span> = np.load(<span style="color: #9ccc65;">'ab.npz'</span>)
+
+<span style="color: #fff59d;">print</span>(ab[<span style="color: #9ccc65;">'a'</span>])
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-15" class="outline-3">
+<h3 id="sec-1-15"><span class="section-number-3">1.15</span> 判断两个矩阵是否相同</h3>
+<div class="outline-text-3" id="text-1-15">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+
+<span style="color: #ffcc80;">a</span> = np.array([1, 1])
+<span style="color: #ffcc80;">b</span> = a
+<span style="color: #ffcc80;">c</span> = np.array([1, 2])
+<span style="color: #fff59d;">print</span>(a == b)
+<span style="color: #fff59d;">print</span>(a == c)
+
+<span style="color: #fff59d;">print</span>((a == b).<span style="color: #ff8A65;">all</span>())
+<span style="color: #fff59d;">print</span>((a == c).<span style="color: #ff8A65;">all</span>())
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-16" class="outline-3">
+<h3 id="sec-1-16"><span class="section-number-3">1.16</span> vstack and hstack</h3>
+<div class="outline-text-3" id="text-1-16">
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #ffcc80;">a</span>=np.random.randint(0,10,(2,2,2))
+&gt;&gt;&gt; a
+array([[[8, 7],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>   [3, 6]],
+
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>  [[5, 1],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>   [9, 3]]])
+&gt;&gt;&gt; np.hstack(a)
+array([[8, 7, 5, 1],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>  [3, 6, 9, 3]])
+&gt;&gt;&gt; np.vstack(a)
+array([[8, 7],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>  [3, 6],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>  [5, 1],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>  [9, 3]])
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Sympy</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+For symbolic computation.<br  />
+</p>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> import</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> sympy <span style="color: #fff59d;">as</span> sym
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> derivative</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; sym.init_printing()
+sym.init_printing()
+&gt;&gt;&gt; <span style="color: #ffcc80;">x</span> = sym.symbols(<span style="color: #9ccc65;">'x'</span>)
+<span style="color: #ffcc80;">x</span> = sym.symbols(<span style="color: #9ccc65;">'x'</span>)
+&gt;&gt;&gt; <span style="color: #ffcc80;">y</span> = x**2 + 4*x + 3 
+<span style="color: #ffcc80;">y</span> = x**2 + 4*x + 3 
+&gt;&gt;&gt; y.diff(x)
+y.diff(x)
+2&#8901;x + 4
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> integrate</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">x</span> = sym.symbols(<span style="color: #9ccc65;">'x'</span>)
+<span style="color: #ffcc80;">a</span> = sym.Integral(sym.cos(x)*sym.exp(x), x)
+sym.Eq(a, a.doit())
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/sym_integrate.png" alt="sym_integrate.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> plot</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">x</span>, <span style="color: #ffcc80;">y</span> = sym.symbols(<span style="color: #9ccc65;">'x y'</span>)
+<span style="color: #ffcc80;">z</span> = x**2+2*x+y**2+4*y+4
+<span style="color: #ffcc80;">dzx</span> = z.diff(x)
+<span style="color: #ffcc80;">dzy</span> = z.diff(y)
+sym.plotting.plot3d(z, (x, -10, 10), (y, -10, 10))
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/sym_plot.png" alt="sym_plot.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> matplotlib</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+For visualization.<br  />
+</p>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> import</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> plot</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+<span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+
+<span style="color: #ffcc80;">x</span> = np.linspace(-2, 1, 50)
+<span style="color: #ffcc80;">y</span> = x**2 + x + 1
+plt.plot(x, y, marker=<span style="color: #9ccc65;">'o'</span>)
+plt.show()
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/plt_plot.png" alt="plt_plot.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> scatter</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+<span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+
+<span style="color: #ffcc80;">x</span> = np.linspace(-2, 1, 50)
+<span style="color: #ffcc80;">y</span> = x ** 2 + x + 1
+plt.scatter(x, y)
+plt.show()
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="pics/plt_scatter.png" alt="plt_scatter.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> hist</h3>
+<div class="outline-text-3" id="text-3-4">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+<span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Fixing random state for reproducibility</span>
+np.random.seed(19680801)
+
+<span style="color: #ffcc80;">mu</span>, <span style="color: #ffcc80;">sigma</span> = 100, 15
+<span style="color: #ffcc80;">x</span> = mu + sigma * np.random.randn(10000)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">the histogram of the data</span>
+<span style="color: #ffcc80;">n</span>, <span style="color: #ffcc80;">bins</span>, <span style="color: #ffcc80;">patches</span> = plt.hist(x, 50, density=<span style="color: #8bc34a;">True</span>, facecolor=<span style="color: #9ccc65;">'g'</span>, alpha=0.75)
+
+
+plt.xlabel(<span style="color: #9ccc65;">'Smarts'</span>)
+plt.ylabel(<span style="color: #9ccc65;">'Probability'</span>)
+plt.title(<span style="color: #9ccc65;">'Histogram of IQ'</span>)
+plt.text(60, .025, r<span style="color: #9ccc65;">'$\mu=100,\ \sigma=15$'</span>)
+plt.axis([40, 160, 0, 0.03])
+plt.grid(<span style="color: #8bc34a;">True</span>)
+plt.show()
+</pre>
+</div>
+<p>
+<img src="pics/plt_hist.png" alt="plt_hist.png" /><br  />
+Compute and draw the histogram of x.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> multiple figures</h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+<span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+
+<span style="color: #ffcc80;">x</span> = np.linspace(-2, 1, 50)
+<span style="color: #ffcc80;">y</span> = x ** 2 + x + 1
+plt.figure(1)
+plt.scatter(x, y)
+plt.figure(2)
+plt.plot(x, y)
+plt.show()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> 3d surface</h3>
+<div class="outline-text-3" id="text-3-6">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+<span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+<span style="color: #fff59d;">from</span> mpl_toolkits.mplot3d <span style="color: #fff59d;">import</span> Axes3D
+
+<span style="color: #ffcc80;">fig</span> = plt.figure()
+<span style="color: #ffcc80;">ax</span> = Axes3D(fig)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">X, Y value</span>
+<span style="color: #ffcc80;">X</span> = np.arange(-4, 4, 0.25)
+<span style="color: #ffcc80;">Y</span> = np.arange(-4, 4, 0.25)
+<span style="color: #ffcc80;">X</span>, <span style="color: #ffcc80;">Y</span> = np.meshgrid(X, Y)  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">x-y &#24179;&#38754;&#30340;&#32593;&#26684;</span>
+<span style="color: #ffcc80;">R</span> = np.sqrt(X ** 2 + Y ** 2)
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">height value</span>
+<span style="color: #ffcc80;">Z</span> = np.sin(R)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">rstride: row stride</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">cstride: column stride</span>
+ax.plot_surface(X, Y, Z, rstride=1, cstride=3, cmap=plt.get_cmap(<span style="color: #9ccc65;">'rainbow'</span>))
+plt.show()
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/plt_surface.png" alt="plt_surface.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> contourf</h3>
+<div class="outline-text-3" id="text-3-7">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+<span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+<span style="color: #fff59d;">from</span> mpl_toolkits.mplot3d <span style="color: #fff59d;">import</span> Axes3D
+
+<span style="color: #ffcc80;">fig</span> = plt.figure()
+<span style="color: #ffcc80;">ax</span> = Axes3D(fig)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">X, Y value</span>
+<span style="color: #ffcc80;">X</span> = np.arange(-4, 4, 0.25)
+<span style="color: #ffcc80;">Y</span> = np.arange(-4, 4, 0.25)
+<span style="color: #ffcc80;">X</span>, <span style="color: #ffcc80;">Y</span> = np.meshgrid(X, Y)  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">x-y &#24179;&#38754;&#30340;&#32593;&#26684;</span>
+<span style="color: #ffcc80;">R</span> = np.sqrt(X ** 2 + Y ** 2)
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">height value</span>
+<span style="color: #ffcc80;">Z</span> = np.sin(R)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">rstride: row stride</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">cstride: column stride</span>
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1,  cmap=plt.get_cmap(<span style="color: #9ccc65;">'rainbow'</span>))
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">fig = plt.figure(2)</span>
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">ax = Axes3D(fig)</span>
+ax.contourf(X, Y, Z, zdir=<span style="color: #9ccc65;">'z'</span>, offset=-1.5, cmap=plt.get_cmap(<span style="color: #9ccc65;">'rainbow'</span>))
+
+plt.show()
+</pre>
+</div>
+
+<p>
+zdir='z' project on z;<br  />
+<img src="pics/plt_contourf.png" alt="plt_contourf.png" /><br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8"><span class="section-number-3">3.8</span> quiver</h3>
+<div class="outline-text-3" id="text-3-8">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+<span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+<span style="color: #fff59d;">import</span> matplotlib <span style="color: #fff59d;">as</span> mpl
+
+mpl.style.use(<span style="color: #9ccc65;">'seaborn-darkgrid'</span>)
+
+<span style="color: #ffcc80;">x1</span> = np.linspace(1, 3, 20)
+<span style="color: #ffcc80;">x2</span> = np.linspace(2, 4, 20)
+<span style="color: #ffcc80;">x1</span>, <span style="color: #ffcc80;">x2</span> = np.meshgrid(x1, x2)
+
+<span style="color: #ffcc80;">u</span> = 2 * x1 - 4
+<span style="color: #ffcc80;">v</span> = 2 * x2 - 6
+
+plt.quiver(x1, x2, -u, -v)
+plt.show()
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/plt_quiver.png" alt="plt_quiver.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-9" class="outline-3">
+<h3 id="sec-3-9"><span class="section-number-3">3.9</span> label, title</h3>
+<div class="outline-text-3" id="text-3-9">
+<div class="org-src-container">
+
+<pre class="src src-python">plt.xlabel()
+plt.title()
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-10" class="outline-3">
+<h3 id="sec-3-10"><span class="section-number-3">3.10</span> style</h3>
+<div class="outline-text-3" id="text-3-10">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> matplotlib <span style="color: #fff59d;">as</span> mpl
+
+mpl.style.use(<span style="color: #9ccc65;">'ggplot'</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-11" class="outline-3">
+<h3 id="sec-3-11"><span class="section-number-3">3.11</span> subplot</h3>
+<div class="outline-text-3" id="text-3-11">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+<span style="color: #fff59d;">import</span> matplotlib.pyplot <span style="color: #fff59d;">as</span> plt
+
+<span style="color: #ffcc80;">x</span> = np.linspace(-2, 1, 50)
+<span style="color: #ffcc80;">y</span> = x ** 2 + x + 1
+
+plt.subplot(1, 2, 1)  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">one row, two columns; the first figure</span>
+plt.scatter(x, y)
+plt.subplot(1, 2, 2)  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">one row, two columns; the second figure</span>
+plt.plot(x, y)
+plt.show()
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="pics/plt_subplot.png" alt="plt_subplot.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> scikit-learn (sklearn)</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> LabelEncoder, LabelBinarizer, OneHotEncoder</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">from</span> sklearn.preprocessing <span style="color: #fff59d;">import</span> LabelEncoder, LabelBinarizer, OneHotEncoder
+
+<span style="color: #ffcc80;">num</span> = [1, 2, 3]
+<span style="color: #ffcc80;">s</span> = [<span style="color: #9ccc65;">'a'</span>, <span style="color: #9ccc65;">'b'</span>, <span style="color: #9ccc65;">'c'</span>]
+<span style="color: #ffcc80;">d2</span> = [[0, 0, 3],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span> [1, 1, 0],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span> [0, 2, 1],
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span> [1, 0, 2]]
+
+<span style="color: #ffcc80;">le</span> = LabelEncoder()
+<span style="color: #ffcc80;">lb</span> = LabelBinarizer()
+<span style="color: #ffcc80;">ohe</span> = OneHotEncoder()
+
+<span style="color: #fff59d;">print</span>(<span style="color: #9ccc65;">'label encoder...'</span>)
+<span style="color: #fff59d;">print</span>(le.fit_transform(num))
+<span style="color: #fff59d;">print</span>(le.fit_transform(s))
+
+<span style="color: #fff59d;">print</span>(<span style="color: #9ccc65;">'label binarizer...'</span>)
+<span style="color: #fff59d;">print</span>(lb.fit_transform(num))
+<span style="color: #fff59d;">print</span>(lb.fit_transform(s))
+
+<span style="color: #fff59d;">print</span>(<span style="color: #9ccc65;">'one hot encoder...'</span>)
+ohe.fit(d2)
+<span style="color: #fff59d;">print</span>(ohe.transform([[0, 1, 3]]).toarray())
+<span style="color: #fff59d;">print</span>(ohe.transform([[1, 2, 3]]).toarray())
+</pre>
+</div>
+
+<p>
+Print:<br  />
+</p>
+<pre class="example">
+label encoder...
+[0 1 2]
+[0 1 2]
+label binarizer...
+[[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+[[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+one hot encoder...
+[[1. 0. 0. 1. 0. 0. 0. 0. 1.]]
+[[0. 1. 0. 0. 1. 0. 0. 0. 1.]]
+</pre>
+
+<p>
+For OneHotEncoder and d2, there is 2 values in the first feature (0,1), so the first feature occupies an array of length 2, [1,0] for 0, [0,1] or 1;<br  />
+There are 3 values in the second feautre (0,1,2), so the second feature occupies an array of length 3, [1,0,0] for 0, [0,1,0] for 1, [0,0,1] for 2;<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Pandas</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>load data<br  />
+</li>
+<li>add index on matrix<br  />
+</li>
+<li>statistical computation(average, variance, maxisum, minimum)<br  />
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Construction</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">__init__</span>(<span style="color: #fff59d;">self</span>, data=<span style="color: #8bc34a;">None</span>, index=<span style="color: #8bc34a;">None</span>, columns=<span style="color: #8bc34a;">None</span>, dtype=<span style="color: #8bc34a;">None</span>,
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>copy=<span style="color: #8bc34a;">False</span>):
+</pre>
+</div>
+<p>
+For example:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> pandas <span style="color: #fff59d;">as</span> pd
+
+<span style="color: #ffcc80;">a</span> = np.ones([3, 3])
+<span style="color: #ffcc80;">df1</span> = pd.DataFrame(a)
+<span style="color: #fff59d;">print</span>(df1)
+
+<span style="color: #ffcc80;">df2</span> = pd.DataFrame(a, columns=<span style="color: #ff8A65;">list</span>(<span style="color: #9ccc65;">'abc'</span>))
+<span style="color: #fff59d;">print</span>(df2)
+
+<span style="color: #ffcc80;">df3</span> = pd.DataFrame(a, index=<span style="color: #ff8A65;">list</span>(<span style="color: #9ccc65;">'ABC'</span>), columns=<span style="color: #ff8A65;">list</span>(<span style="color: #9ccc65;">'abc'</span>))
+<span style="color: #fff59d;">print</span>(df3)
+</pre>
+</div>
+
+<p>
+The output is:<br  />
+</p>
+<pre class="example">
+     0    1    2
+0  1.0  1.0  1.0
+1  1.0  1.0  1.0
+2  1.0  1.0  1.0
+     a    b    c
+0  1.0  1.0  1.0
+1  1.0  1.0  1.0
+2  1.0  1.0  1.0
+     a    b    c
+A  1.0  1.0  1.0
+B  1.0  1.0  1.0
+C  1.0  1.0  1.0
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Tensorflow</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> basic</h3>
+<div class="outline-text-3" id="text-6-1">
+</div><div id="outline-container-sec-6-1-1" class="outline-4">
+<h4 id="sec-6-1-1"><span class="section-number-4">6.1.1</span> import</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> tensorflow <span style="color: #fff59d;">as</span> tf
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-1-2" class="outline-4">
+<h4 id="sec-6-1-2"><span class="section-number-4">6.1.2</span> matrix</h4>
+<div class="outline-text-4" id="text-6-1-2">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> tensorflow <span style="color: #fff59d;">as</span> tf
+<span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+
+<span style="color: #ffcc80;">a1</span> = tf.constant(np.ones([4, 4]))
+<span style="color: #ffcc80;">a2</span> = tf.constant(np.ones([4, 4]))
+<span style="color: #fff59d;">print</span>(a1)
+<span style="color: #ffcc80;">a1_dot_a2</span> = tf.matmul(a1, a2)
+
+<span style="color: #ffcc80;">sess</span> = tf.Session()
+<span style="color: #fff59d;">print</span>(sess.run(a1_dot_a2))
+</pre>
+</div>
+
+<p>
+output:<br  />
+</p>
+
+<pre class="example">
+Tensor("Const:0", shape=(4, 4), dtype=float64)
+[[4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-6-1-3" class="outline-4">
+<h4 id="sec-6-1-3"><span class="section-number-4">6.1.3</span> variable</h4>
+<div class="outline-text-4" id="text-6-1-3">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">define constant</span>
+<span style="color: #ffcc80;">a1</span> = tf.constant(np.ones([4, 4]) * 2)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">define vairable</span>
+<span style="color: #ffcc80;">b1</span> = tf.Variable(a1)
+<span style="color: #ffcc80;">b2</span> = tf.Variable(np.ones([4, 4]))
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">define matrix mulplication</span>
+<span style="color: #ffcc80;">b1_dot_b2</span> = tf.matmul(b1, b2)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">variable initialization</span>
+<span style="color: #ffcc80;">init</span> = tf.global_variables_initializer()
+<span style="color: #ffcc80;">sess</span> = tf.Session()
+sess.run(init)
+
+<span style="color: #fff59d;">print</span>(sess.run(b1))
+<span style="color: #fff59d;">print</span>(sess.run(b2))
+<span style="color: #fff59d;">print</span>(sess.run(b1_dot_b2))
+</pre>
+</div>
+
+<p>
+output:<br  />
+</p>
+
+<pre class="example">
+[[2. 2. 2. 2.]
+ [2. 2. 2. 2.]
+ [2. 2. 2. 2.]
+ [2. 2. 2. 2.]]
+[[1. 1. 1. 1.]
+ [1. 1. 1. 1.]
+ [1. 1. 1. 1.]
+ [1. 1. 1. 1.]]
+[[8. 8. 8. 8.]
+ [8. 8. 8. 8.]
+ [8. 8. 8. 8.]
+ [8. 8. 8. 8.]]
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-6-1-4" class="outline-4">
+<h4 id="sec-6-1-4"><span class="section-number-4">6.1.4</span> placeholder</h4>
+<div class="outline-text-4" id="text-6-1-4">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> tensorflow <span style="color: #fff59d;">as</span> tf
+<span style="color: #fff59d;">import</span> numpy <span style="color: #fff59d;">as</span> np
+
+<span style="color: #ffcc80;">b</span> = tf.Variable(np.ones([4, 4]))
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">define placeholder</span>
+<span style="color: #ffcc80;">c</span> = tf.placeholder(dtype=tf.float64, shape=[4, 4])
+
+<span style="color: #ffcc80;">c_dot_b</span> = tf.matmul(c, b)
+
+<span style="color: #ffcc80;">init</span> = tf.global_variables_initializer()
+<span style="color: #ffcc80;">sess</span> = tf.Session()
+sess.run(init)
+
+<span style="color: #fff59d;">print</span>(sess.run(c_dot_b, feed_dict={c: np.ones([4, 4])}))
+</pre>
+</div>
+
+<p>
+output:<br  />
+</p>
+
+<pre class="example">
+[[4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-6-1-5" class="outline-4">
+<h4 id="sec-6-1-5"><span class="section-number-4">6.1.5</span> matrix functions</h4>
+<div class="outline-text-4" id="text-6-1-5">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> tensorflow <span style="color: #fff59d;">as</span> tf
+
+<span style="color: #ffcc80;">A_r</span> = [[1, 2], [-1, 1]]
+<span style="color: #ffcc80;">b_r</span> = [1, 1]
+
+<span style="color: #ffcc80;">A</span> = tf.placeholder(dtype=tf.float64, shape=[2, 2])
+<span style="color: #ffcc80;">b</span> = tf.placeholder(dtype=tf.float64, shape=[2])
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">usage of matrix functions</span>
+<span style="color: #ffcc80;">A_pow</span> = tf.<span style="color: #ff8A65;">pow</span>(A, 2)
+<span style="color: #ffcc80;">A_relu</span> = tf.nn.relu(A)
+<span style="color: #ffcc80;">A_inverse</span> = tf.matrix_inverse(A)
+<span style="color: #ffcc80;">A_T</span> = tf.transpose(A)
+<span style="color: #ffcc80;">b_diag</span> = tf.diag(b)
+<span style="color: #ffcc80;">I</span> = tf.eye(6)
+<span style="color: #ffcc80;">A_concat</span> = tf.concat([A, A], axis=0)
+
+<span style="color: #ffcc80;">init</span> = tf.global_variables_initializer()
+<span style="color: #ffcc80;">sess</span> = tf.Session()
+sess.run(init)
+
+<span style="color: #ffcc80;">lst</span> = sess.run([A_pow, A_relu, A_inverse, A_T, b_diag, I, A_concat], feed_dict={A: A_r, b: b_r})
+
+<span style="color: #fff59d;">for</span> _ <span style="color: #fff59d;">in</span> lst:
+<span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">print</span>(_)
+</pre>
+</div>
+<p>
+output:<br  />
+</p>
+
+<pre class="example">
+[[1. 4.]
+ [1. 1.]]
+[[1. 2.]
+ [0. 1.]]
+[[ 0.33333333 -0.66666667]
+ [ 0.33333333  0.33333333]]
+[[ 1. -1.]
+ [ 2.  1.]]
+[[1. 0.]
+ [0. 1.]]
+[[1. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 1.]]
+[[ 1.  2.]
+ [-1.  1.]
+ [ 1.  2.]
+ [-1.  1.]]
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6-1-6" class="outline-4">
+<h4 id="sec-6-1-6"><span class="section-number-4">6.1.6</span> scope</h4>
+<div class="outline-text-4" id="text-6-1-6">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">W</span> = tf.Variable(tf.zeros([4, 4]), name=<span style="color: #9ccc65;">"W"</span>)
+<span style="color: #fff59d;">print</span>(W.name)
+
+<span style="color: #fff59d;">with</span> tf.variable_scope(<span style="color: #9ccc65;">"first-nn-layer"</span>):
+<span style="background-color: #37474f;"> </span>   <span style="color: #ffcc80;">W2</span> = tf.Variable(tf.zeros([4, 4]), name=<span style="color: #9ccc65;">"W"</span>)
+<span style="color: #fff59d;">print</span>(W2.name)
+
+<span style="color: #fff59d;">with</span> tf.variable_scope(<span style="color: #9ccc65;">"second-nn-layer"</span>) <span style="color: #fff59d;">as</span> scope:
+<span style="background-color: #37474f;"> </span>   <span style="color: #ffcc80;">W3</span> = tf.get_variable(<span style="color: #9ccc65;">"W"</span>, [4, 4])
+<span style="background-color: #37474f;"> </span>   scope.reuse_variables()
+<span style="background-color: #37474f;"> </span>   <span style="color: #ffcc80;">W4</span> = tf.get_variable(<span style="color: #9ccc65;">"W"</span>, [4, 4])
+<span style="color: #fff59d;">print</span>(W4.name)
+</pre>
+</div>
+
+<p>
+output:<br  />
+</p>
+
+<pre class="example">
+W:0
+first-nn-layer/W:0
+second-nn-layer/W:0
+</pre>
+
+<p>
+如果将 W3 = tf.get_variable("W", [4, 4]) 注释掉，则 W4 = tf.get_variable("W", [4, 4]) 会报错。<br  />
+reuse会使用之前使用get_variable方法创建的同名字的变量，而不会自动创建变量。不存在则报错。<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> simple demo</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> tensorflow <span style="color: #fff59d;">as</span> tf
+<span style="color: #fff59d;">from</span> sklearn.datasets <span style="color: #fff59d;">import</span> load_iris
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">1. load data</span>
+<span style="color: #ffcc80;">iris</span> = load_iris()
+<span style="color: #ffcc80;">data</span> = iris.data  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">(150, 4)</span>
+<span style="color: #ffcc80;">target</span> = iris.target  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">(150,)</span>
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">2. placeholder to hold the data</span>
+<span style="color: #ffcc80;">X</span> = tf.placeholder(tf.float32, [<span style="color: #8bc34a;">None</span>, 4])  <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">None &#34920;&#31034;&#34892;&#19981;&#38480;</span>
+<span style="color: #ffcc80;">y</span> = tf.placeholder(tf.float32, [<span style="color: #8bc34a;">None</span>, 1])
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">3. layer</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">This layer implements the operation:</span>
+<span style="color: #b0bec5;">#   </span><span style="color: #b0bec5;">`outputs = activation(inputs * kernel + bias)`</span>
+<span style="color: #ffcc80;">net</span> = tf.layers.dense(X, 4, activation=tf.nn.relu)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">4. output</span>
+<span style="color: #ffcc80;">fx</span> = tf.layers.dense(net, 1)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">5. loss function</span>
+<span style="color: #ffcc80;">loss</span> = tf.reduce_mean(tf.square(fx - y))
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">6. train step</span>
+<span style="color: #ffcc80;">train_step</span> = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">7. init</span>
+<span style="color: #ffcc80;">sess</span> = tf.Session()
+<span style="color: #ffcc80;">init</span> = tf.global_variables_initializer()
+sess.run(init)
+
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">8. iteration</span>
+<span style="color: #fff59d;">for</span> itr <span style="color: #fff59d;">in</span> <span style="color: #ff8A65;">range</span>(10):
+<span style="background-color: #37474f;"> </span>   sess.run(train_step, feed_dict={X: data, y: target.reshape(-1, 1)})
+
+<span style="background-color: #37474f;"> </span>   <span style="color: #ffcc80;">y_predict</span> = sess.run(y, feed_dict={X: data[:3, :], y: target.reshape(-1, 1)[:3, :]})
+<span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">print</span>(<span style="color: #9ccc65;">'iteration: {} with predict: \n{}'</span>.<span style="color: #ff8A65;">format</span>(itr, y_predict))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> graph</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">graph</span> = tf.Graph()
+
+<span style="color: #fff59d;">with</span> graph.as_default():
+<span style="background-color: #37474f;"> </span>   <span style="color: #b0bec5;">#</span><span style="color: #b0bec5;">neutual network</span>
+<span style="color: #ffcc80;">writer</span> = tf.summary.Filewriter(<span style="color: #9ccc65;">'logdir'</span>,graph)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> save</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">saver</span> = tf.train.Saver()
+saver.save(sess,<span style="color: #9ccc65;">'model_path'</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> load</h3>
+<div class="outline-text-3" id="text-6-5">
+<div class="org-src-container">
+
+<pre class="src src-python">saver.restore(sess,<span style="color: #9ccc65;">'model_path'</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-6" class="outline-3">
+<h3 id="sec-6-6"><span class="section-number-3">6.6</span> optimizer</h3>
+<div class="outline-text-3" id="text-6-6">
+</div><div id="outline-container-sec-6-6-1" class="outline-4">
+<h4 id="sec-6-6-1"><span class="section-number-4">6.6.1</span> SGD</h4>
+</div>
+
+<div id="outline-container-sec-6-6-2" class="outline-4">
+<h4 id="sec-6-6-2"><span class="section-number-4">6.6.2</span> RMSprop</h4>
+</div>
+
+<div id="outline-container-sec-6-6-3" class="outline-4">
+<h4 id="sec-6-6-3"><span class="section-number-4">6.6.3</span> Adagrad</h4>
+</div>
+
+<div id="outline-container-sec-6-6-4" class="outline-4">
+<h4 id="sec-6-6-4"><span class="section-number-4">6.6.4</span> Adadelta</h4>
+</div>
+
+<div id="outline-container-sec-6-6-5" class="outline-4">
+<h4 id="sec-6-6-5"><span class="section-number-4">6.6.5</span> Adam</h4>
+</div>
+
+<div id="outline-container-sec-6-6-6" class="outline-4">
+<h4 id="sec-6-6-6"><span class="section-number-4">6.6.6</span> Adamax</h4>
+</div>
+
+<div id="outline-container-sec-6-6-7" class="outline-4">
+<h4 id="sec-6-6-7"><span class="section-number-4">6.6.7</span> Nadam</h4>
+</div>
+
+<div id="outline-container-sec-6-6-8" class="outline-4">
+<h4 id="sec-6-6-8"><span class="section-number-4">6.6.8</span> TFOptimizer</h4>
+</div>
+</div>
+<div id="outline-container-sec-6-7" class="outline-3">
+<h3 id="sec-6-7"><span class="section-number-3">6.7</span> loss</h3>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> OpenCV</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> 读取图片</h3>
+<div class="outline-text-3" id="text-7-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">image</span> = cv2.imread(path)
+</pre>
+</div>
+
+<p>
+The function determines the type of an image by the content, not by the file extension.<br  />
+In the case of color images, the decoded images will have the channels stored in <b>BGR</b> order.<br  />
+The shape is (height, width, channels).<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> 获取图片属性</h3>
+<div class="outline-text-3" id="text-7-2">
+</div><div id="outline-container-sec-7-2-1" class="outline-4">
+<h4 id="sec-7-2-1"><span class="section-number-4">7.2.1</span> 获取row, column, channels</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">print</span>(img.shape)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2-2" class="outline-4">
+<h4 id="sec-7-2-2"><span class="section-number-4">7.2.2</span> 获取pixels总数目</h4>
+<div class="outline-text-4" id="text-7-2-2">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">print</span>(img.size)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2-3" class="outline-4">
+<h4 id="sec-7-2-3"><span class="section-number-4">7.2.3</span> datatype</h4>
+<div class="outline-text-4" id="text-7-2-3">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">print</span>(img.dtype)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> ROI</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+ROI: region of image （图片的一块区域）<br  />
+ROI is obtained using Numpy indexing.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">import</span> cv2 <span style="color: #fff59d;">as</span> cv
+
+<span style="color: #ffcc80;">img</span> = cv.imread(<span style="color: #9ccc65;">'../data/dog.jpg'</span>)
+<span style="color: #fff59d;">print</span>(img.shape)
+<span style="color: #fff59d;">print</span>(img[100, 100])
+<span style="color: #ffcc80;">eye</span> = img[56:76, 55:85]
+<span style="color: #fff59d;">for</span> i <span style="color: #fff59d;">in</span> <span style="color: #ff8A65;">range</span>(0, 190, 30):
+<span style="background-color: #37474f;"> </span>   <span style="color: #ffcc80;">img</span>[i:i + 20, i:i + 30] = eye
+
+cv.imshow(<span style="color: #9ccc65;">'hack'</span>, img)
+cv.waitKey(0)
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="pics/cv-roi.png" alt="cv-roi.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4"><span class="section-number-3">7.4</span> 获取某个channel</h3>
+<div class="outline-text-3" id="text-7-4">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">b</span> = img[:, :, 0]
+<span style="color: #ffcc80;">img</span>[:, :, 2] = 0
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-5" class="outline-3">
+<h3 id="sec-7-5"><span class="section-number-3">7.5</span> 读取视频或摄像头</h3>
+<div class="outline-text-3" id="text-7-5">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">videoCapture = cv2.VideoCapture(path)</span>
+<span style="color: #ffcc80;">videoCapture</span> = cv2.VideoCapture(0)
+<span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">&#35835;&#24103;</span>
+<span style="color: #ffcc80;">success</span>, <span style="color: #ffcc80;">frame</span> = videoCapture.read()
+<span style="color: #fff59d;">while</span> success:
+<span style="background-color: #37474f;"> </span>   ....
+<span style="background-color: #37474f;"> </span>   cv2.imshow(<span style="color: #9ccc65;">'bala'</span>, frame)
+cv2.waitKey(40)
+<span style="color: #ffcc80;">success</span>, <span style="color: #ffcc80;">frame</span> = videoCapture.read()
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7-6" class="outline-3">
+<h3 id="sec-7-6"><span class="section-number-3">7.6</span> 颜色转化</h3>
+<div class="outline-text-3" id="text-7-6">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">img2gray</span> = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7-7" class="outline-3">
+<h3 id="sec-7-7"><span class="section-number-3">7.7</span> 写文字</h3>
+<div class="outline-text-3" id="text-7-7">
+<div class="org-src-container">
+
+<pre class="src src-python">cv2.putText(...)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-8" class="outline-3">
+<h3 id="sec-7-8"><span class="section-number-3">7.8</span> 画框</h3>
+<div class="outline-text-3" id="text-7-8">
+<div class="org-src-container">
+
+<pre class="src src-python">cv2.rectangle(...)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Keras</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano. It was developed with a focus on enabling fast experimentation. Being able to go from idea to result with the least possible delay is key to doing good research.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Sequential</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+template:<br  />
+</p>
+
+<ul class="org-ul">
+<li>construct<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">model</span> = Sequential()
+model.add(...)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>compilation<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python">model.<span style="color: #ff8A65;">compile</span>(...)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>train<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python">model.fit(data, label, ...)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>plot<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">history</span> = model.fit(...)
+plt.plot(history.history[<span style="color: #9ccc65;">'acc'</span>]) <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">matplotlib.pyplot</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>evalueate<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python">model.evaluate(...)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>save (can also be saved by specifying aguments in model.fit(&#x2026;))<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python">mode.save(...) <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">save model and weights</span>
+model.save_weights(...) <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">save weight only</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>predict<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python">model.predict(...)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Functional API</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+<a href="https://keras.io/getting-started/functional-api-guide/">https://keras.io/getting-started/functional-api-guide/</a><br  />
+</p>
+
+<ul class="org-ul">
+<li>A layer instance is callable (on a tensor), and it returns a tensor<br  />
+</li>
+<li>Input tensor(s) and output tensor(s) can then be used to define a <b>Model</b><br  />
+</li>
+<li>Such a model can be trained just like Keras <b>Sequential</b> models.<br  />
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> dlib</h2>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> skikit-image</h2>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> imutils</h2>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> mxnet</h2>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> h5py</h2>
+</div>
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> pickle</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2019-12-09 Mon 15:32</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

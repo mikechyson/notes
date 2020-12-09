@@ -1,0 +1,5664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>python3</title>
+<!-- 2019-10-24 Thu 17:22 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Hack Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">python3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Rapid Introduction to Procedural Programming</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Creating and Running Python Programs</a></li>
+<li><a href="#sec-1-2">1.2. Python's "Beautiful Heart"</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. Data Types</a></li>
+<li><a href="#sec-1-2-2">1.2.2. Object References</a></li>
+<li><a href="#sec-1-2-3">1.2.3. Collection Data Types</a></li>
+<li><a href="#sec-1-2-4">1.2.4. Logical Operations</a></li>
+<li><a href="#sec-1-2-5">1.2.5. Control Flow Statements</a></li>
+<li><a href="#sec-1-2-6">1.2.6. Arithmetic Operators</a></li>
+<li><a href="#sec-1-2-7">1.2.7. Input/Output</a></li>
+<li><a href="#sec-1-2-8">1.2.8. Creating and Calling Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Data Types</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Identifiers and Keywords</a></li>
+<li><a href="#sec-2-2">2.2. Integral Types</a></li>
+<li><a href="#sec-2-3">2.3. Floating-Point Types</a>
+<ul>
+<li><a href="#sec-2-3-1">2.3.1. Floating-Point Numbers</a></li>
+<li><a href="#sec-2-3-2">2.3.2. Complex Numbers</a></li>
+<li><a href="#sec-2-3-3">2.3.3. Decimal Numbers</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-4">2.4. Strings</a>
+<ul>
+<li><a href="#sec-2-4-1">2.4.1. Comparing Strings</a></li>
+<li><a href="#sec-2-4-2">2.4.2. Slicing and Striding Strings</a></li>
+<li><a href="#sec-2-4-3">2.4.3. String Operators and Methods</a></li>
+<li><a href="#sec-2-4-4">2.4.4. String Formatting with the str.format() Method</a></li>
+<li><a href="#sec-2-4-5">2.4.5. Field Names</a></li>
+<li><a href="#sec-2-4-6">2.4.6. Conversions</a></li>
+<li><a href="#sec-2-4-7">2.4.7. Format Specifications</a></li>
+<li><a href="#sec-2-4-8">2.4.8. Characte||</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Collection Data Types</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Sequence Types</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. Tuples</a></li>
+<li><a href="#sec-3-1-2">3.1.2. Named Tuples</a></li>
+<li><a href="#sec-3-1-3">3.1.3. Lists</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2. Set Types</a>
+<ul>
+<li><a href="#sec-3-2-1">3.2.1. Sets</a></li>
+<li><a href="#sec-3-2-2">3.2.2. Set Comprehensions</a></li>
+<li><a href="#sec-3-2-3">3.2.3. Frozen Sets</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-3">3.3. Mapping Types</a>
+<ul>
+<li><a href="#sec-3-3-1">3.3.1. Dictionaries</a></li>
+<li><a href="#sec-3-3-2">3.3.2. Dictionary Comprehension</a></li>
+<li><a href="#sec-3-3-3">3.3.3. Default Dictionaries</a></li>
+<li><a href="#sec-3-3-4">3.3.4. Ordered Dictionaries</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-4">3.4. Interating and Copying Collections</a>
+<ul>
+<li><a href="#sec-3-4-1">3.4.1. Iterators and Iterable Operations and Functions</a></li>
+<li><a href="#sec-3-4-2">3.4.2. Copying Collections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Control Structures and Functions</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Control Structures</a>
+<ul>
+<li><a href="#sec-4-1-1">4.1.1. Conditional Branching</a></li>
+<li><a href="#sec-4-1-2">4.1.2. Looping</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-2">4.2. Exception Handling</a>
+<ul>
+<li><a href="#sec-4-2-1">4.2.1. Catching and Raising Exceptions</a></li>
+<li><a href="#sec-4-2-2">4.2.2. Custrom Exceptions</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3">4.3. Custom Functions</a>
+<ul>
+<li><a href="#sec-4-3-1">4.3.1. Names and Docstrings</a></li>
+<li><a href="#sec-4-3-2">4.3.2. Argument and Paramenter Unpacking</a></li>
+<li><a href="#sec-4-3-3">4.3.3. Accessing Variable in the Global Scope</a></li>
+<li><a href="#sec-4-3-4">4.3.4. Lambda Functions</a></li>
+<li><a href="#sec-4-3-5">4.3.5. Assertions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Modules</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Modules and Packages</a>
+<ul>
+<li><a href="#sec-5-1-1">5.1.1. Packages</a></li>
+<li><a href="#sec-5-1-2">5.1.2. Custom Modules</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-2">5.2. Overiew of Python's Standard Library</a>
+<ul>
+<li><a href="#sec-5-2-1">5.2.1. String Handling</a></li>
+<li><a href="#sec-5-2-2">5.2.2. Command-Line Programming</a></li>
+<li><a href="#sec-5-2-3">5.2.3. Mathematics and Numbers</a></li>
+<li><a href="#sec-5-2-4">5.2.4. Times and Dates</a></li>
+<li><a href="#sec-5-2-5">5.2.5. Algorithms and Collection Data Types</a></li>
+<li><a href="#sec-5-2-6">5.2.6. File Formats, Encodings, and Data Persistence</a></li>
+<li><a href="#sec-5-2-7">5.2.7. File, Directory, and Process Handling</a></li>
+<li><a href="#sec-5-2-8">5.2.8. Networking and Internet Programming</a></li>
+<li><a href="#sec-5-2-9">5.2.9. XML</a></li>
+<li><a href="#sec-5-2-10">5.2.10. Other Modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Object-Oriented Programming</a>
+<ul>
+<li><a href="#sec-6-1">6.1. Object-Oriented Concepts and Terminology</a></li>
+<li><a href="#sec-6-2">6.2. Custom Classes</a>
+<ul>
+<li><a href="#sec-6-2-1">6.2.1. Attributes and Methods</a></li>
+<li><a href="#sec-6-2-2">6.2.2. Inheritance and Polymorphism</a></li>
+<li><a href="#sec-6-2-3">6.2.3. Using Properties to Control Attribute Access</a></li>
+<li><a href="#sec-6-2-4">6.2.4. Creating Complete Fully Integrated Data Types</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-3">6.3. <span class="todo TODO">TODO</span> Custom Collection Classes</a>
+<ul>
+<li><a href="#sec-6-3-1">6.3.1. Creating Classes That Aggregate Collections</a></li>
+<li><a href="#sec-6-3-2">6.3.2. Creating Collection Classes Using Aggregation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-7">7. File Handing</a></li>
+<li><a href="#sec-8">8. Advanced Programming Techniques</a>
+<ul>
+<li><a href="#sec-8-1">8.1. Further Procedural Programming</a>
+<ul>
+<li><a href="#sec-8-1-1">8.1.1. Branching Using Dictionaries</a></li>
+<li><a href="#sec-8-1-2">8.1.2. Generator Expressions and Functions</a></li>
+<li><a href="#sec-8-1-3">8.1.3. Dynamic Code Execution and Dynamic Imports</a></li>
+<li><a href="#sec-8-1-4">8.1.4. Local and Recursive Functions</a></li>
+<li><a href="#sec-8-1-5">8.1.5. Functions and Method Decorators</a></li>
+<li><a href="#sec-8-1-6">8.1.6. Function Annotations</a></li>
+</ul>
+</li>
+<li><a href="#sec-8-2">8.2. Further Ojbect-Oriented Programming</a>
+<ul>
+<li><a href="#sec-8-2-1">8.2.1. Functors</a></li>
+<li><a href="#sec-8-2-2">8.2.2. Context Managers</a></li>
+<li><a href="#sec-8-2-3">8.2.3. Descriptor</a></li>
+<li><a href="#sec-8-2-4">8.2.4. Class Decorators</a></li>
+<li><a href="#sec-8-2-5">8.2.5. Abstract Base Classes</a></li>
+<li><a href="#sec-8-2-6">8.2.6. Multiple Inheritance</a></li>
+<li><a href="#sec-8-2-7">8.2.7. Metaclasses</a></li>
+</ul>
+</li>
+<li><a href="#sec-8-3">8.3. Functional-Style Programming</a>
+<ul>
+<li><a href="#sec-8-3-1">8.3.1. Partial Function Application</a></li>
+<li><a href="#sec-8-3-2">8.3.2. Coroutines (co routines)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-9">9. Debugging, Testing, and Profiling</a>
+<ul>
+<li><a href="#sec-9-1">9.1. Debugging</a>
+<ul>
+<li><a href="#sec-9-1-1">9.1.1. scientific debugging</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-2">9.2. Unit Testing</a>
+<ul>
+<li><a href="#sec-9-2-1">9.2.1. doctest (standard library)</a></li>
+<li><a href="#sec-9-2-2">9.2.2. <span class="done DONE">DONE</span> unittest (standard library)</a></li>
+<li><a href="#sec-9-2-3">9.2.3. <span class="done DONE">DONE</span> nose (third-party library)</a></li>
+<li><a href="#sec-9-2-4">9.2.4. py.test (third-party library)</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-3">9.3. Profiling</a></li>
+<li><a href="#sec-9-4">9.4. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. Processes and Threading</a></li>
+<li><a href="#sec-11">11. Networking</a></li>
+<li><a href="#sec-12">12. Database Programming</a></li>
+<li><a href="#sec-13">13. Regular Expressions</a></li>
+<li><a href="#sec-14">14. Introduction to Parsing</a></li>
+<li><a href="#sec-15">15. Introduction to GUI Programming</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Rapid Introduction to Procedural Programming</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Creating and Running Python Programs</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Be default, Python files are assumed to use the UTF-8 character encoding.<br  />
+</p>
+
+<p>
+Python files normally have an extension of .py.<br  />
+Python GUI (Graphical User Interface) programs usually have an extension of .pyw.<br  />
+</p>
+
+<p>
+Comments begin with a # and continure to the end of the line.<br  />
+Python ignores blank lines, but they are often useful to humans to break up large blocks of code to make them easier to read.<br  />
+</p>
+
+<p>
+Each statement encountered in a .py file is executed in turn, starting with the first one and progressing line by line.<br  />
+This is different from C++ and Java, which have a particular function or method with a special name where they start from.<br  />
+</p>
+
+
+<p>
+Python programs are executed by the Python interpreter.<br  />
+</p>
+
+<p>
+On Unix, when a program is invoked in the console, the file's first two bytes are read.<br  />
+If these bytes are the ASCII charaters #!,<br  />
+the shell assumes that the file is to be executed by an interpreter and<br  />
+that the file's first line specifies which interpreter to use.<br  />
+This line is called the shebang (shell execute) line, and if present must be the first line in the file.<br  />
+</p>
+
+<p>
+The shebang line is commonly written in one of two forms:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">#!/usr/bin/python3
+#!/usr/bin/env python3
+</pre>
+</div>
+
+<p>
+first form: the specified interpreter is used.<br  />
+second form: the first python3 interpreter found in the shell's current environment is used.<br  />
+</p>
+
+<p>
+The first form may be necessary for Python programs that are to be run by a web server.<br  />
+The second form is more versatile because it allows for the possibility that the Python3 interpreter is not located in /usr/bin.<br  />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Python's "Beautiful Heart"</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Data Types</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+int<br  />
+str<br  />
+</p>
+
+<p>
+Python's integers is limited only by machine memory, not by a fixed number of bytes.<br  />
+</p>
+
+<p>
+Traditionally, Python Shells use &gt;&gt;&gt; as their prompt.<br  />
+</p>
+
+<p>
+In Python a character is simply a string of length 1.<br  />
+</p>
+
+<p>
+To convert a data item from one type to another we can use:<br  />
+dataType(item)<br  />
+</p>
+
+<p>
+int and str are immutable.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Object References</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Python doesn't have variables as such, but instead has object references.<br  />
+</p>
+
+<p>
+syntax:<br  />
+objectReference = value<br  />
+</p>
+
+<p>
+The = operator binds an object reference to an object in memory.<br  />
+</p>
+
+<p>
+The names used for object references (called identifiers) have a few restrictions:<br  />
+</p>
+<ol class="org-ol">
+<li>not same as Python's keywords<br  />
+</li>
+<li>must start with a letter or an underscore and be folowed by zero or more nonwhitespace letter, underscore, or digit characters.<br  />
+</li>
+<li>no length limit.<br  />
+</li>
+</ol>
+
+<p>
+Python uses dynamic typing, which means that an object reference can be rebound to refer to a different object at any time.<br  />
+</p>
+
+<p>
+the type() function returns the data type of the data item.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Collection Data Types</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Python tuples and lists can be used to hold any number of data items of any data types.<br  />
+</p>
+
+<p>
+tuple is immutable<br  />
+list is mutable<br  />
+</p>
+
+<p>
+Tuples are created using commas (,).<br  />
+An empty tuple is created by using empty parentheses, ().<br  />
+</p>
+
+<p>
+The comma is also used to seperate arguments in function calls,<br  />
+so if we want to pass a tuple literal as an argument we must enclose it in parentheses to avoid confusion.<br  />
+</p>
+
+<p>
+One way to creat a list is to use square brackets ([]).<br  />
+An empty list is created by using empty brackets, [].<br  />
+</p>
+
+<p>
+lists and tuples don't store data items at all, but rather object references.<br  />
+</p>
+
+<p>
+collection data types are objects.<br  />
+</p>
+
+<p>
+In procedural programming we call functions and often pass in data items as arguments.<br  />
+&gt;&gt;&gt; len(("one",))   # 1<br  />
+</p>
+
+
+<p>
+All Python data items are objects (also called instances) of a particular data type (alse called a class).<br  />
+</p>
+
+<p>
+Python has conventional functions called like this:<br  />
+functionName(arguments);<br  />
+and methods which are called like this:<br  />
+objectName.methodName(arguments).<br  />
+</p>
+
+<p>
+The dot ("access attribute") operator is used to access an object's attributes.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Logical Operations</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+Python provides four sets of logical operations.<br  />
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-1-2-4-1" name="sec-1-2-4-1"></a>The Identity Operator (is)<br  /><div class="outline-text-5" id="text-1-2-4-1">
+<p>
+identity comparsion is very fast:<br  />
+needs to compare only the memory addresses of the objects &#x2013; the same address means the same object.<br  />
+</p>
+
+<p>
+The purpose of the identity operator is to see whether two objects references refer to the same object, or to see whether an object is None.<br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-2-4-2" name="sec-1-2-4-2"></a>Comparison Operators<br  /><div class="outline-text-5" id="text-1-2-4-2">
+<p>
+&lt; less than;<br  />
+&lt;= less than or equal to;<br  />
+<code>= equal to;
+!</code> not equal to;<br  />
+&gt;= greater than or equal to<br  />
+&gt; greater than.<br  />
+</p>
+
+<p>
+These operators compare object values.<br  />
+</p>
+
+<p>
+Python's comparison operators can be chained:<br  />
+&gt;&gt;&gt; a=9<br  />
+&gt;&gt;&gt; 0 &lt;= a &lt;= 10      #True<br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-2-4-3" name="sec-1-2-4-3"></a>The Memebership Operator (in)<br  /><div class="outline-text-5" id="text-1-2-4-3">
+<p>
+For data types that are sequences or collections, we can test for membership using the in operator,<br  />
+and for nonmembership using the not in operator.<br  />
+</p>
+</div>
+</li>
+
+
+<li><a id="sec-1-2-4-4" name="sec-1-2-4-4"></a>Logical Operators (or, and, not)<br  /><div class="outline-text-5" id="text-1-2-4-4">
+<p>
+Both "and" and "or" use short-circuit logic and return the operand that determined the result.<br  />
+</p>
+
+<p>
+The not unary operator evaluates its arguments in a Boolean context and always returns a Boolean result.<br  />
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> Control Flow Statements</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+The flow of control can be diverted by:<br  />
+a function or method call,<br  />
+a control structure,<br  />
+an exception<br  />
+</p>
+
+<p>
+A Boolean expression is anything that can be evaluated to produce a Boolean value (Ture or False).<br  />
+</p>
+
+<p>
+Such an expression evaluates to False if it is<br  />
+the predefined constant False,<br  />
+the special object None,<br  />
+an empty sequence or collection,<br  />
+or a numberic data item of value 0,<br  />
+anything else is considered to be True.<br  />
+</p>
+
+<p>
+a block of code, that is, a sequence of one or more statements, is called a suite.<br  />
+</p>
+
+<p>
+Because some of Python's syntax requires that a suite be present,<br  />
+Python provides the keyword "pass" which is a statement that does nothing and that can be used<br  />
+where a suite is required but where no processing is necessary.<br  />
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-1-2-5-1" name="sec-1-2-5-1"></a>The if Statement<br  /><div class="outline-text-5" id="text-1-2-5-1">
+<p>
+the general syntax:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">if boolean_expression1:
+     suite1
+elif boolean_expression2:
+     suite2
+...
+elif boolean_expressionN:
+     suiteN
+else:
+     else_suite
+</pre>
+</div>
+
+<p>
+Colons are used with "else", "elif", and essentially in any other place where a suite is to follow.<br  />
+</p>
+
+<p>
+Python uses indentation to signify its block stuctures.<br  />
+</p>
+
+<p>
+The Python style guidelines recommented four spaces per level of indentation, and only spaces (no tabs)<br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-2-5-2" name="sec-1-2-5-2"></a>The while Statement<br  /><div class="outline-text-5" id="text-1-2-5-2">
+<p>
+syntax:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">while boolean_expression:
+      suite
+</pre>
+</div>
+<p>
+support break and continue<br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-2-5-3" name="sec-1-2-5-3"></a>The for &#x2026; in statement<br  /><div class="outline-text-5" id="text-1-2-5-3">
+<p>
+syntax:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">for variable in iterable:
+    suite
+</pre>
+</div>
+<p>
+support break and continue<br  />
+</p>
+
+<p>
+An iterable is any data type that can be iterated over, and including strings, lists, tuples, and Python's other collection data type.<br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-2-5-4" name="sec-1-2-5-4"></a>Basic Exception Handling<br  /><div class="outline-text-5" id="text-1-2-5-4">
+<p>
+An exception is an object like any other Python object, and when converted to a string, the exception produces a message text.<br  />
+</p>
+
+<p>
+syntax:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">try:
+    try_suite
+except exception1 as variable1:
+    exception_suite1
+...
+except exceptionN as variableN:
+    exception_suiteN
+</pre>
+</div>
+<p>
+We prefer to group the exceptions together at the end to keep the main processing as uncluttered as possible.<br  />
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> Arithmetic Operators</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<p>
+binary operators for the four basic mathematical operations:<br  />
++,-,*,/<br  />
+</p>
+
+<p>
+Many Python data types can be used with augmented assignment operators such as += and *=.<br  />
+</p>
+
+<ul class="org-ul">
+<li>can be used both as a unary operator (negation) and as a binary operator (subtraction).<br  />
+</li>
+</ul>
+
+<p>
+The devision operator produces a floating-point value, not an integer.<br  />
+</p>
+
+<p>
+If we need an integer result, we can use the truncating division operator //.<br  />
+</p>
+
+<p>
+When an augmented assignment operator is used on an immutable object,<br  />
+the operation is performed, and an object holding the result is created;<br  />
+and then the target object reference is re-bound to refer to the result object rather than the object it referred to.<br  />
+</p>
+
+
+<p>
+Since Python's syntax cleverly hides the distinction between mutable and immutable data types, why does it need both kinds at all?<br  />
+The reason are mostly about performance.<br  />
+Immutable types are potentially a lot more efficient to implement (since they never change) than mutable types.<br  />
+On the other hand, mutable types can be more convenient to use.<br  />
+</p>
+
+<p>
+The right-hand operand for the list += operator must be iterable.<br  />
+seeds += <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup><br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> Input/Output</h4>
+<div class="outline-text-4" id="text-1-2-7">
+<p>
+console input: input()<br  />
+console output: print()<br  />
+</p>
+
+<p>
+file input with redirection: &lt;<br  />
+file output with redirection: &gt;<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2-8" class="outline-4">
+<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> Creating and Calling Functions</h4>
+<div class="outline-text-4" id="text-1-2-8">
+<p>
+general syntax:<br  />
+</p>
+
+<p>
+def functionName(arguments):<br  />
+    suite<br  />
+</p>
+
+
+<p>
+Every Python function has a return value;<br  />
+this defaults to None unless we return from the function using the syntax return value, in which case value is returned.<br  />
+</p>
+
+<p>
+def is a statement that works in a similar way to the assignment operator (=).<br  />
+When def is executed a function object is created and<br  />
+an object reference with the specified name is created and set to refer to the function object.<br  />
+(in lisp, all are data.)<br  />
+</p>
+
+<p>
+function's function:<br  />
+</p>
+<ol class="org-ol">
+<li>reduce repeat<br  />
+</li>
+<li>abstraction<br  />
+</li>
+<li>devide and conquer<br  />
+</li>
+</ol>
+
+<p>
+A Python module is just a .py file that contains Python code.<br  />
+</p>
+
+<p>
+To access the functionality in a module we must import it.<br  />
+For example:<br  />
+import sys<br  />
+</p>
+
+<p>
+To import a module we use the import statement followed by the name of the .py file, but omitting the extension.<br  />
+</p>
+
+
+<p>
+In general, the syntax for using a function from a module is:<br  />
+moduleName.functionName(arguments)<br  />
+</p>
+
+<p>
+The standard modules all have lowercase names, so some programmers to title-case names for their own modules to keep them distinct.<br  />
+</p>
+
+<p>
+It is conventional to put the import statements at the beginning of .py files, after the shebang line, and after the module's documentation.<br  />
+</p>
+
+<p>
+We recommend importing standard library modules first, then third-party library modules, and finally your own modules.<br  />
+<span class="timestamp-wrapper"><span class="timestamp">[2019-12-17 20:52:04]</span></span><br  />
+<span class="timestamp-wrapper"><span class="timestamp">[2019-01-17 12:58:55]</span></span><br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Data Types</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The only difference between built-in data types and library data types is that in the latter case, we must first import the relevant module.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Identifiers and Keywords</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+identifier: object reference name.<br  />
+</p>
+
+<p>
+a identifier is a nonempty sequence of characters of any length that consists of a "start character" and zero or more "continuation characters".<br  />
+</p>
+
+<p>
+rules:<br  />
+</p>
+<ol class="org-ol">
+<li>the start character can be anything that Unicode considers to be a letter, including the ASCII letters("a",&#x2026;,"z","A",&#x2026;,"Z"), the underscore("_"), as well as the letters from most non-English languages. Each continuation character can be any character that permitted as a start character, or pretty well any non-whitespace character, including any character that Unicode considers to be a digit, such as ("0",&#x2026;"9") or the Catalan character.<br  />
+</li>
+<li>no identifiers can have the same names as one of Python's keywords.<br  />
+</li>
+</ol>
+
+<p>
+conventions:<br  />
+</p>
+<ol class="org-ol">
+<li>don't use the names of any of Python's predefined identifiers for your own identifiers.<br  />
+</li>
+<li>Names that begin and end with two understores(such as <span class="underline"><span class="underline">lt</span></span>) should not be used.<br  />
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Integral Types</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Python provides two built-in integeral types, int and bool.<br  />
+Both integers and Booleans are immutable.<br  />
+</p>
+
+<p>
+All binary numeric operators (+,-,*,/,//,%, and **) have augmented assignment versions where x op = 6 is logically equivalent to x = x op y.<br  />
+</p>
+
+<p>
+Objects can be created by assigning literals to variables, for example, x = 17<br  />
+or by calling the relevant data type as a function, for example, x= int(17).<br  />
+</p>
+
+<p>
+When an object is created using its data type there are three possible use cases:<br  />
+</p>
+<dl class="org-dl">
+<dt> with no argument </dt><dd>an object with a default value is created.<br  />
+</dd>
+<dt> with a single argument </dt><dd>If an argument of the same type, a new object which is a shallow copy of the orignal object is created.<br  />
+If an argument of a different type is given, a conversion is attamped.<br  />
+</dd>
+<dt> two or more arguments </dt><dd>not all types support this and for those that do the argument types and their meanings vary.<br  />
+</dd>
+</dl>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Floating-Point Types</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Python provides three kinds of floating-point values: the built-in float and complex types and decimal.Decimal from the standard library.<br  />
+All three are immutable.<br  />
+</p>
+
+<p>
+When Python outputs a floating-poing number, in most cases it uses David Gay's algorithm.<br  />
+If we need really high precision there are two appoaches:<br  />
+</p>
+<ol class="org-ol">
+<li>use int<br  />
+</li>
+<li>use decimal.Decimal<br  />
+</li>
+</ol>
+
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2019-01-18 13:23:23]</span></span><br  />
+</p>
+</div>
+
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> Floating-Point Numbers</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+math module<br  />
+like math.ceil(x)<br  />
+</p>
+
+<p>
+sys.float_info.epsilon is effectively the smallest differece that the machine can distinguish between two floating-point numbers.<br  />
+help(sys.float_info) will print some information about the sys.float_info object.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> Complex Numbers</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+The complext data type is an immutable type that holds a pair of floats, one representing the real part and the other the imaginary part of a complex number.<br  />
+</p>
+
+<p>
+conjugate() will changes the sign of the imaginary part.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3"><span class="section-number-4">2.3.3</span> Decimal Numbers</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+The decimal module provides immutable Decimal numbers that are as accurate as we secify.<br  />
+</p>
+
+<p>
+Decimal numbers are created suing the decimal.Decimal() function.<br  />
+This function can take an integer or a string argument - but not a float.<br  />
+You can convert floats to decimals using the decimal.Decimal.from_float() function.<br  />
+</p>
+
+
+<p>
+Number of type decimal.Decimal work within the scope of a context;<br  />
+The context is a collection of setttings that affect how decimal.Decimals behave.<br  />
+The context specifies the precision that should be used, the rounding technique, and the some other details.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; print(decimal.Decimal(23) / decimal.Decimal("1.05"))
+21.90476190476190476190476190
+&gt;&gt;&gt; decimal.Decimal(23) / decimal.Decimal("1.05")
+Decimal('21.90476190476190476190476190')
+</pre>
+</div>
+
+<p>
+When we call print() on the result the bare number is printed - this output is in <code>string form</code>.<br  />
+If we simply enter the expression we get a decimal.Decimal output - this output is in <code>representational form</code>.<br  />
+All Python objects have two output forms.<br  />
+String form is designed to be human-readable.<br  />
+Representational form is designed to produce output that if fed to a Python interpreter would reproduce the represented object.<br  />
+</p>
+
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2019-01-18 15:15:47]</span></span><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Strings</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Strings are represented by the immutable str data type which holds a sequence of Unicode characters.<br  />
+</p>
+
+<p>
+String literals are created using quotes.<br  />
+triple quoted string: begins and ends with three quote characters.<br  />
+</p>
+
+<p>
+Python uses newlines as its statment terminator, except inside parentheses, squre brackets, braces, or triple quoted strings.<br  />
+</p>
+
+<p>
+In some situations, we need to create strings with lots of literal backslashes.<br  />
+The solution is raw strings.<br  />
+raw strings: quotes or triple quoted strings whose first quote is preceded by the letter r.<br  />
+Inside raw strings all characters are taken to be literals, so no escaping is necessary.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1"><span class="section-number-4">2.4.1</span> Comparing Strings</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+Strings support the usual comparison operators &lt;, &lt;=, <code>=, &gt; and &gt;</code>.<br  />
+These operators compare strings byte by byte in memory.<br  />
+</p>
+
+<p>
+Two problems arise when performing comparison.<br  />
+</p>
+<ol class="org-ol">
+<li>some Unicode characters can be represented by two or more different type sequences.<br  />
+<ul class="org-ul">
+<li>import unicodedata<br  />
+</li>
+<li>unicodedata.normalize()<br  />
+</li>
+</ul>
+</li>
+<li>the sorting of some characters is language-specific.<br  />
+<ul class="org-ul">
+<li>Python does not make guesses.<br  />
+</li>
+<li>it compares using the strings' inmemory byte representation.<br  />
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4-2" class="outline-4">
+<h4 id="sec-2-4-2"><span class="section-number-4">2.4.2</span> Slicing and Striding Strings</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+Individual items is a sequence can be extracted using the item access operator([]).<br  />
+So can the individual characters in a string.<br  />
+</p>
+
+<p>
+index position:<br  />
+begin at 0 from left to right<br  />
+begin at -1 from right to left<br  />
+</p>
+
+<p>
+The slice operator has three syntaxes:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">seq[start]
+seq[start:end]
+seq[start:end:step]
+</pre>
+</div>
+
+<p>
+Using + to concatenate and += to append is not particularly effcient when many strings are involved.<br  />
+For joining lots of strings it is usually best to use the str.join() method.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4-3" class="outline-4">
+<h4 id="sec-2-4-3"><span class="section-number-4">2.4.3</span> String Operators and Methods</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<p>
+Since strings are immutable sequences, all the functionality that can be used with immutable sequences can be used with strings.<br  />
+(in, +, +=, *, *=)<br  />
+</p>
+
+<p>
+To find the position of one string inside another:<br  />
+</p>
+<ol class="org-ol">
+<li>str.index()<br  />
+<ul class="org-ul">
+<li>returns the index position of the substring<br  />
+</li>
+<li>or ValueError exception on failure<br  />
+</li>
+</ul>
+</li>
+<li>str.find()<br  />
+<ul class="org-ul">
+<li>returns the index position of the substring<br  />
+</li>
+<li>or -1 on failure<br  />
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-4-4" class="outline-4">
+<h4 id="sec-2-4-4"><span class="section-number-4">2.4.4</span> String Formatting with the str.format() Method</h4>
+<div class="outline-text-4" id="text-2-4-4">
+<p>
+The str.format() method returns a new string with the replacement fields in its string replaced with its arguments suitably formatted.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; "The novel '{0}' was published in {1}".format("Hard Times", 1854)
+"The novel 'Hard Times' was published in 1854"
+</pre>
+</div>
+
+<p>
+Each replacement field is identified by a field name in braces.<br  />
+If the field name is a simple integer, it is taken to be the index position of one of the arguments passed to str.format().<br  />
+</p>
+
+<p>
+If we need to include braces inside format strings, we can do so by doubling them up.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; "{{{0}}} {1} ;-}}".format("I'm in braces", "I'm not")
+"{I'm in braces} I'm not ;-}"
+</pre>
+</div>
+
+
+<p>
+Keep in mind that any example that uses a string literal could use a string variable in exactly the same way.<br  />
+</p>
+
+
+<p>
+The replacement field can have any of the following general syntaxes:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">{field_name}
+{field_name!conversion}
+{field_name:format_specification}
+{field_name!conversion:format_specification}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4-5" class="outline-4">
+<h4 id="sec-2-4-5"><span class="section-number-4">2.4.5</span> Field Names</h4>
+<div class="outline-text-4" id="text-2-4-5">
+<p>
+A field name can be either an integer corresponding to one of the str.format() method's arguments,<br  />
+or the name of the method's keyword arguments.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; "The {who} was {0} last week".format(12, who='boy')
+'The boy was 12 last week'
+</pre>
+</div>
+
+<p>
+Note: in an argument list, keyword arguments always come after positional arguments.<br  />
+</p>
+
+
+<p>
+access operation (index, key, attribute):<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; "The {who[0]} was {0[0]} last week".format([12,13], who=['boy','girl'])
+'The boy was 12 last week'
+
+&gt;&gt;&gt; d = dict(animal="elephant", weight=12000)
+&gt;&gt;&gt; "The {0[animal]} weighs {0[weight]}kg".format(d)
+'The elephant weighs 12000kg'
+
+&gt;&gt;&gt; "math.pi=={0.pi} sys.maxunicode=={1.maxunicode}".format(math, sys)
+'math.pi==3.14159265359 sys.maxunicode==65535'
+</pre>
+</div>
+
+<p>
+Usefull examples:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; element = "Silver"
+&gt;&gt;&gt; number = 47
+&gt;&gt;&gt; "Element {number} is {element}".format(**locals())
+'Element 47 is Silver'
+</pre>
+</div>
+
+<p>
+The local variables that are currently in scope are available from the built-in<br  />
+locals() function. This function returns a dictionary whose keys are local<br  />
+variable names and whose values are references to the variables’ values.<br  />
+</p>
+
+<p>
+The mapping unpacking operator is ** and it can be applied to a<br  />
+mapping (such as a dictionary) to produce a key–value list suitable for passing<br  />
+to a function.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; d = dict(animal="elephant", weight=12000)
+&gt;&gt;&gt; "The {animal} weighs {weight}kg".format(**d)
+'The elephant weighs 12000kg'
+</pre>
+</div>
+
+<p>
+Note that if we want to pass more than one argument to str.format() , only the last one can use mapping unpacking.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-4-6" class="outline-4">
+<h4 id="sec-2-4-6"><span class="section-number-4">2.4.6</span> Conversions</h4>
+<div class="outline-text-4" id="text-2-4-6">
+<p>
+Not all object can provide a reproducing representation, in which case they provide a string enclosed in angle brackets.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; sys
+&lt;module 'sys' (built-in)&gt;
+</pre>
+</div>
+
+
+<p>
+If a data type doesn't have a string form and a string is required, Python will use the representational form.<br  />
+</p>
+
+<p>
+Python’s built-in data types know about str.format() , and when passed as an<br  />
+argument to this method they return a suitable string to display themselves.<br  />
+</p>
+
+<p>
+It is possible to override the data type’s<br  />
+normal behavior and force it to provide either its string or its representational<br  />
+form. This is done by adding a conversion specifier to the field. Currently there<br  />
+are three such specifiers: s to force string form, r to force representational form,<br  />
+and a to force representational form but only using ASCII characters.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; "{0} {0!s} {0!r} {0!a}".format(decimal.Decimal("93.4"))
+"93.4 93.4 Decimal('93.4') Decimal('93.4')"
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-4-7" class="outline-4">
+<h4 id="sec-2-4-7"><span class="section-number-4">2.4.7</span> Format Specifications</h4>
+<div class="outline-text-4" id="text-2-4-7">
+<!-- This HTML table template is generated by emacs 25.2.2 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      :&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      fill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      align&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      sign&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      width&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      .precision&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Any&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      character<br />
+      except&nbsp;}&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      <&nbsp;left&nbsp;>&nbsp;right&nbsp;^&nbsp;center<br />
+      =&nbsp;pad&nbsp;between&nbsp;sign&nbsp;and&nbsp;<br />
+      digits&nbsp;for&nbsp;numbers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      +&nbsp;force&nbsp;sign;<br />
+      -&nbsp;sign&nbsp;if&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      needed;&nbsp;"&nbsp;"&nbsp;&nbsp;<br />
+      space&nbsp;or&nbsp;-&nbsp;as<br />
+      appropriate&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      prefix<br />
+      inits&nbsp;<br />
+      with&nbsp;&nbsp;<br />
+      0b,&nbsp;&nbsp;&nbsp;<br />
+      0o,&nbsp;or<br />
+      0x&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      0-pad&nbsp;&nbsp;<br />
+      numbers<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Minimum<br />
+      field&nbsp;&nbsp;<br />
+      width&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      commas&nbsp;&nbsp;<br />
+      for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      grouping<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Maximum&nbsp;field&nbsp;<br />
+      width&nbsp;for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      strings;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      number&nbsp;of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      dicimal&nbsp;places<br />
+      for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      floating-point<br />
+      numbers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      ints&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      b,c,d,n,o,x,X;<br />
+      floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      e,E,f,g,G,n,%&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+
+<p>
+For strings, the things that we can control are the fill character, the alignment, and the minimum and maximum filed widths.<br  />
+</p>
+
+<p>
+For integers, the format specification allows us to control the fill character, the alignment, the sign,<br  />
+whether to use a nonlocale-aware comma separator to group digits, the minimum field width, and the number base.<br  />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">b</td>
+<td class="left">binary</td>
+</tr>
+
+<tr>
+<td class="left">o</td>
+<td class="left">octal</td>
+</tr>
+
+<tr>
+<td class="left">x</td>
+<td class="left">lowercase hexadeciaml</td>
+</tr>
+
+<tr>
+<td class="left">X</td>
+<td class="left">uppercase hexadeciaml</td>
+</tr>
+
+<tr>
+<td class="left">d</td>
+<td class="left">decimal</td>
+</tr>
+
+<tr>
+<td class="left">c</td>
+<td class="left">unicode character corresponding to the interger</td>
+</tr>
+
+<tr>
+<td class="left">n</td>
+<td class="left">numbers in a locale-sensitive way</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+For floating numbers, the format specification gives us control over the fill character, the alignment, the sign,<br  />
+whether to use a non-locale aware comma separator to group digits,<br  />
+the minimum field width, the number of digits after the decimal place,<br  />
+and whether to present the number instandard or exponential form or as percentage<br  />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">e</td>
+<td class="left">exponential form with a lowercase e</td>
+</tr>
+
+<tr>
+<td class="left">E</td>
+<td class="left">exponential form with a uppercase E</td>
+</tr>
+
+<tr>
+<td class="left">f</td>
+<td class="left">standard floating-point form</td>
+</tr>
+
+<tr>
+<td class="left">g</td>
+<td class="left">general form - this is the same as f unless the number is very large, in which case it is the same as e</td>
+</tr>
+
+<tr>
+<td class="left">G</td>
+<td class="left">general form - this is the same as f unless the number is very large, in which case it is the same as E</td>
+</tr>
+
+<tr>
+<td class="left">%</td>
+<td class="left">percentage form</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4-8" class="outline-4">
+<h4 id="sec-2-4-8"><span class="section-number-4">2.4.8</span> Characte||</h4>
+<div class="outline-text-4" id="text-2-4-8">
+<p>
+Ultimately, computers can store only bytes, that is, 8-bit values.<br  />
+Every character must somehow be represented in terms of bytes.<br  />
+</p>
+
+<p>
+Unicode assigns every character to an integer - called a code point.<br  />
+</p>
+
+<p>
+Nowadays, Unicode is usually stored using UTF-8, UTF-16, or UTF-32.<br  />
+UTF-8 is backward compatible with 7-bit ASCII since its first 128 code points<br  />
+are represented by single-byte values that are the same as the 7-bit ASCII character values.<br  />
+To represent all the other Unicode characters, UTF-8 uses two, three, or more bytes per character.<br  />
+This makes UTF-8 very compact for representing text that is all or mostly English.<br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Collection Data Types</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Having data items in collections makes it much easier to perform operations that must be applied to all the items.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Sequence Types</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+A sequence type is one that supports<br  />
+</p>
+<ul class="org-ul">
+<li>the membership operator (in),<br  />
+</li>
+<li>the size function (len()),<br  />
+</li>
+<li>slices ([]), and<br  />
+</li>
+<li>is iterable.<br  />
+</li>
+</ul>
+
+<p>
+Python provides five built-in sequence types:<br  />
+</p>
+<ul class="org-ul">
+<li>bytearray<br  />
+</li>
+<li>bytes<br  />
+</li>
+<li>list<br  />
+</li>
+<li>str<br  />
+</li>
+<li>tuple<br  />
+</li>
+</ul>
+
+<p>
+When iterated, all of these sequences provide their items in order.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Tuples</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+A tuple is an ordered sequence of zero or more object references.<br  />
+Tuples are immutable. (Lists are mutable)<br  />
+</p>
+
+<p>
+create:<br  />
+</p>
+<ul class="org-ul">
+<li>tuple()<br  />
+<ul class="org-ul">
+<li>no argument, an empty tuple<br  />
+</li>
+<li>one tuple argument, a shallow copy of the argument<br  />
+</li>
+<li>one other data type argument, a conversion attempt<br  />
+</li>
+</ul>
+</li>
+<li>(), an empty tuple<br  />
+</li>
+<li>commas, a tuple of one or more items<br  />
+</li>
+</ul>
+
+<p>
+Sometimes tuples must be enclosed in parentheses to avoid syntactic ambiguilty.<br  />
+For example, to pass the tuple 1,2,3 to a function, we could write function((1,2,3)).<br  />
+</p>
+
+<p>
+convention:<br  />
+tuples on the left-hand side of binary operator or on the right-hand side of a unary statement, omitting the parentheses,<br  />
+in all other cases, using parentheses.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">a, b = (1, 2) # left of binary operator
+
+del a, b # right of unary statement
+
+def f(x):
+    return x, x ** 2 # right of unary statement
+
+for x, y in ((1, 1), (2, 4), (3, 9)): # left of binary operator
+    print(x, y)
+</pre>
+</div>
+
+<p>
+Tuples are able to hold any items of any data type.<br  />
+Using complex nested data structures can easily become confusing.<br  />
+One solution is to give names to particuluar index operations.<br  />
+</p>
+
+<p>
+Here is a ugly example<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">MANUFACTURER, MODEL, SEATING = (0, 1, 2)
+MINIMUM, MAXIMUM = (0, 1)
+aircraft = ('Airbus', 'A320-200', (100, 220))
+aircraft[SEATING][MAXIMUM] # 220
+</pre>
+</div>
+
+
+<p>
+In the first two lines of the 'aircraft' code snippet, we assigned to tuples in both statements.<br  />
+When we have a sequence on the right-hand side of an assignment, and we have a tuple on the left-hand side,<br  />
+we say that the right-hand side has been <i>unpacked</i>.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Named Tuples</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+The collection module provide the namedtuple() function.<br  />
+This function is used to create tuple data types.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">Sale = collection.namedtuple("Sale", "productid customerid date quantity price")
+sale = Sale(432, 921, "2019-01-01", 3, 8.0)
+print(sale.price)
+</pre>
+</div>
+
+<p>
+The first argument to collections.namedtuple() is the name of the custom tuple data type.<br  />
+The second argument is a string of space-separated names, one for each item that our custom tuples will take.<br  />
+</p>
+
+
+<p>
+Exacting named tuple items:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">"{productid} {price}".format(**sale.__asdict())
+</pre>
+</div>
+
+<p>
+Named tuples have a few private methods&#x2013;that is, methods whose name begins with a leading underscore.<br  />
+The private namedtuple.__asdict() method returns a mapping of key-value pairs.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-3" class="outline-4">
+<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Lists</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+A list is an ordered sequence of zero or more object references.<br  />
+Lists are mutable.<br  />
+</p>
+
+<p>
+In some situations, we want to take more or two more pieces of a list in one go.<br  />
+This can be done by sequence unpacking.<br  />
+Any iterable(lists, tuples, etc.) can be unpacked using the sequence unpacking operator, an asterisk or start (*).<br  />
+</p>
+
+<p>
+When used with two or more variables on the left-hand side of an assignment,<br  />
+one of which is preceded by *, items are assigned to the variables, with all those left over assigned to the starred variable.<br  />
+</p>
+
+
+<p>
+Example:<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; first, *rest = [9, 2, -4, 8, 7]
+&gt;&gt;&gt; first, rest
+(9, [2, -4, 8, 7])
+&gt;&gt;&gt; first, *mid, last = "Charles Philip Arthur George Windsor".split() &gt;&gt;&gt; first, mid, last
+('Charles', ['Philip', 'Arthur', 'George'], 'Windsor')
+&gt;&gt;&gt; *directories, executable = "/usr/local/bin/gvim".split("/") &gt;&gt;&gt; directories, executable
+(['', 'usr', 'local', 'bin'], 'gvim')
+
+
+def product(a, b, c):
+    return a * b * c # here, * is the multiplication operator
+
+&gt;&gt;&gt; product(2, 3, 5)
+30
+&gt;&gt;&gt; L = [2, 3, 5]
+&gt;&gt;&gt; product(*L)
+30
+&gt;&gt;&gt; product(2, *L[1:])
+30
+</pre>
+</div>
+</div>
+
+<ol class="org-ol"><li><a id="sec-3-1-3-1" name="sec-3-1-3-1"></a>CRUD<br  /><div class="outline-text-5" id="text-3-1-3-1">
+<p>
+c: create<br  />
+r: retrieve<br  />
+u: update<br  />
+d: delete<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">l = ['a','b','c']
+
+# create
+l.append('a')
+l.extend([7])
+l += [8]
+l.insert('haha',1)
+
+# retrieve
+l[0]
+l[1:]
+l.index('c')
+
+# update
+l[0] = 'hello'
+l[0:1] = 'world'
+
+# delete
+l.pop()
+l.pop(0)
+l.remove('b')
+del l[0]
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-3-1-3-2" name="sec-3-1-3-2"></a>List Comprehension&#xa0;&#xa0;&#xa0;<span class="tag"><span class="important">important</span></span><br  /><div class="outline-text-5" id="text-3-1-3-2">
+<p>
+A list comprehension is an expression and a loop with an optional condition enclosed in brackets<br  />
+where the loop is used to generate items for the list, and<br  />
+where the condition can filter out unwanted items.<br  />
+</p>
+
+<p>
+The simplest form:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">[item for item in literable]
+</pre>
+</div>
+
+
+<p>
+This will return a list of every item in the iterable.<br  />
+</p>
+
+<p>
+two general form:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">[expression for item in iterable]
+[expression for item in iterable if condition]
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Set Types</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+A set type is a collection data type that supports<br  />
+</p>
+<ul class="org-ul">
+<li>the membership operator(in),<br  />
+</li>
+<li>the size function(len()), and<br  />
+</li>
+<li>is iterable.<br  />
+</li>
+</ul>
+
+<p>
+Python provides two built-in set types:<br  />
+</p>
+<ul class="org-ul">
+<li>the mutable <code>set</code> type and<br  />
+</li>
+<li>the immutable <code>frozenset</code><br  />
+</li>
+</ul>
+
+<p>
+When iterated ,set types provides their items in an arbitrary order.<br  />
+</p>
+
+<p>
+Note:<br  />
+Only hashable objects may be added to a set.<br  />
+Hashable objects are objects which have a __hash__() speical method<br  />
+whose return value is always the same throughout the object's lifetime, and<br  />
+which can be compared for equality using the __eq__() special method.<br  />
+</p>
+</div>
+
+
+<div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> Sets</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+A set is an unordered collection of zero or more object references that refer to hashable objects.<br  />
+Sets are mutable.<br  />
+</p>
+
+<p>
+Empty set must be created using set(), not using empty braces.<br  />
+(Empty braces, {}, are used to create an empty dict)<br  />
+A set of one or more items can be created by using a comma-separated sequence of items inside braces.<br  />
+</p>
+
+<p>
+Sets are often used to eliminate duplicates.<br  />
+</p>
+
+<p>
+One common use case for sets is when we want fast membership testing.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">if len(sys.argv) == 1 or sys.argv[1] in {'-h', '--help'}:
+</pre>
+</div>
+
+
+<p>
+Sets are also used to eliminate unwanted items.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">filenames = set(filenames)
+for makefile in {'MAKEFILE', 'Makefile', 'makefile'}:
+    filenames.discard(makefile)
+</pre>
+</div>
+<p>
+or<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">filenames = set(filenames) - {'MAKEFILE', 'Makefile', 'makefile'}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2"><span class="section-number-4">3.2.2</span> Set Comprehensions</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+A set comprehension is an expression and a loop with an optional condition enclosed in braces.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">{expression for item in iterable}
+{expression for item in iterable if condition}
+</pre>
+</div>
+
+<p>
+!!! LEARN HOW TO USE WHAT YOU LEARN !!!<br  />
+To achieve a filtering effect:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">html = {x for x in files if x.lower().endswith(('.htm', '.html'))}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2-3" class="outline-4">
+<h4 id="sec-3-2-3"><span class="section-number-4">3.2.3</span> Frozen Sets</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+A frozen set is a set that, once created, cannot be changed.<br  />
+</p>
+
+<p>
+Frozen sets can only be created by using the frozenset data type called as a function.<br  />
+</p>
+
+<p>
+If a binary operator is used with a set and a frozen set, the data type of the result is the same as the left-hand operand’s data type.<br  />
+Inthe case of the = = and ! = operators, the order of the operands does not matter, and f == s will produce True if both sets contain the same items.<br  />
+</p>
+
+<p>
+Frozen sets are hashable and can be conatained by sets and frozen sets.<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Mapping Types</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+A mapping type is one that supports the membership operator (in) and the size function (len()), and is iterable.<br  />
+Mappings are collections of key–value items and provide methods for accessing items and their keys and values.<br  />
+Only hashable objects may be used as dictionary keys, so immutable data types.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> Dictionaries</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+A dict is an unordered collection of zero or more key–value pairs whose keys are object references that refer to hashable objects,<br  />
+and whose values are object references referring to objects of any type.<br  />
+Dictionaries are mutable.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">d1 = dict({"id": 1948, "name": "Washer", "size": 3})
+d2 = dict(id=1948, name="Washer", size=3)
+d3 = dict([("id", 1948), ("name", "Washer"), ("size", 3)]) 
+d4 = dict(zip(("id", "name", "size"), (1948, "Washer", 3))) 
+d5 = {"id": 1948, "name": "Washer", "size": 3}
+</pre>
+</div>
+
+<p>
+Brackets are used to access individual values and also be used to add and delete dictionary items.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">d1['id'] # access
+d1['gender'] = 'male' # add
+del d1['name'] # delete
+</pre>
+</div>
+
+<p>
+The dict.items(), dict.keys(), and dict.values() methods all return dictionary views.<br  />
+A dictionary view is effectively a read-only iterable object that appears to hold the dictionary’s items or keys or values, depending on the view we have asked for.<br  />
+</p>
+
+<p>
+Dictionaries are often used to keep counts of unique items.<br  />
+</p>
+
+<p>
+Counting the number of occurrences of each unique word in a file:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">import string
+import sys
+
+words = {}
+strip = string.whitespace + string.punctuation + string.digits + "\"'"
+for filename in sys.argv[1:]:
+    for line in open(filename):
+        for word in line.lower().split():
+            word = word.strip(strip)
+            if len(word) &gt; 2:
+                words[word] = words.get(word, 0) + 1
+for word in sorted(words):
+    print("'{0}' occurs {1} times".format(word, words[word]))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> Dictionary Comprehension</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<p>
+A dictionary comprehension is a expression and a loop with an optional condition enclosed in braces.<br  />
+{keyexpression: valueexpression for key, value in iterable}<br  />
+{keyexpression: valueexpression for key, value in iterable if condition}<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">file_sizes = {name: os.path.getsize(name) for name in os.listdir(".") if os.path.isfile(name)}
+inverted_d = {v: k for k, v in d.items()}
+</pre>
+</div>
+
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2019-03-19 Tue]</span></span><br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-3-3" class="outline-4">
+<h4 id="sec-3-3-3"><span class="section-number-4">3.3.3</span> Default Dictionaries</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<p>
+Identical to dictionaries except one: visiting a nonexistent key will return a default value rather than raise a KeyError.<br  />
+</p>
+
+<p>
+When a default dictionary is created, we can pass in a factory function.<br  />
+A factory function is a function that return a object of a particuluar type.<br  />
+All of Python's built-in data types can be used as factory functions.<br  />
+</p>
+
+<p>
+important:<br  />
+The name of a function is an object reference to the function.<br  />
+When we use a function with parentheses, the parentheses tell Python that the function should be called.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">words = collections.default(int)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-4" class="outline-4">
+<h4 id="sec-3-3-4"><span class="section-number-4">3.3.4</span> Ordered Dictionaries</h4>
+<div class="outline-text-4" id="text-3-3-4">
+<p>
+Identical to dictionaries except that: ordered dictionaries store their items in the order in which they were inserted.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">d = collections.OrderedDict([('z',-4),('e',19),('k',7)])
+
+tasks = collections.OrderedDict()
+tasks[111] = 'backup'
+tasks[011] = 'scam email'
+</pre>
+</div>
+
+
+<p>
+nice feature: if we change an item's value, the order is not changed.<br  />
+If we want to move an item to the end, we must delete it and reinsert it.<br  />
+</p>
+
+<p>
+[hack-end]<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Interating and Copying Collections</h3>
+<div class="outline-text-3" id="text-3-4">
+</div><div id="outline-container-sec-3-4-1" class="outline-4">
+<h4 id="sec-3-4-1"><span class="section-number-4">3.4.1</span> Iterators and Iterable Operations and Functions</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+An iterable data type is one that can return each of its items one at a time.<br  />
+Any object that has an __iter__() method, or<br  />
+any sequence (i.e., an object that has a __getitem__() method)<br  />
+is an iterable and can provide an iterator.<br  />
+</p>
+
+<p>
+An iterator is an object that provides a __next__() method which returns each successive item in turn,<br  />
+and raises a StopIteration exception when there are no more items.<br  />
+</p>
+
+
+<p>
+When we use a<br  />
+</p>
+<div class="sample">
+<p>
+for item in terable<br  />
+</p>
+
+</div>
+<p>
+loop, Python in effect calles iter(iterable) to get a iterator.<br  />
+</p>
+
+<p>
+Operators and Functions:<br  />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">s + t</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">s * n</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">x in i</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">all(i)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">any(i)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">enumerate(i,start)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">len(i)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">max(i,key)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">min(i,key)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">reversed(i)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">sorted(i,key,reverse)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">sum(i)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">zip(i1,&#x2026;,iN)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">range(start,stop,step)</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+unpack:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">calculate(1,2,3,4)
+t = (1,2,3,4)
+calculate(*t)
+calculate(*range(1,5))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4-2" class="outline-4">
+<h4 id="sec-3-4-2"><span class="section-number-4">3.4.2</span> Copying Collections</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+Since Python uses object references, when we use the assignment operator(=), no copying takes place.<br  />
+</p>
+
+<p>
+For sequencses, when we take a slice, the slice is always an independent copy of the items copied.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">l = [1,2,3,4]
+l2 = l[:]
+l[2] = 'x'
+print(l)
+print(l2)
+# [1, 2, 'x', 4]
+# [1, 2, 3, 4]
+</pre>
+</div>
+
+<p>
+For dictionaries and sets, copying can be achieved using dict.copy() and set.copy().<br  />
+</p>
+
+<p>
+With module, copy.copy() .<br  />
+</p>
+
+<p>
+Data type with the same data type.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">copy_of_dict_d = dict(d)
+copy_of_list_l = list(l)
+copy_of_set_s = set(s)
+</pre>
+</div>
+
+<p>
+Note:<br  />
+All this this copying techniques are shallow, that is, only object references are copy and not objects themselves.<br  />
+For immutable data types this has the same effect as copying,<br  />
+but for mutable data types such as nested collections this means<br  />
+that the object they refer to are referred to both by the original collections and by the copied collection.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">x = [1, 2, ['a', 'b', 'c']]
+y = x[:]  # shallow copy
+y[1] = 10
+x[2][0] = 'z'
+print(x, y, sep='\n')
+
+# [1, 2, ['z', 'b', 'c']]
+# [1, 10, ['z', 'b', 'c']]
+</pre>
+</div>
+
+<p>
+To achieve independent copies of arbitrarily nested collections, use deep copy:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">import copy
+x = [1, 2, ['a', 'b', 'c']]
+y = copy.deepcopy(x)  
+y[1] = 10
+x[2][0] = 'z'
+print(x, y, sep='\n')
+
+# [1, 2, ['z', 'b', 'c']]
+# [1, 10, ['a', 'b', 'c']]
+</pre>
+</div>
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2019-03-21 Thu]</span></span><br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Control Structures and Functions</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Control Structures</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> Conditional Branching</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+conditional branch statement:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">if boolean_expression1:
+    suite1
+elif boolean_expression2:
+    suite2
+...
+elif boolean_expressionN:
+    suiteN
+else:
+    else_suite
+</pre>
+</div>
+<p>
+There can be zero or more elif clauses, and the final else clause is optional.<br  />
+</p>
+
+<p>
+conditional expression:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">expression1 if boolean_expression else expression2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> Looping</h4>
+<div class="outline-text-4" id="text-4-1-2">
+</div><ol class="org-ol"><li><a id="sec-4-1-2-1" name="sec-4-1-2-1"></a>while Loops<br  /><div class="outline-text-5" id="text-4-1-2-1">
+<div class="org-src-container">
+
+<pre class="src src-python">while boolean_expression:
+    while_suite
+else:
+    else_suite
+</pre>
+</div>
+<p>
+The else clause is optional.<br  />
+If the loop does not terminate normally(break, return, exception), any optional else clause's suite is skipped.<br  />
+</p>
+</div>
+</li>
+
+
+<li><a id="sec-4-1-2-2" name="sec-4-1-2-2"></a>for Loops<br  /><div class="outline-text-5" id="text-4-1-2-2">
+<div class="org-src-container">
+
+<pre class="src src-python">for expression in iterable:
+    for_suite
+else:
+    else_suite
+</pre>
+</div>
+<p>
+The else clause is optional.<br  />
+If the loop does not terminate normally(break, return, exception), any optional else clause's suite is skipped.<br  />
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Exception Handling</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-sec-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> Catching and Raising Exceptions</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<div class="org-src-container">
+
+<pre class="src src-python">try:
+    try_suite
+except exception_group1 as variable1:
+    except_suite1
+...
+except exception_groupN as variableN:
+    except_suiteN
+else:
+    else_suite
+finally:
+    finally_suite
+</pre>
+</div>
+<p>
+There must be at least one except block, but both the else and the finally blocks are optional.<br  />
+The else block's suite is executed when the try block's suite has finished normally.<br  />
+If there is a finally block, it is always executed at the end.<br  />
+</p>
+
+<p>
+If none of the except blocks matches the exception, Python will work its way up the call stack looking for a suitable exception handler.<br  />
+I none is found the program will terminate and print the exception and a trackback on the console.<br  />
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-2-1-1" name="sec-4-2-1-1"></a>Raising Exceptions<br  /><div class="outline-text-5" id="text-4-2-1-1">
+<p>
+3 syntaxes:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">raise exception(args)
+raise exception(args) from original_exception
+raise
+</pre>
+</div>
+<p>
+When the third syntax is used, raise will reraise the currently active exception  &#x2013; if there isn't one it will raise TypeError.<br  />
+</p>
+</div>
+</li></ol>
+</div>
+
+
+<div id="outline-container-sec-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> Custrom Exceptions</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<p>
+Custom exceptions are custom data types(classes).<br  />
+syntax:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">class exceptionName(baseException): pass
+</pre>
+</div>
+
+<p>
+One use of custom exceptions is to break out of deeply nested loops.<br  />
+For example, if we have a table object that holds records (rows), which hold fields (columns), which have multiple values (items),<br  />
+we could search for a particular value with code like this:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">found = False
+for row, record in enumerate(table):
+    for column, field in enumerate(record):
+        for index, item in enumerate(field):
+            if item == target:
+                found = True
+                break
+        if found:
+            break
+    if found:
+        break
+if found:
+    print("found at ({0}, {1}, {2})".format(row, column, index)) 
+else:
+    print("not found")
+</pre>
+</div>
+
+
+<p>
+exception version:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">class FoundException(Exception): pass
+
+
+try:
+    for row, record in enumerate(table):
+        for column, field in enumerate(record):
+            for index, item in enumerate(field):
+                if item == target:
+                    raise FoundException()
+except FoundException:
+    print("found at ({0}, {1}, {2})".format(row, column, index))
+else:
+    print("not found")
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Custom Functions</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Functions are a means by which we can package up and parameterize functionality.<br  />
+4 functions:<br  />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Functions</th>
+<th scope="col" class="left">Definition</th>
+<th scope="col" class="left">Useage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">global functions</td>
+<td class="left">&#xa0;</td>
+<td class="left">accessible to any code</td>
+</tr>
+
+<tr>
+<td class="left">local functions</td>
+<td class="left">defined inside other functions</td>
+<td class="left">visible to the function where they are defined</td>
+</tr>
+
+<tr>
+<td class="left">lambda functions</td>
+<td class="left">they are expressions</td>
+<td class="left">can be created any where</td>
+</tr>
+
+<tr>
+<td class="left">methods</td>
+<td class="left">functions that are associated with a particular data type</td>
+<td class="left">can be used only in conjuction with the data type</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The general syntax for creating a function is:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">def functionName(parameters):
+    suite
+</pre>
+</div>
+
+
+<div class="org-src-container">
+
+<pre class="src src-python">def shorten(text, length=25, indicator="..."):
+    if len(text) &gt; length:
+        text = text[:length - len(indicator)] + indicator
+    return text
+</pre>
+</div>
+<p>
+text is positional arguments and a mandatory parameter;<br  />
+length, indecator are keyword arguments and optional parameters.<br  />
+</p>
+
+<p>
+Note: positional arguments must always precede keyword arguments!<br  />
+</p>
+
+<p>
+Note:<br  />
+</p>
+<pre class="example">
+When default values are given they are created at the time the def statement 
+is executed (i.e., when the function is created), not when the function is called.
+
+For immutable arguments this doesn’t make any difference, 
+but for mutable arguments a subtle trap is lurking.
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-python">def append_if_even(x, lst=[]):  # WRONG!
+    if x % 2 == 0:
+        lst.append(x)
+    return lst
+
+
+def append_if_even(x, lst=None):
+    lst = [] if lst is None else lst
+    if x % 2 == 0:
+        lst.append(x)
+    return lst
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> Names and Docstrings</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+name rules:<br  />
+</p>
+<dl class="org-dl">
+<dt> Use a naming scheme, and use it consistently. </dt><dd>     UPPERCASE for constant;<br  />
+TitleCase for classes;<br  />
+camelCase for GUI functions and methods;<br  />
+lowercase or lowercase_with_underscore for everything;<br  />
+</dd>
+<dt> Avoid abbreviations </dt><dd>unless they are both standardized and widely used.<br  />
+</dd>
+<dt> Be proportional with variable and parameters </dt><dd>     x is a perfectly good name for an x-coordinate<br  />
+and i is fine for loop counter,<br  />
+but in general the name should be long enough to be descriptive.<br  />
+The name should describe the data's meaning rather than its type,<br  />
+unless the use is generic to a particular type.<br  />
+</dd>
+<dt> Functions and methods should have names that say what they do or what they return </dt><dd>     but never how they do it &#x2013; since that might change.<br  />
+</dd>
+</dl>
+
+<p>
+We can add documentation to any function by using a docstring &#x2013; a string<br  />
+that comes immediately after the def line, and before the function's code proper begins.<br  />
+</p>
+
+<p>
+convention:<br  />
+the first line, a brief one-line description;<br  />
+then a blank line followed by a full description;<br  />
+then some examples as they would appear if typed in interactively.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> Argument and Paramenter Unpacking</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<p>
+argument unpacking<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">l = [1, 2, 3]
+d = {'times': 3, 'bias': 4}
+
+
+def fx(x1, x2, x3, times=1, bias=0):
+    return (x1 + x2 + x3) * times + bias
+
+
+print(fx(*l, **d))
+</pre>
+</div>
+
+<p>
+parameter unpacking<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">def sum_of_powers(*args, power=1):
+    result = 0
+    for arg in args:
+        result += arg ** power
+    return result
+
+
+print(sum_of_powers(1, 2, 3, power=2))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-python">def add_person_details(ssn, surname, **kwargs):
+    print("SSN =", ssn)  # social security no.
+    print("    surname =", surname)
+    for key in sorted(kwargs):
+        print("    {0} = {1}".format(key, kwargs[key]))
+
+
+add_person_details(1234, 'hack', last_name='chyson', hobby='music')
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-python">def print_args(*args, **kwargs):
+    for i, arg in enumerate(args):
+        print("positional argument {0} = {1}".format(i, arg))
+    for key in kwargs:
+        print("keyword argument {0} = {1}".format(key, kwargs[key]))
+</pre>
+</div>
+
+<p>
+It is possible to use * as a “parameter” in its own right.<br  />
+This is used to signify that there can be no positional arguments after the *, although keyword arguments are allowed.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">import math
+
+
+def heron2(a, b, c, *, units="square meters"):
+    s = (a + b + c) / 2
+    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    return "{0} {1}".format(area, units)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3-3" class="outline-4">
+<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> Accessing Variable in the Global Scope</h4>
+<div class="outline-text-4" id="text-4-3-3">
+<div class="org-src-container">
+
+<pre class="src src-python">import sys
+
+Language = "en"
+ENGLISH = {0: "zero", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine"}
+FRENCH = {0: "zéro", 1: "un", 2: "deux", 3: "trois", 4: "quatre", 5: "cinq", 6: "six", 7: "sept", 8: "huit", 9: "neuf"}
+
+
+def print_digits(digits):
+    dictionary = ENGLISH if Language == "en" else FRENCH  # first focus 
+    for digit in digits:
+        print(dictionary[int(digit)], end=" ")
+        print()
+
+
+def main():
+    if len(sys.argv) == 1 or sys.argv[1] in {"-h", "--help"}:
+        print("usage: {0} [en|fr] number".format(sys.argv[0]))
+        sys.exit()
+
+    args = sys.argv[1:]
+    if args[0] in {"en", "fr"}:
+        global Language  # second focus 
+        Language = args.pop(0)
+    print_digits(args.pop(0))
+</pre>
+</div>
+
+<p>
+At the first focus, it is a access operation.<br  />
+If not found in local scope, it will look in global scope.<br  />
+If not found in global scope, that's all.<br  />
+</p>
+
+<p>
+At the second focus, it is a assign operation.<br  />
+If not found in local scope, it will create a new one locally.<br  />
+Except global is used.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-3-4" class="outline-4">
+<h4 id="sec-4-3-4"><span class="section-number-4">4.3.4</span> Lambda Functions</h4>
+<div class="outline-text-4" id="text-4-3-4">
+<div class="org-src-container">
+
+<pre class="src src-python">lambda parameters: expression
+</pre>
+</div>
+
+<p>
+The parameters are optional.<br  />
+The result of a lambda expression is an anonymous function.<br  />
+When a lambda function is called it returns the result of computing the expression as its result.<br  />
+</p>
+
+<p>
+Any (callable) variable can be called using parentheses!!!<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-pytho">s = lambda x: '' if x == 1 else 's'
+print(s(2))
+
+minus_one_dict = collections.defaultdict(lambda: -1)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-3-5" class="outline-4">
+<h4 id="sec-4-3-5"><span class="section-number-4">4.3.5</span> Assertions</h4>
+<div class="outline-text-4" id="text-4-3-5">
+<div class="org-src-container">
+
+<pre class="src src-python">assert boolean_expression, optional_expression
+</pre>
+</div>
+
+<p>
+If the boolean_expression evaluates to False an AssertionError exception is raised.<br  />
+If the optional optional_expression is given, it is used as the argument to the AssertionError exception.<br  />
+</p>
+
+<p>
+NOTE: assertions are designed for developers, not end-users.<br  />
+</p>
+
+<p>
+Once a program is ready for public release, we call python not to execute assert statements:<br  />
+</p>
+<dl class="org-dl">
+<dt> -0 option </dt><dd>python -0 program.py<br  />
+</dd>
+<dt> set PYTHONOPTIMIZE to 0 </dt><dd></dd>
+<dt> a copy of program with all assert statements commented </dt><dd></dd>
+</dl>
+
+
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2019-03-22 Fri]</span></span><br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Modules</h2>
+<div class="outline-text-2" id="text-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Name</td>
+<td class="left">How</td>
+<td class="left">Why</td>
+</tr>
+
+<tr>
+<td class="left">function</td>
+<td class="left">parcel up pieces of code</td>
+<td class="left">reuse throughout a program</td>
+</tr>
+
+<tr>
+<td class="left">module</td>
+<td class="left">sets of functions</td>
+<td class="left">used by any number program</td>
+</tr>
+
+<tr>
+<td class="left">package</td>
+<td class="left">sets of modules</td>
+<td class="left">related funcionality or depend on each other</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Modules and Packages</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+A Python module is a .py file.<br  />
+</p>
+
+<p>
+Not all modules have associated .py files<br  />
+for example, the sys module is built into Python, and<br  />
+some modules are written in other languages.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">import importable
+import importable1, importable2, ..., importableN
+import importable as preferred_name
+
+from importable import object as preferred_name
+from importable import object1, object2, ..., objectN
+from importable import *
+</pre>
+</div>
+
+<p>
+The from &#x2026; import &#x2026; makes the imported objects directly accessible<br  />
+with the risk of name collision.<br  />
+</p>
+
+<p>
+The * means "import everything that is not private",<br  />
+which in practical terms means either that every object in the module is imported<br  />
+except for those whose names begin with a leading underscore,<br  />
+or if the module has a global <span class="underline"><span class="underline">all</span></span> variable that holds a list of names,<br  />
+that all the objects named in the <span class="underline"><span class="underline">all</span></span> variable are imported.<br  />
+</p>
+
+<p>
+How does Python know where to look for modules and packages that are imported?<br  />
+The built-in sys module has a list called sys.path<br  />
+that holds a list of the directories that constitute the Python path.<br  />
+</p>
+
+<p>
+The first directory is the directory that contains the program itself;<br  />
+If the PYTHONPATH environment variable is set, the paths specified in it are the next ones in the list;<br  />
+the final paths are those needed to access Python's standard library;<br  />
+</p>
+
+<p>
+When we first import a module, if it isn't built-in,<br  />
+Python looks for the module in each path list in sys.path in turn.<br  />
+</p>
+
+<p>
+A top-level module is one whose .py file is in one of the directories in the Python path,<br  />
+rather than in one of those directories's subdirectories.<br  />
+</p>
+
+<p>
+Whenever a module is imported Python first checks to see whether is has already been imported.<br  />
+If is has not, Python executes the module's byte-code compiled code,<br  />
+thereby creating the vriables, functions, and other objects it provides,<br  />
+and internally records that the module has been imported.<br  />
+</p>
+
+
+
+<p>
+When Python needs a module's byte-code compiled code, it generates it automatically.<br  />
+First Python looks for a file with the same name as the module's .py file but with the extension .pyo<br  />
+&#x2013; this is an optimized byte-code compiled version of the module.<br  />
+</p>
+
+<p>
+If there is no .pyo file (or if it is older than the .py file), Python looks for a file with the extension .pyc<br  />
+&#x2013; this is a nonoptimized byte-code compiled version of the module.<br  />
+</p>
+
+<p>
+If Python finds an up-to-date byte-code compiled version of the module, it loads it;<br  />
+otherwise, Python loads the .py file and compiles a byte-code compiled version.<br  />
+</p>
+</div>
+
+
+<div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> Packages</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+A package is simply a directory that contains a set of mudules and a file called <span class="underline"><span class="underline">init</span></span>.py<br  />
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-python">from module import *
+</pre>
+</div>
+<p>
+In this case, all the functions, variables, and other objects defined in the module<br  />
+(apart from those whose names begin with a leading underscore) will be imported.<br  />
+If we want to control exactly what is imported, we can define a <span class="underline"><span class="underline">all</span></span> list in the module itself.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> Custom Modules</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+Ways to make our module available to all programs:<br  />
+</p>
+<ol class="org-ol">
+<li>put the mudule in the Python distributions's site-packages subdirectory<br  />
+</li>
+<li>create a directory and set the PYTHONPATH to this directory<br  />
+</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-python">if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+</pre>
+</div>
+<p>
+(suppose the module is TextUtil.py)<br  />
+Whenever a module is imported Python creates a variable for the module<br  />
+called <span class="underline"><span class="underline">name</span></span> and stores the module's name in this variable.<br  />
+A module's name is simply the name of its .py file but without the extension.<br  />
+In this case, when the module is imported <span class="underline"><span class="underline">name</span></span> will have the value "TextUtil",<br  />
+and the if condition will not met.<br  />
+This means that these last three lines have virtually no cost<br  />
+when the module is imported.<br  />
+</p>
+
+<p>
+Whenever a .py file is run Python creates a variable for the program called <span class="underline"><span class="underline">name</span></span><br  />
+and sets it to the string "<span class="underline"><span class="underline">name</span></span>".<br  />
+So if we were to run TextUtil.py, Python will set <span class="underline"><span class="underline">name</span></span> to "<span class="underline"><span class="underline">main</span></span>" and<br  />
+the if condition will evaluated to True nad the last two lines will be executed.<br  />
+</p>
+
+
+<p>
+Examples in docstrings that can be executed as tests are called doctests.<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Overiew of Python's Standard Library</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-sec-5-2-1" class="outline-4">
+<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> String Handling</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Module Name</th>
+<th scope="col" class="left">What for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">string</td>
+<td class="left">constants;Formatter</td>
+</tr>
+
+<tr>
+<td class="left">textwrap</td>
+<td class="left">wrap lines of text</td>
+</tr>
+
+<tr>
+<td class="left">struct</td>
+<td class="left">packing and unpacking to ang from bytes objects</td>
+</tr>
+
+<tr>
+<td class="left">difflib</td>
+<td class="left">comparing sequencse</td>
+</tr>
+
+<tr>
+<td class="left">re</td>
+<td class="left">regular expression</td>
+</tr>
+
+<tr>
+<td class="left">io</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The io.StringIO class provides a string-like object that behave like an in-memory text file.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-2" class="outline-4">
+<h4 id="sec-5-2-2"><span class="section-number-4">5.2.2</span> Command-Line Programming</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Module Name</th>
+<th scope="col" class="left">What for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">fileinput</td>
+<td class="left">Helper class to quickly write a loop over all standard input files</td>
+</tr>
+
+<tr>
+<td class="left">optparse</td>
+<td class="left">command-line options</td>
+</tr>
+
+<tr>
+<td class="left">getopt</td>
+<td class="left">command-line options</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-3" class="outline-4">
+<h4 id="sec-5-2-3"><span class="section-number-4">5.2.3</span> Mathematics and Numbers</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Module Name</th>
+<th scope="col" class="left">What for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">decimal</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">fractions</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">math</td>
+<td class="left">methematical functions</td>
+</tr>
+
+<tr>
+<td class="left">cmath</td>
+<td class="left">complex number mathematical functions</td>
+</tr>
+
+<tr>
+<td class="left">random</td>
+<td class="left">random</td>
+</tr>
+
+<tr>
+<td class="left">numbers</td>
+<td class="left">numeric abstract base classes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-4" class="outline-4">
+<h4 id="sec-5-2-4"><span class="section-number-4">5.2.4</span> Times and Dates</h4>
+<div class="outline-text-4" id="text-5-2-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Module Name</th>
+<th scope="col" class="left">What for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">calendar</td>
+<td class="left">date and time</td>
+</tr>
+
+<tr>
+<td class="left">datetime</td>
+<td class="left">date and time</td>
+</tr>
+
+<tr>
+<td class="left">time</td>
+<td class="left">timestamps, date and time</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-2-5" class="outline-4">
+<h4 id="sec-5-2-5"><span class="section-number-4">5.2.5</span> Algorithms and Collection Data Types</h4>
+<div class="outline-text-4" id="text-5-2-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Module Name</td>
+<td class="left">What for</td>
+</tr>
+
+<tr>
+<td class="left">bisect</td>
+<td class="left">for seatching sorted sequences and for inserting items while preserving the sorted oder; binary search algorithm</td>
+</tr>
+
+<tr>
+<td class="left">heapq</td>
+<td class="left">turning a sequence into a heap</td>
+</tr>
+
+<tr>
+<td class="left">collections</td>
+<td class="left">defaultdict, namedtuple, deque, OrderedDict, Counter</td>
+</tr>
+
+<tr>
+<td class="left">array</td>
+<td class="left">array(same type object)</td>
+</tr>
+
+<tr>
+<td class="left">numpy</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">weakref</td>
+<td class="left">creating weak references</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+A weak reference is like normal object references, excpet that<br  />
+if the only reference to an object is a weak reference, the object can still be<br  />
+scheduled for garbage collection.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-6" class="outline-4">
+<h4 id="sec-5-2-6"><span class="section-number-4">5.2.6</span> File Formats, Encodings, and Data Persistence</h4>
+<div class="outline-text-4" id="text-5-2-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Module Name</td>
+<td class="left">What for</td>
+</tr>
+
+<tr>
+<td class="left">base64</td>
+<td class="left">reading and writing using Base16, Base32, Base64 encoding</td>
+</tr>
+
+<tr>
+<td class="left">quopri</td>
+<td class="left">reading and writing "quoted-printable" format</td>
+</tr>
+
+<tr>
+<td class="left">uu</td>
+<td class="left">reading and writing uuencoded data</td>
+</tr>
+
+<tr>
+<td class="left">xdrlib</td>
+<td class="left">reading and writing External Data Representation format</td>
+</tr>
+
+<tr>
+<td class="left">bz2</td>
+<td class="left">handle .bz2 files</td>
+</tr>
+
+<tr>
+<td class="left">gzip</td>
+<td class="left">handle .gz files</td>
+</tr>
+
+<tr>
+<td class="left">tarfile</td>
+<td class="left">.tar, .tar.gz, .tgz, .tar.bz2</td>
+</tr>
+
+<tr>
+<td class="left">zipfile</td>
+<td class="left">.zip</td>
+</tr>
+
+<tr>
+<td class="left">aifc</td>
+<td class="left">AIFF(Audio Interchange File Format)</td>
+</tr>
+
+<tr>
+<td class="left">wave</td>
+<td class="left">.wav</td>
+</tr>
+
+<tr>
+<td class="left">audioop</td>
+<td class="left">audio data manipulation</td>
+</tr>
+
+<tr>
+<td class="left">sndhdr</td>
+<td class="left">determining what hind of sound data is stored in a file</td>
+</tr>
+
+<tr>
+<td class="left">csv</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">pickle</td>
+<td class="left">store and retrive arbitrary Python object to and from disk</td>
+</tr>
+
+<tr>
+<td class="left">shelve</td>
+<td class="left">DBM files</td>
+</tr>
+
+<tr>
+<td class="left">DBM</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+pickle:<br  />
+It can easily pickle any object and pickle the object back.<br  />
+But there is no sesurity mechanisms (no encryption, no digital signature).<br  />
+In view of this, for programs that are not purely for personal use, it is best to create a custom file format that is specific to the program.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-7" class="outline-4">
+<h4 id="sec-5-2-7"><span class="section-number-4">5.2.7</span> File, Directory, and Process Handling</h4>
+<div class="outline-text-4" id="text-5-2-7">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Module Name</td>
+<td class="left">What for</td>
+</tr>
+
+<tr>
+<td class="left">shuitl (shell util)</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">tmpfile</td>
+<td class="left">temporary files and directories</td>
+</tr>
+
+<tr>
+<td class="left">filecmp</td>
+<td class="left">compare file</td>
+</tr>
+
+<tr>
+<td class="left">subpress</td>
+<td class="left">start other processes, communicate with them using pipes and retrieve their result.</td>
+</tr>
+
+<tr>
+<td class="left">multiprocessing</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">os</td>
+<td class="left">platform-independent access to operating system functionality</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+
+<pre class="src src-python">import os
+
+os.environ
+os.getcwd()
+os.chdir()
+os.access()
+os.listdir()
+os.stat()
+os.mkdir()
+os.mkdirs()
+os.rmdir()
+os.rmovedirs()
+os.remove()
+os.rename()
+os.walk()
+
+os.path
+os.path.abspath()
+os.path.split() # dirname, filename
+os.path.basename()
+os.path.dirname()
+os.path.splitext()
+os.path.join()
+os.path.exists()
+os.path.getsize()
+os.path.isfile()
+os.path.isdir()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-8" class="outline-4">
+<h4 id="sec-5-2-8"><span class="section-number-4">5.2.8</span> Networking and Internet Programming</h4>
+<div class="outline-text-4" id="text-5-2-8">
+<p>
+Packages and modules for networking and Internet programming are a major part of Python's standard library.<br  />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Module Name</td>
+<td class="left">What for</td>
+</tr>
+
+<tr>
+<td class="left">socket</td>
+<td class="left">creating socket, doing DNS lookups, handling IP address</td>
+</tr>
+
+<tr>
+<td class="left">ssl</td>
+<td class="left">entrypted and authenticated sockets</td>
+</tr>
+
+<tr>
+<td class="left">socketserver</td>
+<td class="left">tcp, udp server</td>
+</tr>
+
+<tr>
+<td class="left">asyncore</td>
+<td class="left">asynchronous actions</td>
+</tr>
+
+<tr>
+<td class="left">asynchat</td>
+<td class="left">built on asyncore</td>
+</tr>
+
+<tr>
+<td class="left">wsgiref</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">http</td>
+<td class="left">http.server, http.cookie, http.cookiejar</td>
+</tr>
+
+<tr>
+<td class="left">cgi</td>
+<td class="left">cgitb</td>
+</tr>
+
+<tr>
+<td class="left">urllib</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">html</td>
+<td class="left">html.parser</td>
+</tr>
+
+<tr>
+<td class="left">json</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ftplib</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">nntplib</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">telnetlib</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">smtpd</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">smtplib</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">imaplib</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">poplib</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">mailbox</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">email</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+WSGI: Web Server Gateway Interface<br  />
+a standard interface between web servers and web applications.<br  />
+</p>
+
+<p>
+CGI: Common Gatway Interface<br  />
+JSON: JavaScript Object Notation<br  />
+RPC: Remote Procedure Call<br  />
+FTP: File Transfer Protocol<br  />
+NNTP: Network News Transfer Protocol<br  />
+SMTP: Simple Mail Transfer Protocol<br  />
+IMAP: Internet Message Acess Protocol<br  />
+POP: Post Office Protocol<br  />
+</p>
+
+<p>
+Third-party library<br  />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">www.twistedmatrix.com</td>
+</tr>
+
+<tr>
+<td class="left">www.djangoproject.com</td>
+</tr>
+
+<tr>
+<td class="left">www.turbogears.org</td>
+</tr>
+
+<tr>
+<td class="left">www.plone.org</td>
+</tr>
+
+<tr>
+<td class="left">www.zope.org</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-2-9" class="outline-4">
+<h4 id="sec-5-2-9"><span class="section-number-4">5.2.9</span> XML</h4>
+<div class="outline-text-4" id="text-5-2-9">
+<p>
+There are two widely used approaches to parsing XML documents:<br  />
+</p>
+<ol class="org-ol">
+<li>DOM: Document Object Model (xml.dom &amp; xml.dom.minidom)<br  />
+</li>
+<li>SAX: Simple API for XML (xml.sax)<br  />
+</li>
+</ol>
+
+<p>
+Third-party library<br  />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">www.codespeak.net/lxml</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-2-10" class="outline-4">
+<h4 id="sec-5-2-10"><span class="section-number-4">5.2.10</span> Other Modules</h4>
+<div class="outline-text-4" id="text-5-2-10">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Module Name</th>
+<th scope="col" class="left">For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">doctest</td>
+<td class="left">documentation test</td>
+</tr>
+
+<tr>
+<td class="left">unittest</td>
+<td class="left">unit test</td>
+</tr>
+
+<tr>
+<td class="left">logging</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">pprint</td>
+<td class="left">pretty printing</td>
+</tr>
+
+<tr>
+<td class="left">inspect</td>
+<td class="left">introspect live objects</td>
+</tr>
+
+<tr>
+<td class="left">threading</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">queue</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">tkinter</td>
+<td class="left">Tk library</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">abc</td>
+<td class="left">Abstract Base Class</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">copy</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Object-Oriented Programming</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Object-Oriented Concepts and Terminology</h3>
+<div class="outline-text-3" id="text-6-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Terminology</th>
+<th scope="col" class="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">class type = data type</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">object = instance</td>
+<td class="left">an instance of a particular class</td>
+</tr>
+
+<tr>
+<td class="left">special methods</td>
+<td class="left">mothods that their names alwasy begin and end with two underscores, and are predefined</td>
+</tr>
+
+<tr>
+<td class="left">instance variable</td>
+<td class="left">variable that are unique to a particular object</td>
+</tr>
+
+<tr>
+<td class="left">properties</td>
+<td class="left">an item of object data that is accessed like an instance variable but where the accesses are handled by methods behind the scenes</td>
+</tr>
+
+<tr>
+<td class="left">method</td>
+<td class="left">a function whose first argument is the instance on which it is called to operate</td>
+</tr>
+
+<tr>
+<td class="left">class variable = static variable</td>
+<td class="left">can be accessd by qualifing their name with the class name</td>
+</tr>
+
+<tr>
+<td class="left">global vairable = module variable</td>
+<td class="left">accessd without qualification</td>
+</tr>
+
+<tr>
+<td class="left">namespace</td>
+<td class="left">a mapping from names to objects. modules are namespaces; classes and objects are namespaces</td>
+</tr>
+
+<tr>
+<td class="left">specialize = subclass</td>
+<td class="left">make a new class inherits all the attributes from the original class.</td>
+</tr>
+
+<tr>
+<td class="left">base class = super class</td>
+<td class="left">the inherited class</td>
+</tr>
+
+<tr>
+<td class="left">subclass = derived class = derived</td>
+<td class="left">the new class that inherits a base class</td>
+</tr>
+
+<tr>
+<td class="left">override</td>
+<td class="left">method reimplement in a subclass</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<p>
+Most classes encapuslate both data and methods that can be applied to that data.<br  />
+Object usually have attributes - methods are callable attributes, and other attributes are data.<br  />
+</p>
+
+<p>
+duck typing: if you walks like a duck and quacks like a duck, it is a duck.<br  />
+In other words, if we want to call certain methods on an object, it doesn't matter what class the object is,<br  />
+only that it has the methods we want to call.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Custom Classes</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+
+<pre class="src src-python">class className:
+    suite
+
+class className(base_classes):
+    suite
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2-1" class="outline-4">
+<h4 id="sec-6-2-1"><span class="section-number-4">6.2.1</span> Attributes and Methods</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<div class="org-src-container">
+
+<pre class="src src-python">class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def distance_from_origin(self):
+        # hypot: Return the Euclidean distance, sqrt(x*x + y*y).
+        return math.hypot(self.x, self.y)
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    def __repr__(self):
+        return "Point({0.x!r}, {0.y!r})".format(self)
+
+    def __str__(self):
+        return "({0.x!r}, {0.y!r})".format(self)
+</pre>
+</div>
+<p>
+Python automatically supplies the first arguments in method calles &#x2013; it is an object reference to the object itself.<br  />
+We must include this argument in the parameter list and by convention the parameter is called self.<br  />
+All object attributes (data and method attributes)  must be qualified by self.<br  />
+</p>
+
+<pre class="example">
+To create an object, two steps are necessary:
+1. a raw or uninitialized object must be created
+2. the object must be initialized , ready for use
+
+When an object is created:
+1. the special method __new__() is called to create the object
+2. the special method __init__() is called to initialize it
+</pre>
+<p>
+We do not having to reimplement methods in a subclass if the base class's method is sufficient.<br  />
+Because if we call a method on an object and the object’s class does not have an implementation of that method,<br  />
+Python will automatically go through the object’s base classes, and their base classes, and so on,<br  />
+until it finds the method &#x2013; and if the method is not found an AttributeError exception is raised.<br  />
+</p>
+
+
+<p>
+Comparison Special Methods<br  />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Special Method</th>
+<th scope="col" class="left">Usage</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">__lt__(self, other)</td>
+<td class="left">x &lt; y</td>
+<td class="left">Returns True if x is less than y</td>
+</tr>
+
+<tr>
+<td class="left">__le__(self, other)</td>
+<td class="left">x &lt;= y</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">__eq__(self, other)</td>
+<td class="left">x = y</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">__ne__(self, other)</td>
+<td class="left">x != y</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">__ge__(self, other)</td>
+<td class="left">x &gt;= y</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">__gt__(self, other)</td>
+<td class="left">x &gt; y</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="example">
+Ways to avoid inappropriate comparisons:
+1. assert isinstance(other, Point)
+2. if not isinstance(other, Point): raise TypeError()
+3. if not isinstance(other, Point): return NotImplementd
+</pre>
+
+<p>
+If NotImplemented is returned, Python will then try calling other.__eq__(self) to see whether the other type supports the comparison with the Point type,<br  />
+and if there is no such method or if that method also returns NotImplemented,<br  />
+Python will give up and raise a TypeErrorexception.<br  />
+</p>
+
+<p>
+(Note that only reimplementations of the comparison special methods listed in Table above may return NotImplemented.)<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2-2" class="outline-4">
+<h4 id="sec-6-2-2"><span class="section-number-4">6.2.2</span> Inheritance and Polymorphism</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<div class="org-src-container">
+
+<pre class="src src-python">class Circle(Point):
+    def __str__(self, radius, x=0, y=0):
+        # We don't have to pass the self argument in the super() calls 
+        # since Python automatically passes it for us.
+        super().__init__(x, y)  
+        self.radius = radius
+
+    def edge_distance_from_origin(self):
+        return abs(self.distance_from_origin() - self.radius)
+
+    def __eq__(self, other):
+        return self.radius == other.radius and super().__eq__(other)
+</pre>
+</div>
+
+<p>
+Polymorphism meas that any object of a given class can be used as though it were an object of any of its class's base classes.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2-3" class="outline-4">
+<h4 id="sec-6-2-3"><span class="section-number-4">6.2.3</span> Using Properties to Control Attribute Access</h4>
+<div class="outline-text-4" id="text-6-2-3">
+<div class="org-src-container">
+
+<pre class="src src-python">class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    @property
+    def distance_from_origin(self):
+        return math.hypot(self.x, self.y)
+
+class Circle(Point):
+    def __str__(self, radius, x=0, y=0):
+        super().__init__(x, y)  
+        self.radius = radius
+
+    @property
+    def edge_distance_from_origin(self):
+        return abs(self.distance_from_origin - self.radius)
+
+    @property
+    def area(self):
+        return math.pi * (self.radius ** 2)
+    # same to
+    # area = property(area)
+</pre>
+</div>
+
+<p>
+Note the property decorator.<br  />
+If we provide only getter as we have done here, the properties are read-only.<br  />
+</p>
+
+<p>
+A decorator is a function that takes a function or method as its arguemnts and<br  />
+returns a "decorated" version, that is, a version of the function or method that<br  />
+is modified in some way.<br  />
+A decorator is indicated by preceding its name with an at symbol(@).<br  />
+</p>
+
+<pre class="example">
+The property() decorator function is built-in and takes up to for arguments:
+- a getter function
+- a setter function
+- a delete function
+- a docstring
+
+The effect of using @propery is the same as calling propery() function just one argument, the getter function.
+</pre>
+
+<p>
+Python programmers normally use properties rather than the explicit getters and setters<br  />
+(e.g., getRadius() and setRadius()) that are so commonlu used in other object-oriented languages.<br  />
+This is because it is so easy to change a data attribute into a property without affecting the use of the class.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">class Circle(Point):
+    def __str__(self, radius, x=0, y=0):
+        super().__init__(x, y)
+        self.radius = radius
+
+    @property
+    def radius(self):
+        """
+        The circle's radius
+
+        &gt;&gt;&gt; circle = Circle(-2)
+        Trackback (most recent call last):
+        ...
+        AssertionError: radius must be nonzero and non-negative
+        &gt;&gt;&gt; circle = Circle(4)
+        &gt;&gt;&gt; circle.radius = -1
+        Trackback (most recent call last):
+        ...
+        AssertionError: radius must be nonzero and non-negative
+        &gt;&gt;&gt; circle.radius = 6
+        """
+        return self.__radius
+
+    @radius.setter
+    def radius(self, radius):
+        assert radius &gt; 0, 'radius must be nonzero and non-negative'
+        self.__radius = radius
+</pre>
+</div>
+
+<p>
+To turn an attribute into a readable/writable property we must create a private attribute<br  />
+where the data is actually held and supply getter and setter methods.<br  />
+</p>
+
+<p>
+The getter and setter (and deleter if we needed one) all have the same name &#x2013;<br  />
+it is the decorators that distinguish them, and the decorators rename them appropriately<br  />
+so that no name conflicts occur.<br  />
+</p>
+
+<p>
+Every property has a getter, setter, and deleter attribute, so once the radius property<br  />
+is created using @property, the radius.getter, radius.setter, and radius.deleter attributes<br  />
+become available.<br  />
+</p>
+
+<p>
+The radius.getter is set to the getter method by the @property decorator.<br  />
+The other two are set up by Python so that they do nothing (so the attribute cannot be<br  />
+written to or deleted), unless they are used as decorators, in which case they in effect<br  />
+replace themselves with the method they are used to decorate.<br  />
+</p>
+
+<p>
+The Circle’s initializer, Circle.__init__(), includes the statement self.radius = radius;<br  />
+this will call the radius property’s setter, so if an invalid radius is given<br  />
+when a Circle is created an AssertionError exception will be raised.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6-2-4" class="outline-4">
+<h4 id="sec-6-2-4"><span class="section-number-4">6.2.4</span> Creating Complete Fully Integrated Data Types</h4>
+<div class="outline-text-4" id="text-6-2-4">
+</div><ol class="org-ol"><li><a id="sec-6-2-4-1" name="sec-6-2-4-1"></a>Creating Data Types from Scratch<br  /><div class="outline-text-5" id="text-6-2-4-1">
+<div class="org-src-container">
+
+<pre class="src src-python">class FuzzyBool:
+    def __init__(self, value=0.0):
+        # private attribute because FuzzyBool behaves like immutables
+        self.__value = value if 0.0 &lt;= value &lt;= 1.0 else 0.0
+
+
+    # To provide the complete set of comparisons (&lt;,&lt;=,==,!=,&gt;,&gt;=)
+    # it is necessary to implement at lest three of them, &lt;, &lt;=, and ==
+    # since Python can infer &gt; from &lt;, != from ==, and &gt;= from &lt;=.
+    def __lt__(self, other):
+        return self.__value &lt; other.__value
+
+    def __le__(self, other):
+        return self.__value &lt;= other.__value
+
+    def __eq__(self, other):
+        return self.__value == other.__value
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-python">@staticmethod
+def conjunction(*fuzzies):
+    return FuzzyBool(min([float(x) for x in fuzzies]))
+</pre>
+</div>
+<p>
+Static methods are simply methods that do not get self or any other first argument specially passed by Python.<br  />
+</p>
+
+<p>
+Some Python programmers consider the use of static methods to be un-Pythonic,<br  />
+and use them only if they are converting code from another language (such as C++ or Java),<br  />
+or if they have a method that does not use self.<br  />
+</p>
+
+<p>
+In Python, rather than using static methods it is better to create module function instead of a class method.<br  />
+</p>
+
+<p>
+Creating a variable inside a class definition but outside any method creates a static (class) variable.<br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-6-2-4-2" name="sec-6-2-4-2"></a>Creating Data Types from Other Data Types<br  /><div class="outline-text-5" id="text-6-2-4-2">
+<p>
+In most object-oriented languages inheritance is used to create new classes<br  />
+that have all the methods and attributes of the classes they inherit, as well as<br  />
+the additional methods and attributes that we want the new class to have.<br  />
+</p>
+
+<p>
+But in addition, Python allows us to effectively unimplement methods, that is,<br  />
+to make the new class behave as though it does not have some of the methods that it inherits.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">class FuzzyBool(float):
+    # When we create a new class it is usually mutable and
+    # relies on object.__new__() to create the raw uninitialized object.
+    # But in the case of immutable classes we need to do the creation and
+    # initialization in one step since once an immutable object has been
+    # created it cannot be changed.
+    def __new__(cls, value=0.0):
+        return super().__new__(cls, value if 0.0 &lt;= value &lt;= 1.0 else 0.0)
+</pre>
+</div>
+
+<p>
+__new__() is a class method &#x2013; these are similar to normal methods except that<br  />
+they are called on the class rather than on an instance and Python supplies as their<br  />
+first argument the class they are called on.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">class FuzzyBool(float):
+    def __new__(cls, value=0.0):
+        return super().__new__(cls, value if 0.0 &lt;= value &lt;= 1.0 else 0.0)
+
+    for name, operator in (("__neg__", "-"), ("__index__", "index()")):
+        message = "bad operand type for unary {0}: '{{self}}'".format(operator)
+        exec("def {0}(self): raise TypeError(\"{1}\".format(""self=self.__class__.__name__))".format(name, message))
+</pre>
+</div>
+<p>
+The built-in exec() function dynamically execuates the code passed to it from the object it is given.<br  />
+In this case we have given it a string, but it is also possible to pass some other kinds of objects.<br  />
+Be defualt, the code is execuated in the context of the enclosing scope,<br  />
+in this case within the definition of the FuzzBool class.<br  />
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-python">for name, operator in (("__xor__", "^"), ("__ixor__", "^="),
+                       ("__add__", "+"), ("__iadd__", "+="),
+                       ("__radd__", "+"), ("__sub__", "-"),
+                       ("__isub__", "-="), ("__rsub__", "-"),
+                       ("__mul__", "*"), ("__imul__", "*="),
+                       ("__rmul__", "*"), ("__pow__", "**"),
+                       ("__ipow__", "**="), ("__rpow__", "**"),
+                       ("__floordiv__", "//"), ("__ifloordiv__", "//="),
+                       ("__rfloordiv__", "//"), ("__truediv__", "/"),
+                       ("__itruediv__", "/="), ("__rtruediv__", "/"),
+                       ("__divmod__", "divmod()"), ("__rdivmod__", "divmod()"),
+                       ("__mod__", "%"), ("__imod__", "%="),
+                       ("__rmod__", "%"), ("__lshift__", "&lt;&lt;"),
+                       ("__ilshift__", "&lt;&lt;="), ("__rlshift__", "&lt;&lt;"),
+                       ("__rshift__", "&gt;&gt;"), ("__irshift__", "&gt;&gt;="),
+                       ("__rrshift__", "&gt;&gt;")):
+    message = ("unsupported operand type(s) for {0}: " "'{{self}}'{{join}} {{args}}".format(operator))
+    exec("def {0}(self, *args):\n"
+         " types = [\"'\" + arg.__class__.__name__ + \"'\" " 
+         "for arg in args]\n"
+         " raise TypeError(\"{1}\".format(" 
+         "self=self.__class__.__name__, "
+         "join=(\" and\" if len(args) == 1 else \",\")," 
+         "args=\", \".join(types)))".format(name, message))
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> <span class="todo TODO">TODO</span> Custom Collection Classes</h3>
+<div class="outline-text-3" id="text-6-3">
+</div>
+
+
+
+<div id="outline-container-sec-6-3-1" class="outline-4">
+<h4 id="sec-6-3-1"><span class="section-number-4">6.3.1</span> Creating Classes That Aggregate Collections</h4>
+</div>
+
+<div id="outline-container-sec-6-3-2" class="outline-4">
+<h4 id="sec-6-3-2"><span class="section-number-4">6.3.2</span> Creating Collection Classes Using Aggregation</h4>
+<div class="outline-text-4" id="text-6-3-2">
+<p>
+When creating custom classes:<br  />
+</p>
+<ol class="org-ol">
+<li>inheriting a class that is silimar to the one we want to make<br  />
+</li>
+<li>creating a class from scratch and aggregating instance of any other classes we need inside it<br  />
+</li>
+<li>doing a mixture of both<br  />
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> File Handing</h2>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Advanced Programming Techniques</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Further Procedural Programming</h3>
+<div class="outline-text-3" id="text-8-1">
+</div><div id="outline-container-sec-8-1-1" class="outline-4">
+<h4 id="sec-8-1-1"><span class="section-number-4">8.1.1</span> Branching Using Dictionaries</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<pre class="example">
+(A)dd (E)dit (L)ist (R)emove (I)mport e(X)port (Q)uit
+</pre>
+
+<p>
+choice 1:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">if action == "a":
+    add_dvd(db)
+elif action == "e":
+    edit_dvd(db)
+elif action == "l":
+    list_dvds(db)
+elif action == "r":
+    remove_dvd(db)
+elif action == "i":
+    import_(db)
+elif action == "x":
+    export(db)
+elif action == "q":
+    quit(db)
+</pre>
+</div>
+
+<p>
+choice 2:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">functions = dict(a=add_dvd, e=edit_dvd, l=list_dvds, r=remove_dvd, i=import_, x=export, q=quit)
+functions[action](db)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8-1-2" class="outline-4">
+<h4 id="sec-8-1-2"><span class="section-number-4">8.1.2</span> Generator Expressions and Functions</h4>
+<div class="outline-text-4" id="text-8-1-2">
+<div class="org-src-container">
+
+<pre class="src src-python">(expression for item in iterable)
+(expression for item in iterable if condition)
+</pre>
+</div>
+<p>
+Similar to list comprehension but with () not [].<br  />
+</p>
+
+<p>
+Two equivalent code snippets:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">def items_in_key_order(d):
+    for key in sorted(d):
+        yield key, d[key]
+
+
+def items_in_key_order(d):
+    return ((key, d[key]) for key in sorted(d))
+</pre>
+</div>
+
+<p>
+If we need all the items in one go we can pass the generator returned by the functions to list() or tuple() ; otherwise, we can iterate over the generator to retrieve items as we need them.<br  />
+</p>
+
+<p>
+<b>Generators provide a means of performing lazy evaluation, which means that they compute only the values that are actually needed.</b><br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-1-3" class="outline-4">
+<h4 id="sec-8-1-3"><span class="section-number-4">8.1.3</span> Dynamic Code Execution and Dynamic Imports</h4>
+<div class="outline-text-4" id="text-8-1-3">
+<p>
+Usages:<br  />
+</p>
+<ol class="org-ol">
+<li>some occasions when it is easier to write a piece of code that generates the code we need than to write the needed code directly.<br  />
+</li>
+<li>to provide plug-ins to extend a program's functionality.<br  />
+</li>
+</ol>
+</div>
+
+<ol class="org-ol"><li><a id="sec-8-1-3-1" name="sec-8-1-3-1"></a>Dynamic Code Execution<br  /><div class="outline-text-5" id="text-8-1-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Function</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">eval()</td>
+<td class="left">evaluate a single expression</td>
+</tr>
+
+<tr>
+<td class="left">exec()</td>
+<td class="left">can handle any amount of code</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="org-src-container">
+
+<pre class="src src-python">x = eval("(2 ** 31) -1")
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-python">import math
+
+code = '''
+def area_of_sphere(r):
+    return 4 * math.pi * r ** 2
+'''
+context = {}
+context["math"] = math
+exec(code, context)
+
+# If exec() is called with some code as its only argument there is no way to
+# access any functions or variables that are created as a result of the code being
+# executed. Furthermore, exec() cannot access any imported modules or any of
+# the variables, functions, or other objects that are in scope at the point of the
+# call. Both of these problems can be solved by passing a dictionary as the second
+# argument. The dictionary provides a place where object references can be kept
+# for accessing after the exec() call has finished. For example, the use of the
+# context dictionary means that after the exec() call, the dictionary has an object
+# reference to the area_of_sphere() function that was created by exec() . In this
+# example we needed exec() to be able to access the math module, so we inserted
+# an item into the context dictionary whose key is the module’s name and whose
+# value is an object reference to the corresponding module object. This ensures
+# that inside the exec() call, math.pi is accessible.
+
+
+area_of_sphere = context["area_of_sphere"]
+area = area_of_sphere(5)
+print(area)
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-8-1-3-2" name="sec-8-1-3-2"></a>Dynamic Importing Modules<br  /><div class="outline-text-5" id="text-8-1-3-2">
+<div class="org-src-container">
+
+<pre class="src src-python">import sys
+import os
+import glob
+
+if sys.platform.startswith("win"):
+    def get_files(names):
+        for name in names:
+            if os.path.isfile(name):
+                yield name
+            else:
+                for file in glob.iglob(name):
+                    if not os.path.isfile(file):
+                        continue
+                    yield file
+else:
+    def get_files(names):
+        return (file for file in names if os.path.isfile(file))
+
+
+def load_modules():
+    modules = []
+    for name in os.listdir(os.path.dirname(__file__) or '.'):
+        if name.endswith('.py') and 'magic' in name.lower():
+            filename = name
+            name = os.path.splitext(name)[0]  # remove extension
+            if name.isidentifier() and name not in sys.modules:  # isidentifier: if a string is a valid identifier
+                fh = None
+                try:
+                    fh = open(filename, 'r', encoding='utf8')
+                    code = fh.read()
+                    module = type(sys)(name)
+                    # sys is a module os we get the module type object
+                    # and can use it to create a new module with the given name
+                    # name() stands for function call
+                    # name stands for variable
+                    sys.modules[name] = module
+                    # Once we have a new (empty) module, we add it to the global list of modules
+                    # to prevent the module from being accidentally reimported.
+                    # This is done before calling exec() to more closely mimic the behavior of the import statement.
+                    exec(code, module.__dict__)
+                    modules.append(module)
+                except (EnvironmentError, SyntaxError) as err:
+                    sys.modules.pop(name, None)
+                    print(err)
+                finally:
+                    if fh is not None:
+                        fh.close()
+    return modules
+
+
+def load_module_v2():
+    # One theoretical problem with this approach is that it is potentially insecure.
+    # The name variable could begin with sys; and be followed by some destructive code.
+    modules = []
+    for name in os.listdir(os.path.dirname(__file__) or '.'):
+        if name.endswith('.py') and 'magic' in name.lower():
+            name = os.path.splitext(name)[0]  # remove extension
+            if name.isidentifier() and name not in sys.modules:  # isidentifier: if a string is a valid identifier
+                try:
+                    exec("import " + name)
+                    modules.append(sys.modules[name])
+                except SyntaxError as err:
+                    print(err)
+
+
+def load_module_v3():
+    # This is the easiest way to dynamically import modules and is slightly safer
+    # than using exec()
+    modules = []
+    for name in os.listdir(os.path.dirname(__file__) or '.'):
+        if name.endswith('.py') and 'magic' in name.lower():
+            name = os.path.splitext(name)[0]  # remove extension
+            if name.isidentifier() and name not in sys.modules:  # isidentifier: if a string is a valid identifier
+                try:
+                    module = __import__(name)
+                    modules.append(module)
+                except SyntaxError as err:
+                    print(err)
+
+
+# None of the techniques shown here handles packages or modules in different
+# paths, but it is not difficult to extend the code to accommodate these.
+
+def get_function(module, function_name):
+    # If hundreds of files were being processed (e.g., due to using *.* in the C:\windows
+    # directory), we don’t want to go through the lookup process for every module
+    # for every file. So immediately after defining the get_function() function, we
+    # add an attribute to the function, a dictionary called cache . (In general, Python
+    # allows us to add arbitrary attributes to arbitrary objects.) The first time that
+    # get_function() is called the cache dictionary is empty, so the dict.get() call will
+    # return None . But each time a suitable function is found it is put in the dictionary
+    # with a 2-tuple of the module and function name used as the key and the function
+    # itself as the value. So the second and all subsequent times a particular
+    # function is requested the function is immediately returned from the cache and
+    # no attribute lookup takes place at all.
+
+    # The technique used for caching the get_function() ’s return value for a given set
+    # of arguments is called memoizing.
+    function = get_function.cache.get((module, function_name), None)
+    if function is None:
+        try:
+            function = getattr(module, function_name)
+            if not hasattr(function, "__call__"):
+                raise AttributeError()
+            get_function.cache[module, function_name] = function
+        except AttributeError:
+            function = None
+    return function
+
+
+get_function.cache = {}
+
+
+def main():
+    modules = load_modules()
+    get_file_type_functions = []
+    for module in modules:
+        get_file_type = get_function(module, "get_file_type")
+        if get_file_type is not None:
+            get_file_type_functions.append(get_file_type)
+
+    # This loop iterates over every file listed on the command line and for each one reads its first 1 000 bytes.
+    for file in get_files(sys.argv[1:]):
+        fh = None
+        try:
+            fh = open(file, 'rb')
+            magic = fh.read(1000)
+            for get_file_type in get_file_type_functions:
+                filetype = get_file_type(magic, os.path.splitext(file)[1])
+                if filetype is not None:
+                    print('{0:.&lt;20}{1}'.format(filetype, file))
+                    break
+            else:
+                print('{0:.&lt;20}{1}'.format('Unknown', file))
+        except EnvironmentError as err:
+            print(err)
+
+        finally:
+            if fh is not None:
+                fh.close()
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-8-1-4" class="outline-4">
+<h4 id="sec-8-1-4"><span class="section-number-4">8.1.4</span> Local and Recursive Functions</h4>
+<div class="outline-text-4" id="text-8-1-4">
+<p>
+Recursive functions can be computationally expensive because for every recursive call another stack frame is used; however, some algorithms are most naturally expressed using recursion. Python implementations have a fixed limit to how many recursive calls can be made.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">sys.getrecursionlimit()
+sys.setrecursionlimit()
+</pre>
+</div>
+
+<p>
+Natural recursive function.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">def factorial(x):
+    if x &lt;= 1:
+        return 1
+    return x * factorial(x - 1)
+</pre>
+</div>
+
+
+
+<div class="figure">
+<p><img src="file:///home/hack/notes/pics/local-and-recursive.png" alt="local-and-recursive.png" /><br  />
+</p>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-python">def indented_list_sort(indented_list, indent="    "):
+    # The entry structure
+    # alphabetic for clarity
+    KEY, ITEM, CHILDREN = range(3)
+
+    # Turning a list of strings into a list of entries.
+    def add_entry(level, key, item, chidren):
+        if level == 0:
+            chidren.append((key, item, []))  # Notice this thinking
+        else:
+            # The item is a child of the last item in the children list.
+            add_entry(level - 1, key, item, chidren[-1][CHILDREN])
+
+    def update_indented_list(entry):
+        indented_list.append(entry[ITEM])
+        for subentry in sorted(entry[CHILDREN]):
+            update_indented_list(subentry)
+
+    entries = []
+    for item in indented_list:
+        level = 0
+        i = 0
+        # Determine the level of the item
+        while item.startswith(indent, i):
+            i += len(indent)
+            level += 1
+        key = item.strip().lower()
+        add_entry(level, key, item, entries)
+
+    indented_list = []
+    for entry in sorted(entries):
+        update_indented_list(entry)
+    return indented_list
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8-1-5" class="outline-4">
+<h4 id="sec-8-1-5"><span class="section-number-4">8.1.5</span> Functions and Method Decorators</h4>
+<div class="outline-text-4" id="text-8-1-5">
+<p>
+A decorator is a function that takes a function or method as its sole argument and return a new function or method that incorporates the decorated function or method with some additional funcionality added.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">import logging
+import functools
+import tempfile
+import os
+
+
+def positive_result(function):
+    def wrapper(*args, **kwargs):
+        result = function(*args, **kwargs)
+        assert result &gt;= 0, function.__name__ + "() result isn't &gt;=0"
+        return result
+
+    wrapper.__name__ = function.__name__
+    wrapper.__doc__ = function.__doc__
+    return wrapper
+
+
+def positive_result_v2(function):
+    @functools.wraps(function)
+    # simplify
+    # wrapper.__name__ = function.__name__
+    # wrapper.__doc__ = function.__doc__
+
+    def wrapper(*args, **kwargs):
+        result = function(*args, **kwargs)
+        assert result &gt;= 0, function.__name__ + "() result isn't &gt;=0"
+        return result
+
+    return wrapper
+
+
+@positive_result
+def discriminate(a, b, c):
+    return (b ** 2) - (4 * a * c)
+
+
+# In some cases it would be useful to be able to parameterize a decorator, but at
+# first sight this does not seem possible since a decorator takes just one argument,
+# a function or method. But there is a neat solution to this. We can call a
+# function with the parameters we want and that returns a decorator which can
+# then decorate the function that follows it.
+def bounded(minimum, maximum):
+    def decorator(function):
+        @functools.wraps(function)
+        def wrapper(*args, **kwargs):
+            result = function(*args, **kwargs)
+            if result &lt; minimum:
+                return minimum
+            elif result &gt; maximum:
+                return maximum
+            return result
+
+        return wrapper
+
+    return decorator
+
+
+@bounded(0, 100)
+def percent(amount, total):
+    return (amount / total) * 100
+
+
+if __debug__:
+    logger = logging.getLogger('Logger')
+    logger.setLevel(logging.DEBUG)
+    handler = logging.FileHandler(os.path.join(tempfile.gettempdir(), 'logged.log'))
+
+    logger.addHandler(handler)
+
+
+    def logged(function):
+        @functools.wraps(function)
+        def wrapper(*args, **kwargs):
+            log = 'called: ' + function.__name__ + '('
+            log += ', '.join(
+                ['{0!r}'.format(a) for a in args] + ['{0!s}={1!r}'.format(k, v) for k, v in kwargs.items()])
+            result = exception = None
+            try:
+                result = function(*args, *kwargs)
+                return result
+            except Exception as err:
+                exception = err
+            finally:
+                log += (
+                    (') -&gt; ' + str(result)) if exception is None else ') {0}: {1}'.format(type(exception), exception))
+                logger.debug(log)
+                if exception is not None:
+                    raise exception
+
+        return wrapper
+else:
+    def logged(function):
+        return function
+
+
+@logged
+def discounted_price(price, percentage, make_integer=False):
+    result = price * ((100 - percentage) / 100)
+    if not (0 &lt; result &lt;= price):
+        raise ValueError('invalid price')
+    return result if not make_integer else int(round(result))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8-1-6" class="outline-4">
+<h4 id="sec-8-1-6"><span class="section-number-4">8.1.6</span> Function Annotations</h4>
+<div class="outline-text-4" id="text-8-1-6">
+<p>
+Functions and methods can be defined with annotations &#x2014; expressions that can be used in a function’s signature.<br  />
+Here's the general syntax:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">def functionName(par1 : exp1, par2 : exp2, ..., parN : expN) -&gt; rexp:
+    suite
+</pre>
+</div>
+
+<p>
+If annotations are present they are added to the function’s <span class="underline"><span class="underline">annotations</span></span> dictionary; if they are not present this dictionary is empty. The dictionary’s keys are the parameter names, and the values are the corresponding expressions.<br  />
+</p>
+
+<pre class="example">
+Annotations have no special significance to Python. 
+The only thing that Python does in the face of annotations is to put them in the __annotations__ dictionary; any other action is up to us.
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Further Ojbect-Oriented Programming</h3>
+<div class="outline-text-3" id="text-8-2">
+</div><div id="outline-container-sec-8-2-1" class="outline-4">
+<h4 id="sec-8-2-1"><span class="section-number-4">8.2.1</span> Functors</h4>
+<div class="outline-text-4" id="text-8-2-1">
+<p>
+In Python a <b>function object</b> is an object reference to any callable, such as a function, a lambda function, or a method. The definition also includes classes, since an object reference to a class is a callable that, when called, returns an object of the given class—for example, x = int(5) . In computer science a <b>functor</b> is an object that can be called as though it were a function, so in Python terms a functor is just another kind of function object. Any class that has a __call__() special method is a functor. The key benefit that functors offer is that they can maintain some state information.<br  />
+</p>
+
+<p>
+A functor’s ability to capture state by using a class is very versatile and powerful, but sometimes it is more than we really need. Another way to capture state is to use a closure. A closure is a function or method that captures some external state.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2-2" class="outline-4">
+<h4 id="sec-8-2-2"><span class="section-number-4">8.2.2</span> Context Managers</h4>
+<div class="outline-text-4" id="text-8-2-2">
+<p>
+Context managers allow us to simplify code by ensuring that certain operations are performed before and after a particular block of code is executed.<br  />
+</p>
+
+<p>
+The behavior is achieved because context managers define two special methods, __enter__() and __exit__() , that Python treats specially in the scope of a with statement. When a context manager is created in a with statement its __enter__() method is automatically called, and when the context manager goes out of scope after its with statement its __exit__() method is automatically called.<br  />
+</p>
+
+
+<p>
+The syntax for using context managers:<br  />
+</p>
+<pre class="example">
+with expression as variable:
+    suite
+
+The expression must be or must produce a context manager object; if the
+optional as variable part is specified, the variable is set to refer to the object
+returned by the context manager’s __enter__() method (and this is often the
+context manager itself). Because a context manager is guaranteed to execute
+its "exit" code (even in the face of exceptions), context managers can be used to
+eliminate the need for finally blocks in many situations.
+</pre>
+
+<p>
+A file object is a context manager whose exit code always closes the file if it was opened. The exit code is executed whether or not an exception occurs, but in the latter case, the exception is propagated.<br  />
+</p>
+
+<p>
+It isn’t only file objects that are context managers. For example, several threading-related classes used for locking are context managers. Context managers can also be used with decimal.Decimal numbers; this is useful if we want to perform some calculations with certain settings (such as a particular precision) in effect.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2-3" class="outline-4">
+<h4 id="sec-8-2-3"><span class="section-number-4">8.2.3</span> Descriptor</h4>
+<div class="outline-text-4" id="text-8-2-3">
+<p>
+Descriptors are classes which provide access control for the attributes of other classes.<br  />
+</p>
+
+<p>
+Any class that implements one or more of the descriptor special methods, __get__() , __set__() , and __delete__() , is called (and can be used as) a descriptor.<br  />
+</p>
+
+<p>
+The built-in property() and classmethod() functions are implemented using descriptors.<br  />
+</p>
+<pre class="example">
+The key to understanding descriptors is that although we create an instance of a descriptor in a class as a class attribute, 
+Python accesses the descriptor through the class’s instances.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2-4" class="outline-4">
+<h4 id="sec-8-2-4"><span class="section-number-4">8.2.4</span> Class Decorators</h4>
+<div class="outline-text-4" id="text-8-2-4">
+<p>
+Class decorators take a class object (the result of the class statement), and should return a class—normally a modified version of the class they decorate.<br  />
+</p>
+
+<p>
+Given a class that defines only &lt;, the decorator produces the missing comparison operators by using the following logical equivalences:<br  />
+<img src="pics/c8_compare.png" alt="c8_compare.png" /><br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2-5" class="outline-4">
+<h4 id="sec-8-2-5"><span class="section-number-4">8.2.5</span> Abstract Base Classes</h4>
+<div class="outline-text-4" id="text-8-2-5">
+<p>
+An abstract base class (ABC) is a class that cannot be used to create objects. Instead, the purpose of such classes is to define interfaces, that is, to in effect list the methods and properties that classes that inherit the abstract base class must provide.<br  />
+Abstract base classes are classes that have at least one abstract method or property. Abstract methods can be defined with no implementation or with an actual (concrete) implementation that can be invoked from subclasses.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c8_number_abc.png" alt="c8_number_abc.png" /><br  />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/c8_collections_abc.png" alt="c8_collections_abc.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2-6" class="outline-4">
+<h4 id="sec-8-2-6"><span class="section-number-4">8.2.6</span> Multiple Inheritance</h4>
+<div class="outline-text-4" id="text-8-2-6">
+<p>
+Multiple inheritance is where one class inherits from two or more other classes.<br  />
+</p>
+
+<p>
+Multiple inheritance can generally be avoided by:<br  />
+</p>
+<ol class="org-ol">
+<li>using single inheritance (one base class), and setting a metaclass if we want to support an additional API<br  />
+</li>
+<li>using multiple inheritance with one concrete class and one or more abstract base classes for additional APIs<br  />
+</li>
+<li>using single inheritance and aggregate instances of other classes* DONE Debugging, Testing, and Profiling<br  />
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-8-2-7" class="outline-4">
+<h4 id="sec-8-2-7"><span class="section-number-4">8.2.7</span> Metaclasses</h4>
+<div class="outline-text-4" id="text-8-2-7">
+<p>
+A metaclass is to a class what a class is to an instance; that is, a metaclass is used to create classes, just as classes are used to create instances.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">isinstance() # class and instance
+issubclass() # class and metaclass
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Functional-Style Programming</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+Functional-style programming is an approach to programming where computations are built up from combining functions that don't modify their augrments and that don't refer to or change the program's state, and that provide their results as return values.<br  />
+</p>
+
+<p>
+Threee concepts that are strongly associated with functional programming are:<br  />
+</p>
+<ol class="org-ol">
+<li>mapping<br  />
+</li>
+<li>filtering<br  />
+</li>
+<li>reducing<br  />
+</li>
+</ol>
+
+<!-- This HTML table template is generated by emacs 25.2.2 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Definition&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Note&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      mapping&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      taking&nbsp;a&nbsp;function&nbsp;and&nbsp;an&nbsp;iterable&nbsp;and&nbsp;producing&nbsp;a&nbsp;<br />
+      new&nbsp;iterable&nbsp;where&nbsp;each&nbsp;item&nbsp;is&nbsp;the&nbsp;result&nbsp;of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      calling&nbsp;the&nbsp;function&nbsp;on&nbsp;the&nbsp;corresponding&nbsp;item&nbsp;in&nbsp;<br />
+      the&nbsp;original&nbsp;item&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      map()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      The&nbsp;map()&nbsp;function&nbsp;takes&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      function&nbsp;and&nbsp;an&nbsp;iterable&nbsp;as&nbsp;&nbsp;&nbsp;<br />
+      its&nbsp;arguments&nbsp;and&nbsp;for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      efficiency&nbsp;it&nbsp;returns&nbsp;an&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      iterator&nbsp;rather&nbsp;than&nbsp;a&nbsp;list.&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      filtering&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      taking&nbsp;a&nbsp;function&nbsp;and&nbsp;an&nbsp;iterable&nbsp;and&nbsp;producing&nbsp;a&nbsp;<br />
+      new&nbsp;iterable&nbsp;where&nbsp;each&nbsp;item&nbsp;is&nbsp;from&nbsp;the&nbsp;original&nbsp;<br />
+      iterable&nbsp;--&nbsp;providing&nbsp;the&nbsp;function&nbsp;return&nbsp;True&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      when&nbsp;called&nbsp;on&nbsp;the&nbsp;item&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      filter()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      The&nbsp;filter()&nbsp;function&nbsp;takes&nbsp;a&nbsp;<br />
+      function&nbsp;and&nbsp;an&nbsp;iterable&nbsp;as&nbsp;&nbsp;&nbsp;<br />
+      its&nbsp;arguments&nbsp;and&nbsp;returns&nbsp;an&nbsp;&nbsp;<br />
+      iterator.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      reducing&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      taking&nbsp;a&nbsp;function&nbsp;and&nbsp;an&nbsp;iterable&nbsp;and&nbsp;producing&nbsp;a&nbsp;<br />
+      single&nbsp;result&nbsp;value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      functools.reduce();<br />
+      all();&nbsp;any();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      max();&nbsp;min();&nbsp;sum()<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      The&nbsp;way&nbsp;this&nbsp;works&nbsp;is&nbsp;that&nbsp;the<br />
+      function&nbsp;is&nbsp;called&nbsp;on&nbsp;the&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      iterable’s&nbsp;first&nbsp;two&nbsp;values,&nbsp;&nbsp;<br />
+      then&nbsp;on&nbsp;the&nbsp;computed&nbsp;result&nbsp;&nbsp;&nbsp;<br />
+      and&nbsp;the&nbsp;third&nbsp;value,&nbsp;then&nbsp;on&nbsp;&nbsp;<br />
+      the&nbsp;computed&nbsp;result&nbsp;and&nbsp;the&nbsp;&nbsp;&nbsp;<br />
+      fourth&nbsp;value,&nbsp;and&nbsp;so&nbsp;on,&nbsp;until<br />
+      all&nbsp;the&nbsp;values&nbsp;have&nbsp;been&nbsp;used.
+    </td>
+  </tr>
+</table>
+</div>
+<div id="outline-container-sec-8-3-1" class="outline-4">
+<h4 id="sec-8-3-1"><span class="section-number-4">8.3.1</span> Partial Function Application</h4>
+<div class="outline-text-4" id="text-8-3-1">
+<p>
+Partial function application is the creation of a function from an existing function and some arguments to produce a new function that does what the original function did, but with some arguments fixed so that callers don’t have to pass them.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-3-2" class="outline-4">
+<h4 id="sec-8-3-2"><span class="section-number-4">8.3.2</span> Coroutines (co routines)</h4>
+<div class="outline-text-4" id="text-8-3-2">
+<p>
+Coroutines are functions whose processing can be suspended and resumed at specific points.<br  />
+</p>
+
+<p>
+So, typically, a coroutine will execute up to a certain statement, then suspend execution while waiting for some data. At this point other parts of the program can continue to execute (usually other coroutines that aren’t suspended). Once the data is received the coroutine resumes from the point it was suspended, performs processing (presumably based on the data it got), and possibly sending its results to another coroutine.<br  />
+</p>
+
+<p>
+Coroutines are useful when we want to apply multiple functions to the same pieces of data, or when we want to create data processing pipelines, or when we want to have a master function with slave functions.<br  />
+</p>
+
+<p>
+In Python, a coroutine is a function that takes its input from a yield expression.<br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Debugging, Testing, and Profiling</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+NOTE: commit your code before debugging! (like git)<br  />
+</p>
+
+<p>
+mistake categories:<br  />
+</p>
+<ol class="org-ol">
+<li>syntax  &#x2014;&gt; traceback<br  />
+</li>
+<li>logical &#x2014;&gt; unittest<br  />
+</li>
+<li>poor performance (because of poor algorithm or data structure or both) &#x2014;&gt; profiling<br  />
+</li>
+</ol>
+
+
+<p>
+TDD: Test Driven Development<br  />
+</p>
+<ol class="org-ol">
+<li>When we want to add a feature, we first write a test for it.<br  />
+</li>
+<li>When it passed the test, run all the tests avoid side effects.<br  />
+</li>
+</ol>
+</div>
+
+
+
+<div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Debugging</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+No matter how big the traceback is, the last line always specifies the unhandled exception,<br  />
+and we just have to work back until we find our program’s file or one of our own modules listed.<br  />
+The problem will almost certainly be on the line Python specifies, or on an earlier line.<br  />
+</p>
+
+<p>
+Exceptions that we catch and cannot recover from should be reported in the<br  />
+form of error messages, rather than exposing our users to tracebacks which<br  />
+look scary to the uninitiated.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-9-1-1" class="outline-4">
+<h4 id="sec-9-1-1"><span class="section-number-4">9.1.1</span> scientific debugging</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<p>
+To be able to kill a bug we must be able to do the following.<br  />
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-9-1-1-1" name="sec-9-1-1-1"></a>Reproduce the bug<br  /><div class="outline-text-5" id="text-9-1-1-1">
+<p>
+Reproducing the bug is sometimes easy—it always occurs on every run; and<br  />
+sometimes hard—it occurs intermittently. In either case we should try to<br  />
+reduce the bug’s dependencies, that is, find the smallest input and the least<br  />
+amount of processing that can still produce the bug.<br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-9-1-1-2" name="sec-9-1-1-2"></a>Locate the bug<br  /><div class="outline-text-5" id="text-9-1-1-2">
+<ol class="org-ol">
+<li>Think up an explanation—a hypothesis—that reasonably accounts for the bug.<br  />
+</li>
+<li>Create an experiment to test the hypothesis.<br  />
+</li>
+<li>Run the experiment.<br  />
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-9-1-1-3" name="sec-9-1-1-3"></a>Fix the bug<br  /></li>
+<li><a id="sec-9-1-1-4" name="sec-9-1-1-4"></a>Test the fix<br  /><div class="outline-text-5" id="text-9-1-1-4">
+<p>
+The fixing may produce other bugs.<br  />
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Unit Testing</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+By carefully choosing what we test we can improve the quality of our code.<br  />
+</p>
+
+<p>
+Testing:<br  />
+</p>
+<ul class="org-ul">
+<li>usability testing<br  />
+</li>
+<li>functional testing<br  />
+</li>
+<li>integration testing<br  />
+</li>
+<li id="unit testing">Testing individual functions, classes, and methods<br  />
+</li>
+</ul>
+
+<p>
+models:<br  />
+</p>
+</div>
+<div id="outline-container-sec-9-2-1" class="outline-4">
+<h4 id="sec-9-2-1"><span class="section-number-4">9.2.1</span> doctest (standard library)</h4>
+<div class="outline-text-4" id="text-9-2-1">
+<div class="org-src-container">
+
+<pre class="src src-python">def insert_at(string, position, insert):
+    """Returns a copy of string with insert inserted at the position
+    &gt;&gt;&gt; string = "ABCDE"
+    &gt;&gt;&gt; result = []
+    &gt;&gt;&gt; for i in range(-2, len(string) + 2):
+    ...     result.append(insert_at(string, i, "-"))
+    &gt;&gt;&gt; result[:5]
+    ['ABC-DE', 'ABCD-E', '-ABCDE', 'A-BCDE', 'AB-CDE']
+    &gt;&gt;&gt; result[5:]
+    ['ABC-DE', 'ABCD-E', 'ABCDE-', 'ABCDE-']
+    """
+    return string[:position]+insert+string[position:]
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+</pre>
+</div>
+
+
+<p>
+defect: mix test and source code.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2-2" class="outline-4">
+<h4 id="sec-9-2-2"><span class="section-number-4">9.2.2</span> <span class="done DONE">DONE</span> unittest (standard library)</h4>
+<div class="outline-text-4" id="text-9-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Term</th>
+<th scope="col" class="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">test fixture</td>
+<td class="left">the code necessary to set up a test</td>
+</tr>
+
+<tr>
+<td class="left">test suite</td>
+<td class="left">a collection of test cases</td>
+</tr>
+
+<tr>
+<td class="left">test case</td>
+<td class="left">basic unit of testing</td>
+</tr>
+
+<tr>
+<td class="left">test runner</td>
+<td class="left">an object that executes test suites</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Class needs to be tested:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">import collections
+import copy
+
+
+class Atomic:
+
+    def __init__(self, container, deep_copy=False):
+        assert isinstance(container, (collections.MutableSequence,
+                collections.MutableSet, collections.MutableMapping)), (
+                "Atomic requires a mutable collection")
+        # if __debug__ ensures this is not executed when optimized with -O
+        if __debug__ and isinstance(container, (collections.MutableSet,
+                collections.MutableMapping)):
+            assert (hasattr(container, "clear") and
+                    hasattr(container, "update")), ("Atomic "
+                    "mappings/sets must provide clear() and update()")
+        self.original = container
+        self.copy = copy.deepcopy if deep_copy else copy.copy
+
+
+    def __enter__(self):
+        self.modified = self.copy(self.original)
+        return self.modified
+
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if exc_type is None:
+            if isinstance(self.original, collections.MutableSequence):
+                self.original[:] = self.modified
+            elif isinstance(self.original, (collections.MutableSet,
+                    collections.MutableMapping)):
+                self.original.clear()
+                self.original.update(self.modified)
+</pre>
+</div>
+
+
+<p>
+Test Atomic class:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">import unittest
+import Atomic
+
+
+class TestAtomic(unittest.TestCase):
+    def setUp(self) -&gt; None:
+        """
+        To create a single piece of test data.
+        :return:
+        """
+        self.original_list = list(range(10))
+
+    def test_list_succeed(self):
+        items = self.original_list[:]
+        with Atomic.Atomic(items) as atomic:
+            atomic.append(1999)
+            atomic.insert(2, -915)
+            del atomic[5]
+            atomic[4] = -782
+            atomic.insert(0, -9)
+        self.assertListEqual(items, [-9, 0, 1, -915, 2, -782, 5, 6, 7, 8, 9, 1999])
+
+    def test_list_fail(self):
+        items = self.original_list[:]
+        with self.assertRaises(AttributeError):  # assertRaises as a context manager
+            with Atomic.Atomic(items) as atomic:
+                atomic.append(1999)
+                atomic.insert(2, -915)
+                del atomic[5]
+                atomic[4] = -782
+                atomic.poop()  # typo
+        self.assertListEqual(items, self.original_list)
+
+
+if __name__ == "__main__":
+    unittest.main()
+</pre>
+</div>
+
+<p>
+Output:<br  />
+</p>
+<pre class="example">
+Ran 2 tests in 0.001s
+
+OK
+</pre>
+
+
+<p>
+Test from other file<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">import unittest
+import test_Atomic
+
+suite = unittest.TestLoader().loadTestsFromTestCase(test_Atomic.TestAtomic)
+runner = unittest.TextTestRunner()
+print(runner.run(suite))
+</pre>
+</div>
+
+
+<p>
+Output:<br  />
+</p>
+<pre class="example">
+&lt;unittest.runner.TextTestResult run=2 errors=0 failures=0&gt;
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-9-2-3" class="outline-4">
+<h4 id="sec-9-2-3"><span class="section-number-4">9.2.3</span> <span class="done DONE">DONE</span> nose (third-party library)</h4>
+</div>
+<div id="outline-container-sec-9-2-4" class="outline-4">
+<h4 id="sec-9-2-4"><span class="section-number-4">9.2.4</span> py.test (third-party library)</h4>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Profiling</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+A few Python programming habits:<br  />
+</p>
+<ol class="org-ol">
+<li>Prefer tuples to lists when a read-only sequence is needed.<br  />
+</li>
+<li>Use generator rather than creating large tuples or lists to iterate over.<br  />
+</li>
+<li>Use Python's built-in data strcutures &#x2014; <code>dicts</code>, <code>lists</code>, and <code>tuples</code> &#x2014; rather than custom data strcutures implemented in Python, since the built-in ones are very highly optimized.<br  />
+</li>
+<li>When creating large strings out of lots of small strings, instead of concatenating the small strings, accumulate them all in a list, and join the list of strings into a single string at the end.<br  />
+</li>
+<li>If an object (including a function or method) is accessed a large number of times using attribute access (e.g., when accessing a function in a module), or from a data structure, it may be better to create and use a local variable that refers to the object to provide faster access.<br  />
+</li>
+</ol>
+
+<p>
+Profiling: locating the performance problem.<br  />
+Two models that are particularly useful when profiling:<br  />
+</p>
+<dl class="org-dl">
+<dt> timeit </dt><dd>useful for time small pieces of Python codes.<br  />
+</dd>
+<dt> cProfile </dt><dd>used to profile a program's performance.<br  />
+</dd>
+</dl>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-4" class="outline-3">
+<h3 id="sec-9-4"><span class="section-number-3">9.4</span> Summary</h3>
+<div class="outline-text-3" id="text-9-4">
+<p>
+If an unhandled exception is raised, Python will terminate and output a traceback. Such tracebacks can be intimidating for end-users, but provide useful information to us as programmers. Ideally, we should always handle type of exception that we believe our program can raise, and where necessary present the problem to the user in the form of an error message, message box, or log message—but not as a raw traceback. During development, it is probably best not to have a top-level exception handler at all and to simply have the program crash with a traceback.<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Processes and Threading</h2>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Networking</h2>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Database Programming</h2>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> Regular Expressions</h2>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Introduction to Parsing</h2>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Introduction to GUI Programming</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+TCL <i>tikl</i><br  />
+TCL: tool command language<br  />
+Tcl is syntax-free scripting language.<br  />
+</p>
+
+<p>
+Tk is a GUI library written in Tcl and C.<br  />
+</p>
+
+<p>
+Python's <code>tkinter</code> module provides Python bindings for the Tk GUI library.<br  />
+</p>
+
+<p>
+library:<br  />
+</p>
+<ul class="org-ul">
+<li>tkinter (standard library)<br  />
+</li>
+<li>ttk (pip install pyttk)<br  />
+</li>
+<li>pip install pyqt5<br  />
+</li>
+</ul>
+
+
+
+<p>
+PyQt5 is a high level toolkit.<br  />
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Hack Chyson</p>
+<p class="date">Created: 2019-10-24 Thu 17:22</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.2 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

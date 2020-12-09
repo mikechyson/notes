@@ -1,0 +1,1368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-28 Tue 14:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mike Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd852b22">1. Greek Letters</a></li>
+<li><a href="#org922ec5d">2. Relationship</a></li>
+<li><a href="#org78402d1">3. Operator</a></li>
+<li><a href="#orgc25b94c">4. Acculation</a></li>
+<li><a href="#orgf141cd6">5. Dot</a></li>
+<li><a href="#org8423bd7">6. Arrow</a></li>
+<li><a href="#orgbfd092f">7. Matrix</a></li>
+<li><a href="#orge2201be">8. Case</a></li>
+<li><a href="#orgf52e708">9. Special Sign</a></li>
+<li><a href="#orga7ffe38">10. MAth Speical Typeface</a></li>
+<li><a href="#orgbccfdcf">11. Vector</a></li>
+<li><a href="#org7162089">12. Decorator</a></li>
+<li><a href="#org798f466">13. Equation Label and Ref</a></li>
+<li><a href="#org8768a15">14. Argmin argmax</a></li>
+<li><a href="#org90c59ad">15. Underset and overset</a></li>
+<li><a href="#org4f9677d">16. Underbrace and overbrace</a></li>
+<li><a href="#orga17fde6">17. Miscellaneous</a></li>
+<li><a href="#org08bc6c0">18. choose</a></li>
+</ul>
+</div>
+</div>
+<p>
+In Latex, all the commands start with \<br />
+</p>
+<div id="outline-container-orgd852b22" class="outline-2">
+<h2 id="orgd852b22"><span class="section-number-2">1</span> Greek Letters</h2>
+<div class="outline-text-2" id="text-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">beta</td>
+<td class="org-left">\(\beta\)</td>
+<td class="org-left">gamma</td>
+<td class="org-left">\(\gamma\)</td>
+<td class="org-left">delta</td>
+<td class="org-left">\(\delta\)</td>
+</tr>
+
+<tr>
+<td class="org-left">epsilon</td>
+<td class="org-left">\(\epsilon\)</td>
+<td class="org-left">varepsilon</td>
+<td class="org-left">\(\varepsilon\)</td>
+<td class="org-left">zeta</td>
+<td class="org-left">\(\zeta\)</td>
+</tr>
+
+<tr>
+<td class="org-left">eta</td>
+<td class="org-left">\(\eta\)</td>
+<td class="org-left">theta</td>
+<td class="org-left">\(\theta\)</td>
+<td class="org-left">vartheta</td>
+<td class="org-left">\(\vartheta\)</td>
+</tr>
+
+<tr>
+<td class="org-left">iota</td>
+<td class="org-left">\(\iota\)</td>
+<td class="org-left">kappa</td>
+<td class="org-left">\(\kappa\)</td>
+<td class="org-left">lambda</td>
+<td class="org-left">\(\lambda\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mu</td>
+<td class="org-left">\(\mu\)</td>
+<td class="org-left">nu</td>
+<td class="org-left">\(\nu\)</td>
+<td class="org-left">xi</td>
+<td class="org-left">\(\xi\)</td>
+</tr>
+
+<tr>
+<td class="org-left">pi</td>
+<td class="org-left">\(\pi\)</td>
+<td class="org-left">varpi</td>
+<td class="org-left">\(\varpi\)</td>
+<td class="org-left">rho</td>
+<td class="org-left">\(\rho\)</td>
+</tr>
+
+<tr>
+<td class="org-left">varrho</td>
+<td class="org-left">\(\varrho\)</td>
+<td class="org-left">sigma</td>
+<td class="org-left">\(\sigma\)</td>
+<td class="org-left">varsigma</td>
+<td class="org-left">\(\varsigma\)</td>
+</tr>
+
+<tr>
+<td class="org-left">tau</td>
+<td class="org-left">\(\tau\)</td>
+<td class="org-left">upsilon</td>
+<td class="org-left">\(\upsilon\)</td>
+<td class="org-left">phi</td>
+<td class="org-left">\(\phi\)</td>
+</tr>
+
+<tr>
+<td class="org-left">varphi</td>
+<td class="org-left">\(\varphi\)</td>
+<td class="org-left">chi</td>
+<td class="org-left">\(\chi\)</td>
+<td class="org-left">psi</td>
+<td class="org-left">\(\psi\)</td>
+</tr>
+
+<tr>
+<td class="org-left">omega</td>
+<td class="org-left">\(\omega\)</td>
+<td class="org-left">lambda</td>
+<td class="org-left">\(\lambda\)</td>
+<td class="org-left">alpha</td>
+<td class="org-left">\(\alpha\)</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Gamma</td>
+<td class="org-left">\(\Gamma\)</td>
+<td class="org-left">Delta</td>
+<td class="org-left">\(\Delta\)</td>
+<td class="org-left">Theta</td>
+<td class="org-left">\(\Theta\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Lambda</td>
+<td class="org-left">\(\Lambda\)</td>
+<td class="org-left">Xi</td>
+<td class="org-left">\(\Xi\)</td>
+<td class="org-left">Pi</td>
+<td class="org-left">\(\Pi\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Sigma</td>
+<td class="org-left">\(\Sigma\)</td>
+<td class="org-left">Upsilon</td>
+<td class="org-left">\(\Upsilon\)</td>
+<td class="org-left">Phi</td>
+<td class="org-left">\(\Phi\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Psi</td>
+<td class="org-left">\(\Psi\)</td>
+<td class="org-left">Omega</td>
+<td class="org-left">\(\Omega\)</td>
+<td class="org-left">Lambda</td>
+<td class="org-left">\(\Lambda\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org922ec5d" class="outline-2">
+<h2 id="org922ec5d"><span class="section-number-2">2</span> Relationship</h2>
+<div class="outline-text-2" id="text-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">le</td>
+<td class="org-left">\(\le\)</td>
+<td class="org-left">ge</td>
+<td class="org-left">\(\ge\)</td>
+<td class="org-left">equiv</td>
+<td class="org-left">\(\equiv\)</td>
+</tr>
+
+<tr>
+<td class="org-left">ll</td>
+<td class="org-left">\(\ll\)</td>
+<td class="org-left">gg</td>
+<td class="org-left">\(\gg\)</td>
+<td class="org-left">sim</td>
+<td class="org-left">\(\sim\)</td>
+</tr>
+
+<tr>
+<td class="org-left">simeq</td>
+<td class="org-left">\(\simeq\)</td>
+<td class="org-left">subset</td>
+<td class="org-left">\(\subset\)</td>
+<td class="org-left">supset</td>
+<td class="org-left">\(\supset\)</td>
+</tr>
+
+<tr>
+<td class="org-left">approx</td>
+<td class="org-left">\(\approx\)</td>
+<td class="org-left">subseteq</td>
+<td class="org-left">\(\subseteq\)</td>
+<td class="org-left">supseteq</td>
+<td class="org-left">\(\supseteq\)</td>
+</tr>
+
+<tr>
+<td class="org-left">in</td>
+<td class="org-left">\(\in\)</td>
+<td class="org-left">ni</td>
+<td class="org-left">\(\ni\)</td>
+<td class="org-left">propto</td>
+<td class="org-left">\(\propto\)</td>
+</tr>
+
+<tr>
+<td class="org-left">parallel</td>
+<td class="org-left">\(\parallel\)</td>
+<td class="org-left">perp</td>
+<td class="org-left">\(\perp\)</td>
+<td class="org-left">notin</td>
+<td class="org-left">\(\notin\)</td>
+</tr>
+
+<tr>
+<td class="org-left">ne</td>
+<td class="org-left">\(\ne\)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org78402d1" class="outline-2">
+<h2 id="org78402d1"><span class="section-number-2">3</span> Operator</h2>
+<div class="outline-text-2" id="text-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">pm</td>
+<td class="org-left">\(\pm\)</td>
+<td class="org-left">mp</td>
+<td class="org-left">\(\mp\)</td>
+<td class="org-left">div</td>
+<td class="org-left">\(\div\)</td>
+</tr>
+
+<tr>
+<td class="org-left">times</td>
+<td class="org-left">\(\times\)</td>
+<td class="org-left">star</td>
+<td class="org-left">\(\star\)</td>
+<td class="org-left">setminus</td>
+<td class="org-left">\(\setminus\)</td>
+</tr>
+
+<tr>
+<td class="org-left">cup</td>
+<td class="org-left">\(\cup\)</td>
+<td class="org-left">cap</td>
+<td class="org-left">\(\cap\)</td>
+<td class="org-left">ast</td>
+<td class="org-left">\(\ast\)</td>
+</tr>
+
+<tr>
+<td class="org-left">cdot</td>
+<td class="org-left">\(\cdot\)</td>
+<td class="org-left">circ</td>
+<td class="org-left">\(\circ\)</td>
+<td class="org-left">bullet</td>
+<td class="org-left">\(\bullet\)</td>
+</tr>
+
+<tr>
+<td class="org-left">oplus</td>
+<td class="org-left">\(\oplus\)</td>
+<td class="org-left">ominus</td>
+<td class="org-left">\(\ominus\)</td>
+<td class="org-left">diamond</td>
+<td class="org-left">\(\diamond\)</td>
+</tr>
+
+<tr>
+<td class="org-left">odot</td>
+<td class="org-left">\(\odot\)</td>
+<td class="org-left">otimes</td>
+<td class="org-left">\(\otimes\)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgc25b94c" class="outline-2">
+<h2 id="orgc25b94c"><span class="section-number-2">4</span> Acculation</h2>
+<div class="outline-text-2" id="text-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">sum</td>
+<td class="org-left">\(\sum\)</td>
+<td class="org-left">prod</td>
+<td class="org-left">\(\prod\)</td>
+<td class="org-left">int</td>
+<td class="org-left">\(\int\)</td>
+</tr>
+
+<tr>
+<td class="org-left">oint</td>
+<td class="org-left">\(\oint\)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgf141cd6" class="outline-2">
+<h2 id="orgf141cd6"><span class="section-number-2">5</span> Dot</h2>
+<div class="outline-text-2" id="text-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">cdot</td>
+<td class="org-left">\(\cdot\)</td>
+<td class="org-left">cdots</td>
+<td class="org-left">\(\cdots\)</td>
+<td class="org-left">dots</td>
+<td class="org-left">\(\dots\)</td>
+</tr>
+
+<tr>
+<td class="org-left">vdots</td>
+<td class="org-left">\(\vdots\)</td>
+<td class="org-left">ddots</td>
+<td class="org-left">\(\ddots\)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org8423bd7" class="outline-2">
+<h2 id="org8423bd7"><span class="section-number-2">6</span> Arrow</h2>
+<div class="outline-text-2" id="text-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">leftarrow</td>
+<td class="org-left">\(\leftarrow\)</td>
+<td class="org-left">longleftarrow</td>
+<td class="org-left">\(\longleftarrow\)</td>
+<td class="org-left">rightarrow</td>
+<td class="org-left">\(\rightarrow\)</td>
+</tr>
+
+<tr>
+<td class="org-left">longrightarrow</td>
+<td class="org-left">\(\longrightarrow\)</td>
+<td class="org-left">uparrow</td>
+<td class="org-left">\(\uparrow\)</td>
+<td class="org-left">downarrow</td>
+<td class="org-left">\(\downarrow\)</td>
+</tr>
+
+<tr>
+<td class="org-left">leftrightarrow</td>
+<td class="org-left">\(\leftrightarrow\)</td>
+<td class="org-left">longleftrightarrow</td>
+<td class="org-left">\(\longleftrightarrow\)</td>
+<td class="org-left">updownarrow</td>
+<td class="org-left">\(\updownarrow\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Leftarrow</td>
+<td class="org-left">\(\Leftarrow\)</td>
+<td class="org-left">Longleftarrow</td>
+<td class="org-left">\(\Longleftarrow\)</td>
+<td class="org-left">Rightarrow</td>
+<td class="org-left">\(\Rightarrow\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Longrightarrow</td>
+<td class="org-left">\(\Longrightarrow\)</td>
+<td class="org-left">Uparrow</td>
+<td class="org-left">\(\Uparrow\)</td>
+<td class="org-left">Downarrow</td>
+<td class="org-left">\(\Downarrow\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Leftrightarrow</td>
+<td class="org-left">\(\Leftrightarrow\)</td>
+<td class="org-left">Longleftrightarrow</td>
+<td class="org-left">\(\Longleftrightarrow\)</td>
+<td class="org-left">Updownarrow</td>
+<td class="org-left">\(\Updownarrow\)</td>
+</tr>
+
+<tr>
+<td class="org-left">hookleftarrow</td>
+<td class="org-left">\(\hookleftarrow\)</td>
+<td class="org-left">hookrightarrow</td>
+<td class="org-left">\(\hookrightarrow\)</td>
+<td class="org-left">leftharpoonup</td>
+<td class="org-left">\(\leftharpoonup\)</td>
+</tr>
+
+<tr>
+<td class="org-left">leftharpoondown</td>
+<td class="org-left">\(\leftharpoondown\)</td>
+<td class="org-left">rightharpoonup</td>
+<td class="org-left">\(\rightharpoonup\)</td>
+<td class="org-left">rightharpoondown</td>
+<td class="org-left">\(\rightharpoondown\)</td>
+</tr>
+
+<tr>
+<td class="org-left">nearrow</td>
+<td class="org-left">\(\nearrow\)</td>
+<td class="org-left">searrow</td>
+<td class="org-left">\(\searrow\)</td>
+<td class="org-left">nwarrow</td>
+<td class="org-left">\(\nwarrow\)</td>
+</tr>
+
+<tr>
+<td class="org-left">swarrow</td>
+<td class="org-left">\(\swarrow\)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgbfd092f" class="outline-2">
+<h2 id="orgbfd092f"><span class="section-number-2">7</span> Matrix</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #68228b;">\begin</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">matrix</span><span style="color: #8b4513;">}</span>
+<span style="color: #8b4513;">a </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> b </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> c </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">d </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> e </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> f </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">g </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> h </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> k</span>
+<span style="color: #68228b;">\end</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">matrix</span><span style="color: #8b4513;">}</span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+</pre>
+</div>
+
+\begin{equation}
+\begin{matrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{matrix}
+\end{equation}
+
+
+
+<div class="org-src-container">
+<pre class="src src-latex">bmatrix: bracket matrix
+<span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #68228b;">\begin</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">bmatrix</span><span style="color: #8b4513;">}</span>
+<span style="color: #8b4513;">a </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> b </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> c </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">d </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> e </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> f </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">g </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> h </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> k</span>
+<span style="color: #68228b;">\end</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">bmatrix</span><span style="color: #8b4513;">}</span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+</pre>
+</div>
+
+\begin{equation}
+\begin{bmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{bmatrix}
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-latex">vmatrix: vertical matrix
+<span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #68228b;">\begin</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">vmatrix</span><span style="color: #8b4513;">}</span>
+<span style="color: #8b4513;">a </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> b </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> c </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">d </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> e </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> f </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">g </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> h </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> k</span>
+<span style="color: #68228b;">\end</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">vmatrix</span><span style="color: #8b4513;">}</span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+</pre>
+</div>
+
+\begin{equation}
+\begin{vmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{vmatrix}
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-latex">pmatrix: parentheses matrix
+<span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #68228b;">\begin</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">pmatrix</span><span style="color: #8b4513;">}</span>
+<span style="color: #8b4513;">a </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> b </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> c </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">d </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> e </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> f </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">g </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> h </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> k</span>
+<span style="color: #68228b;">\end</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">pmatrix</span><span style="color: #8b4513;">}</span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+</pre>
+</div>
+
+\begin{equation}
+\begin{pmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{pmatrix}
+\end{equation}
+</div>
+</div>
+
+
+
+<div id="outline-container-orge2201be" class="outline-2">
+<h2 id="orge2201be"><span class="section-number-2">8</span> Case</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #68228b;">\begin</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">cases</span><span style="color: #8b4513;">}</span>
+<span style="color: #8b4513;">1 </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> x &gt; 0 </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">0 </span><span style="color: #ff0000; font-weight: bold;">&amp;</span><span style="color: #8b4513;"> x </span><span style="color: #8b4513;">\le</span><span style="color: #8b4513;"> 0</span>
+<span style="color: #68228b;">\end</span><span style="color: #8b4513;">{</span><span style="color: #0000cd;">cases</span><span style="color: #8b4513;">}</span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+</pre>
+</div>
+\begin{equation}
+\begin{cases}
+1 & x > 0 \\
+0 & x \le 0
+\end{cases}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgf52e708" class="outline-2">
+<h2 id="orgf52e708"><span class="section-number-2">9</span> Special Sign</h2>
+<div class="outline-text-2" id="text-9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">infty</td>
+<td class="org-left">\(\infty\)</td>
+<td class="org-left">forall</td>
+<td class="org-left">\(\forall\)</td>
+<td class="org-left">exists</td>
+<td class="org-left">\(\exists\)</td>
+</tr>
+
+<tr>
+<td class="org-left">triangle</td>
+<td class="org-left">\(\triangle\)</td>
+<td class="org-left">nabla</td>
+<td class="org-left">\(\nabla\)</td>
+<td class="org-left">partial</td>
+<td class="org-left">\(\partial\)</td>
+</tr>
+
+<tr>
+<td class="org-left">top</td>
+<td class="org-left">\(\top\)</td>
+<td class="org-left">bot</td>
+<td class="org-left">\(\bot\)</td>
+<td class="org-left">angle</td>
+<td class="org-left">\(\angle\)</td>
+</tr>
+
+<tr>
+<td class="org-left">neg</td>
+<td class="org-left">\(\neg\)</td>
+<td class="org-left">lfloor</td>
+<td class="org-left">\(\lfloor\)</td>
+<td class="org-left">rfloor</td>
+<td class="org-left">\(\rfloor\)</td>
+</tr>
+
+<tr>
+<td class="org-left">prime</td>
+<td class="org-left">\(\prime\)</td>
+<td class="org-left">lceil</td>
+<td class="org-left">\(\lceil\)</td>
+<td class="org-left">rceil</td>
+<td class="org-left">\(\rceil\)</td>
+</tr>
+
+<tr>
+<td class="org-left">emptyset</td>
+<td class="org-left">\(\emptyset\)</td>
+<td class="org-left">varnothing</td>
+<td class="org-left">\usepackage{amssymb}</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga7ffe38" class="outline-2">
+<h2 id="orga7ffe38"><span class="section-number-2">10</span> MAth Speical Typeface</h2>
+<div class="outline-text-2" id="text-10">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">mathbb</td>
+<td class="org-left">\(\mathbb{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mathrm</td>
+<td class="org-left">\(\mathrm{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mathsf</td>
+<td class="org-left">\(\mathsf{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mathcal</td>
+<td class="org-left">\(\mathcal{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mathbf</td>
+<td class="org-left">\(\mathbf{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mathtt</td>
+<td class="org-left">\(\mathtt{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mathit</td>
+<td class="org-left">\(\mathit{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mathscr</td>
+<td class="org-left">\(\mathscr{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">mathfrak</td>
+<td class="org-left">\(\mathfrak{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">top</td>
+<td class="org-left">\(\top\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgbccfdcf" class="outline-2">
+<h2 id="orgbccfdcf"><span class="section-number-2">11</span> Vector</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #8b4513;">\vec</span><span style="color: #8b4513;">{A} </span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+
+</pre>
+</div>
+\begin{equation}
+\vec{A} 
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org7162089" class="outline-2">
+<h2 id="org7162089"><span class="section-number-2">12</span> Decorator</h2>
+<div class="outline-text-2" id="text-12">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">COMMAND</td>
+<td class="org-left">SYMBOL</td>
+<td class="org-left">COMMAND</td>
+<td class="org-left">SYMBOL</td>
+</tr>
+
+<tr>
+<td class="org-left">hat</td>
+<td class="org-left">\(\hat{p}\)</td>
+<td class="org-left">widehat</td>
+<td class="org-left">\(\widehat{p}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">dot</td>
+<td class="org-left">\(\dot{p}\)</td>
+<td class="org-left">ddot</td>
+<td class="org-left">\(\ddot{p}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">acute</td>
+<td class="org-left">\(\acute{p}\)</td>
+<td class="org-left">grave</td>
+<td class="org-left">\(\grave{p}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">breve</td>
+<td class="org-left">\(\breve{p}\)</td>
+<td class="org-left">check</td>
+<td class="org-left">\(\check{p}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">tilde</td>
+<td class="org-left">\(\tilde{p}\)</td>
+<td class="org-left">widetilde</td>
+<td class="org-left">\(\widetilde{p}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">bar</td>
+<td class="org-left">\(\bar{p}\)</td>
+<td class="org-left">vec</td>
+<td class="org-left">\(\vec{a}\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org798f466" class="outline-2">
+<h2 id="org798f466"><span class="section-number-2">13</span> Equation Label and Ref</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+It works in pdf but not in html, I don't know why.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #68228b;">\label</span><span style="color: #8b4513;">{</span><span style="color: #00008b;">baseeq</span><span style="color: #8b4513;">}</span>
+<span style="color: #8b4513;">1+1=2</span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+
+Equation (<span style="color: #68228b;">\ref</span>{<span style="color: #00008b;">baseeq</span>}) is simple.
+Equation <span style="color: #68228b;">\eqref</span>{<span style="color: #00008b;">baseeq</span>} is simple.
+</pre>
+</div>
+
+
+\begin{equation}
+\label{baseeq}
+1+1=2
+\end{equation}
+<p>
+Equation (\ref{baseeq}) is simple.<br />
+Equation \eqref{baseeq} is simple.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8768a15" class="outline-2">
+<h2 id="org8768a15"><span class="section-number-2">14</span> Argmin argmax</h2>
+<div class="outline-text-2" id="text-14">
+<pre class="example">
+\mathop{\arg\min}_\theta
+</pre>
+\begin{equation}
+\mathop{\arg\min}_\theta
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org90c59ad" class="outline-2">
+<h2 id="org90c59ad"><span class="section-number-2">15</span> Underset and overset</h2>
+<div class="outline-text-2" id="text-15">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #8b4513;">\overset</span><span style="color: #8b4513;">{k}{</span><span style="color: #8b4513;">\oplus</span><span style="color: #8b4513;">} </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">\underset</span><span style="color: #8b4513;">{i=1}{</span><span style="color: #8b4513;">\oplus</span><span style="color: #8b4513;">}</span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+</pre>
+</div>
+
+\begin{equation}
+\overset{k}{\oplus} \\
+\underset{i=1}{\oplus}
+\end{equation}
+</div>
+</div>
+
+
+<div id="outline-container-org4f9677d" class="outline-2">
+<h2 id="org4f9677d"><span class="section-number-2">16</span> Underbrace and overbrace</h2>
+<div class="outline-text-2" id="text-16">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #68228b;">\begin</span>{<span style="color: #0000cd;">equation</span>}
+<span style="color: #8b4513;">\underbrace</span><span style="color: #8b4513;">{a </span><span style="color: #8b4513;">\oplus</span><span style="color: #8b4513;"> a </span><span style="color: #8b4513;">\oplus</span><span style="color: #8b4513;"> </span><span style="color: #8b4513;">\cdots</span><span style="color: #8b4513;"> </span><span style="color: #8b4513;">\oplus</span><span style="color: #8b4513;"> a}</span><span style="color: #fa8072;">_{k}</span><span style="color: #8b4513;"> </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #8b4513;">\overbrace</span><span style="color: #8b4513;">{a </span><span style="color: #8b4513;">\oplus</span><span style="color: #8b4513;"> a </span><span style="color: #8b4513;">\oplus</span><span style="color: #8b4513;"> </span><span style="color: #8b4513;">\cdots</span><span style="color: #8b4513;"> </span><span style="color: #8b4513;">\oplus</span><span style="color: #8b4513;"> a}</span><span style="color: #fa8072;">^{k}</span><span style="color: #8b4513;"> </span><span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #68228b;">\end</span>{<span style="color: #0000cd;">equation</span>}
+</pre>
+</div>
+
+
+\begin{equation}
+\underbrace{a \oplus a \oplus \cdots \oplus a}_{k} \\
+\overbrace{a \oplus a \oplus \cdots \oplus a}^{k} \\
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orga17fde6" class="outline-2">
+<h2 id="orga17fde6"><span class="section-number-2">17</span> Miscellaneous</h2>
+<div class="outline-text-2" id="text-17">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">langle</td>
+<td class="org-left">\(\langle\)</td>
+<td class="org-left">rangle</td>
+<td class="org-left">&rang;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org08bc6c0" class="outline-2">
+<h2 id="org08bc6c0"><span class="section-number-2">18</span> choose</h2>
+<div class="outline-text-2" id="text-18">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #696969;">\sum</span>_{j=0}^d {n <span style="color: #696969;">\choose</span> j}
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/choose.png" alt="choose.png" /><br />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mike Chyson</p>
+<p class="date">Created: 2020-07-28 Tue 14:57</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+* my environment
+latitude 7480
+debian testing (debian 9)
+
+
+* check package versions:
+** Bash-3.2 (/bin/sh should be a symbolic or hard link to bash)
+a Bourne Shell interface to the system.
+It was chosen over other shell packages because of its common usage and extensive capabilityes beyond 
+basic shell functions.
+
+** Binutils-2.25 (Versions greater than 2.31.1 are not recommended as they have not been tested)
+a linker, an assembler, and other tools for handling object files.
+
+** Bison-2.7 (/usr/bin/yacc should be a link to bison or small script that executes bison)
+the GNU version of yacc(Yet Another Compiler Compiler) 
+
+** Bzip2-1.0.4
+for compressing and decompressing.
+** Coreutils-6.9
+for viewing and manipulating files and directories.
+
+** Diffutils-2.8.1
+show the differences between files or directories.
+
+** Findutils-4.2.31
+to find files in a file system.
+
+** Gawk-4.0.1 (/usr/bin/awk should be a link to gawk)
+for manipulating text files.
+
+** GCC-4.9 including the C++ compiler, g++
+Gnu Compiler Collection.
+It contains the C and C++ compiler.
+
+** Glibc-2.11 (Versions greater than 2.28 are not recommended as they have not been tested)
+the main C library.
+
+** Grep-2.5.1a
+for searching through files.
+
+** Gzip-1.3.12
+for compressing and decompressing files.
+
+** Linux Kernel-3.2
+the operating system.
+
+** M4-1.4.10
+a general text macro processor.
+
+** Make-4.0
+for directing the building of packages.
+
+** Patch-2.5.4
+for modifying or creating files by applying a patch file typically created by the diff program.
+
+** Perl-5.8.8
+an interpreter for the runtime language PERL.
+
+** Sed-4.1.5
+allows editing of text without opening it in a text editor.
+
+** Tar-1.22
+provides archiving and extraction capabilities of packages.
+
+** Texinfo-4.7
+for reading, writing, and converting info pages.
+
+** Xz-5.0.0
+for compressing and decompressing.
+
+* check result
+** first check result
+bash, version 4.4.23(1)-release
+/bin/sh -> /usr/bin/dash
+ERROR: /bin/sh does not point to bash
+Binutils: scripts/version-check.sh: 10: scripts/version-check.sh: ld: not found
+scripts/version-check.sh: 11: scripts/version-check.sh: bison: not found
+yacc not found
+bzip2,  Version 1.0.6, 6-Sept-2010.
+Coreutils:  8.30
+diff (GNU diffutils) 3.6
+find (GNU findutils) 4.6.0.192-7741d
+GNU Awk 4.2.1, API: 2.0 (GNU MPFR 4.0.1, GNU MP 6.1.2)
+/usr/bin/awk -> /usr/bin/gawk
+scripts/version-check.sh: 35: scripts/version-check.sh: gcc: not found
+scripts/version-check.sh: 36: scripts/version-check.sh: g++: not found
+(Debian GLIBC 2.27-8) 2.27
+grep (GNU grep) 3.1
+gzip 1.9
+Linux version 4.18.0-3-amd64 (debian-kernel@lists.debian.org) (gcc version 7.3.0 (Debian 7.3.0-30)) #1 SMP Debian 4.18.20-2 (2018-11-23)
+scripts/version-check.sh: 41: scripts/version-check.sh: m4: not found
+scripts/version-check.sh: 42: scripts/version-check.sh: make: not found
+GNU patch 2.7.6
+Perl version='5.28.1';
+sed (GNU sed) 4.5
+tar (GNU tar) 1.30
+scripts/version-check.sh: 47: scripts/version-check.sh: makeinfo: not found
+xz (XZ Utils) 5.2.2
+scripts/version-check.sh: 51: scripts/version-check.sh: g++: not found
+g++ compilation failed
+
+** settlement
+ln -sf bash /bin/sh
+apt install -y binutils
+apt install -y bison
+apt install -y gcc
+apt install -y g++
+apt install -y make
+apt install -y texinfo
+
+
+
+** result
+bash, version 4.4.23(1)-release
+/bin/sh -> /usr/bin/bash
+Binutils: (GNU Binutils for Debian) 2.31.1
+bison (GNU Bison) 3.2.2
+/usr/bin/yacc -> /usr/bin/bison.yacc
+bzip2,  Version 1.0.6, 6-Sept-2010.
+Coreutils:  8.30
+diff (GNU diffutils) 3.6
+find (GNU findutils) 4.6.0.192-7741d
+GNU Awk 4.2.1, API: 2.0 (GNU MPFR 4.0.1, GNU MP 6.1.2)
+/usr/bin/awk -> /usr/bin/gawk
+gcc (Debian 8.2.0-9) 8.2.0
+g++ (Debian 8.2.0-9) 8.2.0
+(Debian GLIBC 2.27-8) 2.27
+grep (GNU grep) 3.1
+gzip 1.9
+Linux version 4.18.0-3-amd64 (debian-kernel@lists.debian.org) (gcc version 7.3.0 (Debian 7.3.0-30)) #1 SMP Debian 4.18.20-2 (2018-11-23)
+m4 (GNU M4) 1.4.18
+GNU Make 4.2.1
+GNU patch 2.7.6
+Perl version='5.28.1';
+sed (GNU sed) 4.5
+tar (GNU tar) 1.30
+texi2any (GNU texinfo) 6.5
+xz (XZ Utils) 5.2.2
+g++ compilation OK
+
+
+* new partition
+fdisk /dev/sda
+/dev/sda3 100G
+
+mkfs -v -t ext4 /dev/sda3
+
+* setting the $LFS variable
+vi /etc/profile
+   export LFS=/mnt/lfs
+
+
+source /etc/profile
+echo $LFS
+
+* mounting the new partition
+mkdir -pv $LFS
+mount-v -t ext4 /dev/sda3 $LFS
+(if you shutdown your computer, edit the /etc/fstab:
+/dev/sda3 /mnt/lfs ext4 defaults 1 1
+to let the system mount the partition automatically)
+
+
+
+

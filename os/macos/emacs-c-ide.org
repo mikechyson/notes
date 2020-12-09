@@ -1,0 +1,36 @@
+* install gnu global
+#+BEGIN_SRC sh
+brew install global
+#+END_SRC
+
+* updata melpa database
+#+BEGIN_SRC emacs-lisp
+M-x package-list-packages
+#+END_SRC
+
+* clone the repository
+#+BEGIN_SRC sh
+cd
+git clone https://github.com/tuhdo/emacs-c-ide-demo.git emacs-tmp
+mv emacs-tmp/init.el emacs-tmp/custom emacs-tmp/README.md .emacs.d/
+#+END_SRC
+
+* you may possibly want to edit your new ~/.emacs.d/init.el file for two reasons.
+
+** The demo repository can use either helm-gtags (the default), or ggtags. If you want to use ggtags, comment this line in init.el:
+#+BEGIN_SRC emacs-lisp
+(require 'setup-helm-gtags)
+#+END_SRC
+
+And uncomment this line:
+#+BEGIN_SRC emacs-lisp
+;; (require 'setup-ggtags)
+#+END_SRC
+       
+* The demo uses Helm. If you don't want to use Helm, also comment this line in init.el:
+#+BEGIN_SRC emacs-lisp
+(require 'setup-helm)
+#+END_SRC
+
+        
+

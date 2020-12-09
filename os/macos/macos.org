@@ -1,0 +1,140 @@
+* homebrew
+* terminal client color
+add the following line into .bash_profile:
+#+BEGIN_SRC sh
+export CLICOLOR=1
+#+END_SRC
+* terminal meta key
+Terminal -> Preferences -> Keyboard -> Use Option as Meta Key
+
+* set terminal hostname
+#+BEGIN_SRC 
+scutil --set HostName <hostname>
+# scutil: system configuation util
+#+END_SRC
+
+* correct spelling automatically off
+System Preferences -> Keyboard -> Text -> Correct spelling automatically off
+
+* emacs
+** install
+#+BEGIN_SRC sh
+brew cask install emacs
+#+END_SRC
+
+** command as meta
+C-h v mac-option-modifier -> customize -> super
+C-h v mac-command-modifier -> customize -> meta
+
+** add elpa repository
+add following to init file:
+#+BEGIN_SRC emacs-lisp
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+#+END_SRC
+** python ide
+
+*** install jedi, flake8
+#+BEGIN_SRC 
+pip install flake8 jedi
+#+END_SRC
+
+** pep8
+M-x package-install py-autopep8
+
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+** htmlize
+need in org export to html with source code part
+M-x package-install htmlize
+
+** latex
+M-x package-install RET auctex RET
+M-x package-install RET auctex-latexmk RET
+* cap lock as ctrl
+System Preferences -> Keyboard -> Modifier Keys
+
+* pycharm
+
+
+* git
+#+BEGIN_SRC sh
+brew install git
+#+END_SRC
+
+* shortcut
+| MEANING          | SHORTCUT            |
+|------------------+---------------------|
+| max              | Command + Ctrl + f  |
+| min              | Command + m         |
+| spotlight search | Command + space     |
+| capture          | Command + Shift + 4 |
+| close window     | Command + w         |
+| exit app         | Command + q         |
+
+
+** safari
+| MEANING          | SHORTCUT           |
+|------------------+--------------------|
+| bookmark sidebar | Ctrl + Command + 1 |
+|                  |                    |
+
+
+* anaconda
+Do not use conda command, use pip command.
+the repository with pip is much richer than that of conda.
+There is one problem: the package install with pip will not be seen in the anaconda-navigator windows.
+But this do not effect the use of the package.
+
+** packages
+*** tensorflow
+pip install tensorflow
+*** jieba
+pip install jieba
+
+*** numpy
+*** scipy
+*** sympy
+*** pyecharts
+*** sklearn(scikit-learn)
+*** matplotlib
+*** pandas
+
+* vscode
+** plugins
+Code Runner
+Markdown All in One
+Markdown Preview Enhanced
+Python
+egg-jump-definition
+vscode-elm-jump
+
+** auto save
+Settings -> autosave -> afterdelay
+
+** interpreter
+Settings -> search python.pythonPath -> /anaconda3/envs/ai/bin/python
+
+** turn off parameter hint
+Settings -> search editor.parammeterHints -> disable 
+
+** speed up quick suggestions
+Settings -> search editor.quickSuggestionsDelay -> change from 10 to 1
+
+** format
+Settings -> search format -> Format On Save(check), Format On Type(check)
+
+
+
+* python on spark
+** download jdk
+** download spark
+** copy
+copy bin/python/pyspark to /python_path/site-packages
+** home path
+export SPARK_HOME=...
+export SPARK_HOME=...
+* shorcut
+Preferences -> Keyboard -> Shortcut
+* mactex
+

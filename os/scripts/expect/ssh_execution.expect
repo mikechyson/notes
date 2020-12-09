@@ -1,0 +1,20 @@
+#!/usr/bin/expect
+
+set remote_host [lindex $argv 0]
+
+set username gnftp
+set password gnftp%123
+
+
+
+
+spawn ssh ${username}@${remote_host} "echo hello"
+expect "*password:"
+send "${password}\r"
+
+
+spawn ssh ${username}@${remote_host} "echo world"
+expect "*password:"
+send "${password}\r"
+
+expect eof

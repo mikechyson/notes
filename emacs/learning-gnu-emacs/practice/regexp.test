@@ -1,0 +1,154 @@
+
+Chapter 1 Emacs Basics
+1.1 Introducing Emacs
+Emacs is important because of the integration of different things you need to do.
+
+Any editor, no matter how simpler of complex, has the same basic functions. If you can learn one, you can learn any of them.
+
+Learning to use an editor is basically a matter of learning finger habit.
+
+Good finger habits can make you an incredibly fast typist, and reaching from keyboard to mouse only slows you down.
+
+
+Intellectually, it's possible to absorb a lot from one reading, but you can form only a few new habit each day.
+
+Chapter 2 covers most of the basic editing techniques.
+Chapter 3 provides many different techniques for searching.
+Don't feel obliged to learn them all at once; pick something, practice it, and move on to the next topic.
+No one will complain if you have to work through the first three chapters several times before you're comfortable.
+
+Time spent developing good habits is time well spent.
+
+1.2 Understanding Files and Buffers
+You don't really edit files.
+Instead, Emacs copies the content of a file into a temporary buffer and you edit that. The file on disk doesn't change until you save the buffer.
+
+1.3 A Word About Modes
+Emacs has various editing modes in which it behaves slightly differently.
+mode: Emacs becomes sensitive to the task at hand.
+Modes allows Emacs to the kind of editor you want for different tasks.
+
+A buffer can be in only one major mode at a time.
+
+minor modes: defines a particular aspect of Emacs's behavior and can be turned on and off within a major mode.
+
+If you are good at Lisp programming, you can add your own modes.
+Emacs is almost infinitely extensible.
+
+1.4 Emacs commands
+How do you give commands?
+Each command has a formal name, which is the name of a Lisp routine.
+Some command names are quite long. As a result, we need some way to abbreviate commands.
+
+Emacs ties a command name to a short sequence of keystrokes.
+This tying of commands to keystrokes is known as binding.
+
+The author of Emacs try to bind the most frequently used commands to the key sequences that are the easiest to reach.
+1. The most commonly used commands are bound to C-n(where n is any character).
+2. Slightly less commonly used commands are bound to M-n.
+3. Other commonly used commands are bound to C-x something.
+4. Some specialized commands are bound to C-c something. These commands often relate to one of the more specialized modes, such as Java or HTML mode.
+5. typing M-x long-command-name Enter.(This works for any command really, but the keystrokes are usually easier to learn.)
+
+You should define your own key bindings if you find yourself using the long form of a command all the time.
+
+1.5 About the Emacs Display
+[[file:frame.png]]
+
+1.6 file
+Whenever Emacs wants input from you, it puts the cursor in the minibuffer.
+When you're done typing in the minibuffer, press Enter.
+
+completion feature:
+If you want an existing file, you need only type the first few letters of the name, enough to uniquely identify the filename. Press Tab, and Emacs completes the filename for you.
+Completion also works for long commands names.
+It's a wonderful Emacs feature that can save you time.
+
+default directory
+The default directory is taken from the buffer that the cursor is currently in.
+
++----------+----------------------+
+|C-x C-f   |find-file             |
++----------+----------------------+
+|C-x C-v   |find-alternate-file   |
++----------+----------------------+
+|C-x i     |insert-file           |
++----------+----------------------+
+|C-x C-s   |save-buffer           |
++----------+----------------------+
+|C-x C-w   |write-file            |
++----------+----------------------+
+
+1.7 Leaving Emacs
++----------+----------------------+
+|C-x C-c   |save-buffer-kill-emacs|
++----------+----------------------+
+
+1.8 Getting Help
+To enter help, press C-h.
+Pressing C-h ? gives you a list of options.
+Pressing C-h t starts a tutorial that is excellent introduction to Emacs.
+
++---------------+-------------------------+
+|C-h t          |help-with-tutorial       |
++---------------+-------------------------+
+|C-h k          |describe-key             |
++---------------+-------------------------+
+|C-h f          |describe-function        |
++---------------+-------------------------+
+
+1.9 version
+M-x version Enter
+
+1.10 access menus with keyboard
++---------------+---------------+
+|F10            |menu-bar-open  |
++---------------+---------------+
+
+
+
+
+public void get(){
+    ...
+}
+
+public void get(String s){
+    ...
+}
+
+public void getJons(String path){
+    ...
+}
+
+
+
+
+(string-match "\\<program\\('s\\|s\\)?\\>" "program")
+0
+(string-match "\\<program\\('s\\|s\\)?\\>" "programs")
+0
+(string-match "\\<program\\('s\\|s\\)?\\>" "program's")
+0
+(string-match "\\<program\\('s\\|s\\)?\\>" "microprogram")
+nil
+(string-match "\\<program\\('s\\|s\\)?\\>" "programmer")
+nil
+(string-match "\\<program\\('s\\|s\\)?\\>" "programming")
+nil
+
+
+
+
+
+(replace-regexp "\\<program\\('s\\|s\\)?\\>" "module\\1")
+
+
+
+
+module 
+modules
+module'snil
+
+microprogram
+programmer
+programming

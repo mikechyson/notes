@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>deep-learning-for-computer-vision-with-python-practitioner</title>
+<!-- 2019-12-09 Mon 15:27 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">deep-learning-for-computer-vision-with-python-practitioner</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. DATA AUGMENTATION</a>
+<ul>
+<li><a href="#sec-1-1">1.1. What is Data Augmentation?</a></li>
+<li><a href="#sec-1-2">1.2. Visualizing Data Augmentation</a></li>
+<li><a href="#sec-1-3">1.3. Aspect ratio</a></li>
+<li><a href="#sec-1-4">1.4. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. NETWORKS AS FEATURE EXTRACTORS</a>
+<ul>
+<li><a href="#sec-2-1">2.1. HDF5</a></li>
+<li><a href="#sec-2-2">2.2. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. UNDERSTANDING RANK-1 &amp; RANK-5 ACCURACIES</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Ranked Accuracy</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. FINE-TUNING NETWORK</a></li>
+<li><a href="#sec-5">5. IMPROVING ACCURACY WITH NETWORK ENSEMBLES</a></li>
+<li><a href="#sec-6">6. ADVANCED OPTIMIZATION METHODS</a>
+<ul>
+<li><a href="#sec-6-1">6.1. Choosing an Optimization Method</a></li>
+<li><a href="#sec-6-2">6.2. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. OPTIMAL PATHWAY TO APPLY DEEP LEARNING</a>
+<ul>
+<li><a href="#sec-7-1">7.1. A Precipe for Training</a></li>
+<li><a href="#sec-7-2">7.2. Transfer Learning or Train from Scratch</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. WROKING WITH HDF5 AND LARGE DATASETS</a>
+<ul>
+<li><a href="#sec-8-1">8.1. Creating a Configuration File</a></li>
+<li><a href="#sec-8-2">8.2. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. Competing in Kaggle: Dogs vs Cats</a></li>
+<li><a href="#sec-10">10. GOOGLENET</a>
+<ul>
+<li><a href="#sec-10-1">10.1. The Inception Module (and its Variants)</a>
+<ul>
+<li><a href="#sec-10-1-1">10.1.1. Inception</a></li>
+<li><a href="#sec-10-1-2">10.1.2. Miniception</a></li>
+</ul>
+</li>
+<li><a href="#sec-10-2">10.2. Deeper GoogLeNet Variant on Tiny ImageNet-200</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">11. ResNet</a>
+<ul>
+<li><a href="#sec-11-1">11.1. ResNet and the Residual Module</a></li>
+<li><a href="#sec-11-2">11.2. Practical Experience</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> DATA AUGMENTATION</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> What is Data Augmentation?</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Data augmentation encompasses a wide range of techniques used to generate new training samples from the original ones by applying random jitters and perturbations such that the classes labels are not changed.<br  />
+</p>
+
+<p>
+In the context of computer vision, data augmentation lends itself naturally.<br  />
+For example, we can obtain additional training data from the original images by apply geometric transforms such as random:<br  />
+</p>
+<ol class="org-ol">
+<li>Translations<br  />
+</li>
+<li>Rotations<br  />
+</li>
+<li>Changes in scale<br  />
+</li>
+<li>Shearing<br  />
+</li>
+<li>Horizontal (and in some cases, vertical) flips<br  />
+</li>
+<li>Random perturbation of color in a given color space<br  />
+</li>
+<li>Nonlinear geometric distrotions<br  />
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Visualizing Data Augmentation</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+The best way to understand data augmentation applied to computer tasks is to simply visualize a given input being augmented and distorted.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Aspect ratio</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Maintaining a consistent aspect ratio allows our convolutional neural netowrk to learn more discriminative, consistent feature.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c2_aspect_ratio.png" alt="c2_aspect_ratio.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Summary</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+While it’s always better to gather "natural" training samples, in a pinch, data augmentation can be used to overcome small dataset limitations. When it comes to your own experiments, you should apply data augmentation to nearly every experiment you run.<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> NETWORKS AS FEATURE EXTRACTORS</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Consider a traditional machine learning scenario where we are given two classification challenges.<br  />
+</p>
+
+<p>
+In the first challenge, our goal is to train a Convolutional Neural Network to recognize dogs vs. cats in an image. Then, in the second project, we are tasked with recognizing three separate species of bears: grizzly bears, polar bears, and giant pandas.<br  />
+</p>
+
+<p>
+Using standard practices in machine learning, neural networks, and deep learning, we would treat these these challenges as two separate problems. First, we would gather a sufficient labeled dataset of dogs and cats, followed by training a model on the dataset. We would then repeat the process a second time, only this time, gathering images of our bear breeds, and then training a model on top of the labeled bear dataset.<br  />
+</p>
+
+<p>
+Transfer learning proposes a different training paradigm – what if we could use an existing pre-trained classifier and use it as a starting point for a new classification task? In context of the proposed challenges above, we would first train a Convolutional Neural Network to recognize dogs versus cats. Then, we would use the same CNN trained on dog and cat data to be used to distinguish between bear classes, even though no bear data was mixed with the dog and cat data.<br  />
+</p>
+
+<p>
+In general, there are two types of transfer learning:<br  />
+</p>
+<ol class="org-ol">
+<li>Treating networks as arbitrary feature extractors.<br  />
+</li>
+<li>Removing the fully-connected layers of an existing network, placing new FC layer set on top of the CNN, and fine-tuning these weights (and optionally previous layers) to recognize object classes.<br  />
+</li>
+</ol>
+
+<pre class="example">
+Keep in mind that the CNN itself is not capable of recognizing the new classes – instead,
+we are using the CNN as an intermediary feature extractor. The downstream machine learning
+classifier will take care of learning the underlying patterns of the features extracted from the CNN.
+</pre>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> HDF5</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+HDF5 is binary data format created by the HDF5 group to store gigantic numerical datasets on disk (far too large to store in memory) while facilitating easy access and computation on the rows of the datasets.<br  />
+</p>
+
+<p>
+Data in HDF5 is stored <b>hierarchically</b>, similar to how a file system stores data. Data is first defined in <b>groups</b>, where a group is a container-like structure which can hold <b>datasets</b> and other <b>groups</b>. A <b>dataset</b> can be thought of as a multi-dimensional array (i.e., a NumPy array) of a homogeneous data type (integer, float, unicode, etc.).<br  />
+</p>
+
+<p>
+HDF5 is written in C; however, by using the h5py module, we can gain access to the underlying C API using the Python programming language. When using HDF5 with h5py, you can think of your data as a gigantic NumPy array that is too large to fit into main memory but can still be accessed and manipulated just the same.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c3_hdf5.png" alt="c3_hdf5.png" /><br  />
+</p>
+</div>
+
+<pre class="example">
+As you continue in your deep learning career, you’ll notice that much of the initial labor when setting 
+up a new problem is getting the data into a format you can work with. Once you have your data in a format
+that’s straightforward to manipulate, it becomes substantially easier to apply machine learning and
+deep learning techniques to your data.
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Summary</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Whenever approaching a new problem with deep learning and Convolutional Neural Networks, always consider if applying feature extraction will obtain reasonable accuracy – if so, you can skip the network training process entirely, saving you a ton of time, effort, and headache.<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> UNDERSTANDING RANK-1 &amp; RANK-5 ACCURACIES</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Ranked Accuracy</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Rank-N accuracy:<br  />
+</p>
+<ol class="org-ol">
+<li>Step #1: Computing the class label probabiliteis for each image in the dataset.<br  />
+</li>
+<li>Step #2: Sort the predicted class label probabilites in descending order.<br  />
+</li>
+<li>Step #3: Determine the ground-truth label exists in the top-N predicted labels from Step #2.<br  />
+</li>
+<li>Step #4: Tally the number of times where Step #3 is true.<br  />
+</li>
+</ol>
+
+<p>
+Why rank-1 and rank-5?<br  />
+<img src="pics/c4_rank5.png" alt="c4_rank5.png" /><br  />
+When working with large datasets that cover many class labels with similar characteristics, we often examine the rank-5 accuracy as an extension to the rank-1 accuracy to see how our network is performing. In an ideal world our rank-1 accuracy would increase at the same rate as our rank-5 accuracy, but on challenging datasets, this is not always the case.<br  />
+Therefore, we examine the rank-5 accuracy as well to ensure that our network is still "learning" in later epochs. It may be the case where rank-1 accuracy stagnates towards the end of training, but rank-5 accuracy continues to improve as our network learns more discriminating features (but not discriminative enough to overtake the top #1 predictions). Finally, depending on the image classification challenge (ImageNet being the canonical example), you are required to report both your rank-1 and rank-5 accuracies together.<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> FINE-TUNING NETWORK</h2>
+<div class="outline-text-2" id="text-4">
+
+<div class="figure">
+<p><img src="pics/c5_fine_tuning.png" alt="c5_fine_tuning.png" /><br  />
+</p>
+</div>
+
+<p>
+However, there is a problem – our CONV layers have already learned rich, discriminating filters while our FC layers are brand new and totally random. If we allow the gradient to backpropagate from these random values all the way through the body of our network, we risk destroying these powerful features. To circumvent this, we instead let our FC head "warm up" by (ironically) "freezing" all layers in the body of the network .<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c5_fine_tuning2.png" alt="c5_fine_tuning2.png" /><br  />
+</p>
+</div>
+
+<p>
+After the FC head has started to learn patterns in our dataset, pause training, unfreeze the body, and then continue the training, but with a very small learning rate – we do not want to deviate our CONV filters dramatically. Training is then allowed to continue until sufficient accuracy is obtained.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> IMPROVING ACCURACY WITH NETWORK ENSEMBLES</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The term "ensemble methods" generally refers to training a "large" number of models and then combining their output predictions via voting or averaging to yield an increase in classification accuracy.<br  />
+</p>
+
+<pre class="example">
+It’s important to note that we would never jump straight to training an ensemble – we would
+first run a series of experiments to determine which combination of architecture, optimizer, and
+hyperparameters yields the highest accuracy on a given dataset.
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> ADVANCED OPTIMIZATION METHODS</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+According to the learning rate, there are two kinds of optimization algorithm:<br  />
+</p>
+<ol class="org-ol">
+<li>fixed learning rate<br  />
+<ol class="org-ol">
+<li>SGD<br  />
+</li>
+<li>momentum<br  />
+</li>
+<li>Nesterov momentum<br  />
+</li>
+</ol>
+</li>
+<li>adaptive learning rate<br  />
+<ol class="org-ol">
+<li>adagrad<br  />
+</li>
+<li>adadelta<br  />
+</li>
+<li>RMSprop<br  />
+</li>
+<li>adam<br  />
+</li>
+</ol>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Choosing an Optimization Method</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Given the choices between all of these optimization algorithms, which one should you choose?<br  />
+Unfortunately, the answer is highly inconclusive. While adaptive learning rate algorithms performed favorably, there was no clear winner.<br  />
+</p>
+
+<p>
+Deep learning optimization algorithms (and how to choose them) is still an open area of research, and will likely continue to be for many years. Therefore, instead of exhaustively trying every optimization algorithm you can find, throwing each at your dataset and noting what sticks, it’s better to master two or three optimization algorithms. Often, the success of a deep learning project is a combination of the optimization algorithm (and associated parameters) along with how adept the researcher is at "driving" the algorithm.<br  />
+</p>
+
+<pre class="example">
+Two Methods You Should Learn How to Drive: SGD and Adam.
+</pre>
+
+<pre class="example">
+The more experiments we perform with a given architecture and optimization algorithm, 
+the more we learn about the intricacies of the training process.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Summary</h3>
+<div class="outline-text-3" id="text-6-2">
+<pre class="example">
+Instead of exhaustively running experiments to try every optimization algorithm you can
+find, it’s instead better to master two or three techniques and how to tune their hyperparameters.
+Becoming an expert at these techniques will enable you to apply new model architectures to datasets
+you haven’t worked with before with much more ease.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> OPTIMAL PATHWAY TO APPLY DEEP LEARNING</h2>
+<div class="outline-text-2" id="text-7">
+<pre class="example">
+As you’ll find out in your deep learning career, arguably the hardest aspect of deep learning is
+examining your accuracy/loss curve and making the decision on what to do next.
+</pre>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> A Precipe for Training</h3>
+<div class="outline-text-3" id="text-7-1">
+<pre class="example">
+Most issues in applied deep learning come from training data/testing data mismatch. In
+some scenarios this issue just doesn’t come up, but you’d be surprised how often applied 
+machine learning projects use training data (which is easy to collect and annotate) that is
+different from the target application. – Andrew Ng (summarized by Malisiewicz)
+</pre>
+
+
+<div class="figure">
+<p><img src="pics/representative.png" alt="representative.png" /><br  />
+</p>
+</div>
+
+<pre class="example">
+There is no shortcut to building your own image dataset. If you expect a deep learning system
+to obtain high accuracy in a given real-world situation, then make sure this deep learning system
+was trained on images representative of where it will be deployed – otherwise you will be very
+disappointed in its performance.
+</pre>
+
+<p>
+After sufficient training data that is representative are gathered, then:<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c8_4_steps.png" alt="c8_4_steps.png" /><br  />
+</p>
+</div>
+
+<p>
+Based on the above figure, Ng is proposing four sets of data splits when training a deep learning model:<br  />
+</p>
+<ol class="org-ol">
+<li>Training<br  />
+</li>
+<li>Training-validation (also known as "development")<br  />
+</li>
+<li>Validation<br  />
+</li>
+<li>Testing<br  />
+</li>
+</ol>
+
+<p>
+"training-validation" set:<br  />
+From our training set, we take a small chunk of it and add it to our "training-validation set".<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c8_4_steps2.png" alt="c8_4_steps2.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Transfer Learning or Train from Scratch</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+To make this decision, you need to consider two important factors:<br  />
+</p>
+<ol class="org-ol">
+<li>The size of your dataset.<br  />
+</li>
+<li>The similarity of your dataset to the dataset the pre-trained CNN was trained on (which is typically ImageNet).<br  />
+</li>
+</ol>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Transfer Learning or Train from Scratch</caption>
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">Similar Dataset</th>
+<th scope="col" class="left">Different Dataset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Small Dataset</td>
+<td class="left">Feature extraction using deeper</td>
+<td class="left">Feature extraction using lower</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">level CONV layers + classifier</td>
+<td class="left">level CONV layers + classifier</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Large Dataset</td>
+<td class="left">Fine-tuning likely to work,</td>
+<td class="left">Fine-tuning worth trying, but will likeyly not work;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">but might have to train from scratch</td>
+<td class="left">likely have to train from scratch</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> WROKING WITH HDF5 AND LARGE DATASETS</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+For small datasets – we simply load each individual image, preprocess it, and allow it to be fed through our network. However, for large scale deep learning datasets, we need to create data generators that access only a portion of the dataset at a time (i.e., a mini-batch), then allow the batch to be passed through the network.<br  />
+</p>
+
+<pre class="example">
+Luckily, Keras ships with methods that allow you to use the raw file paths on disk as inputs 
+to a training process. You do not have to store the entire dataset in memory – simply supply 
+the image paths to the Keras data generator and your images will be loaded in batches and 
+fed through the network.
+
+However, this method is terribly inefficient. Each and every image residing on your disk
+requires an I/O operation which introduces latency into your training pipeline. Training deep
+learning networks is already slow enough – we would do well to avoid the I/O bottleneck as much
+as possible.
+</pre>
+
+<p>
+A elegant solution would be to generate an HDF5 dataset for your raw images. Not only is HDF5 capable of storing massive datasets, but it’s optimized for I/O operations, especially for extracting batches (called "slices") from the file. Taking the extra step to pack the raw images residing on disk into an HDF5 file allows us to construct a deep learning framework that can be used to rapidly build datasets and train deep learning networks on top of them.<br  />
+</p>
+</div>
+
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Creating a Configuration File</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Using a Python file rather than a JSON file allows me to include snippets of Python code and makes the  configuration file more efficient to work with.<br  />
+</p>
+
+<pre class="example">
+I suggest you get into the habit of using Python-based configuration files for your own 
+deep learning projects as it will greatly improve your productivity and allow you to control 
+most of the parameters in your project through a single file.
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Summary</h3>
+<div class="outline-text-3" id="text-8-2">
+<pre class="example">
+596M	train/
+3.7G	hdf5/test.hdf5
+30G 	hdf5/train.hdf5
+3.7G	hdf5/val.hdf5
+</pre>
+
+<p>
+Keep in mind that raw image file formats such as JPEG and PNG apply data compression algorithms to keep image file sizes small. However, we have effectively removed any type of compression and are storing the images as raw NumPy arrays (i.e., bitmaps). This lack of compression dramatically inflates our storage costs, but will also help speed up our training time as we won’t have to waste processor time decoding the image – we can instead access the image directly from the HDF5 dataset, preprocess it, and pass it through our network.<br  />
+</p>
+
+<pre class="example">
+Keep in mind that being a deep learning practitioner isn’t about implementing Convolutional Neural Networks 
+and training them from scratch. Part of being a deep learning practitioner involves using your programming 
+skills to build simple scripts that can parse data.
+
+The more general purpose programming skills you have, the better deep learning practitioner
+you can become – while other deep learning researchers are struggling to organize files on disk or
+understand how a dataset is structured, you’ll have already converted your entire dataset to a format
+suitable for training a CNN.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Competing in Kaggle: Dogs vs Cats</h2>
+<div class="outline-text-2" id="text-9">
+
+<div class="figure">
+<p><img src="pics/c10_alexnet.png" alt="c10_alexnet.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> GOOGLENET</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+The GoogLeNet architecture, introduced by Szegedy et al. in their 2014 paper, "Going Deeper With Convolutions".<br  />
+</p>
+
+<p>
+This paper is important for two reasons:<br  />
+</p>
+<ol class="org-ol">
+<li>the model architecture is tiny compared to AlexNet and VGGNet (about 28MB for the weights themselves). (by remove FC layers and instead using global average pooling).<br  />
+</li>
+<li>a network in network or micro-architecutre when constructing the overall macro-architecture.<br  />
+</li>
+</ol>
+
+<pre class="example">
+Szegedy et al. contributed the *Inception module*. 
+Micro-architectures such as Inception have inspired other important variants including the Residual module in ResNet and the Fire module in SqueezeNet.
+</pre>
+</div>
+
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> The Inception Module (and its Variants)</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Modern state-of-the-art Convolutional Neural Networks utilize <b>micro-architectures</b>. Micro-architectures are small building blocks designed by deep learning practitioners to enable networks to learn (1) faster and (2) more efficiently, all while increasing network depth. These micro-architecture building blocks are stacked, along with conventional layer types such as CONV, POOL, etc., to form the overall macro-architecture.<br  />
+</p>
+
+<pre class="example">
+The general idea behind the Inception module is two-fold:
+1. It can be hard to decide the size of the filter you need to learn at a given CONV layers.
+Should they be 5 × 5 filters? What about 3 × 3 filters? Should we learn local features
+using 1 × 1 filters? Instead, why not learn them all and let the model decide? Inside the
+Inception module, we learn all three 5 × 5, 3 × 3, and 1 × 1 filters (computing them in parallel)
+concatenating the resulting feature maps along the channel dimension. The next layer in
+the GoogLeNet architecture (which could be another Inception module) receives these
+concatenated, mixed filters and performs the same process. Taken as a whole, this process
+enables GoogLeNet to learn both local features via smaller convolutions and abstracted
+features with larger convolutions – we don’t have to sacrifice our level of abstraction at the
+expense of smaller features.
+2. By learning multiple filter sizes, we can turn the module into a multi-level feature extractor.
+The 5 × 5 filters have a larger receptive size and can learn more abstract features. The
+1 × 1 filters are by definition local. The 3 × 3 filters sit as a balance in between.
+</pre>
+</div>
+
+<div id="outline-container-sec-10-1-1" class="outline-4">
+<h4 id="sec-10-1-1"><span class="section-number-4">10.1.1</span> Inception</h4>
+<div class="outline-text-4" id="text-10-1-1">
+
+<div class="figure">
+<p><img src="pics/c11_inception_module.png" alt="c11_inception_module.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10-1-2" class="outline-4">
+<h4 id="sec-10-1-2"><span class="section-number-4">10.1.2</span> Miniception</h4>
+<div class="outline-text-4" id="text-10-1-2">
+<p>
+"Understanding Deep Learning Requires Re-Thinking Generalization"<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c11_miniception.png" alt="c11_miniception.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> Deeper GoogLeNet Variant on Tiny ImageNet-200</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Original GoogLeNet:<br  />
+<img src="pics/c11_googlenet.png" alt="c11_googlenet.png" /><br  />
+</p>
+
+<p>
+Variant:<br  />
+<img src="pics/c11_deeper_googlenet.png" alt="c11_deeper_googlenet.png" /><br  />
+</p>
+
+<pre class="example">
+The first convlution is shoud be 5x5/1
+avg pool is 4x4/1
+</pre>
+
+<p>
+For two reasons:<br  />
+</p>
+<ol class="org-ol">
+<li>The image is 64x64 instead of 224x224<br  />
+</li>
+<li>enought for performing well on Tiny ImageNet<br  />
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> ResNet</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+ResNet uses what's called a residual module to train CNN to depths previously thought impossible.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> ResNet and the Residual Module</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+First introduced by He et al. in their 2015 paper, Deep Residual Learning for Image Recognition, the ResNet architecture has become a seminal work, demonstrating that extremely deep networks can be trained using standard SGD and a reasonable initialization function. In order to train networks at depths greater than 50-100 (and in some cases, 1,000) layers, ResNet relies on a micro-architecture called the residual module.<br  />
+</p>
+
+<p>
+The original residual module relies on identity mappings, the process of taking the original input to the module and adding it to the output of a series of operations.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c12_residual_module.png" alt="c12_residual_module.png" /><br  />
+</p>
+</div>
+
+<p>
+He et al. suggested adding the original input to the output of the CONV, RELU and BN layers. We call this <b>addition</b> an <b>identity mapping</b> since the input (the identity) is added to the output of series of operations. It is also why the term "residual" is used. The "residual" input is added to the output of a series of layer operations.<br  />
+</p>
+
+
+<p>
+While traditional neural network layers can be seen as learning a function \(y=f(x)\), a residual layer attempts to approximate \(y\) via \(f(x)=id(x)\) where id(x) is the identity function.<br  />
+</p>
+
+
+<p>
+Furthermore, since the input is included in every residual module, it turns out the network can learn faster and with larger learning rates.<br  />
+</p>
+
+<p>
+bottlenecks: an extension to the original residual module<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c12_bottlenecks.png" alt="c12_bottlenecks.png" /><br  />
+</p>
+</div>
+
+<p>
+For the right, the input is 256-d, but during the flow, there is a bottleneck of 64-d, with the final output of 256-d.<br  />
+Like the following:<br  />
+</p>
+
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<tbody>
+<tr>
+</tr>
+
+<tr>
+</tr>
+
+<tr>
+</tr>
+
+<tr>
+</tr>
+
+<tr>
+</tr>
+
+<tr>
+</tr>
+
+<tr>
+<td class="left">\</td>
+</tr>
+</tbody>
+</table>
+<p>
+ &#x00ad;                            /<br  />
+   &#x00ad;-                       -/<br  />
+      &#x00ad;                   -/<br  />
+        X-                &#x2013;<br  />
+      -/                    &#x00ad;<br  />
+    -/                        &#x00ad;<br  />
+  -/                            &#x00ad;<br  />
+-/                                \+<br  />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">\</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+pre-activation residual module:<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/c12_pre_activation_residual.png" alt="c12_pre_activation_residual.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> Practical Experience</h3>
+<div class="outline-text-3" id="text-11-2">
+<pre class="example">
+Whenever I start a new set of experiments with either a network architecture I am unfamiliar with,
+a dataset I have never worked with, or both, I always begin with the ctrl-c mehtod of training. 
+Using this method, I can start training with an initial learning rate (and associated set of
+hyperparameters), monitor training, and quickly adjust the learning rate based the results as they
+come in. This method is especially helpful when I am totoal unsure on the approximate number of
+epochs it will take for a give architeture to obtain reasonable accuracy or specific dataset.
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2019-12-09 Mon 15:27</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+\chapter{Emacs Basics}
+\section{What is Emacs}
+Emacs is an text editor.
+
+\begin{tcolorbox}
+Learning to use an editor is basically a matter of learning finger habit. Good finger habits can make you an incredibly fast typist. Intellectually, it's possible to absorb a lot from one reading, but you can form only a few new habit each day. Don't feel obliged  to learn them all at once; pick something, practice it, and move on to the next topic. Time spent developing good habits is time well spent.
+\end{tcolorbox}
+
+\section{Why I You Use Emacs}
+\begin{description}
+  \item [Efficiency:] There are many commands that can move cursor without a mouse.
+  \item [Function:] It can do many things like writting LaTeX, Python.
+  \item [Extensibility:] If there is some function not meeting my need, I can programm to implement it using Emacs Lisp language.
+\end{description}
+
+\section{Files and Buffers}
+You don't really edit files. Instead, Emacs copies the content of a file into a temporary buffer and you edit that. The file on disk doesn't change until you save the buffer.
+
+\section{Modes}
+Emacs becomes sensitive to the task at hand. \keyword{Modes} allows Emacs to the kind of editor you want for different tasks. A buffer can be in only one \keyword{major mode} at a time. Minor modes defines a particular aspect of Emacs's behavior and can be turned on and off within a major mode.
+
+If you are good at Lisp programming, you can add your own modes. Emacs is almost infinitely extensible.
+
+\section{Commands}
+You issue commands to instruct Emacs to do what you want to. Each \keyword{command} has a formal name, which is the name of a Lisp routine (Emacs is written with Emacs Lisp language). Some command names are quite long. As a result, we need some way to abbreviate commands. Emacs ties a command name to a short sequence of keystrokes. This tying of commands to keystrokes is known as \keyword{binding}.
+
+\begin{tcolorbox}
+  The author of Emacs try to bind the most frequently used commands to the key sequences that are the easiest to reach (C: Ctrl, M: Meta):
+  \begin{enumerate}
+  \item The most commonly used commands are bound to C-n(where n is any character).
+  \item Slightly less commonly used commands are bound to M-n.
+  \item Other commonly used commands are bound to C-x something.
+  \item Some specialized commands are bound to C-c something. These commands often relate to one of the more specialized modes, such as Java or HTML mode.
+  \item typing M-x long-command-name Enter.(This works for any command really)
+  \end{enumerate}
+\end{tcolorbox}
+
+

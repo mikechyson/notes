@@ -1,0 +1,10 @@
+This is makeindex, version 2.15 [TeX Live 2019] (kpathsea + Thai support).
+Scanning style file /usr/local/texlive/2019/texmf-dist/makeindex/iso/iso.ist.....
+** Input style error (file = /usr/local/texlive/2019/texmf-dist/makeindex/iso/iso.ist, line = 27):
+   -- Unknown specifier \endinput.
+done (5 attributes redefined, 1 ignored).
+Scanning input file 3-index.idx....done (4 entries accepted, 0 rejected).
+Sorting entries....done (10 comparisons).
+Generating output file 3-index.ind....done (12 lines written, 0 warnings).
+Output written in 3-index.ind.
+Transcript written in 3-index.ilg.

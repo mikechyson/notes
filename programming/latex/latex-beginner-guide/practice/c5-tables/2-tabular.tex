@@ -1,0 +1,30 @@
+\documentclass{article}
+\newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+\usepackage{array}
+\begin{document}
+\begin{tabular}{ccc}
+  \hline
+  \head{Command} & \head{Declaration} & \head{Output} \\
+  \hline
+  \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+  \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+  \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+  \hline
+\end{tabular}
+
+\begin{tabular}{|l|c|r|p{1.7cm}|} % left center right p{width}
+  \hline
+  left & centered & right & a fully justified paragraph cell \\
+  \hline
+  l & c & r & p \\
+  \hline
+\end{tabular}
+
+\begin{tabular}{@{}lp{1.2cm}m{1.2cm}b{1.2cm}@{}}
+  \hline
+  baseline & aligned at the top & aligned at the middle & aligned at the bottom\\
+  \hline
+\end{tabular}
+
+
+\end{document}

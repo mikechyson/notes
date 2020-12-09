@@ -1,0 +1,13 @@
+* Add Table Title
+#+BEGIN_EXAMPLE
+#+caption: your-title
+#+END_EXAMPLE
+
+* Split in Cell
+M-RET
+
+* Add Horizontal Line
+C-c -
+
+
+

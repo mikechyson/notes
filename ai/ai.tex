@@ -1,0 +1,100 @@
+\documentclass[a4paper,openright]{book}
+\usepackage{xeCJK}              % cheniese japanese kerean
+\usepackage{fancyhdr}
+\usepackage{indentfirst}
+\usepackage[onehalfspacing]{setspace}
+
+
+\fancyhf{}
+\fancyhead[LE]{\leftmark}
+\fancyfoot[RO]{\nouppercase{\rightmark}}
+\fancyfoot[LE,RO]{\thepage}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\setcounter{tocdepth}{3}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\listfigurename}{图列表}
+\renewcommand{\listtablename}{表格列表}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+% \renewcommand{\partname}{部分}
+% \renewcommand{\chaptername}{章节}
+\renewcommand{\appendixname}{附录}
+\renewcommand{\familydefault}{\ttdefault}
+
+
+
+
+
+\begin{document}
+\author{Mike Chyson}
+\title{AI}
+\maketitle
+\tableofcontents{}
+\chapter*{前言}
+\addcontentsline{toc}{chapter}{前言}
+
+最好的学习编程的方式是去写代码，最好的构建知识网络的的方式是去梳理学过知识。
+
+我们每天都在学习新的知识，太多的知识如果不加以梳理就比较容易忘记，同时大脑也比较容易产生混乱的感觉。
+
+鸟哥在学习linux的时候，记录自己的点点滴滴，最终形成了自己的《鸟哥的Linux私房菜》。鸟哥从不认为自己很聪明，就是认为自己不够聪明，才将点点滴滴记录，以防忘记。我们可以缓慢的行走，但只要不停下脚步，就会属于自己的精彩人生。
+
+
+\part{准备}
+\chapter{工具}
+\section{Jupyter\protect\footnote{https://jupyter.org}}
+
+Jupyter notebook 和Jupyter lab的优点：
+\begin{description}
+\item[方便的交互模式] 可以执行一个代码块，显示一段代码的运行结果。
+\item[可以选择性执行代码] 可以选择性的执行某个代码快。
+\item[代码帮助与查看] np.ones?查看帮助文档，np.ones??查看源码。
+\end{description}
+
+
+
+因此，jupyter很适合：
+\begin{itemize}
+\item 模型的开发阶段，因为这个阶段需要不断的修改代码，查看模型的效果。
+\item 代码的演示，因为方便的交互性。
+\item 数据分析，因为方便的交互性。
+\end{itemize}
+
+
+\section{Python\protect\footnote{https://www.python.org}}
+
+在工程上更方便，包括模块测试，模块引用，等等。
+
+python script更适合：
+\begin{itemize}
+\item 大型的项目。
+\item 模型确定之后的模型的训练与发布。
+\end{itemize}
+
+\chapter{资源}
+谷歌的引导你学习机器学习的资源网站：
+https://tensorflow.google.cn/resources/learn-ml
+
+计算机视觉方面的最新论文：
+https://arxiv.org/list/cs.CV/recent
+
+
+神经网络与进化计算：
+https://arxiv.org/list/cs.NE/recent
+
+
+人工智能的最新论文：
+https://arxiv.org/list/cs.AI/recent
+
+data science:
+https://towardsdatascience.com/machine-learning/home
+
+
+\appendix{}
+\cleardoublepage{}
+\addtocontents{toc}{\bigskip{}}
+\addcontentsline{toc}{part}{Appendix}
+\chapter{术语}
+\chapter{符号}
+\end{document}

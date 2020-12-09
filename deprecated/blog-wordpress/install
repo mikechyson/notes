@@ -1,0 +1,24 @@
+* requirement
+**database: mariadb
+install: yum install mariadb mariadb-server
+start server: systemctl start mariadb
+config: mysql_secure_install
+login: mysql -u root -p ****
+
+
+** php
+yum install php php-devel
+yum install php-cli php-common php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
+
+
+** apache httpd
+yum install httpd
+systemctl start httpd
+
+
+
+* install
+download the wordpress and unpack it into /var/www/html
+
+
+

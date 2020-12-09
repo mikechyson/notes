@@ -1,0 +1,72 @@
+* command client
+beeline -u jdbc:hive2://<ip>:<port>/<database> -n <name> -p <password>
+
+* show create table
+show create table like '*09011*';
+
+
+* create table
+create table <table_name> (...)
+partitioned by (
+`month_id` string,
+`day_id` string,
+`hour_id` string)
+row format delimited fields terminated by '|'
+stored as inputformat 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat';
+
+* select with partition
+select * from <table_name> where month_id=<month_id>;
+
+
+* show databases
+show databases;
+
+* use database
+use hiveica;
+
+* show tables
+show tables;
+
+* exit or quit
+!quit
+
+
+
+
+* create table with gbk
+create table csv_table_gbk(name string, gender string)
+row format serde 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+with serdeproperties(
+"field.delim" = ",",
+"serialization.encoding" = "GBK"
+)
+stored as textfile;
+
+
+
+
+* create table with utf-8
+create table csv_table(name string, gender string)
+row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties(
+"separatorChar" = ",",
+"quoteChar" = "'",
+"escapeChar" = "\\"
+)
+stored as textfile;
+
+
+* load data
+load data [local] inpath "/home/ocdp/hive-csv/person.csv" into table csv_table_gbk;
+
+* load data with partition
+load data [local] inpath "/home/ocdp/hive-csv/person.csv" into table csv_table_gbk partition month_id=<month_id>,day_id=<day_id>,hour_id=<hour_id>;
+
+
+* time format
+select from_unixtime(cast(substring(f12,1,10) as bigint),'yyyy-MM-dd HH:mm:ss') from jtsc_mme_out_2 limit 10;
+
+
+* time
+from_unixtime(unix_timestamp(f11,'yyyyMMddHHmmss'),'yyyyMMdd HH:mm:ss')
+

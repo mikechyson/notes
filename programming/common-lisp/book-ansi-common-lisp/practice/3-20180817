@@ -1,0 +1,519 @@
+(progn (load "/home/michael/.emacs.d/elpa/slime-2.22/swank-loader.lisp" :verbose t) (funcall (read-from-string "swank-loader:init")) (funcall (read-from-string "swank:start-server") "/tmp/slime.11020"))
+
+This is SBCL 1.4.3, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* 
+; loading #P"/home/michael/.emacs.d/elpa/slime-2.22/swank-loader.lisp"
+WARNING:
+   redefining EMACS-INSPECT (#<SB-PCL:SYSTEM-CLASS COMMON-LISP:T>) in DEFMETHOD
+
+; file: /home/michael/.emacs.d/elpa/slime-2.22/swank/sbcl.lisp
+; in: DEFUN SWANK/SBCL::MAKE-SOCKET-IO-STREAM
+;     (EQ :FD-HANDLER SWANK:*COMMUNICATION-STYLE*)
+; 
+; caught WARNING:
+;   undefined variable: SWANK:*COMMUNICATION-STYLE*
+
+; in: DEFUN SWANK/SBCL::LISP-SOURCE-LOCATION
+;     (LET ((SWANK/SBCL::SOURCE
+;            (PRIN1-TO-STRING
+;             (SB-DEBUG::CODE-LOCATION-SOURCE-FORM SWANK/SBCL::CODE-LOCATION 100)))
+;           (CONDITION SWANK:*SWANK-DEBUGGER-CONDITION*))
+;       (IF (AND (TYPEP CONDITION 'STEP-FORM-CONDITION)
+;                (SEARCH "SB-IMPL::WITH-STEPPING-ENABLED" SWANK/SBCL::SOURCE :TEST
+;                        #'CHAR-EQUAL)
+;                (SEARCH "SB-IMPL::STEP-FINISHED" SWANK/SBCL::SOURCE :TEST
+;                        #'CHAR-EQUAL))
+;           (SWANK/BACKEND:MAKE-ERROR-LOCATION "Stepping...")
+;           (SWANK/BACKEND:MAKE-LOCATION `(:SOURCE-FORM ,SWANK/SBCL::SOURCE)
+;                                        '(:POSITION 1))))
+; 
+; caught WARNING:
+;   undefined variable: SWANK:*SWANK-DEBUGGER-CONDITION*
+; 
+; compilation unit finished
+;   Undefined variables:
+;     SWANK:*COMMUNICATION-STYLE* SWANK:*SWANK-DEBUGGER-CONDITION*
+;   caught 2 WARNING conditions
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-util.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-util.fasl written
+; compilation finished in 0:00:00.013
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-repl.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-repl.fasl written
+; compilation finished in 0:00:00.050
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-c-p-c.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-c-p-c.fasl written
+; compilation finished in 0:00:00.033
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-arglists.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; file: /home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-arglists.lisp
+; in: DEFSTRUCT KEYWORD-ARG
+;     (DEFSTRUCT
+;         (SWANK::KEYWORD-ARG (:CONC-NAME SWANK::KEYWORD-ARG.)
+;          (:CONSTRUCTOR SWANK::%MAKE-KEYWORD-ARG))
+;       KEYWORD
+;       SWANK::ARG-NAME
+;       SWANK::DEFAULT-ARG)
+; --> PROGN EVAL-WHEN 
+; ==>
+;   (SB-KERNEL::%COMPILER-DEFSTRUCT
+;    '#<SB-KERNEL:DEFSTRUCT-DESCRIPTION SWANK::KEYWORD-ARG {BCAA3F1}>
+;    '#(#<SB-KERNEL:LAYOUT for T {9048B19}>
+;       #<SB-KERNEL:LAYOUT for STRUCTURE-OBJECT {9048B59}>))
+; 
+; caught STYLE-WARNING:
+;   Previously compiled calls to SWANK::KEYWORD-ARG.KEYWORD,
+;   SWANK::KEYWORD-ARG.ARG-NAME and SWANK::KEYWORD-ARG.DEFAULT-ARG could not be
+;   inlined because the structure definition for SWANK::KEYWORD-ARG was not yet
+;   seen. To avoid this warning, DEFSTRUCT should precede references to the
+;   affected functions, or they must be declared locally notinline at each call
+;   site.
+
+; in: DEFSTRUCT OPTIONAL-ARG
+;     (DEFSTRUCT
+;         (SWANK::OPTIONAL-ARG (:CONC-NAME SWANK::OPTIONAL-ARG.)
+;          (:CONSTRUCTOR SWANK::%MAKE-OPTIONAL-ARG))
+;       SWANK::ARG-NAME
+;       SWANK::DEFAULT-ARG)
+; --> PROGN EVAL-WHEN 
+; ==>
+;   (SB-KERNEL::%COMPILER-DEFSTRUCT
+;    '#<SB-KERNEL:DEFSTRUCT-DESCRIPTION SWANK::OPTIONAL-ARG {BEEDEB1}>
+;    '#(#<SB-KERNEL:LAYOUT for T {9048B19}>
+;       #<SB-KERNEL:LAYOUT for STRUCTURE-OBJECT {9048B59}>))
+; 
+; caught STYLE-WARNING:
+;   Previously compiled calls to SWANK::OPTIONAL-ARG.ARG-NAME and
+;   SWANK::OPTIONAL-ARG.DEFAULT-ARG could not be inlined because the structure
+;   definition for SWANK::OPTIONAL-ARG was not yet seen. To avoid this warning,
+;   DEFSTRUCT should precede references to the affected functions, or they must be
+;   declared locally notinline at each call site.
+
+; in: DEFGENERIC EXTRACT-LOCAL-OP-ARGLISTS => DEF.BODY (CDDR CURRENT-DEF)
+;     (CDDR SWANK::CURRENT-DEF)
+; --> CDR CDR 
+; ==>
+;   SWANK::CURRENT-DEF
+; 
+; note: deleting unreachable code
+
+; in: DEFGENERIC EXTRACT-LOCAL-OP-ARGLISTS
+;     (SWANK::%COLLECT-OP/ARGL-ALIST SWANK::DEFS)
+; ==>
+;   SWANK::DEFS
+; 
+; note: deleting unreachable code
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+;   printed 2 notes
+
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-arglists.fasl written
+; compilation finished in 0:00:00.353
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-fuzzy.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-fuzzy.fasl written
+; compilation finished in 0:00:00.084
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-fancy-inspector.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-fancy-inspector.fasl written
+; compilation finished in 0:00:00.165
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-presentations.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; file: /home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-presentations.lisp
+; in: EVAL-WHEN (:COMPILE-TOPLEVEL :LOAD-TOPLEVEL :EXECUTE)
+;     (SWANK:SWANK-REQUIRE :SWANK-REPL)
+; 
+; caught WARNING:
+;   SWANK-REPL also exports the following symbols:
+;     (SWANK-REPL:LISTENER-EVAL SWANK-REPL:LISTENER-GET-VALUE
+;      SWANK-REPL:LISTENER-SAVE-VALUE SWANK-REPL:CLEAR-REPL-VARIABLES
+;      SWANK-REPL:CREATE-REPL SWANK-REPL:REDIRECT-TRACE-OUTPUT)
+;   See also:
+;     The ANSI Standard, Macro DEFPACKAGE
+;     The SBCL Manual, Variable SB-EXT:*ON-PACKAGE-VARIANCE*
+; 
+; caught STYLE-WARNING:
+;   redefining THREAD-FOR-EVALUATION (#<STRUCTURE-CLASS SWANK::MULTITHREADED-CONNECTION>
+;                                     #<SB-MOP:EQL-SPECIALIZER :FIND-EXISTING>) in DEFMETHOD
+; 
+; compilation unit finished
+;   caught 1 WARNING condition
+;   caught 1 STYLE-WARNING condition
+
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-presentations.fasl written
+; compilation finished in 0:00:00.030
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-presentation-streams.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-presentation-streams.fasl written
+; compilation finished in 0:00:00.026
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-asdf.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; file: /home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-asdf.lisp
+; in: ASDEFS "2.26.149"
+;     (SWANK::ASDEFS "2.26.149"
+;                    (DEFMETHOD SWANK::COMPONENT-RELATIVE-PATHNAME
+;                               ((SWANK::SYSTEM ASDF/SYSTEM:SYSTEM))
+;                      (UIOP/BACKWARD-DRIVER:COERCE-PATHNAME
+;                       (AND
+;                        (SLOT-BOUNDP SWANK::SYSTEM
+;                                     'ASDF/COMPONENT:RELATIVE-PATHNAME)
+;                        (SLOT-VALUE SWANK::SYSTEM
+;                                    'ASDF/COMPONENT:RELATIVE-PATHNAME))
+;                       :TYPE :DIRECTORY :DEFAULTS
+;                       (SWANK::SYSTEM-SOURCE-DIRECTORY SWANK::SYSTEM)))
+;                    (DEFUN SWANK::LOAD-ASD
+;                           (PATHNAME &KEY SWANK::NAME &ALLOW-OTHER-KEYS)
+;                      (ASDF/BACKWARD-INTERNALS:LOAD-SYSDEF
+;                       (OR SWANK::NAME (STRING-DOWNCASE #)) PATHNAME)))
+; --> PROGN UNLESS IF IF DEFMETHOD PROGN EVAL-WHEN SB-PCL::%DEFMETHOD-EXPANDER 
+; --> SB-PCL::LOAD-DEFMETHOD LIST* LET* SB-INT:NAMED-LAMBDA FUNCTION 
+; --> SYMBOL-MACROLET SB-PCL::FAST-LEXICAL-METHOD-FUNCTIONS 
+; --> SB-PCL::BIND-FAST-LEXICAL-METHOD-FUNCTIONS FLET SB-PCL::BIND-ARGS LET* 
+; --> LOCALLY SYMBOL-MACROLET SB-PCL::PV-BINDING SB-PCL::PV-BINDING1 
+; --> SB-PCL::PV-ENV LOCALLY LET BLOCK 
+; ==>
+;   (UIOP/BACKWARD-DRIVER:COERCE-PATHNAME
+;    (IF (SB-PCL::OPTIMIZED-SLOT-BOUNDP
+;         (SLOT-BOUNDP SWANK::SYSTEM 'ASDF/COMPONENT:RELATIVE-PATHNAME)
+;         SWANK::SYSTEM
+;         (SB-PCL::INSTANCE-BOUNDP (SB-PCL::PV-OFFSET 0) SWANK::SYSTEM 0
+;                                  'ASDF/COMPONENT:RELATIVE-PATHNAME
+;                                  '#<STANDARD-CLASS ASDF/SYSTEM:SYSTEM>))
+;        (SB-PCL::OPTIMIZED-SLOT-VALUE
+;         (SLOT-VALUE SWANK::SYSTEM 'ASDF/COMPONENT:RELATIVE-PATHNAME)
+;         SWANK::SYSTEM
+;         (SB-PCL::INSTANCE-READ (SB-PCL::PV-OFFSET 0) SWANK::SYSTEM 0
+;                                'ASDF/COMPONENT:RELATIVE-PATHNAME
+;                                '#<STANDARD-CLASS ASDF/SYSTEM:SYSTEM>)))
+;    :TYPE :DIRECTORY :DEFAULTS (SWANK::SYSTEM-SOURCE-DIRECTORY SWANK::SYSTEM))
+; 
+; caught STYLE-WARNING:
+;   DEPRECATED-FUNCTION-STYLE-WARNING: Using deprecated function UIOP/BACKWARD-DRIVER:COERCE-PATHNAME -- please update your code to use a newer API.
+;   The docstring for this function says:
+;   DEPRECATED. Please use UIOP:PARSE-UNIX-NAMESTRING instead.
+;   
+
+; in: DEFUN LOAD-ASD
+;     (ASDF/BACKWARD-INTERNALS:LOAD-SYSDEF
+;      (OR SWANK::NAME (STRING-DOWNCASE (PATHNAME-NAME PATHNAME))) PATHNAME)
+; 
+; caught STYLE-WARNING:
+;   DEPRECATED-FUNCTION-STYLE-WARNING: Using deprecated function ASDF/BACKWARD-INTERNALS:LOAD-SYSDEF -- please update your code to use a newer API.
+
+; in: DEFMETHOD XREF-DOIT ((EQL :DEPENDS-ON) T)
+;     (ASDF/BACKWARD-INTERFACE:SYSTEM-DEFINITION-PATHNAME SWANK::DEPENDENCY)
+; 
+; caught STYLE-WARNING:
+;   DEPRECATED-FUNCTION-STYLE-WARNING: Using deprecated function ASDF/BACKWARD-INTERFACE:SYSTEM-DEFINITION-PATHNAME -- please update your code to use a newer API.
+;   The docstring for this function says:
+;   DEPRECATED. This function used to expose ASDF internals with subtle
+;   differences with respect to user expectations, that have been refactored
+;   away since. We recommend you use ASDF:SYSTEM-SOURCE-FILE instead for a
+;   mostly compatible replacement that we're supporting, or even
+;   ASDF:SYSTEM-SOURCE-DIRECTORY or ASDF:SYSTEM-RELATIVE-PATHNAME
+;   if that's whay you mean.
+;   
+
+; in: DEFSLIMEFUN ASDF-SYSTEM-FILES
+;     (ASDF/BACKWARD-INTERFACE:SYSTEM-DEFINITION-PATHNAME SWANK::SYSTEM)
+; 
+; caught STYLE-WARNING:
+;   DEPRECATED-FUNCTION-STYLE-WARNING: Using deprecated function ASDF/BACKWARD-INTERFACE:SYSTEM-DEFINITION-PATHNAME -- please update your code to use a newer API.
+;   The docstring for this function says:
+;   DEPRECATED. This function used to expose ASDF internals with subtle
+;   differences with respect to user expectations, that have been refactored
+;   away since. We recommend you use ASDF:SYSTEM-SOURCE-FILE instead for a
+;   mostly compatible replacement that we're supporting, or even
+;   ASDF:SYSTEM-SOURCE-DIRECTORY or ASDF:SYSTEM-RELATIVE-PATHNAME
+;   if that's whay you mean.
+;   
+
+; file: /home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-asdf.lisp
+; in: DEFUN LOAD-SYSDEF
+;     (ASDF/INTERFACE::MAKE-TEMPORARY-PACKAGE)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASDF/INTERFACE::MAKE-TEMPORARY-PACKAGE
+; 
+; compilation unit finished
+;   Undefined function:
+;     ASDF/INTERFACE::MAKE-TEMPORARY-PACKAGE
+;   caught 5 STYLE-WARNING conditions
+
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-asdf.fasl written
+; compilation finished in 0:00:00.196
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-package-fu.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-package-fu.fasl written
+; compilation finished in 0:00:00.006
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-hyperdoc.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-hyperdoc.fasl written
+; compilation finished in 0:00:00.002
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-sbcl-exts.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-sbcl-exts.fasl written
+; compilation finished in 0:00:00.024
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-mrepl.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-mrepl.fasl written
+; compilation finished in 0:00:00.025
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-trace-dialog.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-trace-dialog.fasl written
+; compilation finished in 0:00:00.031
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-macrostep.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-macrostep.fasl written
+; compilation finished in 0:00:00.028
+; compiling file "/home/michael/.emacs.d/elpa/slime-2.22/contrib/swank-quicklisp.lisp" (written 17 AUG 2018 10:49:52 AM):
+
+; /home/michael/.slime/fasl/2.22/sbcl-1.4.3-linux-x86/contrib/swank-quicklisp.fasl written
+; compilation finished in 0:00:00.002
+;; Swank started at port: 34990.
+34990
+* (setf x (cons 'a nil))
+; in: SETF X
+;     (SETF X (CONS 'A NIL))
+; ==>
+;   (SETQ X (CONS 'A NIL))
+; 
+; caught WARNING:
+;   undefined variable: X
+; 
+; compilation unit finished
+;   Undefined variable:
+;     X
+;   caught 1 WARNING condition
+
+(A)
+* x
+
+(A)
+* (car x)
+
+A
+* (cdr x)
+
+NIL
+* (setf y (list 'a 'b 'c))
+; in: SETF Y
+;     (SETF Y (LIST 'A 'B 'C))
+; ==>
+;   (SETQ Y (LIST 'A 'B 'C))
+; 
+; caught WARNING:
+;   undefined variable: Y
+; 
+; compilation unit finished
+;   Undefined variable:
+;     Y
+;   caught 1 WARNING condition
+
+(A B C)
+* (cdr y)
+
+(B C)
+* (setf z (list 'a (list 'b 'c) 'd))
+; in: SETF Z
+;     (SETF Z (LIST 'A (LIST 'B 'C) 'D))
+; ==>
+;   (SETQ Z (LIST 'A (LIST 'B 'C) 'D))
+; 
+; caught WARNING:
+;   undefined variable: Z
+; 
+; compilation unit finished
+;   Undefined variable:
+;     Z
+;   caught 1 WARNING condition
+
+(A (B C) D)
+* (car z)
+
+A
+* (car (cdr z))
+
+(B C)
+* (eql (cons 'a nil) (cons 'a nil))
+
+NIL
+* (setf x (cons 'a nil))
+; in: SETF X
+;     (SETF X (CONS 'A NIL))
+; ==>
+;   (SETQ X (CONS 'A NIL))
+; 
+; caught WARNING:
+;   undefined variable: X
+; 
+; compilation unit finished
+;   Undefined variable:
+;     X
+;   caught 1 WARNING condition
+
+(A)
+* (eql x x)
+
+T
+* (equal x (cons 'a nil))
+
+T
+* (equal (cons 'a nil) (cons 'a nil))
+
+T
+* (defun our-euqal (x y)
+    (or (eql x y)
+        (and (consp x)
+             (consp y)
+             (our-euqal (car x) (car y))
+             (our-euqal (cdr x) (cdr y)))))
+
+OUR-EUQAL
+* (our-euqal '(a b) '(a b))
+
+T
+* (eql '(a b) '(a b))
+
+NIL
+* (setf x '(a b c))
+; in: SETF X
+;     (SETF X '(A B C))
+; ==>
+;   (SETQ X '(A B C))
+; 
+; caught WARNING:
+;   undefined variable: X
+; 
+; compilation unit finished
+;   Undefined variable:
+;     X
+;   caught 1 WARNING condition
+
+(A B C)
+* (setf y x)
+; in: SETF Y
+;     (SETF Y X)
+; --> SETQ 
+; ==>
+;   (SET 'Y X)
+; 
+; caught WARNING:
+;   undefined variable: X
+
+; ==>
+;   (SETQ Y X)
+; 
+; caught WARNING:
+;   undefined variable: Y
+; 
+; compilation unit finished
+;   Undefined variables:
+;     X Y
+;   caught 2 WARNING conditions
+
+(A B C)
+* (eql x y)
+
+T
+* (setf x '(a b c)
+        y (copy-list x))
+; in: SETF X
+;     (SETF X '(A B C))
+; ==>
+;   (SETQ X '(A B C))
+; 
+; caught WARNING:
+;   undefined variable: X
+; 
+; compilation unit finished
+;   Undefined variable:
+;     X
+;   caught 1 WARNING condition
+; in: SETF X
+;     (COPY-LIST X)
+; 
+; caught WARNING:
+;   undefined variable: X
+
+;     (SETF Y (COPY-LIST X))
+; ==>
+;   (SETQ Y (COPY-LIST X))
+; 
+; caught WARNING:
+;   undefined variable: Y
+; 
+; compilation unit finished
+;   Undefined variables:
+;     X Y
+;   caught 2 WARNING conditions
+
+(A B C)
+* x
+
+(A B C)
+* y
+
+(A B C)
+* (defun our-copy-list (lst)
+    (if (atom lst)
+        lst
+      (cons (car lst) (our-copy-list (cdr lst)))))
+
+OUR-COPY-LIST
+* (equal x y)
+
+T
+* (eql x y)
+
+NIL
+* (our-copy-list x y)
+
+* (setf a (our-copy-list x))
+; in: SETF A
+;     (SETF A (OUR-COPY-LIST X))
+; ==>
+;   (SETQ A (OUR-COPY-LIST X))
+; 
+; caught WARNING:
+;   undefined variable: A
+
+;     (OUR-COPY-LIST X)
+; 
+; caught WARNING:
+;   undefined variable: X
+; 
+; compilation unit finished
+;   Undefined variables:
+;     A X
+;   caught 2 WARNING conditions
+
+(A B C)
+* a
+
+(A B C)
+* (equal a x)
+
+T
+* (append '(a b) '(c d) '(e))
+
+(A B C D E)
+* (append '(a b (a b)) '(c d) '(e))
+
+(A B (A B) C D E)
+* (append 'a 'b 'c)
+
+* 
+Process inferior-lisp finished

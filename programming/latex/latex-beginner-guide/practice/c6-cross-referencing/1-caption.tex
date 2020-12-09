@@ -1,0 +1,22 @@
+\documentclass{book}
+\usepackage[demo]{graphicx}
+\begin{document}
+\begin{figure}
+  \centering
+  \includegraphics{test}
+  \caption{Test figure}\label{fig:name}
+\end{figure}
+
+\begin{table}[hbp]
+  \centering
+  \begin{tabular}{}
+    ...
+  \end{tabular}
+  \caption{table description}
+  \label{tab:name}
+\end{table}
+
+
+table \ref{tab:name}\\
+figure \ref{fig:name}
+\end{document}

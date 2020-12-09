@@ -1,0 +1,13 @@
+This weekend, I learn a complete example of tikz. In order to draw output the desired diagram, I learn some much knowledge (shape: line, circle, ractangle, node, ...; property: dashed, red, shadow, thick, thin, radius, ...;). I find that it is tedious to draw a diagram. This make me depressed. There is a moment that I think learning it is a wast of time and I want to quit.
+
+Later, I rethink it. I review my learning of Emacs. It takes me 2 monthes before I can use it commonly. But after mastering Emacs, it does benefit me in making notes. The most importance is the idea during my learning of Emacs.
+1. Time spent in developing a good habbit is time well spent.
+2. It's possible to absorb a lot from one reading, but you can form only a few new habit each day. Don't feel obliged to learn them all at once.
+3. You can not learning something without using it.
+
+
+
+Before you do something, think if it is necessary to do that. List the approves and disapproves. If it is necessary, just do it.
+
+
+If you feel bored, think the scense after you have grasped it.

@@ -1,0 +1,621 @@
+* Preface
+The best way to learn Lisp is to use it.
+
+The spirit of Lisp hacking can be expressed in two sentences.
+Programming should be fun.
+Programming should be beautiful.
+
+* 1 Introduction
+Part of what makes Lisp distinctive is that it is designed to evolve.
+** 1.1 New Tools
+Why learn Lisp?
+Because it lets you do things that you can't do in other languages.
+
+Programming languages teach you not to want what they cannot provide.
+You have to think in a language to write programs in it, and it's hard to want something you can't describe.
+
+
+Lisp programs are expressed as Lisp data structures.
+This means that you can write programs that write programs.
+
+With macros, closures, and run-time typing, Lisp transcends object oriented programming.
+
+Learning Lisp will teach you more than just a new language -- it will teach you new and more powerful ways to thinking about programs.
+
+** 1.2 New Techniques
+Almost any program can benefit from having the language tailored to suit its needs, but the more complex the program, the more valuable bottom-up programming becomes.
+
+Bottom-up programming leads naturally to extensible software.
+If you take the principle of bottom-up programming all the way to the topmost layer of your program, then that layer becomes a programming languages for the user.
+Because the idea of extensibility is so deeply rooted in Lisp, it makes the ideal language for writing extensible software.
+
+Working bottom-up is also the best way to get reusable software.
+The essence of writing reusable software is to separate the general from the specific, and bottom-up programming inherently creates such a separation.
+
+
+The time it takes to write a program depends mostly on its length.
+
+** 1.3 A New Approach
+Instead of hoping that people won't make mistakes, it tries to make the cost of mistakes very low.
+The cost of a mistake is the time required to correct it.
+
+Planning is a necessary evil.
+It is a response to risk: the more dangerous an undertaking, the more important it is to plan ahead.
+Powerful tools decrease risk, and so decrease the need for planning.
+The design of your program can then benefit from what is probably the most useful source of information available: the experience of implementing it.
+
+
+Lisp style has evolved this way because it yields results.
+Strange as it sounds, less planning can mean better design.
+
+
+More powerful tools are taking the risk out the exploration.
+That's good news for programmers, because it means that we will be able to undertake more ambitious projects.
+
+
+* 2 Welcome to Lisp
+** 2.1 Form
+(+ 1 2)
+This is called prefix notation, because the operator comes first.
+
+benefits:
+1. + can take any number of arguments, including none.
+Because operators can take varying numbers of arguments, we need parentheses to show an expression begins and ends.
+2. This is all there is.
+All Lisp code takes this form.
+
+
+
+** 2.2 Evaluation
+When Lisp evaluates a function call: (evaluation rule)
+1. First the arguments are evaluated, from left to right.
+2. The values of the arguments are passed to the function named by the operator.
+
+Not all the operators are functions, but most are.
+
+
+
+The quote operator is a special operator, meaning that it has a distinct evaluation rule of its own.
+The rule is: The quote operator takes a single argument, and just returns it verbatim.
+
+For convenience, Common Lisp defines ' as an abbreviation for quote.
+Lisp provides the quote as a way of protecting expressions from evaluation.
+
+
+** 2.3 Data
+integer: a series of digits. (like 234)
+string: a series of characters surrounded by double-quotes. (like "able")
+
+Integer and strings both evaluate to themselves.
+
+
+symbol: words (or variable name)
+list: zero or more elements enclosed in parentheses.
+
+Symbols has to be quoted, or it will be treated as a variable. (like 'artichoke)
+List has to be quoted, or Lisp would take them for function calls. (like '(my 3 "sons")
+
+
+Note: one quote protects a whole expression, including expressions within it.
+
+
+Lisp programs are expressed as lists.
+It means that Lisp programs can generate Lisp code.
+
+expressions and lists:
+If a list is quoted, evaluation returns the list itself;
+if it it not quoted, the list is treated as code, and evaluation returns its value.
+
+In Common Lisp, there are two ways of representing the empty list:
+()
+nil
+
+** 2.4 Lisp Operators
+cons, car ,cdr
+
+** 2.5 Truth
+In Common Lisp, the symbol t is the default representation for truth.
+Like nil, t evaluates to itself.
+
+A function whose return value is intended to be implemented as truth of falsity is called a predicate.
+Common Lisp predicates often have names that end with p.
+
+Because nil plays two roles in Common Lisp, the function null, which returns true of the empty list, and the function not, which returns true if its arguments is false do exaclty the same thing.
+
+
+
+Like "quote", if is a special operator.
+It could not possibly be implemented as a function, because the argument in a function call are always evaluated, and the whole point of if is that only one of the last two arguments is evaluated.
+
+
+The logical operators and and or resemble conditionals.
+Both take any number of arguments, but only evaluates as many as they need to in order to decide what to return.
+These two operators are macros.
+Like special operators, macros can circumvent the usual evaluation rule.
+
+
+** 2.6 Functons
+You can think a function definition as a generalized version of a Lisp expression.
+Lisp makes no distinction between a program, a procedure, and a function.
+
+
+** 2.7 Recursion
+A function that calls itself is recursive.
+
+Recursion is natural in a process.
+
+** 2.8 Reading Lisp
+People who are just learning Lisp find the sight of so many parentheses discouraging.
+How is one to read, let alone write, such code?
+How is one to see which parenthesis matches which?
+The answer is, one doesn't have to.
+Lisp programmers read and write code by indentation, not by parentheses.
+When they're writing code, they let the text editor show which parenthesis matches which.
+If your editor doesn't match parentheses, stop now and figure out how to make it, because it is virtually impossible to write Lisp code without it.
+
+
+** 2.9 Input and Output
+The most general output function is format.
+
+(format t "~A put ~A equals ~A.~%" 2 3 (+ 2 3))
+It takes two or more arguments.
+The first indicates where the output is to be printed, the second is a string template,
+and the remaining arguments are usually objects whose printed representations are to be inserted into the template.
+
+t indicates that the output is to be sent to the default place, ordinarily this will be the toplevel.
+~A indicates a position to be filled.
+~% indicates a new line.
+
+
+The standard function for input is read.
+
+When given no arguments, it reads from the default place, which will usually be the toplevel.
+(defun askem (string)
+  (format t "~A" string)
+  (read))
+
+read is a complete Lisp parser. (not worked in slime)
+It doesn't just read characters and return them as a string.
+It parse what it reads, and returns the Lisp object that results.
+
+
+pure Lisp: Lisp without side-effect.
+A side-effect is some change to the state of the world that happens as a consequence of evaluating an expression.
+
+When we are writing code without side-effects, there is on point in defining functions with bodies of more than one expression.
+The value of the last expression is returned as the value of the function. but the values of any preceding expressions are thrown away.
+
+** 2.10 Variables
+let: introduce new local variable.
+
+(let ((x 1) (y 2))
+  (+ x y))
+
+form: (variable expression)
+These variables are valid within the body of let.
+
+
+local variable: only valid within a certain context.
+global variable: visible everywhere.
+
+defparameter: to create a global variable
+
+(defparameter *glob* 99)
+
+Such variable will then be accessible everywhere, except in expressions tht create a new local variable with the same name.
+To avoid the possibility of this happening by accident, it's conventinal to give global variable names that be begin and end with asterisks.
+
+defconstant: define global constant
+
+(defconstant limit (+ *glob* 1))
+
+There is no need to give constant distinctive names, because it will cause an error if anyone uses the same name for a variable.
+
+boundp: check whether some symbol is the name of a global variable or constant.
+
+(boundp '*glob*)
+
+
+
+** 2.11 Assignment
+In Common Lisp the most general assignment operator is setf.
+It can be used to assign either kind of variables.
+
+(setf *glob* 98)
+(let ((n 10))
+  (setf n 2)
+  n)
+
+When the first arugment to setf is a symbol that is not the name of a local variable, it is taken to be a global variable.
+
+You can create global variables implicitly, just by assigning them values.
+In source file, it is better style to use explicit defparameter.
+
+
+
+** 2.12 Functional Programming
+Functional programming means writing programs that work by returning values, instead of by modifying things.
+
+One of the most important advantages of functional programming is that it allows interactive testing.
+
+
+** 2.13 Iteration
+The do macro is the fundamental iteration operator in Common Lisp.
+(defun show-squares (start end)
+  (do ((i start (+ i 1)))
+      ((> i end) 'done)
+    (format t "~A ~A~%" i (* i i))))
+
+The first argument is a list of variable specifications.
+Each element can be of the form:
+(variable initial update)
+
+The second argument is a list containing one or more exprssions.
+The first expression is used to test whether iteration should stop.
+The remaining expressions in this list will be evaluated in order when iteration stops, and the value of the last will be returned as the value of the do.
+
+The remaining arguments to do comprise the body of the loop.
+They will be evaluated, in order, on each iteration.
+
+
+dolist: iterate through the elements of a list.
+(defun out-length (lst)
+  (let ((len 0))
+    (dolist (obj lst)
+      (setf len (+ len 1)))
+    len))
+
+
+** 2.14 Functions as Objects
+In Lisp, functions are regular objects, like symbols or strings or lists.
+If we give the name of a function to function, it will return the associated object.
+Like quote, function is a special operator, so we don't have to quote the argument.
+
+(function do)
+#<CLOSURE (:MACRO DO) {9556F1D}>
+
+
+Just as we can use ' as an abbreviation for quote, we use #' as an abbreviation for function.
+
+#'do
+#<CLOSURE (:MACRO DO) {9556F1D}>
+
+
+We can pass functions as arguments.
+One function that takes a function as an argument is apply.
+(apply #'+ '(1 2 3))
+
+It can be given any number of arguments, so long as the last is a list.
+(apply #'+ 1 2 '(3 4 5))
+
+
+The function funcall does the same thing but does not need the arguments to a packaged in a list.
+(funcall #' 1 2 3)
+
+
+WHAT IS LAMBDA?
+The lambda in a lambda expression is not an operator. It is just a symbol.
+In earlier dialects of Lisp it had a prupose: 
+functions were represented internally as lists, and the only way to tell a function from an ordinary list was to check if the first element was the symbol lambda.
+
+In Common Lisp, you can express functions as lists, but they are represented internally as distinct function objects.
+So lambda is no longer really necessary.
+There would be no inconsistency in requiring that functions be denoted as
+((x) (+ x 100))
+instead of
+(lambda (x) (+ x 100))
+
+But Lisp programmers were used to beginning functions with the symbol lambda, so Common Lisp retained it for the sake of tradition.
+
+
+The defun macro creates a function and gives it a name.
+But functions don't have to have names, and we don't need defun to define them.
+Like most other kind of Lisp objects, we can refer to functions literally.
+
+To refer literally to an integer, we use a series of digits;
+to refer literally to a function, we use a lambda expression.
+
+A lambda expression is a list containing the symbol lambda, followed by a list of parameters, followed by a body of zero or more expressions.
+(lambda (x y)
+  (+ x y))
+
+
+
+** 2.15 Types
+In Common Lisp, values have types, not variables.
+You can imagine that every object had a label attached to it, identifying its type.
+This approach is called manifest typing.
+
+The built-in Common Lisp types forms a hierarchy of subtypes and supertypes.
+An object always has more than one type.
+The type t is the supertype of all types, so everything is of type t.
+
+(typep 12 'interger)
+
+
+
+
+
+** 2.16 Looking Forward
+C as a language for writing Unix.
+Lisp as a language for writing Lisp.
+
+A language that can be written in itself is fundamentally different from a language good for writing some particular class of applications.
+It opens up a new way of programming: as well as writing your program in the language, you can improve the language to suit your program.
+
+
+
+* 3 Lists
+In the earliest dialects lists were the only data structure:
+the name "Lisp" originally stood for "LISt Processor".
+
+But Lisp has long since outgrown this acronym.
+Common Lisp is a general-purpose programming language with a wide variety of data structrues.
+
+** 3.1 Conses
+What cons really does is a combine two objects into a two-part object called a cons.
+Conceptually, a cons is a pair of pointers; the first one is the car and the second is the cdr.
+
+
+Conses provide a convenient representation for pairs of any type.
+The two halves of a cons can point to any kind of object, including conses. 
+It is by taking advantage of the latter possibility that we use conses to build lists.
+
+Any nonempty list can be considered as a pair of the first element and the rest of the list. 
+Lisp lists are the embodiment of this idea.
+
+box-notation:
+[[file:./pictures/box-notation.png]]
+
+
++--------------+----------------------------------------------------------------+
+|nested list   |a list that contains other lists as elements                    |
++--------------+----------------------------------------------------------------+
+|flat list     |a list that doesn't contains other lists as elements            |
++--------------+----------------------------------------------------------------+
+
+Everything that is not a cons is an atom.
+
+nil is both an atom and a list.
+
+
+** 3.2 Equality
+Each time you call cons, Lisp allocates a new piece of memory with room for two pointers.
+
++---------+----------------------------------------------------------+
+|eql      |returns true only if its arguments are the same object.   |
++---------+----------------------------------------------------------+
+|equal    |returns true if its arguments would print the same.       |
++---------+----------------------------------------------------------+
+
+** 3.3 Why Lisp Has No Pointers
+One of the secrets to understanding Lisp is to realize that variables have values in the same way that lists have elements.
+As conses have pointers to their elements, variables have pointers to their values.
+
+
+The reason Lisp has no pointers is that every value is conceptually a pointer. 
+When you assign a value to a variable or store it in a data structure, what gets stored is actually a pointer to the value. 
+When you ask for the contents of the data structure or the value of the variable, Lisp returns what it points to.
+
+
+** 3.4 Building Lists
+
++--------------+--------------+
+|copy-list     |              |
++--------------+--------------+
+|append        |              |
++--------------+--------------+
+
+
+** 3.5 Example Compression
+When one wants to write functions of more than a couple lines, it's usual to type the code into a file, and then use a load to get Lisp to read the definitions.
+
+** 3.6 Access
+car, cdr are the base;
+nth, nthcdr, last are the common use.
+
+** 3.7 Mapping Functions
+Common Lisp provides several functions for calling functions on the elements of a list.
+
++---------+-------------------------------------------------------+
+|mapcar   |takes a functions and one or more lists, and returns   |
+|         |the result of applying the functions to elements taken |
+|         |from each list, until some list runs out.              |
++---------+-------------------------------------------------------+
+|maplist  |takes the same arguments, but call the function on     |
+|         |successive cdrs of the lists.                          |
++---------+-------------------------------------------------------+
+
+(mapcar #'list 
+        '(a b c)
+        '(1 2 3 4))
+
+((A 1) (B 2) (C 3))
+
+
+(maplist #'(lambda (x) x)
+         '(a b c))
+
+((A B C) (B C) (C))
+
+
+** 3.8 Trees
+Conses can also be considered as binary trees.
+
+Binary trees without interior nodes are not useful for much.
+
+Common Lisp includes functions for operating on trees not because one needs tree as such,
+but because one needs a way to do something to a list and all the lists within it.
+
+
+** 3.9 Understanding Recursion
+A programmer defining a recursive function usually does not think explicitly about the sequence of invocation that results from calling it.
+
+The advantage of recursion is precisely that it lets us view algorithms in a more abstract way.
+
+To see if a recursive function does what it's supposed to, all you have to ask is, does it cover all the cases?
+This is all we need to know.
+The secret to understanding recursion is a lot like the secret for dealing with parentheses.
+How do you see which parenthesis matches which?
+You don't have to.
+How do you visualize all those invocation?
+You don't have to.
+
+
+The first case is known as the base case.
+
+Being able to judge whether or not a recursive function is correct is only the first half of understanding recursion.
+The other half is being able to write a recursive function that does what you want.
+
+
+
+** 3.10 Sets
+Lists are a good way to represent small sets.
+Every element of a list is a member of the set it represent.
+
+> (member 'b '(a b c))
+(B C)
+
+By default, member compares object using eql.
+You can override this default by using sth called a keyword argument.
+The unusual thing about these arguments is that they are not matched with the corresponding parameters by their position, but by special tags, called keywords, that must precede them in the call.
+A keyword is a symbol preceeded by a colon.
+
+If you pass some function as the :test argument in a call to member, then that function will be used to test for quality instead of eql.
+
+> (member '(a) '((a) (z)) :test #'equal)
+((A) (Z))
+
+> (member '(a) '((a) (z)))
+NIL
+
+
+Keywords arguments are always optional.
+If any are included in a call, they come last.
+
+
++---------------+---------------------------------------------------------+
+|member         |                                                         |
++---------------+---------------------------------------------------------+
+|adjoin         |It takes an object and a list, and conses the object onto|
+|               |the list only if it is not already a member.             |
++---------------+---------------------------------------------------------+
+|union          |                                                         |
++---------------+---------------------------------------------------------+
+|intersection   |                                                         |
++---------------+---------------------------------------------------------+
+|set-difference |                                                         |
++---------------+---------------------------------------------------------+
+
+
+They all have the keyword argument:
+:test
+:key
+
+
+** 3.11 Sequences
+Another way to think of a list as a series of objects in a particular order. (another way to think)
+
+In Common Lisp, sequences include both lists and vectors.
+
+
+sequence functions:
++---------+-----+
+|length   |     |
++---------+-----+
+|subseq   |     |
++---------+-----+
+|reverse  |     |
++---------+-----+
+|sort     |     |
++---------+-----+
+|every    |     |
++---------+-----+
+|some     |     |
++---------+-----+
+
+sort is destructive.
+For efficiency reasons, sort is allowed to modify the sequence given to it as an argument.
+
+
+** 3.12 Stacks
+The representation of lists as conses makes it natural to use them as pushdown stacks.
+
++--------+--------------------------------------------------------------+
+|push    |(push x y), push x onto the front of the list y               |
++--------+--------------------------------------------------------------+
+|pop     |(pop x), removes and returns the first element of the list x  |
++--------+--------------------------------------------------------------+
+|pushnew |a variant of push that use adjoin instead of cons             |
++--------+--------------------------------------------------------------+
+
+
+** 3.13 Dotted Lists
+A proper list is either nil, or a cons whose cdr is a proper list.
+
+When you need a structure with two fields you can use a cons.
+You will be able to use car to refer to the first and cdr to refer to the second.
+
+> (setf pair (cons 'a 'b))
+(A . B)
+
+Because this cons is not a proper list, it is displayed in dot notation.
+
+
+A cons that isn't a proper list is called a dotted list.
+This is not a very good name, because conses that aren't proper lists are usually not meant to represent lists at all: (a . b) is just a two-part data structure.
+
+** 3.14 Assoc-lists
+It is alse natural to use conses to represent mappings.
+A list of conses is called an assoc-list or alist. (association)
+
++---------+------------+
+|assoc    |:test :key  |
++---------+------------+
+|assoc-if |            |
++---------+------------+
+
+** 3.15 Example: Shortest Path
+
+
+** 3.16 Garbage
+Lists can be slow for several reasons:
+1. offer sequential instead of random access
+2. conses be represented as pointers
+3. cost of allocating and recycling cons cells
+
+Automatic memory management is one of Lisp's most valuable features.
+
+The Lisp system maintains a segment of memory called the heap.
+the system keeps track of unused memory in the heap and doles it out as new objects are created.
+
+Allocating memory from the heap is generically known as consing.
+
+Memory that is no longer needed is called garbage, and the scavenging operation is called garbage collection, or GC.
+
+Consing is ok in prototypes and experiments.
+If you take advantage of the flexibility that lists give you in the early stages of a program, you're more likely to produce something that servives to the later stages.
+
+
+
+* 4 Specialized Data Structures
+** 4.1 Arrays
+
++-------------------+-------------------+----------------------------------------------------+
+|     function      |       abbr        |                      example                       |
++-------------------+-------------------+----------------------------------------------------+
+|make-array         |                   |(make-array '(2 3) :initial-element nil))           |
++-------------------+-------------------+----------------------------------------------------+
+|aref               |array reference    |(aref arr 0 0)                                      |
++-------------------+-------------------+----------------------------------------------------+
+|#<demension>a(...) |array              |#2a((nill nil nil) (nil nil nil))                   |
++-------------------+-------------------+----------------------------------------------------+
+
+A one-demensional array is also called a vector.
++-------------------+-------------------------+----------------------------------------------------+
+|vector             |                         |(vector "a" 'b 3)                                   |
++-------------------+-------------------------+----------------------------------------------------+
+|svref              |simple vector reference  |(svref vec 0)                                       |
++-------------------+-------------------------+----------------------------------------------------+
+
+** 4.2 Example: Binary Search

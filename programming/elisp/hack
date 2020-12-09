@@ -1,0 +1,447 @@
+* c-x C-e
+C-x C-e runs the command eval-last-sexp.
+Evaluate sexp before point; print value in the echo area.
+
+* C-u C-x C-e
+causes the value returned to appear after the expression.
+* quit debugger
+to quit the debugger.
+
+* eval-last-sexp
+eval-last-sexp:
+evaluate last symbolic expression
+
+
+
+* number-or-marker-p
+the lisp interpreter is trying to determine whether the information presented it is a number of a marker(a special object representiing a buffer position).
+
+p: predicate
+
+zerop
+listp
+
+bufferp
+
+
+
+
+* message function
+takes a variable number of arguments
+used to send message
+
+(message "The name of this buffer is: %s." (buffer-name))
+(message "The value of fill-column is %d." fill-column)
+
+% is a control
+
+%s: a string or a symbol
+%d: a number
+%c: an ascii code number
+
+
+
+the value returned by message is what appears in the echo area when you evaluate an expression whose first element is message;
+but when embedded in a function, message prints the text as a side effect without quotes.
+
+
+* buffer-name function
+returns the name of the buffer as a string
+
+* setq
+q: quote
+
+
+
+
+* counting
+(setq counter 0)		; initializer
+(setq counter (+ counter 1))	; incrementer
+counter				; counter
+
+
+* self-insert-command 
+insert the character you typed.
+
+* buffer-name and buffer-file-name
+buffer-name: return the name same as the name of the file to which it refers to.
+buffer-file-name: return the full path-name of the file.
+
+* current-buffer
+returns the buffer itself.
+
+* other-buffer
+returns the most recently selected buffer other than the one you are in currently
+
+* switch-to-buffer
+bounded to C-x b
+designed for human
+do two things:
+1. it switch the buffer to which emacs's attention is directed
+2. it switches the buffer displayed in the window to the new buffer
+
+* set-buffer
+do one thing:
+1. it switches the attention of the computer program to a different buffer
+
+
+* (switch-to-buffer (other-buffer)
+move you to your most recent other buffer that you cannot see.
+
+* (switch-to-buffer (other-buffer (current-buffer) t))
+go to your most recently selected buffer, even if you can still see it.
+
+the first argument to other-buffer tells is which buffer to skip
+the second argument tells other-buffer it is ok to switch to a visible buffer.
+
+* buffer-size, point, point-min, point-max
+** buffer-size
+tells you the size of the current buffer,
+i.e. returns a count of the number of characters in the buffer
+
+** point
+returns a number that tells you where the cursor is located as a count of the number of characters from the beginning of the buffer up to point.
+
+** point-min
+returns the value of the minimun permissible value of point in the current buffer.
+
+** point-max
+returns the value of the maximum permissible value of point in the current buffer.
+
+
+
+* equal
+returns true if the two objects have a similar structure and contents, such as two copies of the same book.
+
+* eq
+reuturns true if both arguments are actually the same object.
+
+
+* describe-function
+C-h f
+
+* xref-find-definition
+M-.
+find the function definition source code
+
+* finder-by-keyword
+C-h p
+
+
+* save labor
+The prompt for describe-function will offer you the symbol under or preceding the cursor, so you can save typing by positioning the cursor right over or after the function and then typing C-h f <RET>.
+
+* let*
+enables Emacs to set each variable in its varlist in sequence, one after another.
+critical feature: variables later in the varlist can make use of the values wo which Emacs set variables earlier in the varlist.
+
+* exchange point and mark
+C-x C-x
+
+* interactive list
+  (interactive
+   (list (read-buffer "Append to buffer: " (other-buffer
+					    (current-buffer) t))
+	 (region-beginning) (region-end)))
+
+
+* with-current-buffer
+
+* get-buffer-create and get-buffer
+
+* insert-buffer-substring
+
+
+* beginning-of-buffer
+no argument: beginning of the buffer
+a number between 1 and 10: number% of the buffer
+a number > 10: end of the buffer
+
+* size
+the accessible portion of the buffer.
+(let ((size (- (point-max) (point-min))))
+     ...)
+
+* \\
+A ‘\\’ is used before the first square bracket of this expression. This ‘\\’ tells the Lisp interpreter to substitute whatever key is currently bound to the ‘[...]’.
+
+* prefix-numeric-value
+convert the raw prefix argument produced by (interactive "P") to a numberic value.
+
+* forward-line
+move point forward to the beginning of the next line, or if the argument is greater than one, forward that many lines.
+
+* narrow-to-region
+C-x n n(narrow)
+* widen
+C-x n w(widen)
+
+* undo
+C-x u
+C-_
+
+* what-line function
+* count-line function
+
+* save-restriction
+(save-restriction &rest BODY)
+
+Execute BODY, saving and restoring current buffer’s restrictions.
+
+when write save-excursion and save-restriction in sequence, write save-excursion outermost.
+If you write them in reverse order, you may fail to record narrowing in the buffer to which Emacs switches after calling save-excursion.
+
+* car, cdr
+non-destructive
+
+* cons
+cons creates a new list
+non-destructive
+
+* nthcdr
+take the cdr of a list repeatedly
+non-destructive
+
+* nth
+take the car of the result result returned by nthcdr.
+i.e. Nth element of the list.
+non-destructive
+start from zero.
+
+* setcar
+set the car of a list to a new value
+destructive
+* setcdr
+set the cdr of a list ot a new vlaue
+destructive
+
+
+* kill ring
+(cons "another piece"
+      '("a piece of text" "previous piece"))
+(car (nthcdr 1 '("another piece"
+		 "a piece of text"
+		 "previous piece")))
+
+
+* zap-to-char
+
+* aref
+(aref ARRAY INX)
+return the element of ARRAY at index IDX.
+
+* progn
+(progn BODY...)
+
+Eval BODY forms sequentially and return value of last one.
+
+Preceding expressions are evaluated only for the side effects they perform.
+The values produced by them are discarded.
+
+The progn special form is necessary because the kill-region command takes two arguments;
+and it would fail if search-forward and
+point expressions were written in sequence as two additional arguments.
+The progn expression is a single argument to kill-region
+and returns the one value that kill-region needs for its second argument.
+
+
+(defun zap-to-char (arg char)
+  (interactive "p\ncZap to char: ")
+  (if (char-table-p translation-table-for-input) ;translation-table-for-input obsolete in 23.1
+      (setq char (or (aref translation-table-for-input char) char)))
+  (kill-region (point) (progn
+			 (search-forward (char-to-string char)
+					 nil nil arg)
+			 (point))))
+
+* search-forward
+search for a string, and if the string is found, move point.
+
+* list
+return a newly created list with specified arguments as elements.
+
+
+* unless
+'unless' is an 'if' without a then-part
+
+
+
+
+* kill-append
+(kill-append STRING BEFORE-P)
+
+Append STRING to the end of the latest kill in the kill ring.
+If BEFORE-P is non-nil, prepend STRING to the kill.
+
+* kill-new
+(kill-new STRING &optional REPLACE)
+
+Make STRING the latest kill in the kill ring.
+
+
+* transient-mark-mode
+if non-nil, highlights the region.
+
+* concat
+concatenate
+
+* funcall
+Call first argument as a function, passing remaining arguments to it.
+similar to eval in linux.
+
+* defvar and seq
+unlike setq in two ways:
+1. it only sets the value of the variable if the variable does not already have a value.
+2. defvar has a document string.
+
+(defvar SYMBOL &optional INITVALUE DOCSTRING)
+
+(defvar kill-ring nil
+  "List of killed text sequences.
+  ...")
+
+
+* defcustom
+you can still use defvar for user customizable variables,
+please use defcustom instead, since it provides a path into the Customization commands.
+
+
+* three functions for bringing text back
+1. yank
+2. yank-pop
+3. rotate-yank-pointer (used by the two other functions)
+
+these functions refer to the kill ring throug a variable called the kill-ring-yank-pointer.
+
+* kill-ring and kill-ring-yank-pointer
+Both the variable kill-ring and the variable kill-ring-yank-pointer are pointers.
+But the kill ring itself is usually described as if it were actually what it is composed of.
+The kill-ring is spoken of as if it were the list rather than that it points to the list.
+Conversely, the kill-ring-yank-pointer is spoken of as pointing to a list.
+
+[[file:kill-ring-and-kill-ring-and-pointer.png]]
+
+* while
+(while true-of-false-test
+  body...)
+
+the value returned by evaluating a 'while' is the value of the true-or-false-test.
+an interesting consequence of this is that a 'while' loop that evaluates without error will return nil or false.
+
+What this means is that while is always evaluated for its side effects.
+** list loop
+a template for a while loop that uses the cdr function:
+(while test-whether-list-is-empty
+  body...
+  set-list-to-cdr-of-list)
+
+** counter loop
+set-count-to-initial-value
+(while (< count desired-number)		;true-or-false-test
+  body...
+  (setq count (1+ count)))		;incrementer
+
+* print
+(print OBJECT &optional PRINTCHARFUN)
+
+
+* dolist and dotimes
+both are lisp macros.
+
+dolist works like a while loop that cdrs down a list.
+dotimes loops a specific number of times.
+
+* recursive definition
+     (defun name-of-recursive-function (argument-list)
+       "documentation..."
+       (if do-again-test
+         body...
+         (name-of-recursive-function
+              next-step-expression)))
+
+
+
+* cond
+(cond
+ body...)
+
+(cond
+  (first-true-or-false-test first-consequent)
+  (second-true-or-false-test second-consequent)
+  (third-true-or-false-test third-consequent)
+   ...)
+
+
+* recursive patterns
+Here are three common recursive patterns. Each involves a list. Recursion does not need to involve lists, but Lisp is designed for lists and this provides a sense of its primal capabilities.
+** every
+an action is performed on every element of a list.
+** accumulate
+an action is performed on every element of a list and the result of that action is accumulated with the results of performing the action on the other elements.
+** keep
+each element of a list is tested; the element is acted on and the results are kept only if the element meets a crierion.
+
+* deferment(???)
+Each deferment means the computer must remember what is being waited on. This is not a problem when there are only a few steps, as in this example. But it can be a problem when there are more steps.
+
+(defun triangle-recursively (number)
+  "Return the sum of the numbers 1 through NUMBER inclusive.
+Uses recursion."
+  (if (= number 1)                    ; do-again-test
+      1                               ; then-part
+    (+ number                         ; else-part
+       (triangle-recursively          ; recursive call
+	(1- number)))))               ; next-step-expression
+
+** no deferment solution
+(defun triangle-initialization (number)
+  "Return the sum of the numbers 1 through NUMBER inclusive.
+This is the initialization component of a two function 
+duo that uses recursion."
+  (triangle-recursive-helper 0 0 number))
+
+(defun triangle-recursive-helper (sum counter number)
+  "Return SUM, using COUNTER, through NUMBER inclusive.
+This is the helper component of a two function duo that uses recursion."
+  (if (> counter number)
+      sum
+    (triangle-recursive-helper (+ sum counter) ;sum
+			       (1+ counter)    ;counter
+			       number)))       ;number
+
+
+(triangle-initialization 2)		;3
+(triangle-initialization 3)		;6
+(triangle-initialization 4)		;10
+
+
+* sentence-end function and sentence-end variable
+
+* re-search-forward function
+
+
+* insert
+(insert &rest ARGS)
+Insert the arguments, either strings or characters, at point.
+
+* format
+(format STRING &rest OBJECTS)
+
+Format a string out of a format-string and arguments.
+The first argument is a format control string.
+The other arguments are substituted into it to make the result, a string.
+
+
+* match-beginning
+Return position of start of text matched by last search.
+
+* looking-at
+(looking-at REGEXP)
+
+Return t if text after point matches regular expression REGEXP.
+
+
+* eobp
+Return t if point is at the end of the buffer.
+
+

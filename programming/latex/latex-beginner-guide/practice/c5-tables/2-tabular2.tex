@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{array}
+\setlength{\extrarowheight}{4pt} % extra row height
+\begin{document}
+\begin{tabular}{@{}>{\itshape}ll!{:}l<{.}@{}}
+  % @{code} insert code instead of empty space before and after a column
+  % >{code} can be used before an l,c,r,p,m,b option and inserts code right at the beginning of each entry of that column
+  % <{code} can be used after an l , c , r , p , m , or b option and inserts code at the end of the entry of that column
+  % !{code} can be used like | but inserts code instead of a vertical line.
+
+  % >{\itshape} has been used to change the font of a row to italic.
+
+  \hline
+  Info: & Software & \LaTeX\\
+        & Author & Leslie Lamport\\
+        & Website & www.latex-project.org\\
+  \hline
+\end{tabular}
+\end{document}

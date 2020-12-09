@@ -1,0 +1,9 @@
+There are always many problems around you. Sometime it seems that you have no idea how to settle them.
+There are three attributes of a problem:
+1. difficulty
+2. space dimension (the number of the problems)
+3. time dimension (the time spent in solving the problem)
+
+The obvious attributes is the difficulty and the space dimension. The result is that we always want to solve all the problems immediately.
+
+We can solve one problem at one time, like the divide-and-conquer thought in algorithm. If the problem is too difficult or huge, divide it. Focus on one tiny, easy problem and when it is settled, preceed on. When all the tiny, easy problem is settled, the whole problem is settled surprisingly and marvellously.

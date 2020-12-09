@@ -1,0 +1,49 @@
+* <<
+左移操作
+[[file:pics/shift-left.png]]
+python 操作如下：
+#+BEGIN_EXAMPLE
+bin(0b1010 << 1)
+Out[4]: '0b10100'
+bin(0b1010 << 2)
+Out[5]: '0b101000'
+#+END_EXAMPLE
+* >>
+右移操作
+[[file:pics/shift-right.png]]
+
+#+BEGIN_EXAMPLE
+bin(0b1010 >> 1)
+Out[2]: '0b101'
+bin(0b1010 >> 2)
+Out[3]: '0b10'
+#+END_EXAMPLE
+* &
+与操作
+[[file:pics/bit-and.png]]
+#+BEGIN_EXAMPLE
+bin(0b1010 & 0b0011)
+Out[6]: '0b10'
+#+END_EXAMPLE
+* |
+或操作
+[[file:pics/bit-or.png]]
+#+BEGIN_EXAMPLE
+bin(0b1010 | 0b0011)
+Out[9]: '0b1011'
+#+END_EXAMPLE
+* ~
+非操作
+[[file:pics/bit-not.png]]
+#+BEGIN_EXAMPLE
+bin(~0b1010 )
+Out[8]: '-0b1011'
+#+END_EXAMPLE
+显示结果是有符号数的二进制补码形式。
+* ^
+异或操作
+[[file:pics/bit-xor.png]]
+#+BEGIN_EXAMPLE
+bin(0b1010 ^ 0b0011)
+Out[7]: '0b1001'
+#+END_EXAMPLE

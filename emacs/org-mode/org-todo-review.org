@@ -1,0 +1,239 @@
+
+Org mode does not maintain TODO lists as separate documents.
+Instead, TODO items are an integral part of the notes file, because TODO items usually come up while taking notes!
+
+* Todo basics
+Any headline become a TODO item when it starts with the word 'TODO'.
+
+| Key Bounding | Functions      | Description                                                      |
+|--------------+----------------+------------------------------------------------------------------|
+| C-c C-t      | org-todo       | Rotate the TODO state of the current item (ummarked, TODO, DONE) |
+| S-RIGHT      | org-shiftright | Switch to the next TODO keyword. (on a headline)                 |
+| S-LEFT       | org-shiftleft  | Switch to the previous TODO keyword. (on a headline)             |
+|              |                |                                                                  |
+
+
+* Todo extensions
+By default, marked TODO entries have one of only two states: TODO and DONE. 
+** Todo keywords as workflow states
+You can use TODO keywords to indicate different sequential states in the process of working on an item, for example:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+#+END_SRC
+
+The vertical bar separates the TODO keywords (states that need action) from the DONE states (which need no further action). 
+If you don't provide the separator bar, the last state is used as DONE state. 
+With this step, the command "C-c C-t" will cycle an entry from TODO to FEEDBACK, then VERIFY, and finally to DONE and DELEGATED.
+
+
+** Todo keyworks as types
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((type "Fred" "Hack" "Lucy" "|" "DONE")))
+#+END_SRC
+
+In this case, different keywords do not indicate a sequence, but rather different types. 
+So the normal work flow would be to assign a task to a person, and later to mark it DONE.
+
+** Multiple keywords sets in one file
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE")
+        (sequence "REPORT" "BUG" "KNOWNCAUSE" "|" "FIXED")
+        (sequence "|" "CANCELED")))
+#+END_SRC
+
+In this setup, C-c C-t only operates within a subsequence.
+
+C-u C-u C-c C-t
+C-S-right
+C-S-left
+These keys jump from one TODO subset to the next.
+
+S-right
+S-left
+Walk through all keywords from all sets.
+
+** Fast access to TODO states
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "|" "CANCELED(c)")))
+#+END_SRC
+
+If you then press "C-c C-t" followed by the selection key, the entry will be switched to this state. 
+
+
+** Setting up keywords for individual files
+#+BEGIN_EXAMPLE
+#+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
+
+(you may also write #+SEQ_TODO to be explicit about the interpretation, but it means the same as #+TODO), or 
+
+#+TYP_TODO: Fred Hack Lucy | DONE
+#+END_EXAMPLE
+
+Several sets in parallel:
+#+BEGIN_EXAMPLE
+#+TODO: TODO | DONE
+#+TODO: REPORT BUG KNOWNCAUSE | FIXED
+#+TODO: | CANCELED
+#+END_EXAMPLE
+
+Note: After changing one of these lines, use C-c C-c with the cursor still in the line to make the changes known to Org mode.
+
+** Faces for TODO keywords
+| Variable               | Description                       |
+|------------------------+-----------------------------------|
+| org-todo-keyword-faces | Faces for specific TODO keywords. |
+|                        |                                   |
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning) 
+        ("STARTED" . "yellow")
+        ("CANCELED" . (:foreground "blue" :weight bold))))
+#+END_SRC
+
+** Todo dependencies
+| Key Bounding | Functions                   | Description                                      | Variables                     |
+|--------------+-----------------------------+--------------------------------------------------+-------------------------------|
+| C-c C-x o    | org-toggle-ordered-property | Toggle the ORDERED property of the current entry | org-enforce-todo-dependencies |
+
+
+
+* Progress logging
+Org mode can automatically record a timestamp and possibly a note when you mark a TODO item as DONE, or even each time you change the state of a TODO item.
+
+** Closing items
+The most basic logging is to keep track of when a certain TODO item was finished. 
+
+#+BEGIN_SRC emacs-lisp
+(setq org-log-done 'time)
+#+END_SRC
+
+Then each time you turn an entry from a TODO (not-done) state 
+into any of the DONE states, a line ‘CLOSED: [timestamp]’ will
+be inserted just after the headline.
+
+** Tracking TODO state changes
+To keep track of when a state change occurred and maybe take a note about this change:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@")))
+#+END_SRC
+
+Since it is normally too much to record a note for every state, Org mode expects configuration on a per-keyword basis for this.
+This is achieved by adding special markers ‘!’ (for a timestamp) or ‘@’ (for a note with timestamp) in parentheses after each keyword.
+
+#+BEGIN_EXAMPLE
+Only one marker, it is for both entering and exiting;
+marker/marker, the first marker is for entering, the latter is for exiting;
+#+END_EXAMPLE
+
+
+| Variable            |
+|---------------------|
+| org-log-into-drawer |
+
+#+BEGIN_EXAMPLE
+#+STARTUP: logdrawer
+#+END_EXAMPLE
+
+
+* Priorities
+Prioritizing can be done by placing a 'priority cookie' into the headline item.
+
+#+BEGIN_EXAMPLE
+ *** TODO [#A] Write letter to Sam Fortune
+#+END_EXAMPLE
+
+By default, Org mode supports three priorities: ‘A’, ‘B’, and ‘C’. 
+‘A’ is the highest priority. An entry without a cookie is treated just like priority ‘B’. 
+
+| Key Bounding | Functions    | Description                               |
+|--------------+--------------+-------------------------------------------|
+| C-c ,        | org-priority | Set the priority of the current headline. |
+| S-UP         |              | Increase priority of current heandline    |
+| S-DOWN       |              | Decrease priority of current headline     |
+
+
+* Breaking down tasks
+Break down large tasks into smaller subtasks by creating an outline tree below a TODO item, with detailed subtasks on the tree.
+
+To keep the overview over the fraction of subtasks that are already completed, insert either ‘[/]’ or ‘[%]’ anywhere in the headline.
+These cookies will be updated each time the TODO status of a child changes, or when pressing C-c C-c on the cookie
+
+#+BEGIN_EXAMPLE
+     * TODO Organize Party [33%]
+     ** TODO Call people [1/2]
+     *** TODO Peter
+     *** DONE Sarah
+     ** TODO Buy food
+     ** DONE Talk to neighbor
+#+END_EXAMPLE
+
+
+If you would like to have the statistics cookie count any TODO entries in the subtree (not just direct children), 
+configure =org-hierarchical-todo-statistics=. 
+To do this for a single subtree, include the word ‘recursive’ into the value of the COOKIE_DATA property. 
+
+#+BEGIN_EXAMPLE
+     * Parent capturing statistics [2/20]
+       :PROPERTIES:
+       :COOKIE_DATA: todo recursive
+       :END:      
+#+END_EXAMPLE
+
+
+If you would like a TODO entry to automatically change to DONE when all children are done.
+#+BEGIN_SRC emacs-lisp
+     (defun org-summary-todo (n-done n-not-done)
+       "Switch entry to DONE when all subentries are done, to TODO otherwise."
+       (let (org-log-done org-log-states)   
+         (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+     
+     (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+#+END_SRC
+
+To keep subtasks out of the global TODO list, customize =org-agenda-todo-list-sublevels=.
+
+* Checkboxes
+Checkboxes are not included in the global TODO list, so they are often great to split a task into a number of simple steps.
+
+#+BEGIN_EXAMPLE
+     * TODO Organize party [2/4]
+       - [-] call people [1/3]
+         - [ ] Peter
+         - [X] Sarah
+         - [ ] Sam
+       - [X] order food
+       - [ ] think about what music to play
+       - [X] talk to the neighbors
+#+END_EXAMPLE
+
+In a headline, a cookie can count either checkboxes below the heading or TODO states of children, and it will display whatever was changed last. 
+Set the property COOKIE_DATA to either ‘checkbox’ or ‘todo’ to resolve this issue. 
+
+
+/C-c C-c/ (=org-toggle-checkbox=)
+Toggle checkbox status.
+With a single prefix argument, add an empty checkbox or remove the current one. 
+With a double prefix argument, set it to ‘[-]’, which is considered to be an intermediate state. 
+
+/C-c C-x C-b/ (=org-toggle-checkbox=)
+Can work on region.
+
+/C-c C-x o/ (=org-toggle-ordered-property=)
+Toggle the ORDERED property of the current entry.
+
+
+/C-c #/ (=org-update-statistics-cookies=)
+Update the statistics cookie, either from TODO or from checkboxes.
+When called with a C-u prefix, update the entire file.
+Don't need to put the cursor on the cookie.
+

@@ -1,0 +1,18 @@
+* problem
+firmware: faild to load i915/kbl_dmc_veri_04.bin
+
+* settlement
+goto the website: https://mirrors.tuna.tsinghua.edu.cn/debian-nonfree/firmware/ to download the firmware
+
+I download the sid firmware.
+
+
+
+tar -zxvf firmware.tar.gz
+dpkg -x firmware-misc-nonfree_20180825+dfsg-1_all.deb misc-nonfree
+cd misc-nonfree/lib/firmware/
+cp -r i915 /lib/firmware/
+
+
+
+

@@ -1,0 +1,11 @@
+* OVERVIEW
+- data
+  - training
+  - validating
+  - testing
+- model
+- loss
+- optimizer
+
+
+* PRACTICE

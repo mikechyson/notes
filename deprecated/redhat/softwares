@@ -1,0 +1,62 @@
+
+* Filezilla
+yum -y install epel-release
+yum -y install filezilla
+
+
+
+* Sdkman
+curl -s "https://get.sdkman.io" | bash
+
+
+* Gradle
+sdk install gradle 4.7
+
+
+* Teamviewer
+yum install teamview.rpm
+** problem
+Requires: libQt5WebKitWidgets.so.5()(64bit) >= 5.5
+Requires: libQt5WebKit.so.5()(64bit) >= 5.5
+** solution
+go to 
+http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/q/
+to download the corresponding rpm and install
+
+
+* Virtual Machine Manager
+Software -> search virtual
+
+
+
+
+
+* Vmware
+** install
+1. download
+VMware-Workstation-Full-14.1.3-9474260.x86_64.bundle
+2. add execute permission
+chmod +x VMware-Workstation-Full-14.1.3-9474260.x86_64.bundle
+3. install
+./VMware-Workstation-Full-14.1.3-9474260.x86_64.bundle
+
+
+** uninstall
+vmware-installer --uninstall-product vmware-workstation
+
+
+
+
+* Gnome Extension
+Extending the GNOME 3 destop
+http://extensions.gnome.org
+
+Managing shell extensions
+Software --> Add-on --> Extension Setting
+
+
+
+
+** see all the shell extensions
+rpm -qa | grep gnome-shell
+

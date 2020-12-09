@@ -1,0 +1,129 @@
+\chapter{Math}
+
+\section{Basic Formula}
+
+\begin{lstlisting}
+  \section*{Quadratic equations}
+  \begin{equation}
+    \label{quad}
+    ax^2 + bx + c = 0,
+  \end{equation}
+  where \( a, b\) and \( c \) are constants and \( a \neq 0 \),
+  has two solutions for the variable \( x \):
+  \begin{equation}
+    \label{root}
+    x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}.
+  \end{equation}
+  If the \emph{discriminant} \( \Detla \) with
+  \[ \Delta = b^2 - 4ac \]
+  is zero, then the equation (\ref{quad}) has a double solution:
+  (\ref{root}) becomes
+  \[ x = - \frac{b}{2a}. \]
+\end{lstlisting}
+
+\begin{tcolorbox}
+  \section*{Quadratic equations}
+  \begin{equation}
+    \label{quad}
+    ax^2 + bx + c = 0,
+  \end{equation}
+  where \( a, b\) and \( c \) are constants and \( a \neq 0 \),
+  has two solutions for the variable \( x \):
+  \begin{equation}
+    \label{root}
+    x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}.
+  \end{equation}
+  If the \emph{discriminant} \( \Detla \) with
+  \[ \Delta = b^2 - 4ac \]
+  is zero, then the equation (\ref{quad}) has a double solution:
+  (\ref{root}) becomes
+  \[ x = - \frac{b}{2a}. \]
+
+\end{tcolorbox}
+
+
+\section{Expressions within Text}
+LaTeX provides the math environment in-text formulas:
+
+\begin{lstlisting}
+  \begin{math}
+    expression
+  \end{math}
+\end{lstlisting}
+
+LaTeX offers an alias that's doing the same:
+
+\begin{lstlisting}
+  \( expression \)
+\end{lstlisting}
+
+A third way is by using a shortcut, coming from TeX:
+
+\begin{lstlisting}
+  $expression$
+\end{lstlisting}
+
+For example:
+\begin{tcolorbox}
+  \begin{lstlisting}
+    This is an equation: $x^2 + x = 10$
+  \end{lstlisting}
+  This is an equation: $x^2 + x = 10$
+\end{tcolorbox}
+
+\section{Displaying Formula}
+
+\begin{lstlisting}
+  \begin{displaymath}
+    expression                  % displayed formula, centered
+  \end{displaymath}
+\end{lstlisting}
+
+
+There are shortcuts:
+\begin{lstlisting}
+  \[
+  expression
+  \]
+\end{lstlisting}
+
+\begin{lstlisting}
+  $$
+  expression
+  $$
+\end{lstlisting}
+
+
+
+For example:
+\begin{tcolorbox}
+  \begin{lstlisting}
+    \begin{displaymath}
+      x^2 + x = 10
+    \end{displaymath}
+  \end{lstlisting}
+  \begin{displaymath}
+    x^2 + x = 10
+  \end{displaymath}
+
+\end{tcolorbox}
+
+
+\section{Numbering Equations}
+\begin{tcolorbox}
+  \begin{lstlisting}
+    \begin{equation}
+      \label{newton}
+      F = ma^2
+    \end{equation}
+    Newton's law: \eqref{newton}.
+  \end{lstlisting}
+  \begin{equation}
+    \label{newton}
+    F = ma^2
+  \end{equation}
+  Newton's law: \eqref{newton}.
+
+\end{tcolorbox}
+
+

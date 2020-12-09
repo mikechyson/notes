@@ -1,0 +1,98 @@
+
+\chapter{Deploy Django project with Apache}
+
+You can run Django project separately and it works.
+Then why did you deploy Django project to Apache or Nginx?
+Becuase Django is intended only for use while developing.
+It is in the business of making Web frameworks, not Web servers.
+Deploying Django with Apache and \keyword{mod\_wsgi}\footnote{wsgi: web server gateway interface} is a tried and tested way to get Django into production.
+
+
+
+\section{Apache}
+
+\subsection{Install Apache httpd}
+
+The operating system is CentOS 8.
+\lstset{language=Sh}
+\begin{lstlisting}
+  dnf install httpd
+\end{lstlisting}
+
+\subsection{Start httpd}
+
+\begin{lstlisting}
+  systemctl start httpd
+\end{lstlisting}
+
+\subsection{Stop httpd}
+
+\begin{lstlisting}
+  systemctl stop httpd
+\end{lstlisting}
+
+\subsection{Enable httpd on operationg system start}
+
+\begin{lstlisting}
+  systemctl enable httpd
+\end{lstlisting}
+
+
+
+\section{mod\_wsgi}
+
+The \verb|mod_wsgi| package implements a simple to use Apache module which can host any Python web application which supports the Python WSGI specification.
+
+To install mod\_wsgi in CentOS 8:
+\begin{lstlisting}
+  dnf search mod_wsgi
+  dnf install python3-mod_wsgi
+\end{lstlisting}
+
+\section{Configurate Apache}
+Create a new file \verb|/etc/httpd/conf.d/django.conf|:
+
+\lstset{language=Python}
+\begin{lstlisting}
+# you can visit the static file system  
+Alias /static /home/mike/blog/static 
+<Directory /home/mike/blog/static>
+    Require all granted # permission
+</Directory>
+
+# permission to access wsgi.py file
+<Directory /home/mike/blog/blog> 
+    <Files wsgi.py>
+        Require all granted
+    </Files>
+</Directory>
+
+# /home/mike/blog is your Django project
+# /home/mike/anaconda3/envs/django/lib/python3.8/site-packages is the virtual python environment's library
+WSGIDaemonProcess blog python-path=/home/mike/blog:/home/mike/anaconda3/envs/django/lib/python3.8/site-packages
+WSGIProcessGroup blog
+WSGIScriptAlias / /home/mike/blog/blog/wsgi.py
+\end{lstlisting}
+
+
+\section{Permission}
+Give apache the right to read, write and execute the files in your django project
+\begin{lstlisting}
+  setfacl -R -m u:apache:rwx /home/mike/blog
+\end{lstlisting}
+
+
+\section{Collect static files}
+
+In order to let django can find the static files,
+add the following configuration into \verb|blog/setting.py|:
+\begin{lstlisting}
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+\end{lstlisting}
+
+Then run the following command:
+\lstset{language=Sh}
+\begin{lstlisting}
+python manage.py collectstatic  
+\end{lstlisting}
+This command collects all the installed application static files into ``static'' directory in blog.

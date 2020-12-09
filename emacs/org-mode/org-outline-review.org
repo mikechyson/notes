@@ -1,0 +1,179 @@
+* Outlines
+org is implemented on top of outline mode.
+
+* Headlines
+org-cycle-separator-lines
+
+* Visibility cycling
+** Global and local cycling
+
+| Key Bounding           | Function                    | Description                                                                                                        |
+|------------------------+-----------------------------+--------------------------------------------------------------------------------------------------------------------|
+| TAB                    | org-cycle                   | rotate current subtree among the states (FOLDED, CHILDREN, SUBTREE).                                               |
+| S-TAB                  | org-gloable-cycle           | rotate the entire buffer among the states.                                                                         |
+| M-n S-TAB (n is a no.) |                             | When S-TAB is called with a numeric prefix argument N, the CONTENTS view up to headlines of level N will be shown. |
+| C-u C-u TAB            | org-set-startup-visibility  | Switch back to the startup visibility of the buffer.                                                               |
+| C-u C-u C-u TAB        | outlien-show-all            | Show all, including drawers.                                                                                       |
+| C-c C-k                | outline-show-branches       | Show all subheadings of this heading, but not their bodies.                                                        |
+| C-c TAB                | outline-show-children       | Expose all direct children of the subtree.                                                                         |
+| M-n C-c TAB            |                             | expose all children down to level N.                                                                               |
+| C-c C-x b              | org-tree-to-indirect-buffer | Show the current subtree in a indirect buffer.                                                                     |
+| M-n C-c C-x b          |                             | go up to level N and then take that tree.                                                                          |
+|                        |                             |                                                                                                                    |
+
+
+
+** Initial visibility
+When Emacs first visits an Org file, the global state is set to OVERVIEW, 
+i.e., only the top level headlines are visible. 
+This can be configured through the variable =org-startup-folded=, 
+or on a per-file basis by adding one of the following lines anywhere in the buffer:
+
+#+BEGIN_EXAMPLE
+   #+STARTUP: fold              (or ‘overview’, this is equivalent)
+   #+STARTUP: nofold            (or ‘showall’, this is equivalent)
+   #+STARTUP: content
+   #+STARTUP: showeverything
+#+END_EXAMPLE
+
+
+** Catching invisible edits
+org-catch-invisible-edits
+
+* Motion
+| BOUND   | FUNCTION                     |
+| C-c C-n | org-next-visible-heading     |
+| C-c C-p | org-previous-visible-heading |
+| C-c C-f | org-forward-same-level       |
+| C-c C-b | org-backward-same-level      |
+| C-c C-u | outline-up-heading           |
+| C-c C-j | org-goto                     |
+
+* Structure editing
+Insert Operations:
+| Key Bounding | Functions                               | Description                                                                    | Config                                        |
+|--------------+-----------------------------------------+--------------------------------------------------------------------------------+-----------------------------------------------|
+| M-RET        | org-insert-heading                      | Insert a new heading with the same depth at point.                             | org-M-RET-may-split-line                      |
+| C-RET        | org-insert-heading-respect-content      | Insert a new heading at the end of the current subtree.                        | org-insert-heading-respect-content            |
+| M-S-RET      | org-insert-todo-heading                 | Insert new TODO entry with same level as current heading.                      | org-treat-insert-todo-heading-as-state-change |
+| C-S-RET      | org-insert-todo-heading-respect-content | Insert a new TODO entry at the end of the current subtree                      | org-insert-heading-respect-content            |
+| TAB          | org-cycle                               | cycle the level of the headline by demoting and promoting it to likely levels. | org-cycle-level-after-item/entry-creation     |
+|              |                                         |                                                                                |                                               |
+|              |                                         |                                                                                |                                               |
+
+Promote, Demote, Up, Down Operations:
+| Key Bounding | Functions             | Description                              | Config |
+|--------------+-----------------------+------------------------------------------+--------|
+| M-LEFT       | org-do-promote        | promote current heading by one level     |        |
+| M-RIGHT      | org-do-demote         | demote current heading by one level      |        |
+| M-S-LEFT     | org-promote-subtree   | promote the current subtree by one level |        |
+| M-S-RIGHT    | org-demeote-subtree   | demote the current subtree by one level  |        |
+| M-UP         | org-move-subtree-up   | move subtree up                          |        |
+| M-DOWN       | org-move-subtree-down | move subtree down                        |        |
+
+
+Mark Operations:
+| Key Bounding | Functions        | Description                                                                                                            |
+|--------------+------------------+------------------------------------------------------------------------------------------------------------------------+
+| C-c @        | org-mark-subtree | Mark the subtree and point. Hitting repeatedly will mark subsequent subtree of the same level than the marked subtree. |
+
+
+
+Cut, Copy, Past Operations: (prefix: C-c C-x)
+| Key Bounding | Functions                         | Description                                                                                                                    |
+|--------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------|
+| C-c C-x C-w  | org-cut-subtree                   | Kill subtree, i.e., remove it from buffer but save in kill ring. With a numeric prefix argument N, kill N sequential subtrees. |
+| C-c C-x M-w  | org-copy-subtree                  | Copy subtree to kill ring. With a numeric prefix argument N, copy the N sequential subtrees.                                   |
+| C-c C-x C-y  | org-paste-subtree                 | Yank subtree from kill ring.                                                                                                   |
+| C-c C-x c    | org-clone-subtree-with-time-shift | Clone a subtree by making a number of sibling copies of it.                                                                    |
+
+Others:
+| Key Bounding | Functions          | Description                                                                                                                                                                                                      |
+| C-c C-w      | org-refile         | Refile entry or region to a different location.                                                                                                                                                                  |
+| C-c ^        | org-sort           | Sort same-level entries. When there is an active region, all entries in the region will be sorted. Otherwise the children of the current headline are sorted. With a C-u prefix, sorting will be case-sensitive. |
+| C-c *        | org-toggle-heading |                                                                                                                                                                                                                  |
+
+
+
+
+Narrow: (n: narrow, s: subtree, b: block, w: widen)
+| Key Bounding | Functions             | Description |
+| C-x n s      | org-narrow-to-subtree |             |
+| C-x n b      | org-narrow-to-block   |             |
+| C-x n w      | widen                 |             |
+
+* Sparse tress
+| Key Bounding | Functions       | Description                                                          |
+|--------------+-----------------+----------------------------------------------------------------------|
+| C-c /        | org-sparse-tree | Construct sparse trees from selected information in an outline tree. |
+
+
+* Plain list
+Org knows ordered lists, unorderded lists, and description lists.
+1) 'unordered' list start with '-' or '+' as bullets.
+2) 'ordered' list items star with a number followed by either a period or a right parenthesis.
+3) 'description' list items are unorderded list items, and contain the separator ' :: ' to distinguish the description.
+
+If you find that using a different bullet for a sub-list improves readability, customize the variable "org-list-demote-modify-bullet" . 
+To get a greater difference of indentation between items and their sub-items, customize "org-list-indent-offset" . 
+
+| Key Bound | Function                              | Description                                    |
+|-----------+---------------------------------------+------------------------------------------------|
+| M-RET     | org-insert-item                       | Insert new item in current level.              |
+| M-S-RET   | org-insert-todo-heading               | Insert a new item with an unchecked check box. |
+| S-UP      | org-previous-item                     | Jump to the previous item in the current list. |
+| S-DOWN    | org-next-item                         | Jump to the next item in the current list.     |
+| M-UP      | org-move-item-up                      |                                                |
+| M-DOWN    | org-move-item-down                    |                                                |
+| M-S-LEFT  | org-outdent-item-tree                 |                                                |
+| M-S-RIGHT | org-indent-item-tree                  |                                                |
+| C-c ^     | org-sort-list                         |                                                |
+| C-c -     | org-toggle-item/org-cycle-list-bullet |                                                |
+
+
+* Blocks
+Org mode uses begin...end blocks for various purposes from including source code examples to capturing time logging information. 
+     #+BEGIN_EXAMPLE
+     Some example from a text file.
+     #+END_EXAMPLE
+
+     #+BEGIN_SRC emacs-lisp
+       (defun org-xor (a b)
+          "Exclusive or."
+          (if a (not b) b))
+     #+END_SRC
+These blocks can be folded and unfolded by pressing <TAB> in the begin line. 
+You can also get all blocks folded at startup by configuring the option "org-hide-block-startup" or on a per-file basis by using
+     #+BEGIN_EXAMPLE
+     #+STARTUP: hideblocks
+     #+STARTUP: nohideblocks
+     #+END_EXAMPLE
+
+
+* Footnote
+A footnote is started by a footnote marker in square brackets in column 0, no indentation allowd.
+For example:
+
+#+BEGIN_EXAMPLE
+The Org homepage[fn:1] now looks a lot better than it used to.
+...
+[fn:1] The link is: https://orgmode.org
+#+END_EXAMPLE
+
+Org mode extends the number-based syntax to "named" footnotes and optional inline definition.
+
+
+#+BEGIN_EXAMPLE
+[fn:name]
+[fn:name:a definition]
+[fn::a definition]
+#+END_EXAMPLE
+
+C-c C-x f
+org-footnote-action
+When at a footnote reference, jump to the definition.
+When at a definition, jump to the references if they exist, offer to create them otherwise.
+When neither at definition or reference, create a new footnote, interactively.
+With prefix, offer additional commands in a menu. (C-u C-c C-x f)
+
+

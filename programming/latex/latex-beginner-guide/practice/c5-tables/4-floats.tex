@@ -1,0 +1,26 @@
+\documentclass[a5paper]{article}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\pagestyle{empty}
+\begin{document}
+\section{Including a picture}
+\blindtext
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.2]{/home/hack/Pictures/bim_edge.png}
+  \caption{Test figure}
+\end{figure}
+\begin{figure}[!b]
+  \centering
+  \includegraphics[scale=0.2]{/home/hack/Pictures/bim_edge.png}
+  \caption{Test figure}
+\end{figure}
+\blindtext
+\end{document}
+
+% h stands for here. The float may appear where it's been written in the source code.
+% t stands for top. Placing at the top of a page is permitted.
+% b stands for bottom. The float may appear at the bottom of a page.
+% p stands for page. The float is allowed to appear on a separate page, where only floats may reside but no normal text.
+% ! tells LaTeX to try harder! Some constraints may be ignored, easing the placement.

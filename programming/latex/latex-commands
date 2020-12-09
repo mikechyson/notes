@@ -1,0 +1,51 @@
+|\documentclass |
+
+
+| \author    |
+| \date      |
+| \title     |
+| \maketitle |
+| \section   |
+
+
+
+
+| Command     | Declaration | Meaning       |
+| \emph       | \em         | emphasize     |
+|-------------+-------------+---------------|
+| \textmd     | \mdseries   | medium        |
+| \textbf     | \bfseries   | bold face     |
+| \textit     | \itshape    | italic        |
+| \textsl     | \slshape    | slanted       |
+| \textsc     | \scshape    | small caps    |
+| \textup     | \upshape    | upright shape |
+| \textnormal | \normalfont | default font  |
+
+
+
+| Command | Declaration | Meaning    |
+| \textsf | \sffamily   | sans-serif |
+| \texttt | \ttfamily   | typewriter |
+| \textrm | \rmfamily   | roman      |
+
+
+| \tiny         |
+| \scriptsize   |
+| \footnotesize |
+| \small        |
+| \normalsize   |
+| \large        |
+| \Large        |
+| \LARGE        |
+| \huge         |
+| \Huge         |
+
+| \\        |
+| \newline  |
+| linebreak |
+|           |
+
+| \parbox   |
+| \minipage |
+| \fbox     |
+| \mbox     |

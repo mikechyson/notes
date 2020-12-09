@@ -1,0 +1,23 @@
+* Problem
+Suppose we have a collection of m points $\{x^{(1)},...,x^{(n)}\}$ in $\mathbb{R}^n$ 
+and we want to apply lossy compression to these points.
+* Lower Dimension
+For each point $x^{(i)} \in \mathbb{R}^n$  we will find a corresponding code vector $c^{(i)} \in \mathbb{R}^l$ . ( $l < n$ )
+
+Encoding function: $c = f(x)$
+
+Decoding function: $x \approx g(c)$
+* PCA
+PCA is defined by our choice of the decoding function.
+\begin{equation}
+g(c) = Dc,\quad \text{where} \quad D \in \mathbb{R}^{n\times l}
+\end{equation}
+
+To make the decoder very simple, we choose to use
+matrix multiplication to map the code back into $\mathbb{R}^n$ .
+
+To keep the encoding problem easy, PCA constrains the columns of $D$ to be orthogonal to each other.
+We constrain all the columns of $D$ to have unit norm. (to get a unique solution)
+
+
+

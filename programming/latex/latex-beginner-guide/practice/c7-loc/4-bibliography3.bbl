@@ -1,0 +1,13 @@
+\begin{thebibliography}{Knu89}
+
+\bibitem[Knu86]{DK86}
+D.E. Knuth.
+\newblock {\em The {\TeX}book}.
+\newblock Addison Wesley, 1986.
+
+\bibitem[Knu89]{DK89}
+D.E. Knuth.
+\newblock Typesetting concrete mathematics.
+\newblock {\em TUGboat}, 10(1):31--36, April 1989.
+
+\end{thebibliography}

@@ -1,0 +1,66 @@
+* add swap temporary
+** mkdir a swap file
+#+BEGIN_SRC sh
+touch swap
+#+END_SRC
+** write zero into swap file
+#+BEGIN_SRC sh
+dd if=/dev/zero of=swap bs=1024 count=100000
+# bs:batch size, 1024=1K
+#+END_SRC
+** format swap file into swap format
+#+BEGIN_SRC sh
+mkswap swap
+#+END_SRC
+** swap on swap file
+#+BEGIN_SRC sh
+swapon swap
+#+END_SRC
+** after you have done 
+#+BEGIN_SRC sh
+# swap off the swap
+swapoff swap
+
+# delete the file if you like
+rm swap
+#+END_SRC
+* install certificate
+
+** visite the website
+https://certbot.eff.org/
+
+[[file:pics/certbot.png]]
+
+selete the corresponding "software" and "system"
+
+
+** Apache on CentOS/RHEL7
+
+*** ssh into the server
+#+BEGIN_SRC sh
+ssh hack@chyson.net
+#+END_SRC
+
+*** enable EPEL repo
+#+BEGIN_SRC sh
+yum install epel-release
+#+END_SRC
+
+*** install certbot
+#+BEGIN_SRC sh
+yum install certbot python2-certbot-apache
+#+END_SRC
+
+*** choose how you'd like to run Certbot
+
+**** either get and install your certificates...
+Run this command to get a certificate and have Certbot edit your Apache configuration automatically to serve it, turning on HTTPS access in a single step. 
+#+BEGIN_SRC sh
+certbot --apache
+#+END_SRC
+
+**** or, just get a certificate
+If you're feeling more conservative and would like to make the changes to your Apache configuration by hand, run this command. 
+#+BEGIN_SRC sh
+certbot certonly --apache
+#+END_SRC

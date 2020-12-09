@@ -1,0 +1,569 @@
+* Kaggle Api
+pip install kaggle
+goto https://www.kaggle.com/hackchyson/account
+
+select 'Create New API Token'
+
+place the downloaded kaggle.json in ~/.kaggle/
+
+chmod 600 ~/.kaggle/kaggle.json
+
+* VPN: v2ray
+wget https://install.direct/go.sh
+sudo bash go.sh
+
+** resources
+https://github.com/v2ray/v2ray-core/releases
+** server
+emacs /etc/v2ray/config.json
+#+BEGIN_EXAMPLE
+{
+  "inbounds": [{
+    "port": 10086, // 服务器监听端口，必须和上面的一样
+    "protocol": "vmess",
+    "settings": {
+      "clients": [{ "id": "9d19a0a7-896e-48e5-9b6a-4b63937feda2",
+		  "alterId": 64 
+		 }]
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}
+  }],
+  "log": {
+    "loglevel": "warning", // 日志级别
+    "access": "/var/log/v2ray/access.log",  
+    "error": "/var/log/v2ray/error.log"
+  }
+}
+
+
+#+END_EXAMPLE
+sudo systemctl start v2ray
+** client
+emacs /etc/v2ray/config.json
+#+BEGIN_EXAMPLE
+{
+  "inbounds": [
+    {
+      "port": 1080, // 监听端口
+      "protocol": "socks", // 入口协议为 SOCKS 5
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "settings": {
+        "auth": "noauth"  //socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess", // 出口协议
+      "settings": {
+        "vnext": [
+          {
+            "address": "47.52.165.236", // 服务器地址，请修改为你自己的服务器 IP 或域名
+            "port": 10086,  // 服务器端口
+            "users": [
+              {
+                "id": "9d19a0a7-896e-48e5-9b6a-4b63937feda2",  // 用户 ID，必须与服务器端配置相同
+                "alterId": 64 // 此处的值也应当与服务器相同
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "log": {
+    "loglevel": "warning", // 日志级别
+    "access": "/var/log/v2ray/access.log",  
+    "error": "/var/log/v2ray/error.log"
+  }    
+}
+
+#+END_EXAMPLE
+** client macos
+brew cask install v2rayx
+(or https://github.com/Cenmrev/V2RayX/releases)
+** notice
+阿里云的服务器需要配置安全组，打开你配置的10086 tcp端口
+
+一定要看日志，debug step by step!
+** firefox add-on
+使用这个软件可以避免使用全局proxy，
+达到国外的网站使用proxy，本地网站不使用proxy.
+
+Proxy SwitchOmega
+[[file:pics/switchyomega.png]]
+
+* Python With Matlab
+1. 中国网址：https://ww2.mathworks.cn/ 下载matlab
+2. 安装 sh install
+3. 启动matlab,输入matlabroot得到matlab的安装路径
+4. cd <matlabroot>/extern/engines/python
+5. python setup.py install (使用你自己环境的python)
+6. call
+#+BEGIN_EXAMPLE
+在您的当前文件夹中名为 triarea.m 的文件中创建一个 MATLAB 脚本。
+
+b = 5;
+h = 3;
+a = 0.5*(b.* h)
+
+保存该文件后，启动 Python 并调用该脚本。
+
+import matlab.engine
+eng = matlab.engine.start_matlab()
+eng.triarea(nargout=0)  # no argument output
+
+a =
+
+    7.5000
+
+指定 nargout=0。尽管脚本会打印输出，但它不会向 Python 返回任何输出参数。
+#+END_EXAMPLE
+
+* NFS
+server:
+yum install nfs rpcbind
+emacs /etc/exports
+    /home/hack/share 121.69.48.143(rw,no_root_squash,no_all_squash,async)
+
+systecmtl start rpcbind
+systemctl start nfs
+exportfs -a
+
+client:
+sudo apt install nfs-common
+showmount -e chyson.net
+
+emacs /etc/fatab
+
+** bug
+mount.nfs: access denied by server while mounting chyson.net:/home/hack/share
+
+debug:
+[root@iZj6c5dh77a6fzqwrfrmsgZ hack]# cat /var/log/messages | grep mount
+Jul 31 13:46:11 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19783]: Version 1.3.0 starting
+Jul 31 13:47:07 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19783]: Caught signal 15, un-registering and exiting.
+Jul 31 13:47:07 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19883]: Version 1.3.0 starting
+Jul 31 13:47:29 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19883]: Caught signal 15, un-registering and exiting.
+Jul 31 13:47:34 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19943]: Version 1.3.0 starting
+Jul 31 14:12:20 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19943]: refused mount request from 121.69.48.143 for /home/hack/share (/home/hack/share): illegal port 3480
+Jul 31 14:13:52 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19943]: refused mount request from 121.69.48.143 for /home/hack/share (/home/hack/share): illegal port 9458
+Jul 31 14:15:27 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19943]: refused mount request from 121.69.48.143 for /home/hack/share (/home/hack/share): illegal port 7316
+Jul 31 14:19:05 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[19943]: Caught signal 15, un-registering and exiting.
+Jul 31 14:19:05 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[20240]: Version 1.3.0 starting
+Jul 31 14:19:36 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[20240]: refused mount request from 121.69.48.143 for /home/hack/share (/home/hack/share): illegal port 5338
+Jul 31 14:22:19 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[20240]: refused mount request from 121.69.48.143 for /home/hack/share (/home/hack/share): illegal port 6186
+Jul 31 14:23:23 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[20240]: Caught signal 15, un-registering and exiting.
+Jul 31 14:23:23 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[20306]: Version 1.3.0 starting
+Jul 31 14:31:32 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[20306]: Caught signal 15, un-registering and exiting.
+Jul 31 14:31:32 iZj6c5dh77a6fzqwrfrmsgZ rpc.mountd[20403]: Version 1.3.0 starting
+
+* Firefox webgl
+type
+about: config
+in the address column
+
+webgl.force-enabled   true
+
+* Emacs
+** Emacs
+apt install -y emacs
+
+** Emacs Org PDF
+sudo apt install texlive-latex-recommended
+sudo apt install texlive-latex-extra
+(install pdflatex command)
+** Emacs Chinses Font
+sudo apt install latex-cjk-all
+
+** Emacs with tikz
+M-x package-install siteproc
+(I don't know whether it is the reason, I just can use tikz directly)
+** latex
+sudo apt install auctex
+
+* CUDA
+series:
+- Tesla for technical and scientific computing
+- Quadro for professional visualization
+- Jetson for AI autonomous machines
+
+
+
+https://developer.nvidia.com/cuda-downloads
+
+1. `sudo dpkg -i cuda-repo-ubuntu1804-10-1-local-10.1.168-418.67_1.0-1_amd64.deb`
+2. `sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub`
+3. `sudo apt-get update`
+4. `sudo apt-get install cuda`
+
+There is a problem:
+#+BEGIN_EXAMPLE
+NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. 
+Make sure that the latest NVIDIA driver is installed and running.
+#+END_EXAMPLE
+I just restarted the system, it worked.
+
+[[file:pics/nvidia-smi.png]]
+
+* YOLO compliling with CUDA
+https://pjreddie.com/darknet/install/#cuda
+
+- Install CUDA
+- Alter *Makefile* 
+#+BEGIN_EXAMPLE
+GPU=1
+#+END_EXAMPLE
+- make
+- 
+
+problem:
+#+BEGIN_EXAMPLE
+/bin/sh: 1: nvcc: not found
+Makefile:92: recipe for target 'obj/convolutional_kernels.o' failed
+make: *** [obj/convolutional_kernels.o] Error 127
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+#NVCC=nvcc 
+NVCC=/usr/local/cuda-10.1/bin/nvcc
+#+END_EXAMPLE
+
+* YOLO compliling with OpenCV
+- Alter 
+
+* Git speed up
+- visit https://www.ipaddress.com/
+- search the fastest ip
+
+[[file:pics/git-speed.png]]
+
+- add the following line into /etc/hosts
+151.101.185.194 github.global.ssl.fastly.net
+
+* DeepLab
+
+** Total Tutorial
+Tutorial: https://github.com/tensorflow/models/tree/master/research/deeplab
+
+** Installlation
+https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/installation.md
+
+*** Dependencies
+To check if you have install a package:
+#+BEGIN_SRC sh
+pip list | grep -i <package>
+#+END_SRC
+
+To install a package: 
+#+BEGIN_SRC sh
+pip install <package>
+#+END_SRC
+
+I executed the following commands: (if the package is install, it will skip, so it does not matter)
+#+BEGIN_SRC sh
+pip install pillow jupyter numpy matplotlib prettytable
+#+END_SRC
+
+*** Add libraries to PYTHONPATH
+DeepLab weights: http://download.tensorflow.org/models/deeplabv3_pascal_trainval_2018_01_04.tar.gz
+
+#+BEGIN_SRC sh
+# From models/research/
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+#+END_SRC
+
+*** Testing the Installation
+#+BEGIN_SRC sh
+# From tensorflow/models/research/
+python deeplab/model_test.py
+#+END_SRC
+
+** Running DeepLab on PASCAL VOC 2012 Semantic Segmentation Dataset
+https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/pascal.md
+
+*** Download dataset and convert to TFRecord
+#+BEGIN_SRC sh
+# From the tensorflow/models/research/deeplab/datasets directory.
+sh download_and_convert_voc2012.sh
+#+END_SRC
+The converted dataset will be saved at ./deeplab/datasets/pascal_voc_seg/tfrecord.
+
+*** Recommended Directory Structure for Training and Evaluation
+#+BEGIN_EXAMPLE
++ datasets
+  + pascal_voc_seg
+    + VOCdevkit
+      + VOC2012
+        + JPEGImages
+        + SegmentationClass
+    + tfrecord
+    + exp
+      + train_on_train_set
+        + train
+        + eval
+        + vis
+#+END_EXAMPLE
+* Tensorflow GPU
+#+BEGIN_SRC sh
+pip install tensorflow-gpu
+#+END_SRC
+
+If the above installation is too slow, you can download the corresponding file and install it like the following:
+
+#+BEGIN_SRC sh
+pip install tensorflow_gpu-1.14.0-cp37-cp37m-manylinux1_x86_64.whl
+#+END_SRC
+
+* Python IDE
+
+** Install Packages
+#+BEGIN_SRC sh
+pip install elpy rope_py3k jedi # python3
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+M-x package-install RET 
+#+END_SRC
+** Elpy
+Emacs is distributed with a python-mode (python.el) that provides indentation and syntax highlighting.
+elpy (Emacs Lisp Python Environment) package provides us with a near complete set of Python IDE features.
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+
+* Sticky Notes
+Applications -> Search sticky notes
+* Teamviewer
+#+BEGIN_EXAMPLE
+dpkg: dependency problems prevent configuration of teamviewer:
+ teamviewer depends on qtdeclarative5-controls-plugin (>= 5.5) | qml-module-qtquick-controls (>= 5.5); however:
+  Package qtdeclarative5-controls-plugin is not installed.
+  Package qml-module-qtquick-controls is not installed.
+#+END_EXAMPLE
+
+package of architecture of 32 is needed.
+
+#+BEGIN_SRC sh
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt -f install
+sudo dpkg -i teamviewer
+#+END_SRC
+* Charm Inotify Watches Limit
+https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
+
+sudo echo "fs.inotify.max_user_watches = 524288" >> /etc/sysclt.d/charm.conf
+sudo sysctl -p --system
+
+restart charm
+* Git pull and push buffer
+#+BEGIN_EXAMPLE
+error: RPC failed; curl 56 GnuTLS recv error (-54): Error in the pull function.
+fatal: The remote end hung up unexpectedly
+fatal: early EOF
+fatal: index-pack failed
+#+END_EXAMPLE
+
+git config --global http.postBuffer 200000000
+git config --global http.pullBuffer 200000000
+* Netron
+https://github.com/lutzroeder/Netron
+* Pip with proxy
+
+pip install tensorflow  -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+#+BEGIN_SRC sh
+pip -h
+pip install -h
+#+END_SRC
+
+Or alter the configure file:
+#+BEGIN_SRC sh
+mkdir ~/.pip
+emacs ~/.pip/pip.conf
+# [global]
+# index-url=https://mirrors.aliyun.com/pypi/simple
+#+END_SRC
+* Keras with gpu
+#+BEGIN_SRC sh
+pip uninstall tensorflow tensorflow-gpu keras
+pip install tensorflow-gpu -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install keras 
+
+# run your program
+
+watch -n 3 nvidia-smi # to watch gpu useage
+#+END_SRC
+
+* Anaconda
+bash ~/Downloads/Anaconda3-5.3.1-Linux-x86_64.sh
+source ~/.bashrc
+
+* PyCharm
+sudo tar -zxvf pycharm-community-2018.3.1.tar.gz 
+cd pycharm-community-2018.3.1/bin
+./pycharm.sh
+
+** template
+author and time template to simplify review program
+File -> Setting -> Editor -> File and Code Templates -> Files -> Phthon Script
+
+# Author: Hack Chyson
+# [${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND}]
+
+
+** add desktop icon
+Tools -> Create Desktop Entry
+
+
+** emacs keymap
+File -> Settings -> Keymap
+Reformat Code:  C-M-\
+
+* pinyin
+Software Center -> pinyin
+
+* Lilypond
+apt install lilypond
+
+* Frescobaldi
+apt install frescobaldi  (/fri sker 'bal di/)
+
+
+* Git
+apt install -y git
+
+* Handle lid witch
+emacs /etc/systemc/login.conf
+HandleLidSwitch=lock
+
+systemctl restart systemd-logind.service
+
+* extensions
+Alterative Tab
+
+* adobe flash play
+https://get.adobe.com/flashplayer/
+tar -zxvf flash_player_npapi_linux.x86_64.tar.gz
+
+sudo cp libflashplayer.so /usr/lib/mozilla/plugins/ (firefox version 60.4esr)
+
+cp -r usr/* /usr
+
+restart firefox
+* VMware
+https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html
+chmod +x <VM>
+sudo ./<VM>
+
+* Failed to load module "canberra-gtk-module"
+sudo apt-get install libcanberra-gtk-module
+
+* PostgreSQL
+apt install postgresql-11 # Fri Oct 18 13:00:18 CST 2019
+
+
+* Inhibit Root Login
+vi /etc/ssh/sshd_config
+PermitRootLogin no
+
+* Add Sudo
+visudo
+michael ALL=(ALL)   NOPASSWD:ALL
+
+* Delete Password
+passwd -d michael
+
+* Proxy
+/etc/yum.conf
+proxy=http://10.4.200.21:18765
+proxy_username=itnms@bmccisa.com
+proxy_password=tre.540
+
+
+* Lid Swith
+emacs /etc/systemd/logind.conf
+      HandleLidSwitch=ignore
+
+systemctl restart systemd-logind
+
+
+* Apache Httpd
+to allow directory access and specify the charset:
+
+<Directory "/var/www/html">
+    Options All
+    IndexOptions Charset=UTF-8
+
+    AllowOverride None
+
+    Require all granted
+</Directory>
+
+
+* Ssh Alive Interval
+vi /etc/ssh/sshd_config
+ClientAliveCountMax 30
+(minutes)
+
+
+
+
+* Filezilla
+yum -y install epel-release
+yum -y install filezilla
+
+
+* Sdkman
+curl -s "https://get.sdkman.io" | bash
+
+* Gradle
+sdk install gradle 4.7
+
+* Teamviewer
+yum install teamview.rpm
+** problem
+Requires: libQt5WebKitWidgets.so.5()(64bit) >= 5.5
+Requires: libQt5WebKit.so.5()(64bit) >= 5.5
+** solution
+go to 
+http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/q/
+to download the corresponding rpm and install
+
+* Virtual Machine Manager
+Software -> search virtual
+
+
+* Vmware
+** install
+1. download
+VMware-Workstation-Full-14.1.3-9474260.x86_64.bundle
+2. add execute permission
+chmod +x VMware-Workstation-Full-14.1.3-9474260.x86_64.bundle
+3. install
+./VMware-Workstation-Full-14.1.3-9474260.x86_64.bundle
+
+
+** uninstall
+vmware-installer --uninstall-product vmware-workstation
+
+
+* Gnome Extension
+Extending the GNOME 3 destop
+http://extensions.gnome.org
+
+Managing shell extensions
+Software --> Add-on --> Extension Setting
+
+
+
+
+** see all the shell extensions
+rpm -qa | grep gnome-shell
+

@@ -1,0 +1,59 @@
+* adobe flash play
+https://get.adobe.com/flashplayer/
+tar -zxvf flash_player_npapi_linux.x86_64.tar.gz
+
+sudo cp libflashplayer.so /usr/lib/mozilla/plugins/ (firefox version 60.4esr)
+
+cp -r usr/* /usr
+
+restart firefox
+
+
+
+* anaconda
+bash ~/Downloads/Anaconda3-5.3.1-Linux-x86_64.sh
+source ~/.bashrc
+
+
+* PyCharm
+sudo tar -zxvf pycharm-community-2018.3.1.tar.gz -C /opt/
+cd /opt/pycharm-community-2018.3.1/bin
+./pycharm.sh
+
+** template
+author and time template to simplify review program
+File -> Setting -> Editor -> File and Code Templates -> Files -> Phthon Script
+
+# Author: Hack Chyson
+# [${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND}]
+
+
+** add desktop icon
+Tools -> Create Desktop Entry
+
+
+** emacs keymap
+File -> Settings -> Keymap
+Reformat Code:  C-M-\
+
+
+
+* pinyin
+application software center
+search pinyin
+install
+
+
+
+* frescobaldi
+apt install frescobaldi  (/fri sker 'bal di/)
+* suspend
+When the system is suspended, the crontab will not execute,
+so setting it to suspend on battery mode and
+not suspend on plugin mode
+
+
+Setting -> Power ->
+Automatic suspend: When on battery power
+
+

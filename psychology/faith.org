@@ -1,0 +1,10 @@
+* thought
+When I was in primary school, I thought about the current direction. Why the current direction is define as the flow direction of the negative electron.
+* space
+In high school, I painted a cartoon on the whole blackboard. After the painting, I was shocked by the painting. 
+* comprehension
+In my university, student Wang took a physical book and asked me a equation derivation and I told him, "the angle is a solid angle (althoght I had never learned solid angle)", and he laughed me till one day he saw the definition of the solid angle. 
+* intuition
+In repreducing the result of a paper, I have no faith in the vector used in the cosine similarity at the start of the repreduction. The truth is, the vector is really not efficient, when I changed the vector, the result improves. 
+
+

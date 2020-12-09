@@ -1,0 +1,48 @@
+* INTRODUCTION
+SLIME is the "Supter Lisp Interaction Mode for Emacs."
+
+SLIME extends Emacs with support for interactive programming in Common Lisp.
+
+While lisp-mode supports editing Lisp source file, slime-mode adds support for interacting with a running Common Lisp process for compilation, debugging, documentation lookup, and so on.
+
+SLIME is constructed from two parts:
+a user-interface written in Emacs Lisp
+a supporting server program written in Common Lisp
+
+The two sides are connnected together with a socket and communicate using an RPC-like protocol.
+
+* GETTING STARTED
+** Running SLIME
+SLIME is started with M-x slime.
+This uses the inferior-lisp package to start a Lisp process, loads and starts the Lisp-side server, and establishes a socket connection between Emacs and Lisp.
+Finally a REPL buffer is created.
+
+** Setup Tuning
+skipped
+
+* USING SLIME MODE
+SLIME's commands are provided via slime-mode, a minor-mode used in conjunction with Emacs's lisp-mode.
+** User-interface Conventions
+*** Temporary buffers
+Some SLIME commands create temporary buffers to display their results.
+Temporary buffers can be dismissed by pressing q.
+Pressing RET is supposed to “do the most obvious useful thing.
+Temporary buffers containing Lisp symbols use slime-mode in addition to any special mode of their own. 
+
+*** *inferior-lisp buffer
+SLIME internally uses the comint (communication intelligence) package to start Lisp processes.
+
+The buffer *inferior-lisp* contains the Lisp process's own top-level.
+This direct access to Lisp is useful for troubleshooting.
+
+Many people load the better integrated SLIME REPL contrib module and ignore the *inferior-lisp* buffer.
+
+
+*** Key bindings
+slime unusual convention:
+when entering a three-key sequence, the final key can be pressed either with control or unmodified.
+
+For example, the slime-describe-symbol command is bound to C-c C-d d, but it also works to type C-c C-d C-d. 
+We’re simply binding both key sequences because some people like to hold control for all three keys and others don’t, 
+and with the two-key prefix we’re not afraid of running out of keys. 
+(C-h is an exception)

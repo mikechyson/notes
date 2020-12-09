@@ -1,0 +1,20 @@
+
+\chapter{Deep Feedforward Networks}
+
+\keyword{Deep feedforward networks}, also called \keyword{feedforward neural networks}, or \keyword{multilayer perceptions} (MLPs), are the quintessential deep learning models.
+The goal of a feedforward network is to approximate some function $f^{*}$.
+A feedforward network defines a mapping $\bm{y} = f(\bm{x};\bm{\theta})$ and learns the value of the parameter $\bm{\theta}$ that result in the best function approximation.
+
+
+These models are called \keyword{feedforward} because information flows through the function being evaluated from $\bm{x}$, through the intermediate computations used to define $f$, and finally to the output $\bm{y}$.
+Feedforward neural network are called \keyword{networks} becuase they are typically represented by composing together many different functions.
+
+
+\section{Gradient-Based Learning}
+
+The nonlinearity of a neural network causes most intersting loss functions to become nonconvex.
+This means that neural networks are usually trained by using iterative, gradient-based optimizer that merely drive the cost function to a very low value.
+Convex optimization converges starting from any initial parameters.
+Stochastic gradient descent applied to nonconvex loss functions has no such convergence guarantee and is sensitive to the values of the initial parameters.
+
+

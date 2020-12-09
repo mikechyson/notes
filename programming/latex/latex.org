@@ -1,0 +1,150 @@
+- package
+  - caption :: table caption
+  - xr :: external references
+  - hyperref :: offer bookmarks and hyperlink capabilities
+  - varioref :: 
+  - wrapfig :: 
+  - capt-of :: 
+  - afterpage :: allows deferring the execution of \clearpage until the current page has ended
+  - placeins :: provides a useful command to restrict the floating
+  - tabularx :: let LaTeX decide how wide the columns may be
+  - xspace :: extended space
+  - url :: website typewriter
+  - hyphenat :: hyphenation
+  - geometry :: design pages
+  - typearea ::
+  - stespace :: step space
+  - endnotes :: Places footnotes at the end of the document
+  - manyfoot :: Allows nested footnotes
+  - bigfoot :: Replaces and extends manyfoot , improves page break handling with footnotes
+  - savefnmark :: Useful when you need to use footnotes several times
+  - footmisc :: All-round package; introduces numbering per page, is able to save space when many short footnotes are used, offers symbols instead of numbers as footnote marks, provides hanging indentation and other styles
+  - amsmath ::
+  - latexsym ::
+  - amssymb ::
+  - amsthm ::
+  - ntheorem ::
+  - mathtools :: extends amsmath
+  - parskip :: 
+  - fancyhdr :: fancy header
+  - paralist :: 
+  - array :: extra functions for tabular
+  - booktabs :: beautying tables
+  - inputenc ::
+  - multirow :: multirow in tabular
+  - rotating :: iamge rotate
+  - pdfpages :: 
+  - textpos :: 
+  - eso-pic :: 
+  - graphicx :: 
+
+
+- formatting, words, lines, paragraphs
+  - \documentclass (article, book, letter...)
+  - \usepackage
+  - \document
+  - \title
+  - \author
+  - \date
+  - \maketitle
+  - \section
+  - \textbackslash
+  - font shape
+    - \textit
+    - \textbf
+    - \textsl
+    - \textsc
+    - \emph
+    - \ttfamily
+    - \rmfamily
+    - \em
+    - \itshape
+    - \bfseries
+    - \slshape
+    - \scshape
+  - \noindent
+  - \font size
+    - \scriptsize
+    - \small
+    - \normalsize
+    - \large
+    - \Large
+    - \LARGE
+    - \huge
+    - \Huge
+  - \newcommand
+  - \minipage
+  - \parbox
+  - \mbox
+  - \hyphenation
+  - \\
+  - \newline
+  - \linebreak
+  - \ldots
+  - justification
+    - \raggedright
+    - \centering
+    - begin{center}
+    - begin{flushleft}
+    - begin{flushright}
+  - pagestyle
+  - begin{quotation}
+
+- pages
+  - \chapter
+  - \section
+  - \subsection
+  - \subsubsection
+  - \fancyhead
+  - \fancyfoot
+  - \lhead
+  - \chead
+  - \right
+  - \lfoot
+  - \cfoot
+  - \rfoot
+  - \renewcommand
+  - \pagebreak
+  - \newpage
+  - \nopagebreak
+  - \enlargethispage
+  - \footnote
+  - \footnotemark
+  - \footnotetext
+
+- lists
+  - begin{itemize}
+    - \item
+  - begin{enumerate}
+  - begine{paralist}
+  - begin{compactitem}
+  - begin{inparaitem}
+  - begin{asparanum}
+  - begin{inparaenum}
+  - begin{asparaenum}
+  - begin{description}
+
+
+- table
+  - begin{tabbing}
+    - \=
+    - \>
+  - begin{tabular}
+    - \hline
+    - &
+    - \\
+    - \cline{m-n}
+    - \vline
+    - \setlength
+    - \extrarowheight
+    - \toprule
+    - \midrule
+    - \cmidrule
+    - \bottomrule
+    - \multicolumn
+  - begin{table}
+  - \includegraphics
+  - \includepdf
+  - \captionof
+  - begin{wrapfigure}
+  - begin{wraptable}

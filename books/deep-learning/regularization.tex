@@ -1,0 +1,135 @@
+
+\chapter{Regularization for Deep Learning}
+
+A central problem in machine learning is how to make an algorithm that will perform well not just on the training data, but also on new inputs.
+Many strateries used in machine learning are explicitly designed to reduce the test error, possibly at the expense of increased training error.
+These strateries are known collectively as \keyword{regularization}.
+
+
+In practice, an overly complex model family does not necessarily include the target function or the true data generating process, or even a close approximation of either.
+We almost never have access to the true data generating process so we can never know for sure if the model family being estimated includes the generating process or not. 
+However, most applications of deep learning algorithms are to domains where the true data generating process is almost certainly outside the model family. 
+Deep learning algorithms are typically applied to extremely complicated domains such as images, audio sequences and text, for which the true generation process essentially involves simulating the entire universe. 
+To some extent, we are always trying to fit a square peg (the data generating process) into a round hole (our model family).
+
+
+What this means is that controlling the complexity of the model is not a simple matter of finding the model of the right size, with the right number of parameters.
+Instead, we might find -- and indeed in practical deep learning scenarios, we almost always do find -- that the best fitting model is a larger model that has been regularized appropriately.
+
+
+\section{Parameter Norm Penalties}
+
+Many regularization approaches are based on limiting the capacity of models by adding a parameter norm penalty $\Omega(\bm{\theta})$ to the objective function $J$.
+\begin{equation}
+  \label{eq:norm-penalties}
+  \tilde{J}(\bm{\theta;X,y}) = J(\bm{\theta,X,y}) + \alpha \Omega(\bm{\theta})
+\end{equation}
+
+
+
+\subsection{$L^2$ Parameter Regularization}
+
+The $L^2$ parameter norm penalty commonly known as \keyword{weight decay}.
+This regularization strategy derives the weights closer to the original by adding a regularization term $\Omega(\bm{\theta}) = \frac{1}{2} ||\bm{w}||_2^2$ to the objective function.
+
+
+\subsection{$L^1$ Regularization}
+
+$L^1$ regularization on the model parameter $\bm{w}$ is defined as
+\begin{equation}
+  \label{eq:l1}
+  \Omega(\bm{\theta}) = ||\bm{w}||_1 = \sum_i |w_i|.
+\end{equation}
+
+
+\section{Dataset Augmentation}
+
+The best way to make a machine learning model generalize better is to train it on more data.
+Of course, in practice, the amount of data we have is limited.
+One way to get around this problem is to create fake data and add it to the training set.
+
+
+Dataset augmentation has been a particular effective technique for a specific classification problem: object recognition.
+
+\section{Noise Robustness}
+
+For some models, the addition of noise with infinitesimal variance at the input of hte model is equivalent to imposing a penalty on the norm of the weights.
+In the general case, it is important to remember that noise injection can be much more powerful than simply shrinking the parameters, especially when the noise is added to the hidden units.
+
+
+
+\section{Semi-Supervised Learning}
+
+In the paradigm of semi-supervised learning, both unlabeled examples from $P(\mathrm{x})$ and labeled examples from $P(\mathrm{x,y})$ are used to estimate $P(\mathrm{y|x})$ or predict $\mathrm{y}$ from $\mathrm{x}$.
+
+
+In the context of deep learning, semi-supervised learning usually refers to learning a representation $\bm{h} = f(\bm{x})$. The goal is to learn a representation so that examples from the same class have similar representations.
+
+
+
+\section{Multitask Learning}
+
+
+Multitask learning is a way to improve generalization by pooling the examples (which can be seen as soft constaints imposed on the parameters) arising out of several tasks.
+In the same way that additional tranining examples put more pressure on the parameters of the model toward values that generalize well, when part of a model is shared across tasks, that part of the model is more constrained toward good values (assuming the sharing is justified), often yielding better generalization.
+
+
+
+\section{Early Stopping}
+
+Early stopping is used to avoid overfit.
+
+The algorithm terminates when no parameters have improved over the best recorded validation error for some pre-specified number of iterations.
+This strategy is known as \keyword{early stopping}.
+It is probably the most commonly used form of regularization in deep learning.
+
+
+Early stopping is a unobtrusive form of regularization, in that it requires almost no change in the underlying training procedure, the objective function, or the set of allowable parameter values.
+Early stopping requires a validation set, which means some traning data is not fed to the model.
+
+
+
+\section{Parameter Tying and Parameter Sharing}
+
+Sometimes we want to express our prior knowledge about suitable values of the model parameters.
+Sometimes we might not know precisely what values the parameters should take, but we know, from knowledge of the domain and model archtecture, that there should be some dependencies between the model parameters.
+
+A common type of dependency that we foten want to express is that certain parameters should be close to one another.
+For example:
+We have model A with parameters $\bm{w}^{(A)}$ and model B with parameters $\bm{w}^{(B)}$.
+We believe the model parameters should be close to each other: $\forall i w_i^{(A)}$ should be close to $w_i^{(B)}$.
+We can use a parameter norm penalty of the form $\Omega(\bm{w}^{(A)},\bm{w}^{(B)} = || \bm{w}^{(A)} - \bm{w}^{(B)} ||_2^2$.
+Here we use an $L^2$ penalty, but other choices are also possible.
+This is called \keyword{parameter typing}.
+
+
+While a parameter norm penalty is onw way to regularize parameters to be close to one another, the more popular way is to use constraints:
+\textit{to force stes of parameters to be equal}.
+This method of regularization is often referred to as \keyword{parameters sharing}, because we interpret the various models or model components as sharing a unique set of parameters.
+
+
+\section{Sparse Representations}
+
+
+Weightdecay acts by placing a penalty directly on the model parameter.
+Another strategy is to place a penalty on the activation of the units in a neural network, encouraging their activation to be sparse.
+This indirectly imposes a complicated penalty on the model parameters.
+
+
+\section{Bagging and Other Emsemble Methods}
+
+Bagging (short for bootstrap aggregating) is a technique for reducing generalization erry by combining several models.
+The idea is to  train several different models separately, then have all the models vote on the output for test examples.
+This is a exampe of a general strategy in machine learning called model averaging.
+Techniques employing this strategy are known as \keyword{ensemble methods}.
+
+The reason that model averaging works is that different models will usually not make all the same error on the test set.
+
+
+\section{Adversarial Training}
+
+Szegedy et al. (2014b) found that even neural network that perform at human level accuracy have a nearly 100 percent error rate on examples that are intentionally constructed by using an optimization procedure to search for an input $x^{'}$ near a data point $x$ such that the model output is very different at $x^{'}$.
+In many cases, $x^{'}$ can be so similar to $x$ that a human observe cannot tell the difference between the original example and the \keyword{adversarial example}, but the network can make highly different predictions.
+
+
+We can reduce the error rate on the original i.i.d. test set via adversarial training -- training on adversarially perturbed examples from the training set.

@@ -1,0 +1,484 @@
+% Created 2019-08-16 Fri 15:53
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{Hack Chyson}
+\date{\today}
+\title{reference}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.2.2 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{import}
+\label{sec-1}
+\begin{verbatim}
+import ...
+import ... as ...
+from ... import ...
+from ... import *
+\end{verbatim}
+\section{list}
+\label{sec-2}
+[] \\
+
+\section{string}
+\label{sec-3}
+"a" \\
+'a' \\
+
+\section{tuple}
+\label{sec-4}
+'a','b' \\
+('a','b') \\
+
+\section{mapping unpacking}
+\label{sec-5}
+the mapping unpacking operator is ** and it can be applied to a mapping to produce a key-value list. \\
+**locals() \\
+
+
+\section{sequence unpacking}
+\label{sec-6}
+Any iterable can unpacked using the sequence unpacking operator (*) \\
+
+first, *rest = [1,2,3,4,5] \\
+
+def prouct(a, b, c): \\
+    return a * b * c \\
+
+l = [1,2,3] \\
+product(*l) \\
+
+
+
+\section{private method}
+\label{sec-7}
+the method name begins with a leading understore. \\
+
+Sale = collections.namedtuple('Sale', 'productid price') \\
+sale = Sale('book', 100) \\
+'\{book\} \{price\}'.format(**sale.\_asdict()) \\
+
+\section{hashable}
+\label{sec-8}
+Hashable objects are objects which have a \_\_hash\_\_() speical method \\
+whose return value is always the same throughout the object's lifetime, and \\
+which can be compared for equality using the \_\_eq\_\_() special method. \\
+
+
+All the built-in immutable data types are hashable. \\
+The built-in mutable data types, such as dict, list, and set are not hashable. \\
+
+\section{list comprehension}
+\label{sec-9}
+[expression for item in iterable if condition] \\
+
+
+
+\section{set}
+\label{sec-10}
+\{\} \\
+
+\section{data create with data type}
+\label{sec-11}
+\begin{itemize}
+\item with one argument, create a empty object. \\
+\item one same data type argument, a shallow copy \\
+\item one different data type argument, a conversion attempt \\
+\item two or more, depends \\
+\end{itemize}
+
+for example: \\
+list() \\
+list('hello') \\
+list(\footnote{DEFINITION NOT FOUND.}) \\
+
+str() \\
+str(1) \\
+str('hello') \\
+
+\section{program format}
+\label{sec-12}
+\begin{enumerate}
+\item shebang \\
+\item docstring \\
+\begin{enumerate}
+\item brief description \\
+\item one black line \\
+\item description \\
+\item example \\
+\end{enumerate}
+\item import \\
+\begin{enumerate}
+\item built-in \\
+\item standard library \\
+\item custom \\
+\end{enumerate}
+\item \uline{\uline{all}} \\
+\item code \\
+\end{enumerate}
+
+
+\section{path separator}
+\label{sec-13}
+\begin{verbatim}
+import os
+path.replace("/",os.sep)
+\end{verbatim}
+
+\section{random choice}
+\label{sec-14}
+\begin{verbatim}
+l = [1,2,3,4]
+import random
+random.choice(l)
+\end{verbatim}
+
+\section{random sample}
+\label{sec-15}
+\begin{verbatim}
+import random
+l = list(range(100))
+print(random.sample(l,30))  # unique element
+\end{verbatim}
+\section{help}
+\label{sec-16}
+\begin{verbatim}
+help(iter)
+\end{verbatim}
+
+
+\section{type}
+\label{sec-17}
+\begin{verbatim}
+a = 1
+type(a)
+\end{verbatim}
+
+
+\section{sort}
+\label{sec-18}
+\begin{verbatim}
+x = []
+for i in zip(range(-10, 0, 1), range(0, 10, 2), range(1, 10, 2)):
+    x += i
+print(x)  # [-10, 0, 1, -9, 2, 3, -8, 4, 5, -7, 6, 7, -6, 8, 9]
+
+y = []
+for i in zip(range(-10, 0, 1), range(0, 10, 2), range(1, 10, 2)):
+    y.append(i)
+print(y)  # [(-10, 0, 1), (-9, 2, 3), (-8, 4, 5), (-7, 6, 7), (-6, 8, 9)]
+
+print(sorted(x))  # [-10, -9, -8, -7, -6, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(sorted(x, reverse=True))  # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -6, -7, -8, -9, -10]
+print(sorted(x, key=abs))  # [0, 1, 2, 3, 4, 5, 6, -6, -7, 7, -8, 8, -9, 9, -10]
+\end{verbatim}
+
+\section{plateform}
+\label{sec-19}
+\begin{verbatim}
+offset = 20 if sys.platform.startswith('win') else 10
+\end{verbatim}
+
+\section{file number}
+\label{sec-20}
+\begin{verbatim}
+print('{} file{}'.format((count if count != 0 else 'no'), ('s' if count != 1 else ''))
+\end{verbatim}
+
+\section{list find}
+\label{sec-21}
+like list find method. \\
+
+while version: \\
+\begin{verbatim}
+def list_find(lst, target):
+    index = 0
+    while index < len(lst):
+        if lst[index] == target:
+            break
+        index += 1
+    else:
+        index = -1
+    return index
+\end{verbatim}
+
+loop version: \\
+\begin{verbatim}
+def list_find(lst,target):
+    for index, x in enumerate(lst):
+        if x == target:
+            break
+    else:
+        index = -1
+    return index
+\end{verbatim}
+
+exception version: \\
+\begin{verbatim}
+def list_find(lst,target):
+    try:
+        index = lst.index(target)
+    except ValueError:
+        index = -1
+    return index
+\end{verbatim}
+
+\section{if}
+\label{sec-22}
+conditional branch statement: \\
+\begin{verbatim}
+if boolean_expression1:
+    suite1
+elif boolean_expression2:
+    suite2
+...
+elif boolean_expressionN:
+    suiteN
+else:
+    else_suite
+\end{verbatim}
+There can be zero or more elif clauses, and the final else clause is optional. \\
+
+conditional expression: \\
+\begin{verbatim}
+expression1 if boolean_expression else expression2
+\end{verbatim}
+
+\section{loop}
+\label{sec-23}
+\begin{verbatim}
+while boolean_expression:
+    while_suite
+else:
+    else_suite
+\end{verbatim}
+
+\begin{verbatim}
+for expression in iterable:
+    for_suite
+else:
+    else_suite
+\end{verbatim}
+
+\section{try \ldots{} catch}
+\label{sec-24}
+\begin{verbatim}
+try:
+    try_suite
+except exception_group1 as variable1:
+    except_suite1
+...
+except exception_groupN as variableN:
+    except_suiteN
+else:
+    else_suite
+finally:
+    finally_suite
+\end{verbatim}
+
+\section{raise exception}
+\label{sec-25}
+\begin{verbatim}
+raise exception(args)
+raise exception(args) from original_exception
+raise
+\end{verbatim}
+
+\section{function}
+\label{sec-26}
+\begin{verbatim}
+def functionName(parameters):
+    suite
+\end{verbatim}
+
+
+\section{lambda}
+\label{sec-27}
+\begin{verbatim}
+lambda parameters: expression
+\end{verbatim}
+
+\section{assert}
+\label{sec-28}
+\begin{verbatim}
+assert boolean_expression, optional_expression
+\end{verbatim}
+
+
+\section{writing text to files}
+\label{sec-29}
+Python provides tow different ways of writing text to files. \\
+\begin{enumerate}
+\item use a file object's write() method \\
+\item use the print() function \\
+\end{enumerate}
+\begin{verbatim}
+import sys
+sys.stdout.write("message\n")
+print("message", file=sys.stdout)
+\end{verbatim}
+
+\begin{verbatim}
+# to restore back to stdout
+sys.stdout = sys.__stdout__
+\end{verbatim}
+\section{capture output intended to go to a file}
+\label{sec-30}
+\begin{verbatim}
+import io
+import sys
+
+sys.stdout = io.StringIO()
+print('hello')
+print('world')
+content = sys.stdout.getvalue()
+sys.stdout = sys.__stdout__
+print(content)
+\end{verbatim}
+
+\section{command line options}
+\label{sec-31}
+\begin{verbatim}
+parser = optparse.OptionParser()
+parser.set_usage("%prog inputfile outputfile [options]")
+parser.add_option("-m", "--mode", dest="mode",
+                  help="available values: encrypt|enc|decrypt|dec [default: %default]")
+parser.add_option('-k', '--key', dest='key',
+                  help='the key for encryption and decryption [default: %default')
+parser.set_defaults(mode="enc", key='123456')
+opts, args = parser.parse_args()
+
+inputfile = args[0]
+outputfile = args[1]
+mode = opts.mode
+key = opts.key
+\end{verbatim}
+
+"\%default" rext replaced with the option's default value; \\
+the options are available using the "dest" names. \\
+
+If an error occurs when parsing the command line, the optparse parser will call sys.exit(2). \\
+\section{doctest}
+\label{sec-32}
+\begin{verbatim}
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod() # test module
+\end{verbatim}
+\section{unit test}
+\label{sec-33}
+\begin{verbatim}
+import unittest
+\end{verbatim}
+\section{eval}
+\label{sec-34}
+\begin{verbatim}
+import Shape
+
+
+p = Shape.Point(3, 9)
+print(repr(p))  # Point(3, 9)
+
+# We must give the module name when eval()ing if we used import Shape.
+# if from Shape import Point is used, it is used necessary
+q = eval(p.__module__ + "." + repr(p))
+print(repr(q))  # Point(3, 9)
+\end{verbatim}
+
+\section{special attributes}
+\label{sec-35}
+\begin{center}
+\begin{tabular}{ll}
+\uline{\uline{name}} & \\
+\uline{\uline{module}} & \\
+\uline{\uline{class}} & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ll}
+@property & \\
+@staticmethod & \\
+@classmethod & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ll}
+\_\_lt\_\_(self, other) & <\\
+\_\_le\_\_(self, other) & <=\\
+\_\_eq\_\_(self, other) & ==\\
+\_\_ne\_\_(self, other) & !=\\
+\_\_ge\_\_(self, other) & >=\\
+\_\_gt\_\_(self, other) & >\\
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}{l}
+\_\_bool\_\_(self)\\
+\_\_format\_\_(self,format\_spec)\\
+\_\_hash\_\_(self)\\
+\_\_init\_\_(self,args)\\
+\_\_new\_\_(cls,args)\\
+\_\_repr\_\_(self)\\
+\_\_str\_\_(self)\\
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}{l}
+\_\_abs\_\_(self)\\
+\_\_pos\_\_(self)\\
+\_\_add\_\_(self)\\
+\_\_iadd\_\_(self)\\
+\_\_radd\_\_(self)\\
+\_\_xor\_\_(self)\\
+\_\_ixor\_\_(self)\\
+\_\_rxor\_\_(self)\\
+\end{tabular}
+\end{center}
+
+\section{@staticmethod and @classmethod}
+\label{sec-36}
+@classmethod must have a reference to a class object as the first parameter, whereas @staticmethod can have no parameters at all. \\
+\begin{verbatim}
+# The first parameter is the object instance reference.
+def instancemethod_(self, ...)
+    suit
+
+
+# The first parameter is the class reference.
+@classmethod
+def classmethod_(cls, ...)
+    suit
+
+
+# There is no reference to the instance or class.
+@staticmethod(...)
+    suit
+\end{verbatim}
+% Emacs 25.2.2 (Org mode 8.2.10)
+\end{document}

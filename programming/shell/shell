@@ -1,0 +1,16 @@
+* 文件名中还有空格的文件列表的遍历
+对于文件名中有空格的情况，使用for循环时，会将文件名拆分。
+一种解决办法是：设置IFS环境变量。
+#+BEGIN_SRC sh
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+
+IFS=$SAVEIFS
+#+END_SRC
+* 操作类似格式的多个文件
+#+BEGIN_SRC sh
+mkdir a{1..10}
+rmdir a{1..10}
+#+END_SRC
+
+

@@ -1,0 +1,16 @@
+\begin{centering}
+    \begin{matrixtable}{1.2cm}{2.4cm}{1.2cm}{0.6cm}{
+        \head{Rank} & \head{Distribution} & \head{Hits} & \\
+        1 & Ubuntu & 2114 & \down \\
+        2 & Fedora & 1451 & \up \\
+        3 & Mint & 1297 & \const \\
+        4 &OpenSUSE& 1228 & \up \\
+        5 &Debian& 910 & \down \\
+        6 &Mandriva& 907 & \up \\
+        7 &PCLinuxOS& 764 & \up \\
+        8 & Puppy & 738 & \up \\
+        9 & Sabayon & 671 & \up \\
+        10 & Arch & 625 & \down \\
+      }
+    \end{matrixtable}
+  \end{center}

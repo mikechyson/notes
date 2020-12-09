@@ -1,0 +1,36 @@
+[2018-12-17 23:26:53]
+Org-mode develops organizational tasks around a NOTES file 
+which contains information about projects as plain text.  
+
+Org-mode is implemented on top of outline-mode.  
+
+It supports ToDo items, deadlines and time stamps.
+Plain text URL-like links connect to websites, emails (VM), Usenet messages (Gnus), BBDB entries, and any files related to the project.
+For printing and sharing of notes, an Org-mode file (or a part of it) can be exported as a structured ASCII or HTML file.
+
+The following commands are available:
+
+
+
+
++----------+-------------------+------------------------+
+|C-c %     |org-mark-ring-push |like "pushd" in linux   |
++----------+-------------------+------------------------+
+|C-c &     |org-mark-ring-goto |like "popd" in linux    |
++----------+-------------------+------------------------+
+
+
+
+
+[2018-12-23 12:11:55]
+
+| bold        | *hack* |
+| italic      | /hack/ |
+| deleteline  | +hack+ |
+| underline   | _hack_ |
+| subscript   | h_ack  |
+| superscript | h^ack  |
+| monospace   | =hack= |
+
+
+

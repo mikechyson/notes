@@ -1,0 +1,105 @@
+\documentclass{book}
+\renewcommand{\figurename}{Diagram}              % default: Figure
+\renewcommand{\listfigurename}{List of Diagrams} % default: List of Figures
+\renewcommand{\tablename}{LaTex}
+\renewcommand{\listtablename}{List of LaTex}
+\usepackage{hyperref}
+\setcounter{tocdepth}{3}        % table of content depth
+% \setcounter{name}{n}
+% \addtocounter{name}{n}
+% \addtocounter{tocdepth}{1}    % relative depth
+\begin{document}
+\tableofcontents
+\listoffigures
+\listoftables
+\part{First part}
+
+\chapter*{Preface}              % don't produce a TOC entry, do not count this
+
+\addcontentsline{toc}{chapter}{Preface} % add Preface manually
+% \addcontentsline{file extension}{sectional unit}{text}
+% toc for the table of content file
+% lof for the list of figures file
+% lot for the list of tables file
+
+% Specify chapter to create an entry that's formatted like normal chapter entries
+
+
+\chapter{First main chapter}
+\begin{figure}
+  \centering
+  \fbox{Diagram placeholder}
+  \caption{Enterprize Organizational Chart}
+\end{figure}
+
+\section{A section}
+
+\section{Another section}
+
+\subsection{A smaller section}
+
+\subsubsection[Deeper level]{This section has an even deeper level} % shorter entry in TOC
+
+\chapter{Second main chapter}
+
+\part{Second part}
+
+\chapter{Third main chapter}
+\addtocontents{lof}{Network Diagram}
+\begin{figure}
+  \centering
+  \fbox{Diagram placeholder}
+  \caption{Network overview}
+\end{figure}
+
+
+
+
+
+\begin{table}
+  \centering{}
+  \fbox{Table placeholder}
+  \caption{test}
+\end{table}
+  
+
+\begin{figure}
+  \centering{}
+  \fbox{Diagram placeholder}
+  \caption{WLAN Design}
+\end{figure}
+
+
+\appendix{}
+\cleardoublepage{}
+\addtocontents{toc}{\bigskip{}}
+% \addtocontents{file extension}{entry}
+% In contrary to \addcontentsline , the argument entry is written directly to the file
+% without any additional formatting. You may choose any formatting you like.
+
+% 1. \addtocontents{toc}{\protect\enlargethispage{\baselineskip}}
+% extends the text height such that one additional line fits to the contents page.
+% 2. \addtocontents{toc}{\protect\newpage} causes a page break in the TOC.
+% For instance, if the automatic page break happens after a chapter entry and before
+% the following section entries, you might wish to force a page break already before
+% the chapter entry.
+% 3. \addtocontents{toc}{\protect\thispagestyle{fancy}} changes the
+% page style of the current TOC page to fancy. As the first page of a chapter is of
+% plain style by default, the first page of the TOC would be plain as well, even if you
+% specified \pagestyle{fancy} . This command overrides it.
+
+\addcontentsline{toc}{part}{Appendix}
+
+\chapter{Glossary}
+
+\chapter{Symbols}
+
+
+
+
+\end{document}
+
+
+
+
+

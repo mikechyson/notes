@@ -1,0 +1,270 @@
+[2018-12-29 19:59:06]
+A property is a key-value pair associated with an entry.
+Keys are case-insensitive.
+
+There are two main applications for properties in Org mode. 
+- like tags, but with a value :: Imagine maintaining a file where you document bugs and plan releases for a piece of software. 
+     Instead of using tags like :release_1:, :release_2:, you can use a property, say :Release:, that in different subtrees has different values, such as 1.0 or 2.0.
+- to implement (very basic) database capabilities :: Imagine keeping track of your music CDs, where properties could be things such as the album, artist, date of release, number of tracks, and so on. 
+
+Properties can be conveniently edited and viewed in column view.
+
+* Property syntax
+
+Example:
+#+BEGIN_EXAMPLE
+     * CD collection
+     ** Classic
+     *** Goldberg Variations
+         :PROPERTIES:
+         :Title:     Goldberg Variations
+         :Composer:  J.S. Bach
+         :Artist:    Glen Gould
+         :Publisher: Deutsche Grammophon
+         :NDisks:    1
+         :END:
+#+END_EXAMPLE
+
+
+variable =org-use-perperty-inheritance= determine the perperty inheritance.
+
+You may define the allowed values for a particular property ‘:Xyz:’ by setting a property ‘:Xyz_ALL:’. 
+This special property is inherited, so if you set it in a level 1 entry, it will apply to the entire tree.
+#+BEGIN_EXAMPLE
+     * CD collection
+       :PROPERTIES:
+       :NDisks_ALL:  1 2 3 4
+       :Publisher_ALL: "Deutsche Grammophon" Philips EMI
+       :END:
+#+END_EXAMPLE
+
+
+If you want to set properties that can be inherited by any entry in a file, use a line like 
+#+BEGIN_EXAMPLE
+  #+PROPERTY: NDisks_ALL 1 2 3 4
+#+END_EXAMPLE
+
+
+
+If you want to add to the value of an existing property, append a + to the property name. 
+The following results in the property var having the value “foo=1 bar=2”.
+#+BEGIN_EXAMPLE
+     #+PROPERTY: var  foo=1
+     #+PROPERTY: var+ bar=2
+#+END_EXAMPLE
+
+
+Property values set with the global variable =org-global-properties= can be inherited by all entries in all Org files. 
+
+
+=C-c C-x p= (=org-set-property=)
+Set a property. This prompts for a property name and a value. If necessary, the property drawer is created as well. 
+
+=C-c C-c= (=org-property-action=)
+With the cursor in a property drawer, this executes property commands. 
+
+=S-<RIGHT>=    (=org-property-next-allowed-value=)
+=S-<LEFT>=     (=org-property-previous-allowed-value=)
+Switch property at point to the next/previous allowed value.
+
+* Special properties
+Special properties provide an alternative access method to Org mode features.
+This interface exists so that you can include these states in a column view, or to use them in queries.
+
+The following property names are special and should not be used as keys in the properties drawer: 
+#+BEGIN_EXAMPLE
+     ALLTAGS      All tags, including inherited ones.
+     BLOCKED      "t" if task is currently blocked by children or siblings.
+     CLOCKSUM     The sum of CLOCK intervals in the subtree.  org-clock-sum
+                  must be run first to compute the values in the current buffer.
+     CLOCKSUM_T   The sum of CLOCK intervals in the subtree for today.
+                  org-clock-sum-today must be run first to compute the
+                  values in the current buffer.
+     CLOSED       When was this entry closed?
+     DEADLINE     The deadline time string, without the angular brackets.
+     FILE         The filename the entry is located in.
+     ITEM         The headline of the entry.
+     PRIORITY     The priority of the entry, a string with a single letter.
+     SCHEDULED    The scheduling timestamp, without the angular brackets.
+     TAGS         The tags defined directly in the headline.
+     TIMESTAMP    The first keyword-less timestamp in the entry.
+     TIMESTAMP_IA The first inactive timestamp in the entry.
+     TODO         The TODO keyword of the entry.
+#+END_EXAMPLE
+
+
+* Property searches
+=C-c / p= 
+Create a sparse tree based on the value of a property. 
+This first prompts for the name of a property, and then for a value. 
+A sparse tree is created with all entries that define this property with the given value. 
+If you enclose the value in curly braces, it is interpreted as 
+a regular expression and matched against the property values. 
+
+
+* Property inheritance
+Org does not turn property inheritance on by default.
+you can turn it on by setting the variable =org-use-property-inheritance=. 
+It may be set to t to make all properties inherited from the parent, 
+to a list of properties that should be inherited, 
+or to a regular expression that matches inherited properties.
+
+
+Org mode has a few properties for which inheritance is hard-coded, at least for the special applications for which they are used: 
+#+BEGIN_EXAMPLE
+COLUMNS
+CATEGORY
+ARCHIVE
+LOGGING
+#+END_EXAMPLE
+
+[2018-12-29 22:13:55]
+* Column view
+A great way to view and edit properties in an outline tree is column view.
+In column view, each outline node is turned into a table row. 
+Columns in this table provide access to properties of the entries.
+Org mode implements columns by overlaying a tabular structure over the headline of each item.  
+
+** Defining columns
+Setting up a column view first requires defining the columns. 
+This is done by defining a column format line.
+
+=org-columns-default-format=
+
+*** Scope of column definitions
+To define a column format for an entire file, use a line like
+#+BEGIN_EXAMPLE
+     #+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+#+END_EXAMPLE
+
+To specify a format that only applies to a specific tree, add a :COLUMNS: property to the top node of that tree, for example:
+#+BEGIN_EXAMPLE
+     ** Top node for columns view
+        :PROPERTIES:
+        :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+        :END:
+#+END_EXAMPLE
+
+
+If a :COLUMNS: property is present in an entry, it defines columns for the entry itself, and for the entire subtree below it. 
+
+*** Column attributes
+A column definition sets the attributes of a column. The general definition looks like this:
+#+BEGIN_EXAMPLE
+      %[width]property[(title)][{summary-type}]
+#+END_EXAMPLE
+Except for the percent sign and the property name, all items are optional. 
+
+The individual parts have the following meaning: 
+#+BEGIN_EXAMPLE
+     width           An integer specifying the width of the column in characters.
+                     If omitted, the width will be determined automatically.
+     property        The property that should be edited in this column.
+                     Special properties representing meta data are allowed here
+                     as well
+     title           The header text for the column.  If omitted, the property
+                     name is used.
+     {summary-type}  The summary type.  If specified, the column values for
+                     parent nodes are computed from the children.
+                     Supported summary types are:
+                     {+}       Sum numbers in this column.
+                     {+;%.1f}  Like ‘+’, but format result with ‘%.1f’.
+                     {$}       Currency, short for ‘+;%.2f’.
+                     {min}     Smallest number in column.
+                     {max}     Largest number.
+                     {mean}    Arithmetic mean of numbers.
+                     {X}       Checkbox status, ‘[X]’ if all children are ‘[X]’.
+                     {X/}      Checkbox status, ‘[n/m]’.
+                     {X%}      Checkbox status, ‘[n%]’.
+                     {:}       Sum times, HH:MM, plain numbers are hours.
+                     {:min}    Smallest time value in column.
+                     {:max}    Largest time value.
+                     {:mean}   Arithmetic mean of time values.
+                     {@min}    Minimum age (in days/hours/mins/seconds).
+                     {@max}    Maximum age (in days/hours/mins/seconds).
+                     {@mean}   Arithmetic mean of ages (in days/hours/mins/seconds).
+                     {est+}    Add ‘low-high’ estimates.
+#+END_EXAMPLE
+
+
+
+Example:
+
+#+BEGIN_EXAMPLE
+     :COLUMNS:  %25ITEM %9Approved(Approved?){X} %Owner %11Status %10Time_Estimate{:} %CLOCKSUM %CLOCKSUM_T
+     :Owner_ALL:    Tammy Mark Karl Lisa Don
+     :Status_ALL:   "In progress" "Not started yet" "Finished" ""
+     :Approved_ALL: "[ ]" "[X]"
+#+END_EXAMPLE
+
+
+
+** Using column view
+
+*C-h f org-columns TAB TAB*
+
+*** Turning column view on and off
+=C-c C-x C-c= (=org-columns=)
+Turn on column view. 
+If the cursor is before the first headline in the file, or the function called with the universal prefix argument, column view is turned on for the entire file, using the #+COLUMNS definition. 
+If the cursor is somewhere inside the outline, this command searches the hierarchy, up from point, for a :COLUMNS: property that defines a format. 
+When one is found, the column view table is established for the tree starting at the entry that contains the :COLUMNS: property. 
+If no such property is found, the format is taken from the #+COLUMNS line or from the variable org-columns-default-format, and column view is established for the current entry and its subtree. 
+
+
+=r/g= (=org-column-redo=)
+Recreate the column view, to include recent changes made in the buffer. 
+
+=q= (=org-column-quit=)
+Exit column view. 
+
+*** Editing values
+=1..9,0=
+Directly select the Nth allowed value, 0 selects the 10th value. 
+
+
+=n     (org-column-next-allowed-value)=
+=p     (org-columns-previous-allowed-value)=
+Switch to the next/previous allowed value of the field. 
+For this, you have to have specified allowed values for a property. 
+
+
+=e     (org-columns-edit-value)=
+Edit the property at point. 
+
+
+=C-c C-c     (org-columns-set-tags-or-toggle)=
+When there is a checkbox at point, toggle it.
+
+
+=v     (org-columns-show-value)=
+View the full value of this property. 
+This is useful if the width of the column is smaller than that of the value.
+
+=a     (org-columns-edit-allowed)=
+Edit the list of allowed values for this property. 
+If the list is found in the hierarchy, the modified value is stored there. 
+If no list is found, the new value is stored in the first entry that is part of the current column view. 
+
+*** Modifying the table structure
+=<     (org-columns-narrow)=
+=>     (org-columns-widen)=
+Make the column narrower/wider by one character.
+
+
+=M-S-<RIGHT>     (org-columns-new)=
+Insert a new column, to the left of the current column.
+
+=M-S-<LEFT>     (org-columns-delete)=
+Delete the current column.
+
+
+[2018-12-29 23:47:50]
+*** TODO Capturing column view
+    :LOGBOOK:  
+    - State "TODO"       from ""           [2018-12-30 Sun 00:33]
+    :END:      
+Since column view is just an overlay over a buffer, it cannot be exported or printed directly. 
+If you want to capture a column view, use a columnview dynamic block.
+
+

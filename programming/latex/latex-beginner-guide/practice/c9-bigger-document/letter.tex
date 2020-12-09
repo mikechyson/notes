@@ -1,0 +1,31 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% An alternative to the standard LaTeX letter class.
+
+\documentclass[fontsize=12pt, paper=a4]{scrlttr2}
+
+% Don't forget to read the KOMA-Script documentation, scrguien.pdf
+
+\usepackage[utf8]{inputenc}
+
+\setkomavar{fromname}{My name} % your name
+\setkomavar{fromaddress}{Street, City}
+
+\setkomavar{signature}{Name} % printed after the \closing
+\renewcommand{\raggedsignature}{\raggedright} % make the signature ragged right
+
+\setkomavar{subject}{Invoice 1/2011} % subject of the letter
+
+\begin{document}
+\begin{letter}{Customer Name\\ Street No. X \\ City \\ Zipcode}
+
+\opening{To whom it may concern}  % eg. Hello
+
+Text follows \ldots
+\bigskip
+
+\closing{With kind regards} %eg. Regards
+
+\end{letter}
+\end{document}

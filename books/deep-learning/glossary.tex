@@ -1,0 +1,71 @@
+
+\chapter{Gloassary}
+
+
+\section{Example and features}
+Machine learning tasks are usally described in terms of how the machine learning system should process an \keywords{example}.
+Each piece of information included in the representation of the data is known as a \keywords{feature}.
+
+For example,
+\begin{verbatim}
+Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+3,"Braund, Mr. Owen Harris",male,22,1,0,A/5 21171,7.25,,S
+1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)",female,38,1,0,PC 17599,71.2833,C85,C
+3,"Heikkinen, Miss. Laina",female,26,0,0,STON/O2. 3101282,7.925,,S
+\end{verbatim}
+
+There are 3 examples:
+\begin{itemize}
+\item \verb|3,"Braund, Mr. Owen Harris",male,22,1,0,A/5 21171,7.25,,S|
+\item \verb|1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)",female,38,1,0,PC 17599,71.2833,C85,C|
+\item \verb|3,"Heikkinen, Miss. Laina",female,26,0,0,STON/O2. 3101282,7.925,,S|
+\end{itemize}
+
+There are 10 features in each example:
+\begin{itemize}
+\item Pclass
+\item Name
+\item Sex
+\item Age
+\item SibSp
+\item Parch
+\item Ticket
+\item Fare
+\item Cabin
+\item Embarked
+\end{itemize}
+
+\section{Dataset, data points and design matrix}
+
+A dataset is a collection of many examples.
+Sometimes we call examples \keywords{data points}.
+A design matrix is a matrix containing a different example in each row.
+
+\section{Unsupervised and supervised learning algorithm}
+
+Machine learning algorithms can be broadly categorized as \keywords{unsupervised} or \keywords{supervised} by what kind of experience they are allowed to have during the learning process.
+Unsupervised learning algorithms experience a dataset containing many features, then learn useful properities of the structure of this dataset.
+Supervised learning algorithms experience a dataset containing many features, but each example is also associated with a \keywords{label} or \keywords{target}.
+
+\section{Reinforcement learning}
+
+Reinforcement learning algorithms interact with an environment, so there is a feedback loop between the learning system and its experiences.
+
+
+\section{Bayes error}
+
+The ideal model is an oracle that simply knows the true probability distribution that generate the data.
+Even such a model will still incur some error on many problems, because there may still be some noise in the distribution.
+In the case of supervised learning, the mapping from $\bm{x}$ to $y$ may be inherently stocastic, or $y$ may be a deterministic function that involves other variables besides those included in $\bm{x}$.
+The error incurred by an oracle making predictions from the true distribution $p(\bm{x},y)$ is called the \keywords{Bayes error}.
+
+
+\section{Occam's razor}
+
+Among competing hypotheses that explain known observations equally well, we should choose the ``simplest'' one.
+
+
+\section{No free lunch theorem}
+
+The \keywords{no free lunch theorem} for machine learning states that, averaged over all possible data-generating distribution, every classification algorithm has the same error when classicifying previously unobserved points.
+In other words, in some sense, no machine learning algorithm is universally any better than any other.

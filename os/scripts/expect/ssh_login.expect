@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+
+set text "chyson"
+set timeout 60
+
+spawn ssh localhost
+expect "password:"
+send "$text\r"
+
+interact
+

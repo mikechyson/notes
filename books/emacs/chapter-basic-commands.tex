@@ -1,0 +1,116 @@
+\chapter{Commands}
+
+\section{Basic Commands}
+\begin{description}
+\item[C-x C-f] Open or create a file.
+\item[C-x i] Insert a file's content into the current cursor.
+\item[C-x C-s] Save the current buffer.
+\item[C-x C-w] Write current buffer into the file.
+\item[C-x C-c] Exit Emacs. 
+\item[C-/] Undo the previous command.
+\item[C-q] useful for inserting control character 
+\item[M-n] \verb|n| stands for numbers 
+\item[C-u] Begin a numberic argument. 
+\item[M--] Begin a negative numeric argument. 
+\item[C-l] Move current buffer line to the specified window line.
+\item[C-g] Quit.
+\item[C-x Esc Esc] Edit and re-evaluate last complex command from last.
+\item[C-x z] Repeat most recently executed command.
+\item[M-/] Expand previous word ``dynamically''.
+\item[M-m] Move point to the first non-whitespace character on this line.
+\item[C-M-i] Complete the current symbol.
+\end{description}
+
+
+
+
+
+\section{Movement}
+\begin{description}
+\item[C-f] forward-char
+\item[C-b] backward-char
+\item[M-f] forward-word
+\item[M-b] backward-word
+\item[C-n] next-line
+\item[C-p] previous-line
+\item[C-a] Move to the beginning of the current line.
+\item[C-e] Move to the end of the current line.
+\item[M-a] backward-sentence
+\item[M-e] forward-sentence
+\item[M-\}] forward-paragraph 
+\item[M-\{] backward-paragraph
+\item[C-x ]] forward-page 
+\item[C-x [] backward-page
+\item[C-v] Move down one screen.
+\item[M-v] Move up one screen.
+\item[M->] Move to the end of the buffer.
+\item[M-<] Move to the beginning of the buffer.
+\item[M-g M-g] Go to the specified line.
+\item[C-M-v] Scroll other window one screen.
+\end{description}
+
+\section{Deleting Text}
+
+\begin{description}
+\item[Del] Delete backward one character.
+\item[C-d] Delete one character.
+\item[M-Del] Delete backward one word.
+\item[M-d] Delete one word.
+\item[C-k] Kill one line from the current position.
+\item[M-k] Kill one sentence.
+\item[C-x Del] Delete one sentence backward.
+\end{description}
+
+
+\section{Yank}
+
+In Emacs, killing is not fatal, but in fact, quite the opposite.
+Text that has been killed is not gone forever but is hidden in an area called the kill ring.
+The kill ring is an internal storage area where Emacs put things you've copied or deleted. 
+
+
+\begin{description}
+\item[C-y] Yank the most recently delete text.
+\item[M-y] Yank pop.
+\end{description}
+
+\section{Marking Text}
+\begin{description}
+\item[C-SPC] Set mark.
+\item[C-@] Set mark.
+\item[C-x C-x] exchange point and mark.
+\item[M-h] Mark the current paragraph.
+\item[C-x h] Mark the whole buffer.
+\item[C-w] Kill the marked region.
+\item[M-w] Copy the marked region.
+\end{description}
+
+
+\section{Editing}
+
+\begin{description}
+\item[C-t] Transpose character.
+\item[M-t] Transpose word.
+\item[C-x C-t] Transpose lines.
+\item[M-c] Capitilize the word from current position.
+\item[M-u] Upcase the word from current position.
+\item[M-l] Downcase the word from current position.
+\end{description}
+
+
+\section{Search}
+
+\begin{description}
+\item[C-s] Search incrementally.
+\item[C-r] Search incrementally backward.
+\item[Enter] exit incremental search.
+\item[C-s C-w] Search the word under the cursor.
+\item[C-s C-s] Repeat search forward.
+\item[C-r C-r] Repeat search backward.
+\item[M-\%] Query and replace.
+\item[C-M-s] Search regular expression forward.
+\item[C-M-r] Search regular expression backward.
+\item[C-M-\%] Search regular expression replace
+\end{description}
+
+

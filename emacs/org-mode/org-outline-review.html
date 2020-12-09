@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-02 Tue 08:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Hack Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgfc296c0">1. Outlines</a></li>
+<li><a href="#org4385439">2. Headlines</a></li>
+<li><a href="#org3401690">3. Visibility cycling</a>
+<ul>
+<li><a href="#orgbdcdedf">3.1. Global and local cycling</a></li>
+<li><a href="#orgeef84bc">3.2. Initial visibility</a></li>
+<li><a href="#org509b1b3">3.3. Catching invisible edits</a></li>
+</ul>
+</li>
+<li><a href="#orgbd5aa7c">4. Motion</a></li>
+<li><a href="#org366ed6c">5. Structure editing</a></li>
+<li><a href="#org3e15802">6. Sparse tress</a></li>
+<li><a href="#org5205607">7. Plain list</a></li>
+<li><a href="#org87ce4be">8. Blocks</a></li>
+<li><a href="#orgeb51389">9. Footnote</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfc296c0" class="outline-2">
+<h2 id="orgfc296c0"><span class="section-number-2">1</span> Outlines</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+org is implemented on top of outline mode.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4385439" class="outline-2">
+<h2 id="org4385439"><span class="section-number-2">2</span> Headlines</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+org-cycle-separator-lines<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3401690" class="outline-2">
+<h2 id="org3401690"><span class="section-number-2">3</span> Visibility cycling</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgbdcdedf" class="outline-3">
+<h3 id="orgbdcdedf"><span class="section-number-3">3.1</span> Global and local cycling</h3>
+<div class="outline-text-3" id="text-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bounding</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">TAB</td>
+<td class="org-left">org-cycle</td>
+<td class="org-left">rotate current subtree among the states (FOLDED, CHILDREN, SUBTREE).</td>
+</tr>
+
+<tr>
+<td class="org-left">S-TAB</td>
+<td class="org-left">org-gloable-cycle</td>
+<td class="org-left">rotate the entire buffer among the states.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-n S-TAB (n is a no.)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">When S-TAB is called with a numeric prefix argument N, the CONTENTS view up to headlines of level N will be shown.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-u TAB</td>
+<td class="org-left">org-set-startup-visibility</td>
+<td class="org-left">Switch back to the startup visibility of the buffer.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-u C-u TAB</td>
+<td class="org-left">outlien-show-all</td>
+<td class="org-left">Show all, including drawers.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-k</td>
+<td class="org-left">outline-show-branches</td>
+<td class="org-left">Show all subheadings of this heading, but not their bodies.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c TAB</td>
+<td class="org-left">outline-show-children</td>
+<td class="org-left">Expose all direct children of the subtree.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-n C-c TAB</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">expose all children down to level N.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x b</td>
+<td class="org-left">org-tree-to-indirect-buffer</td>
+<td class="org-left">Show the current subtree in a indirect buffer.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-n C-c C-x b</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">go up to level N and then take that tree.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgeef84bc" class="outline-3">
+<h3 id="orgeef84bc"><span class="section-number-3">3.2</span> Initial visibility</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+When Emacs first visits an Org file, the global state is set to OVERVIEW,<br />
+i.e., only the top level headlines are visible.<br />
+This can be configured through the variable <code>org-startup-folded</code>,<br />
+or on a per-file basis by adding one of the following lines anywhere in the buffer:<br />
+</p>
+
+<pre class="example">
+#+STARTUP: fold              (or ‘overview’, this is equivalent)
+#+STARTUP: nofold            (or ‘showall’, this is equivalent)
+#+STARTUP: content
+#+STARTUP: showeverything
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org509b1b3" class="outline-3">
+<h3 id="org509b1b3"><span class="section-number-3">3.3</span> Catching invisible edits</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+org-catch-invisible-edits<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd5aa7c" class="outline-2">
+<h2 id="orgbd5aa7c"><span class="section-number-2">4</span> Motion</h2>
+<div class="outline-text-2" id="text-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">BOUND</td>
+<td class="org-left">FUNCTION</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-n</td>
+<td class="org-left">org-next-visible-heading</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-p</td>
+<td class="org-left">org-previous-visible-heading</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-f</td>
+<td class="org-left">org-forward-same-level</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-b</td>
+<td class="org-left">org-backward-same-level</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-u</td>
+<td class="org-left">outline-up-heading</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-j</td>
+<td class="org-left">org-goto</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org366ed6c" class="outline-2">
+<h2 id="org366ed6c"><span class="section-number-2">5</span> Structure editing</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Insert Operations:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bounding</th>
+<th scope="col" class="org-left">Functions</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Config</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-RET</td>
+<td class="org-left">org-insert-heading</td>
+<td class="org-left">Insert a new heading with the same depth at point.</td>
+<td class="org-left">org-M-RET-may-split-line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-RET</td>
+<td class="org-left">org-insert-heading-respect-content</td>
+<td class="org-left">Insert a new heading at the end of the current subtree.</td>
+<td class="org-left">org-insert-heading-respect-content</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-RET</td>
+<td class="org-left">org-insert-todo-heading</td>
+<td class="org-left">Insert new TODO entry with same level as current heading.</td>
+<td class="org-left">org-treat-insert-todo-heading-as-state-change</td>
+</tr>
+
+<tr>
+<td class="org-left">C-S-RET</td>
+<td class="org-left">org-insert-todo-heading-respect-content</td>
+<td class="org-left">Insert a new TODO entry at the end of the current subtree</td>
+<td class="org-left">org-insert-heading-respect-content</td>
+</tr>
+
+<tr>
+<td class="org-left">TAB</td>
+<td class="org-left">org-cycle</td>
+<td class="org-left">cycle the level of the headline by demoting and promoting it to likely levels.</td>
+<td class="org-left">org-cycle-level-after-item/entry-creation</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Promote, Demote, Up, Down Operations:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bounding</th>
+<th scope="col" class="org-left">Functions</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Config</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-LEFT</td>
+<td class="org-left">org-do-promote</td>
+<td class="org-left">promote current heading by one level</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-RIGHT</td>
+<td class="org-left">org-do-demote</td>
+<td class="org-left">demote current heading by one level</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-LEFT</td>
+<td class="org-left">org-promote-subtree</td>
+<td class="org-left">promote the current subtree by one level</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-RIGHT</td>
+<td class="org-left">org-demeote-subtree</td>
+<td class="org-left">demote the current subtree by one level</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-UP</td>
+<td class="org-left">org-move-subtree-up</td>
+<td class="org-left">move subtree up</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-DOWN</td>
+<td class="org-left">org-move-subtree-down</td>
+<td class="org-left">move subtree down</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Mark Operations:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bounding</th>
+<th scope="col" class="org-left">Functions</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c @</td>
+<td class="org-left">org-mark-subtree</td>
+<td class="org-left">Mark the subtree and point. Hitting repeatedly will mark subsequent subtree of the same level than the marked subtree.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<p>
+Cut, Copy, Past Operations: (prefix: C-c C-x)<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bounding</th>
+<th scope="col" class="org-left">Functions</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c C-x C-w</td>
+<td class="org-left">org-cut-subtree</td>
+<td class="org-left">Kill subtree, i.e., remove it from buffer but save in kill ring. With a numeric prefix argument N, kill N sequential subtrees.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x M-w</td>
+<td class="org-left">org-copy-subtree</td>
+<td class="org-left">Copy subtree to kill ring. With a numeric prefix argument N, copy the N sequential subtrees.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x C-y</td>
+<td class="org-left">org-paste-subtree</td>
+<td class="org-left">Yank subtree from kill ring.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x c</td>
+<td class="org-left">org-clone-subtree-with-time-shift</td>
+<td class="org-left">Clone a subtree by making a number of sibling copies of it.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Others:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Key Bounding</td>
+<td class="org-left">Functions</td>
+<td class="org-left">Description</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-w</td>
+<td class="org-left">org-refile</td>
+<td class="org-left">Refile entry or region to a different location.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ^</td>
+<td class="org-left">org-sort</td>
+<td class="org-left">Sort same-level entries. When there is an active region, all entries in the region will be sorted. Otherwise the children of the current headline are sorted. With a C-u prefix, sorting will be case-sensitive.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c *</td>
+<td class="org-left">org-toggle-heading</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<p>
+Narrow: (n: narrow, s: subtree, b: block, w: widen)<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Key Bounding</td>
+<td class="org-left">Functions</td>
+<td class="org-left">Description</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x n s</td>
+<td class="org-left">org-narrow-to-subtree</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x n b</td>
+<td class="org-left">org-narrow-to-block</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x n w</td>
+<td class="org-left">widen</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org3e15802" class="outline-2">
+<h2 id="org3e15802"><span class="section-number-2">6</span> Sparse tress</h2>
+<div class="outline-text-2" id="text-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bounding</th>
+<th scope="col" class="org-left">Functions</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c /</td>
+<td class="org-left">org-sparse-tree</td>
+<td class="org-left">Construct sparse trees from selected information in an outline tree.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org5205607" class="outline-2">
+<h2 id="org5205607"><span class="section-number-2">7</span> Plain list</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Org knows ordered lists, unorderded lists, and description lists.<br />
+</p>
+<ol class="org-ol">
+<li>'unordered' list start with '-' or '+' as bullets.<br /></li>
+<li>'ordered' list items star with a number followed by either a period or a right parenthesis.<br /></li>
+<li>'description' list items are unorderded list items, and contain the separator ' :: ' to distinguish the description.<br /></li>
+</ol>
+
+<p>
+If you find that using a different bullet for a sub-list improves readability, customize the variable "org-list-demote-modify-bullet" .<br />
+To get a greater difference of indentation between items and their sub-items, customize "org-list-indent-offset" .<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bound</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-RET</td>
+<td class="org-left">org-insert-item</td>
+<td class="org-left">Insert new item in current level.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-RET</td>
+<td class="org-left">org-insert-todo-heading</td>
+<td class="org-left">Insert a new item with an unchecked check box.</td>
+</tr>
+
+<tr>
+<td class="org-left">S-UP</td>
+<td class="org-left">org-previous-item</td>
+<td class="org-left">Jump to the previous item in the current list.</td>
+</tr>
+
+<tr>
+<td class="org-left">S-DOWN</td>
+<td class="org-left">org-next-item</td>
+<td class="org-left">Jump to the next item in the current list.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-UP</td>
+<td class="org-left">org-move-item-up</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-DOWN</td>
+<td class="org-left">org-move-item-down</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-LEFT</td>
+<td class="org-left">org-outdent-item-tree</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-RIGHT</td>
+<td class="org-left">org-indent-item-tree</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ^</td>
+<td class="org-left">org-sort-list</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c -</td>
+<td class="org-left">org-toggle-item/org-cycle-list-bullet</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org87ce4be" class="outline-2">
+<h2 id="org87ce4be"><span class="section-number-2">8</span> Blocks</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Org mode uses begin&#x2026;end blocks for various purposes from including source code examples to capturing time logging information.<br />
+</p>
+<pre class="example">
+Some example from a text file.
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">org-xor</span> (a b)
+   <span style="color: #e9b96e;">"Exclusive or."</span>
+   (<span style="color: #b4fa70;">if</span> a (not b) b))
+</pre>
+</div>
+<p>
+These blocks can be folded and unfolded by pressing &lt;TAB&gt; in the begin line.<br />
+You can also get all blocks folded at startup by configuring the option "org-hide-block-startup" or on a per-file basis by using<br />
+</p>
+<pre class="example">
+#+STARTUP: hideblocks
+#+STARTUP: nohideblocks
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgeb51389" class="outline-2">
+<h2 id="orgeb51389"><span class="section-number-2">9</span> Footnote</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+A footnote is started by a footnote marker in square brackets in column 0, no indentation allowd.<br />
+For example:<br />
+</p>
+
+<pre class="example">
+The Org homepage[fn:1] now looks a lot better than it used to.
+...
+[fn:1] The link is: https://orgmode.org
+</pre>
+
+<p>
+Org mode extends the number-based syntax to "named" footnotes and optional inline definition.<br />
+</p>
+
+
+<pre class="example">
+[fn:name]
+[fn:name:a definition]
+[fn::a definition]
+</pre>
+
+<p>
+C-c C-x f<br />
+org-footnote-action<br />
+When at a footnote reference, jump to the definition.<br />
+When at a definition, jump to the references if they exist, offer to create them otherwise.<br />
+When neither at definition or reference, create a new footnote, interactively.<br />
+With prefix, offer additional commands in a menu. (C-u C-c C-x f)<br />
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Hack Chyson</p>
+<p class="date">Created: 2019-04-02 Tue 08:25</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

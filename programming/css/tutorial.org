@@ -1,0 +1,741 @@
+* Styles Solved a Big Problem
+HTML was never intended to contain tags for formatting a document.
+HTML was intended to define the content of a document.
+
+All formatting could be removed from the HTML document, and stored in a separate CSS file.
+
+
+* What is CSS?
+
+CSS stands for Cascading Style Sheets
+Styles define how to display HTML elements
+External Style Sheets can save a lot of work
+External Style Sheets are stored in CSS files
+
+* Syntax
+A CSS rule set consists of a selector and a declaration block:
+[[file:./pictures/css-syntax.png]]
+
+The selector points to the HTML element you want to style.
+The declaration block contains one or more declaration separated by semicolons.
+Each declaration includes a property name and a value, separated by a colon.
+
+* Example
+p {
+    color: red;
+    text-align: center;
+} 
+
+A CSS declaration always ends with a semicolon, and declaration groups are surrounded by curly braces.
+
+* Comments
+/* */
+
+
+* Selectors
+CSS selectors are used to "find" (or select) HTML elements based on their id, classes, types, attributes, values of attributes and much more.
+
+** The element Selector
+The element selector selects elements based on the element name.
+
+Example:
+p {
+    text-align: center;
+    color: red;
+} 
+
+** The id Selector
+The id selector uses the id attribute of an HTML tag to find the specific element.
+An id should be unique within a page, so you should use the id selector when you want to find a single, unique element.
+To find an element with a specific id, write a hash character, followed by the id of the element.
+
+Example:
+#para1 {
+    text-align: center;
+    color: red;
+} 
+
+
+** The class Selector
+The class selector finds elements with the specific class.
+The class selector uses the HTML class attribute.
+To find elements with a specific class, write a period character, followed by the name of the class:
+
+Example:
+.center {
+    text-align: center;
+    color: red;
+} 
+
+p.center {
+    text-align:center;
+    color:red;
+} 
+
+
+** Grouping Selectors
+To group selectors, separate each selector with a comma.
+
+Example:
+ h1 {
+    text-align: center;
+    color: red;
+}
+
+h2 {
+    text-align: center;
+    color: red;
+}
+
+p {
+    text-align: center;
+    color: red;
+}
+
+
+
+h1, h2, p {
+    text-align: center;
+    color: red;
+}
+
+
+
+* Backgrounds
+CSS properties used for background effects:
+
+background-color: #eeeeee|gray;
+background-image: url("url");
+background-repeat: repeat-x|repeat-y|no-repeat;
+background-attachment: scroll|fixed|local|initial|inherit;
+background-position: center|top;
+
+
+
+** Background - Shorthand property
+background: #ffffff url("img_tree.png") no-repeat right top;
+
+When using the shorthand property the order of the property values is:
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+
+
+* Text
+** Color
+color: blue;
+
+** Alignment
+text-align: center|right|justify;
+
+** Decoration
+text-decoration: none|overline|line-through|underline; 
+
+** Transformation
+text-transform: uppercase|lowercase|capitalize;
+
+
+** Indentation
+text-indent: 50px;
+
+
+
+* Fonts
+CSS font properties define the font family, boldness, size, and the style of a text.
+
+** Font Famlies
+here are two types of font family names:
++----------------+---------------------------------------------------------------------------------+
+|generic family  |a group of font families with a similar look (like "Serif" or "Monospace")       |
++----------------+---------------------------------------------------------------------------------+
+|font family     |a specific font family (like "Times New Roman" or "Arial")                       |
++----------------+---------------------------------------------------------------------------------+
+
+
+** Font Family
+font-family: "Times New Roman", Times, serif;
+
+If the browser does not support the first font, it tries the next font.
+
+
+** Font Style
+font-style: normal|italic|oblique;
+
+** Font Size
+font-size: 40px;
+font-size: 2.5em; /* 40px/16=2.5em */
+
+The default text size in browsers is 16px. So, the default size of 1em is 16px.
+
+
+
+** Use a Combination of Percent and Em
+The solution that works in all browsers, is to set a default font-size in percent for the <body> element:
+
+body {
+    font-size: 100%;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+
+* Links
+Links can be styled with any CSS property (e.g. color, font-family, background, etc.).
+In addition, links can be styled differently depending on what state they are in.
+
+The four links states are:
+a:link - a normal, unvisited link
+a:visited - a link the user has visited
+a:hover - a link when the user mouses over it
+a:active - a link the moment it is clicked
+
+** Color
+/* unvisited link */
+a:link {
+    color: #FF0000;
+}
+
+/* visited link */
+a:visited {
+    color: #00FF00;
+}
+
+/* mouse over link */
+a:hover {
+    color: #FF00FF;
+}
+
+/* selected link */
+a:active {
+    color: #0000FF;
+}
+
+
+
+** Text Decoration
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+
+** Brckground Color
+a:link {
+    background-color: #B2FF99;
+}
+
+a:visited {
+    background-color: #FFFF85;
+}
+
+a:hover {
+    background-color: #FF704D;
+}
+
+a:active {
+    background-color: #FF704D;
+} 
+
+
+* Lists
+The CSS list properties allow you to: set list item markers
+
+** Different List Item Markers
+ul.a {
+    list-style-type: circle;
+}
+
+ul.b {
+    list-style-type: square;
+}
+
+ol.c {
+    list-style-type: upper-roman;
+}
+
+ol.d {
+    list-style-type: lower-alpha;
+}
+
+
+** An Image as The List Item Marker
+list-style-image: url('sqpurple.gif');
+
+
+
+* Tables
+** Table Borders
+table, th, td {
+   border: 1px solid black;
+} 
+
+** Collapse Borders
+The border-collapse property sets whether the table borders are collapsed into a single border or separated:
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+
+** Table Width and Height
+table {
+    width: 100%;
+}
+
+th {
+    height: 50px;
+} 
+
+** Table Text Alignment
+td {
+    text-align: right;
+}
+
+td {
+    height: 50px;
+    vertical-align: bottom;
+}
+
+** Table Padding
+td {
+    padding: 15px;
+}
+
+
+** Table Color
+table, td, th {
+    border: 1px solid green;
+}
+
+th {
+    background-color: green;
+    color: white;
+}
+
+
+* Box Model(important)
+[[file:pictures/box-model.png]]
+
+
+Important: When you set the width and height properties of an element with CSS, you just set the width and height of the content area. 
+
+
+Example:
+div {
+    width: 220px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0px;
+}
+
+
+
+* Border
+** Border Style
+border-style: none|dashed|solid|double|groove|ridge|inset|outset;
+
+** Border Width
+border-width: 5px|thin|medium|thick;
+
+** Border Color
+border-color: red|#eeeeee;
+
+** Border - Individual sides
+p {
+    border-top-style: dotted;
+    border-right-style: solid;
+    border-bottom-style: dotted;
+    border-left-style: solid;
+}
+
+** Border - Shorthand property
+p {
+    border: 5px solid red;
+}
+
+width, style, color
+
+
+
+* Outlines
+An outline is a line that is drawn around elements (outside the borders) to make the element "stand out". 
+The outline is not a part of an element's dimensions; the element's total width and height is not affected by the width of the outline.
+
+[[file:pictures/outline-model.png]]
+
+outline
+outline-color
+outline-style
+outline-width
+
+
+* Margin
+p {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 50px;
+}
+
+
+
+* Padding
+p {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+
+* Dimension
+The CSS dimension properties allow you to control the height and width of an element.
+height:10px;5%;
+max-height:10px;5%;
+min-height:10px;5%;
+width:10px;5%;
+max-width:10px;5%;
+min-width:10px;5%;
+
+
+Example:
+p.ex
+{
+height:100px;
+width:100px;
+} 
+
+
+* Display and Visibility
+The display property specifies if/how an element is displayed, and the visibility property specifies if an element should be visible or hidden.
+
+** Hiding an Element - display:none or visibility:hiden
+difference:
+visibility:hidden hides an element, but it will still take up the same space as before. The element will be hidden, but still affect the layout.
+display:none hides an element, and it will not take up any space. The element will be hidden, and the page will be displayed as if the element is not there.
+
+Example:
+
+h1.hidden {
+    visibility: hidden;
+}
+
+h1.hidden {
+    display: none;
+}
+
+
+** Display - Block and Inline Elements
+
+A block element is an element that takes up the full width available, and has a line break before and after it.
+An inline element only takes up as much width as necessary, and does not force line breaks.
+
+
+** Changing How an Element is Displayed
+li {
+    display: inline;
+}
+
+span {
+    display: block;
+}
+
+
+Note: Setting the display property of an element only changes how the element is displayed, NOT what kind of element it is.
+So, an inline element with display:block is not allowed to have other block elements inside of it.
+
+
+
+* Positioning (This is what I want to define my layout)
+
+** Static Positioning
+HTML elements are positioned static by default.
+A static positioned element is always positioned according to the normal flow of the page.
+Static positioned elements are not affected by the top, bottom, left, and right properties.
+
+
+** Fixed Positioning
+An element with fixed position is positioned relative to the browser window.
+It will not move even if the window is scrolled.
+
+Fixed positioned elements are removed from the normal flow. 
+The document and other elements behave like the fixed positioned element does not exist.
+Fixed positioned elements can overlap other elements.
+
+Example:
+p.pos_fixed {
+    position: fixed;
+    top: 30px;
+    right: 5px;
+}
+
+
+** Relative Positioning
+A relative positioned element is positioned relative to its normal position.
+The content of relatively positioned elements can be moved and overlap other elements, but the reserved space for the element is still preserved in the normal flow.
+
+Example
+h2.pos_right {
+    position: relative;
+    left: 20px;
+}
+
+
+** Absolute Positioning
+An absolute position element is positioned relative to the first parent element that has a position other than static. 
+If no such element is found, the containing block is <html>.
+Absolutely positioned elements are removed from the normal flow. 
+The document and other elements behave like the absolutely positioned element does not exist.
+Absolutely positioned elements can overlap other elements.
+
+Example:
+h2 {
+    position: absolute;
+    left: 100px;
+    top: 150px;
+}
+
+
+** Overlapping Elements
+When elements are positioned outside the normal flow, they can overlap other elements.
+The z-index property specifies the stack order of an element (which element should be placed in front of, or behind, the others).
+An element with greater stack order is always in front of an element with a lower stack order.
+
+img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+
+* Float
+With CSS float, an element can be pushed to left or right, allowing other element to wrap around it.
+
+** How Element Float
+Elements are floated horizontally, this means that an element can only be floated left or right, not up or down.
+The elements after the floating element will flow around it.
+The element before the floating element will not be affected.
+If an image is floated to right, a following text flows around it, to the left.
+
+
+
+** Floating Elements Next to Each Other
+If you place several floating elements after each other, they will float next to each other if there is room.
+
+.thumbnail {
+    float: left;
+    width: 110px;
+    height: 90px;
+    margin: 5px;
+}
+
+** Turning off Float - Using Clear
+Elements after the floating element will flow around it. To avoid this, use the clear property.
+
+ .text_line {
+    clear: both;
+}
+
+
+
+* Align
+** Center Aligning Using the margin Property
+Block elements can be center-aligned by setting the left and right margins to "auto".
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    background-color: #b0e0e6;
+}
+
+
+** Left and Right Aligning Using the position Property
+** Left and Right Aligning Using the float Property
+
+* Combinators
+** Descendant Selector
+The descendant selector matches all element that are descendants of a specified element.
+The following example selects all <p> elements inside <div> elements: 
+
+div p {
+    background-color: yellow;
+}
+
+
+** Child Selector
+The child selector selects all elements that are the immediate children of a specified element.
+The following example selects all <p> elements that are immediate children of a <div> element:
+
+div > p {
+    background-color: yellow;
+}
+
+
+** Adjacent Sibling Selector
+The adjacent sibling selector selects all elements that are the adjacent siblings of a specified element.
+Sibling elements must have the same parent element, and "adjacent" means "immediately following".
+The following example selects all <p> elements that are placed immediately after <div> elements:
+
+div + p {
+    background-color: yellow;
+}
+
+** General Sibling Selector
+The general sibling selector selects all elements that are siblings of a specified element.
+The following example selects all <p> elements that are siblings of <div> elements: 
+
+div ~ p {
+    background-color: yellow;
+}
+
+
+* Pseudo-classes
+Css pseudo-classes are used to add special effects to some selectors.
+
+** Syntax (:)
+The syntax of pseudo-classes:
+selector:pseudo-class {
+    property:value;
+}
+
+CSS classes can also be used with pseudo-classes:
+selector.class:pseudo-class {
+    property:value;
+}
+
+
+** Anchor Pseudo-classes
+a:link {
+    color: #FF0000;
+}
+
+** Pseudo-classes and CSS Classes
+CSS:
+
+a.red.visited {
+    color: #FF0000;
+}              
+
+HTML:
+
+<a class="red" href="css_syntax.asp">CSS Syntax</a>
+
+** The :first-child Pseudo-class
+The :first-child pseudo-class matches a specified element that is the first child of another element.
+
+*** Match the first <p> element
+p:first-child {
+    color: blue;
+}
+
+*** Match the first <i> element in all <p> elements
+p > i:first-child {
+    color: blue;
+}
+
+*** Match all <i> element in all first child <p> elements
+p:first-child i {
+    color: blue;
+}
+
+** The :lang Pseudo-class
+The :lang pseudo-class allows you to define special rules for different languages.
+
+<html>
+<head>
+<style>
+q:lang(no) {
+    quotes: "~" "~";
+}
+</style>
+</head>
+
+<body>
+<p>Some text <q lang="no">A quote in a paragraph</q> Some text.</p>
+</body>
+</html> 
+          
+
+* Pseudo-elements
+CSS pseudo-elements are used to add special effects to some selectors. (same with pseudo-class)
+
+** Syntax (similar to pseudo-class)
+The syntax of pseudo-elements:
+selector::pseudo-element {
+    property:value;
+}
+
+CSS classes can also be used with pseudo-elements:
+selector.class::pseudo-element {
+    property:value;
+}
+
+
+** The ::first-line Pseudo-element
+The ::first-line pseudo-element is used to add a special style to the first line of a text.
+The ::first-line pseudo-element can only be applied to block-level elements.
+
+Example:
+
+p::first-line {
+    color: #ff0000;
+    font-variant: small-caps;
+}
+
+
+** The ::first-letter Pseudo-element (similar)
+
+** The ::before Pseudo-element
+The ::before pseudo-element can be used to insert some content before the content of an element.
+The following example inserts an image before each <h1> element:
+
+Example
+h1::before {
+    content: url(smiley.gif);
+}
+
+
+** The ::after Pseudo-element (similar)
+
+* Navigation Bar
+** Navigation Bar = List of Links
+A navigation bar needs standard HTML as a base.
+A navigation bar is basically a list of links.
+
+
+
+* Image Opacity
+opacity: 0.4
+
+
+* Image Sprite
+An image sprite is a collection of images put into a single image.
+
+
+* Media Types
+
+* Attr Selectors
+
+
+

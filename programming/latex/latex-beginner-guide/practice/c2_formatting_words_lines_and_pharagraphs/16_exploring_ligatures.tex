@@ -1,0 +1,35 @@
+\documentclass[a4paper,11pt]{article}
+\begin{document}
+\title{Example 3}
+\author{My name}
+\date{January 5, 2019}
+\maketitle
+\section{What's this?}
+This   is   our second document.
+
+It contains two paragraphs. The first line of a paragraph will be
+indented, but not when it follows a heading.
+
+%% If the letter i follows the letter f, the dot of the letter i could collide with the head of the f. It
+%% could be avoided in two ways: either by increasing the space between those two letters or by
+%% combining them. The latter will result in a ligature. This will automatically be done by LaTeX
+%% when the used font provides such ligatures.
+ff fi flffiffl -- ---
+
+f\/f f\/i f\/l f\/f\/i f\/f\/l -\/- -\/-\/-
+
+halflife
+
+half\/life
+
+%% Curly braces can be used to achieve the same effect. For instance, in -{}- and {-}{-} , the
+%% dashes cannot be joined because this would cross group boundaries.
+
+%% completely suppressing ligatures could be
+%% done easily by passing the option noligatures to the microtype package:
+%% \usepackage[noligatures]{microtype}.
+
+\end{document}
+
+
+%% spaces separate words, empty lines separate paragraphs.

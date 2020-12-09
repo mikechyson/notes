@@ -1,0 +1,421 @@
+[2018-12-28 00:37:55]
+The specially formatted string carrying the date and/or time information is called a timestamp in Org mode.
+This may be a little confusing becuase timestamp is often used to indicate when something was created or last changed.
+However, in Org mode this term is used in a much wider sense.
+
+* Timestamps
+
+** Plain timestamp
+#+BEGIN_EXAMPLE
+<2016-11-01 Wed 19:15>
+<2006-11-02 Thu 20:00-22:00>
+#+END_EXAMPLE
+
+** Timestamp with repeater interval
+It applies not only on the given date, but again and again after a certain interval of
+N days(d), weeks(w), months(m), or years(y).
+#+BEGIN_EXAMPLE
+<2007-05-16 Wed 12:30 +1w>
+#+END_EXAMPLE
+
+** Time/Date range
+#+BEGIN_EXAMPLE
+<2004-08-23 Mon>--<2004-08-26 Thu>
+#+END_EXAMPLE
+
+** Inactive timestamp
+These timestamp are inactive in the sense 
+that they do not trigger an entry to show up in the agenda.
+#+BEGIN_EXAMPLE
+[2006-11-01 Wed]
+#+END_EXAMPLE
+
+* Creating timestamps
+=C-c .= (=org-time-stamp=)
+Prompt for a date and insert a corresponding timestamp.
+When the cursor is at an existing timestamp, 
+the command is used to modify this timestamp.
+When this command is used twice in succession,
+a time range is inserted.
+
+=C-c != (=org-time-stamp-inactive=)
+Like =C-c .=, but insert a inactive timestamp
+that will not cause an agenda entry.
+
+=C-u C-c .=
+=C-u C-c !=
+Like =C-c .= and =C-c !=, but use the alternative format 
+which contains date and time.
+
+=C-c C-c=
+Normalize timestamp, insert/fix day name if missing or wrong.
+
+=C-c <= (=org-date-from-calendar=)
+Insert a timestamp corresponding to the cursor date in the Calendar.
+
+=C-c >= (=org-goto-calendar=)
+Access the Emacs calendar for the current date.
+If there is a timestamp in the current line,
+go to the corresponding date instead.
+
+=C-c C-o= (=org-open-at-point=)
+Access the agenda for the date given by the timestamp or -rang at point.
+
+
+=S-left= (=org-timestamp-down-day=)
+=S-right= (=org-timestamp-up-day=)
+Change date at cursor by one day.
+
+
+=S-up= (=org-timestamp-up=)
+=S-down= (=org-timestamp=down=)
+Change the item under the cursor in a timestamp.
+The cursor can be on bracket, year, month, day, hour or minute.
+When the timestamp contains a time range like '15:30-16:30',
+modifying the first time will also shift the second, 
+shifting the time block with constant length.
+To change the length, modify the second time.
+
+=C-c C-y= (=org-evaluate-time-range=)
+Evaluate a time range by computing the difference between start and end.
+With a prefix argument, insert result after the time range.
+
+
+
+** Custom time format
+=org-display-custom-times=
+=org-time-stamp-custom-formats=
+
+=C-c C-x C-t= (=org-toggle-time-stamp-overlays=)
+Toggle the display of custom formats for dates and times.
+
+
+
+[2018-12-28 17:18:17]
+* Deadlines and scheduling
+A timestamp may be preceded by special keywords to facilitate planning.
+Both the timestamp and the keyword have to be positioned immediately
+after the task they refer to.
+
+** DEADLINE
+Meaning: the task is supposed to be finished on that date.
+
+On the deadline date, the task will be listed in the agenda.
+In addition, the agenda for today will carry a warning about
+the approaching or missed deadline, starting =org-deadline-warning-days=
+before the due date, and continuing until the entry is marked DONE.
+
+#+BEGIN_EXAMPLE
+          *** TODO write article about the Earth for the Guide
+              DEADLINE: <2004-02-29 Sun>
+#+END_EXAMPLE
+
+You can specify a different lead time for warnings for a specific deadline.
+Here is an example with a warning period of 5 days DEADLINE: <2004-02-29 Sun -5d>. 
+This warning is deactivated if the task gets scheduled and 
+you set =org-agenda-skip-deadline-prewarning-if-scheduled= to t. 
+
+** SCHEDULED
+Meaning: you are planning to start working on that task on the given date.
+
+The headline will be listed under the given date.
+In addition, a reminder that the scheduled date has passed will be presented
+in compilation for today, until the entry is marked DONE.
+
+#+BEGIN_EXAMPLE
+          *** TODO Call Trillian for a date on New Years Eve.
+              SCHEDULED: <2004-12-25 Sat>
+#+END_EXAMPLE
+
+If you want to delay the display of this task in the agenda, 
+use SCHEDULED: <2004-12-25 Sat -2d>: the task is still scheduled on the 25th 
+but will appear two days later. 
+In case the task contains a repeater, 
+the delay is considered to affect all occurrences; 
+if you want the delay to only affect the first scheduled occurrence of the task, 
+use --2d instead. 
+
+=org-scheduled-delay-days=
+=org-agenda-skip-scheduled-delay-if-deadline=
+
+
+In Org mode, scheduling means setting a date when you want to start working on an action item.
+
+** Inserting deadline/schedule
+
+=C-c C-d= (=org-deadline=)
+Insert DEADLINE keyword along with a stamp.
+When called with a prefix arg, an existing deadline will be removed from the entry.
+Depending on the variable =org-log-redeadline=, a note will be taken 
+when changing an existing deadline.
+
+=C-c C-s= (=org-schedule=)
+Insert SCHEDULED keyword along with a stamp.
+When called with a prefix argument, remove the scheduling date from the entry.
+Depending on the variable =org-log-reschedule=, a note will be taken
+when changing an existing scheduling.
+
+=C-c / d= (=org-check-deadline=)
+=C-c / b= (=org-check-before-date=)
+=C-c / a= (=org-check-after-date=)
+
+
+*#+STARTUP: C-M-i*
+
+** Repeated tasks
+If you need both a repeater and a special warning period, 
+the repeater should come first and the warning period last:
+<2005-10-01 Sat +1m -3d>
+
+
+When you try to mark a repeated entry DONE, 
+it will shift the base date of the repeating timestamp 
+by the repeater interval, and immediately set the entry state back to TODO.
+
+
+** TODO how to close a task with repeater
+   :LOGBOOK:  
+   - State "TODO"       from ""           [2018-12-28 Fri 16:33]
+   :END:      
+
+
+A timestamp will be added under the deadline,
+depending on the variabl =org-log-repeat=,
+to keep a record that you actually acted on 
+the previous instance of this deadline.
+
+
+With the ‘+1m’ cookie, the date shift will always be exactly one month. 
+So if you have not paid the rent for three months, 
+marking this entry DONE will still keep it as an overdue deadline. 
+
+
+Depending on the task, this may not be the best way to handle it. 
+For example, if you forgot to call your father for 3 weeks, 
+it does not make sense to call him 3 times in a single day to make up for it. 
+Finally, there are tasks like changing batteries 
+which should always repeat a certain time after the last time you did it. 
+For these tasks, Org mode has special repeaters ‘++’ and ‘.+’. 
+
+#+BEGIN_EXAMPLE
+     ** TODO Call Father
+        DEADLINE: <2008-02-10 Sun ++1w>
+        Marking this DONE will shift the date by at least one week,
+        but also by as many weeks as it takes to get this date into
+        the future.  However, it stays on a Sunday, even if you called
+        and marked it done on Saturday.
+     ** TODO Empty kitchen trash
+        DEADLINE: <2008-02-08 Fri 20:00 ++1d>
+        Marking this DONE will shift the date by at least one day, and
+        also by as many days as it takes to get the timestamp into the
+        future.  Since there is a time in the timestamp, the next
+        deadline in the future will be on today's date if you
+        complete the task before 20:00.
+     ** TODO Check the batteries in the smoke detectors
+        DEADLINE: <2005-11-01 Tue .+1m>
+        Marking this DONE will shift the date to one month after
+        today.
+#+END_EXAMPLE
+
+
+* Clocking work time
+Org mode allows you to clock the time you spend on specific tasks in a project. 
+
+When you start working on an item, you can start the clock. 
+When you stop working on that task, or when you mark the task done, 
+the clock is stopped and the corresponding time interval is recorded. 
+
+
+To save the clock history across Emacs sessions:
+#+BEGIN_SRC emacs-lisp
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+#+END_SRC
+
+[2018-12-28 17:57:59]
+** Clocking commands
+=C-c C-x C-i= (=org-clock-in=)
+Start the clock on the current item.
+With =C-u C-u= prefixes, clock into the task at point and mark it as the default task.
+
+
+=C-c C-x C-o= (=org-clock-out=)
+Stop the clock.
+
+
+=C-c C-x C-x= (=org-clock-in-last=)
+Reclock the last clocked task.
+With =C-u= prefix, select the task from the clock history. 
+Witch =C-u C-u= prefix, start clocking *from the time* when you clocked out the previous task. 
+
+
+=C-c C-x C-e= (=org-clock-modify-effort=estimate=)
+Add to or set the effort estimate of the item currently being clocked.
+
+=C-c C-c= (=org-evaluate-time-range=)
+Recompute the time interval after changing one of the timestamps.
+This is only necessary if you edit the timestamps directly.
+
+
+=C-S-<up/down>= (=org-clock-timestamps-up/down=)
+On CLOCK log lines, incrase/decrease both timestamps so that the clock duration keeps the same.
+
+
+=M-S-<up/down>= (=org-timestamps-up/down=)
+On CLOCK log lines, incrase/decrease the timestamps at point
+and the one of the previous (or the next clock) timestamp by the same duration.
+
+
+=C-c C-t= (=org-todo=)
+Changing the TODO state to DONE automatically stops the clock if it is running in this same item.
+
+
+=C-c C-x C-q= (=org-clock-cancel=)
+Cancel the current clock.
+
+
+=C-c C-x C-j= (=org-clock-goto=)
+Jump to the headline of the currently clocked in task.
+With a =C-u= prefix arg, select the target task from a list of recently clocked tasks. 
+
+
+=C-c C-x C-d= (=org-clock-display=)
+Display time summaries for each subtree in the current buffer.
+This puts overlays at the end of each headline, showing 
+the total time recorded under that heading, including the time of any subheadings. 
+You can use visibility cycling to study the tree, 
+but the overlays disappear when you change the buffer(=org-remove-highlights-with-change=) or press =C-c C-c=. 
+
+
+** TODO The clock table                                              :detail:
+   :LOGBOOK:  
+   - State "TODO"       from ""           [2018-12-29 Sat 14:11]
+   :END:      
+Org mode can produce quite complex reports based on the time clocking information.
+Such a report is called a clock table, because it is formatted as one or several Org tables.
+
+=C-c C-x C-r= (=org-clock-report=)
+Insert a dynamic block containing a clock report as 
+an Org mode table into the current file.
+When the cursor is at an existing clock table, just update it.
+
+
+=C-c C-c= or =C-c C-x C-u= (=org-dblock-update=)
+Update dynamic block at point.
+
+=C-u C-c C-x C-u=
+Update all dynamic blocks.
+
+
+#+BEGIN_EXAMPLE
+#+BEGIN: clocktable :maxlevel 2 :scope subtree 
+#+CAPTION: Clock summary at [2018-12-28 Fri 20:52]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *8:03* |
+|--------------+--------|
+| DONE clock 2 | 8:03   |
+#+END:
+#+END_EXAMPLE
+
+
+The ‘BEGIN’ line specifies a number of options to define the scope, structure, and formatting of the report. 
+Defaults for all these options can be configured in the variable =org-clocktable-defaults=. 
+
+The formatter options are interpreted by the function =org-clocktable-write-default=,
+but you can specify your own function using the =:formatter= parameter.
+
+*put the cursor at the end of the BEGIN line, press C-M-i*
+
+
+** Resolving idle time and continuous clocking
+By customizing the variable =org-clock-idle-time= to some integer, 
+Emacs can alert you when you get back to your computer after being
+idle for that many minutes, and ask what you want to do with the 
+idle time.
+
+=C-c C-x C-z= (=org-resolve-clocks=)
+Resovle all currently open org-mode clocks
+
+
+[2018-12-29 00:06:06]
+* DONE Effort estimates
+  :LOGBOOK:  
+  - State "DONE"       from "TODO"       [2019-01-01 Tue 11:31]
+  - State "TODO"       from ""           [2018-12-29 Sat 00:38]
+  :END:     
+
+If you want to plan your work in a very detailed way, 
+or if you need to produce offers with quotations of the estimated work effort, 
+you may want to assign effort estimates to entries. 
+If you are also clocking your work, 
+you may later want to compare the planned effort with 
+the actual working time, a great way to improve planning estimates. 
+
+#+BEGIN_EXAMPLE
+at the file name line, like
+
+U:**- test      All L237  (Org)  [0:08/0:30] (review)
+
+0:08 for used time in clock
+0:30 for effort estimate
+review for the headline with the current clock running
+#+END_EXAMPLE
+
+
+
+
+
+=C-c C-x e= (=org-set-effort=)
+Set the effort estimate for the current entry.
+With a numberic prefix argument, set it to the Nth allowed value. 
+
+=C-c C-x C-e= (=org-clock-modify-effort-estimate=)
+Modify the effort estimate of item currently being clocked.
+
+The best way to work with effort estimates is through column view. 
+
+
+=org-global-perperties=
+=org-columns-default-format=
+
+* Taking notes with a timer
+Org provides two types of timers: a relative timer that counts up and a countdown timer.
+The relative and countdown are started with separate commands. 
+
+=C-c C-x 0= (=org-timer-start=)
+Start or reset the relative timer. 
+By default, the timer is set to 0. 
+When called with a C-u prefix, prompt the user for a starting offset. 
+If there is a timer string at point, this is taken as the default, providing a 
+convenient way to restart taking notes after a break in the process. 
+
+=C-c C-x ;= (=org-timer-set-timer=)
+Start a countdown timer. The user is prompted for a duration. 
+=org-timer-default-timer= sets the default countdown value. 
+Giving a numeric prefix argument overrides this default value. 
+
+
+
+Once started, relative and countdown timers are controlled with the same commands. 
+
+=C-c C-x .=     (=org-timer=)
+Insert the value of the current relative or countdown timer into the buffer. 
+If no timer is running, the relative timer will be started. 
+When called with a prefix argument, the relative timer is restarted.
+
+=C-c C-x -=     (=org-timer-item=)
+Insert a description list item with the value of the current relative or countdown timer. 
+With a prefix argument, first reset the relative timer to 0.
+
+
+=M-<RET>=     (=org-insert-heading=)
+Once the timer list is started, you can also use M-<RET> to insert new timer items.
+
+C-c C-x ,   (=org-timer-pause-or-continue=)
+Pause the timer, or continue it if it is already paused.
+
+=C-c C-x _=     (=org-timer-stop=)
+Stop the timer. After this, you can only start a new timer, not continue the old one. 
+This command also removes the timer from the mode line.
+

@@ -1,0 +1,109 @@
+* Architectures
+ An architecutre is a family of CPUs who support the same instructions.
+ The two most prominent architecutres in the desktop world are the x86 and the x86_64 (amd64)
+ 
+amd64:
+Intel Pentium 4, Core2, Core i3, i5, i7
+
+
+X86 is a 32-bit architecutre 
+
+* Stage
+A stage3 tarbal is an archive containing a minumal Gentoo environment, suitable to continue the Gentoo installation.
+
+* Mirror File Location
+copy the link in the download page, find the same path in the mirror.
+
+
+* Booting
+uefi secure boot off
+
+** bios, uefi, secure boot
+*** bios: basic input output system
+BIOS is non-volatile firmware used to perform hardware initialization during the booting process, and to provide runtime services for operating systems and programs. The BIOS firmware comes pre-installed on a personal computer's system board, and it is the first software to run when powered on.
+
+*** uefi: Unified Extensible Firmware Interface
+The  UEFI is a specification that defines a software interface between an operating system and platform firmware. 
+[[file:uefi.png]]
+
+*** secure boot
+Secure Boot只是UEFI的一个部分。两者的关系是局部与整体的关系。
+
+Secure Boot的目的，是防止恶意软件侵入。它的做法就是采用密钥。UEFI规定，主板出厂的时候，可以内置一些可靠的公钥。然后，任何想要在这块主板上加载的操作系统或者硬件驱动程序，都必须通过这些公钥的认证。也就是说，这些软件必须用对应的私钥签署过，否则主板拒绝加载。由于恶意软件不可能通过认证，因此就没有办法感染Boot。
+
+
+** wireless
+ifconfig
+
+*** wpa
+Wi-Fi protected access
+*** wep
+wep: wired Equivalent Privacy
+
+
+*** three ways of configuring wifi
+graphical client
+text-mode interface
+command-line interface
+
+*** three tools to support command-line driven wireless configurtion
+net-wireless/iw
+net-wireless/wireless-tools
+net-wireless/wpa_supplicant
+
+The net-wireless/iw software, the successor of net-wireless/wireless-tools, supports nearly all cards and drivers, but it cannot connect to WPA-only Access Points. If the networks only offer WEP encryption or are completely open, then net-wireless/iw beats the other package over simplicity.
+
+command: rfkill --help
+
+***  wpa_supplicant
+vi  /etc/wpa_supplicant/wpa_supplicant.conf
+    # The below line not be changed otherwise wpa_supplicant refuses to work
+    ctrl_interface=/var/run/wpa_supplicant
+  
+    # Ensure that only root can read the WPA configuration
+    ctrl_interface_group=0
+  
+    # Let wpa_supplicant take care of scanning and AP selection
+    ap_scan=1
+  
+    # Simple case: WPA-PSK, PSK as an ASCII passphrase, allow all valid ciphers
+    network={
+      ssid="qfy"
+      psk="lllgyn66"
+      # The higher the priority the sooner we are matched
+      priority=5
+      }
+
+
+* Block Device
+SCSI and Serial ATA drives are both labeled /dev/sd*
+
+The block devices /dev/sd* represent an abstract interface to the disk.
+
+* Partition Tables
+Disk block devices are split up into smaller, more manageable block devices, called partitions.
+
+two standard partitioning technology:
+** MBR
+MBR: Master Boot Record
+
+The MBR setup uses 32-bit identifiers for the start sector and length of the partitions.
+support 3 partition types: primary, extended, logical.
+
+Primary partitions have their information stored in the master boot record itself - a very small (usually 512 bytes) location at the very beginning of a disk. Due to this small space, only four primary partitions are supported (for instance, /dev/sda1 to /dev/sda4).
+
+** GPT
+GPT: GUID Parition Table
+GUID: Globally Unique IDentifier
+
+The GPT setup uses 64-bit identifiers for the partitions.
+
+ESP: EFI System Partition
+
+
+** LVM
+LVM: Logical Volum Manager
+LVM increases the flexibility offered by the partiting setup.
+
+* Partition Scheme
+

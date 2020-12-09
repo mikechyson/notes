@@ -1,0 +1,16 @@
+| RESOURCE                                | LINK                                      |
+|-----------------------------------------+-------------------------------------------|
+| Stanford University's cs231 class       | http://cs231n.stanford.edu/               |
+| Deep Learning                           | http://www.deeplearningbook.org/          |
+| recent deep learning news               | https://www.reddit.com/r/MachineLearning/ |
+|                                         | https://www.reddit.com/r/deeplearning/    |
+| Computer Vision Online                  | http://pyimg.co/s1tc3                     |
+| Computer Vision and Pattern Recognition | http://pyimg.co/6ep60                     |
+| deep learning publications              | http://www.arxiv-sanity.com/              |
+| Keras github                            | https://github.com/fchollet/keras         |
+| mxnet github                            | https://github.com/dmlc/mxnet             |
+| This Wild Week in AI                    | http://www.wildml.com/newsletter/         |
+| Deep Learning Weekly                    | http://www.deeplearningweekly.com/        |
+
+
+

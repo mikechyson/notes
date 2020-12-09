@@ -1,0 +1,20 @@
+
+\chapter{Virtual host}
+
+Sometimes, you want to run several website on one server with only one ip.
+In this situation, you can use name-based virtual host.
+
+
+\section{Virtual host}
+
+To make the configuration clear, I create a two virtual hosts configuration \verb|chyson.net.conf| and \verb|chyson.fun.conf| separately.
+Here is my directory structure:
+\begin{verbatim}
+[root@chyson conf.d]# pwd
+/etc/httpd/conf.d
+[root@chyson conf.d]# ls
+README          chyson.fun.conf  django.conf  userdir.conf
+autoindex.conf  chyson.net.conf  ssl.conf     welcome.conf
+\end{verbatim}
+
+

@@ -1,0 +1,28 @@
+
+\chapter{Installation}
+
+\section{Python}
+
+As a Python Web framework, Django requires Python.
+The recommended installation of Python is to install Anaconda.
+
+\section{Database}
+
+Python includes a lightweight database called SQLite so you won’t need to set up a database just yet.
+This step is only necessary if you’d like to work with a “large” database engine like PostgreSQL, MariaDB, MySQL, or Oracle.
+
+\section{Django}
+
+This is the recommended way to install Django.
+
+\begin{enumerate}
+\item Create a virtual python environment with \verb|conda| (\verb|conda create -n django|).
+\item Activate the virtual environment (\verb|source activate django|).
+\item Install Django with \verb|pip| (\verb|python -m pip install Django|)
+\end{enumerate}
+
+To test the installation of Django, run the command \\
+\verb|python -m django --version|.
+If Django is installed, you should see the version of your installation.
+If it isn’t, you’ll get an error telling “No module named django”.
+

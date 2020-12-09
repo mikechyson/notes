@@ -1,0 +1,7 @@
+* Slime mode
+Slime mode is a minor mode. (indicator [? sbcl])
+C-h m
+select the slime mode to see the help documentation.
+
+
+

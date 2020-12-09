@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{listings}
+\begin{document}
+The environment is MacOS.
+
+\section{Install Emacs}
+\begin{lstlisting}
+  brew cask install emacs
+\end{lstlisting}
+\section{Install MacTex}
+https://tug.org/mactex/
+\section{Problems}
+\subsection{pdflatex}
+\begin{itemize}
+\item Find the pdflatex path
+  \begin{lstlisting}
+    type pdflatex # or
+    which pdflatex
+  \end{lstlisting}
+\item Add the following line into .emacs
+  \begin{lstlisting}
+    (setenv "PATH" (concat (getenv "PATH") ":/Library/Tex/texbin"))
+  \end{lstlisting}
+\end{itemize}
+
+\end{document}
+

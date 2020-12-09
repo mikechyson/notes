@@ -1,0 +1,90 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(gud-pdb-command-name "python -m pdb")
+ '(org-agenda-files (quote ("~/notes/plan.org")))
+ '(package-selected-packages
+   (quote
+    (pdb-capf pdb-mode elpy material-theme better-defaults)))
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; ;; MELPA 
+(require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t) 
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
+;; install packages
+(defvar my-packages
+  '(better-defaults			; set up some better Emacs defaults
+    material-theme			; Theme
+    elpy				; Emacs Lisp Python Environment
+    flycheck				; on the fly syntax checking
+    py-autopep8				; run autopep8 on save
+    blacken				; black formatting on save
+    ein					; Emacs IPython Notebook
+    magit				; Git integration
+    )
+  )
+
+;; scans the list in my-packages
+;; if the package listed is not already installed, install it
+(mapc #'(lambda (package)
+	  (unless (package-installed-p package)
+	    (package-install package)))
+      my-packages)
+
+
+
+;; basic cusomization
+(setq inhibit-startup-message t)	; hide the startup message
+;; (load-theme 'material t)		; load material theme
+(global-linum-mode t)			; enable line numbers globally
+
+;; enable elpy
+(elpy-enable)
+
+
+
+;; enable flycheck
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; enable autopep8
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+
+;; Use IPython for REPL
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+             "jupyter")
+
+
+
+;; agenda and calendar integration
+(setq org-agenda-include-diary nil)
+
+
+;; ;; load auctex
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
+
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+(put 'TeX-narrow-to-group 'disabled nil)
+(put 'LaTeX-narrow-to-environment 'disabled nil)

@@ -1,0 +1,941 @@
+* Numpy
+numpy: Numerical Python
+是高性能科学计算和数据分析的基础包。
+部分功能如下：
+- 向量，矩阵的计算
+- 用整组数据进行快速运算的标准数学函数（无需写循环）
+- 线性代数，随机数，傅立叶变换
+
+** import
+#+BEGIN_SRC python
+import numpy as np
+#+END_SRC 
+
+** shape
+shape是属性，所以是shape而不是shape()
+shape的确定，从外到内，例如
+#+BEGIN_EXAMPLE
+[[1],[1]] # shape: (2,1)
+[ [ [1,1] ] [ [1,1] ] ] # shape (2,1,2)
+#+END_EXAMPLE
+
+** 数组转矩阵
+#+BEGIN_SRC python
+>>> lst = [[1,2],[3,4]]
+lst = [[1,2],[3,4]]
+>>> arr1 = np.array(lst)
+arr1 = np.array(lst)
+>>> arr1
+arr1
+array([[1, 2],
+       [3, 4]])
+#+END_SRC
+
+** 创建等间隔一维数组
+#+BEGIN_SRC python
+np.arange(2,20,2)
+# arange: array range
+# array([ 2,  4,  6,  8, 10, 12, 14, 16, 18])
+#+END_SRC
+** 创建单位矩阵
+#+BEGIN_SRC python
+>>> np.ones([2,3], dtype=int)
+array([[1, 1, 1],
+       [1, 1, 1]])
+
+#+END_SRC
+** 创建零矩阵
+#+BEGIN_SRC python
+>>> np.zeros([2,3])
+array([[0., 0., 0.],
+       [0., 0., 0.]])
+
+#+END_SRC
+** 矩阵切片
+#+BEGIN_SRC python
+import numpy as np
+
+np.random.seed(1)  # 使每次运行程序产生的随即样本相同
+sample = np.random.randint(1, 10, [2, 2])
+print(sample)
+
+# [[6 9]
+#  [6 1]]
+
+print(sample[0, :])  # [6 9]
+
+print(sample[:, 0])  # [6 6]
+
+print(sample[1, 1])  # 1
+#+END_SRC
+** 矩阵运算
+#+BEGIN_SRC python
+import numpy as np
+
+# add, subtract, multiply, divide, reciprocal, power, mod, dot
+np.random.seed(1)
+a = np.random.randint(1, 10, [2, 2])
+b = np.random.randint(1, 10, [2, 2])
+print(a)
+print(b)
+# [[6 9]
+#  [6 1]]
+# [[1 2]
+#  [8 7]]
+
+c = np.subtract(a, b)
+print(c)
+# [[ 5  7]
+#  [-2 -6]]
+c = a - b
+print(c)
+# [[ 5  7]
+#  [-2 -6]]
+#+END_SRC
+** 矩阵截取clip
+#+BEGIN_SRC python
+a=np.arange(1,13).reshape((3,4))
+print(a)
+print(np.clip(a,5,9))#最小5，最大9，小于5的都成了5，大于9的都成了9
+#+END_SRC
+** 转置
+#+BEGIN_SRC python
+A=np.arange(1,10).reshape(3,3)
+print(A)
+print(np.transpose(A))
+print(A.T)
+#+END_SRC
+** 统计函数
+#+BEGIN_SRC python
+# mean, max, min, std, median, sum
+a = np.arange(5)
+print(a)
+print(np.mean(a))
+print(np.max(a))
+print(np.std(a))
+
+# [0 1 2 3 4]
+# 2.0
+# 4
+# 1.4142135623730951
+#+END_SRC
+** 随机数和随机样本
+一些源码：
+#+BEGIN_SRC python
+# Some aliases:
+ranf = random = sample = random_sample
+__all__.extend(['ranf', 'random', 'sample'])
+#+END_SRC
+
+#+BEGIN_SRC python
+# 产生[0,1)之间的均匀分布的一个随即数
+print(np.random.rand())
+
+# 返回标准正太分布的一个随机数
+print(np.random.randn())
+
+# 随即整数
+print(np.random.randint(1, 10))
+#+END_SRC
+
+
+#+BEGIN_SRC python
+# Results are from the "continuous uniform" distribution over the
+# stated interval.  To sample :math:`Unif[a, b), b > a` multiply
+# the output of `random_sample` by `(b-a)` and add `a`::
+#    (b - a) * random_sample() + a
+
+print(np.random.random_sample([3, 3, 3]))
+# [[[0.80848879 0.07742857 0.18408582]
+#   [0.71534262 0.92277854 0.02594712]
+#   [0.94654033 0.78486133 0.0861656 ]]
+# 
+#  [[0.78783097 0.50163162 0.00963713]
+#   [0.27947727 0.36261856 0.20622495]
+#   [0.81018606 0.66324607 0.44896777]]
+# 
+#  [[0.02874924 0.50940814 0.41704826]
+#   [0.67650676 0.94305175 0.51620809]
+#   [0.7300231  0.59682459 0.63704211]]]
+
+
+
+print(np.random.randint(1, 10, [3, 3, 3]))
+# [[[3 4 6]
+#   [8 7 6]
+#   [9 4 1]]
+# 
+#  [[4 6 4]
+#   [1 8 6]
+#   [7 4 2]]
+# 
+#  [[6 8 7]
+#   [5 8 7]
+#   [8 4 5]]]
+#+END_SRC
+
+
+** line space
+主要用于图形绘制中的坐标轴
+#+BEGIN_SRC python
+x = np.linspace(-2, 1, 10)
+#+END_SRC
+** save and load
+#+BEGIN_SRC python
+import numpy as np
+
+np.random.seed(1)
+a = np.random.randint(1, 10, [2, 2])
+b = np.random.randint(1, 10, [2, 2])
+
+np.save('a.npy', a)
+a_load = np.load('a.npy')
+print(a_load)
+
+np.savez('ab.npz', a, b)
+ab = np.load('ab.npz')
+
+print(ab['arr_0'])
+
+np.savez('ab.npz', a=a, b=b)
+ab = np.load('ab.npz')
+
+print(ab['a'])
+#+END_SRC
+** 判断两个矩阵是否相同
+#+BEGIN_SRC python
+import numpy as np
+
+a = np.array([1, 1])
+b = a
+c = np.array([1, 2])
+print(a == b)
+print(a == c)
+
+print((a == b).all())
+print((a == c).all())
+#+END_SRC
+** vstack and hstack
+#+BEGIN_SRC python
+>>> a=np.random.randint(0,10,(2,2,2))
+>>> a
+array([[[8, 7],
+        [3, 6]],
+
+       [[5, 1],
+        [9, 3]]])
+>>> np.hstack(a)
+array([[8, 7, 5, 1],
+       [3, 6, 9, 3]])
+>>> np.vstack(a)
+array([[8, 7],
+       [3, 6],
+       [5, 1],
+       [9, 3]])
+
+#+END_SRC
+* Sympy
+For symbolic computation.
+** import
+#+BEGIN_SRC python
+import sympy as sym
+#+END_SRC
+
+** derivative
+#+BEGIN_SRC python
+>>> sym.init_printing()
+sym.init_printing()
+>>> x = sym.symbols('x')
+x = sym.symbols('x')
+>>> y = x**2 + 4*x + 3 
+y = x**2 + 4*x + 3 
+>>> y.diff(x)
+y.diff(x)
+2⋅x + 4
+#+END_SRC
+
+** integrate
+#+BEGIN_SRC python
+x = sym.symbols('x')
+a = sym.Integral(sym.cos(x)*sym.exp(x), x)
+sym.Eq(a, a.doit())
+#+END_SRC
+
+[[file:pics/sym_integrate.png]]
+
+** plot
+#+BEGIN_SRC python
+x, y = sym.symbols('x y')
+z = x**2+2*x+y**2+4*y+4
+dzx = z.diff(x)
+dzy = z.diff(y)
+sym.plotting.plot3d(z, (x, -10, 10), (y, -10, 10))
+#+END_SRC
+
+[[file:pics/sym_plot.png]]
+* matplotlib
+For visualization.
+** import
+#+BEGIN_SRC python
+import matplotlib.pyplot as plt
+#+END_SRC
+
+** plot
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 1, 50)
+y = x**2 + x + 1
+plt.plot(x, y, marker='o')
+plt.show()
+#+END_SRC
+
+[[file:pics/plt_plot.png]]
+** scatter
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 1, 50)
+y = x ** 2 + x + 1
+plt.scatter(x, y)
+plt.show()
+#+END_SRC
+[[file:pics/plt_scatter.png]]
+** hist
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+mu, sigma = 100, 15
+x = mu + sigma * np.random.randn(10000)
+
+# the histogram of the data
+n, bins, patches = plt.hist(x, 50, density=True, facecolor='g', alpha=0.75)
+
+
+plt.xlabel('Smarts')
+plt.ylabel('Probability')
+plt.title('Histogram of IQ')
+plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+plt.axis([40, 160, 0, 0.03])
+plt.grid(True)
+plt.show()
+#+END_SRC
+[[file:pics/plt_hist.png]]
+Compute and draw the histogram of x.
+** multiple figures
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 1, 50)
+y = x ** 2 + x + 1
+plt.figure(1)
+plt.scatter(x, y)
+plt.figure(2)
+plt.plot(x, y)
+plt.show()
+#+END_SRC
+
+** 3d surface
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+ax = Axes3D(fig)
+
+# X, Y value
+X = np.arange(-4, 4, 0.25)
+Y = np.arange(-4, 4, 0.25)
+X, Y = np.meshgrid(X, Y)  # x-y 平面的网格
+R = np.sqrt(X ** 2 + Y ** 2)
+# height value
+Z = np.sin(R)
+
+# rstride: row stride
+# cstride: column stride
+ax.plot_surface(X, Y, Z, rstride=1, cstride=3, cmap=plt.get_cmap('rainbow'))
+plt.show()
+#+END_SRC
+
+[[file:pics/plt_surface.png]]
+
+** contourf
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+ax = Axes3D(fig)
+
+# X, Y value
+X = np.arange(-4, 4, 0.25)
+Y = np.arange(-4, 4, 0.25)
+X, Y = np.meshgrid(X, Y)  # x-y 平面的网格
+R = np.sqrt(X ** 2 + Y ** 2)
+# height value
+Z = np.sin(R)
+
+# rstride: row stride
+# cstride: column stride
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1,  cmap=plt.get_cmap('rainbow'))
+
+# fig = plt.figure(2)
+# ax = Axes3D(fig)
+ax.contourf(X, Y, Z, zdir='z', offset=-1.5, cmap=plt.get_cmap('rainbow'))
+
+plt.show()
+#+END_SRC
+
+zdir='z' project on z;
+[[file:pics/plt_contourf.png]]
+** quiver
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+
+mpl.style.use('seaborn-darkgrid')
+
+x1 = np.linspace(1, 3, 20)
+x2 = np.linspace(2, 4, 20)
+x1, x2 = np.meshgrid(x1, x2)
+
+u = 2 * x1 - 4
+v = 2 * x2 - 6
+
+plt.quiver(x1, x2, -u, -v)
+plt.show()
+#+END_SRC
+
+[[file:pics/plt_quiver.png]]
+** label, title
+#+BEGIN_SRC python
+plt.xlabel()
+plt.title()
+#+END_SRC
+** style
+#+BEGIN_SRC python
+import matplotlib as mpl
+
+mpl.style.use('ggplot')
+#+END_SRC
+** subplot
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 1, 50)
+y = x ** 2 + x + 1
+
+plt.subplot(1, 2, 1)  # one row, two columns; the first figure
+plt.scatter(x, y)
+plt.subplot(1, 2, 2)  # one row, two columns; the second figure
+plt.plot(x, y)
+plt.show()
+#+END_SRC
+[[file:pics/plt_subplot.png]]
+
+* scikit-learn (sklearn)
+
+** LabelEncoder, LabelBinarizer, OneHotEncoder
+#+BEGIN_SRC python
+from sklearn.preprocessing import LabelEncoder, LabelBinarizer, OneHotEncoder
+
+num = [1, 2, 3]
+s = ['a', 'b', 'c']
+d2 = [[0, 0, 3],
+      [1, 1, 0],
+      [0, 2, 1],
+      [1, 0, 2]]
+
+le = LabelEncoder()
+lb = LabelBinarizer()
+ohe = OneHotEncoder()
+
+print('label encoder...')
+print(le.fit_transform(num))
+print(le.fit_transform(s))
+
+print('label binarizer...')
+print(lb.fit_transform(num))
+print(lb.fit_transform(s))
+
+print('one hot encoder...')
+ohe.fit(d2)
+print(ohe.transform([[0, 1, 3]]).toarray())
+print(ohe.transform([[1, 2, 3]]).toarray())
+#+END_SRC
+
+Print:
+#+BEGIN_EXAMPLE
+label encoder...
+[0 1 2]
+[0 1 2]
+label binarizer...
+[[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+[[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+one hot encoder...
+[[1. 0. 0. 1. 0. 0. 0. 0. 1.]]
+[[0. 1. 0. 0. 1. 0. 0. 0. 1.]]
+#+END_EXAMPLE
+
+For OneHotEncoder and d2, there is 2 values in the first feature (0,1), so the first feature occupies an array of length 2, [1,0] for 0, [0,1] or 1;
+There are 3 values in the second feautre (0,1,2), so the second feature occupies an array of length 3, [1,0,0] for 0, [0,1,0] for 1, [0,0,1] for 2;
+
+* Pandas
+- load data
+- add index on matrix
+- statistical computation(average, variance, maxisum, minimum)
+** Construction
+#+BEGIN_SRC python
+    def __init__(self, data=None, index=None, columns=None, dtype=None,
+                 copy=False):
+#+END_SRC
+For example:
+#+BEGIN_SRC python
+import pandas as pd
+
+a = np.ones([3, 3])
+df1 = pd.DataFrame(a)
+print(df1)
+
+df2 = pd.DataFrame(a, columns=list('abc'))
+print(df2)
+
+df3 = pd.DataFrame(a, index=list('ABC'), columns=list('abc'))
+print(df3)
+#+END_SRC
+
+The output is:
+#+BEGIN_EXAMPLE
+     0    1    2
+0  1.0  1.0  1.0
+1  1.0  1.0  1.0
+2  1.0  1.0  1.0
+     a    b    c
+0  1.0  1.0  1.0
+1  1.0  1.0  1.0
+2  1.0  1.0  1.0
+     a    b    c
+A  1.0  1.0  1.0
+B  1.0  1.0  1.0
+C  1.0  1.0  1.0
+#+END_EXAMPLE
+* Tensorflow
+** basic
+*** import
+#+BEGIN_SRC python
+import tensorflow as tf
+#+END_SRC
+
+*** matrix
+#+BEGIN_SRC python
+import tensorflow as tf
+import numpy as np
+
+a1 = tf.constant(np.ones([4, 4]))
+a2 = tf.constant(np.ones([4, 4]))
+print(a1)
+a1_dot_a2 = tf.matmul(a1, a2)
+
+sess = tf.Session()
+print(sess.run(a1_dot_a2))
+#+END_SRC
+
+output:
+
+#+BEGIN_EXAMPLE
+Tensor("Const:0", shape=(4, 4), dtype=float64)
+[[4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]]
+
+#+END_EXAMPLE
+
+*** variable
+#+BEGIN_SRC python
+# define constant
+a1 = tf.constant(np.ones([4, 4]) * 2)
+
+# define vairable
+b1 = tf.Variable(a1)
+b2 = tf.Variable(np.ones([4, 4]))
+
+# define matrix mulplication
+b1_dot_b2 = tf.matmul(b1, b2)
+
+# variable initialization
+init = tf.global_variables_initializer()
+sess = tf.Session()
+sess.run(init)
+
+print(sess.run(b1))
+print(sess.run(b2))
+print(sess.run(b1_dot_b2))
+#+END_SRC
+
+output:
+
+#+BEGIN_EXAMPLE
+[[2. 2. 2. 2.]
+ [2. 2. 2. 2.]
+ [2. 2. 2. 2.]
+ [2. 2. 2. 2.]]
+[[1. 1. 1. 1.]
+ [1. 1. 1. 1.]
+ [1. 1. 1. 1.]
+ [1. 1. 1. 1.]]
+[[8. 8. 8. 8.]
+ [8. 8. 8. 8.]
+ [8. 8. 8. 8.]
+ [8. 8. 8. 8.]]
+
+#+END_EXAMPLE
+*** placeholder
+#+BEGIN_SRC python
+import tensorflow as tf
+import numpy as np
+
+b = tf.Variable(np.ones([4, 4]))
+
+# define placeholder
+c = tf.placeholder(dtype=tf.float64, shape=[4, 4])
+
+c_dot_b = tf.matmul(c, b)
+
+init = tf.global_variables_initializer()
+sess = tf.Session()
+sess.run(init)
+
+print(sess.run(c_dot_b, feed_dict={c: np.ones([4, 4])}))
+#+END_SRC
+
+output:
+
+#+BEGIN_EXAMPLE
+[[4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]]
+
+#+END_EXAMPLE
+
+*** matrix functions
+#+BEGIN_SRC python
+import tensorflow as tf
+
+A_r = [[1, 2], [-1, 1]]
+b_r = [1, 1]
+
+A = tf.placeholder(dtype=tf.float64, shape=[2, 2])
+b = tf.placeholder(dtype=tf.float64, shape=[2])
+
+# usage of matrix functions
+A_pow = tf.pow(A, 2)
+A_relu = tf.nn.relu(A)
+A_inverse = tf.matrix_inverse(A)
+A_T = tf.transpose(A)
+b_diag = tf.diag(b)
+I = tf.eye(6)
+A_concat = tf.concat([A, A], axis=0)
+
+init = tf.global_variables_initializer()
+sess = tf.Session()
+sess.run(init)
+
+lst = sess.run([A_pow, A_relu, A_inverse, A_T, b_diag, I, A_concat], feed_dict={A: A_r, b: b_r})
+
+for _ in lst:
+    print(_)
+#+END_SRC
+output:
+
+#+BEGIN_EXAMPLE
+[[1. 4.]
+ [1. 1.]]
+[[1. 2.]
+ [0. 1.]]
+[[ 0.33333333 -0.66666667]
+ [ 0.33333333  0.33333333]]
+[[ 1. -1.]
+ [ 2.  1.]]
+[[1. 0.]
+ [0. 1.]]
+[[1. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 1.]]
+[[ 1.  2.]
+ [-1.  1.]
+ [ 1.  2.]
+ [-1.  1.]]
+
+#+END_EXAMPLE
+
+
+*** scope
+#+BEGIN_SRC python
+W = tf.Variable(tf.zeros([4, 4]), name="W")
+print(W.name)
+
+with tf.variable_scope("first-nn-layer"):
+    W2 = tf.Variable(tf.zeros([4, 4]), name="W")
+print(W2.name)
+
+with tf.variable_scope("second-nn-layer") as scope:
+    W3 = tf.get_variable("W", [4, 4])
+    scope.reuse_variables()
+    W4 = tf.get_variable("W", [4, 4])
+print(W4.name)
+#+END_SRC
+
+output:
+
+#+BEGIN_EXAMPLE
+W:0
+first-nn-layer/W:0
+second-nn-layer/W:0
+
+#+END_EXAMPLE
+
+如果将 W3 = tf.get_variable("W", [4, 4]) 注释掉，则 W4 = tf.get_variable("W", [4, 4]) 会报错。
+reuse会使用之前使用get_variable方法创建的同名字的变量，而不会自动创建变量。不存在则报错。
+
+** simple demo
+#+BEGIN_SRC python
+import tensorflow as tf
+from sklearn.datasets import load_iris
+
+# 1. load data
+iris = load_iris()
+data = iris.data  # (150, 4)
+target = iris.target  # (150,)
+
+# 2. placeholder to hold the data
+X = tf.placeholder(tf.float32, [None, 4])  # None 表示行不限
+y = tf.placeholder(tf.float32, [None, 1])
+
+# 3. layer
+#   This layer implements the operation:
+#   `outputs = activation(inputs * kernel + bias)`
+net = tf.layers.dense(X, 4, activation=tf.nn.relu)
+
+# 4. output
+fx = tf.layers.dense(net, 1)
+
+# 5. loss function
+loss = tf.reduce_mean(tf.square(fx - y))
+
+# 6. train step
+train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
+
+# 7. init
+sess = tf.Session()
+init = tf.global_variables_initializer()
+sess.run(init)
+
+# 8. iteration
+for itr in range(10):
+    sess.run(train_step, feed_dict={X: data, y: target.reshape(-1, 1)})
+
+    y_predict = sess.run(y, feed_dict={X: data[:3, :], y: target.reshape(-1, 1)[:3, :]})
+    print('iteration: {} with predict: \n{}'.format(itr, y_predict))
+#+END_SRC
+
+** graph
+#+BEGIN_SRC python
+graph = tf.Graph()
+
+with graph.as_default():
+    #neutual network
+writer = tf.summary.Filewriter('logdir',graph)
+#+END_SRC
+
+** save
+#+BEGIN_SRC python
+saver = tf.train.Saver()
+saver.save(sess,'model_path')
+
+#+END_SRC
+
+** load
+#+BEGIN_SRC python
+saver.restore(sess,'model_path')
+#+END_SRC
+
+** optimizer
+*** SGD
+
+*** RMSprop
+
+*** Adagrad
+
+*** Adadelta
+
+*** Adam
+
+*** Adamax
+
+*** Nadam
+
+*** TFOptimizer
+** loss
+* OpenCV
+** 读取图片
+#+BEGIN_SRC python
+image = cv2.imread(path)
+#+END_SRC
+
+The function determines the type of an image by the content, not by the file extension.
+In the case of color images, the decoded images will have the channels stored in *BGR* order.
+The shape is (height, width, channels).
+** 获取图片属性
+*** 获取row, column, channels
+#+BEGIN_SRC python
+print(img.shape)
+#+END_SRC
+
+*** 获取pixels总数目
+#+BEGIN_SRC python
+print(img.size)
+#+END_SRC
+
+*** datatype
+#+BEGIN_SRC python
+print(img.dtype)
+#+END_SRC
+
+** ROI
+ROI: region of image （图片的一块区域）
+ROI is obtained using Numpy indexing.
+
+#+BEGIN_SRC python
+import cv2 as cv
+
+img = cv.imread('../data/dog.jpg')
+print(img.shape)
+print(img[100, 100])
+eye = img[56:76, 55:85]
+for i in range(0, 190, 30):
+    img[i:i + 20, i:i + 30] = eye
+
+cv.imshow('hack', img)
+cv.waitKey(0)
+#+END_SRC
+[[file:pics/cv-roi.png]]
+
+** 获取某个channel
+#+BEGIN_SRC python
+b = img[:, :, 0]
+img[:, :, 2] = 0
+#+END_SRC
+
+
+** 读取视频或摄像头
+#+BEGIN_SRC python
+    # videoCapture = cv2.VideoCapture(path)
+    videoCapture = cv2.VideoCapture(0)
+    # 读帧
+    success, frame = videoCapture.read()
+    while success:
+        ....
+        cv2.imshow('bala', frame)
+	cv2.waitKey(40)
+	success, frame = videoCapture.read()
+#+END_SRC
+** 颜色转化
+
+#+BEGIN_SRC python
+img2gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#+END_SRC
+** 写文字
+#+BEGIN_SRC python
+cv2.putText(...)
+#+END_SRC
+
+** 画框
+#+BEGIN_SRC python
+cv2.rectangle(...)
+#+END_SRC
+
+* Keras
+
+Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano. It was developed with a focus on enabling fast experimentation. Being able to go from idea to result with the least possible delay is key to doing good research.
+
+** Sequential
+template:
+
+- construct
+#+BEGIN_SRC python
+model = Sequential()
+model.add(...)
+#+END_SRC
+
+- compilation
+#+BEGIN_SRC python
+model.compile(...)
+#+END_SRC
+
+- train
+#+BEGIN_SRC python
+model.fit(data, label, ...)
+#+END_SRC
+
+- plot
+#+BEGIN_SRC python
+history = model.fit(...)
+plt.plot(history.history['acc']) # matplotlib.pyplot
+#+END_SRC
+
+- evalueate
+#+BEGIN_SRC python
+model.evaluate(...)
+#+END_SRC
+
+- save (can also be saved by specifying aguments in model.fit(...))
+#+BEGIN_SRC python
+mode.save(...) # save model and weights
+model.save_weights(...) # save weight only
+#+END_SRC
+
+- predict
+#+BEGIN_SRC python
+model.predict(...)
+#+END_SRC
+
+** Functional API
+https://keras.io/getting-started/functional-api-guide/
+
+- A layer instance is callable (on a tensor), and it returns a tensor
+- Input tensor(s) and output tensor(s) can then be used to define a *Model*
+- Such a model can be trained just like Keras *Sequential* models.
+
+
+
+* dlib
+
+* skikit-image
+
+* imutils
+
+* mxnet
+
+* h5py
+
+* pickle

@@ -1,0 +1,409 @@
+[2018-12-30 20:04:37]
+Due to the way Org works, TODO items, time-stamped items, and tagged headlines can be scattered throughout a file or even a number of files. 
+To get an overview of open action items, or of events that are important for a particular date, this information must be collected, sorted and displayed in an organized way. 
+
+Org can select items based on various criteria and display them in a separate buffer. Six different view types are provided:
+
+- an agenda :: that is like a calendar and shows information for specific dates,
+- a TODO list :: that covers all unfinished action items,
+- a match view :: showings headlines based on the tags, properties, and TODO state associated with them,
+- a text search view :: that shows all entries from multiple files that contain specified keywords,
+- a stuck projects view :: showing projects that currently don't move along, and
+- custom views :: that are special searches and combinations of different views. 
+
+The extracted information is displayed in a special agenda buffer. 
+This buffer is read-only, but provides commands to visit the corresponding locations in the original Org files, and even to edit these files remotely. 
+
+By default, the report ignores commented and archived entries. 
+You can override this by setting =org-agenda-skip-comment-trees= and =org-agenda-skip-archived-trees= to nil. 
+
+
+- =org-agenda-window-setup= :: how the agenda buffer is displayed
+- =org-agenda-restore-windows-after-quit= :: whether the window configuration is restored when the agenda exits
+
+
+* Agenda files
+The information to be shown is normally collected from all agenda files, the files listed in the variable =org-agenda-files=. 
+If an entry is a directory, all files in that directory that are matched by
+=org-agenda-file-regexp= will be part of the file list.
+
+Thus, even if you only work with a single Org file, that file should be put into the list. 
+You can customize =org-agenda-files=, but the easiest way to maintain it is through the following commands 
+
+- C-c [ (org-agenda-file-to-front) ::
+     Add current file to the list of agenda files. The file is added to the front of the list. 
+     If it was already in the list, it is moved to the front. 
+     With a prefix argument, file is added/moved to the end.
+
+- C-c ] (org-remove-file) :: 
+     Remove current file from the list of agenda files.
+
+- C-, (org-cycle-agenda-files) :: 
+     Cycle through the files in ‘org-agenda-files’.
+     If the current buffer visits an agenda file, find the next one in the list.
+     If the current buffer does not, find the first agenda file.
+
+
+To restrict the agenda scope for an extended period, use the following commands:
+- C-c C-x < :: (org-agenda-set-restriction-lock)
+               Permanently restrict the agenda to the current subtree. 
+               When with a prefix argument, or with the cursor before the first headline in a file, the agenda scope is set to the entire file. 
+               This restriction remains in effect until removed with C-c C-x >, or by typing either < or > in the agenda dispatcher. 
+               If there is a window displaying an agenda view, the new restriction takes effect immediately.
+
+- C-c C-x > :: (org-agenda-remove-restriction-lock)
+               Remove the permanent restriction.
+
+* Four Org Commands to bound globally
+The four Org commands =org-store-link, org-capture, org-agenda, and org-switchb= should be accessible through global keys.
+Here are suggested bindings for these keys.
+
+#+BEGIN_SRC emacs-lisp
+     (global-set-key "\C-cl" 'org-store-link)
+     (global-set-key "\C-ca" 'org-agenda)
+     (global-set-key "\C-cc" 'org-capture)
+     (global-set-key "\C-cb" 'org-switchb)
+#+END_SRC
+
+* The agenda dispatcher
+The views are created through a dispatcher.
+
+- =C-c a (org-agenda)= ::
+     Dispatch agenda commands to collect entries to the agenda buffer.
+
+
+* The built-in agenda views
+** Weekly/daily agenda
+The purpose of the weekly/daily agenda is to act like a page of a paper agenda, showing all the tasks for the current week or day. 
+
+- C-c a a     (org-agenda-list) ::
+     Compile an agenda for the current week from a list of Org files. The agenda shows the entries for each day. 
+
+*** Calendar/Diary integration
+In order to include entries from the Emacs diary into Org mode's agenda, you only need to customize the variable
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-include-diary t)
+#+END_SRC
+After that, all diary entries including holidays, anniversaries, etc., will be included in the agenda buffer.
+
+
+
+** Global TODO list
+The global TODO list contains all unfinished TODO items formatted and collected into a single place.
+
+- C-c a t     (org-todo-list) ::
+     Show the global TODO list. 
+     This collects the TODO items from all agenda files into a single buffer. 
+- C-c a T     (org-todo-list) ::
+     Like the above, but allows selection of a specific TODO keyword. 
+     You are prompted for a keyword, and you may also specify several keywords by separating them with ‘|’ as the boolean OR operator. 
+     With a numeric prefix, the Nth keyword in =org-todo-keywords= is selected. 
+     The r key in the agenda buffer regenerates it, and you can give a prefix argument to this command to change the selected TODO keyword, for example 3 r. 
+     
+
+Normally the global TODO list simply shows all headlines with TODO keywords. 
+This list can become very long. There are two ways to keep it more compact: 
+1. View a TODO item that has been scheduled for execution or have a deadline as no longer open. 
+   Configure the variables =org-agenda-todo-ignore-scheduled, org-agenda-todo-ignore-deadlines, org-agenda-todo-ignore-timestamp= and/or =org-agenda-todo-ignore-with-date= to exclude such items.
+2. TODO items may have sublevels to break up the task into subtasks. In such cases it may be enough to list only the highest level TODO headline and omit the sublevels from the global list. 
+   Configure the variable =org-agenda-todo-list-sublevels= to get this behavior.
+   
+** Matching tags and properties
+
+- C-c a m     (org-tags-view) ::
+     Produce a list of all headlines that match a given set of tags. The command prompts for a selection criterion, which is a boolean logic expression with tags.
+- C-c a M     (org-tags-view) ::
+     Like C-c a m, but only select headlines that are also TODO items in a not-DONE state and force checking subitems (see =variable org-tags-match-list-sublevels=). 
+     To exclude scheduled/deadline items, see the variable =org-agenda-tags-todo-honor-ignore-options=. Matching specific TODO keywords together with a tags match is also possible.
+
+
+*** Match syntax
+- & :: and
+- | :: or
+- + :: and
+- - :: not
+- {} :: regular expression
+
+
+#+BEGIN_EXAMPLE
+work
+work&boss
++work-boss
+work|laptop
+work|latptop+night
+work+{^boss.*}
+work+TODO="WAITING"
+work+TODO="WAITING"|home+TODO="WAITING"
++work-boss+PRIORITY="A"+Coffee="unlimited"+Effort<2+With={Sarah\|Denny}+SCHEDULED>="<2008-10-11>"
+#+END_EXAMPLE
+Group tags (see Tag hierarchy) are expanded as regular expressions.
+E.g., if ‘:work:’ is a group tag for the group ‘:work:lab:conf:’, then searching for ‘work’ will search for ‘{\(?:work\|lab\|conf\)}’ and 
+searching for ‘-work’ will search for all headlines but those with one of the tags in the group (i.e., ‘-{\(?:work\|lab\|conf\)}’). 
+
+** Search View
+This agenda view is a general text search facility for Org mode entries. It is particularly useful to find notes. 
+
+- C-c a s     (org-search-view) ::
+     This is a special search that lets you select entries by matching a substring or specific words using a boolean logic. 
+
+Note that in addition to the agenda files, this command will also search the files listed in =org-agenda-text-search-extra-files=. 
+
+
+** Stuck projects
+A stuck project is a project that has no defined next actions, so it will never show up in the TODO lists Org mode produces. 
+
+- C-c a #     (org-agenda-list-stuck-projects) ::
+     List projects that are stuck.
+- C-c a ! ::
+            Customize the variable org-stuck-projects to define what a stuck project is and how to find it. 
+
+
+You almost certainly will have to configure this view before it will work for you. 
+The built-in default assumes that all your projects are level-2 headlines, and that 
+a project is not stuck if it has at least one entry marked with a TODO keyword TODO or NEXT or NEXTACTION. 
+
+
+* Presentation and sorting
+Before displaying items in an agenda view, Org mode visually prepares the items and sorts them. Each item occupies a single line.
+The line starts with a /prefix/ that contains the /category/ of the item and other important information. 
+
+=org-agenda-tags-column=
+=org-agenda-prefix-format=
+
+** Categories
+The category is a broad label assigned to each agenda item.
+By default, the category is simply derived from the file name.
+
+Specify a buffer with
+#+BEGIN_EXAMPLE
+#+CATEGORY: Thesis
+#+END_EXAMPLE
+
+Specify a single entry or a (sub)tree with 
+#+BEGIN_EXAMPLE
+:PROPERTIES: 
+:CATEGORY: Thesis
+:END:
+#+END_EXAMPLE
+
+
+The display in the agenda buffer looks best if the category is not longer than 10 characters. 
+You can set up icons for category by customizing the =org-agenda-category-icon-alist= variable. 
+
+** Time-of-day specifications
+Org mode checks each agenda item for a time-of-day specification.
+
+For agenda display, Org mode extracts the time and displays it in a standard 24 hour format as part of the prefix. 
+
+If the agenda is in single-day mode, or for the display of today, the timed entries are embedded in a time grid.
+(=org-agenda-use-time-grid=, =org-agenda-time-grid=)
+
+** Sorting agenda items
+Before being inserted into a view, the items are sorted. How this is done depends on the type of view. 
+Sorting can be customized using the variable =org-agenda-sorting-strategy=.
+
+** DONE Filtering/limiting agenda items
+   :LOGBOOK:  
+   - State "DONE"       from "TODO"       [2018-12-31 Mon 19:14]
+   - State "TODO"       from ""           [2018-12-30 Sun 23:12]
+   :END:      
+Agenda built-in or customized commands are statically defined. 
+Agenda filters and limits provide two ways of dynamically narrowing down the list of agenda entries: /filters/ and /limits/. 
+Filters only act on the display of the items, while limits take effect before the list of agenda entries is built. 
+Filters are more often used interactively, while limits are mostly useful when defined as local variables within custom agenda commands. 
+
+*** Filtering in the agenda
+- / (org-agenda-filter-by-tag) ::
+     <SPC> mean any tag at all.
+     <TAB> at prompt will offer use completion to select a tag.
+     When called with prefix arg, remove the entries that do have the tag.
+     A second / at the prompt will turn off the filter.
+     +/- switch between filtering and excluding the next tag.
+
+- [ ] { } (in search view) ::
+     add new search words ([ and ]) or new regular expressions ({ and }) to the query string.
+     The opening bracket/brace will add a positive search term prefixed by ‘+’, indicating that this search term must occur/match in the entry. 
+     The closing bracket/brace will add a negative search term which must not occur/match in the entry for it to be selected.
+
+- < (org-agenda-filter-by-category) :: 
+     Filter the current agenda view with respect to the category of the item at point.
+     Pressing < another time will remove this filter. 
+     When called with a prefix argument exclude the category of the item at point from the agenda.
+
+- = (org-agenda-filter-by-regexp) :: 
+     Filter the agenda view by a regular expression.
+     When called with a prefix argument, it will filter out entries matching the regexp.
+     With two universal prefix arguments, it will remove all the regexp filters, which can be accumulated.
+
+- | (org-agenda-filter-remove-all) :: 
+     Remove all filters in the current agenda view.
+
+*** Setting limits for the agenda
+=org-agenda-max-entries=
+=org-agenda-max-effort=
+=org-agenda-max-todos=
+=org-agenda-max-tags=
+
+* Commands in the agenda buffer
+
+*C-h o org-agenda-mode*
+
+Entries in the agenda buffer are linked back to the Org file or diary file where they originate. 
+You are not allowed to edit the agenda buffer itself, but commands are provided to show and jump to the original entry location, and to edit the Org files “remotely” from the agenda buffer. 
+In this way, all information is stored only once, removing the risk that your agenda and note files may diverge. 
+
+** Motion
+| n | org-agenda-next-line     | next line     |
+| p | org-agenda-previous-line | previous line |
+| N | org-agenda-next-item     | next item     |
+| P | org-agenda-previous-item | previous item |
+
+** View/Go to Org file
+- <SPC> (org-agenda-show-and-scroll-up) ::
+     Display the original location of the item in another window.
+     With prefix arg, make sure that drawers stay folded.
+- L (org-agenda-recenter) :: 
+     Dispaly original location and recenter that window.
+- <TAB> (org-agenda-goto) :: 
+     Go to the original location of the item in another window.
+- <RET> (org-agenda-switch-to) :: 
+     Go to the Org-mode file which contains the item at point.
+- F (org-agenda-follow-mode) :: 
+     Toggle Follow mode.
+     In Follow mode, as you move the cursor through the agenda buffer, the other window always shows the corresponding location in the Org file.
+     The initial setting for this mode in new agenda buffers can be set with the variable =org-agenda-start-with-follow-mode=
+- C-c C-x b (org-agenda-tree-to-indirect-buffer) :: 
+     Display the entire subtree of the current item in an indirect buffer.
+
+** Change display
+| A           |                                    | Interactively select another agenda view and append it to the current view.                     |
+| o           |                                    | Delete other windows.                                                                           |
+| v d         | org-agenda-day-view                |                                                                                                 |
+| v w         | org-agenda-week-view               |                                                                                                 |
+| v t         | org-agenda-fortnight-view          | fortnight: two weeks.                                                                           |
+| v m         | org-agenda-month-view              |                                                                                                 |
+| v y         | org-agenda-year-view               |                                                                                                 |
+| v <SPC>     | org-agenda-reset-view              | Switch to day/week/month/year view. 3-v-m means jump to month 3.                                |
+| f           | org-agenda-later                   | Go forward in time to display the following =org-agenda-current-span= days.                     |
+| b           | org-agenda-earlier                 | Go backward in time to display earlier dates.                                                   |
+| .           | org-agenda-goto-today              |                                                                                                 |
+| j           | org-agenda-godo-date               | Prompt for a date and go there.                                                                 |
+| J           | org-agenda-clock-goto              | Go to the currently clocked in task in the agenda buffer.                                       |
+| D           | org-agenda-toggle-diary            | Toggle the inclusion of diary entries.                                                          |
+| v l         | org-agenda-log-mode                | Toggle Logbook mode. =org-agenda-log-mode-items=                                                |
+| v [         | org-agenda-manipulate-query-add    | Include inactive timestamps into the current view. Only for weekly/daily agenda.                |
+| v a         | org-agenda-archives-mode           | Toggle Archive mode. Trees that are marked ARCHIVED are also scanned when producing the agenda. |
+| v A         | org-agenda-archives-mode 'files    | Toggle Archive mode. All archive files are included.                                            |
+| v R         | org-agenda-clockreport-mode        | Toggle Clockreport mode.                                                                        |
+| v c         |                                    | clockcheck                                                                                      |
+| v E         | org-agenda-entry-text-mode         | Toggle entry text mode. In this mode, a number of lines will be displayed below the line.       |
+| G           | org-agenda-toggle-time-grid        | Toggle the time grid on and off. =org-agenda-use-time-grid= and =org-agenda-time-grid=          |
+| r/g         | org-agenda-redo                    | Recreate the agenda buffer.                                                                     |
+| s           | org-save-all-org-buffers           | Save all Org buffers, and also the locations of IDs.                                            |
+| C-c C-x C-c | org-agenda-columns                 | Invoke column view in the agenda buffer.                                                        |
+| C-c C-x >   | org-agenda-remove-restriction-lock | Remove the restriction lock on the agenda.                                                                                               |
+
+
+[2018-12-31 17:36:47]
+** Secondary filtering and query editing
+- /     (org-agenda-filter-by-tag) ::
+     Filter the agenda view with respect to a tag and/or effort estimates.
+- <     (org-agenda-filter-by-category) ::
+     Filter the current agenda view with respect to the category of the item at point.
+- ^     (org-agenda-filter-by-top-headline) ::
+     Filter the current agenda view and only display the siblings and the parent headline of the one at point.
+- =     (org-agenda-filter-by-regexp) ::
+     Filter the agenda view by a regular expression.
+- |     (org-agenda-filter-remove-all) ::
+     Remove all filters in the current agenda view.
+
+** Remote editing
+| 0--9        |                                              | Digit argument                                                                                                 |
+| C-_         | org-agenda-undo                              | Undo a change duo to a remote editing command.                                                                 |
+| t           | org-agenda-todo                              | Change the TODO state of the item.                                                                             |
+| C-k         | org-agenda-kill                              | Delete the current agenda item along with the entire subtree belonging to it in the original Org file.         |
+| C-c C-w     | org-agenda-refile                            |                                                                                                                |
+| a           | org-agenda-archive-default-with-confirmation | Archive the subtree corresponding to the entry at point                                                        |
+| C-c C-x a   | org-agenda-toggle-archive-tag                | Toggle the ARCHIVE tag for the current headline.                                                               |
+| C-c C-x A   | org-agenda-archive-to-archive-sibling        | Move the subtree corresponding to the current entry to its archive sibling.                                    |
+| C-c C-x C-s | org-agenda-archive                           | Archive the subtree corresponding to the current headline.                                                     |
+| T           | org-agenda-show-tags                         | Show all tags associated with the current item.                                                                |
+| :           | org-agenda-set-tags                          | Set tags for the current headline.                                                                             |
+| ,           | org-agenda-priority                          | Set the priority for the current item. If you reply with <SPC>, the priority cookie is removed from the entry. |
+| S-<up>      | org-agenda-priority-up                       |                                                                                                                |
+| S-<down>    | org-agenda-priority-down                     |                                                                                                                |
+| C-c C-z     | org-agenda-add-not                           | Add a note to the entry.                                                                                       |
+| C-c C-a     | org-attach                                   | Dispatcher for all command related to attachments.                                                             |
+| C-c C-s     | org-agenda-schedule                          |                                                                                                                |
+| C-c C-d     | org-agenda-deadline                          |                                                                                                                |
+| S-<right>   | org-agenda-do-date-later                     | Change the timestamp by one day into the future.                                                               |
+| S-<left>    | org-agenda-do-date-earlier                   |                                                                                                                |
+| >           | org-agenda-date-prompt                       | Change the timestamp associated with the current line.                                                         |
+| I           | org-agenda-clock-in                          | Start the clock on the current item. If a clock is running already, it is stopped first.                       |
+| O           | org-agenda-clock-out                         | Stop the previous started clock.                                                                               |
+| X           | org-agenda-clock-cancel                      |                                                                                                                |
+| J           | org-agenda-clock-goto                        | Jump to the running clock in another window.                                                                   |
+| k           | org-agenda-capture                           | Like =org-capture=, but use the date at point as the default date for the capture template.                    |
+
+** Dragging agenda lines forware/backward
+| M-<up>   | org-agenda-drag-line-backward | Drag the line at point backword one line. |
+| M-<down> | org-agenda-drag-line-backward | Drag the line at point forward one line.  |
+
+** Bulk remote editing selected entries
+| m   | org-agenda-bulk-mark             | Mark the entry at point for bulk action. With numeric prefix argument, mark that many successive entries. |
+| *   | org-agenda-bulk-mark-all         | Mark all visible agenda entries for bulk action.                                                          |
+| u   | org-agenda-bulk-unmark           | Unmark entry at point for bulk action.                                                                    |
+| U   | org-agenda-bulk-remove-all-marks | Unmark all marked entries for bulk action.                                                                |
+| M-m | org-agenda-bulk-toggle           | Toggle mark of the entry at point for bulk action.                                                        |
+| M-* | org-agenda-bulk-toggle-all       |                                                                                                           |
+| %   | org-agenda-bulk-mark-regexp      | Mark entries matching a regular expression for bulk action.                                               |
+
+- B (org-agenda-bulk-action) :: Bulk action: act on all marked entries in the agenda.
+  - * :: Toggle persistent marks.
+  - $ :: Archive all selected entries.
+  - A :: Archive entries by moving them to their respective archive siblings.
+  - t :: Change to TODO state.
+  - + :: Add a tag to all selected entries.
+  - - :: Remove a tag from all selected entries.
+  - s :: Schedule all items to a new date. To shift existing schedule dates by a fixed number of days, use something starting with double plus at the prompt, for example ‘++8d’ or ‘++2w’.
+  - d :: Set deadline to a specific date.
+  - r :: Prompt for a single refile target and move all entries.
+  - S :: Reschedule randomly into the comming N days.
+  - f :: Apply a function to marked entries.
+
+** TODO Calendar commands (wrong type argument)
+   :LOGBOOK:  
+   - State "TODO"       from ""           [2018-12-31 Mon 21:23]
+   :END:      
+| c | org-agenda-goto-calendar  | Open the Emacs calendar and move to the date at the agenda cursor.                        |
+| c | org-calendar-goto-agenda  | When in the Calendar, compute and show the Org mode agenda for the date at the cursor.    |
+| i | org-agenda-diary-entry    | Insert a new entry into the diary, using the date at the curosr and the date at the mark. |
+| M | org-agenda-phases-of-moon | Show the phase of the moon for the three months around current date.                      |
+| S | org-agenda-sunrise-sunset |                                                                                           |
+| C | org-agenda-convert-date   | Convert the date at cursor into many other cultural and historic calendars.               |
+| H | org-agenda-holidays       | Show holidays for three months around the cursor date.                                    |
+
+** Exporting to a file
+- C-x C-w (org-agenda-write) ::
+     Write the agenda view to a file. 
+     Depending on the extension of the selected file name, the view will be exported as HTML (.html or .htm), Postscript (.ps), PDF (.pdf), Org (.org) and plain text (any other extension). 
+     When exporting to Org, only the body of original headlines are exported, not subtrees or inherited tags. 
+     When called with a C-u prefix argument, immediately open the newly created file. 
+     Use the variable =org-agenda-exporter-settings= to set options for =ps-print= and for =htmlize= to be used during export.
+
+** Quit and Exit
+- q (org-agenda-quit) ::
+     Quit agenda, remove the agenda buffer.
+- x (org-agenda-exit) :: 
+     Exit agenda, remove the agenda buffer and all buffers loaded by Emacs for the compilation of the agenda.
+     Buffers created by the user to visit Org files will be removed.
+
+
+
+
+[2019-12-31 22:54:55]
+* TODO Custom agenda views
+
+* TODO Exporting agenda views
+
+* TODO Agenda column view

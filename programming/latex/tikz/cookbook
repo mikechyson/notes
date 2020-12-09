@@ -1,0 +1,194 @@
+* Introduction
+What is TikZ?
+Basically, it just defines a number of TEX commands to draw graphics.
+
+TikZ means "TikZ ist kein Zeichenprogramm" which translates to "TikZ is not a drawing program". Tik Z’s name is intended to warn people that Tik Z is not a
+program that you can use to draw graphics with your mouse or tablet. Rather, it is more like a “graphics language.”
+
+advantages (get all the advantages of the "TEX-approach to typesetting"):
+- quick creation of simple graphics
+- precise positioning
+- the use of macros 
+- superior typography
+
+disadvantages:
+- steep learning curve
+- no WYSIWYG
+- small changes require a long recompilation time
+- code does not really “show” how things will look like
+
+What is PGF?
+PGF: portable graphics format.
+They form the "basic layer" of the system of TikZ.
+
+** The Layers Below TikZ
+There are two layers below Tikz:
+- system layer :: This layer provides a complete abstraction of what is going on "in the driver."
+- basic layer :: The basic layer provides a set of basic commands that allow you to produce complex graphics in a much easier manner than by using the system layer directly.
+
+
+In theory, Tik Zitself is just one of several possible "frontends," which are sets of commands or a special syntax that makes using the basic layer easier. In practice, Tik Z is the only "serious" frontend for pgf. It gives you access to all features of pgf, but
+it is intended to be easy to use.
+
+** Utility Packages
+The PGF package comes along with a number of utility package that are not really about creating graphics and which can be used independently of PGF.
+| Package Name | Function                                          |
+|--------------+---------------------------------------------------|
+| pgfkeys      | defines a powerful key management facility        |
+| pgffor       | defines a useful \foreach statement               |
+| pgfcalendar  | defines macros from creating calendars            |
+| pgfpages     | used to assemble several pages into a single page |
+
+
+* Setting up the Environment
+
+** Setting up the Environment in LATEX
+
+#+BEGIN_SRC latex
+\documentclass{article} % say
+\usepackage{tikz}
+\begin{document}
+We are working on
+\begin{tikzpicture}
+  \draw (-1.5,0) -- (1.5,0);
+  \draw (0,-1.5) -- (0,1.5);
+\end{tikzpicture}.
+\end{document}
+#+END_SRC
+
+Run via pdflatex or via latex followed by dvips.
+
+** Setting up the Environment in Plain TEX
+#+BEGIN_SRC latex
+%% Plain TeX file
+\input tikz.tex
+\baselineskip=12pt
+\hsize=6.3truein
+\vsize=8.7truein
+We are working on
+\tikzpicture
+  \draw (-1.5,0) -- (1.5,0);
+  \draw (0,-1.5) -- (0,1.5);
+\endtikzpicture.
+\bye
+#+END_SRC
+
+Run via pdftex or via tex followed by dvips
+
+** Setting up the Environment in ConTEXt
+#+BEGIN_EXAMPLE
+%% ConTeXt file
+\usemodule[tikz]
+\starttext
+  We are working on
+  \starttikzpicture
+    \draw (-1.5,0) -- (1.5,0);
+    \draw (0,-1.5) -- (0,1.5);
+  \stoptikzpicture.
+\stoptext
+#+END_EXAMPLE
+
+* Constructions
+| Constructions       | Symbols   | Example                                                        |
+|---------------------+-----------+----------------------------------------------------------------|
+| coordinate          | (,)       | (0,0)                                                          |
+| path                | --        | \draw (-1.5,0) -- (1.5,0) -- (0,-1.5) -- (0,1.5);              |
+| curve               | curve     | \draw (0,0) .. controls (1,1) and (2,1) .. (2,0);              |
+| circle              | circle    | \draw (0,0) circle [radius=10pt];                              |
+| ellipse             | ellipse   | \draw (0,0) ellipse [x radius=20pt, y radius=10pt];            |
+| rectangle           | rectangle | \draw (0,0) rectangle (0.5,0.5);                               |
+| grid                | grid      | \draw[step=.5cm] (-1.4,-1.4) grid (1.4,1.4);                   |
+| arc                 | arc       | \draw (3mm,0mm) arc [start angle=0, end angle=30, radius=3mm]; |
+| parabola            | parabola  | \draw (0,0) parabola (1,1);                                    |
+| sin                 | sin       |                                                                |
+| cos                 | cos       |                                                                |
+| relative coordinate | +         |                                                                |
+| relative coordinate | ++        |                                                                |
+| node                | node      | node{0,0}; node{hello}                                         |
+|                     |           |                                                                |
+
+
+
+* Options
+| Options        | Example                                                      |
+|----------------+--------------------------------------------------------------|
+| rotate=        | \draw[rotate=30] (0,0) ellipse [x radius=6pt, y radius=3pt]; |
+| gray           |                                                              |
+| step=          | \draw[step=.5cm] (-1.4,-1.4) grid (1.4,1.4);                 |
+| thin           |                                                              |
+| very thin      |                                                              |
+| ultra thin     |                                                              |
+| thick          |                                                              |
+| very thick     |                                                              |
+| ultra thick    |                                                              |
+| semithick      |                                                              |
+| dashed         |                                                              |
+| dotted         |                                                              |
+| loosely dashed |                                                              |
+| densely dashed |                                                              |
+| loosely dotted |                                                              |
+| densely dotted |                                                              |
+| scale=         | scale=3                                                      |
+| radius         |                                                              |
+| x radius       |                                                              |
+| y radius       |                                                              |
+| top color      |                                                              |
+| bottom color   |                                                              |
+| inner color    |                                                              |
+| outer color    |                                                              |
+| left color     |                                                              |
+| right color    |                                                              |
+| draw           |                                                              |
+| ball           |                                                              |
+| ->             |                                                              |
+| <-             |                                                              |
+| <->            |                                                              |
+| >=             | >=Stealth                                                    |
+| xshift=        | xshift=2pt                                                   |
+| yshift=        | yshift=2pt                                                   |
+| shift=         | shift={(1,0)}                                                |
+| xscale=        |                                                              |
+| yscale=        |                                                              |
+| xslant=        |                                                              |
+| yslant=        |                                                              |
+| anchor=        | anchor=north, anchor=east, anchor=north ease                 |
+| below          |                                                              |
+| above          |                                                              |
+| above right    |                                                              |
+| sloped         |                                                              |
+| near start     |                                                              |
+| very near end  |                                                              |
+
+* Style
+\tikzset{help lines/.style={color=bule!50,very thin}}
+
+
+* Commands
+| Command          | Meaning | Shorthand for | Package | Syntax                                               |
+|------------------+---------+---------------+---------+------------------------------------------------------|
+| draw             |         | path[draw]    |         |                                                      |
+| clip             |         | path[clip]    |         |                                                      |
+| fill             |         |               |         |                                                      |
+| filldraw         |         |               |         |                                                      |
+| clipdraw         |         |               |         |                                                      |
+| shade            |         |               |         |                                                      |
+| shadedraw        |         |               |         |                                                      |
+| useasboundingbox |         |               |         |                                                      |
+| path             |         |               |         |                                                      |
+| foreach          |         |               | pgffor  | \foreach <variable> in {<list of values>} <commands> |
+| color            |         |               |         |                                                      |
+| coordinate       |         |               |         |                                                      |
+
+* Environment
+#+BEGIN_SRC latex
+\begin{tikzpicture}
+
+\end{tikzpicture}
+#+END_SRC
+
+| Name        | Symbols     |
+|-------------+-------------|
+| tikzpicture | tikzpicture |
+| scope       | scope       |
+|             | {}          |
+|             |             |

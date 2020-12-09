@@ -1,0 +1,8 @@
+By convention, bare repository directory names end with the suffix .git
+
+cd project.git
+git init --bare
+
+
+To collaborate with a couple of people on a private project,
+all you need is a ssh server and a bare repository.

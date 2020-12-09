@@ -1,0 +1,27 @@
+[[file:pics/the-evolution-of-c.png]]
+
+[[file:pics/the-role-of-pointers.png]]
+
+[[file:pics/declaring-pointers.png]]
+
+[[file:pics/naming-data-types-with-typedef.png]]
+
+[[file:pics/formatting-print-with-printf.png]]
+
+
+[[file:pics/figure-2.4.png]]
+
+[[file:pics/pointers-and-arrays.png]]
+
+[[file:pics/pointer-creation-and-dereferencing.png]]
+
+
+Generating an ASCII table:
+#+BEGIN_SRC sh
+man ascii
+#+END_SRC
+
+
+
+[[file:pics/function-pointers.png]]
+

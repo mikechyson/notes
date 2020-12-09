@@ -1,0 +1,89 @@
+\documentclass{book}
+\usepackage[a4paper,inner=1.5cm,outer=3cm,top=2cm,bottom=3cm,bindingoffset=1cm]{geometry}
+\usepackage{hyperref}
+\usepackage{xeCJK}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\begin{document}
+\title{Latex Cookbook}
+\author{Mike Chyson}
+\maketitle
+\tableofcontents{}
+\chapter{Ubuntu下Latex中文的使用}
+
+\section{包的安装}
+% \lstset{language=Sh}
+\begin{lstlisting}[frame=single]
+# 安装texlive
+apt search texlive
+apt install texlive
+
+# 这样就可以使用latex了，
+# 但是为了能编译中文，需要安装中文包
+apt search cjk
+apt install latex-cjk-all
+
+# 安装额外的附加包
+apt install texlive-latex-extra
+
+# 为了使用xelatex命令
+apt install texlive-xetex
+\end{lstlisting}
+至此，支持中文的latex环境已经可以正常使用。
+
+\section{中文包的使用}
+将如下内容写入文件test.tex，然后运行命令
+\begin{lstlisting}
+xelatex test.tex
+\end{lstlisting}
+即可生成pdf文件。
+
+\lstset{language=Tex}
+\begin{lstlisting}[frame=single]
+\usepackage{xeCJK}  % 使用中文包
+% \setCJKmainfont{WenQuanYi Micro Hei}  % 可选项，配置字体
+\begin{document}
+我是中国人。
+\end{document}
+\end{lstlisting}
+
+\chapter{Mac LaTex}
+\section{Install}
+% \lstset{language=Sh}
+\begin{lstlisting}
+  brew cask install mactex
+\end{lstlisting}
+\chapter{Latex IDE}
+
+
+\section{Texmaker集成环境}
+Texmaker是latex的一种集成开发环境。你可以使用自己喜欢的集成环境，或者文本编辑器。比如Emacs + AUCTex。
+
+
+\begin{lstlisting}[frame=single]
+# 安装
+apt install texmaker
+
+# 使用
+texmaker
+\end{lstlisting}
+Options $\rightarrow$ Configure Texmaker
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{/home/hack/Pictures/texmaker.png}
+\caption{texmakter编译环境配置}
+\end{figure}
+
+\section{Emacs + AUCTex}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,71 @@
+\chapter{Tables}
+
+\begin{lstlisting}
+  \newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+  \begin{tabular}{ccc}
+    \hline
+    \head{Command} & \head{Declaration} & \head{Output} \\
+    \hline
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+    \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+    \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+    \hline
+  \end{tabular}
+\end{lstlisting}
+
+\begin{tcolorbox}
+  \begin{tabular}{ccc}
+    \hline
+    \head{Command} & \head{Declaration} & \head{Output} \\
+    \hline
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+    \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+    \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+    \hline
+  \end{tabular}
+\end{tcolorbox}
+
+
+\newpage
+\begin{lstlisting}
+
+  \usepackage{booktabs} % toprule, midrule, bottomrule
+
+  \begin{tabular}{ccc}
+    \toprule[1.5pt] % British typesetters call a line a rule
+    \head{Command} & \head{Declaration}& \head{Output}\\
+    \midrule %
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+    \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+    \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+    \bottomrule[1.5pt] %
+  \end{tabular}
+
+\end{lstlisting}
+
+\begin{tcolorbox}
+  
+  \begin{tabular}{ccc}
+    \toprule[1.5pt] % British typesetters call a line a rule
+    \head{Command} & \head{Declaration}& \head{Output}\\
+    \midrule %
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+    \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+    \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+    \bottomrule[1.5pt] %
+  \end{tabular}
+
+\end{tcolorbox}
+
+
+\begin{tcolorbox}
+  To avoid the table exceed out the page:
+\begin{verbatim}
+    \resizebox{\textwidth}{!}{
+      ...
+    }
+  
+\end{verbatim}
+
+
+\end{tcolorbox}

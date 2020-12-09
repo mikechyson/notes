@@ -1,0 +1,18 @@
+
+absSum:
+  irmovq $8, %r8	# constant 8
+  irmovq $1, %r9	# constant 1
+  xorq %rax, %rax	# sum = 0
+  andq %rsi, %rsi	# set CC
+  jmp test
+loop:
+  mrmovq (%rdi), %r10	# get *start
+  xorq %r11, %r11	# set constant 0
+  subq %r10, %r11	# -x
+  cmovg %r11, %r10	# if -x > 0, then x = -x
+  addq %r10, %rax	# add to sum
+  addq %r8, %rdi
+  subq %r9, %rsi
+test:
+  jne loop	# stop when 0
+  ret

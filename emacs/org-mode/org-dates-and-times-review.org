@@ -1,0 +1,134 @@
+The specially formatted string carrying the date and/or time information is called a timestamp in Org mode.
+* Timestamps
+** Plain timestamp
+#+BEGIN_EXAMPLE
+<2016-11-01 Wed 19:15>
+<2006-11-02 Thu 20:00-22:00>
+#+END_EXAMPLE
+
+** Timestamp with repeater interval
+It applies not only on the given date, but again and again after a certain interval of
+N days(d), weeks(w), months(m), or years(y).
+#+BEGIN_EXAMPLE
+<2007-05-16 Wed 12:30 +1w>
+#+END_EXAMPLE
+
+** Time/Date range
+#+BEGIN_EXAMPLE
+<2004-08-23 Mon>--<2004-08-26 Thu>
+#+END_EXAMPLE
+
+** Inactive timestamp
+These timestamp are inactive in the sense that they do not trigger an entry to show up in the agenda.
+#+BEGIN_EXAMPLE
+[2006-11-01 Wed]
+#+END_EXAMPLE
+
+* Creating timestamps
+| Key Bound | Functions               | Description                                                                                                                        |
+|-----------+-------------------------+------------------------------------------------------------------------------------------------------------------------------------|
+| C-c .     | org-time-stamp          | Prompt for a date and insert a corresponding timestamp.  When this command is used twice in succession, a time range is inserted.  |
+| C-c !     | org-time-stamp-inactive | Insert a inactive timestamp.                                                                                                       |
+| C-c <     | org-date-from-calendar  | Insert a timestamp corresponding to the cursor date in the Calendar.                                                               |
+| C-c >     | org-goto-calendar       | Access the Emacs calendar for the current date. If there is a timestamp in the current line, go to the corresponding date instead. |
+| C-c C-o   | org-open-at-point       | Open link, timestamp, footnote or tags at point.                                                                                   |
+| S-LEFT    | org-timestamp-down-day  |                                                                                                                                    |
+| S-RIGHT   | org-timestamp-up-day    |                                                                                                                                    |
+| S-UP      | org-timestamp-up        | Change the item under the cursor in a timestamp. The cursor can be on bracket, year, month, day, hour or minute.                   |
+| S-DOWN    | org-timestamp-down      |                                                                                                                                    |
+| C-c C-y   | org-evaluate-time-range | Evaluate a time range by computing the difference between start and end.                                                                                                                                   |
+
+
+
+
+
+
+** Custom time format
+| Variable                      |
+|-------------------------------|
+| org-display-custom-times      |
+| org-time-stamp-custom-formats |
+
+| Key Bound   | Functions                      | Description                                               |
+|-------------+--------------------------------+-----------------------------------------------------------|
+| C-c C-x C-t | org-toggle-time-stamp-overlays | Toggle the display of custom formats for dates and times. |
+
+
+
+
+* Deadlines and scheduling
+A timestamp may be preceded by special keywords to facilitate planning.
+Both the timestamp and the keyword have to be positioned immediately after the task they refer to.
+
+** DEADLINE
+Meaning: the task is supposed to be finished on that date.
+
+In addition, the agenda for today will carry a warning about
+the approaching or missed deadline, starting =org-deadline-warning-days=
+before the due date, and continuing until the entry is marked DONE.
+
+#+BEGIN_EXAMPLE
+          *** TODO write article about the Earth for the Guide
+              DEADLINE: <2004-02-29 Sun>
+#+END_EXAMPLE
+
+** SCHEDULED
+Meaning: you are planning to start working on that task on the given date.
+
+
+#+BEGIN_EXAMPLE
+          *** TODO Call Trillian for a date on New Years Eve.
+              SCHEDULED: <2004-12-25 Sat>
+#+END_EXAMPLE
+
+=org-scheduled-delay-days=
+=org-agenda-skip-scheduled-delay-if-deadline=
+
+
+** Inserting deadline/schedule
+
+| Key Bounding | Function            | Description                                       | Prefix                                                 | Config                                                                                    |
+|--------------+---------------------+---------------------------------------------------+--------------------------------------------------------+-------------------------------------------------------------------------------------------|
+| C-c C-d      | org-deadline        | Insert DEADLINE keyword along with a stamp.       | An existing deadline will be removed from the entry.   | org-deadline-warning-days, org-log-redeadline                                             |
+| C-c C-s      | org-schedule        | Insert SCHEDULED keyword along with a stamp.      | An existing scheduling will be removed from the entry. | org-scheduled-delay-days, org-agenda-skip-scheduled-delay-if-deadline, org-log-reschedule |
+
+
+
+** Repeated tasks
+| Variable       | Description                                                  |
+|----------------+--------------------------------------------------------------|
+| org-log-repeat | record moving through the DONE state when triggering repeat. |
+|                |                                                              |
+
+If you need both a repeater and a special warning period, 
+the repeater should come first and the warning period last:
+<2005-10-01 Sat +1m -3d>
+
+| Symbol | Description                    |
+|--------+--------------------------------|
+| +      | shift a exact time repeater    |
+| -      | delay                          |
+| ++     | shift at least a time repeater |
+| .+     | shift to next time repeater    |
+
+
+#+BEGIN_EXAMPLE
+     ** TODO Call Father
+        DEADLINE: <2008-02-10 Sun ++1w>
+        Marking this DONE will shift the date by at least one week,
+        but also by as many weeks as it takes to get this date into
+        the future.  However, it stays on a Sunday, even if you called
+        and marked it done on Saturday.
+     ** TODO Empty kitchen trash
+        DEADLINE: <2008-02-08 Fri 20:00 ++1d>
+        Marking this DONE will shift the date by at least one day, and
+        also by as many days as it takes to get the timestamp into the
+        future.  Since there is a time in the timestamp, the next
+        deadline in the future will be on today's date if you
+        complete the task before 20:00.
+     ** TODO Check the batteries in the smoke detectors
+        DEADLINE: <2005-11-01 Tue .+1m>
+        Marking this DONE will shift the date to one month after
+        today.
+#+END_EXAMPLE
+

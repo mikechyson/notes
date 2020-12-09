@@ -1,0 +1,549 @@
+* Installation
+https://downloads.mariadb.org/mariadb/repositories/
+#+BEGIN_SRC sh
+yum install MariaDB-server Mariadb-client
+systemctl enable mariadb.service
+systemctl start mariadb.service
+mysql -u root
+#+END_SRC
+
+
+* Sercurity
+#+BEGIN_SRC sql
+mysql_secure_installation
+mysql -u root -p
+      my-file
+      [client]
+      user=myusername
+      password=mypassword
+mysql --defaults-file=/path/to/my-file
+#+END_SRC
+
+* Administering MariaDB
+The privileges or rights that we can grant to users break down into three main categories:
+1. Global administrative user privileges
+2. Database, table, and column user privileges
+3. Miscellaneous user privileges and limits
+
+Full documentation of the privileges:https://mariadb.com/kb/en/grant/
+
+* Creating user
+#+BEGIN_SRC sql
+CREATE USER 'username'@'host' IDENTIFIED BY 'password';
+#+END_SRC
+
+#+BEGIN_SRC sql
+CREATE USER 'boyd'@'%' IDENTIFIED BY 'bomber';
+CREATE USER 'tom'@'localhost' IDENTIFIED BY 'retail';
+CREATE USER 'richard'@'powr.example.net' IDENTIFIED BY 'nuclear';
+CREATE USER 'robert'@'%.example.net' IDENTIFIED BY 'pilot';
+CREATE USER 'dallin'@'192.168.1.1' IDENTIFIED BY 'judge';
+CREATE USER 'russell'@'192.168.1.%' IDENTIFIED BY 'surgeon';
+CREATE USER 'russell'@'192.168.1.0/255.255.255.0' IDENTIFIED BY 'business';
+
+#+END_SRC
+* Granting permissions
+By default, new users do not have the permission to do anything except logging in, which is not very usefull.
+#+BEGIN_SRC sql
+GRANT <privileges> ON <database> TO <user>;
+#+END_SRC
+#+BEGIN_SRC sql
+GRANT ALL ON *.* TO 'robert'@'%' WITH GRANT OPTION;
+GRANT SELECT,INSERT,UPDATE,DELETE ON serv.* TO 'jeffrey'@'localhost';
+GRANT SELECT ON edu.staff TO 'david'@'localhost' WITH GRANT OPTION;
+The limit will apply to every database that can be accessed by the quentin user and not just to queries that the user runs on the logan database.
+GRANT ALL ON logan.* TO 'quentin'@'localhost' WITH MAX_QUERIES_PER_HOUR 100;
+
+
+#+END_SRC
+* Revoking permissions
+to remove privileges
+#+BEGIN_SRC sql
+REVOKE <privileges> ON <database> FROM <user>;
+#+END_SRC
+#+BEGIN_SRC sql
+REVOKE DELETE,GRANT OPTION ON cust.* FROM 'todd'@'%';
+REVOKE ALL,GRANT OPTION FROM 'neil'@'%.example.com';
+#+END_SRC
+
+* Showing permissions
+#+BEGIN_SRC sql
+SHOW GRANTS FOR <user>;
+#+END_SRC
+#+BEGIN_SRC sql
+SHOW GRANTS FOR 'dieter'@'10.2.200.4';
+#+END_SRC
+
+
+* Setting and changing passwords
+#+BEGIN_SRC sql
+SET PASSWORD FOR <user> = PASSWORD('<password>');
+#+END_SRC
+#+BEGIN_SRC sql
+SET PASSWORD FOR 'henry'@'%' = PASSWORD('niftypassword');
+#+END_SRC
+
+
+* Removing users
+#+BEGIN_SRC sql
+DROP USER <user>;
+#+END_SRC
+#+BEGIN_SRC sql
+DROP USER 'tom'@'%';
+#+END_SRC
+
+
+
+* Using MariaDB
+** Connecting to MariaDB
+#+BEGIN_SRC sql
+mysql [-u <username>] [-p] [-h <host>] [<database>]
+#+END_SRC
+
+** Using USE to select a database
+#+BEGIN_SRC sql
+USE <database>
+#+END_SRC
+** Using SHOW to list all database
+#+BEGIN_SRC sql
+SHOW DATABASES;
+#+END_SRC
+** Creating and deleting databases
+When MariaDB is installed, the installar creates four databases
+mysql: to keep track of users
+test: for experimentation and learning
+performance_schema: semi-vritual database, read-only, stores performance
+information_schema: semi-virtual database, read-only, stores other statistics
+
+In MariaDB, a schema and a database are quite the same thing
+
+** Creating a database
+#+BEGIN_SRC sql
+CREATE DATABASE <databasename>;
+CREATE DATABASE my_database;
+CREATE DATABASE IF NOT EXIST my_database;
+#+END_SRC
+
+** Deleting a database
+#+BEGIN_SRC sql
+DROP DATABASE <databasename>;
+DROP DATABASE my_database;
+DROP DATABASE IF EXIST my_database;
+#+END_SRC
+
+The process by which we refine our table definitions and split our data off into multiple tables is called normalization.
+https://mariadb.com/kb/en/recap-the-relational-model
+
+* Using CREATE TABLE
+** Using CREATE TABLE - basic syntax 
+#+BEGIN_EXAMPLE
+basic CREATE TABLE table_name (<column_definition>);
+
+The <column_definitions> part has the following basic syntax:
+<column_name> <data_type>
+[NOT NULL | NULL]
+[DEFAULT <default_value>]
+[AUTO_INCREMENT]
+[UNIQUE [KEY] | [PRIMARY] KEY]
+[COMMENT '<string>']
+The parts in angle brakets(<>) are the bits that we fill in.
+The parts in square brakets([]) are optional 
+The pipe character(|) means "or"
+
+#+END_EXAMPLE
+
+
+** Using CREATE TABLE - datatypes 
+Different datatypes exist because various types of data are most efficiently stored in different ways.
+Common datatypes include numeric(numbers), strings(text), and dates.
+numberic: INTEGER, FLOAT
+string: CHAR, TEXT, VARCHAR
+date: DATE,TIME,DATETIME
+
+** Using CREATE TABLE - an example
+#+BEGIN_SRC sql
+CREATE TABLE employees (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+surname VARCHAR(100),
+givenname VARCHAR(100),
+pref_name VARCHAR(50),
+birthday DATE COMMENT 'approximate birthday OK'
+);
+#+END_SRC
+** Using SHOW to display the command used to create a table
+#+BEGIN_SRC sql
+SHOW CREATE TABLE employee \G
+SHOW CREATE TABLE employee;
+
+#+END_SRC
+** Using DESCRIBE to explore the structure of a table
+#+BEGIN_SRC sql
+DESCRIBE employees;  # COMMENT is not displayed
+DESCRIBE employees birthday;  # specific column
+
+#+END_SRC
+
+* Using ALTER TABLE
+** Using ALTER TABLE - basic syntax
+#+BEGIN_SRC sql
+ALTER TABLE table_name <alter_definition>[, alter_definition] ...;
+#+END_SRC
+The <alter_definition> part of the command can ADD, MODIFY, and DROP columns from tables.
+
+** Using ALTER TABLE - adding a column
+#+BEGIN_SRC sql
+ADD <column_name> <column_definition> [FIRST | AFTER <column_name>]
+#+END_SRC
+
+The FIRST option puts the new column as the first column of a row.
+The after option lets us specify which column the new column appers after.
+By default, the column will be added after the current last column.
+
+#+BEGIN_SRC sql
+ALTER TABLE employees ADD username VARCHAR(20) AFTER pref_name;
+#+END_SRC
+
+** Using ALTER TABLE - modifying a column
+#+BEGIN_SRC sql
+MODIFY <column_name> <column_definition>
+ALTER TABLE employees MODIFY pref_name VARCHAR(25);
+#+END_SRC
+
+** Using ALTER TABLE - droping a column
+#+BEGIN_SRC sql
+DROP <column_name>
+ALTER TABLE employees DROP username;
+#+END_SRC
+
+** Using DROP TABLE
+#+BEGIN_SRC sql
+DROP TABLE <table_name>
+DROP TABLE mytable;
+DROP TABLE IF EXISTS mytable;
+#+END_SRC
+
+* Using MariaDB - Inserting, Updating, and Deleting
+** Using INSERT
+#+BEGIN_SRC sql
+INSERT [INTO] <table_name> [(<column_name>[, <column_name>, ...])] {VALUES | VALUE} ({expression> | DEFAULT}, ... )[,( ... ), ... ];
+#+END_SRC
+
+Inserting complete rows
+#+BEGIN_SRC sql
+INSERT INTO employees VALUES
+(NULL, "Perry", "Lowell Tom", "Tom", "1988-08-05");
+#+END_SRC
+
+For auto-incremented columns, such as the id column in our employees table, we have to put something but we can't put in our own value because MariaDB handles that. So, we use NULL as a placeholder to let MariaDB know that we are not providing a value and then MariaDB provides its own value.
+#+BEGIN_SRC sql
+INSERT INTO employees VALUES
+(NULL, "Pratt","Parley", NULL, NULL),
+(NULL, "Snow","Eliza", NULL, NULL);
+#+END_SRC
+
+A better and safer method is to always specify the columns that we are inserting data into, even if it is every column in the table.
+
+Inserting partial rows
+#+BEGIN_SRC sql
+INSERT INTO employees (surname,givenname) VALUES
+("Taylor","John"),
+("Woodruff","Wilford"),
+("Snow","Lorenzo");
+INSERT INTO employees (pref_name,givenname,surname,birthday) VALUES
+("George","George Albert","Smith","1970-04-04");
+INSERT employees (surname) VALUE ("McKay");  
+#+END_SRC
+
+VALUE because of the single column
+
+Inserting from another table
+#+BEGIN_SRC sql
+INSERT [INTO] <table_1> [(<column_name>[, <column_name>,...])]
+SELECT <column_name>[, <column_name>,...]
+FROM <table_2>;
+INSERT INTO employees (surname, givenname, birthday)
+SELECT lastname, firstname, bday
+FROM names;
+#+END_SRC
+
+Inserting from a file
+default: tab separated columns file
+basic format:
+#+BEGIN_SRC sql
+LOAD DATA [LOCAL] INFILE '<filename>'
+INTO TABLE <tablename>
+[(<column_name>[, <column_name>,...]];
+#+END_SRC
+
+suppose we have a file named new_employees ,which has three columns which correspond to the birthday , surname , and givenname columns in our employees table:
+1971-08-09 Anderson Neil
+1985-01-24 Christofferson Todd
+#+BEGIN_SRC sql
+LOAD DATA INFILE '/tmp/new_employees'
+INTO TABLE employees
+(birthday, surname, givenname);
+#+END_SRC
+
+** Using UPDATE
+basic syntax:
+#+BEGIN_SRC sql
+UPDATE <table_name>
+SET column_name1={expression|DEFAULT}
+[, column_name2={expression|DEFAULT}] ...
+[WHERE <where_conditions>];
+
+UPDATE employees SET
+pref_name = "John", birthday = "1958-11-01"
+WHERE surname = "Taylor" AND givenname = "John";
+
+UPDATE employees SET
+pref_name = "Will", birthday = "1957-03-01"
+WHERE surname="Woodruff";
+
+UPDATE employees SET
+birthday = "1964-04-03"
+WHERE surname = "Snow";
+
+UPDATE employees SET
+birthday = "1975-04-12"
+WHERE id = 2;
+#+END_SRC
+
+** Using DELETE
+#+BEGIN_SRC sql
+DELETE FROM <table_name> [WHERE <where_conditions>];
+DELETE FROM employees
+WHERE givenname="Spencer" AND surname="Kimball";
+#+END_SRC
+
+* Using MariaDB - Retrieving Data
+** basic syntax:
+#+BEGIN_SRC sql
+SELECT <what> FROM <table_name>
+[WHERE <where-conditions>]
+[ORDER BY <column_name>];
+#+END_SRC
+
+** Retrieving everything
+#+BEGIN_SRC sql
+SELECT * FROM employees; 
+#+END_SRC
+
+the data will be retrieved and displayed in the order in which it is stored in the table.
+
+** Retrieving selected columns
+#+BEGIN_SRC sql
+SELECT givenname,surname FROM employees;
+#+END_SRC
+
+** Filtering and searching data
+Filtering by exact values
+#+BEGIN_SRC sql
+SELECT * FROM employees
+WHERE birthday >= '1970-01-01';
+#+END_SRC
+
+** Using logical operators
+Using the AND operator
+#+BEGIN_SRC sql
+SELECT * FROM employees
+WHERE surname = 'Snow'
+AND givenname LIKE 'Eli%';
+#+END_SRC
+
+Using the OR operator
+#+BEGIN_SRC sql
+SELECT * FROM employees
+WHERE givenname = 'Neil'
+OR givenname = 'John';
+#+END_SRC
+
+** Evaluation order
+In SQL, AND operators are evaluated first, followed by the OR operations.
+#+BEGIN_SRC sql
+ELECT * FROM employees
+WHERE 
+givenname = 'John'
+OR givenname = 'Tom'
+AND surname = 'Snow';
+ELECT * FROM employees
+WHERE
+(givenname = 'John'
+OR givenname = 'Tom')
+AND surname = 'Snow';
+#+END_SRC
+
+** Using the IN operator
+#+BEGIN_SRC sql
+SELECT * FROM employees
+WHERE
+surname = 'Snow'
+OR surname = 'Smith'
+OR surname = 'Pratt';
+SELECT * FROM employees WHERE surname IN ('Snow','Smith','Pratt');
+#+END_SRC
+
+** Using the NOT operator
+#+BEGIN_SRC sql
+SELECT * FROM employees WHERE
+surname NOT IN ('Snow','Smith','Pratt');
+#+END_SRC
+
+** Searching with LIKE
+#+BEGIN_SRC sql
+SELECT * FROM employees
+WHERE surname LIKE "McK%";  
+#+END_SRC
+%: wildcard
+
+** Sorting data
+#+BEGIN_SRC sql
+SELECT * FROM employees
+WHERE birthday >= '1970-01-01'
+ORDER BY surname;
+SELECT * FROM employees
+WHERE birthday >= '1970-01-01'
+ORDER BY surname,givenname , birthday;
+#+END_SRC
+
+** Joining data
+#+BEGIN_SRC sql
+CREATE TABLE phone (
+id serial PRIMARY KEY,
+emp_id int,
+type char(3),
+cc int(4),
+number bigint,
+ext int);
+SELECT surname,givenname,type,cc,number,ext
+FROM employees JOIN phone
+ON employees.id = phone.emp_id;
+The first table specified in the FROM clause is called the left table, and the second is called the right table.
+SELECT surname,givenname,type,cc,number,ext
+FROM employees LEFT JOIN phone
+ON employees.id = phone.emp_id;
+#+END_SRC
+
+* Summarizing data
+** The AVG function
+The AVG function is used for obtaining the average of the data in a column.
+The CURDATE function doesn't take any arguments and when called, it simply returns the current date.
+The TIMESTAMPDIFF function takes three arguments-the unit to count by and two dates, and then outputs the difference between the two. The unit is one of several time units, including MINUTE , HOUR , DAY , WEEK , MONTH , QUARTER , and YEAR .
+#+BEGIN_SRC sql
+SELECT AVG(TIMESTAMPDIFF(YEAR,birthday,CURDATE()))
+FROM employees;
+#+END_SRC
+
+** The COUNT function
+#+BEGIN_SRC sql
+SELECT COUNT(*) FROM employees;
+SELECT COUNT(pref_name) FROM employees; 
+#+END_SRC
+
+to count how many do have a set preferred name
+
+** The MIN and MAX functions
+the oldest employee
+#+BEGIN_SRC sql
+SELECT * FROM employees
+WHERE birthday = (SELECT MIN(birthday) from employees);
+#+END_SRC
+
+the youngest employee
+#+BEGIN_SRC sql
+SELECT * FROM employees
+WHERE birthday = (SELECT MAX(birthday) FROM employees);
+#+END_SRC
+
+** The SUM function
+#+BEGIN_SRC sql
+SELECT SUM(TIMESTAMPDIFF(YEAR,birthday,CURDATE()))
+FROM employees;
+#+END_SRC
+
+** Using GROUP BY with summarized data
+to find out which surnames are the most popular
+#+BEGIN_SRC sql
+SELECT surname, COUNT(*)
+FROM employees
+GROUP BY surname;
+#+END_SRC
+
+** Using HAVING to filter GROUP BY
+#+BEGIN_SRC sql
+SELECT surname, COUNT(*)
+FROM employees
+GROUP BY surname
+HAVING COUNT(*) > 1;
+
+#+END_SRC
+
+* Backing up, importing, and restoring data
+** Basic backups with mysqldump
+#+BEGIN_SRC sh
+mysqldump [-u username] [-p] database_name [table_name]
+mysqldump -r root -p test > test.sql
+#+END_SRC
+
+** Restoring backups made with mysqldump
+#+BEGIN_SRC sh
+mysql -u root -p test < test.sql
+#+END_SRC
+
+** Making tab-delimited backups with mysqldump
+#+BEGIN_SRC sh
+mysqldump --tab /tmp/ -u root -p test employees
+#+END_SRC
+
+When using this option, mysqldump will create two files. A tablename.sql
+file with the SQL commands to recreate the table, and a tablename.txt file with the actual data in tab-delimited format.
+The SQL file is owned by whichever user we used to run the mysqldump command. The TXT file, on the other hand, is owned by the mysql user, so whatever directory we specify needs to have permissions so that both users can write to it.
+
+** Restoring and importing data with mysqlimport
+#+BEGIN_SRC sh
+mysqlimport [--local] [-u username] [-p] database_name filename
+#+END_SRC
+
+The filename attribute must be the name of the table we want to import into.
+
+#+BEGIN_SRC sh
+mysqlimport --local -u root -p test /tmp/employees.txt
+#+END_SRC
+
+** Making backups of MyISAM tables with mysqlhotcopy
+The mysqlhotcopy backup program is actually a Perl script. It can take backups quickly, but only if our tables use the MyISAM or ARCHIVE storage engines.
+An easy way to show the storage engines being used by the tables in our database is with the following SELECT statement:
+#+BEGIN_SRC sql
+SELECT TABLE_NAME,ENGINE
+FROM information_schema.tables
+WHERE TABLE_SCHEMA="test";
+#+END_SRC
+
+We can change test to the name of whichever database we want to check.
+mysqlhotcopy db_name [/path/to/new_directory]
+The default storage engine for MariaDB is InnoDB , so this script is less useful.
+
+** Making backups of XtraDB and InnoDB tables with xtrabackup
+The xtrabackup backup program is made specifically for use with XtraDB and InnoDB tables. It can take quick, full backups of our databases while MariaDB is running.
+To take a backup, we do the following:
+
+#+BEGIN_SRC sh
+xtrabackup --backup --datadir=/var/lib/mysql/ --target-dir=/path/to/backup/
+#+END_SRC
+
+InnoDB and XtraDB tables are stored across several files, and backups made with xtrabackup are the same. This is why while taking a backup with xtrabackup , we specify a directory and not a file name with the --target-dir option.
+After making a raw backup, we need to prepare the backup so that it can be restored if necessary.
+xtrabackup --prepare --target-dir=/path/to/backup/
+The first time that we run xtrabackup with the --prepare option, our backed up data will be cleaned up and put into a logical order. The second time that the --prepare option is used, xtrabackup will create some log files that help speed up restoring our data, if it turns out that we need to do that. Running --prepare a third, fourth, or any more number of times won't do anything, but is safe to do so in case we can't remember if we've run it for the second time.
+
+** Restoring backups made with xtrabackup
+The easiest way to restore from a backup made with xtrabackup is to use a utility, such as rsync or the cp command, to copy all the files in the backup directory to our MariaDB data directory. Before doing so, we must stop MariaDB and then run the rsync or cp command.
+#+BEGIN_SRC sh
+rsync -avP /path/to/backup/ /var/lib/mysql/
+#+END_SRC
+
+After the files are copied back to the MariaDB data directory, and before we start MariaDB, it's a good idea to make sure that the ownership of the files is correct.
+#+BEGIN_SRC sh
+chown -R mysql:mysql /var/lib/mysql/
+#+END_SRC
+

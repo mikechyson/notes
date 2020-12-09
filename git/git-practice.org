@@ -1,0 +1,33 @@
+* git pull emacs
+** problem
+You asked to pull from the remote 'emacs', but did not specify
+a branch. Because this is not the default configured remote
+for your current branch, you must specify a branch on the command line.
+
+** solution
+git branch --set-upstream master emacs/master
+
+* git pull 
+** problem
+fatal: refusing to merge unrelated histories
+
+** solution
+git pull --allow-unrelated-histories
+
+* git no password
+** helper
+git config --global credential.helper store
+
+** ssh key
+cat ~/.ssh/id_rsa.pub
+git remote remove origin
+git remote add origin git@github.com:michaelchyson/computer.git
+
+* git proxy
+git config http.proxy http://username:password@ip:port
+
+* git log
+#+BEGIN_SRC sh
+git log --pretty=format:" %cr:    %s" --follow algorithm/introduction-to-algorithms/note
+#+END_SRC
+

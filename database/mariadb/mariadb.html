@@ -1,0 +1,1255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-05-10 Sun 01:04 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mike Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org84f8a12">1. Installation</a></li>
+<li><a href="#orgfb80c62">2. Sercurity</a></li>
+<li><a href="#org493dbcb">3. Administering MariaDB</a></li>
+<li><a href="#org53f6489">4. Creating user</a></li>
+<li><a href="#org80ec043">5. Granting permissions</a></li>
+<li><a href="#orgff5d637">6. Revoking permissions</a></li>
+<li><a href="#orgbbaa3fe">7. Showing permissions</a></li>
+<li><a href="#org478f5ff">8. Setting and changing passwords</a></li>
+<li><a href="#orge59176c">9. Removing users</a></li>
+<li><a href="#org5e909c5">10. Using MariaDB</a>
+<ul>
+<li><a href="#org01ab6e3">10.1. Connecting to MariaDB</a></li>
+<li><a href="#orgd893153">10.2. Using USE to select a database</a></li>
+<li><a href="#org02b1458">10.3. Using SHOW to list all database</a></li>
+<li><a href="#org8575bbb">10.4. Creating and deleting databases</a></li>
+<li><a href="#org2d983b2">10.5. Creating a database</a></li>
+<li><a href="#org7bbfce9">10.6. Deleting a database</a></li>
+</ul>
+</li>
+<li><a href="#orgec4d0f6">11. Using CREATE TABLE</a>
+<ul>
+<li><a href="#org05fbf4e">11.1. Using CREATE TABLE - basic syntax</a></li>
+<li><a href="#org04c10ff">11.2. Using CREATE TABLE - datatypes</a></li>
+<li><a href="#orgbcef38c">11.3. Using CREATE TABLE - an example</a></li>
+<li><a href="#orgcbb9820">11.4. Using SHOW to display the command used to create a table</a></li>
+<li><a href="#org5d10941">11.5. Using DESCRIBE to explore the structure of a table</a></li>
+</ul>
+</li>
+<li><a href="#orgccad47c">12. Using ALTER TABLE</a>
+<ul>
+<li><a href="#org1651eeb">12.1. Using ALTER TABLE - basic syntax</a></li>
+<li><a href="#org53c7055">12.2. Using ALTER TABLE - adding a column</a></li>
+<li><a href="#org50ed679">12.3. Using ALTER TABLE - modifying a column</a></li>
+<li><a href="#org5e19f03">12.4. Using ALTER TABLE - droping a column</a></li>
+<li><a href="#orgbf30533">12.5. Using DROP TABLE</a></li>
+</ul>
+</li>
+<li><a href="#org837818e">13. Using MariaDB - Inserting, Updating, and Deleting</a>
+<ul>
+<li><a href="#org58f524e">13.1. Using INSERT</a></li>
+<li><a href="#orgf3b8125">13.2. Using UPDATE</a></li>
+<li><a href="#org8df1fe2">13.3. Using DELETE</a></li>
+</ul>
+</li>
+<li><a href="#org6a0688d">14. Using MariaDB - Retrieving Data</a>
+<ul>
+<li><a href="#org3c7a846">14.1. basic syntax:</a></li>
+<li><a href="#orgd22e55a">14.2. Retrieving everything</a></li>
+<li><a href="#orgb950be0">14.3. Retrieving selected columns</a></li>
+<li><a href="#org1e4df1c">14.4. Filtering and searching data</a></li>
+<li><a href="#org30ac69c">14.5. Using logical operators</a></li>
+<li><a href="#org3fdd8ec">14.6. Evaluation order</a></li>
+<li><a href="#org32c44d2">14.7. Using the IN operator</a></li>
+<li><a href="#org21f8fe5">14.8. Using the NOT operator</a></li>
+<li><a href="#org4550f6b">14.9. Searching with LIKE</a></li>
+<li><a href="#orgbb99832">14.10. Sorting data</a></li>
+<li><a href="#orgd9e9869">14.11. Joining data</a></li>
+</ul>
+</li>
+<li><a href="#org110694a">15. Summarizing data</a>
+<ul>
+<li><a href="#org28da5f4">15.1. The AVG function</a></li>
+<li><a href="#org93bc1ca">15.2. The COUNT function</a></li>
+<li><a href="#orgd526e85">15.3. The MIN and MAX functions</a></li>
+<li><a href="#orgec8395f">15.4. The SUM function</a></li>
+<li><a href="#org8b157c7">15.5. Using GROUP BY with summarized data</a></li>
+<li><a href="#org5e34185">15.6. Using HAVING to filter GROUP BY</a></li>
+</ul>
+</li>
+<li><a href="#org10c3155">16. Backing up, importing, and restoring data</a>
+<ul>
+<li><a href="#orgabc7c40">16.1. Basic backups with mysqldump</a></li>
+<li><a href="#org2e5002d">16.2. Restoring backups made with mysqldump</a></li>
+<li><a href="#org3c0c059">16.3. Making tab-delimited backups with mysqldump</a></li>
+<li><a href="#org8023dfc">16.4. Restoring and importing data with mysqlimport</a></li>
+<li><a href="#orgc635f1e">16.5. Making backups of MyISAM tables with mysqlhotcopy</a></li>
+<li><a href="#org6867c0f">16.6. Making backups of XtraDB and InnoDB tables with xtrabackup</a></li>
+<li><a href="#org8ab32a1">16.7. Restoring backups made with xtrabackup</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84f8a12" class="outline-2">
+<h2 id="org84f8a12"><span class="section-number-2">1</span> Installation</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://downloads.mariadb.org/mariadb/repositories/">https://downloads.mariadb.org/mariadb/repositories/</a><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">yum install MariaDB-server Mariadb-client
+systemctl enable mariadb.service
+systemctl start mariadb.service
+mysql -u root
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgfb80c62" class="outline-2">
+<h2 id="orgfb80c62"><span class="section-number-2">2</span> Sercurity</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-sql">mysql_secure_installation
+mysql -u root -p
+      my-file
+      [client]
+      <span style="color: #76ee00;">user</span>=myusername
+      password=mypassword
+mysql <span style="color: #cd853f;">--defaults-file=/path/to/my-file</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org493dbcb" class="outline-2">
+<h2 id="org493dbcb"><span class="section-number-2">3</span> Administering MariaDB</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The privileges or rights that we can grant to users break down into three main categories:<br />
+</p>
+<ol class="org-ol">
+<li>Global administrative user privileges<br /></li>
+<li>Database, table, and column user privileges<br /></li>
+<li>Miscellaneous user privileges and limits<br /></li>
+</ol>
+
+<p>
+Full documentation of the privileges:<a href="https://mariadb.com/kb/en/grant/">https://mariadb.com/kb/en/grant/</a><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org53f6489" class="outline-2">
+<h2 id="org53f6489"><span class="section-number-2">4</span> Creating user</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'username'</span>@<span style="color: #ffa07a;">'host'</span> IDENTIFIED <span style="color: #20b2aa; font-weight: bold;">BY</span> <span style="color: #ffa07a;">'password'</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'boyd'</span>@<span style="color: #ffa07a;">'%'</span> IDENTIFIED <span style="color: #20b2aa; font-weight: bold;">BY</span> <span style="color: #ffa07a;">'bomber'</span>;
+<span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'tom'</span>@<span style="color: #ffa07a;">'localhost'</span> IDENTIFIED <span style="color: #20b2aa; font-weight: bold;">BY</span> <span style="color: #ffa07a;">'retail'</span>;
+<span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'richard'</span>@<span style="color: #ffa07a;">'powr.example.net'</span> IDENTIFIED <span style="color: #20b2aa; font-weight: bold;">BY</span> <span style="color: #ffa07a;">'nuclear'</span>;
+<span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'robert'</span>@<span style="color: #ffa07a;">'%.example.net'</span> IDENTIFIED <span style="color: #20b2aa; font-weight: bold;">BY</span> <span style="color: #ffa07a;">'pilot'</span>;
+<span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'dallin'</span>@<span style="color: #ffa07a;">'192.168.1.1'</span> IDENTIFIED <span style="color: #20b2aa; font-weight: bold;">BY</span> <span style="color: #ffa07a;">'judge'</span>;
+<span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'russell'</span>@<span style="color: #ffa07a;">'192.168.1.%'</span> IDENTIFIED <span style="color: #20b2aa; font-weight: bold;">BY</span> <span style="color: #ffa07a;">'surgeon'</span>;
+<span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'russell'</span>@<span style="color: #ffa07a;">'192.168.1.0/255.255.255.0'</span> IDENTIFIED <span style="color: #20b2aa; font-weight: bold;">BY</span> <span style="color: #ffa07a;">'business'</span>;
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org80ec043" class="outline-2">
+<h2 id="org80ec043"><span class="section-number-2">5</span> Granting permissions</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+By default, new users do not have the permission to do anything except logging in, which is not very usefull.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">GRANT</span> &lt;<span style="color: #20b2aa; font-weight: bold;">privileges</span>&gt; <span style="color: #20b2aa; font-weight: bold;">ON</span> &lt;database&gt; <span style="color: #20b2aa; font-weight: bold;">TO</span> &lt;<span style="color: #76ee00;">user</span>&gt;;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">GRANT</span> <span style="color: #20b2aa; font-weight: bold;">ALL</span> <span style="color: #20b2aa; font-weight: bold;">ON</span> *.* <span style="color: #20b2aa; font-weight: bold;">TO</span> <span style="color: #ffa07a;">'robert'</span>@<span style="color: #ffa07a;">'%'</span> <span style="color: #20b2aa; font-weight: bold;">WITH</span> <span style="color: #20b2aa; font-weight: bold;">GRANT</span> <span style="color: #20b2aa; font-weight: bold;">OPTION</span>;
+<span style="color: #20b2aa; font-weight: bold;">GRANT</span> <span style="color: #20b2aa; font-weight: bold;">SELECT</span>,<span style="color: #20b2aa; font-weight: bold;">INSERT</span>,<span style="color: #20b2aa; font-weight: bold;">UPDATE</span>,<span style="color: #20b2aa; font-weight: bold;">DELETE</span> <span style="color: #20b2aa; font-weight: bold;">ON</span> serv.* <span style="color: #20b2aa; font-weight: bold;">TO</span> <span style="color: #ffa07a;">'jeffrey'</span>@<span style="color: #ffa07a;">'localhost'</span>;
+<span style="color: #20b2aa; font-weight: bold;">GRANT</span> <span style="color: #20b2aa; font-weight: bold;">SELECT</span> <span style="color: #20b2aa; font-weight: bold;">ON</span> edu.staff <span style="color: #20b2aa; font-weight: bold;">TO</span> <span style="color: #ffa07a;">'david'</span>@<span style="color: #ffa07a;">'localhost'</span> <span style="color: #20b2aa; font-weight: bold;">WITH</span> <span style="color: #20b2aa; font-weight: bold;">GRANT</span> <span style="color: #20b2aa; font-weight: bold;">OPTION</span>;
+The <span style="color: #20b2aa; font-weight: bold;">limit</span> will apply <span style="color: #20b2aa; font-weight: bold;">to</span> <span style="color: #20b2aa; font-weight: bold;">every</span> database that can be accessed <span style="color: #20b2aa; font-weight: bold;">by</span> the quentin <span style="color: #76ee00;">user</span> <span style="color: #20b2aa; font-weight: bold;">and</span> <span style="color: #20b2aa; font-weight: bold;">not</span> just <span style="color: #20b2aa; font-weight: bold;">to</span> queries that the <span style="color: #76ee00;">user</span> runs <span style="color: #20b2aa; font-weight: bold;">on</span> the logan database.
+<span style="color: #20b2aa; font-weight: bold;">GRANT</span> <span style="color: #20b2aa; font-weight: bold;">ALL</span> <span style="color: #20b2aa; font-weight: bold;">ON</span> logan.* <span style="color: #20b2aa; font-weight: bold;">TO</span> <span style="color: #ffa07a;">'quentin'</span>@<span style="color: #ffa07a;">'localhost'</span> <span style="color: #20b2aa; font-weight: bold;">WITH</span> MAX_QUERIES_PER_HOUR 100;
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgff5d637" class="outline-2">
+<h2 id="orgff5d637"><span class="section-number-2">6</span> Revoking permissions</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+to remove privileges<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">REVOKE</span> &lt;<span style="color: #20b2aa; font-weight: bold;">privileges</span>&gt; <span style="color: #20b2aa; font-weight: bold;">ON</span> &lt;database&gt; <span style="color: #20b2aa; font-weight: bold;">FROM</span> &lt;<span style="color: #76ee00;">user</span>&gt;;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">REVOKE</span> <span style="color: #20b2aa; font-weight: bold;">DELETE</span>,<span style="color: #20b2aa; font-weight: bold;">GRANT</span> <span style="color: #20b2aa; font-weight: bold;">OPTION</span> <span style="color: #20b2aa; font-weight: bold;">ON</span> cust.* <span style="color: #20b2aa; font-weight: bold;">FROM</span> <span style="color: #ffa07a;">'todd'</span>@<span style="color: #ffa07a;">'%'</span>;
+<span style="color: #20b2aa; font-weight: bold;">REVOKE</span> <span style="color: #20b2aa; font-weight: bold;">ALL</span>,<span style="color: #20b2aa; font-weight: bold;">GRANT</span> <span style="color: #20b2aa; font-weight: bold;">OPTION</span> <span style="color: #20b2aa; font-weight: bold;">FROM</span> <span style="color: #ffa07a;">'neil'</span>@<span style="color: #ffa07a;">'%.example.com'</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbbaa3fe" class="outline-2">
+<h2 id="orgbbaa3fe"><span class="section-number-2">7</span> Showing permissions</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-sql">SHOW GRANTS <span style="color: #20b2aa; font-weight: bold;">FOR</span> &lt;<span style="color: #76ee00;">user</span>&gt;;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql">SHOW GRANTS <span style="color: #20b2aa; font-weight: bold;">FOR</span> <span style="color: #ffa07a;">'dieter'</span>@<span style="color: #ffa07a;">'10.2.200.4'</span>;
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org478f5ff" class="outline-2">
+<h2 id="org478f5ff"><span class="section-number-2">8</span> Setting and changing passwords</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SET</span> PASSWORD <span style="color: #20b2aa; font-weight: bold;">FOR</span> &lt;<span style="color: #76ee00;">user</span>&gt; = PASSWORD(<span style="color: #ffa07a;">'&lt;password&gt;'</span>);
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SET</span> PASSWORD <span style="color: #20b2aa; font-weight: bold;">FOR</span> <span style="color: #ffa07a;">'henry'</span>@<span style="color: #ffa07a;">'%'</span> = PASSWORD(<span style="color: #ffa07a;">'niftypassword'</span>);
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge59176c" class="outline-2">
+<h2 id="orge59176c"><span class="section-number-2">9</span> Removing users</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">DROP</span> <span style="color: #76ee00;">USER</span> &lt;<span style="color: #76ee00;">user</span>&gt;;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">DROP</span> <span style="color: #76ee00;">USER</span> <span style="color: #ffa07a;">'tom'</span>@<span style="color: #ffa07a;">'%'</span>;
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org5e909c5" class="outline-2">
+<h2 id="org5e909c5"><span class="section-number-2">10</span> Using MariaDB</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org01ab6e3" class="outline-3">
+<h3 id="org01ab6e3"><span class="section-number-3">10.1</span> Connecting to MariaDB</h3>
+<div class="outline-text-3" id="text-10-1">
+<div class="org-src-container">
+<pre class="src src-sql">mysql [-u &lt;username&gt;] [-p] [-h &lt;<span style="color: #20b2aa; font-weight: bold;">host</span>&gt;] [&lt;database&gt;]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd893153" class="outline-3">
+<h3 id="orgd893153"><span class="section-number-3">10.2</span> Using USE to select a database</h3>
+<div class="outline-text-3" id="text-10-2">
+<div class="org-src-container">
+<pre class="src src-sql">USE &lt;database&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org02b1458" class="outline-3">
+<h3 id="org02b1458"><span class="section-number-3">10.3</span> Using SHOW to list all database</h3>
+<div class="outline-text-3" id="text-10-3">
+<div class="org-src-container">
+<pre class="src src-sql">SHOW DATABASES;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8575bbb" class="outline-3">
+<h3 id="org8575bbb"><span class="section-number-3">10.4</span> Creating and deleting databases</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+When MariaDB is installed, the installar creates four databases<br />
+mysql: to keep track of users<br />
+test: for experimentation and learning<br />
+performance_schema: semi-vritual database, read-only, stores performance<br />
+information_schema: semi-virtual database, read-only, stores other statistics<br />
+</p>
+
+<p>
+In MariaDB, a schema and a database are quite the same thing<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2d983b2" class="outline-3">
+<h3 id="org2d983b2"><span class="section-number-3">10.5</span> Creating a database</h3>
+<div class="outline-text-3" id="text-10-5">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">CREATE</span> DATABASE &lt;databasename&gt;;
+<span style="color: #20b2aa; font-weight: bold;">CREATE</span> DATABASE my_database;
+<span style="color: #20b2aa; font-weight: bold;">CREATE</span> DATABASE IF <span style="color: #20b2aa; font-weight: bold;">NOT</span> EXIST my_database;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7bbfce9" class="outline-3">
+<h3 id="org7bbfce9"><span class="section-number-3">10.6</span> Deleting a database</h3>
+<div class="outline-text-3" id="text-10-6">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">DROP</span> DATABASE &lt;databasename&gt;;
+<span style="color: #20b2aa; font-weight: bold;">DROP</span> DATABASE my_database;
+<span style="color: #20b2aa; font-weight: bold;">DROP</span> DATABASE IF EXIST my_database;
+</pre>
+</div>
+
+<p>
+The process by which we refine our table definitions and split our data off into multiple tables is called normalization.<br />
+<a href="https://mariadb.com/kb/en/recap-the-relational-model">https://mariadb.com/kb/en/recap-the-relational-model</a><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec4d0f6" class="outline-2">
+<h2 id="orgec4d0f6"><span class="section-number-2">11</span> Using CREATE TABLE</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org05fbf4e" class="outline-3">
+<h3 id="org05fbf4e"><span class="section-number-3">11.1</span> Using CREATE TABLE - basic syntax</h3>
+<div class="outline-text-3" id="text-11-1">
+<pre class="example">
+basic CREATE TABLE table_name (&lt;column_definition&gt;);
+
+The &lt;column_definitions&gt; part has the following basic syntax:
+&lt;column_name&gt; &lt;data_type&gt;
+[NOT NULL | NULL]
+[DEFAULT &lt;default_value&gt;]
+[AUTO_INCREMENT]
+[UNIQUE [KEY] | [PRIMARY] KEY]
+[COMMENT '&lt;string&gt;']
+The parts in angle brakets(&lt;&gt;) are the bits that we fill in.
+The parts in square brakets([]) are optional 
+The pipe character(|) means "or"
+
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org04c10ff" class="outline-3">
+<h3 id="org04c10ff"><span class="section-number-3">11.2</span> Using CREATE TABLE - datatypes</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+Different datatypes exist because various types of data are most efficiently stored in different ways.<br />
+Common datatypes include numeric(numbers), strings(text), and dates.<br />
+numberic: INTEGER, FLOAT<br />
+string: CHAR, TEXT, VARCHAR<br />
+date: DATE,TIME,DATETIME<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbcef38c" class="outline-3">
+<h3 id="orgbcef38c"><span class="section-number-3">11.3</span> Using CREATE TABLE - an example</h3>
+<div class="outline-text-3" id="text-11-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> <span style="color: #00ff7f;">employees</span> (
+id <span style="color: #9370db;">INT</span> <span style="color: #20b2aa; font-weight: bold;">NOT</span> <span style="color: #20b2aa; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #20b2aa; font-weight: bold;">PRIMARY</span> <span style="color: #20b2aa; font-weight: bold;">KEY</span>,
+surname <span style="color: #9370db;">VARCHAR</span>(100),
+givenname <span style="color: #9370db;">VARCHAR</span>(100),
+pref_name <span style="color: #9370db;">VARCHAR</span>(50),
+birthday <span style="color: #9370db;">DATE</span> COMMENT <span style="color: #ffa07a;">'approximate birthday OK'</span>
+);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcbb9820" class="outline-3">
+<h3 id="orgcbb9820"><span class="section-number-3">11.4</span> Using SHOW to display the command used to create a table</h3>
+<div class="outline-text-3" id="text-11-4">
+<div class="org-src-container">
+<pre class="src src-sql">SHOW <span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> employee \G
+SHOW <span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> employee;
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5d10941" class="outline-3">
+<h3 id="org5d10941"><span class="section-number-3">11.5</span> Using DESCRIBE to explore the structure of a table</h3>
+<div class="outline-text-3" id="text-11-5">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">DESCRIBE</span> employees;  # COMMENT <span style="color: #20b2aa; font-weight: bold;">is</span> <span style="color: #20b2aa; font-weight: bold;">not</span> displayed
+<span style="color: #20b2aa; font-weight: bold;">DESCRIBE</span> employees birthday;  # <span style="color: #20b2aa; font-weight: bold;">specific</span> <span style="color: #20b2aa; font-weight: bold;">column</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgccad47c" class="outline-2">
+<h2 id="orgccad47c"><span class="section-number-2">12</span> Using ALTER TABLE</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org1651eeb" class="outline-3">
+<h3 id="org1651eeb"><span class="section-number-3">12.1</span> Using ALTER TABLE - basic syntax</h3>
+<div class="outline-text-3" id="text-12-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">ALTER</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> <span style="color: #20b2aa; font-weight: bold;">table_name</span> &lt;alter_definition&gt;[, alter_definition] ...;
+</pre>
+</div>
+<p>
+The &lt;alter_definition&gt; part of the command can ADD, MODIFY, and DROP columns from tables.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org53c7055" class="outline-3">
+<h3 id="org53c7055"><span class="section-number-3">12.2</span> Using ALTER TABLE - adding a column</h3>
+<div class="outline-text-3" id="text-12-2">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">ADD</span> &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt; &lt;column_definition&gt; [<span style="color: #20b2aa; font-weight: bold;">FIRST</span> | <span style="color: #20b2aa; font-weight: bold;">AFTER</span> &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;]
+</pre>
+</div>
+
+<p>
+The FIRST option puts the new column as the first column of a row.<br />
+The after option lets us specify which column the new column appers after.<br />
+By default, the column will be added after the current last column.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">ALTER</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> <span style="color: #00ff7f;">employees</span> <span style="color: #20b2aa; font-weight: bold;">ADD</span> username <span style="color: #9370db;">VARCHAR</span>(20) <span style="color: #20b2aa; font-weight: bold;">AFTER</span> pref_name;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org50ed679" class="outline-3">
+<h3 id="org50ed679"><span class="section-number-3">12.3</span> Using ALTER TABLE - modifying a column</h3>
+<div class="outline-text-3" id="text-12-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">MODIFY</span> &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt; &lt;column_definition&gt;
+<span style="color: #20b2aa; font-weight: bold;">ALTER</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> <span style="color: #00ff7f;">employees</span> <span style="color: #20b2aa; font-weight: bold;">MODIFY</span> pref_name <span style="color: #9370db;">VARCHAR</span>(25);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e19f03" class="outline-3">
+<h3 id="org5e19f03"><span class="section-number-3">12.4</span> Using ALTER TABLE - droping a column</h3>
+<div class="outline-text-3" id="text-12-4">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">DROP</span> &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;
+<span style="color: #20b2aa; font-weight: bold;">ALTER</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> <span style="color: #00ff7f;">employees</span> <span style="color: #20b2aa; font-weight: bold;">DROP</span> username;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbf30533" class="outline-3">
+<h3 id="orgbf30533"><span class="section-number-3">12.5</span> Using DROP TABLE</h3>
+<div class="outline-text-3" id="text-12-5">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">DROP</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> &lt;<span style="color: #20b2aa; font-weight: bold;">table_name</span>&gt;
+<span style="color: #20b2aa; font-weight: bold;">DROP</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> <span style="color: #00ff7f;">mytable</span>;
+<span style="color: #20b2aa; font-weight: bold;">DROP</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> <span style="color: #00ff7f;">IF</span> <span style="color: #20b2aa; font-weight: bold;">EXISTS</span> mytable;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org837818e" class="outline-2">
+<h2 id="org837818e"><span class="section-number-2">13</span> Using MariaDB - Inserting, Updating, and Deleting</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org58f524e" class="outline-3">
+<h3 id="org58f524e"><span class="section-number-3">13.1</span> Using INSERT</h3>
+<div class="outline-text-3" id="text-13-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">INSERT</span> [<span style="color: #20b2aa; font-weight: bold;">INTO</span>] &lt;<span style="color: #20b2aa; font-weight: bold;">table_name</span>&gt; [(&lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;[, &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;, ...])] {<span style="color: #20b2aa; font-weight: bold;">VALUES</span> | <span style="color: #20b2aa; font-weight: bold;">VALUE</span>} ({expression&gt; | <span style="color: #20b2aa; font-weight: bold;">DEFAULT</span>}, ... )[,( ... ), ... ];
+</pre>
+</div>
+
+<p>
+Inserting complete rows<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">INSERT</span> <span style="color: #20b2aa; font-weight: bold;">INTO</span> employees <span style="color: #20b2aa; font-weight: bold;">VALUES</span>
+(<span style="color: #20b2aa; font-weight: bold;">NULL</span>, "Perry", "Lowell Tom", "Tom", "1988-08-05");
+</pre>
+</div>
+
+<p>
+For auto-incremented columns, such as the id column in our employees table, we have to put something but we can't put in our own value because MariaDB handles that. So, we use NULL as a placeholder to let MariaDB know that we are not providing a value and then MariaDB provides its own value.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">INSERT</span> <span style="color: #20b2aa; font-weight: bold;">INTO</span> employees <span style="color: #20b2aa; font-weight: bold;">VALUES</span>
+(<span style="color: #20b2aa; font-weight: bold;">NULL</span>, "Pratt","Parley", <span style="color: #20b2aa; font-weight: bold;">NULL</span>, <span style="color: #20b2aa; font-weight: bold;">NULL</span>),
+(<span style="color: #20b2aa; font-weight: bold;">NULL</span>, "Snow","Eliza", <span style="color: #20b2aa; font-weight: bold;">NULL</span>, <span style="color: #20b2aa; font-weight: bold;">NULL</span>);
+</pre>
+</div>
+
+<p>
+A better and safer method is to always specify the columns that we are inserting data into, even if it is every column in the table.<br />
+</p>
+
+<p>
+Inserting partial rows<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">INSERT</span> <span style="color: #20b2aa; font-weight: bold;">INTO</span> employees (surname,givenname) <span style="color: #20b2aa; font-weight: bold;">VALUES</span>
+("Taylor","John"),
+("Woodruff","Wilford"),
+("Snow","Lorenzo");
+<span style="color: #20b2aa; font-weight: bold;">INSERT</span> <span style="color: #20b2aa; font-weight: bold;">INTO</span> employees (pref_name,givenname,surname,birthday) <span style="color: #20b2aa; font-weight: bold;">VALUES</span>
+("George","George Albert","Smith","1970-04-04");
+<span style="color: #20b2aa; font-weight: bold;">INSERT</span> employees (surname) <span style="color: #20b2aa; font-weight: bold;">VALUE</span> ("McKay");  
+</pre>
+</div>
+
+<p>
+VALUE because of the single column<br />
+</p>
+
+<p>
+Inserting from another table<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">INSERT</span> [<span style="color: #20b2aa; font-weight: bold;">INTO</span>] &lt;table_1&gt; [(&lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;[, &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;,...])]
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span> &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;[, &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;,...]
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> &lt;table_2&gt;;
+<span style="color: #20b2aa; font-weight: bold;">INSERT</span> <span style="color: #20b2aa; font-weight: bold;">INTO</span> employees (surname, givenname, birthday)
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span> lastname, firstname, bday
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> <span style="color: #20b2aa; font-weight: bold;">names</span>;
+</pre>
+</div>
+
+<p>
+Inserting from a file<br />
+default: tab separated columns file<br />
+basic format:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql">LOAD <span style="color: #20b2aa; font-weight: bold;">DATA</span> [<span style="color: #20b2aa; font-weight: bold;">LOCAL</span>] INFILE <span style="color: #ffa07a;">'&lt;filename&gt;'</span>
+<span style="color: #20b2aa; font-weight: bold;">INTO</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> &lt;tablename&gt;
+[(&lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;[, &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;,...]];
+</pre>
+</div>
+
+<p>
+suppose we have a file named new_employees ,which has three columns which correspond to the birthday , surname , and givenname columns in our employees table:<br />
+1971-08-09 Anderson Neil<br />
+1985-01-24 Christofferson Todd<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql">LOAD <span style="color: #20b2aa; font-weight: bold;">DATA</span> INFILE <span style="color: #ffa07a;">'/tmp/new_employees'</span>
+<span style="color: #20b2aa; font-weight: bold;">INTO</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> employees
+(birthday, surname, givenname);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf3b8125" class="outline-3">
+<h3 id="orgf3b8125"><span class="section-number-3">13.2</span> Using UPDATE</h3>
+<div class="outline-text-3" id="text-13-2">
+<p>
+basic syntax:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">UPDATE</span> &lt;<span style="color: #20b2aa; font-weight: bold;">table_name</span>&gt;
+<span style="color: #20b2aa; font-weight: bold;">SET</span> column_name1={expression|<span style="color: #20b2aa; font-weight: bold;">DEFAULT</span>}
+[, column_name2={expression|<span style="color: #20b2aa; font-weight: bold;">DEFAULT</span>}] ...
+[<span style="color: #20b2aa; font-weight: bold;">WHERE</span> &lt;where_conditions&gt;];
+
+<span style="color: #20b2aa; font-weight: bold;">UPDATE</span> employees <span style="color: #20b2aa; font-weight: bold;">SET</span>
+pref_name = "John", birthday = "1958-11-01"
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> surname = "Taylor" <span style="color: #20b2aa; font-weight: bold;">AND</span> givenname = "John";
+
+<span style="color: #20b2aa; font-weight: bold;">UPDATE</span> employees <span style="color: #20b2aa; font-weight: bold;">SET</span>
+pref_name = "Will", birthday = "1957-03-01"
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> surname="Woodruff";
+
+<span style="color: #20b2aa; font-weight: bold;">UPDATE</span> employees <span style="color: #20b2aa; font-weight: bold;">SET</span>
+birthday = "1964-04-03"
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> surname = "Snow";
+
+<span style="color: #20b2aa; font-weight: bold;">UPDATE</span> employees <span style="color: #20b2aa; font-weight: bold;">SET</span>
+birthday = "1975-04-12"
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> id = 2;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8df1fe2" class="outline-3">
+<h3 id="org8df1fe2"><span class="section-number-3">13.3</span> Using DELETE</h3>
+<div class="outline-text-3" id="text-13-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">DELETE</span> <span style="color: #20b2aa; font-weight: bold;">FROM</span> &lt;<span style="color: #20b2aa; font-weight: bold;">table_name</span>&gt; [<span style="color: #20b2aa; font-weight: bold;">WHERE</span> &lt;where_conditions&gt;];
+<span style="color: #20b2aa; font-weight: bold;">DELETE</span> <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> givenname="Spencer" <span style="color: #20b2aa; font-weight: bold;">AND</span> surname="Kimball";
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6a0688d" class="outline-2">
+<h2 id="org6a0688d"><span class="section-number-2">14</span> Using MariaDB - Retrieving Data</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org3c7a846" class="outline-3">
+<h3 id="org3c7a846"><span class="section-number-3">14.1</span> basic syntax:</h3>
+<div class="outline-text-3" id="text-14-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> &lt;what&gt; <span style="color: #20b2aa; font-weight: bold;">FROM</span> &lt;<span style="color: #20b2aa; font-weight: bold;">table_name</span>&gt;
+[<span style="color: #20b2aa; font-weight: bold;">WHERE</span> &lt;<span style="color: #20b2aa; font-weight: bold;">where</span>-conditions&gt;]
+[<span style="color: #20b2aa; font-weight: bold;">ORDER</span> <span style="color: #20b2aa; font-weight: bold;">BY</span> &lt;<span style="color: #20b2aa; font-weight: bold;">column_name</span>&gt;];
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd22e55a" class="outline-3">
+<h3 id="orgd22e55a"><span class="section-number-3">14.2</span> Retrieving everything</h3>
+<div class="outline-text-3" id="text-14-2">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees; 
+</pre>
+</div>
+
+<p>
+the data will be retrieved and displayed in the order in which it is stored in the table.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb950be0" class="outline-3">
+<h3 id="orgb950be0"><span class="section-number-3">14.3</span> Retrieving selected columns</h3>
+<div class="outline-text-3" id="text-14-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> givenname,surname <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1e4df1c" class="outline-3">
+<h3 id="org1e4df1c"><span class="section-number-3">14.4</span> Filtering and searching data</h3>
+<div class="outline-text-3" id="text-14-4">
+<p>
+Filtering by exact values<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> birthday &gt;= <span style="color: #ffa07a;">'1970-01-01'</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org30ac69c" class="outline-3">
+<h3 id="org30ac69c"><span class="section-number-3">14.5</span> Using logical operators</h3>
+<div class="outline-text-3" id="text-14-5">
+<p>
+Using the AND operator<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> surname = <span style="color: #ffa07a;">'Snow'</span>
+<span style="color: #20b2aa; font-weight: bold;">AND</span> givenname <span style="color: #20b2aa; font-weight: bold;">LIKE</span> <span style="color: #ffa07a;">'Eli%'</span>;
+</pre>
+</div>
+
+<p>
+Using the OR operator<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> givenname = <span style="color: #ffa07a;">'Neil'</span>
+<span style="color: #20b2aa; font-weight: bold;">OR</span> givenname = <span style="color: #ffa07a;">'John'</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3fdd8ec" class="outline-3">
+<h3 id="org3fdd8ec"><span class="section-number-3">14.6</span> Evaluation order</h3>
+<div class="outline-text-3" id="text-14-6">
+<p>
+In SQL, AND operators are evaluated first, followed by the OR operations.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql">ELECT * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> 
+givenname = <span style="color: #ffa07a;">'John'</span>
+<span style="color: #20b2aa; font-weight: bold;">OR</span> givenname = <span style="color: #ffa07a;">'Tom'</span>
+<span style="color: #20b2aa; font-weight: bold;">AND</span> surname = <span style="color: #ffa07a;">'Snow'</span>;
+ELECT * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span>
+(givenname = <span style="color: #ffa07a;">'John'</span>
+<span style="color: #20b2aa; font-weight: bold;">OR</span> givenname = <span style="color: #ffa07a;">'Tom'</span>)
+<span style="color: #20b2aa; font-weight: bold;">AND</span> surname = <span style="color: #ffa07a;">'Snow'</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org32c44d2" class="outline-3">
+<h3 id="org32c44d2"><span class="section-number-3">14.7</span> Using the IN operator</h3>
+<div class="outline-text-3" id="text-14-7">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span>
+surname = <span style="color: #ffa07a;">'Snow'</span>
+<span style="color: #20b2aa; font-weight: bold;">OR</span> surname = <span style="color: #ffa07a;">'Smith'</span>
+<span style="color: #20b2aa; font-weight: bold;">OR</span> surname = <span style="color: #ffa07a;">'Pratt'</span>;
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees <span style="color: #20b2aa; font-weight: bold;">WHERE</span> surname <span style="color: #20b2aa; font-weight: bold;">IN</span> (<span style="color: #ffa07a;">'Snow'</span>,<span style="color: #ffa07a;">'Smith'</span>,<span style="color: #ffa07a;">'Pratt'</span>);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21f8fe5" class="outline-3">
+<h3 id="org21f8fe5"><span class="section-number-3">14.8</span> Using the NOT operator</h3>
+<div class="outline-text-3" id="text-14-8">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees <span style="color: #20b2aa; font-weight: bold;">WHERE</span>
+surname <span style="color: #20b2aa; font-weight: bold;">NOT</span> <span style="color: #20b2aa; font-weight: bold;">IN</span> (<span style="color: #ffa07a;">'Snow'</span>,<span style="color: #ffa07a;">'Smith'</span>,<span style="color: #ffa07a;">'Pratt'</span>);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4550f6b" class="outline-3">
+<h3 id="org4550f6b"><span class="section-number-3">14.9</span> Searching with LIKE</h3>
+<div class="outline-text-3" id="text-14-9">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> surname <span style="color: #20b2aa; font-weight: bold;">LIKE</span> "McK%";  
+</pre>
+</div>
+<p>
+%: wildcard<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbb99832" class="outline-3">
+<h3 id="orgbb99832"><span class="section-number-3">14.10</span> Sorting data</h3>
+<div class="outline-text-3" id="text-14-10">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> birthday &gt;= <span style="color: #ffa07a;">'1970-01-01'</span>
+<span style="color: #20b2aa; font-weight: bold;">ORDER</span> <span style="color: #20b2aa; font-weight: bold;">BY</span> surname;
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> birthday &gt;= <span style="color: #ffa07a;">'1970-01-01'</span>
+<span style="color: #20b2aa; font-weight: bold;">ORDER</span> <span style="color: #20b2aa; font-weight: bold;">BY</span> surname,givenname , birthday;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd9e9869" class="outline-3">
+<h3 id="orgd9e9869"><span class="section-number-3">14.11</span> Joining data</h3>
+<div class="outline-text-3" id="text-14-11">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">CREATE</span> <span style="color: #20b2aa; font-weight: bold;">TABLE</span> <span style="color: #00ff7f;">phone</span> (
+id serial <span style="color: #20b2aa; font-weight: bold;">PRIMARY</span> <span style="color: #20b2aa; font-weight: bold;">KEY</span>,
+emp_id <span style="color: #9370db;">int</span>,
+<span style="color: #20b2aa; font-weight: bold;">type</span> <span style="color: #9370db;">char</span>(3),
+cc <span style="color: #9370db;">int</span>(4),
+<span style="color: #20b2aa; font-weight: bold;">number</span> bigint,
+ext <span style="color: #9370db;">int</span>);
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span> surname,givenname,<span style="color: #20b2aa; font-weight: bold;">type</span>,cc,<span style="color: #20b2aa; font-weight: bold;">number</span>,ext
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> employees <span style="color: #20b2aa; font-weight: bold;">JOIN</span> phone
+<span style="color: #20b2aa; font-weight: bold;">ON</span> employees.id = phone.emp_id;
+The <span style="color: #20b2aa; font-weight: bold;">first</span> <span style="color: #20b2aa; font-weight: bold;">table</span> specified <span style="color: #20b2aa; font-weight: bold;">in</span> the <span style="color: #20b2aa; font-weight: bold;">FROM</span> clause <span style="color: #20b2aa; font-weight: bold;">is</span> <span style="color: #20b2aa; font-weight: bold;">called</span> the <span style="color: #20b2aa; font-weight: bold;">left</span> <span style="color: #20b2aa; font-weight: bold;">table</span>, <span style="color: #20b2aa; font-weight: bold;">and</span> the <span style="color: #20b2aa; font-weight: bold;">second</span> <span style="color: #20b2aa; font-weight: bold;">is</span> <span style="color: #20b2aa; font-weight: bold;">called</span> the <span style="color: #20b2aa; font-weight: bold;">right</span> <span style="color: #20b2aa; font-weight: bold;">table</span>.
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span> surname,givenname,<span style="color: #20b2aa; font-weight: bold;">type</span>,cc,<span style="color: #20b2aa; font-weight: bold;">number</span>,ext
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> employees <span style="color: #20b2aa; font-weight: bold;">LEFT</span> <span style="color: #20b2aa; font-weight: bold;">JOIN</span> phone
+<span style="color: #20b2aa; font-weight: bold;">ON</span> employees.id = phone.emp_id;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org110694a" class="outline-2">
+<h2 id="org110694a"><span class="section-number-2">15</span> Summarizing data</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+<div id="outline-container-org28da5f4" class="outline-3">
+<h3 id="org28da5f4"><span class="section-number-3">15.1</span> The AVG function</h3>
+<div class="outline-text-3" id="text-15-1">
+<p>
+The AVG function is used for obtaining the average of the data in a column.<br />
+The CURDATE function doesn't take any arguments and when called, it simply returns the current date.<br />
+The TIMESTAMPDIFF function takes three arguments-the unit to count by and two dates, and then outputs the difference between the two. The unit is one of several time units, including MINUTE , HOUR , DAY , WEEK , MONTH , QUARTER , and YEAR .<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> <span style="color: #76ee00;">AVG</span>(TIMESTAMPDIFF(<span style="color: #20b2aa; font-weight: bold;">YEAR</span>,birthday,CURDATE()))
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> employees;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93bc1ca" class="outline-3">
+<h3 id="org93bc1ca"><span class="section-number-3">15.2</span> The COUNT function</h3>
+<div class="outline-text-3" id="text-15-2">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> <span style="color: #76ee00;">COUNT</span>(*) <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees;
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span> <span style="color: #76ee00;">COUNT</span>(pref_name) <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees; 
+</pre>
+</div>
+
+<p>
+to count how many do have a set preferred name<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd526e85" class="outline-3">
+<h3 id="orgd526e85"><span class="section-number-3">15.3</span> The MIN and MAX functions</h3>
+<div class="outline-text-3" id="text-15-3">
+<p>
+the oldest employee<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> birthday = (<span style="color: #20b2aa; font-weight: bold;">SELECT</span> <span style="color: #76ee00;">MIN</span>(birthday) <span style="color: #20b2aa; font-weight: bold;">from</span> employees);
+</pre>
+</div>
+
+<p>
+the youngest employee<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> * <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> birthday = (<span style="color: #20b2aa; font-weight: bold;">SELECT</span> <span style="color: #76ee00;">MAX</span>(birthday) <span style="color: #20b2aa; font-weight: bold;">FROM</span> employees);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec8395f" class="outline-3">
+<h3 id="orgec8395f"><span class="section-number-3">15.4</span> The SUM function</h3>
+<div class="outline-text-3" id="text-15-4">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> <span style="color: #76ee00;">SUM</span>(TIMESTAMPDIFF(<span style="color: #20b2aa; font-weight: bold;">YEAR</span>,birthday,CURDATE()))
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> employees;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b157c7" class="outline-3">
+<h3 id="org8b157c7"><span class="section-number-3">15.5</span> Using GROUP BY with summarized data</h3>
+<div class="outline-text-3" id="text-15-5">
+<p>
+to find out which surnames are the most popular<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> surname, <span style="color: #76ee00;">COUNT</span>(*)
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">GROUP</span> <span style="color: #20b2aa; font-weight: bold;">BY</span> surname;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e34185" class="outline-3">
+<h3 id="org5e34185"><span class="section-number-3">15.6</span> Using HAVING to filter GROUP BY</h3>
+<div class="outline-text-3" id="text-15-6">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> surname, <span style="color: #76ee00;">COUNT</span>(*)
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> employees
+<span style="color: #20b2aa; font-weight: bold;">GROUP</span> <span style="color: #20b2aa; font-weight: bold;">BY</span> surname
+<span style="color: #20b2aa; font-weight: bold;">HAVING</span> <span style="color: #76ee00;">COUNT</span>(*) &gt; 1;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org10c3155" class="outline-2">
+<h2 id="org10c3155"><span class="section-number-2">16</span> Backing up, importing, and restoring data</h2>
+<div class="outline-text-2" id="text-16">
+</div>
+<div id="outline-container-orgabc7c40" class="outline-3">
+<h3 id="orgabc7c40"><span class="section-number-3">16.1</span> Basic backups with mysqldump</h3>
+<div class="outline-text-3" id="text-16-1">
+<div class="org-src-container">
+<pre class="src src-sh">mysqldump [-u username] [-p] database_name [table_name]
+mysqldump -r root -p test &gt; test.sql
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2e5002d" class="outline-3">
+<h3 id="org2e5002d"><span class="section-number-3">16.2</span> Restoring backups made with mysqldump</h3>
+<div class="outline-text-3" id="text-16-2">
+<div class="org-src-container">
+<pre class="src src-sh">mysql -u root -p test &lt; test.sql
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3c0c059" class="outline-3">
+<h3 id="org3c0c059"><span class="section-number-3">16.3</span> Making tab-delimited backups with mysqldump</h3>
+<div class="outline-text-3" id="text-16-3">
+<div class="org-src-container">
+<pre class="src src-sh">mysqldump --tab /tmp/ -u root -p test employees
+</pre>
+</div>
+
+<p>
+When using this option, mysqldump will create two files. A tablename.sql<br />
+file with the SQL commands to recreate the table, and a tablename.txt file with the actual data in tab-delimited format.<br />
+The SQL file is owned by whichever user we used to run the mysqldump command. The TXT file, on the other hand, is owned by the mysql user, so whatever directory we specify needs to have permissions so that both users can write to it.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8023dfc" class="outline-3">
+<h3 id="org8023dfc"><span class="section-number-3">16.4</span> Restoring and importing data with mysqlimport</h3>
+<div class="outline-text-3" id="text-16-4">
+<div class="org-src-container">
+<pre class="src src-sh">mysqlimport [--local] [-u username] [-p] database_name filename
+</pre>
+</div>
+
+<p>
+The filename attribute must be the name of the table we want to import into.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">mysqlimport --local -u root -p test /tmp/employees.txt
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc635f1e" class="outline-3">
+<h3 id="orgc635f1e"><span class="section-number-3">16.5</span> Making backups of MyISAM tables with mysqlhotcopy</h3>
+<div class="outline-text-3" id="text-16-5">
+<p>
+The mysqlhotcopy backup program is actually a Perl script. It can take backups quickly, but only if our tables use the MyISAM or ARCHIVE storage engines.<br />
+An easy way to show the storage engines being used by the tables in our database is with the following SELECT statement:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span> <span style="color: #20b2aa; font-weight: bold;">TABLE_NAME</span>,ENGINE
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> information_schema.tables
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span> TABLE_SCHEMA="test";
+</pre>
+</div>
+
+<p>
+We can change test to the name of whichever database we want to check.<br />
+mysqlhotcopy db_name [/path/to/new_directory]<br />
+The default storage engine for MariaDB is InnoDB , so this script is less useful.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6867c0f" class="outline-3">
+<h3 id="org6867c0f"><span class="section-number-3">16.6</span> Making backups of XtraDB and InnoDB tables with xtrabackup</h3>
+<div class="outline-text-3" id="text-16-6">
+<p>
+The xtrabackup backup program is made specifically for use with XtraDB and InnoDB tables. It can take quick, full backups of our databases while MariaDB is running.<br />
+To take a backup, we do the following:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">xtrabackup --backup --datadir=/var/lib/mysql/ --target-dir=/path/to/backup/
+</pre>
+</div>
+
+<p>
+InnoDB and XtraDB tables are stored across several files, and backups made with xtrabackup are the same. This is why while taking a backup with xtrabackup , we specify a directory and not a file name with the &#x2013;target-dir option.<br />
+After making a raw backup, we need to prepare the backup so that it can be restored if necessary.<br />
+xtrabackup &#x2013;prepare &#x2013;target-dir=/path/to/backup/<br />
+The first time that we run xtrabackup with the &#x2013;prepare option, our backed up data will be cleaned up and put into a logical order. The second time that the &#x2013;prepare option is used, xtrabackup will create some log files that help speed up restoring our data, if it turns out that we need to do that. Running &#x2013;prepare a third, fourth, or any more number of times won't do anything, but is safe to do so in case we can't remember if we've run it for the second time.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8ab32a1" class="outline-3">
+<h3 id="org8ab32a1"><span class="section-number-3">16.7</span> Restoring backups made with xtrabackup</h3>
+<div class="outline-text-3" id="text-16-7">
+<p>
+The easiest way to restore from a backup made with xtrabackup is to use a utility, such as rsync or the cp command, to copy all the files in the backup directory to our MariaDB data directory. Before doing so, we must stop MariaDB and then run the rsync or cp command.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">rsync -avP /path/to/backup/ /var/lib/mysql/
+</pre>
+</div>
+
+<p>
+After the files are copied back to the MariaDB data directory, and before we start MariaDB, it's a good idea to make sure that the ownership of the files is correct.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">chown -R mysql:mysql /var/lib/mysql/
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mike Chyson</p>
+<p class="date">Created: 2020-05-10 Sun 01:04</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

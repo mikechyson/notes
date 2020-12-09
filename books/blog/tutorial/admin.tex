@@ -1,0 +1,63 @@
+
+\chapter{Admin}
+\lstset{language=Python}
+\begin{lstlisting}
+from django.db import models
+
+
+# Create your models here.
+
+class Category(models.Model):
+    category_name = models.CharField('Category', max_length=200)
+
+    def __str__(self):
+        return self.category_name
+
+
+class PDF(models.Model):
+    pdf_name = models.CharField('Name', max_length=200)
+    pdf_author = models.CharField('Author', max_length=200)
+    pdf_keywords = models.CharField('Keywords', max_length=200)
+    pdf_date = models.DateTimeField('Date', blank=True)
+    pdf_url = models.CharField(max_length=200)
+    category = models.ManyToManyField(to=Category)
+
+    def __str__(self):
+        return self.pdf_name
+
+
+class Comment(models.Model):
+    pdf = models.ForeignKey(PDF, on_delete=models.CASCADE)
+    comment_content = models.CharField('Content', max_length=10000)
+    comment_author = models.CharField('Author', max_length=200)
+    comment_date = models.DateTimeField('Date', auto_now_add=True)
+    comment_email = models.CharField('Email', max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.comment_content
+
+
+class Info(models.Model):
+    info_name = models.CharField('Name', max_length=200)
+    choices = (
+        (1, 'Male'),
+        (2, 'Female'),
+        (3, 'Other')
+    )
+    info_gender = models.IntegerField(choices=choices)
+    info_age = models.IntegerField('Age', null=True)
+    info_university = models.CharField('University', max_length=200, null=True, blank=True)
+    info_major = models.CharField('Major', max_length=200, null=True, blank=True)
+    info_github = models.CharField('GitHub', max_length=200, null=True, blank=True)
+    info_facebook = models.CharField('Facebook', max_length=200, null=True, blank=True)
+    info_phone = models.CharField('Phone', max_length=200, null=True, blank=True)
+    info_wechat = models.CharField('WeChat', max_length=200, null=True, blank=True)
+    info_qq = models.CharField('QQ', max_length=200, null=True, blank=True)
+    info_linkedin = models.CharField('LinkedIn', max_length=200, null=True, blank=True)
+    info_email = models.CharField('Email', max_length=200, null=True, blank=True)
+    info_motto = models.CharField('Motto', max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.info_name
+
+\end{lstlisting}

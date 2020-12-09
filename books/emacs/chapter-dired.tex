@@ -1,0 +1,64 @@
+\chapter{Dired}
+
+Entering Dired mode with \verb|C-x C-f| adding a directory.
+
+\section{Executing Commands in Shell Buffers}
+
+\begin{description}
+\item[M-!] Execute command string in inferior shell; display output, if any. With \verb|C-u| prefix, insert the output into the current buffer.
+\item[M-x shell] Run an inferior shell.
+\item[M-|] Run shell command on region.
+\end{description}
+
+You can have multiple shell buffers running at once; just use the command \verb|M-x rename-uniquely| to rename your shell buffer.
+Then type \verb|M-x shell| to open a new one.
+
+
+
+\section{Operations}
+\begin{description}
+\item[v] View file read only, q to quit.
+\item[RET] Find the file, \verb|C-x b| to get back.
+\item[x] Delete the deleted-flagged files.
+\item[D] Do delete.
+\item[C] Do copy.
+\item[R] Do rename.
+\item[Z] Compress or uncompress marked or next ARG files.
+\item[=] Run the \verb|diff| command on the given two files.
+\item[!] Run shell commond.
+\item[g] Replace current buffer text with the text of the visited file on disk.
+\item[+] Create a directory.
+\item[Q] Replace matches of FROM with TO, in all marked files.
+\item[A] Find all matches for REGEXP in all marked files.
+\end{description}
+
+\section{Marking}
+
+\begin{description}
+\item[m] Mark the current file.
+\item[3m] Mark the current file and the next 2 files.
+\item[M-Del] Unmark all files.
+\item[U] Unmark all files.
+\item[t] Toggle marks.
+\item[* *] Mark excutable files.
+\item[* @] Mark symlinks.
+\item[* /] Mark directories.
+\item[\% m] Mark files matching REGEXP.
+\item[\% g] Mark files containing REGEXP.
+\item[d] Flag file as deletion.
+\item[\#] Flag autosave files.
+\item[\~{}] Flag backup files.
+\item[u] Unmark the current file.
+\item[Del] Unmark backward.
+\end{description}
+
+
+\section{Navigating}
+
+\begin{description}
+\item[\^{}] Up directory.
+\item[>] Next directory line.
+\item[<] Previous directory lien.
+\item[i] Insert this subdirectory into the same dired buffer.
+\end{description}
+

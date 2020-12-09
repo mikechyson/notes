@@ -1,0 +1,157 @@
+\chapter{Python IDE}
+After adding the MELPA into your \verb|.emacs|, install the following packages.
+
+\section{elpy}
+The \keyword{elpy} package (Emacs Lisp Python Environment) provides a near-complete set of Python IDE features, including:
+\begin{itemize}
+\item Automatic indentation
+\item Syntax highlighting
+\item Auto completion
+\item Syntax checking
+\item Python REPL integration
+\item Virtual environment support
+\end{itemize}
+
+To install and enable elpy, you add the package to your Emacs configuration.
+\lstset{language=Lisp}
+\begin{lstlisting}
+;; install packages
+(defvar my-packages
+  '(better-defaults			; set up some better Emacs defaults
+    material-theme			; Theme
+    elpy				; Emacs Lisp Python Environment
+    )
+  )
+
+;; enable elpy
+(elpy-enable)
+\end{lstlisting}
+
+You can configurate the \verb|elpy| with \verb|M-x elpy-config|.
+
+\begin{tcolorbox}
+  If there is a bug: \verb|melpa.org/packages/company-20200725.2348.tar not found|.
+  Try to run the command \verb|package-refresh-contents| to refresh your package database.
+\end{tcolorbox}
+
+\section{Syntax Checking}
+By default, \verb|elpy| uses a syntax-checking package called \verb|flymake|.
+While \verb|flymake| is built into Emacs, it only has native support four languages, and it requires significant effort to be able to support new languages.
+
+The syntax-checking package \verb|flycheck| supports real-time syntax checking in over 50 languages and is designed to be quickly configured for new languages.
+\lstset{language=Lisp}
+\begin{lstlisting}
+;; install packages
+(defvar my-packages
+  '(better-defaults			; set up some better Emacs defaults
+    material-theme			; Theme
+    elpy				; Emacs Lisp Python Environment
+    flycheck				; on the fly syntax checking
+    )
+  )
+
+;; enable flycheck
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+\end{lstlisting}
+
+
+\section{Code Fomatting}
+
+\begin{lstlisting}
+;; install packages
+(defvar my-packages
+  '(better-defaults			; set up some better Emacs defaults
+    material-theme			; Theme
+    elpy				; Emacs Lisp Python Environment
+    flycheck				; on the fly syntax checking
+    py-autopep8				; run autopep8 on save
+    blacken				; black formatting on save
+    )
+  )
+
+;; enable autopep8
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+\end{lstlisting}
+
+At this end, when you save your code Emacs will format your code automately.
+
+\section{Python Interpreter}
+
+
+
+
+\section{Itegration With Jypyter and IPython}
+\begin{lstlisting}
+;; Use IPython for REPL
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+             "jupyter")
+\end{lstlisting}
+
+This will update Emacs to use IPython rather than the standard Python REPL.
+
+
+The \verb|ein| package enables IPython Notebook in Emacs.
+\begin{lstlisting}
+  
+;; install packages
+(defvar my-packages
+  '(better-defaults			; set up some better Emacs defaults
+    material-theme			; Theme
+    elpy				; Emacs Lisp Python Environment
+    flycheck				; on the fly syntax checking
+    py-autopep8				; run autopep8 on save
+    blacken				; black formatting on save
+    ein					; Emacs IPython Notebook
+    )
+  )
+
+\end{lstlisting}
+
+To start the server, use the command \verb|M-x ein:jupyter-server-start|.
+
+\section{Debugging}
+The built-in \keyword{python-mode} allows you to use Emacs for Python code debugging with \verb|pdb|.
+
+\begin{tcolorbox}
+  While the \verb|pdb| executable may exist in some Python distribution, it doesn't exist in all of them.
+  You can set the variable \verb|gud-pdb-command-name| to define the command used to launch pdb.
+  Add \verb|(setq gud-pdb-command-name "python -m pdb")| to \verb|.emacs| file.
+\end{tcolorbox}
+
+Use \verb|M-x pdb| to start the Python debugger.
+
+
+You can step through code in \verb|pdb| using one of two keys:
+\begin{description}
+\item [s] steps into other functions.
+\item [n] steps over other functions.
+\end{description}
+
+
+\section{Git Support}
+In Emacs, source control support is provided by the \verb|magit| package.
+
+\begin{lstlisting}
+  
+;; install packages
+(defvar my-packages
+  '(better-defaults			; set up some better Emacs defaults
+    material-theme			; Theme
+    elpy				; Emacs Lisp Python Environment
+    flycheck				; on the fly syntax checking
+    py-autopep8				; run autopep8 on save
+    blacken				; black formatting on save
+    ein					; Emacs IPython Notebook
+    magit				; Git integration
+    )
+  )
+\end{lstlisting}
+
+\verb|M-x magit-status|.

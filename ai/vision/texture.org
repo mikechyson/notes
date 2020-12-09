@@ -1,0 +1,60 @@
+* RTV
+** BACKGROUND
+basis:
+\begin{equation}
+\arg\min_S\sum_p\left\{\frac{1}{2\lambda}(S_p-I_p)^2+|(\nabla S)_p|\right\}
+\end{equation}
+where $I$ is the input,
+$p$ indexes 2D pixels,
+S is the resulting structure image.
+
+The data term $(S_p-I_p)^2$ is to make the extracted strucutres similar the those in the input images.
+$\sum_p|(\nabla S)_p|$ is the TV(total variation) *regularizer*, written as 
+
+\begin{equation}
+\sum_p|(\nabla S)_p| = \sum_p|(\partial_xS)_p|+|(\partial_yS)_p|
+\end{equation}
+
+The regularizer has limited ability to distinguish between strong structural edges and texuture.
+
+** RTV
+pixel-wise windowed total variation:
+\begin{equation}
+\mathscr{D}_x(p) = \sum_{q\in R(p)} g_{p,q} |(\partial_xS)_q|
+\end{equation}
+
+\begin{equation}
+\mathscr{D}_y(p) = \sum_{q\in R(p)} g_{p,q} |(\partial_yS)_q|
+\end{equation}
+
+where $R(p)$ is the rectangle region centered at pixel $p$,
+$g_{p,q}$ is a weighting function defined according to spaitial affinity,
+\begin{equation}
+g_{p,q}\propto \exp\left(-\frac{(x_p-x_q)^2+(y_p-y_q)^2}{2\sigma^2}\right)
+\end{equation}
+where $\sigma$ controls the spatial scale of the window.
+
+
+To distinguish prominent structures from the texture elements,
+a windowed inherent variation is defined:
+\begin{equation}
+\mathscr{L}_x(p) = |\sum_{q\in R(p)} g_{p,q} (\partial_xS)_q|
+\end{equation}
+
+\begin{equation}
+\mathscr{L}_y(p) = |\sum_{q\in R(p)} g_{p,q} (\partial_yS)_q|
+\end{equation}
+$\mathscr{L}$ captures the overall spatial variation.
+
+
+The resulting $\mathscr{L}$ in a window that only
+contains texture is generally smaller than that in a window also 
+including structural edges. An intuitive explanation is that a major
+edge in a local window contributes more similar-direction gradients
+than textures with complex patterns.
+
+RTV:
+\begin{equation}
+\arg\min_S\sum_p\left\{(S_p-I_p)^2+\lambda\left(\frac{\mathscr{D}_x(p)}{\mathscr{L}_x(p)+\epsilon}+\frac{\mathscr{D}_y(p)}{\mathscr{L}_y(p)+\epsilon}\right)\right\}
+\end{equation}
+ 

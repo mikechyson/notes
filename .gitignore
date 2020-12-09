@@ -1,0 +1,17 @@
+*.[oa]
+*~
+\#*
+*.dvi
+auto
+*.fmt
+_region_.*
+_TZ_*
+.DS_Store
+.\#*
+.idea
+*.lof
+*.lot
+*.log
+*.aux
+*.out
+*.toc

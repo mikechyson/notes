@@ -1,0 +1,22 @@
+\documentclass[a4paper,12pt,twocolumn]{book} % the document class book, suitable for book-like documents
+%% book, report, article, slides, letter
+%% oneside or twoside
+%% openright or openany % only support book and report
+%% titlepage or notitlepage
+%% final or draft: If draft is set, then LaTeX will mark overfull lines with a black box, which is helpful in reviewing and improving the output.
+%% openbib : When this option is set, a bibliography would be formatted in open style instead of compressed style.
+%% fleqn : Causes displayed formulas to be left-aligned.
+%% leqno : For numbered displayed formulas, the number would be put to the left side. The right side is the default.
+\usepackage[landscape]{geometry}
+\usepackage[english]{babel} % useful especially for typesetting in other languages than English regarding hyphenation, language-specific characters, and more
+\usepackage{blindtext}      % to produce filler text
+\begin{document}
+\chapter{Exploring the page layout}
+In this chapter we will study the layout of pages.
+\section{Some filler text}
+\blindtext
+\section{A lot more filler text}
+More dummy text will follow.
+\subsection{Plenty of filler text}
+\blindtext[10]
+\end{document}

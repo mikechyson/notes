@@ -1,0 +1,133 @@
+[2018-12-27 23:07:47]
+An excellent way to implement labels and context for cross-corrlating information
+is to assign tags to headlines.
+
+Tags are normal words containing letters, numbers, '_', and '@'.
+Tags must be preceded and followd by a single colon, e.g., ':work:'.
+Several tags can be specified, as in ':work:urgent:'.
+
+Tags will by default be in bold face with the same color as the headline. 
+You may specify special faces for specific tags using the option =org-tag-faces=.
+
+* Tag inheritance
+Tags make use of the hierarchical /,haier 'ro: kikl/ structure of outline trees. 
+If a heading has a certain tag, all subheadings will inherit the tag as well.
+
+#+BEGIN_EXAMPLE
+     * Meeting with the French group      :work:
+     ** Summary by Frank                  :boss:notes:
+     *** TODO Prepare slides for him      :action:
+#+END_EXAMPLE
+the final heading will have the tags ‘:work:’, ‘:boss:’, ‘:notes:’, and ‘:action:’ 
+even though the final heading is not explicitly marked with all those tags.
+
+
+You can also set tags that all entries in a file should inherit just as 
+if these tags were defined in a hypothetical level zero that surrounds the entire file. 
+
+#+BEGIN_EXAMPLE
+     #+FILETAGS: :Peter:Boss:Secret:
+#+END_EXAMPLE
+
+To limit tag inheritance to specific tags, use =org-tags-exclude-from-inheritance=. 
+To turn it off entirely, use =org-use-tag-inheritance=.
+
+* Setting tags
+=C-c C-q= (=org-set-tags-command=)
+Enter new tags for the current headline.
+When called with a C-u prefix, all tags in the current buffer 
+will be aligned to =org-tags-column=, just to make things look nice.
+
+=C-c C-c= (=org-set-tags-command=)
+When the cursor is in a headline, this does the same as =C-c C-q=.
+
+** a hard list of tags
+
+Org supports tag insertion based on a list of tags.
+By default this is a constructed dynamically, containing all tags used in the buffer.
+
+You can globally specify a hard list of tags with the variable =org-tag-alist=.
+You can set the default tags for a given file the TAGS option.
+#+BEGIN_EXAMPLE
+     #+TAGS: @work @home @tennisclub
+     #+TAGS: laptop car pc sailboat
+#+END_EXAMPLE
+
+
+If you have set =org-tag-alist=, but would like to use a dynamic tag list in a specific file,
+add empty TAGS option line to that file.
+
+** a persistent hard list of tags
+If you want to use a set of tags in every file, 
+in addition to those defined on a per-file basis by TAGS option lines,
+set the variable =org-tag-persistent-alist=.
+You can turn this off on a per-file basis by adding a #+STARTUP option line
+#+BEGIN_EXAMPLE
+ #+STARTUP: noptag
+#+END_EXAMPLE
+
+
+** fast tag selection
+for every file in a step, set the =org-tag-alist=
+
+#+BEGIN_SRC emacs-lisp
+(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("laptop" . ?l)))
+#+END_SRC
+
+for a specific file, use the TAGS option
+
+#+BEGIN_EXAMPLE
+      #+TAGS: @work(w)  @home(h)  @tennisclub(t)  laptop(l)  pc(p)
+#+END_EXAMPLE
+
+*** with newline
+
+#+BEGIN_EXAMPLE
+      #+TAGS: @work(w)  @home(h)  @tennisclub(t) \n laptop(l)  pc(p)
+#+END_EXAMPLE
+
+or 
+#+BEGIN_EXAMPLE
+     #+TAGS: @work(w)  @home(h)  @tennisclub(t)
+     #+TAGS: laptop(l)  pc(p)
+#+END_EXAMPLE
+
+or 
+#+BEGIN_SRC emacs-lisp
+(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("laptop" . ?l)
+                      (:newline . nil)
+                      ("laptop" . ?l) ("pc" . ?p)))
+#+END_SRC
+
+
+*** with group
+Selecting a tag in a group of mutually /'mju: tchuer li/ exclusive tags 
+will turn off any other tags from that group. 
+
+#+BEGIN_EXAMPLE
+      #+TAGS: { @work(w)  @home(h)  @tennisclub(t) }  laptop(l)  pc(p)
+#+END_EXAMPLE
+
+or
+
+#+BEGIN_SRC emacs-lisp
+     (setq org-tag-alist '((:startgroup . nil)
+                           ("@work" . ?w) ("@home" . ?h)
+                           ("@tennisclub" . ?t)
+                           (:endgroup . nil)
+                           ("laptop" . ?l) ("pc" . ?p)))
+#+END_SRC
+
+* TODO Tag hierarchy
+  :LOGBOOK:  
+  - State "TODO"       from ""           [2018-12-27 Thu 22:59]
+  :END:      
+
+* Tag searches
+=C-c / m= (=org-match-sparse-tree=)
+Create a sparse tree with all headlines matching a tags search.
+With a =C-u= prefix argument, ignore headlines that are not in a TODO line.
+
+
+
+

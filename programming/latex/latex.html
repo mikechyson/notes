@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>latex</title>
+<!-- 2019-11-18 Mon 10:44 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Hack Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">latex</h1>
+<ul class="org-ul">
+<li>package<br  />
+<dl class="org-dl">
+<dt> xspace </dt><dd>extended space<br  />
+</dd>
+<dt> url </dt><dd>website typewriter<br  />
+</dd>
+<dt> hyphenat </dt><dd>hyphenation<br  />
+</dd>
+<dt> geometry </dt><dd>design pages<br  />
+</dd>
+<dt> typearea </dt><dd></dd>
+<dt> stespace </dt><dd>step space<br  />
+</dd>
+<dt> endnotes </dt><dd>Places footnotes at the end of the document<br  />
+</dd>
+<dt> manyfoot </dt><dd>Allows nested footnotes<br  />
+</dd>
+<dt> bigfoot </dt><dd>Replaces and extends manyfoot , improves page break handling with footnotes<br  />
+</dd>
+<dt> savefnmark </dt><dd>Useful when you need to use footnotes several times<br  />
+</dd>
+<dt> footmisc </dt><dd>All-round package; introduces numbering per page, is able to save space when many short footnotes are used, offers symbols instead of numbers as footnote marks, provides hanging indentation and other styles<br  />
+</dd>
+<dt> amsmath </dt><dd></dd>
+<dt> latexsym </dt><dd></dd>
+<dt> amssymb </dt><dd></dd>
+<dt> amsthm </dt><dd></dd>
+<dt> ntheorem </dt><dd></dd>
+<dt> mathtools </dt><dd>extends amsmath<br  />
+</dd>
+<dt> parskip </dt><dd></dd>
+<dt> fancyhdr </dt><dd>fancy header<br  />
+</dd>
+<dt> paralist </dt><dd></dd>
+<dt> inputenc </dt><dd><br  />
+</dd>
+</dl>
+</li>
+
+<li>formatting, words, lines, paragraphs<br  />
+<ul class="org-ul">
+<li>\documentclass (article, book, letter&#x2026;)<br  />
+</li>
+<li>\usepackage<br  />
+</li>
+<li>\document<br  />
+</li>
+<li>\title<br  />
+</li>
+<li>\author<br  />
+</li>
+<li>\date<br  />
+</li>
+<li>\maketitle<br  />
+</li>
+<li>\section<br  />
+</li>
+<li>\textbackslash<br  />
+</li>
+<li>font shape<br  />
+<ul class="org-ul">
+<li>\textit<br  />
+</li>
+<li>\textbf<br  />
+</li>
+<li>\textsl<br  />
+</li>
+<li>\textsc<br  />
+</li>
+<li>\emph<br  />
+</li>
+<li>\ttfamily<br  />
+</li>
+<li>\rmfamily<br  />
+</li>
+<li>\em<br  />
+</li>
+<li>\itshape<br  />
+</li>
+<li>\bfseries<br  />
+</li>
+<li>\slshape<br  />
+</li>
+<li>\scshape<br  />
+</li>
+</ul>
+</li>
+<li>\noindent<br  />
+</li>
+<li>\font size<br  />
+<ul class="org-ul">
+<li>\scriptsize<br  />
+</li>
+<li>\small<br  />
+</li>
+<li>\normalsize<br  />
+</li>
+<li>\large<br  />
+</li>
+<li>\Large<br  />
+</li>
+<li>\LARGE<br  />
+</li>
+<li>\huge<br  />
+</li>
+<li>\Huge<br  />
+</li>
+</ul>
+</li>
+<li>\newcommand<br  />
+</li>
+<li>\minipage<br  />
+</li>
+<li>\parbox<br  />
+</li>
+<li>\mbox<br  />
+</li>
+<li>\hyphenation<br  />
+</li>
+<li><br  />
+</li>
+<li>\newline<br  />
+</li>
+<li>\linebreak<br  />
+</li>
+<li>\ldots<br  />
+</li>
+<li>justification<br  />
+<ul class="org-ul">
+<li>\raggedright<br  />
+</li>
+<li>\centering<br  />
+</li>
+<li>begin{center}<br  />
+</li>
+<li>begin{flushleft}<br  />
+</li>
+<li>begin{flushright}<br  />
+</li>
+</ul>
+</li>
+<li>pagestyle<br  />
+</li>
+<li>begin{quotation}<br  />
+</li>
+</ul>
+</li>
+
+<li>pages<br  />
+<ul class="org-ul">
+<li>\chapter<br  />
+</li>
+<li>\section<br  />
+</li>
+<li>\subsection<br  />
+</li>
+<li>\subsubsection<br  />
+</li>
+<li>\fancyhead<br  />
+</li>
+<li>\fancyfoot<br  />
+</li>
+<li>\lhead<br  />
+</li>
+<li>\chead<br  />
+</li>
+<li>\right<br  />
+</li>
+<li>\lfoot<br  />
+</li>
+<li>\cfoot<br  />
+</li>
+<li>\rfoot<br  />
+</li>
+<li>\renewcommand<br  />
+</li>
+<li>\pagebreak<br  />
+</li>
+<li>\newpage<br  />
+</li>
+<li>\nopagebreak<br  />
+</li>
+<li>\enlargethispage<br  />
+</li>
+<li>\footnote<br  />
+</li>
+<li>\footnotemark<br  />
+</li>
+<li>\footnotetext<br  />
+</li>
+</ul>
+</li>
+
+<li>lists<br  />
+<ul class="org-ul">
+<li>begin{itemize}<br  />
+<ul class="org-ul">
+<li>\item<br  />
+</li>
+</ul>
+</li>
+<li>begin{enumerate}<br  />
+</li>
+<li>begine{paralist}<br  />
+</li>
+<li>begin{compactitem}<br  />
+</li>
+<li>begin{inparaitem}<br  />
+</li>
+<li>begin{asparanum}<br  />
+</li>
+<li>begin{inparaenum}<br  />
+</li>
+<li>begin{asparaenum}<br  />
+</li>
+<li>begin{description}<br  />
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Hack Chyson</p>
+<p class="date">Created: 2019-11-18 Mon 10:44</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.2 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

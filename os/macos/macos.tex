@@ -1,0 +1,143 @@
+% Created 2019-03-04 Mon 01:32
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Hack Chyson}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Hack Chyson},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.1 (Org mode 9.1.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{homebrew}
+\label{sec:orgb1d7bfb}
+
+\section{terminal meta key}
+\label{sec:org7c79cb4}
+Terminal -> Preferences -> Keyboard -> Use Option as Meta Key\\
+
+\section{set terminal hostname}
+\label{sec:org337f91d}
+scutil --set HostName <hostname>\\
+
+scutil: system configuation util\\
+
+\section{correct spelling automatically off}
+\label{sec:orgede9701}
+System Preferences -> Keyboard -> Text -> Correct spelling automatically off\\
+
+
+\section{emacs}
+\label{sec:org020ec9f}
+\subsection{install}
+\label{sec:org0f94be2}
+brew cask install emacs\\
+\subsection{command as meta}
+\label{sec:org14edf17}
+C-h v mac-option-modifier -> customize -> super\\
+C-h v mac-command-modifier -> customize -> meta\\
+
+
+
+\subsection{emacs python}
+\label{sec:org6908162}
+\subsection{add elpa repository}
+\label{sec:orge428813}
+(require 'package)\\
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))\\
+                    (not (gnutls-available-p))))\\
+       (proto (if no-ssl "http" "https")))\\
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired\\
+  ;;(add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)\\
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)\\
+  (when (< emacs-major-version 24)\\
+    ;; For important compatibility libraries like cl-lib\\
+    (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))\\
+(package-initialize)\\
+
+
+\subsection{install material theme, better defaults}
+\label{sec:orgf866a37}
+M-x package-install material-theme\\
+M-x package-install better-defaults\\
+
+\subsection{install jedi, flake8}
+\label{sec:orga53940b}
+conda install jedi flake8\\
+
+
+\subsection{enable elpy}
+\label{sec:orgbb4e16d}
+add the following into .emacs\\
+(elpy-enable)\\
+
+
+\subsection{pep8}
+\label{sec:org2afa46e}
+M-x package-install py-autopep8\\
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)\\
+
+
+\section{cap lock as ctrl}
+\label{sec:org2701398}
+System Preferences -> Keyboard -> Modifier Keys\\
+
+\section{anaconda}
+\label{sec:orgd48b589}
+\subsection{install vscode}
+\label{sec:org2cdc052}
+
+\section{pycharm}
+\label{sec:orgbe816c0}
+\url{https://www.jetbrains.com/pycharm/}\\
+
+
+
+
+\section{git}
+\label{sec:orgb49baa9}
+brew install git\\
+
+
+
+\section{shortcut}
+\label{sec:orgd9f8816}
+\begin{center}
+\begin{tabular}{ll}
+max & Command + Ctrl + f\\
+min & Command + m\\
+spotlight search & Command + space\\
+\end{tabular}
+\end{center}
+
+
+\section{ai}
+\label{sec:org1b647d6}
+\subsection{anaconda}
+\label{sec:org7290555}
+\subsubsection{tensorflow}
+\label{sec:orgb605ac9}
+pip install tensorflow\\
+\subsubsection{jieba}
+\label{sec:orge83add1}
+pip install jieba\\
+\end{document}

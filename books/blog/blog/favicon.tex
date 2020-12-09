@@ -1,0 +1,41 @@
+
+\chapter{Favicon}
+
+This chapter is used to show an icon in my website tab.
+
+\section{Prepare an icon}
+The prepared icon is shown in Figure \ref{fig:logo}:
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics{logo-same.png}
+  \caption{logo icon}
+  \label{fig:logo}
+\end{figure}
+
+
+\section{Remove the background}
+
+You can remove the background in your icon on the website: \url{https://www.remove.bg/upload}.
+The icon with background revmoved is shown in Figure \ref{fig:logo-no-background}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics{logo-no-background.png}
+  \caption{icon with background removed}
+  \label{fig:logo-no-background}
+\end{figure}
+
+\section{Generate the ico image}
+Generate the corresponding ico image with the image in Figure \ref{fig:logo-no-background}.
+
+
+\section{Add icon in html}
+Add the following code into your html's head. 
+\lstset{language=Html}
+\begin{lstlisting}
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'home/images/favicon.ico' %}" media="screen"/>
+
+\end{lstlisting}
+
+

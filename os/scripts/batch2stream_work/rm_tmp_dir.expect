@@ -1,0 +1,18 @@
+#!/usr/bin/expect
+
+set yz_host [lindex $argv 0]
+set time [lindex $argv 1]
+set username gnftp
+set password gnftp%123
+set yz_tmp_dir /gpfs/gn_enc_${yz_host}_tmp_$time
+
+spawn ssh ${username}@${yz_host} "rm -rf $yz_tmp_dir"
+expect "*password:"
+send "${password}\r"
+
+expect eof
+
+
+
+
+

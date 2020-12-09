@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-05-10 Sun 01:08 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mike Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org30a993d">1. import</a></li>
+<li><a href="#org06de857">2. list</a></li>
+<li><a href="#org4d7ae00">3. string</a></li>
+<li><a href="#org37cdee0">4. tuple</a></li>
+<li><a href="#orgb85b0f1">5. mapping unpacking</a></li>
+<li><a href="#org6cd5b6c">6. sequence unpacking</a></li>
+<li><a href="#orgd18fd93">7. private method</a></li>
+<li><a href="#org4e3e9db">8. hashable</a></li>
+<li><a href="#org14bd598">9. list comprehension</a></li>
+<li><a href="#org77697fd">10. set</a></li>
+<li><a href="#org3ece8d4">11. data create with data type</a></li>
+<li><a href="#org45ba430">12. program format</a></li>
+<li><a href="#orgb227410">13. path separator</a></li>
+<li><a href="#org86bcf73">14. random choice</a></li>
+<li><a href="#org8fd9811">15. random sample</a></li>
+<li><a href="#org2c8c4fd">16. help</a></li>
+<li><a href="#orgc3284ae">17. type</a></li>
+<li><a href="#org64b1db7">18. sort</a></li>
+<li><a href="#org6d71a8b">19. plateform</a></li>
+<li><a href="#org3a068a4">20. file number</a></li>
+<li><a href="#org4e00d3d">21. list find</a></li>
+<li><a href="#orgc12dbd3">22. if</a></li>
+<li><a href="#org674b296">23. loop</a></li>
+<li><a href="#orgcd81821">24. try &#x2026; catch</a></li>
+<li><a href="#org88435a2">25. raise exception</a></li>
+<li><a href="#orgcd0d2f7">26. function</a></li>
+<li><a href="#orged46a38">27. lambda</a></li>
+<li><a href="#org238e79b">28. assert</a></li>
+<li><a href="#orgd530427">29. writing text to files</a></li>
+<li><a href="#orgc328901">30. capture output intended to go to a file</a></li>
+<li><a href="#org24b8a23">31. command line options</a></li>
+<li><a href="#org3a2cec6">32. doctest</a></li>
+<li><a href="#org1cdcaa8">33. unit test</a></li>
+<li><a href="#orgad62d6a">34. eval</a></li>
+<li><a href="#org9c5cb1b">35. special attributes</a></li>
+<li><a href="#orgbe4e5ff">36. @staticmethod and @classmethod</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org30a993d" class="outline-2">
+<h2 id="org30a993d"><span class="section-number-2">1</span> import</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">import</span> ...
+<span style="color: #20b2aa; font-weight: bold;">import</span> ... <span style="color: #20b2aa; font-weight: bold;">as</span> ...
+<span style="color: #20b2aa; font-weight: bold;">from</span> ... <span style="color: #20b2aa; font-weight: bold;">import</span> ...
+<span style="color: #20b2aa; font-weight: bold;">from</span> ... <span style="color: #20b2aa; font-weight: bold;">import</span> *
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org06de857" class="outline-2">
+<h2 id="org06de857"><span class="section-number-2">2</span> list</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+[]<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4d7ae00" class="outline-2">
+<h2 id="org4d7ae00"><span class="section-number-2">3</span> string</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+"a"<br />
+'a'<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org37cdee0" class="outline-2">
+<h2 id="org37cdee0"><span class="section-number-2">4</span> tuple</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+'a','b'<br />
+('a','b')<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb85b0f1" class="outline-2">
+<h2 id="orgb85b0f1"><span class="section-number-2">5</span> mapping unpacking</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+the mapping unpacking operator is ** and it can be applied to a mapping to produce a key-value list.<br />
+**locals()<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org6cd5b6c" class="outline-2">
+<h2 id="org6cd5b6c"><span class="section-number-2">6</span> sequence unpacking</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Any iterable can unpacked using the sequence unpacking operator (*)<br />
+</p>
+
+<p>
+first, *rest = [1,2,3,4,5]<br />
+</p>
+
+<p>
+def prouct(a, b, c):<br />
+    return a * b * c<br />
+</p>
+
+<p>
+l = [1,2,3]<br />
+product(*l)<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgd18fd93" class="outline-2">
+<h2 id="orgd18fd93"><span class="section-number-2">7</span> private method</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+the method name begins with a leading understore.<br />
+</p>
+
+<p>
+Sale = collections.namedtuple('Sale', 'productid price')<br />
+sale = Sale('book', 100)<br />
+'{book} {price}'.format(**sale._asdict())<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4e3e9db" class="outline-2">
+<h2 id="org4e3e9db"><span class="section-number-2">8</span> hashable</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Hashable objects are objects which have a __hash__() speical method<br />
+whose return value is always the same throughout the object's lifetime, and<br />
+which can be compared for equality using the __eq__() special method.<br />
+</p>
+
+
+<p>
+All the built-in immutable data types are hashable.<br />
+The built-in mutable data types, such as dict, list, and set are not hashable.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org14bd598" class="outline-2">
+<h2 id="org14bd598"><span class="section-number-2">9</span> list comprehension</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+[expression for item in iterable if condition]<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org77697fd" class="outline-2">
+<h2 id="org77697fd"><span class="section-number-2">10</span> set</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+{}<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3ece8d4" class="outline-2">
+<h2 id="org3ece8d4"><span class="section-number-2">11</span> data create with data type</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>with one argument, create a empty object.<br /></li>
+<li>one same data type argument, a shallow copy<br /></li>
+<li>one different data type argument, a conversion attempt<br /></li>
+<li>two or more, depends<br /></li>
+</ul>
+
+<p>
+for example:<br />
+list()<br />
+list('hello')<br />
+list([1])<br />
+</p>
+
+<p>
+str()<br />
+str(1)<br />
+str('hello')<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45ba430" class="outline-2">
+<h2 id="org45ba430"><span class="section-number-2">12</span> program format</h2>
+<div class="outline-text-2" id="text-12">
+<ol class="org-ol">
+<li>shebang<br /></li>
+<li>docstring<br />
+<ol class="org-ol">
+<li>brief description<br /></li>
+<li>one black line<br /></li>
+<li>description<br /></li>
+<li>example<br /></li>
+</ol></li>
+<li>import<br />
+<ol class="org-ol">
+<li>built-in<br /></li>
+<li>standard library<br /></li>
+<li>custom<br /></li>
+</ol></li>
+<li>__all__<br /></li>
+<li>code<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgb227410" class="outline-2">
+<h2 id="orgb227410"><span class="section-number-2">13</span> path separator</h2>
+<div class="outline-text-2" id="text-13">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">import</span> os
+path.replace(<span style="color: #ffa07a;">"/"</span>,os.sep)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org86bcf73" class="outline-2">
+<h2 id="org86bcf73"><span class="section-number-2">14</span> random choice</h2>
+<div class="outline-text-2" id="text-14">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9acd32;">l</span> = [1,2,3,4]
+<span style="color: #20b2aa; font-weight: bold;">import</span> random
+random.choice(l)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8fd9811" class="outline-2">
+<h2 id="org8fd9811"><span class="section-number-2">15</span> random sample</h2>
+<div class="outline-text-2" id="text-15">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">import</span> random
+<span style="color: #9acd32;">l</span> = <span style="color: #76ee00;">list</span>(<span style="color: #76ee00;">range</span>(100))
+<span style="color: #20b2aa; font-weight: bold;">print</span>(random.sample(l,30))  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">unique element </span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c8c4fd" class="outline-2">
+<h2 id="org2c8c4fd"><span class="section-number-2">16</span> help</h2>
+<div class="outline-text-2" id="text-16">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #76ee00;">help</span>(<span style="color: #76ee00;">iter</span>)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc3284ae" class="outline-2">
+<h2 id="orgc3284ae"><span class="section-number-2">17</span> type</h2>
+<div class="outline-text-2" id="text-17">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9acd32;">a</span> = 1
+<span style="color: #76ee00;">type</span>(a)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org64b1db7" class="outline-2">
+<h2 id="org64b1db7"><span class="section-number-2">18</span> sort</h2>
+<div class="outline-text-2" id="text-18">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9acd32;">x</span> = []
+<span style="color: #20b2aa; font-weight: bold;">for</span> i <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">zip</span>(<span style="color: #76ee00;">range</span>(-10, 0, 1), <span style="color: #76ee00;">range</span>(0, 10, 2), <span style="color: #76ee00;">range</span>(1, 10, 2)):
+    <span style="color: #9acd32;">x</span> += i
+<span style="color: #20b2aa; font-weight: bold;">print</span>(x)  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">[-10, 0, 1, -9, 2, 3, -8, 4, 5, -7, 6, 7, -6, 8, 9]</span>
+
+<span style="color: #9acd32;">y</span> = []
+<span style="color: #20b2aa; font-weight: bold;">for</span> i <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">zip</span>(<span style="color: #76ee00;">range</span>(-10, 0, 1), <span style="color: #76ee00;">range</span>(0, 10, 2), <span style="color: #76ee00;">range</span>(1, 10, 2)):
+    y.append(i)
+<span style="color: #20b2aa; font-weight: bold;">print</span>(y)  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">[(-10, 0, 1), (-9, 2, 3), (-8, 4, 5), (-7, 6, 7), (-6, 8, 9)]</span>
+
+<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #76ee00;">sorted</span>(x))  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">[-10, -9, -8, -7, -6, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #76ee00;">sorted</span>(x, reverse=<span style="color: #1e90ff;">True</span>))  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">[9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -6, -7, -8, -9, -10]</span>
+<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #76ee00;">sorted</span>(x, key=<span style="color: #76ee00;">abs</span>))  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">[0, 1, 2, 3, 4, 5, 6, -6, -7, 7, -8, 8, -9, 9, -10]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d71a8b" class="outline-2">
+<h2 id="org6d71a8b"><span class="section-number-2">19</span> plateform</h2>
+<div class="outline-text-2" id="text-19">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9acd32;">offset</span> = 20 <span style="color: #20b2aa; font-weight: bold;">if</span> sys.platform.startswith(<span style="color: #ffa07a;">'win'</span>) <span style="color: #20b2aa; font-weight: bold;">else</span> 10
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a068a4" class="outline-2">
+<h2 id="org3a068a4"><span class="section-number-2">20</span> file number</h2>
+<div class="outline-text-2" id="text-20">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">'{} file{}'</span>.<span style="color: #76ee00;">format</span>((count <span style="color: #20b2aa; font-weight: bold;">if</span> count != 0 <span style="color: #20b2aa; font-weight: bold;">else</span> <span style="color: #ffa07a;">'no'</span>), (<span style="color: #ffa07a;">'s'</span> <span style="color: #20b2aa; font-weight: bold;">if</span> count != 1 <span style="color: #20b2aa; font-weight: bold;">else</span> <span style="color: #ffa07a;">''</span>))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e00d3d" class="outline-2">
+<h2 id="org4e00d3d"><span class="section-number-2">21</span> list find</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+like list find method.<br />
+</p>
+
+<p>
+while version:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">def</span> <span style="color: #00ff7f;">list_find</span>(lst, target):
+    <span style="color: #9acd32;">index</span> = 0
+    <span style="color: #20b2aa; font-weight: bold;">while</span> index &lt; <span style="color: #76ee00;">len</span>(lst):
+        <span style="color: #20b2aa; font-weight: bold;">if</span> lst[index] == target:
+            <span style="color: #20b2aa; font-weight: bold;">break</span>
+        <span style="color: #9acd32;">index</span> += 1
+    <span style="color: #20b2aa; font-weight: bold;">else</span>:
+        <span style="color: #9acd32;">index</span> = -1
+    <span style="color: #20b2aa; font-weight: bold;">return</span> index
+</pre>
+</div>
+
+<p>
+loop version:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">def</span> <span style="color: #00ff7f;">list_find</span>(lst,target):
+    <span style="color: #20b2aa; font-weight: bold;">for</span> index, x <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">enumerate</span>(lst):
+        <span style="color: #20b2aa; font-weight: bold;">if</span> x == target:
+            <span style="color: #20b2aa; font-weight: bold;">break</span>
+    <span style="color: #20b2aa; font-weight: bold;">else</span>:
+        <span style="color: #9acd32;">index</span> = -1
+    <span style="color: #20b2aa; font-weight: bold;">return</span> index
+</pre>
+</div>
+
+<p>
+exception version:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">def</span> <span style="color: #00ff7f;">list_find</span>(lst,target):
+    <span style="color: #20b2aa; font-weight: bold;">try</span>:
+        <span style="color: #9acd32;">index</span> = lst.index(target)
+    <span style="color: #20b2aa; font-weight: bold;">except</span> <span style="color: #9370db;">ValueError</span>:
+        <span style="color: #9acd32;">index</span> = -1
+    <span style="color: #20b2aa; font-weight: bold;">return</span> index
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc12dbd3" class="outline-2">
+<h2 id="orgc12dbd3"><span class="section-number-2">22</span> if</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+conditional branch statement:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">if</span> boolean_expression1:
+    suite1
+<span style="color: #20b2aa; font-weight: bold;">elif</span> boolean_expression2:
+    suite2
+...
+<span style="color: #20b2aa; font-weight: bold;">elif</span> boolean_expressionN:
+    suiteN
+<span style="color: #20b2aa; font-weight: bold;">else</span>:
+    else_suite
+</pre>
+</div>
+<p>
+There can be zero or more elif clauses, and the final else clause is optional.<br />
+</p>
+
+<p>
+conditional expression:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python">expression1 <span style="color: #20b2aa; font-weight: bold;">if</span> boolean_expression <span style="color: #20b2aa; font-weight: bold;">else</span> expression2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org674b296" class="outline-2">
+<h2 id="org674b296"><span class="section-number-2">23</span> loop</h2>
+<div class="outline-text-2" id="text-23">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">while</span> boolean_expression:
+    while_suite
+<span style="color: #20b2aa; font-weight: bold;">else</span>:
+    else_suite
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">for</span> expression <span style="color: #20b2aa; font-weight: bold;">in</span> iterable:
+    for_suite
+<span style="color: #20b2aa; font-weight: bold;">else</span>:
+    else_suite
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcd81821" class="outline-2">
+<h2 id="orgcd81821"><span class="section-number-2">24</span> try &#x2026; catch</h2>
+<div class="outline-text-2" id="text-24">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">try</span>:
+    try_suite
+<span style="color: #20b2aa; font-weight: bold;">except</span> exception_group1 <span style="color: #20b2aa; font-weight: bold;">as</span> variable1:
+    except_suite1
+...
+<span style="color: #20b2aa; font-weight: bold;">except</span> exception_groupN <span style="color: #20b2aa; font-weight: bold;">as</span> variableN:
+    except_suiteN
+<span style="color: #20b2aa; font-weight: bold;">else</span>:
+    else_suite
+<span style="color: #20b2aa; font-weight: bold;">finally</span>:
+    finally_suite
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org88435a2" class="outline-2">
+<h2 id="org88435a2"><span class="section-number-2">25</span> raise exception</h2>
+<div class="outline-text-2" id="text-25">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">raise</span> exception(args)
+<span style="color: #20b2aa; font-weight: bold;">raise</span> exception(args) <span style="color: #20b2aa; font-weight: bold;">from</span> original_exception
+<span style="color: #20b2aa; font-weight: bold;">raise</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcd0d2f7" class="outline-2">
+<h2 id="orgcd0d2f7"><span class="section-number-2">26</span> function</h2>
+<div class="outline-text-2" id="text-26">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">def</span> <span style="color: #00ff7f;">functionName</span>(parameters):
+    suite
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orged46a38" class="outline-2">
+<h2 id="orged46a38"><span class="section-number-2">27</span> lambda</h2>
+<div class="outline-text-2" id="text-27">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">lambda</span> parameters: expression
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org238e79b" class="outline-2">
+<h2 id="org238e79b"><span class="section-number-2">28</span> assert</h2>
+<div class="outline-text-2" id="text-28">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">assert</span> boolean_expression, optional_expression
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd530427" class="outline-2">
+<h2 id="orgd530427"><span class="section-number-2">29</span> writing text to files</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+Python provides tow different ways of writing text to files.<br />
+</p>
+<ol class="org-ol">
+<li>use a file object's write() method<br /></li>
+<li>use the print() function<br /></li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">import</span> sys
+sys.stdout.write(<span style="color: #ffa07a;">"message\n"</span>)
+<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"message"</span>, <span style="color: #76ee00;">file</span>=sys.stdout)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #cd853f;"># </span><span style="color: #cd853f;">to restore back to stdout</span>
+<span style="color: #9acd32;">sys.stdout</span> = sys.__stdout__
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc328901" class="outline-2">
+<h2 id="orgc328901"><span class="section-number-2">30</span> capture output intended to go to a file</h2>
+<div class="outline-text-2" id="text-30">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">import</span> io
+<span style="color: #20b2aa; font-weight: bold;">import</span> sys
+
+<span style="color: #9acd32;">sys.stdout</span> = io.StringIO()
+<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">'hello'</span>)
+<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">'world'</span>)
+<span style="color: #9acd32;">content</span> = sys.stdout.getvalue()
+<span style="color: #9acd32;">sys.stdout</span> = sys.__stdout__
+<span style="color: #20b2aa; font-weight: bold;">print</span>(content)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org24b8a23" class="outline-2">
+<h2 id="org24b8a23"><span class="section-number-2">31</span> command line options</h2>
+<div class="outline-text-2" id="text-31">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9acd32;">parser</span> = optparse.OptionParser()
+parser.set_usage(<span style="color: #ffa07a;">"%prog inputfile outputfile [options]"</span>)
+parser.add_option(<span style="color: #ffa07a;">"-m"</span>, <span style="color: #ffa07a;">"--mode"</span>, dest=<span style="color: #ffa07a;">"mode"</span>,
+                  <span style="color: #76ee00;">help</span>=<span style="color: #ffa07a;">"available values: encrypt|enc|decrypt|dec [default: %default]"</span>)
+parser.add_option(<span style="color: #ffa07a;">'-k'</span>, <span style="color: #ffa07a;">'--key'</span>, dest=<span style="color: #ffa07a;">'key'</span>,
+                  <span style="color: #76ee00;">help</span>=<span style="color: #ffa07a;">'the key for encryption and decryption [default: %default'</span>)
+parser.set_defaults(mode=<span style="color: #ffa07a;">"enc"</span>, key=<span style="color: #ffa07a;">'123456'</span>)
+<span style="color: #9acd32;">opts</span>, <span style="color: #9acd32;">args</span> = parser.parse_args()
+
+<span style="color: #9acd32;">inputfile</span> = args[0]
+<span style="color: #9acd32;">outputfile</span> = args[1]
+<span style="color: #9acd32;">mode</span> = opts.mode
+<span style="color: #9acd32;">key</span> = opts.key
+</pre>
+</div>
+
+<p>
+"%default" rext replaced with the option's default value;<br />
+the options are available using the "dest" names.<br />
+</p>
+
+<p>
+If an error occurs when parsing the command line, the optparse parser will call sys.exit(2).<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org3a2cec6" class="outline-2">
+<h2 id="org3a2cec6"><span class="section-number-2">32</span> doctest</h2>
+<div class="outline-text-2" id="text-32">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">if</span> <span style="color: #76ee00;">__name__</span> == <span style="color: #ffa07a;">"__main__"</span>:
+    <span style="color: #20b2aa; font-weight: bold;">import</span> doctest
+    doctest.testmod() <span style="color: #cd853f;"># </span><span style="color: #cd853f;">test module</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1cdcaa8" class="outline-2">
+<h2 id="org1cdcaa8"><span class="section-number-2">33</span> unit test</h2>
+<div class="outline-text-2" id="text-33">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">import</span> unittest
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgad62d6a" class="outline-2">
+<h2 id="orgad62d6a"><span class="section-number-2">34</span> eval</h2>
+<div class="outline-text-2" id="text-34">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">import</span> Shape
+
+
+<span style="color: #9acd32;">p</span> = Shape.Point(3, 9)
+<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #76ee00;">repr</span>(p))  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">Point(3, 9)</span>
+
+<span style="color: #cd853f;"># </span><span style="color: #cd853f;">We must give the module name when eval()ing if we used import Shape.</span>
+<span style="color: #cd853f;"># </span><span style="color: #cd853f;">if from Shape import Point is used, it is used necessary</span>
+<span style="color: #9acd32;">q</span> = <span style="color: #76ee00;">eval</span>(p.__module__ + <span style="color: #ffa07a;">"."</span> + <span style="color: #76ee00;">repr</span>(p))
+<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #76ee00;">repr</span>(q))  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">Point(3, 9)</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9c5cb1b" class="outline-2">
+<h2 id="org9c5cb1b"><span class="section-number-2">35</span> special attributes</h2>
+<div class="outline-text-2" id="text-35">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">__name__</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">__module__</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">__class__</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">@property</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">@staticmethod</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">@classmethod</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">__lt__(self, other)</td>
+<td class="org-left">&lt;</td>
+</tr>
+
+<tr>
+<td class="org-left">__le__(self, other)</td>
+<td class="org-left">&lt;=</td>
+</tr>
+
+<tr>
+<td class="org-left">__eq__(self, other)</td>
+<td class="org-left">==</td>
+</tr>
+
+<tr>
+<td class="org-left">__ne__(self, other)</td>
+<td class="org-left">!=</td>
+</tr>
+
+<tr>
+<td class="org-left">__ge__(self, other)</td>
+<td class="org-left">&gt;=</td>
+</tr>
+
+<tr>
+<td class="org-left">__gt__(self, other)</td>
+<td class="org-left">&gt;</td>
+</tr>
+</tbody>
+</table>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">__bool__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__format__(self,format_spec)</td>
+</tr>
+
+<tr>
+<td class="org-left">__hash__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__init__(self,args)</td>
+</tr>
+
+<tr>
+<td class="org-left">__new__(cls,args)</td>
+</tr>
+
+<tr>
+<td class="org-left">__repr__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__str__(self)</td>
+</tr>
+</tbody>
+</table>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">__abs__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__pos__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__add__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__iadd__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__radd__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__xor__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__ixor__(self)</td>
+</tr>
+
+<tr>
+<td class="org-left">__rxor__(self)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgbe4e5ff" class="outline-2">
+<h2 id="orgbe4e5ff"><span class="section-number-2">36</span> @staticmethod and @classmethod</h2>
+<div class="outline-text-2" id="text-36">
+<p>
+@classmethod must have a reference to a class object as the first parameter, whereas @staticmethod can have no parameters at all.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #cd853f;"># </span><span style="color: #cd853f;">The first parameter is the object instance reference.</span>
+<span style="color: #20b2aa; font-weight: bold;">def</span> <span style="color: #00ff7f;">instancemethod_</span>(<span style="color: #20b2aa; font-weight: bold;">self</span>, ...)
+    suit
+
+
+<span style="color: #cd853f;"># </span><span style="color: #cd853f;">The first parameter is the class reference.</span>
+<span style="color: #9370db;">@classmethod</span>
+<span style="color: #20b2aa; font-weight: bold;">def</span> <span style="color: #00ff7f;">classmethod_</span>(cls, ...)
+    suit
+
+
+<span style="color: #cd853f;"># </span><span style="color: #cd853f;">There is no reference to the instance or class.</span>
+<span style="color: #9370db;">@staticmethod</span>(...)
+    suit
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mike Chyson</p>
+<p class="date">Created: 2020-05-10 Sun 01:08</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

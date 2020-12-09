@@ -1,0 +1,59 @@
+* Inhibit Root Login
+vi /etc/ssh/sshd_config
+PermitRootLogin no
+
+
+* Add Sudo
+visudo
+michael ALL=(ALL)   NOPASSWD:ALL
+
+
+* Delete Password
+passwd -d michael
+
+
+* Proxy
+/etc/yum.conf
+proxy=http://10.4.200.21:18765
+proxy_username=itnms@bmccisa.com
+proxy_password=tre.540
+
+
+
+* Lid Swith
+emacs /etc/systemd/logind.conf
+      HandleLidSwitch=ignore
+
+systemctl restart systemd-logind
+
+
+
+* Apache Httpd
+to allow directory access and specify the charset:
+
+<Directory "/var/www/html">
+    Options All
+    IndexOptions Charset=UTF-8
+
+    AllowOverride None
+
+    Require all granted
+</Directory>
+
+
+
+* Ssh Alive Interval
+vi /etc/ssh/sshd_config
+ClientAliveCountMax 30
+(minutes)
+
+
+
+** see all the shell extensions
+rpm -qa | grep gnome-shell
+
+
+
+
+* titlebar buttons with min and max
+Tweaks -> Window Titlebars -> Maximize, Minimize (ON)

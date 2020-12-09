@@ -1,0 +1,41 @@
+x86-74
+rproduct:
+	cmpq	$1, %rsi
+	jle	.L3
+	pushq	%rbx
+	movq	(%rdi), %rbx
+	subq	$1, %rsi
+	addq	$8, %rdi
+	call	rproduct
+	imulq	%rbx, %rax
+	jmp	.L2
+.L3:
+	movl	$1, %eax
+	ret
+.L2:
+	popq	%rbx
+	ret
+
+
+
+
+Y86-64
+rproduct:
+	andq	%rsi, %rsi	 # set condition codes
+	cmpq	$1, %rsi
+	je	.L3	         # if count <= 0, return 1
+	pushq	%rbx		 # save callee-saved register
+	mrmovq	(%rdi), %rbx	 # get *start
+	irmovq	$-1, %r10
+	addq	%r10, %rsi	 # count--	
+	irmovq	$8, %r10
+	addq	%r10, %rdi	# start ++
+	call	rproduct
+	imulq	%rbx, %rax	# multiply *start to product
+	jmp	.L2
+.L3:
+	irmovl	$1, %rax
+	ret
+.L2:
+	popq	%rbx	# restore callee-saved register
+	ret

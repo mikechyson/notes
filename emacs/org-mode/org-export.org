@@ -1,0 +1,2 @@
+apt install texlive-latex-recommended texlive-latex-extra
+

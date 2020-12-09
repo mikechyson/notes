@@ -1,0 +1,54 @@
+* Forward
+Using Lisp we restrict or limit not what we may program, but only the notation for our program descriptions.
+
+Three foci of phenomena:
+1. the human mind
+2. collections of computer programs
+3. the computer
+
+Every computer program is a model, hatched in the mind, of a real or mental process. These process, arising from human experience and thought, are huge in number, intricated in detail, and at any time only partially understood. They are modeled to our permanent satisfaction rarely by our computer programs. Thus even though our programs are carefully handcrafted discrete collections of symbols, mosaics of interlocking functions, they continually evolve: we change them as our perception of the model deepens, enlarges, generalizes until the model ultimately attains a metastable place within still another model with which we struggle.
+
+
+#+BEGIN_EXAMPLE
+If art interprets our dreams, the computer executes them in the guise of programs!
+#+END_EXAMPLE
+
+Since large programs grow from small ones, it is crucial that we develop an arsenal of standard program structures of whose correctness we have become sure - we call them idioms - and learn to combine them into large structures using organizational techniques of proven value.
+
+* Building Abstractions with Procedures
+*Computational processes* are abstract beings that inhabit computers. As they evolve, processes manipulate other abstract things called *data*. The evolution of process is directed by a pattern of rules called a *program*. People create programs to direct processes. In effect, we conjure the spirits of the computer with our spell.
+
+The programs we use to conjure processes are carefully composed from *symbolic expressions* in arcane and esoteric *programming languages* that prescribe the tasks we want our processes to perform.
+
+A computational process, in a correctly working computer, executes programs precisely and accurately. Even small errors (usually called bugs) in programs can have complex and unantipated consequences.
+
+Well-designed computational systems are designed in a modular manner, so that the parts can be constructed, replaced, and debugged separately.
+
+** Programming in Lisp
+Lisp is a programming language.
+A Lisp *interpreter* is a machine that carries out the processes described in the Lisp language.
+
+Lisp, whose name is a acronym for LISt Processing, was designed to provide symbol-manipulating capabilites for attacking programming problems such as the symbolic differentiation and integration of algobraic expressions.
+
+Lisp is not the product of a concerted design effort. Instead, it envolves informally in an experimental manner in response to users' needs and to pragmatic implementation considerations. This evolution, together with the flexibility and elegance of the initial conception, has enabled Lisp, to continally adapt to encompass of the most modern ideas about program design. Thus, Lisp is by now a family of dialects, which while sharing most of the orignal features, may differ from one another in significant ways. 
+
+
+Why Lisp is used for the discussion of programming?
+Becuase the language possesses unique features that make it an excellent medium for studying important programming constructs and data structures and for relating them to the lingustic features that support them. The most significant of these features is the fact that Lisp descriptions of processes, called procedures, can themselves be represented and manipulated as Lisp data. (Programming language that can be programmed.)
+
+
+** The Elements of Programming
+A powerfull programming language is more than just a means for instructing a computer to perform tasks. The language also serves as a framework within which we organize our idea about the processes. Thus, when we describe a language, we should pay particular attention to the means that the language provides for combining simple ideas to form complex ideas.
+
+Every powerfull language has three mechnisms for accomplishing this:
+1. primitive expressions, which represent the simplest entities the language is concerned with
+2. means of combination, by which compound elements are built from simpler ones
+3. means of abstraction, by which compound elements can be named and manipulated as units
+
+In programming, we deal with two kinds of elements: procedures and data.
+Informally, data is "stuff" that we want to manipulate, and procedures are discriptions of the rules for manipulating the data.
+
+
+*** Expressions
+
+

@@ -1,0 +1,276 @@
+In Latex, all the commands start with \
+* Greek Letters
+| Command | Symbol     | Command    | Symbol        | Command  | Symbol      |
+|---------+------------+------------+---------------+----------+-------------|
+| beta    | $\beta$    | gamma      | $\gamma$      | delta    | $\delta$    |
+| epsilon | $\epsilon$ | varepsilon | $\varepsilon$ | zeta     | $\zeta$     |
+| eta     | $\eta$     | theta      | $\theta$      | vartheta | $\vartheta$ |
+| iota    | $\iota$    | kappa      | $\kappa$      | lambda   | $\lambda$   |
+| mu      | $\mu$      | nu         | $\nu$         | xi       | $\xi$       |
+| pi      | $\pi$      | varpi      | $\varpi$      | rho      | $\rho$      |
+| varrho  | $\varrho$  | sigma      | $\sigma$      | varsigma | $\varsigma$ |
+| tau     | $\tau$     | upsilon    | $\upsilon$    | phi      | $\phi$      |
+| varphi  | $\varphi$  | chi        | $\chi$        | psi      | $\psi$      |
+| omega   | $\omega$   | lambda     | $\lambda$     | alpha    | $\alpha$    |
+
+| Command | Symbol    | Command | Symbol     | Command | Symbol    |
+|---------+-----------+---------+------------+---------+-----------+
+| Gamma   | $\Gamma$  | Delta   | $\Delta$   | Theta   | $\Theta$  |
+| Lambda  | $\Lambda$ | Xi      | $\Xi$      | Pi      | $\Pi$     |
+| Sigma   | $\Sigma$  | Upsilon | $\Upsilon$ | Phi     | $\Phi$    |
+| Psi     | $\Psi$    | Omega   | $\Omega$   | Lambda  | $\Lambda$ |
+
+* Relationship
+| Command  | Symbol      | Command  | Symbol      | Command  | Symbol      |
+|----------+-------------+----------+-------------+----------+-------------|
+| le       | $\le$       | ge       | $\ge$       | equiv    | $\equiv$    |
+| ll       | $\ll$       | gg       | $\gg$       | sim      | $\sim$      |
+| simeq    | $\simeq$    | subset   | $\subset$   | supset   | $\supset$   |
+| approx   | $\approx$   | subseteq | $\subseteq$ | supseteq | $\supseteq$ |
+| in       | $\in$       | ni       | $\ni$       | propto   | $\propto$   |
+| parallel | $\parallel$ | perp     | $\perp$     | notin    | $\notin$    |
+| ne       | $\ne$       |          |             |          |             |
+* Operator
+| Command | Symbol   | Command | Symbol    | Command  | Symbol      |
+|---------+----------+---------+-----------+----------+-------------|
+| pm      | $\pm$    | mp      | $\mp$     | div      | $\div$      |
+| times   | $\times$ | star    | $\star$   | setminus | $\setminus$ |
+| cup     | $\cup$   | cap     | $\cap$    | ast      | $\ast$      |
+| cdot    | $\cdot$  | circ    | $\circ$   | bullet   | $\bullet$   |
+| oplus   | $\oplus$ | ominus  | $\ominus$ | diamond  | $\diamond$  |
+| odot    | $\odot$  | otimes  | $\otimes$ |          |             |
+* Acculation
+| Command | Symbol  | Command | Symbol  | Command | Symbol |
+|---------+---------+---------+---------+---------+--------|
+| sum     | $\sum$  | prod    | $\prod$ | int     | $\int$ |
+| oint    | $\oint$ |         |         |         |        |
+* Dot
+| Command | Symbol   | Command | Symbol   | Command | Symbol  |
+|---------+----------+---------+----------+---------+---------|
+| cdot    | $\cdot$  | cdots   | $\cdots$ | dots    | $\dots$ |
+| vdots   | $\vdots$ | ddots   | $\ddots$ |         |         |
+* Arrow
+| Command         | Symbol             | Command            | Symbol                | Command          | Symbol              |
+|-----------------+--------------------+--------------------+-----------------------+------------------+---------------------|
+| leftarrow       | $\leftarrow$       | longleftarrow      | $\longleftarrow$      | rightarrow       | $\rightarrow$       |
+| longrightarrow  | $\longrightarrow$  | uparrow            | $\uparrow$            | downarrow        | $\downarrow$        |
+| leftrightarrow  | $\leftrightarrow$  | longleftrightarrow | $\longleftrightarrow$ | updownarrow      | $\updownarrow$      |
+| Leftarrow       | $\Leftarrow$       | Longleftarrow      | $\Longleftarrow$      | Rightarrow       | $\Rightarrow$       |
+| Longrightarrow  | $\Longrightarrow$  | Uparrow            | $\Uparrow$            | Downarrow        | $\Downarrow$        |
+| Leftrightarrow  | $\Leftrightarrow$  | Longleftrightarrow | $\Longleftrightarrow$ | Updownarrow      | $\Updownarrow$      |
+| hookleftarrow   | $\hookleftarrow$   | hookrightarrow     | $\hookrightarrow$     | leftharpoonup    | $\leftharpoonup$    |
+| leftharpoondown | $\leftharpoondown$ | rightharpoonup     | $\rightharpoonup$     | rightharpoondown | $\rightharpoondown$ |
+| nearrow         | $\nearrow$         | searrow            | $\searrow$            | nwarrow          | $\nwarrow$          |
+| swarrow         | $\swarrow$         |                    |                       |                  |                     |
+* Matrix
+#+BEGIN_SRC latex
+\begin{equation}
+\begin{matrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{matrix}
+\end{equation}
+#+END_SRC
+
+\begin{equation}
+\begin{matrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{matrix}
+\end{equation}
+
+
+
+#+BEGIN_SRC latex
+bmatrix: bracket matrix
+\begin{equation}
+\begin{bmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{bmatrix}
+\end{equation}
+#+END_SRC
+
+\begin{equation}
+\begin{bmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{bmatrix}
+\end{equation}
+
+#+BEGIN_SRC latex
+vmatrix: vertical matrix
+\begin{equation}
+\begin{vmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{vmatrix}
+\end{equation}
+#+END_SRC
+
+\begin{equation}
+\begin{vmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{vmatrix}
+\end{equation}
+
+#+BEGIN_SRC latex
+pmatrix: parentheses matrix
+\begin{equation}
+\begin{pmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{pmatrix}
+\end{equation}
+#+END_SRC
+
+\begin{equation}
+\begin{pmatrix}
+a & b & c \\
+d & e & f \\
+g & h & k
+\end{pmatrix}
+\end{equation}
+
+
+
+* Case
+#+BEGIN_SRC latex
+\begin{equation}
+\begin{cases}
+1 & x > 0 \\
+0 & x \le 0
+\end{cases}
+\end{equation}
+#+END_SRC
+\begin{equation}
+\begin{cases}
+1 & x > 0 \\
+0 & x \le 0
+\end{cases}
+\end{equation}
+
+* Special Sign
+
+| Command  | Symbol      | Command    | Symbol               | Command | Symbol     |
+|----------+-------------+------------+----------------------+---------+------------|
+| infty    | $\infty$    | forall     | $\forall$            | exists  | $\exists$  |
+| triangle | $\triangle$ | nabla      | $\nabla$             | partial | $\partial$ |
+| top      | $\top$      | bot        | $\bot$               | angle   | $\angle$   |
+| neg      | $\neg$      | lfloor     | $\lfloor$            | rfloor  | $\rfloor$  |
+| prime    | $\prime$    | lceil      | $\lceil$             | rceil   | $\rceil$   |
+| emptyset | $\emptyset$ | varnothing | \usepackage{amssymb} |         |            |
+
+* MAth Speical Typeface
+| Command  | Symbol                                                                      |
+|----------+-----------------------------------------------------------------------------|
+| mathbb   | $\mathbb{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$   |
+| mathrm   | $\mathrm{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$   |
+| mathsf   | $\mathsf{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$   |
+| mathcal  | $\mathcal{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$  |
+| mathbf   | $\mathbf{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$   |
+| mathtt   | $\mathtt{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$   |
+| mathit   | $\mathit{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$   |
+| mathscr  | $\mathscr{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$  |
+| mathfrak | $\mathfrak{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}$ |
+| top      | $\top$                                                                      |
+
+* Vector
+#+BEGIN_SRC latex
+\begin{equation}
+\vec{A} 
+\end{equation}
+
+#+END_SRC
+\begin{equation}
+\vec{A} 
+\end{equation}
+
+* Decorator
+| COMMAND | SYMBOL      | COMMAND   | SYMBOL          |
+| hat     | $\hat{p}$   | widehat   | $\widehat{p}$   |
+| dot     | $\dot{p}$   | ddot      | $\ddot{p}$      |
+| acute   | $\acute{p}$ | grave     | $\grave{p}$     |
+| breve   | $\breve{p}$ | check     | $\check{p}$     |
+| tilde   | $\tilde{p}$ | widetilde | $\widetilde{p}$ |
+| bar     | $\bar{p}$   | vec       | $\vec{a}$       |
+
+* Equation Label and Ref
+It works in pdf but not in html, I don't know why.
+#+BEGIN_SRC latex
+\begin{equation}
+\label{baseeq}
+1+1=2
+\end{equation}
+
+Equation (\ref{baseeq}) is simple.
+Equation \eqref{baseeq} is simple.
+#+END_SRC
+
+
+\begin{equation}
+\label{baseeq}
+1+1=2
+\end{equation}
+Equation (\ref{baseeq}) is simple.
+Equation \eqref{baseeq} is simple.
+
+* Argmin argmax
+#+BEGIN_EXAMPLE
+\mathop{\arg\min}_\theta
+#+END_EXAMPLE
+\begin{equation}
+\mathop{\arg\min}_\theta
+\end{equation}
+
+* Underset and overset
+#+BEGIN_SRC latex
+\begin{equation}
+\overset{k}{\oplus} \\
+\underset{i=1}{\oplus}
+\end{equation}
+#+END_SRC
+
+\begin{equation}
+\overset{k}{\oplus} \\
+\underset{i=1}{\oplus}
+\end{equation}
+
+
+* Underbrace and overbrace
+#+BEGIN_SRC latex
+\begin{equation}
+\underbrace{a \oplus a \oplus \cdots \oplus a}_{k} \\
+\overbrace{a \oplus a \oplus \cdots \oplus a}^{k} \\
+\end{equation}
+#+END_SRC
+
+
+\begin{equation}
+\underbrace{a \oplus a \oplus \cdots \oplus a}_{k} \\
+\overbrace{a \oplus a \oplus \cdots \oplus a}^{k} \\
+\end{equation}
+
+* Miscellaneous
+| langle | $\langle$ | rangle | \rangle |
+|        |           |        |         |
+
+* choose
+#+BEGIN_SRC latex
+\sum_{j=0}^d {n \choose j}
+#+END_SRC
+
+[[file:pics/choose.png]]
+
+
+
+
+

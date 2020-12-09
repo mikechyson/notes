@@ -1,0 +1,220 @@
+* clear cache
+page cache:
+sync; echo 1 > /proc/sys/vm/drop_caches
+dir and inode:
+sync; echo 2 > /proc/sys/vm/drop_caches
+page dir and inode:
+sync; echo 3 > /proc/sys/vm/drop_caches
+
+* write iso
+dd if=/path/to/isofile of=/dev/your/u
+if: input file
+of: output file
+
+
+
+* adding new services to systemd (CentOS)
+** create a new service configuration unit file
+hello.service
+[Unit]
+Description=echo hello
+[Service]
+ExecStart=/home/michael/hello.sh
+[Install]
+WantedBy=multi-user.target
+
+** move the file
+/etc/systemd/system : not overwritten by upgrades
+/lib/systemd/system: overwritten by upgrades
+
+** add the service
+systemctl add-wants multi-user.target hello.service
+
+
+
+* uninstall openjdk and install jdk (CentOS)
+rpm -qa | grep java
+rpm -e --nodeps <open-jdk>
+
+rpm -ivh jdk.rpm
+
+* date
+3 minute later:
+date -d 3minute
+
+date -d "20180302" +"%Y-%m-%d"
+date -d "1 year ago" +"%Y-%m-%d"
+
+
+
+
+
+* haredware info
+cat /proc/cpuinfo
+
+
+
+
+* jar file edit
+vim filename.jar
+
+** unzip a file
+unzip filename.jar infilename
+** delete
+zip -d filename.jar infilename
+** update
+zip -u filename.jar infilename
+
+
+* gzip
+** unzip .gz file
+gzip -d filename.gz
+
+* setfacl (CentOS)
+getfacl app
+setfacl -m user:sjzx:rwx app
+
+* awk
+grep consumer kafka2kafkamme-mme.log | awk '{sum += $8} END {print sum}'
+
+
+* xargs
+
+* eval
+syntax: eval [arg ...]
+the args are read and concatenated together into a single command.
+This command is then read and executed by the shell,
+and its exit status is returned as the value of eval.
+If there are no args, or only null arguments, eval returns 0.
+
+
+eval echo hello
+
+
+* sed
+sed -i s/9600/9100/g file
+
+
+* ntpdate
+ntpdate -u <address>
+
+
+* nmon
+./nmon -h
+
+nmon [-s <seconds>] [-c <count>] [-f -d <disks> -t -r <name>] [-x]
+
+-f: spreadsheet output format [default -s300 -c288]
+-s <seconds>: between refreshing the screen [default 2]
+-c <number>: of refreshes
+-d <disks>: to increase the number of disks
+-t: spreadsheet includes top processes
+-x: capacity planning
+-m <directory>: nmon changes to this directory before saving to file
+-F <filename>: same as -f but user supplied filename
+
+** example
+nmon -t -s 1800 -c 48 -F `hostname -i`-`date +"%Y-%m-%d"`.nmon -m ~/
+
+
+
+
+
+* jar
+decompress jar
+jar -xvf project.jar
+
+decompress all the files in the current directory.
+
+
+* netstat
+netstat -anp
+netstat -anp | grep 6667
+
+** common options
+*** --tcp, -t
+*** --udp, -u
+*** --listening, -l
+Show only listening sockets.  (These are omitted by default.)
+*** --all, -a
+Show both listening and non-listening (for TCP this means established connections) sockets.  With the --interfaces option, show interfaces that are not up
+*** --numeric, -n
+Show numerical addresses instead of trying to determine symbolic host, port or user names.
+*** --extend, -e
+Display additional information.  Use this option twice for maximum detail.
+*** --program, -p
+Show the PID and name of the program to which each socket belongs.
+*** --verbose, -v
+*** --continuous, -c
+This will cause netstat to print the selected information every second continuously.
+
+
+** output
+*** example
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0     52 michael.chyson:ssh      172.23.77.8:50226       ESTABLISHED
+tcp        0      0 michael.chyson:ssh      172.23.77.8:49949       ESTABLISHED
+udp        0      0 michael.chyson:39522    xk-6-95-a8.bta.net.:ntp ESTABLISHED
+udp        0      0 michael.chyson:41877    ntp1.ams1.nl.leasew:ntp ESTABLISHED
+udp        0      0 michael.chyson:41895    85.199.214.101:ntp      ESTABLISHED
+udp        0      0 michael.chyson:44996    119.79-161-57.custo:ntp ESTABLISHED
+
+
+**** Recv-Q(receive-queue)
+Established: The count of bytes not copied by the user program connected to this socket.
+Listening: Since  Kernel  2.6.18 this column contains the current syn backlog.
+
+**** Send-Q
+Established:  The count of bytes not acknowledged by the remote host.
+Listening: Since Kernel 2.6.18 this column contains the maximum size of the syn backlog.
+
+**** State
+ESTABLISHED
+       The socket has an established connection.
+
+
+
+*** example
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ]         DGRAM                    13411    /run/systemd/shutdownd
+unix  2      [ ]         DGRAM                    8556     /run/systemd/notify
+unix  2      [ ]         DGRAM                    8558     /run/systemd/cgroups-agent
+unix  5      [ ]         DGRAM                    8579     /run/systemd/journal/socket
+unix  28     [ ]         DGRAM                    8581     /dev/log
+unix  3      [ ]         STREAM     CONNECTED     23283    
+
+**** RefCnt
+The reference count (i.e. attached processes via this socket).
+
+**** Flags
+The  flags displayed is SO_ACCEPTON (displayed as ACC), SO_WAITDATA (W) or SO_NOSPACE (N).  SO_ACCECPTON is used on unconnected sockets if their corresponding processes are waiting for a connect request.
+
+**** Type
+There are several types of socket access:
+
+SOCK_DGRAM
+       The socket is used in Datagram (connectionless) mode.
+
+SOCK_STREAM
+       This is a stream (connection) socket.
+
+
+
+* ssh
++-----+-----------------------------+-----------------------------------------------------------------------+
+|-q   |                             |Quiet mode.                                                            |
++-----+-----------------------------+-----------------------------------------------------------------------+
+|-T   |                             |Disable pseudo-terminal allocation.                                    |
++-----+-----------------------------+-----------------------------------------------------------------------+
+|-f   |                             |Requests ssh to go to background just before command execution.        |
++-----+-----------------------------+-----------------------------------------------------------------------+
+|-n   |                             |Redirects stdin from /dev/null (actually, prevents reading from stdin).|
++-----+-----------------------------+-----------------------------------------------------------------------+
+|-N   |                             |Do not execute a remote command.This is useful for just forwarding     |
+|     |                             |ports.                                                                 |
++-----+-----------------------------+-----------------------------------------------------------------------+
+|-o   |ConnectTimeout=2             |                                                                       |
++-----+-----------------------------+-----------------------------------------------------------------------+
+

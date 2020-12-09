@@ -1,0 +1,36 @@
+* problem
+Input: A sequence of $n$ numbers $A = (a_1, a_2, \cdots, a_n)$ and a value $v$.
+Output: An index $i$ such that $v = A[i]$ or the special value NIL if $v$ does not appear in $A$.
+
+
+* pseudocode
+#+BEGIN_EXAMPLE
+LINEAR-SEARCH(A,v)
+
+for i = 1 to A.length
+    if v == A[i]
+        return i
+return NIL
+
+#+END_EXAMPLE
+
+* correctness
+Initialization: $i=1$ , if $A[1] = v$, return $1$ .
+Maintanance:    for $i=n$ , $A[1..n-1]$ does not contain $v$ , if $A[n]=v$ , return $n$ .
+Termination:    for $i=A.length+1$, the entire array does not contain $v$, and return NIL.
+
+* python
+#+BEGIN_SRC python
+def linear_search(lst, v):
+    for i in range(len(lst)):
+        if lst[i] == v:
+            return i
+    return None
+
+
+lst = [1, 2, 5, 3, 6, 10, 44, 34, 22, 35, 21, 8]
+v = 6
+print(linear_search(lst, v))
+v = 100
+print(linear_search(lst, v))
+#+END_SRC

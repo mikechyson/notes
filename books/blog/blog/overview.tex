@@ -1,0 +1,45 @@
+
+\chapter{Overview}
+
+There are five applications:
+\begin{itemize}
+\item home
+\item pdf
+\item info
+\item technology
+\item plan
+\end{itemize}
+
+\section{Install applications}
+
+settings.py:
+\lstset{language=Python}
+\begin{lstlisting}
+INSTALLED_APPS = [
+    'plan.apps.PlanConfig',
+    'technology.apps.TechnologyConfig',
+    'info.apps.InfoConfig',
+    'home.apps.HomeConfig',
+    'pdf.apps.PdfsConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+\end{lstlisting}
+
+
+\section{Include urls}
+urls.py:
+\begin{lstlisting}
+urlpatterns = [
+    path('plan/', include('plan.urls')),
+    path('technology/', include('technology.urls')),
+    path('', include('home.urls')),
+    path('info/', include('info.urls')),
+    path('pdf/', include('pdf.urls')),
+    path('admin/', admin.site.urls),
+]
+\end{lstlisting}

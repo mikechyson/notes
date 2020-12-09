@@ -1,0 +1,618 @@
+* HTML Example
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+
+<p>My first paragraph.</p>
+
+</body>
+</html> 
+
+
+* What is HTML?
+HTML is a language for describing web pages.
+
+1. HTML stands for Hyper Text Markup Language
+2. HTML is a markup language
+3. A markup language is a set of markup tags
+4. The tags describe document content
+5. HTML documents contain HTML tags and plain text
+6. HTML documents are also called web pages
+
+
+* HTML Tags
+1. HTML tags are keywords (tag names) surrounded by angle brackets like <html>
+2. HTML tags normally come in pairs like <p> and </p>
+3. The first tag in a pair is the start tag, the second tag is the end tag
+4. The end tag is written like the start tag, with a slash before the tag name 
+
+<tagename>content</tagname>
+
+
+* Web Browsers
+The purpose of a web brower is to read HTML document and display them as web pages. (TRANSLATION)
+
+
+* The <!DOCTYPE> Declaration
+The <!DOCTYPE> declaration helps the browers to display a web page correctly.
+
+HTML5 declaration:
+<!DOCTYPE html>
+
+
+
+* Editor
+Using a simple text editor is a good way to learn HTML.
+
+
+* Headings
+<h1> to <h6>
+
+Example:
+<h1>This is a heading</h1>
+
+* Paragraphs
+<p>
+
+Example:
+<p>This is a paragraph.</p>
+
+
+* Links
+<a> (anchor)
+A link is a word, group of words, or image that you can click on to jump to another document.
+When you move the cursor over in a Web page, the arrow will turn into a little hand.
+The href (hyperlink reference) attribute indicates the link's destination.
+
+Be default, links appear as follows in all browsers:
+An unvisited link is underlined and blue
+A visited link is underlined and purple
+An active link is underlined and red
+
+
+Example:
+<a href="http://www.w3school.com">This is a link</a>
+
+
+Note: Always add a trailing slash to subfolder references. 
+If you link like this: href="http://www.w3schools.com/html", you will generate two requests to the server, the server will first add a slash to the address, and then create a new request like this: href="http://www.w3schools.com/html/".
+
+** The target Attribute
+The target attribute specifies where to open the linked document.
+
+Example:
+<a href="http://www.w3schools.com/" target="_blank">Visit W3Schools!</a>      
+
+The example above will open the linked document in a new browser window or a new tab.
+
+
+
+* Images
+<img>
+
+Example:
+<img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142">
+
+** src Attribute
+Src stands for "source". 
+The value of the src attribute is the URL of the image you want to display.
+
+** alt Attribute
+The required alt attribute specifies an alternate text for an image, if the image cannot be displayed.
+
+
+** Set Height and Width
+The attribute values are specified in pixels by default:
+<img src="smiley.gif" alt="Smiley face" width="42" height="42">
+
+
+
+* Elements
+Everything from the start tag to the end tag.
+
+* Element Syntax
+1. Empty elements are closed in the start tag
+2. Most HTML elements can have attributes
+
+
+* Nested HTML Elements
+Most HTML elements can be nested.
+
+
+* HTML Tip: Use Lowercase Tags
+HTML tags are not case sensitive.
+The World Wide Web Consortium (W3C) recommends lowercase in HTML 4, and demands lowercase tags in XHTML.
+
+
+* Attributes
+1. HTML elements can have attributes
+2. Attributes provide additional information about HTML elements
+3. Attributes are always specified in the start tag
+4. Attributes come in name/value pairs like: name="value"
+
+
+* Always Quote Attributes Values
+Attribute values should always be enclosed in quotes.
+Double style quotes are the most common, but single style quotes are also allowed.
+
+Tip: When the attribute value itself contains quotes, it is necessary to use single quotes.
+
+
+* HTML Tip: Use Lowercase Attributes
+Attribute names and attribute values are case-insensitive.
+The World Wide Web Consortium (W3C) recommends lowercase attributes/attribute values in their HTML 4 recommendation.
+Newer versions of (X)HTML will demand lowercase attributes.
+
+
+* Attributes Reference
+Below is a list of some attributes that can be used on any HTML element:
++------------+-----------------------------------------------------------------------+
+| Attributes |                              Description                              |
++------------+-----------------------------------------------------------------------+
+|class       |Specifies one or more classnames for an element                        |
++------------+-----------------------------------------------------------------------+
+|id          |Specifies a unique id for an element                                   |
++------------+-----------------------------------------------------------------------+
+|style       |Specifies an inline CSS style for an element                           |
++------------+-----------------------------------------------------------------------+
+|title       |Specifies extra information about an element                           |
++------------+-----------------------------------------------------------------------+
+
+
+* Lines
+<hr> creates a horizontal line.
+
+
+* Comments
+<!-->
+
+
+* Line Breaks
+<br> inserts a single line break (a new line)
+
+
+* HTML Output - Useful Tips
+With HTML, you cannot change the output by adding extra spaces or extra lines in your HTML code.
+The browser will remove extra spaces and extra lines when the page is displayed. 
+Any number of lines count as one line, and any number of spaces count as one space.
+
+
+* Text Formatting Tags
++--------------+---------------------------------------------------------+
+|     Tag      |                       Description                       |
++--------------+---------------------------------------------------------+
+|<b>           |bold                                                     |
++--------------+---------------------------------------------------------+
+|<em>          |emphasized                                               |
++--------------+---------------------------------------------------------+
+|<i>           |in an alternate voice or mood                            |
++--------------+---------------------------------------------------------+
+|<strong>      |important                                                |
++--------------+---------------------------------------------------------+
+|<sub>         |subscripted                                              |
++--------------+---------------------------------------------------------+
+|<sup>         |supscripted                                              |
++--------------+---------------------------------------------------------+
+|<ins>         |inserted                                                 |
++--------------+---------------------------------------------------------+
+|<del>         |deleted                                                  |
++--------------+---------------------------------------------------------+
+|<mark>        |marked/highlighted                                       |
++--------------+---------------------------------------------------------+
+
+
+* "Computer Output" Tags
++--------+-----------------------------------------+
+|  Tags  |               Description               |
++--------+-----------------------------------------+
+|<code>  |computer code                            |
++--------+-----------------------------------------+
+|<pre>   |preformated                              |
++--------+-----------------------------------------+
+
+
+* Citations, Quotations, and Definition Tags
++--------------+---------------------------------------------------------+
+|     Tags     |                       Description                       |
++--------------+---------------------------------------------------------+
+|<abbr>        |abbreviation or acronym                                  |
++--------------+---------------------------------------------------------+
+|<address>     |contact information for the author/owner of a document   |
++--------------+---------------------------------------------------------+
+|<cite>        |Defines the title of a work                              |
++--------------+---------------------------------------------------------+
+
+
+* Head
+Elements inside <head> can include scripts, instruct the browser where to find style sheets, provide meta information, and more.
+
+The following tags can be added to the head section: 
+<title>, <style>, <meta>, <link>, <script>, <noscript>, and <base>.
+
+
+** <title>
+The <title> element is requried in all HTML/XHTML documents.
+
+** <base>
+The <base> tag specifies the base URL/target for all relative URLs in a page.
+
+<head>
+<base href="http://www.w3schools.com/images/" target="_blank">
+</head> 
+
+** <link>
+The <link> tag defines the relationship between a document and an external resource.
+
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head> 
+
+
+** <style>
+The <style> tag is used to define style information for an HTML document.
+
+<head>
+<style type="text/css">
+body {background-color:yellow;}
+p {color:blue;}
+</style>
+</head> 
+
+** <meta>
+Metadata is data (information) about data.
+The <meta> tag provides metadata about the HTML document. 
+Metadata will not be displayed on the page, but will be machine parsable.
+
+Meta elements are typically used to specify page description, keywords, author of the document, last modified, and other metadata.
+
+
+Define keywords for search engines:
+<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+
+Define a description of your web page:
+<meta name="description" content="Free Web tutorials on HTML and CSS">
+
+Define the author of a page:
+<meta name="author" content="Hege Refsnes">
+
+Refresh document every 30 seconds:
+<meta http-equiv="refresh" content="30">
+
+** <script>
+The <script> tag is used to define a client-side script, such as a JavaScript.
+
+
+* Styles - CSS
+CSS (Cascading Style Sheets) is used to style HTML elements.
+
+** Styling HTML with CSS
+CSS can be added to HTML in the following ways:
+
+1. Inline - using the style attribute in HTML elements
+2. Internal - using the <style> element in the <head> section
+3. External - using an external CSS file
+
+
+** Inline Styles
+An inline style can be used if a unique style is to be applied to one single occurrence of an element.
+
+To use inline styles, use the style attribute in the relevant tag. 
+The style attribute can contain any CSS property.
+
+Example:
+<p style="color:blue;margin-left:20px;">This is a paragraph.</p> 
+
+
+** Internal Style Sheet
+An internal style sheet can be used if one single document has a unique style. 
+
+Internal styles are defined in the <head> section of an HTML page, by using the <style> tag.
+
+
+Example:
+<head>
+<style>
+body {background-color:yellow;}
+p {color:blue;}
+</style>
+</head>
+
+
+** External Style Sheet
+An external style sheet is ideal when the style is applied to many pages. 
+With an external style sheet, you can change the look of an entire Web site by changing one file. 
+Each page must link to the style sheet using the <link> tag. 
+The <link> tag goes inside the <head> section.
+
+Example:
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head> 
+
+
+
+
+* Tables
+Tables are defined with the <table> tag.
+A table is divided into rows with the <tr> tag. (tr stands for table row)
+A row is divided into data cells with the <td> tag. (td stands for table data)
+A row can also be divided into headings with the <th> tag. (th stands for table heading)
+The <td> elements are the data containers in the table.
+The <td> elements can contain all sorts of HTML elements like text, images, lists, other tables, etc.
+The width of a table can be defined using CSS.
+
+Example:
+<table style="width:300px">
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+  <td>Eve</td>
+  <td>Jackson</td>
+  <td>94</td>
+</tr>
+</table> 
+
+
+
+
+* Unordered Lists
+An unordered list starts with the <ul> tag. Each list item starts with the <li> tag.
+
+Example:
+<ul>
+<li>Coffee</li>
+<li>Milk</li>
+</ul> 
+
+
+* Ordered Lists
+An ordered list starts with the <ol> tag. Each list item starts with the <li> tag.
+
+Example:
+<ol>
+<li>Coffee</li>
+<li>Milk</li>
+</ol> 
+
+
+* Description Lists
+A description list is a list of terms/names, with a description of each term/name.
+The <dl> tag defines a description list.
+The <dl> tag is used in conjunction with <dt> (defines terms/names) and <dd> (describes each term/name).
+
+Example:
+<dl>
+<dt>Coffee</dt>
+<dd>- black hot drink</dd>
+<dt>Milk</dt>
+<dd>- white cold drink</dd>
+</dl> 
+
+
+* Block 
+HTML elements can be grouped together with <div> and <span>.
+Most HTML elements are defined as block level elements or as inline elements.
+
+** Block Elements
+Block level elements normally start (and end) with a new line when displayed in a browser.
+
+** Inline Elements
+Inline elements are normally displayed without starting a new line. 
+
+** <div>
+The HTML <div> element is a block level element that can be used as a container for grouping other HTML elements.
+
+The <div> element has no special meaning. Except that, because it is a block level element, the browser will display a line break before and after it.
+When used together with CSS, the <div> element can be used to set style attributes to large blocks of content.
+Another common use is for document layout. 
+
+** <span>
+The HTML <span> element is an inline element that can be used as a container for text.
+
+The <span> element has no special meaning. 
+
+
+
+* Layouts
+Web page layout is very important to make your website look good.
+Design your webpage layout very carefully.
+
+Most website have put their content in multiple columns.
+Multiple columns are created by using <div>. 
+CSS are used to position elements, or to create backgrounds or colorful look for the pages.
+
+
+* Forms
+HTML forms are used to pass data to a server.
+
+<form>
+.
+input elements
+.
+</form>
+
+
+** The Input Element
+The most important form element is the <input> element.
+The <input> element is used to select user information.
+
+An <input> element can vary in many ways, depending on the type attribute. 
+An <input> element can be of type text field, checkbox, password, radio button, submit button, and more.
+
+
+** Text Fields
+<input type="text"> defines a one-line input field that a user can enter text into:
+
+<form>
+First name: <input type="text" name="firstname"><br>
+Last name: <input type="text" name="lastname">
+</form> 
+
+** Password Field
+<input type="password"> defines a password field:
+
+<form>
+Password: <input type="password" name="pwd">
+</form> 
+
+** Radio Buttons
+<input type="radio"> defines a radio button. 
+Radio buttons let a user select ONLY ONE of a limited number of choices:
+
+<form>
+<input type="radio" name="sex" value="male">Male<br>
+<input type="radio" name="sex" value="female">Female
+</form> 
+
+
+** Checkboxes
+<input type="checkbox"> defines a checkbox. 
+Checkboxes let a user select ZERO or MORE options of a limited number of choices.
+
+<form>
+<input type="checkbox" name="vehicle" value="Bike">I have a bike<br>
+<input type="checkbox" name="vehicle" value="Car">I have a car
+</form> 
+
+
+** Submit Button
+<input type="submit"> defines a submit button.
+
+A submit button is used to send form data to a server. The data is sent to the page specified in the form's action attribute. 
+
+<form name="input" action="demo_form_action.asp" method="get">
+Username: <input type="text" name="user">
+<input type="submit" value="Submit">
+</form> 
+
+
+* Iframes
+An iframe is used to display a web page within a web page.
+
+syntax:
+<iframe src="url"><iframe>
+
+
+** Set Height nad width
+<iframe src="demo_iframe.htm" width="200" height="200"></iframe>
+
+** Remove the Border
+<iframe src="demo_iframe.htm" frameborder="0"></iframe>
+
+
+* Colors
+CSS colors are defined using a hexadecimal (hex) notation for the combination of Red, Green, and Blue color values (RGB). 
+The lowest value that can be given to one of the light sources is 0 (hex 00). The highest value is 255 (hex FF).
+
+Hex values are written as 3 double digit numbers, starting with a # sign.
+
+
+* Color Names
+Color Names Supported by All Browsers:
+140 color names are defined in the HTML and CSS color specification (17 standard colors plus 123 more). 
+
+
+* Scripts
+JavaScripts make HTML pages more dynamic and interactive.
+
+** <script>
+The <script> tag is used to define a client-side script, such as a JavaScript.
+The <script> element either contains scripting statements or it points to an external script file through the src attribute.
+Common uses for JavaScript are image manipulation, form validation, and dynamic changes of content.
+
+
+Example:
+<p id="demo">hello</p>
+<script>
+document.getElementById("demo").innerHTML = "Hello JavaScript!";
+</script>
+
+
+** <noscript>
+The <noscript> tag is used to provide an alternate content for users that have disabled scripts in their browser
+or have a browser that doesn't support client-side scripting.
+
+The content inside the <noscript> element will only be displayed if scripts are not supported, or are disabled in the user's browser:
+
+<script>
+document.getElementById("demo").innerHTML = "Hello JavaScript!";
+</script>
+<noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+
+
+* Entities
+Reserved characters in HTML must be replaced with character entities.
+Characters, not present on your keyboard, can also be replaced by entities.
+
++-----------+-------------------------+-------------------------+
+| Entityes  |       Characters        |Description              |
++-----------+-------------------------+-------------------------+
+|&lt;       |<                        |less than                |
++-----------+-------------------------+-------------------------+
+|&gt;       |>                        |greater than             |
++-----------+-------------------------+-------------------------+
+|&nbsp      |non breaking space       |                         |
++-----------+-------------------------+-------------------------+
+|&amp;      |&                        |ampersand                |
++-----------+-------------------------+-------------------------+
+|&cent;     |¢                        |cent                     |
++-----------+-------------------------+-------------------------+
+|&pound;    |£                        |pound                    |
++-----------+-------------------------+-------------------------+
+|&yen;      |¥                        |yen                      |
++-----------+-------------------------+-------------------------+
+|&euro;     |€                        |euro                     |
++-----------+-------------------------+-------------------------+
+|&copy;     |©                        |copyright                |
++-----------+-------------------------+-------------------------+
+|&reg;      |®                        |regitstered treademark   |
++-----------+-------------------------+-------------------------+
+
+
+* Symbols
+http://www.w3c-schools.com/html/html_symbols.asp.htm
+
+
+* Encoding (Character Sets)
+To display an HTML page correctly, a web browser must know the character set used in the page. 
+
+<meta charset="UTF-8"> 
+
+
+* Uniform Resource Locators
+A URL is another word for a web address.
+
+Web browsers request pages from web servers by using a URL.
+A Uniform Resource Locator is used to address a document (or other data) on the world wide web.
+
+syntax:
+scheme://host.domain:port/path/filename
+
+
+** Common URL Schemes
++------+--------------------------------------+--------------------------------------------------+
+|Scheme|Short for...                          |Which pages will the scheme be used for           |
++------+--------------------------------------+--------------------------------------------------+
+|http  |HypterText Transfer Protocol          |Not encrypted                                     |
++------+--------------------------------------+--------------------------------------------------+
+|https |Secure HyperText Transfer Protocol    |Secure web pages                                  |
++------+--------------------------------------+--------------------------------------------------+
+|ftp   |File Transfer Protocol                |For downloading and uploading files to a website  |
++------+--------------------------------------+--------------------------------------------------+
+|file  |                                      |A file on your computer                           |
++------+--------------------------------------+--------------------------------------------------+
+
+
+** URL Encoding
+URLs can only be sent over the Internet using the ASCII character-set.
+URL encoding replaces non ASCII characters with a "%" followed by two hexadecimal digits.
+URLs cannot contain spaces. URL encoding normally replaces a space with a + sign.
+
+
+

@@ -1,0 +1,251 @@
+\documentclass{book}
+\newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+\newcommand{\keyboard}[1]{\textnormal{texttt{#1}}}
+\usepackage[a4paper, inner=1.5cm, outer=3cm, top=2cm, bottom=3cm, bindingoffset=1cm]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\begin{document}
+\tableofcontents{}
+
+\chapter{Emacs Basics}
+
+\section{Introducing Emacs}
+
+Emacs is important because of the integration of different things you need to do.
+Any editor, no matter how simpler or complex, has the same basic functions.
+If you can learn one, you can learn any of them.
+Learning to use an editor is basically a matter of learning finger habit.
+Good finger habits can make you an incredibly fast typist.
+Intellectually, it's possible to absorb a lot from one reading, but you can form only a few new habit each day.
+Don't feel obliged  to learn them all at once; pick something, practice it, and move on to the next topic.
+Time spent developing good habits is time well spent.
+
+\section{Understanding Files and Buffers}
+You don't really edit files.
+Instead, Emacs copies the content of a file into a temporary buffer and you edit that.
+The file on disk doesn't change until you save the buffer.
+
+\section{A Word About Modes}
+
+mode: Emacs becomes sensitive to the task at hand.
+Modes allows Emacs to the kind of editor you want for different tasks.
+A buffer can be in only one major mode at a time.
+
+minor modes: defines a particular aspect of Emacs's behavior and can be turned on and off within a major mode.
+
+If you are good at Lisp programming, you can add your own modes. Emacs is almost infinitely extensible.
+
+\section{Emacs commands}
+How do you give commands?
+Each command has a formal name, which is the name of a Lisp routine. Some command names are quite long. As a result, we need some way to abbreviate commands. Emacs ties a command name to a short sequence of keystrokes. This tying of commands to keystrokes is known as binding. 
+
+The author of Emacs try to bind the most frequently used commands to the key sequences that are the easiest to reach:
+\begin{itemize}
+\item The most commonly used commands are bound to C-n(where n is any character).
+\item Slightly less commonly used commands are bound to M-n.
+\item Other commonly used commands are bound to C-x something.
+\item Some specialized commands are bound to C-c something. These commands often relate to one of the more specialized modes, such as Java or HTML mode.
+\item typing M-x long-command-name Enter.(This works for any command really)
+\end{itemize}
+
+\begin{verbatim}
+You should define your own key bindings if you find yourself using the long form of a command all the time.
+\end{verbatim}
+
+\section{File}
+
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Bounding} & \head{Function} \\
+  \midrule
+  C-x C-f & find-file \\
+  C-x C-v & find-alternate-file \\
+  C-x i & insert-file \\
+  C-x C-s & save-buffer \\
+  C-x C-w & write-file \\
+  \bottomrule[1.5pt]
+\end{tabular}
+
+\section{Leaving Emacs}
+C-x C-c
+
+\section{Getting Help}
+C-h C-h
+
+\section{Version}
+M-x version 
+
+\section{Access Menus With Keyboard}
+F10
+
+
+\chapter{Editing}
+
+Emacs offers lots of ways to move around in files.
+The more ways you learn, the fewer keystrokes you'll need to get to the part of the file you want to edit.
+Learning any editor is primarily a matter of forming certain finger habits rather than memorizing what the book says.
+You will learn the right finger habits only if you start typing.
+
+\section{Moving the Cursor}
+It's easier to memorize commands if you remember what the letters stand for.
+\subsection{Basic Cursor Motion}
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Bounding} & \head{Function} \\
+  \midrule
+  C-f & forward-char \\
+  C-b & backward-char \\
+  M-f & forward-word \\
+  M-b & backward-word \\
+  \midrule
+  C-n & next-line \\
+  C-p      & previous-line      \\
+  \midrule
+  C-a      & beginning-of-line  \\
+  C-e      & end-of-line        \\
+  M-a      & backward-sentence  \\
+  M-e      & forward-sentence   \\
+  \midrule
+  \verb|M-}|      & forward-paragraph  \\
+  \verb|M-{|      & backward-paragraph \\
+  \midrule
+  C-x ]    & forward-page       \\
+  C-x [    & backward-page      \\
+  \bottomrule[1.5pt]
+\end{tabular}
+
+\begin{verbatim}
+Ctrl command generally move in small units than their associated Meta commands.
+\end{verbatim}
+
+\section{Moving a Screen (or More) at a Time}
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Bounding} & \head{Function} \\
+  \midrule
+  C-v      & scroll-up-command   \\
+  M-v      & scroll-down-command \\
+  M->      & end-of-buffer       \\
+  M-<      & beginning-of-buffer \\
+  & goto-line           \\
+  & goto-char           \\
+  C-M-v    & scroll-other-window \\
+  \bottomrule
+\end{tabular}
+
+
+
+\section{Deleting Text}
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Bounding} & \head{Function} \\
+  \midrule
+  Del      & delete-backward-char   \\
+  C-d      & delete-char            \\
+  \midrule
+  M-Del    & backward-kill-word     \\
+  M-d      & kill-word              \\
+  \midrule
+  C-k      & kill-line              \\
+  M-k      & kill-sentence          \\
+  C-x Del  & backward-kill-sentence \\
+  \bottomrule
+\end{tabular}
+
+\section{The Kill Ring}
+In Emacs, killing is not fatal, but in fact, quite the opposite.
+Text that has been killed is not gone forever but is hidden in an area called the kill ring.
+The kill ring is an internal storage area where Emacs put things you've copied or deleted. 
+
+What exactly goes into the kill ring?
+About the only thing that Emacs doesn't save in the kill ring is single characters, deleted with \keyboard{Del} or \keyboard{C-d}.
+
+Emacs is clever about what it puts into the kill ring.
+When it is assembling a big block of text from a group of deletions, it always assembles the text correctly.
+
+Emacs stops assembling these blocks of text as soon as you give any comand that isn't a kill command.
+\linebreak
+\linebreak
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Bounding} & \head{Function} \\
+  \midrule
+  C-y      & yank     \\
+  M-y      & yank-pop \\
+  \bottomrule
+\end{tabular}
+
+
+\section{Marking Text to Delete, Move, or Copy}
+In Emacs, you select text by defining an area called a region. To define a region, you use a secondary pointer called a mark. You set the mark at one end of the region by pressing \keyboard{C-Space} or \keyboard{C-@}, then move the cursor to the other end of the region.
+
+
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Bounding} & \head{Function} \\
+  \midrule
+  C-Space  & set-mark-command        \\
+  C-@      & set-mark-command        \\
+  C-x C-x  & exchange-point-and-mark \\
+  M-h      & mark-paragraph          \\
+  C-x h    & mark-whole-buffer       \\
+  C-x C-p  & mark-page               \\
+  \midrule
+  C-w      & kill-region             \\
+  M-w      & kill-ring-save          \\
+  \bottomrule
+\end{tabular}
+
+    
+\section{Editing Tricks and Shortcuts}
+\subsection{Fixing Transpositions}
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Bounding} & \head{Function} \\
+  \midrule
+  C-t      & transpose-char      \\
+  M-t      & transpose-word      \\
+  C-x C-t  & transpose-lines     \\
+                  & transpose-sentence  \\
+                  & transpose-paragraph \\
+  \bottomrule
+\end{tabular}
+
+
+
+\subsection{Changing Capitalization}
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Bounding} & \head{Function} \\
+  \midrule
+  M-c      & capitalize-word \\
+  M-u      & upcase-word     \\
+  M-l      & downcase-word   \\
+  \bottomrule
+\end{tabular}
+
+
+\section{Undoing Changes}
+\begin{tabular}{ll}
+  \toprule[1.5pt]
+  \head{Name} & \head{Meaning} \\
+  \midrule
+  revert-buffer & Replace current buffer text with the text of the visited file on disk. \\
+  recover-file  & Visit file FILE, but get contents from its last auto-save file.        \\
+  backup file    & the same as the name of the file, with a tilde(\~) added.                              \\
+  auto-save file & the same as the name of the file, with a sharp(\#) added to the beginning and the end. \\
+  \bottomrule
+\end{tabular}
+
+
+
+
+
+
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

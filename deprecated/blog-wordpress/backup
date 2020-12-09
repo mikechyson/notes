@@ -1,0 +1,41 @@
+[2018-12-19 08:30:22]
+* backup files
+backup files determines things like:
+core installation, plugins, thems, images and files, JavaScript and PHP scripts and other code files, additional files and static web pages
+
+
+cd /var/www
+tar -vJcf ~/blog.tar.xz html
+
+
+
+* backup database
+phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL over the Web. 
+
+yum install phpMyAdmin
+
+vi /etc/httpd/conf.d/phpMyAdmin.conf
+     <RequireAny>
+       Require ip 127.0.0.1
+       Require ip ::1
+     </RequireAny>
+change it to
+     <RequireAny>
+       # Require ip 127.0.0.1
+       # Require ip ::1
+       Require all granted
+     </RequireAny>
+
+
+systemctl restart httpd
+
+to visit
+http://ip/phpmyadmin
+
+
+username: <database username>
+password: <database password>
+
+
+select the wordpress database -> Export
+[[file:pics/phpmyadmin-backup.png]]

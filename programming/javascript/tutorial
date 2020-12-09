@@ -1,0 +1,129 @@
+* JavaScript
+light-weight, script language
+executed by web browser
+
+
+* location
+** inner style
+javascript is put between <sript> and </script>.
+
+** outer style
+<script src="myScript.js"></script>
+
+* output
+** handle html element
+document.getElementById("demo").innerHTML="My First JavaScript"
+** write document
+document.write("<p>My First JavaScript</p>");
+
+请使用 document.write() 仅仅向文档输出写内容。
+如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖。
+
+* statements
+** delimiter
+; as delimiter.
+** code block
+{}
+
+* commnet
+//
+/* */
+
+* variable
+var var_name=value
+
+JavaScript 变量的生命期从它们被声明的时间开始。
+局部变量会在函数运行以后被删除。
+全局变量会在页面关闭后被删除。
+
+
+* data type
+dynamic type
+
+var x                // x 为 undefined
+var x = 6;           // x 为数字
+var x = "Bill";      // x 为字符串
+
+* object
+对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。属性由逗号分隔：
+
+var person={firstname:"Bill", lastname:"Gates", id:5566};
+
+
+JavaScript 中的所有事物都是对象：字符串、数字、数组、日期，等等。
+在 JavaScript 中，对象是拥有属性和方法的数据。
+
+* function
+function function_name(argument1, arguemnt2){
+...
+return return_value; //optional
+}
+
+
+* logical operator
+===  	全等（值和类型）
+
+* if
+if (condition){
+   ...
+} else if (condition){
+  ...
+} else {
+  ...
+}
+
+
+* switch
+var day=new Date().getDay();
+switch (day)
+{
+case 6:
+  x="Today it's Saturday";
+  break;
+case 0:
+  x="Today it's Sunday";
+  break;
+default:
+  x="Looking forward to the Weekend";
+}
+
+* for
+for(init; condition; loop){
+...
+}
+
+
+for (var i=0; i<5; i++)
+  {
+  x=x + "The number is " + i + "<br>";
+  }
+
+
+// syntax suger
+var person={fname:"John",lname:"Doe",age:25};
+for (x in person)
+  {
+  txt=txt + person[x];
+  }
+
+
+* while
+while(condition){
+...
+}
+
+
+
+
+* break
+break 语句用于跳出循环。
+
+* continue
+continue 用于跳过循环中的一个迭代。
+
+* try catch
+
+
+try{...}catch{...}
+
+

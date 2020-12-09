@@ -1,0 +1,31 @@
+\documentclass{book}
+\input{preamble}
+\hypersetup{
+  pdfauthor={\pdfauthor},   
+  pdftitle={\pdftitle},     
+  pdfsubject={\pdfsubject}, 
+  pdfkeywords={\pdfkeywords}
+}
+% \includeonly{}
+\begin{document}
+\frontmatter
+\include{title}
+\include{website}
+\include{dedication}
+
+\mainmatter
+\tableofcontents
+\include{introduction}
+\include{machine-learning-basics}
+\include{deep-feedforward-networks}
+\include{regularization}
+\include{optimization}
+
+% \listoftables
+% \listoffigures
+
+\include{glossary}
+\backmatter
+\bibliographystyle{plainnat}
+\bibliography{tex}
+\end{document}

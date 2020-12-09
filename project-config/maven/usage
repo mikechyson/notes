@@ -1,0 +1,57 @@
+* package with lib dependencies
+mvn clean dependency:copy-dependencies -DoutputDirectory=target/lib package
+
+* depend on my own jar
+<artifactId>bjcmc-utils</artifactId>
+<packaging>jar</packaging>
+<name>bjcmc-utils</name>
+<url>http://maven.apache.org</url>
+
+* package jar
+mvn clean package
+
+* shade
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-shade-plugin</artifactId>
+      <executions>
+        <execution>
+          <configuration>
+            <!--<minimizeJar>true</minimizeJar>-->
+            <transformers>
+              <transformer
+                implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                <mainClass>com.asiainfo.bjcmc.main.MobileOfficeStarter</mainClass>
+              </transformer>
+            </transformers>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+
+* compile
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.5.1</version>
+      <configuration>
+        <source>${java.version}</source>
+        <target>${java.version}</target>
+        <encoding>UTF-8</encoding>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+
+* skip tests
+no test with class file:
+-DskipTests
+no test and no class file:
+-Dmaven.test.skip=true
+

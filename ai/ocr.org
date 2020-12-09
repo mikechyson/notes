@@ -1,0 +1,24 @@
+* 序章
+文字检测领域借鉴了物体检测的经典网络Faster R-CNN系列和YOLO系列， 发展出一系列文字专用检测技术：
+- CTPN
+- TextBox
+- DenseBox
+
+文字识别领域借鉴了识别网络和序列网络，演变出：
+- CNN+RNN+CTC
+- CNN+RNN+Attension
+
+人们逐渐摈弃了传统的字符切割识别方式。
+
+会议：
+| ICDAR |
+| DAS   |
+| DPR   |
+| ICPR  |
+| ICFHR |
+|-------|
+| CVPR  |
+| ECCV  |
+| ICCV  |
+|-------|
+| AAAI  |

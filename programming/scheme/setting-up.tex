@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{listings}
+\begin{document}
+\title{Setting up Scheme in Emacs}
+\author{Mike Chyson}
+\newpage{}
+
+\section{Install MIT Scheme (Macbook)}
+\begin{lstlisting}
+  # install MIT Scheme
+  brew install mit-scheme
+
+  # start MIT Scheme
+  mit-scheme
+\end{lstlisting}
+
+\section{Config in Emacs}
+\begin{lstlisting}
+  # to locate where the mit-scheme
+  which mit-scheme
+\end{lstlisting}
+
+Add the following sentence into your ~/.emacs file.
+\begin{lstlisting}
+  (setq scheme-prgram-name ``/usr/local/bin/mit-scheme'')
+\end{lstlisting}
+
+\section{Running Scheme in Emacs}
+
+\begin{lstlisting}
+  M-x run-scheme
+\end{lstlisting}
+
+\end{document}

@@ -1,0 +1,73 @@
+
+\chapter{Home}
+The goal of this application is to serve as the homepage.
+
+
+The structure of home application is shown in Figure \ref{fig:home}:
+\begin{figure}[!hb]
+  \centering
+  \includegraphics[width=0.3\textheight]{home.png}
+  \caption{Home}
+  \label{fig:home}
+\end{figure}
+
+
+\section{index.html}
+\lstset{language=Html}
+\begin{lstlisting}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
+
+
+<html>
+<head>
+    <meta name="author" content="Mike Chyson">
+    <meta charset="UTF-8">
+    <meta name="description" content="Mike Chyson's Blog">
+    <meta name="keywords" content="blog, python, ai, deep learning">
+    <title>Mike Chyson</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+</head>
+
+<body>
+<h1 class="blog">Mike Chyson's Blog</h1>
+<div class="navigator-container">
+    <div class="navigator"><a href="{% url 'pdf:index' %}"><h3>PDF</h3></a></div>
+    <div class="navigator"><a href="{% url 'plan:index' %}"><h3>Plan</h3></a></div>
+    <div class="navigator"><a href="{% url 'technology:index' %}"><h3>Technology</h3></a></div>
+    <div class="navigator"><a href="{% url 'home:index' %}"><h3>Placeholder</h3></a></div>
+    <div class="navigator"><a href="{% url 'info:index' %}"><h4>Author</h4></a></div>
+</div>
+
+{#<div class="navigator"><a href="{% url 'plan:index' %}">Plan</a></div>#}
+
+<div class="content">
+    <div class="introduction">
+        <p>
+            This website for the following goals:
+        </p>
+        <ul>
+            <li>To review what I have learned</li>
+            <li>To help others with similar questions</li>
+            <li>To manage my plan</li>
+            <li>To visit the most new technologies conveniently</li>
+        </ul>
+    </div>
+    <div class="toolbar">
+        The time you visited this website: <br>
+        {{ now_time }}<br>
+        Asia/Shanghai
+    </div>
+</div>
+
+<footer>
+    <a href="https://chyson.net"><h3>My Old Website</h3></a>
+</footer>
+
+</body>
+</html>
+\end{lstlisting}
+
+

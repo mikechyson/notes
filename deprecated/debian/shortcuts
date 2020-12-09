@@ -1,0 +1,22 @@
+* Conventions
+| C                  | Ctrl                       |
+| S                  | Shift                      |
+| M                  | Alt                        |
+| W                  | Windows                    |
+| <l>                | left                       |
+| <r>                | right                      |
+| <u>                | up                         |
+| <d>                | down                       |
+
+
+* Screen
+| C-W-<l>/<r>        | move window between screen |
+
+* Terminal
+| C-S-Tab | new Tab             |
+| M-<1-9> | switch to Tab <1-9> |
+| C-S-w   | close tab           |
+| C-S-n   | new window          |
+| C-S-q   | close window        |
+
+

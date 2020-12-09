@@ -1,0 +1,2879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>latex</title>
+<!-- 2019-11-22 Fri 18:44 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Hack Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">latex</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. LaTeX</a></li>
+<li><a href="#sec-2">2. Getting Started with LaTeX</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Separation of form and content</a></li>
+<li><a href="#sec-2-2">2.2. LaTeX is portable</a></li>
+<li><a href="#sec-2-3">2.3. Protection for your work</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Formatting Words, Lines, and Paragraphs</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Logical formatting</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. titling your document</a></li>
+<li><a href="#sec-3-1-2">3.1.2. document structure</a></li>
+<li><a href="#sec-3-1-3">3.1.3. latex commands</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2. How LaTeX reads your input</a>
+<ul>
+<li><a href="#sec-3-2-1">3.2.1. comment</a></li>
+<li><a href="#sec-3-2-2">3.2.2. special symbols</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-3">3.3. Formatting text - fonts, shapes, and styles</a>
+<ul>
+<li><a href="#sec-3-3-1">3.3.1. tuning the font shape</a></li>
+<li><a href="#sec-3-3-2">3.3.2. switch fonts</a></li>
+<li><a href="#sec-3-3-3">3.3.3. delimiting the effect of commands (group: {})</a></li>
+<li><a href="#sec-3-3-4">3.3.4. font size</a></li>
+<li><a href="#sec-3-3-5">3.3.5. environments</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-4">3.4. Creating your own commands</a>
+<ul>
+<li><a href="#sec-3-4-1">3.4.1. creating command</a></li>
+<li><a href="#sec-3-4-2">3.4.2. adding intelligent spacing</a></li>
+<li><a href="#sec-3-4-3">3.4.3. creating your own commands with arguments</a></li>
+<li><a href="#sec-3-4-4">3.4.4. command with optional arguments</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-5">3.5. Using boxes to limit the width of paragraphs</a>
+<ul>
+<li><a href="#sec-3-5-1">3.5.1. creating a narrow text column</a></li>
+<li><a href="#sec-3-5-2">3.5.2. boxes containing more text</a></li>
+<li><a href="#sec-3-5-3">3.5.3. understanding environments</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-6">3.6. Breaking lines and paragraphs</a>
+<ul>
+<li><a href="#sec-3-6-1">3.6.1. stating devision points</a></li>
+<li><a href="#sec-3-6-2">3.6.2. improving the justification further</a></li>
+<li><a href="#sec-3-6-3">3.6.3. breaking lines manually</a></li>
+<li><a href="#sec-3-6-4">3.6.4. preventing line breaks</a></li>
+<li><a href="#sec-3-6-5">3.6.5. managing line breaks wisely</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-7">3.7. Exploring the fine details</a>
+<ul>
+<li><a href="#sec-3-7-1">3.7.1. understanding ligatures</a></li>
+<li><a href="#sec-3-7-2">3.7.2. setting dots</a></li>
+<li><a href="#sec-3-7-3">3.7.3. comparing dots to ellipsis</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-8">3.8. Setting accents</a>
+<ul>
+<li><a href="#sec-3-8-1">3.8.1. accents</a></li>
+<li><a href="#sec-3-8-2">3.8.2. using accents directly</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-9">3.9. Justification</a>
+<ul>
+<li><a href="#sec-3-9-1">3.9.1. justifying a paragraph to the left</a></li>
+<li><a href="#sec-3-9-2">3.9.2. centering a title</a></li>
+<li><a href="#sec-3-9-3">3.9.3. using environments for justification</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-10">3.10. Displaying quotes</a>
+<ul>
+<li><a href="#sec-3-10-1">3.10.1. quoting a scientist</a></li>
+<li><a href="#sec-3-10-2">3.10.2. quoting longer text</a></li>
+<li><a href="#sec-3-10-3">3.10.3. spacing between paragraphs instead of indentation</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-11">3.11. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Designing Pages</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Defining the overall layout</a>
+<ul>
+<li><a href="#sec-4-1-1">4.1.1. get document help</a></li>
+<li><a href="#sec-4-1-2">4.1.2. locate tex source file</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-2">4.2. Using class options to configure the document style</a></li>
+<li><a href="#sec-4-3">4.3. Creating a table of contents</a></li>
+<li><a href="#sec-4-4">4.4. Designing headers and footers</a>
+<ul>
+<li><a href="#sec-4-4-1">4.4.1. page styles</a></li>
+<li><a href="#sec-4-4-2">4.4.2. customizing header and footer</a></li>
+<li><a href="#sec-4-4-3">4.4.3. using decorative lines in header or footer</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-5">4.5. Breaking pages</a></li>
+<li><a href="#sec-4-6">4.6. Enlarging a page</a></li>
+<li><a href="#sec-4-7">4.7. Using footnotes</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Creating Lists</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Building a bulleted list</a></li>
+<li><a href="#sec-5-2">5.2. Creating a numbered list</a></li>
+<li><a href="#sec-5-3">5.3. Customizing lists</a></li>
+<li><a href="#sec-5-4">5.4. Producing a definition list</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Creating Tables and Inserting Pictures</a>
+<ul>
+<li><a href="#sec-6-1">6.1. Writing in columns</a></li>
+<li><a href="#sec-6-2">6.2. Typesetting tables</a></li>
+<li><a href="#sec-6-3">6.3. Inserting pictures</a></li>
+<li><a href="#sec-6-4">6.4. Managing floating environment</a>
+<ul>
+<li><a href="#sec-6-4-1">6.4.1. understanding float placement options</a></li>
+<li><a href="#sec-6-4-2">6.4.2. limiting floating</a></li>
+<li><a href="#sec-6-4-3">6.4.3. avoiding floating at all</a></li>
+<li><a href="#sec-6-4-4">6.4.4. float around figure</a></li>
+<li><a href="#sec-6-4-5">6.4.5. breaking firues and tables into pieces</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Cross Referencing</a>
+<ul>
+<li><a href="#sec-7-1">7.1. Setting labels and referencing</a></li>
+<li><a href="#sec-7-2">7.2. Producing intelligent page references</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. Listing Content and References</a>
+<ul>
+<li><a href="#sec-8-1">8.1. Customizing the table of contents</a></li>
+<li><a href="#sec-8-2">8.2. Customizing list of figure and table</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. Typing Math Formulas</a>
+<ul>
+<li><a href="#sec-9-1">9.1. Writing basic formulas</a>
+<ul>
+<li><a href="#sec-9-1-1">9.1.1. Embedding math expressions within text</a></li>
+<li><a href="#sec-9-1-2">9.1.2. Dispalying formulas</a></li>
+<li><a href="#sec-9-1-3">9.1.3. Numbering equations</a></li>
+<li><a href="#sec-9-1-4">9.1.4. Adding substripts and superscirpts</a></li>
+<li><a href="#sec-9-1-5">9.1.5. Extracting roots</a></li>
+<li><a href="#sec-9-1-6">9.1.6. Writing fractions</a></li>
+<li><a href="#sec-9-1-7">9.1.7. Greek letters</a></li>
+<li><a href="#sec-9-1-8">9.1.8. Script letters</a></li>
+<li><a href="#sec-9-1-9">9.1.9. Producing an ellipsis</a></li>
+<li><a href="#sec-9-1-10">9.1.10. Changing the font style, and size</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-2">9.2. Customizing displayed formulas</a>
+<ul>
+<li><a href="#sec-9-2-1">9.2.1. aligning multi-line equations</a></li>
+<li><a href="#sec-9-2-2">9.2.2. numbering rows in multi-line formulas</a></li>
+<li><a href="#sec-9-2-3">9.2.3. Inserting text into formulas</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-3">9.3. Fine-tuning formulas</a>
+<ul>
+<li><a href="#sec-9-3-1">9.3.1. using operators</a></li>
+<li><a href="#sec-9-3-2">9.3.2. binary operation symbols</a></li>
+<li><a href="#sec-9-3-3">9.3.3. binary relation symbols</a></li>
+<li><a href="#sec-9-3-4">9.3.4. inequality relation symbols</a></li>
+<li><a href="#sec-9-3-5">9.3.5. subset and superset symbols</a></li>
+<li><a href="#sec-9-3-6">9.3.6. variable sized operators</a></li>
+<li><a href="#sec-9-3-7">9.3.7. arrows</a></li>
+<li><a href="#sec-9-3-8">9.3.8. harpoons</a></li>
+<li><a href="#sec-9-3-9">9.3.9. symbols derived from letters</a></li>
+<li><a href="#sec-9-3-10">9.3.10. variable sized delimiters</a></li>
+<li><a href="#sec-9-3-11">9.3.11. miscellaneous symbols</a></li>
+<li><a href="#sec-9-3-12">9.3.12. writing units</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-4">9.4. Building math structures</a></li>
+<li><a href="#sec-9-5">9.5. Stacking expressions</a>
+<ul>
+<li><a href="#sec-9-5-1">9.5.1. under and over</a></li>
+<li><a href="#sec-9-5-2">9.5.2. accents</a></li>
+<li><a href="#sec-9-5-3">9.5.3. putting a symbol above another</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-6">9.6. Writing theorems and definitions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> LaTeX</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+LaTeX is a high-quality open source <b>typesetting</b> software that produces professional prints and PDF files.<br  />
+As LaTeX is a powerful and complex tool, getting started can be intimidating <i>in 'timi deiting</i>. But once you've become acquainted <i>er 'kwein tid</i>, LaTeX's capabilities far outweight any initial difficulties.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Getting Started with LaTeX</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+LaTeX is a document <b>markup language</b>. Just like HTML, Lilypond, XML<br  />
+</p>
+</div>
+
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Separation of form and content</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+thought: abstract, separation<br  />
+</p>
+
+<p>
+For example, instead of writing a chapter title in big bold letters, you just tell LaTeX that it's a chapter heading — you could let LaTeX design the heading or you decide in the document's settings what the headings will look like — just once for the whole document. (Just like HTML and CSS.)<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> LaTeX is portable</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+LaTeX is portable in three ways:<br  />
+</p>
+<ol class="org-ol">
+<li>source code: open source<br  />
+</li>
+<li>implementation: plain text<br  />
+</li>
+<li>output: PDF, DVI, PostScript, HTML<br  />
+</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Protection for your work</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Imagin the different word processor versions, it is difficult to maintain the compatibility.<br  />
+</p>
+
+<p>
+Protection in two ways:<br  />
+</p>
+<ol class="org-ol">
+<li>compatibility: it is plain text.<br  />
+</li>
+<li>no viruses: it is plain text!<br  />
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Formatting Words, Lines, and Paragraphs</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Logical formatting</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> titling your document</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>[<span style="color: #ffcc80;">a4paper,11pt</span>]{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\title</span>{<span style="color: #84ffff;">Example 2</span>}
+<span style="color: #fff59d;">\author</span>{<span style="color: #84ffff;">Mike Chyson</span>}
+<span style="color: #fff59d;">\date</span>{<span style="color: #84ffff;">Thu Jan  3 16:22:11 CST 2019</span>}
+<span style="color: #8bc34a;">\maketitle</span>
+<span style="color: #fff59d;">\section</span>{<span style="color: #a5d6a7; font-size: 130%;">What's this?</span>}
+This is our second document. It contains a title and a section with text.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+<p>
+You do not specify the font size, font color, font family and so on.<br  />
+Instead, you tell LaTeX it is a title, or author or date and so on.<br  />
+LaTeX format them for you.<br  />
+As if there is a logical layer between the appearance and the content.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> document structure</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+A LaTeX document doesn't stand alone &#x2014; commonly the document is based on a versatile template. Such a fundamental template is called a <b>class</b>. It provides customizable features, usually built for a certain purpose.<br  />
+</p>
+
+<p>
+The first line starts with \documentclass . This word begins with a backslash; such a word is called a <b>command</b>.<br  />
+We used commands to specify the class and to state document properties: <code>title</code> , <code>author</code> , and <code>date</code> .<br  />
+</p>
+
+<p>
+This first part of the document is called the <b>preamble</b> of the document. This is where we choose the class, specify properties, and in general, make document-wide definitions.<br  />
+</p>
+
+<pre class="example">
+\begin{document} marks the end of the preamble and the beginning of the actual document. \end{document} marks the end of the document. Everything that follows would be ignored by LaTeX.
+</pre>
+
+<p>
+Such a piece of code, framed by a \begin &#x2026; \end command pair, is called an <b>environment</b>.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-1-3" class="outline-4">
+<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> latex commands</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+LaTeX commands begin with a backslash, followed by big or small letters. Commands may have arguments, given in curly braces or in square brackets.<br  />
+</p>
+
+<p>
+Calling a command looks like the following:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\command</span>
+Or:
+<span style="color: #8bc34a;">\command</span>{argument}
+Or:
+<span style="color: #8bc34a;">\command</span>[optional argument]{argument}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> How LaTeX reads your input</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+LaTeX treats multiple spaces just like a single space. Also, a single line break has the same effect like a single space. A blank line denotes a paragraph break. Like spaces, multiple empty lines are treated as one.<br  />
+</p>
+
+<p>
+Briefly, spaces separate words, empty lines separate paragraphs.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> comment</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+the percent sign (%) introduces a <b>comment</b>. (Same as Lilypond and Matlab comment.)<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2"><span class="section-number-4">3.2.2</span> special symbols</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+Common text mostly contains upper and lowercase letters, digits, and punctuation characters. Some characters are reserved for LaTeX commands; they cannot be used directly.<br  />
+</p>
+
+<p>
+By putting a backslash before such a special symbol, we turned it into a LaTeX command. This command has the only purpose of printing out that symbol.<br  />
+</p>
+
+<p>
+Convention in almost all programming language.<br  />
+</p>
+
+<p>
+Note:<br  />
+</p>
+<pre class="example">
+The command for printing a backslash is \textbackslash. 
+\\ is used as a shortcut for a line break command. 
+That's a bit odd, but line breaks occur frequently whereas backslashes
+are rarely needed in the output, therefore this shortcut has been chosen.
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Formatting text - fonts, shapes, and styles</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> tuning the font shape</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+Text can be <span style="color: #fff59d;">\emph</span>{<span style="color: #ffffff; font-style: italic;">emphasized</span>}.
+
+Besides being <span style="color: #fff59d;">\textit</span>{<span style="color: #ffffff; font-style: italic;">italic</span>} words could be <span style="color: #fff59d;">\textbf</span>{<span style="color: #ffffff; font-weight: bold;">bold</span>}, <span style="color: #fff59d;">\textsl</span>{<span style="color: #ffffff; font-style: italic;">slanted</span>} or typeset in <span style="color: #fff59d;">\textsc</span>{<span style="color: #ffffff; font-weight: bold;">Small Caps</span>}.
+
+Such commands can be <span style="color: #fff59d;">\textit</span>{<span style="color: #fff59d; font-style: italic;">\textbf</span><span style="color: #ffffff; font-style: italic;">{</span><span style="color: #ffffff; font-weight: bold; font-style: italic;">nested</span><span style="color: #ffffff; font-style: italic;">}</span>}.
+
+<span style="color: #fff59d;">\emph</span>{<span style="color: #ffffff; font-style: italic;">See how </span><span style="color: #ffffff; font-style: italic;">\emph</span><span style="color: #ffffff; font-style: italic;">{emphasizing} looks when nested.</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+<p>
+Text-formatting commands usually look like <code>\text**{argument}</code> , where ** stands for a two letter abbreviation like <code>bf</code> for bold face, <code>it</code> for italic, and <code>sl</code> for slanted.<br  />
+</p>
+
+
+<p>
+Most font commands will show the same effect if they are applied twice like <code>\textbf{\textbf{words}}</code> : the words won't become bolder.<br  />
+</p>
+
+<p>
+Only <code>\emph</code> behaves differently. <code>\emph</code> is so called semantic markup, because it refers to the meaning, not just to the appearance of text.<br  />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> switch fonts</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<div class="org-src-container">
+
+<pre class="src src-latex">The best place for downloading LaTeX related software is CTAN.
+Its address is <span style="color: #84ffff;">\ttfamily</span> http://www.ctan.org<span style="color: #84ffff;">\rmfamily</span>.
+</pre>
+</div>
+<p>
+We used the command <code>\ttfamily</code> to switch to a typewriter font. The typewriter font will be used from this point onwards. By using <code>\rmfamily</code> , we returned to Roman font.<br  />
+</p>
+
+<p>
+These commands don't produce any output, but they will affect the following text. We call such a command a <b>declaration</b>.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-3" class="outline-4">
+<h4 id="sec-3-3-3"><span class="section-number-4">3.3.3</span> delimiting the effect of commands (group: {})</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<p>
+In the previous example, we've reversed the effect of \ttfamily by writing \rmfamily .<br  />
+To be safe, we could write \normalfont to switch back to the base font.<br  />
+However, there's an easier way.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+{<span style="color: #fff59d;">\sffamily</span>
+<span style="color: #84ffff;">  Text can be {</span><span style="color: #fff59d;">\em</span><span style="color: #ffffff; font-style: italic;"> emphasized</span><span style="color: #84ffff;">}.</span>
+
+<span style="color: #84ffff;">  Besides being {</span><span style="color: #fff59d;">\itshape</span><span style="color: #ffffff; font-style: italic;"> italic</span><span style="color: #84ffff;">} words could be {</span><span style="color: #fff59d;">\bfseries</span><span style="color: #ffffff; font-weight: bold;"> bold</span><span style="color: #84ffff;">},</span>
+<span style="color: #84ffff;">  {</span><span style="color: #fff59d;">\slshape</span><span style="color: #ffffff; font-style: italic;"> slanted</span><span style="color: #84ffff;">} or typeset in {</span><span style="color: #fff59d;">\scshape</span><span style="color: #ffffff; font-weight: bold;"> Small Caps</span><span style="color: #84ffff;">}.</span>
+
+<span style="color: #84ffff;">  Such commands can be {</span><span style="color: #fff59d;">\itshape</span><span style="color: #ffffff; font-weight: bold; font-style: italic;">\bfseries</span><span style="color: #ffffff; font-style: italic;"> nested</span><span style="color: #84ffff;">}.</span>
+}
+
+{<span style="color: #fff59d;">\em</span><span style="color: #ffffff; font-style: italic;"> See how {</span><span style="color: #ffffff; font-style: italic;">\em</span><span style="color: #ffffff; font-style: italic;"> emphasizing} looks when nested.</span>
+}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+<p>
+An opening curly brace tells LaTeX to begin a so called <b>group</b>. The following commands are valid for the subsequent text until a closing curly brace appears causing LaTeX to stop using the commands or declarations written in this group.<br  />
+Till a command is valid, that's called its <b>scope</b>.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-3-4" class="outline-4">
+<h4 id="sec-3-3-4"><span class="section-number-4">3.3.4</span> font size</h4>
+<div class="outline-text-4" id="text-3-3-4">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #8bc34a;">\noindent</span><span style="color: #84ffff;">\tiny</span> We <span style="color: #84ffff;">\scriptsize</span> start <span style="color: #84ffff;">\footnotesize</span> <span style="color: #84ffff;">\small</span> small,
+<span style="color: #84ffff;">\normalsize</span> get <span style="color: #84ffff;">\large</span> big <span style="color: #84ffff;">\Large</span> and <span style="color: #84ffff;">\LARGE</span> bigger,
+<span style="color: #84ffff;">\huge</span> huge and <span style="color: #84ffff;">\Huge</span> gigantic!
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+<p>
+There are no corresponding commands taking arguments.<br  />
+</p>
+
+<p>
+The actual resulting font size depends on the base font. If your document has a base font of 12 pt, then \tiny would result in text bigger than with a base font of 10 pt.<br  />
+</p>
+
+<p>
+Normally, font size declarations are used only in definitions of macros in the preamble, just as it does apply to the other font commands.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-5" class="outline-4">
+<h4 id="sec-3-3-5"><span class="section-number-4">3.3.5</span> environments</h4>
+<div class="outline-text-4" id="text-3-3-5">
+<p>
+It is difficult to recognize the brace matching when the curly braces grow up.<br  />
+An environment forms a group. Using an environment instead of just curly braces improves the readability of your code.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex">{<span style="color: #fff59d;">\huge</span><span style="color: #84ffff;"> This is a very long example.</span>}
+
+is same to
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">huge</span>}
+ This is a very long example.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">huge</span>}
+</pre>
+</div>
+
+<pre class="example">
+For every declaration there's a corresponding environment carrying the same name except the backslash.
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Creating your own commands</h3>
+<div class="outline-text-3" id="text-3-4">
+</div><div id="outline-container-sec-3-4-1" class="outline-4">
+<h4 id="sec-3-4-1"><span class="section-number-4">3.4.1</span> creating command</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+LaTeX allows you to define your own commands in your preamble. They are also called macros.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\newcommand</span>{<span style="color: #84ffff;">\TUG</span>}{<span style="color: #84ffff;">TeX Users Group</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\section</span>{<span style="color: #a5d6a7; font-size: 130%;">The </span><span style="color: #a5d6a7; font-size: 130%;">\TUG</span>}
+The <span style="color: #8bc34a;">\TUG</span>\ is an organization for people who are interested in <span style="color: #fff59d;">\TeX</span>\ or <span style="color: #fff59d;">\LaTeX</span>.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+<p>
+\newcommand defines a new command. The first argument is the name of the command. The second argument is the content of the command.<br  />
+</p>
+
+<p>
+Note:<br  />
+</p>
+<pre class="example">
+We have to use a backslash after \TUG .
+The following space would just separate the command from the following text; it won't produce a space in the output.
+Using the backslash followed by a space forces the output of the space that would otherwise be ignored.
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-3-4-2" class="outline-4">
+<h4 id="sec-3-4-2"><span class="section-number-4">3.4.2</span> adding intelligent spacing</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+A backslash following a command could easily be forgotten. Can't we modify the command in order to automate that? Tasks like this, which aren't supported by LaTeX directly, could be solved by using packages. The package xspace is to fulfill this need.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">xspace</span>}
+<span style="color: #fff59d;">\newcommand</span>{<span style="color: #84ffff;">\TUG</span>}{<span style="color: #84ffff;">\textsc</span><span style="color: #84ffff;">{</span><span style="color: #84ffff; font-weight: bold;">TeX Users Group</span><span style="color: #84ffff;">}</span><span style="color: #84ffff;">\xspace</span>}
+</pre>
+</div>
+<p>
+\usepackage{xspace} tells LaTeX to load the package called xspace and to read in all of its definitions.<br  />
+</p>
+
+<p>
+This package provides the command \xspace that inserts a space depending on the following character:<br  />
+If a dot, a comma, an exclamation, or a quotation mark follows, it won't insert a space, but if a normal letter follows, then it will.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-4-3" class="outline-4">
+<h4 id="sec-3-4-3"><span class="section-number-4">3.4.3</span> creating your own commands with arguments</h4>
+<div class="outline-text-4" id="text-3-4-3">
+<p>
+Imagine that your text contains a lot of keywords that you want to be printed in bold.<br  />
+</p>
+
+<p>
+If you use the \textbf{} command on all the keywords, what would happen if you later decide to use an italic shape instead or a typewriter font?<br  />
+You would have to change that formatting for each keyword. There's a better way: defining your own macro and using \textbf{} only inside that.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\newcommand</span>{<span style="color: #84ffff;">\keyword</span>}[<span style="color: #ffcc80;">1</span>]{<span style="color: #84ffff;">\textbf</span><span style="color: #84ffff;">{</span><span style="color: #84ffff; font-weight: bold;">#1</span><span style="color: #84ffff;">}</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #8bc34a;">\keyword</span>{Grouping} by curly braces limits the <span style="color: #8bc34a;">\keyword</span>{scope} of <span style="color: #8bc34a;">\keyword</span>{declarations}.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+<p>
+The number 1 in the square brackets marks the number of arguments. #1 will be replaced by the value of the first argument. #2 would refer to a second argument, and so on.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-4-4" class="outline-4">
+<h4 id="sec-3-4-4"><span class="section-number-4">3.4.4</span> command with optional arguments</h4>
+<div class="outline-text-4" id="text-3-4-4">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\newcommand</span>{<span style="color: #84ffff;">\keyword</span>}[<span style="color: #ffcc80;">2</span>][<span style="color: #ffcc80; font-weight: bold;">\bfseries</span>]{<span style="color: #84ffff;">{#1#2}</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #8bc34a;">\keyword</span>{Grouping} by curly braces limits the 
+<span style="color: #8bc34a;">\keyword</span>{scope} of <span style="color: #8bc34a;">\keyword</span>[<span style="color: #ffffff; font-style: italic;">\itshape</span>]{declarations}.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+
+<p>
+By using [\bfseries] , we introduced an optional parameter. We refer to it with #1 . Its default value is \bfseries . Since we used a declaration this time, we added a pair of braces to ensure that only the keyword is affected by the declaration.<br  />
+</p>
+
+
+<p>
+definition:<br  />
+</p>
+<pre class="example">
+\newcommand{command}[arguments][optional]{definition}
+</pre>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">PARAMETER</th>
+<th scope="col" class="left">MEANING</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">command</td>
+<td class="left">The name of the new command</td>
+</tr>
+
+<tr>
+<td class="left">arguments</td>
+<td class="left">An integer from 1 to 9, the number of the arguments of the new command</td>
+</tr>
+
+<tr>
+<td class="left">optional</td>
+<td class="left">If present, the first of the arguments would be optional with a default value given here</td>
+</tr>
+
+<tr>
+<td class="left">defintion</td>
+<td class="left">Every occurrence of the command will be replaced by definition and every occurrence of the form #n will then be replaced by the nth argument.</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="example">
+\newcommand is our key to introduce logical formatting.
+We should avoid using LaTeX font commands inside the document - you are on the right track if they appear only in the preamble of the document.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Using boxes to limit the width of paragraphs</h3>
+<div class="outline-text-3" id="text-3-5">
+</div><div id="outline-container-sec-3-5-1" class="outline-4">
+<h4 id="sec-3-5-1"><span class="section-number-4">3.5.1</span> creating a narrow text column</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<pre class="example">
+\parbox[alignment][height][inner alignment]{width}{text}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5-2" class="outline-4">
+<h4 id="sec-3-5-2"><span class="section-number-4">3.5.2</span> boxes containing more text</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<p>
+Parboxes are suitable for boxes with only a little text inside. In case of a box containing a large amount of text, the closing brace could easily be forgotten or overlooked. The minipage environment would then be a better choice.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">minipage</span>}{3cm}
+TUG is an acronym. It means <span style="color: #fff59d;">\TeX</span>\ Users Group.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">minipage</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5-3" class="outline-4">
+<h4 id="sec-3-5-3"><span class="section-number-4">3.5.3</span> understanding environments</h4>
+<div class="outline-text-4" id="text-3-5-3">
+<p>
+LaTeX environments are started with \begin and ended with \end . Both commands require the name of the environment as their argument.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">name</span>}
+...
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">name</span>}
+</pre>
+</div>
+
+<p>
+Such environments can be used for each declaration called \name.<br  />
+</p>
+
+<p>
+Like commands, environments may also have arguments.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">name</span>}{arguement}
+...
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">name</span>}
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">name</span>}[optional arguement]{arguement}
+...
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">name</span>}
+</pre>
+</div>
+
+<pre class="example">
+Environments are like declarations with a built-in scope. With \begin , the environment introduces a change in layout, font, or other properties. There must be an \end command, where this change will be canceled. The effect of the environment name is delimited to the piece of code between \begin{name} and \end{name} .
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Breaking lines and paragraphs</h3>
+<div class="outline-text-3" id="text-3-6">
+</div><div id="outline-container-sec-3-6-1" class="outline-4">
+<h4 id="sec-3-6-1"><span class="section-number-4">3.6.1</span> stating devision points</h4>
+<div class="outline-text-4" id="text-3-6-1">
+<p>
+The \hyphenation command tells LaTeX where the division points of a word may be. Its argument may contain several words separated by spaces. For each word, we can indicate several points.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\hyphenation</span>{ac-ro-nym ac-ro-nym-ic a-cro-nym-i-cal-ly}
+</pre>
+</div>
+
+<pre class="example">
+Preventing hyphenation
+If you want to prevent the hyphenation of a certain word at all, there are two
+ways: either declare it in the preamble by using it in the \hyphenation
+argument without any division points, like \hyphenation{indivisible},
+or you protect it inside the text using the \mbox command: The following
+word is \mbox{indivisible}.
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-3-6-2" class="outline-4">
+<h4 id="sec-3-6-2"><span class="section-number-4">3.6.2</span> improving the justification further</h4>
+<div class="outline-text-4" id="text-3-6-2">
+<p>
+When we typeset directly to PDF, we're actually using pdfLaTeX and we can benefit from the new features by using the microtype package.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-6-3" class="outline-4">
+<h4 id="sec-3-6-3"><span class="section-number-4">3.6.3</span> breaking lines manually</h4>
+<div class="outline-text-4" id="text-3-6-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #f36c60; font-weight: bold;">\\</span> <span style="color: #b0bec5;">% end a line</span>
+<span style="color: #f36c60; font-weight: bold;">\newline</span> <span style="color: #b0bec5;">% has the same effect with \\</span>
+<span style="color: #f36c60; font-weight: bold;">\linebreak</span> <span style="color: #b0bec5;">% tells LaTeX to end the line but to keep the full justification.</span>
+</pre>
+</div>
+
+<pre class="example">
+\\[value] would insert additional vertical space after the break depending on the value , like \\[3mm] .
+
+\\*[value] is a variation of the same but prevents a page break before the next line of text.
+
+\linebreak[number] can be used to influence the line break slightly or strongly:
+If number is 0, a line break is allowed, 1 means it's desired, 2 and 3 mark more
+insistent requests, and 4 will force it. The latter is the default behavior if no number
+was given.
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-3-6-4" class="outline-4">
+<h4 id="sec-3-6-4"><span class="section-number-4">3.6.4</span> preventing line breaks</h4>
+<div class="outline-text-4" id="text-3-6-4">
+<p>
+The command \linebreak has a direct counterpart: \nolinebreak . This command prevents a line break at the current position. Like its counterpart, it takes an optional argument. If you write \nolinebreak[0] , you recommend to not break the line there. Using 1, 2, or even 3 makes the request stronger and \nolinebreak[4] forbids it completely. The latter will be presumed if you don't provide an argument.<br  />
+</p>
+
+<pre class="example">
+The already mentioned command, \mbox[text] , does not only disable hyphenation
+of a word, it will also prevent a line break for the complete text .
+</pre>
+
+<p>
+The symbol ~ stands for an interword space where no break is allowed: if you would write Dr.~Watson , the title Dr. would never stand lonely at the end of a line.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-6-5" class="outline-4">
+<h4 id="sec-3-6-5"><span class="section-number-4">3.6.5</span> managing line breaks wisely</h4>
+<div class="outline-text-4" id="text-3-6-5">
+<p>
+Bad hyphenation could still disappear as the document grows, so stating some sensible hyphenation rules would not do any harm but could prove to be useful.<br  />
+</p>
+
+<p>
+But only use \\ , \newline , and \linebreak for line adjustment when you're working on the final version of your document! While you're still editing your text, you don't need to worry about line breaks. They still may change during the writing process. Bad looking justification could still change and become better without intervention. On the other hand, if you break a line manually but later insert text before, the result could be an unwanted short line.<br  />
+</p>
+
+<p>
+So don't waste your energy on formatting while you're writing.<br  />
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Exploring the fine details</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+Typographic conventions may require paying attention to small details; there are different dashes, and the space around a dot may vary depending on the context. The space after some letters may depend on the following one, so much so that some letters may even be joined to a single one. Such constructions are called ligatures.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-3-7-1" class="outline-4">
+<h4 id="sec-3-7-1"><span class="section-number-4">3.7.1</span> understanding ligatures</h4>
+<div class="outline-text-4" id="text-3-7-1">
+<p>
+If the letter i follows the letter f, the dot of the letter i could collide with the head of the f. It could be avoided in two ways: either by increasing the space between those two letters or by combining them. The latter will result in a ligature. This will automatically be done by LaTeX when the used font provides such ligatures.<br  />
+</p>
+
+
+<p>
+Sometimes this behavior might be undesirable, for instance, in compound words like "halflife". In this case, you can suppress this behavior by inserting \/ getting half\/life.<br  />
+</p>
+
+<p>
+Curly braces can be used to achieve the same effect. For instance, in -{}- and {-}{-} , the dashes cannot be joined because this would cross group boundaries.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7-2" class="outline-4">
+<h4 id="sec-3-7-2"><span class="section-number-4">3.7.2</span> setting dots</h4>
+<div class="outline-text-4" id="text-3-7-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #b0bec5;">%</span><span style="color: #b0bec5;">\frenchspacing</span><span style="color: #b0bec5;"> % the spacing after sentences will be as it is between words.</span>
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\TeX</span>\ was designed by Donald E. Knuth.
+It has become a de facto standard in mathematics.
+
+Look at the spacing etc. in LaTeX. See it?
+
+Look at the spacing etc.\ in LaTeX<span style="color: #8bc34a;">\@</span>. See it?
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">the backslash followed by a space (a "quoted space") produces the</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">normal interword space, the </span><span style="color: #b0bec5;">\@</span><span style="color: #b0bec5;"> before the dot states that the following dot stands at the</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">end of a sentence.</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-7-3" class="outline-4">
+<h4 id="sec-3-7-3"><span class="section-number-4">3.7.3</span> comparing dots to ellipsis</h4>
+<div class="outline-text-4" id="text-3-7-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+Here are three dots... compare them to the ellipsis<span style="color: #8bc34a;">\ldots</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8"><span class="section-number-3">3.8</span> Setting accents</h3>
+<div class="outline-text-3" id="text-3-8">
+</div><div id="outline-container-sec-3-8-1" class="outline-4">
+<h4 id="sec-3-8-1"><span class="section-number-4">3.8.1</span> accents</h4>
+<div class="outline-text-4" id="text-3-8-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+N\~{a}o compreendo. H\'{a} aqui algu\'{e}mque fale ingl\^{e}s?
+Comment <span style="color: #8bc34a;">\c</span>{c}a va? O\`{u} se trouve l'a\'{e}roport?
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/accent.png" alt="accent.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-8-2" class="outline-4">
+<h4 id="sec-3-8-2"><span class="section-number-4">3.8.2</span> using accents directly</h4>
+<div class="outline-text-4" id="text-3-8-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\usepackage</span>[<span style="color: #ffcc80;">utf8</span>]{<span style="color: #84ffff;">inputenc</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+N&#227;o compreendo. H&#225; aqui algu&#233;m que fale ingl&#234;s?
+Comment &#231;ava? O&#249; se trouve l'a&#233;roport?
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-9" class="outline-3">
+<h3 id="sec-3-9"><span class="section-number-3">3.9</span> Justification</h3>
+<div class="outline-text-3" id="text-3-9">
+</div><div id="outline-container-sec-3-9-1" class="outline-4">
+<h4 id="sec-3-9-1"><span class="section-number-4">3.9.1</span> justifying a paragraph to the left</h4>
+<div class="outline-text-4" id="text-3-9-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #8bc34a;">\parbox</span>{3cm}{<span style="color: #8bc34a;">\raggedright</span>
+TUG is an acronym. It means <span style="color: #fff59d;">\TeX</span>\ Users Group.}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-9-2" class="outline-4">
+<h4 id="sec-3-9-2"><span class="section-number-4">3.9.2</span> centering a title</h4>
+<div class="outline-text-4" id="text-3-9-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\pagestyle</span>{<span style="color: #84ffff;">empty</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+{<span style="color: #fff59d;">\centering</span>
+<span style="color: #84ffff;">\huge</span><span style="color: #ffffff; font-weight: bold;">\bfseries</span> Centered text <span style="color: #f36c60; font-weight: bold;">\\</span>
+<span style="color: #84ffff;">\Large</span><span style="color: #8bc34a;">\normalfont</span> written by me <span style="color: #f36c60; font-weight: bold;">\\</span>
+<span style="color: #84ffff;">\normalsize</span><span style="color: #8bc34a;">\today</span>
+}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-9-3" class="outline-4">
+<h4 id="sec-3-9-3"><span class="section-number-4">3.9.3</span> using environments for justification</h4>
+<div class="outline-text-4" id="text-3-9-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">url</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #8bc34a;">\noindent</span> This is the beginning of a poem
+by Edgar Allan Poe:
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">center</span>}
+<span style="color: #fff59d;">\emph</span>{<span style="color: #ffffff; font-style: italic;">Annabel Lee</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">center</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">center</span>}
+It was many and many a year ago,<span style="color: #f36c60; font-weight: bold;">\\</span>
+In a kingdom by the sea,<span style="color: #f36c60; font-weight: bold;">\\</span>
+That a maiden there lived whom you may know<span style="color: #f36c60; font-weight: bold;">\\</span>
+By the name of Annabel Lee
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">center</span>}
+The complete poem can be read on
+<span style="color: #8bc34a;">\url</span>{http://www.online-literature.com/poe/576/}.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+
+<p>
+The corresponding environment for ragged-right text is called flushleft, and for ragged-left text it's flushright.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">flushleft</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">flushleft</span>}
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">flushright</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">flushright</span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-10" class="outline-3">
+<h3 id="sec-3-10"><span class="section-number-3">3.10</span> Displaying quotes</h3>
+<div class="outline-text-3" id="text-3-10">
+</div><div id="outline-container-sec-3-10-1" class="outline-4">
+<h4 id="sec-3-10-1"><span class="section-number-4">3.10.1</span> quoting a scientist</h4>
+<div class="outline-text-4" id="text-3-10-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #9ccc65;">``''</span>
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">quote</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">quote</span>}
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+Niels Bohr said: <span style="color: #9ccc65;">``An expert is a person who has made</span>
+<span style="color: #9ccc65;">all the mistakes that can be made in a very narrow field.''</span>
+Albert Einstein said:
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">quote</span>}
+Anyone who has never made a mistake has never tried anything new.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">quote</span>}
+Errors are inevitable. So, let's be brave trying something new.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-10-2" class="outline-4">
+<h4 id="sec-3-10-2"><span class="section-number-4">3.10.2</span> quoting longer text</h4>
+<div class="outline-text-4" id="text-3-10-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">quotation</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">quotation</span>}
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">url</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+The authors of the CTAN team listed ten good reasons
+for using <span style="color: #fff59d;">\TeX</span>. Among them are:
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">quotation</span>}
+<span style="color: #fff59d;">\TeX</span>\ has the best output. What you end with,
+the symbols on the page, is as useable, and beautiful,
+as a non-professional can produce.
+<span style="color: #fff59d;">\TeX</span>\ knows typesetting. As those plain text samples
+show, <span style="color: #8bc34a;">\TeX's</span> has more sophisticated typographical algorithms
+such as those for making paragraphs and for hyphenating.
+<span style="color: #fff59d;">\TeX</span>\ is fast. On today's machines <span style="color: #fff59d;">\TeX</span>\ is very fast.
+It is easy on memory and disk space, too.
+<span style="color: #fff59d;">\TeX</span>\ is stable. It is in wide use, with a long history.
+It has been tested by millions of users, on demanding input.
+It will never eat your document. Never.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">quotation</span>}
+The original text can be found on
+<span style="color: #8bc34a;">\url</span>{ http://www.ctan.org/what_is_tex.html}.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-10-3" class="outline-4">
+<h4 id="sec-3-10-3"><span class="section-number-4">3.10.3</span> spacing between paragraphs instead of indentation</h4>
+<div class="outline-text-4" id="text-3-10-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">parskip</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">url</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+The authors of the CTAN team listed ten good reasons
+for using <span style="color: #fff59d;">\TeX</span>. Among them are:
+<span style="color: #fff59d;">\TeX</span>\ has the best output. What you end with,
+the symbols on the page, is as useable, and beautiful,
+as a non-professional can produce<span style="color: #8bc34a;">\ldots</span>
+The original text can be found on
+<span style="color: #8bc34a;">\url</span>{ http://www.ctan.org/what_is_tex.html}.
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-11" class="outline-3">
+<h3 id="sec-3-11"><span class="section-number-3">3.11</span> Summary</h3>
+<div class="outline-text-3" id="text-3-11">
+<p>
+You should use formatting commands inside command definitions in the preamble to allow easy changes for the future.<br  />
+As often as possible, create your own macros to achieve a logical structure.<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Designing Pages</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Defining the overall layout</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\usepackage</span>[<span style="color: #ffcc80;">a4paper, inner=1.5cm, outer=3cm, top=2cm, bottom=3cm, bindingoffset=1cm, landscape</span>]{<span style="color: #84ffff;">geometry</span>}
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">paper=name</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">paperwidth=7in</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">paperheight=10in</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">papersize={7in,10in}</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">landscape</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">portrait</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">textwidth=140mm</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">textheight=180mm</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">lines=25</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">includedhead % cause the header of the page to be included into the body area</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">includefoot</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">left=2cm</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">right=2cm</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">bindingoffset % reserves space on the left margin (one-size), respectively the inner margin (two-sided) for the binding</span>
+
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">default margin ratio:</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">top:bottom = 2:3</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">left:right = 1:1 for one-side documents</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">inner:outer = 2:3 for two-side documents</span>
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\usepackage</span>[<span style="color: #ffcc80;">onehalfspacing</span>]{<span style="color: #84ffff;">setspace</span>}
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">singlespacing, onehalfspacing, doublespacing</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">\begin</span><span style="color: #b0bec5;">{spacing}{2.4}</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">This text is stretched by a factor of 2.4.</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">\end</span><span style="color: #b0bec5;">{spacing}</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> get document help</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<ol class="org-ol">
+<li>texdoc &lt;package-name&gt;<br  />
+</li>
+<li><a href="http://ctan.org/pkg">http://ctan.org/pkg</a><br  />
+</li>
+<li><a href="http://texcatalogue.sarovar.org/bytopic.html">http://texcatalogue.sarovar.org/bytopic.html</a><br  />
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> locate tex source file</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<p>
+A package filename usually ends with .sty , standing for style file.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">kpsewhich setspace.sty
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Using class options to configure the document style</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>[<span style="color: #ffcc80;">a4paper,12pt,twocolumn</span>]{<span style="color: #84ffff;">book</span>} <span style="color: #b0bec5;">% the document class book, suitable for book-like documents</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">book, report, article, slides, letter</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">oneside or twoside</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">openright or openany % only support book and report</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">titlepage or notitlepage</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">final or draft: If draft is set, then LaTeX will mark overfull lines with a black box, which is helpful in reviewing and improving the output.</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">openbib : When this option is set, a bibliography would be formatted in open style instead of compressed style.</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">fleqn : Causes displayed formulas to be left-aligned.</span>
+<span style="color: #b0bec5;">%% </span><span style="color: #b0bec5;">leqno : For numbered displayed formulas, the number would be put to the left side. The right side is the default.</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Creating a table of contents</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\tableofcontents</span>
+
+<span style="color: #f36c60; font-weight: bold;">\</span><span style="color: #fff59d;">chapter</span>
+<span style="color: #f36c60; font-weight: bold;">\</span><span style="color: #fff59d;">section</span>
+<span style="color: #f36c60; font-weight: bold;">\</span><span style="color: #fff59d;">subsection</span>
+<span style="color: #f36c60; font-weight: bold;">\</span><span style="color: #fff59d;">subsubsection</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Designing headers and footers</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">fancyhdr</span>}
+<span style="color: #8bc34a;">\fancyhf</span>{}
+<span style="color: #8bc34a;">\fancyhead</span>[LE]{<span style="color: #8bc34a;">\leftmark</span>}
+<span style="color: #8bc34a;">\fancyhead</span>[RO]{<span style="color: #8bc34a;">\nouppercase</span>{<span style="color: #8bc34a;">\rightmark</span>}}
+<span style="color: #8bc34a;">\fancyfoot</span>[LE,RO]{<span style="color: #8bc34a;">\thepage</span>}
+<span style="color: #fff59d;">\pagestyle</span>{<span style="color: #84ffff;">fancy</span>}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1"><span class="section-number-4">4.4.1</span> page styles</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<p>
+LaTeX and its base classes provide four page styles:<br  />
+</p>
+<pre class="example">
+empty : Neither a header nor a footer is shown.
+plain : No header. The page number will be printed and centered in the footer.
+headings : The header contains titles of chapters, sections, and/or subsections,
+           depending on the class and also the page number. The footer is empty.
+myheadings : The header contains a user-defined text and the page number;
+             the footer is empty.
+
+fancyhdr adds one page style:
+fancy : Both the header and footer may be customized by the user.
+
+Two commands may be used to choose the page style:
+\pagestyle{name} : Switches to the page style name from this point onwards.
+\thispagestyle{name} : Chooses the page style name only or the current page;
+                       the following pages will have the style that's been used before.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-2" class="outline-4">
+<h4 id="sec-4-4-2"><span class="section-number-4">4.4.2</span> customizing header and footer</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\lhead</span> <span style="color: #b0bec5;">% left head</span>
+<span style="color: #8bc34a;">\chead</span> <span style="color: #b0bec5;">% center head</span>
+<span style="color: #8bc34a;">\rhead</span> <span style="color: #b0bec5;">% right head</span>
+<span style="color: #8bc34a;">\lfoot</span>
+<span style="color: #8bc34a;">\cfoot</span>
+<span style="color: #8bc34a;">\rfoot</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\fancyhead</span>[code]{text}
+<span style="color: #8bc34a;">\fancyfoot</span>[code]{text}
+
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">code: </span>
+L:left
+C:center
+R:right
+E:even
+O:odd 
+H:header
+F:footer
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-3" class="outline-4">
+<h4 id="sec-4-4-3"><span class="section-number-4">4.4.3</span> using decorative lines in header or footer</h4>
+<div class="outline-text-4" id="text-4-4-3">
+<p>
+We can introduce or delete lines between header and body text and body text and footer, respectively, with these two commands:<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\renewcommand</span>{<span style="color: #84ffff;">\headrulewidth</span>}{<span style="color: #84ffff;">width</span>}
+<span style="color: #fff59d;">\renewcommand</span>{<span style="color: #84ffff;">\footrulewidth</span>}{<span style="color: #84ffff;">width</span>}
+</pre>
+</div>
+<p>
+\renewcommand works exactly like \newcommand , except that the command must already exist.<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Breaking pages</h3>
+<div class="outline-text-3" id="text-4-5">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #f36c60; font-weight: bold;">\pagebreak</span>
+<span style="color: #f36c60; font-weight: bold;">\newpage</span>
+<span style="color: #f36c60; font-weight: bold;">\nopagebreak</span>
+
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">compare to</span>
+<span style="color: #f36c60; font-weight: bold;">\linebreak</span>
+<span style="color: #f36c60; font-weight: bold;">\newline</span>
+<span style="color: #f36c60; font-weight: bold;">\nolinebreak</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\raggedbottom</span>
+<span style="color: #8bc34a;">\flushbottom</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Enlarging a page</h3>
+<div class="outline-text-3" id="text-4-6">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #f36c60; font-weight: bold;">\enlargethispage</span>{2<span style="color: #8bc34a;">\baselineskip</span>} 
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">baselineskip return the height of a text line</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Using footnotes</h3>
+<div class="outline-text-3" id="text-4-7">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\footnote</span>{<span style="color: #8bc34a;">hello world</span>}
+<span style="color: #fff59d;">\section</span>[<span style="color: #ffcc80;">title without footnote</span>]{<span style="color: #a5d6a7; font-size: 130%;">This is a section</span><span style="color: #a5d6a7; font-size: 130%;">\protect</span><span style="color: #fff59d; font-size: 130%;">\footnote</span><span style="color: #a5d6a7; font-size: 130%;">{</span><span style="color: #8bc34a; font-size: 130%;">section footnote</span><span style="color: #a5d6a7; font-size: 130%;">}</span>}
+
+<span style="color: #fff59d;">\footnote</span>[<span style="color: #ffcc80;">number</span>]{<span style="color: #8bc34a;">text</span>}
+
+<span style="color: #fff59d;">\footnotemark</span>[<span style="color: #ffcc80;">number</span>] <span style="color: #b0bec5;">% produces a superscripted number in the text as a</span>
+                      <span style="color: #b0bec5;">% footnote mark. If the optional argument wasn't given, it's also stepping and using</span>
+                      <span style="color: #b0bec5;">% the internal footnote counter. No footnote will be generated.</span>
+
+<span style="color: #fff59d;">\footnotetext</span>[<span style="color: #ffcc80;">number</span>]{<span style="color: #8bc34a;">text</span>} <span style="color: #b0bec5;">% generates a footnote without putting a</span>
+                            <span style="color: #b0bec5;">% footnote mark into the text without stepping the internal footnote counter.</span>
+
+<span style="color: #8bc34a;">\footnoterule</span> <span style="color: #b0bec5;">% used to alter the footnote line</span>
+
+<span style="color: #fff59d;">\renewcommand</span>{<span style="color: #84ffff;">\footnoterule</span>}{<span style="color: #84ffff;">\noindent\smash</span><span style="color: #84ffff;">{</span><span style="color: #84ffff;">\rule</span><span style="color: #84ffff;">[3pt]{</span><span style="color: #84ffff;">\textwidth</span><span style="color: #84ffff;">}{0.4pt}}</span>}
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\rule</span><span style="color: #b0bec5;">[raising]{width}{height} draws a line, here 0.4 pt thick, and as wide as the text, raised a bit by 3 pt.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\smash</span><span style="color: #b0bec5;"> , let the line pretend to have a height and a depth of zero, so it's occupying no vertical space at all.</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Creating Lists</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Building a bulleted list</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">itemize</span>}
+  <span style="color: #fff59d;">\item</span> geometry
+  <span style="color: #fff59d;">\item</span> amsmath
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">itemize</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Creating a numbered list</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">enumerate</span>}
+  <span style="color: #fff59d;">\item</span> geometry
+  <span style="color: #fff59d;">\item</span> amsmath
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">enumerate</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Customizing lists</h3>
+<div class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">paralist</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">compactenum</span>}
+  <span style="color: #fff59d;">\item</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">compactenum</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">compactitem</span>}
+  <span style="color: #fff59d;">\item</span> 
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">compactitem</span>}
+</pre>
+</div>
+
+<p>
+For each standard environment, paralist adds three corresponding environments: Numbered lists:<br  />
+</p>
+<ol class="org-ol">
+<li>compactenum: Compact version of the enumerate environment without any vertical space before or after the list or its items<br  />
+</li>
+<li>inparaenum: An enumerated list typeset within a paragraph<br  />
+</li>
+<li>asparaenum: Every list item is formatted like a separate common LaTeX paragraph, but numbered<br  />
+</li>
+</ol>
+
+<p>
+Bulleted lists:<br  />
+</p>
+<ol class="org-ol">
+<li>compactitem: Compact version of the itemize environment like compactenum<br  />
+</li>
+<li>inparaitem: An itemized list typeset within a paragraph, rarely seen in print<br  />
+</li>
+<li>asparaitem: Like asparaenum, but with symbols instead of numbers<br  />
+</li>
+</ol>
+
+
+<p>
+To follow language specific habits or certain requirements, we might wish to enumerate by Roman numbers or alphabetically; parentheses or dots might be required. Some may prefer dashes instead of bullets. The package enumitem provides sophisticated features to implement such requirements.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Producing a definition list</h3>
+<div class="outline-text-3" id="text-5-4">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">description</span>}
+  <span style="color: #fff59d;">\item</span>[<span style="color: #ffcc80;">paralist</span>] provides compact lists and list versions that
+  can be used within paragraphs, helps to customize labels and
+  layout
+  <span style="color: #fff59d;">\item</span>[<span style="color: #ffcc80;">enumitem</span>] gives control over labels and lengths
+  in all kind of lists
+  <span style="color: #fff59d;">\item</span>[<span style="color: #ffcc80;">mdwlist</span>] is useful to customize description lists, it
+  even allows multi-line labels. It features compact lists and
+  the capability to suspend and resume.
+  <span style="color: #fff59d;">\item</span>[<span style="color: #ffcc80;">desclist</span>] offers more flexibility in definition list
+  <span style="color: #fff59d;">\item</span>[<span style="color: #ffcc80;">multenum</span>] produces vertical enumeration in multiple
+  columns
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">description</span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Creating Tables and Inserting Pictures</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Writing in columns</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">tabbing</span>}
+<span style="color: #fff59d;">\emph</span>{<span style="color: #ffffff; font-style: italic;">Info:</span>} \= Software \= : \= <span style="color: #fff59d;">\LaTeX</span> <span style="color: #f36c60; font-weight: bold;">\\</span> <span style="color: #b0bec5;">% set tab stops by \=</span>
+<span style="color: #8bc34a;">\&gt;</span> Author <span style="color: #8bc34a;">\&gt;</span> : <span style="color: #8bc34a;">\&gt;</span> Leslie Lamport <span style="color: #f36c60; font-weight: bold;">\\</span> <span style="color: #b0bec5;">% move to the next tab stop by </span><span style="color: #b0bec5;">\&gt;</span>
+<span style="color: #8bc34a;">\&gt;</span> Website <span style="color: #8bc34a;">\&gt;</span> : <span style="color: #8bc34a;">\&gt;</span> www.latex-project.org
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">tabbing</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Typesetting tables</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\newcommand</span>{<span style="color: #84ffff;">\head</span>}[<span style="color: #ffcc80;">1</span>]{<span style="color: #84ffff;">\textnormal</span><span style="color: #84ffff;">{</span><span style="color: #84ffff;">\textbf</span><span style="color: #84ffff;">{</span><span style="color: #84ffff; font-weight: bold;">#1</span><span style="color: #84ffff;">}}</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">tabular</span>}{ccc}
+  <span style="color: #8bc34a;">\hline</span>
+  <span style="color: #8bc34a;">\head</span>{Command} <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #8bc34a;">\head</span>{Declaration} <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #8bc34a;">\head</span>{Output} <span style="color: #f36c60; font-weight: bold;">\\</span>
+  <span style="color: #8bc34a;">\hline</span>
+  <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\textrm</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\rmfamily</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #84ffff;">\rmfamily</span> Example text <span style="color: #f36c60; font-weight: bold;">\\</span>
+  <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\textsf</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\sffamily</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #84ffff;">\sffamily</span> Example text <span style="color: #f36c60; font-weight: bold;">\\</span>
+  <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\texttt</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\ttfamily</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #84ffff;">\ttfamily</span> Example text <span style="color: #f36c60; font-weight: bold;">\\</span>
+  <span style="color: #8bc34a;">\hline</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">tabular</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>\hline draws a horizontal line over the whole width of the table<br  />
+</li>
+<li>\cline{m-n} draws a horizontal line starting at the beginning of column m and ending at the end of column n<br  />
+</li>
+<li>\vline draws a vertical line over the full height and depth of the current row<br  />
+</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="pics/c5-tabular.png" alt="c5-tabular.png" /><br  />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/c5-array.png" alt="c5-array.png" /><br  />
+</p>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\newcommand</span>{<span style="color: #84ffff;">\head</span>}[<span style="color: #ffcc80;">1</span>]{<span style="color: #84ffff;">\textnormal</span><span style="color: #84ffff;">{</span><span style="color: #84ffff;">\textbf</span><span style="color: #84ffff;">{</span><span style="color: #84ffff; font-weight: bold;">#1</span><span style="color: #84ffff;">}}</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">booktabs</span>} <span style="color: #b0bec5;">%</span>
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">tabular</span>}{ccc}
+  <span style="color: #8bc34a;">\toprule</span>[1.5pt] <span style="color: #b0bec5;">% British typesetters call a line a rule</span>
+  <span style="color: #8bc34a;">\head</span>{Command} <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #8bc34a;">\head</span>{Declaration}<span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #8bc34a;">\head</span>{Output}<span style="color: #f36c60; font-weight: bold;">\\</span>
+  <span style="color: #8bc34a;">\midrule</span> <span style="color: #b0bec5;">%</span>
+  <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\textrm</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\rmfamily</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #84ffff;">\rmfamily</span> Example text <span style="color: #f36c60; font-weight: bold;">\\</span>
+  <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\textsf</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\sffamily</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #84ffff;">\sffamily</span> Example text <span style="color: #f36c60; font-weight: bold;">\\</span>
+  <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\texttt</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #fff59d;">\verb</span><span style="color: #deb887;">|</span><span style="color: #deb887;">\ttfamily</span><span style="color: #deb887;">|</span> <span style="color: #f36c60; font-weight: bold;">&amp;</span> <span style="color: #84ffff;">\ttfamily</span> Example text <span style="color: #f36c60; font-weight: bold;">\\</span>
+  <span style="color: #8bc34a;">\bottomrule</span>[1.5pt] <span style="color: #b0bec5;">%</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">tabular</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/c5-booktab.png" alt="c5-booktab.png" /><br  />
+</p>
+</div>
+
+
+<p>
+Columns concerning the same subject might be grouped by a common header. In such a case, two cells in the header should be merged. The command \multicolumn does it for us.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Inserting pictures</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>[<span style="color: #ffcc80;">a5paper</span>]{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\usepackage</span>[<span style="color: #ffcc80;">english</span>]{<span style="color: #84ffff;">babel</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">blindtext</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">graphicx</span>}
+<span style="color: #fff59d;">\pagestyle</span>{<span style="color: #84ffff;">empty</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\section</span>{<span style="color: #a5d6a7; font-size: 130%;">Including a picture</span>}
+<span style="color: #8bc34a;">\blindtext</span>
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">figure</span>}
+  <span style="color: #fff59d;">\centering</span>
+  <span style="color: #8bc34a;">\includegraphics</span>{dinosaur}
+  <span style="color: #8bc34a;">\includegraphics</span>{/home/hack/Pictures/bim_edge.png}
+  <span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\includegraphics</span><span style="color: #b0bec5;">[key=value list]{file name}</span>
+  <span style="color: #fff59d;">\caption</span>{<span style="color: #84ffff;">Test figure</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">figure</span>}
+<span style="color: #8bc34a;">\blindtext</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/c5-image.png" alt="c5-image.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> Managing floating environment</h3>
+<div class="outline-text-3" id="text-6-4">
+</div><div id="outline-container-sec-6-4-1" class="outline-4">
+<h4 id="sec-6-4-1"><span class="section-number-4">6.4.1</span> understanding float placement options</h4>
+<div class="outline-text-4" id="text-6-4-1">
+<p>
+When a page break occurs, normal text can be broken to continue on the next page. However, pictures cannot be divided. Simple tables cannot be split either. That's why LaTeX provides two floating environments, namely, figure and table.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex">begin{figure}[ht]
+
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">h stands for here. The float may appear where it's been written in the source code.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">t stands for top. Placing at the top of a page is permitted.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">b stands for bottom. The float may appear at the bottom of a page.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">p stands for page. The float is allowed to appear on a separate page, where only floats may reside but no normal text.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">! tells LaTeX to try harder! Some constraints may be ignored, easing the placement.</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6-4-2" class="outline-4">
+<h4 id="sec-6-4-2"><span class="section-number-4">6.4.2</span> limiting floating</h4>
+<div class="outline-text-4" id="text-6-4-2">
+<p>
+If you would like to stop LaTeX from putting the floats, there's a way; the \clearpage command ends the current page and causes all already defined figures and tables to be printed out. You can use \cleardoublepage that does the same but in a two-sided layout it ensures that the next non-float page is a right-hand page.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6-4-3" class="outline-4">
+<h4 id="sec-6-4-3"><span class="section-number-4">6.4.3</span> avoiding floating at all</h4>
+<div class="outline-text-4" id="text-6-4-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">capt-of</span>} <span style="color: #b0bec5;">% or caption</span>
+<span style="color: #fff59d;">\usepackage</span>[<span style="color: #ffcc80;">demo</span>]{<span style="color: #84ffff;">graphicx</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">center</span>}
+  <span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">minipage</span>}{1.0<span style="color: #8bc34a;">\linewidth</span>}
+    <span style="color: #fff59d;">\centering</span>
+    <span style="color: #8bc34a;">\includegraphics</span>{dinosaur}
+    <span style="color: #8bc34a;">\captionof</span>{figure}{Test fugure}
+  <span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">minipage</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">center</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6-4-4" class="outline-4">
+<h4 id="sec-6-4-4"><span class="section-number-4">6.4.4</span> float around figure</h4>
+<div class="outline-text-4" id="text-6-4-4">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\begin</span><span style="color: #b0bec5;">{wrapfigure}[number of lines]{placement}[overhang] {width}</span>
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">wrapfigure</span>}{l}{4.4cm}    <span style="color: #b0bec5;">% </span>
+<span style="color: #8bc34a;">\includegraphics</span>[width=4.4cm]{test}
+<span style="color: #fff59d;">\caption</span>{<span style="color: #84ffff;">Test figure</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">wrapfigure</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6-4-5" class="outline-4">
+<h4 id="sec-6-4-5"><span class="section-number-4">6.4.5</span> breaking firues and tables into pieces</h4>
+<div class="outline-text-4" id="text-6-4-5">
+<p>
+For grouping several sub figures or sub tables with captions within a single figure or table, there are several supporting packages you can choose from:<br  />
+</p>
+<ol class="org-ol">
+<li>subfig is a sophisticated package supporting inclusion of small figures and tables. It takes care of positioning, labeling, and captioning within single floats.<br  />
+</li>
+<li>subcaption is another package for this purpose and belongs to the caption package.<br  />
+</li>
+<li>subfigure is still available, but considered as obsolete since subfig has appeared.<br  />
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Cross Referencing</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Setting labels and referencing</h3>
+<div class="outline-text-3" id="text-7-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #f36c60; font-weight: bold;">\</span><span style="color: #fff59d;">label</span> <span style="color: #b0bec5;">% mark the label</span>
+<span style="color: #f36c60; font-weight: bold;">\</span><span style="color: #fff59d;">ref</span> <span style="color: #b0bec5;">% refer after marking</span>
+<span style="color: #f36c60; font-weight: bold;">\</span><span style="color: #fff59d;">pageref</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">notice, typeset twice to produce the corrent reference</span>
+
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">If the </span><span style="color: #b0bec5;">\label</span><span style="color: #b0bec5;"> command appeared in ordinary text, then the current sectional unit,</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">like the chapter or the section, would be assigned.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">If the </span><span style="color: #b0bec5;">\label</span><span style="color: #b0bec5;"> would be placed within a numbered environment, that environment</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">would be assigned to the key.</span>
+
+<span style="color: #fff59d;">\newcommand</span>{<span style="color: #84ffff;">\fullref</span>}[<span style="color: #ffcc80;">1</span>]{<span style="color: #fff59d;">\ref</span><span style="color: #84ffff;">{</span><span style="color: #8bc34a;">#1</span><span style="color: #84ffff;">} on page~</span><span style="color: #fff59d;">\pageref</span><span style="color: #84ffff;">{</span><span style="color: #8bc34a;">#1</span><span style="color: #84ffff;">}</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Producing intelligent page references</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+We will use the <code>varioref</code> commands, <code>\vref</code> and <code>\vpageref</code> , to achieve enhanced reference texts.<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex">see the figure <span style="color: #8bc34a;">\vpageref</span>[above]{fig:name}
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">"see the figure above" if the figure is on the same page</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">"see the figure on the page before" if the figure is on the preceding page</span>
+
+see the footnote <span style="color: #8bc34a;">\vpageref</span>[below]{fn:name}
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">"see the footnote below" if the footnote is on the same page</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">"see the footnote on the following page" if the footnote is on the next page</span>
+
+see the figure <span style="color: #8bc34a;">\vpageref</span>[above figure][figure]{fig:name}
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">"see the above figure" if the figure is on the same page</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">"see the figure on the page before" if the figure is on the preceding page</span>
+</pre>
+</div>
+
+<p>
+<code>varioref</code> offers two more commands:<br  />
+</p>
+<ol class="org-ol">
+<li><code>\vpagerefrange[opt]{key1}{key2}</code> , where key1 and key2 denote a range (like a sequence of figures from fig:a to fig:c ). If both labels fall onto the same page, the result is the same as with \vpageref . Otherwise, the output will be a range like "on pages 32-36". opt would be used if both labels fall onto the current page.<br  />
+</li>
+<li><code>\vpageref [opt]{key1}{key2}</code> is analogous, but similar to \vref : see figures \vpageref{fig:a}{fig:c} may result in "see figures 4.2 to 4.4 on pages 36-37".<br  />
+</li>
+</ol>
+
+
+<p>
+If you write several related documents that refer to each other, you might want to use references to labels of another  document. The package with the short name xr (standing for eXternal References) implements it.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">xr</span>}
+
+<span style="color: #8bc34a;">\externaldocument</span>{doc} <span style="color: #b0bec5;">% if doc.tex is refered to</span>
+<span style="color: #8bc34a;">\externaldocument</span>[D-]{doc} <span style="color: #b0bec5;">% to avoid label name conflict with the label in the main document</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\ref</span><span style="color: #b0bec5;">{D-name} to refer to the name in doc.tex</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">hyperref</span>}  <span style="color: #b0bec5;">% wonderful</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Listing Content and References</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Customizing the table of contents</h3>
+<div class="outline-text-3" id="text-8-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">book</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">hyperref</span>}
+<span style="color: #fff59d;">\setcounter</span>{<span style="color: #ffcc80;">tocdepth</span>}{<span style="color: #ffcc80;">3</span>}        <span style="color: #b0bec5;">% table of content depth, absolute depth</span>
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #8bc34a;">\tableofcontents</span>{}
+<span style="color: #fff59d;">\part</span>{<span style="color: #eceff1; font-size: 140%;">First part</span>}
+
+<span style="color: #fff59d;">\chapter*</span>{<span style="color: #e1f5fe; font-size: 135%;">Preface</span>}
+
+<span style="color: #8bc34a;">\addcontentsline</span>{toc}{chapter}{Preface}
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">First main chapter</span>}
+
+<span style="color: #fff59d;">\section</span>{<span style="color: #a5d6a7; font-size: 130%;">A section</span>}
+
+<span style="color: #fff59d;">\section</span>{<span style="color: #a5d6a7; font-size: 130%;">Another section</span>}
+
+<span style="color: #fff59d;">\subsection</span>{<span style="color: #ffcc80; font-size: 125%;">A smaller section</span>}
+
+<span style="color: #fff59d;">\subsubsection</span>[<span style="color: #ffcc80;">Deeper level</span>]{<span style="color: #b3e5fc; font-size: 120%;">This section has an even deeper level</span>}
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">Second main chapter</span>}
+
+<span style="color: #fff59d;">\part</span>{<span style="color: #eceff1; font-size: 140%;">Second part</span>}
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">Third main chapter</span>}
+
+<span style="color: #f36c60; font-weight: bold;">\appendix</span>{}
+<span style="color: #f36c60; font-weight: bold;">\cleardoublepage</span>{}
+<span style="color: #8bc34a;">\addtocontents</span>{toc}{<span style="color: #8bc34a;">\bigskip</span>{}}
+<span style="color: #8bc34a;">\addcontentsline</span>{toc}{part}{Appendix}
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">Glossary</span>}
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">Symbols</span>}
+
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="center" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Command</th>
+<th scope="col" class="center">Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">\part</td>
+<td class="center">-1 (<code>book</code> and <code>report</code> class)</td>
+</tr>
+
+<tr>
+<td class="left">\chapter</td>
+<td class="center">0 (not available in <code>article</code> class)</td>
+</tr>
+
+<tr>
+<td class="left">\section</td>
+<td class="center">1</td>
+</tr>
+
+<tr>
+<td class="left">\subsection</td>
+<td class="center">2</td>
+</tr>
+
+<tr>
+<td class="left">\subsubsection</td>
+<td class="center">3</td>
+</tr>
+
+<tr>
+<td class="left">\paragraph</td>
+<td class="center">4</td>
+</tr>
+
+<tr>
+<td class="left">subparagraph</td>
+<td class="center">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Customizing list of figure and table</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">book</span>}
+<span style="color: #fff59d;">\renewcommand</span>{<span style="color: #84ffff;">\figurename</span>}{<span style="color: #84ffff;">Diagram</span>}              <span style="color: #b0bec5;">% default: Figure</span>
+<span style="color: #fff59d;">\renewcommand</span>{<span style="color: #84ffff;">\listfigurename</span>}{<span style="color: #84ffff;">List of Diagrams</span>} <span style="color: #b0bec5;">% default: List of Figures</span>
+<span style="color: #fff59d;">\renewcommand</span>{<span style="color: #84ffff;">\tablename</span>}{<span style="color: #84ffff;">LaTex</span>}
+<span style="color: #fff59d;">\renewcommand</span>{<span style="color: #84ffff;">\listtablename</span>}{<span style="color: #84ffff;">List of LaTex</span>}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">hyperref</span>}
+<span style="color: #fff59d;">\setcounter</span>{<span style="color: #ffcc80;">tocdepth</span>}{<span style="color: #ffcc80;">3</span>}        <span style="color: #b0bec5;">% table of content depth</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\setcounter</span><span style="color: #b0bec5;">{name}{n}</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\addtocounter</span><span style="color: #b0bec5;">{name}{n}</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\addtocounter</span><span style="color: #b0bec5;">{tocdepth}{1}    % relative depth</span>
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #8bc34a;">\tableofcontents</span>
+<span style="color: #8bc34a;">\listoffigures</span>
+<span style="color: #8bc34a;">\listoftables</span>
+<span style="color: #fff59d;">\part</span>{<span style="color: #eceff1; font-size: 140%;">First part</span>}
+
+<span style="color: #fff59d;">\chapter*</span>{<span style="color: #e1f5fe; font-size: 135%;">Preface</span>}              <span style="color: #b0bec5;">% don't produce a TOC entry, do not count this</span>
+
+<span style="color: #8bc34a;">\addcontentsline</span>{toc}{chapter}{Preface} <span style="color: #b0bec5;">% add Preface manually</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\addcontentsline</span><span style="color: #b0bec5;">{file extension}{sectional unit}{text}</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">toc for the table of content file</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">lof for the list of figures file</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">lot for the list of tables file</span>
+
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">Specify chapter to create an entry that's formatted like normal chapter entries</span>
+
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">First main chapter</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">figure</span>}
+  <span style="color: #fff59d;">\centering</span>
+  <span style="color: #fff59d;">\fbox</span>{<span style="color: #84ffff;">Diagram placeholder</span>}
+  <span style="color: #fff59d;">\caption</span>{<span style="color: #84ffff;">Enterprize Organizational Chart</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">figure</span>}
+
+<span style="color: #fff59d;">\section</span>{<span style="color: #a5d6a7; font-size: 130%;">A section</span>}
+
+<span style="color: #fff59d;">\section</span>{<span style="color: #a5d6a7; font-size: 130%;">Another section</span>}
+
+<span style="color: #fff59d;">\subsection</span>{<span style="color: #ffcc80; font-size: 125%;">A smaller section</span>}
+
+<span style="color: #fff59d;">\subsubsection</span>[<span style="color: #ffcc80;">Deeper level</span>]{<span style="color: #b3e5fc; font-size: 120%;">This section has an even deeper level</span>} <span style="color: #b0bec5;">% shorter entry in TOC</span>
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">Second main chapter</span>}
+
+<span style="color: #fff59d;">\part</span>{<span style="color: #eceff1; font-size: 140%;">Second part</span>}
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">Third main chapter</span>}
+<span style="color: #8bc34a;">\addtocontents</span>{lof}{Network Diagram}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">figure</span>}
+  <span style="color: #fff59d;">\centering</span>
+  <span style="color: #fff59d;">\fbox</span>{<span style="color: #84ffff;">Diagram placeholder</span>}
+  <span style="color: #fff59d;">\caption</span>{<span style="color: #84ffff;">Network overview</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">figure</span>}
+
+
+
+
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">table</span>}
+  <span style="color: #fff59d;">\centering</span>{}
+  <span style="color: #fff59d;">\fbox</span>{<span style="color: #84ffff;">Table placeholder</span>}
+  <span style="color: #fff59d;">\caption</span>{<span style="color: #84ffff;">test</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">table</span>}
+
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">figure</span>}
+  <span style="color: #fff59d;">\centering</span>{}
+  <span style="color: #fff59d;">\fbox</span>{<span style="color: #84ffff;">Diagram placeholder</span>}
+  <span style="color: #fff59d;">\caption</span>{<span style="color: #84ffff;">WLAN Design</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">figure</span>}
+
+
+<span style="color: #f36c60; font-weight: bold;">\appendix</span>{}
+<span style="color: #f36c60; font-weight: bold;">\cleardoublepage</span>{}
+<span style="color: #8bc34a;">\addtocontents</span>{toc}{<span style="color: #8bc34a;">\bigskip</span>{}}
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">\addtocontents</span><span style="color: #b0bec5;">{file extension}{entry}</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">In contrary to </span><span style="color: #b0bec5;">\addcontentsline</span><span style="color: #b0bec5;"> , the argument entry is written directly to the file</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">without any additional formatting. You may choose any formatting you like.</span>
+
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">1. </span><span style="color: #b0bec5;">\addtocontents</span><span style="color: #b0bec5;">{toc}{</span><span style="color: #b0bec5;">\protect\enlargethispage</span><span style="color: #b0bec5;">{</span><span style="color: #b0bec5;">\baselineskip</span><span style="color: #b0bec5;">}}</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">extends the text height such that one additional line fits to the contents page.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">2. </span><span style="color: #b0bec5;">\addtocontents</span><span style="color: #b0bec5;">{toc}{</span><span style="color: #b0bec5;">\protect\newpage</span><span style="color: #b0bec5;">} causes a page break in the TOC.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">For instance, if the automatic page break happens after a chapter entry and before</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">the following section entries, you might wish to force a page break already before</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">the chapter entry.</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">3. </span><span style="color: #b0bec5;">\addtocontents</span><span style="color: #b0bec5;">{toc}{</span><span style="color: #b0bec5;">\protect\thispagestyle</span><span style="color: #b0bec5;">{fancy}} changes the</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">page style of the current TOC page to fancy. As the first page of a chapter is of</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">plain style by default, the first page of the TOC would be plain as well, even if you</span>
+<span style="color: #b0bec5;">% </span><span style="color: #b0bec5;">specified </span><span style="color: #b0bec5;">\pagestyle</span><span style="color: #b0bec5;">{fancy} . This command overrides it.</span>
+
+<span style="color: #8bc34a;">\addcontentsline</span>{toc}{part}{Appendix}
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">Glossary</span>}
+
+<span style="color: #fff59d;">\chapter</span>{<span style="color: #e1f5fe; font-size: 135%;">Symbols</span>}
+
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>tocloft</code> gives extensive control over the typography of TOC, LOF, and LOT. You may even define new kinds of such lists.<br  />
+</li>
+<li><code>titletoc</code> offers convenient handling of entries and is the companion to titlesec, a very good package for customizing sectioning headings.<br  />
+</li>
+<li><code>multitoc</code> offers a layout in two or more columns using the multicol package.<br  />
+</li>
+<li><code>minitoc</code> can create small TOCs for each part, chapter, or section.<br  />
+</li>
+<li><code>tocbibind</code> can automatically add bibliography, index, TOC, LOF, and LOT to the table of contents. It's even capable of using numbered headings instead of the default unnumbered ones.<br  />
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Typing Math Formulas</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Writing basic formulas</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+LaTeX knows three genral modes:<br  />
+</p>
+<ol class="org-ol">
+<li>paragraph mode: The text is typeset as a sequence of words in lines, paragraphs, and pages.<br  />
+</li>
+<li>left-to-right mode: The text is also considered to be a sequence of words, but LaTeX typesets it from left to right without breaking the line.<br  />
+</li>
+<li>math mode: Letters are treated as math symbols.<br  />
+</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\documentclass</span>{<span style="color: #84ffff;">article</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">document</span>}
+<span style="color: #fff59d;">\section*</span>{<span style="color: #a5d6a7; font-size: 130%;">Quadratic equations</span>}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">equation</span>}
+<span style="color: #4dd0e1;">  </span><span style="color: #fff59d;">\label</span><span style="color: #4dd0e1;">{</span><span style="color: #8bc34a;">quad</span><span style="color: #4dd0e1;">}</span>
+<span style="color: #4dd0e1;">  ax</span><span style="color: #8b0000;">^2</span><span style="color: #4dd0e1;"> + bx + c = 0,</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">equation</span>}
+where <span style="color: #4dd0e1;">\(</span><span style="color: #4dd0e1;"> a, b</span><span style="color: #4dd0e1;">\)</span> and <span style="color: #4dd0e1;">\(</span><span style="color: #4dd0e1;"> c </span><span style="color: #4dd0e1;">\)</span> are constants and <span style="color: #4dd0e1;">\(</span><span style="color: #4dd0e1;"> a </span><span style="color: #4dd0e1;">\neq</span><span style="color: #4dd0e1;"> 0 </span><span style="color: #4dd0e1;">\)</span>,
+has two solutions for the variable <span style="color: #4dd0e1;">\(</span><span style="color: #4dd0e1;"> x </span><span style="color: #4dd0e1;">\)</span>:
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">equation</span>}
+<span style="color: #4dd0e1;">  </span><span style="color: #fff59d;">\label</span><span style="color: #4dd0e1;">{</span><span style="color: #8bc34a;">root</span><span style="color: #4dd0e1;">}</span>
+<span style="color: #4dd0e1;">  x</span><span style="color: #8b0000;">_{1,2}</span><span style="color: #4dd0e1;"> = </span><span style="color: #4dd0e1;">\frac</span><span style="color: #4dd0e1;">{-b </span><span style="color: #4dd0e1;">\pm</span><span style="color: #4dd0e1;"> </span><span style="color: #4dd0e1;">\sqrt</span><span style="color: #4dd0e1;">{b</span><span style="color: #8b0000;">^2</span><span style="color: #4dd0e1;"> -4ac}}{2a}.</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">equation</span>}
+If the <span style="color: #fff59d;">\emph</span>{<span style="color: #ffffff; font-style: italic;">discriminant</span>} <span style="color: #4dd0e1;">\(</span><span style="color: #4dd0e1;"> </span><span style="color: #4dd0e1;">\Detla</span><span style="color: #4dd0e1;"> </span><span style="color: #4dd0e1;">\)</span> with
+<span style="color: #4dd0e1;">\[ </span><span style="color: #4dd0e1;">\Delta</span><span style="color: #4dd0e1;"> = b</span><span style="color: #8b0000;">^2</span><span style="color: #4dd0e1;"> - 4ac \]</span>
+is zero, then the equation (<span style="color: #fff59d;">\ref</span>{<span style="color: #8bc34a;">quad</span>}) has a double solution:
+(<span style="color: #fff59d;">\ref</span>{<span style="color: #8bc34a;">root</span>}) becomes
+<span style="color: #4dd0e1;">\[ x = - </span><span style="color: #4dd0e1;">\frac</span><span style="color: #4dd0e1;">{b}{2a}. \]</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">document</span>}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-9-1-1" class="outline-4">
+<h4 id="sec-9-1-1"><span class="section-number-4">9.1.1</span> Embedding math expressions within text</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<p>
+LaTeX provides the math environment in-text formulas:<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">math</span>}
+<span style="color: #4dd0e1;">expression</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">math</span>}
+</pre>
+</div>
+
+<p>
+Since it's very laborious to write this environment for each small expression or symbol, LaTeX offers an alias that's doing the same:<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #4dd0e1;">\(</span>
+<span style="color: #4dd0e1;">expression</span>
+<span style="color: #4dd0e1;">\)</span>
+</pre>
+</div>
+
+<p>
+You may write it without line breaks, such as:<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #4dd0e1;">\(</span><span style="color: #4dd0e1;"> expression </span><span style="color: #4dd0e1;">\)</span>
+</pre>
+</div>
+
+<p>
+A third way is by using a shortcut, coming from TeX:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #4dd0e1;">$expression$</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9-1-2" class="outline-4">
+<h4 id="sec-9-1-2"><span class="section-number-4">9.1.2</span> Dispalying formulas</h4>
+<div class="outline-text-4" id="text-9-1-2">
+<p>
+For displayed formulas, which have to be centered, LaTeX offers the displaymath environment:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">displaymath</span>}
+<span style="color: #4dd0e1;">expression</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">displaymath</span>}
+</pre>
+</div>
+
+<p>
+The effect of this environment is that the paragraph will be ended, some vertical space follows, then the centered formula plus the following vertical space. As this math environment takes care of the spacing, don't leave empty lines before and after it! This would cause additional vertical space because of the superfluous paragraph breaks.<br  />
+</p>
+
+<p>
+Also for this environment there's a shortcut:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #4dd0e1;">\[</span>
+<span style="color: #4dd0e1;">expression</span>
+<span style="color: #4dd0e1;">\]</span>
+</pre>
+</div>
+
+<p>
+In this case, putting the shortcuts \[ and \] on separate lines commonly improves the readability as the formula is also kind of displayed in the source code.<br  />
+</p>
+
+<p>
+There's also a TeX low level command:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #4dd0e1;">$$</span>
+<span style="color: #4dd0e1;">expression</span>
+<span style="color: #4dd0e1;">$$</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9-1-3" class="outline-4">
+<h4 id="sec-9-1-3"><span class="section-number-4">9.1.3</span> Numbering equations</h4>
+<div class="outline-text-4" id="text-9-1-3">
+<p>
+Equations and formulas in general may be numbered. However, this applies only to displayed formulas. The equation environment is responsible for this:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">equation</span>}
+<span style="color: #fff59d;">\label</span><span style="color: #4dd0e1;">{</span><span style="color: #8bc34a;">key</span><span style="color: #4dd0e1;">}</span>
+<span style="color: #4dd0e1;">expression</span>
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">equation</span>}
+</pre>
+</div>
+
+<p>
+It looks similar to displaymath but numbered this time. The number will be displayed in parentheses on the right side of the equation.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9-1-4" class="outline-4">
+<h4 id="sec-9-1-4"><span class="section-number-4">9.1.4</span> Adding substripts and superscirpts</h4>
+<div class="outline-text-4" id="text-9-1-4">
+<div class="org-src-container">
+
+<pre class="src src-latex">{expression}_{subscript}
+{expression}^{superscript}
+</pre>
+</div>
+
+
+<p>
+In the case of single letters, numerals, or symbols, you can omit the braces. Like, x^2 x^a<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9-1-5" class="outline-4">
+<h4 id="sec-9-1-5"><span class="section-number-4">9.1.5</span> Extracting roots</h4>
+<div class="outline-text-4" id="text-9-1-5">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\sqrt</span>[order]{value}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-1-6" class="outline-4">
+<h4 id="sec-9-1-6"><span class="section-number-4">9.1.6</span> Writing fractions</h4>
+<div class="outline-text-4" id="text-9-1-6">
+<p>
+Within text formulas, you may just write / to denote fractions, such as \( (a+b)/2 \) .<br  />
+For larger fractions, there's the \frac command:<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\frac</span>{numerator}{denumerator}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-1-7" class="outline-4">
+<h4 id="sec-9-1-7"><span class="section-number-4">9.1.7</span> Greek letters</h4>
+<div class="outline-text-4" id="text-9-1-7">
+<p>
+To get a lowercase Greek letter, just write the name with a backslash for the command.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/greek-letters.png" alt="greek-letters.png" /><br  />
+</p>
+</div>
+
+<p>
+As the omicron just looks like an o, there's no command for it.<br  />
+It's similar for most uppercase Greek letters, which are equal to Roman letters.<br  />
+The remaining uppercase Greek letters are produced as follows:<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/upcase-greek-letters.png" alt="upcase-greek-letters.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-1-8" class="outline-4">
+<h4 id="sec-9-1-8"><span class="section-number-4">9.1.8</span> Script letters</h4>
+<div class="outline-text-4" id="text-9-1-8">
+<p>
+For the twenty-six uppercase letters A, B, C, &#x2026; , Z, there's a calligraphic /,kanli 'gran fik/ shape, produced by \mathcal :<br  />
+</p>
+
+<p>
+\[ \mathcal{A}, \mathcal{B}, \mathcal{C}, \ldots, \mathcal{Z} \]<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-1-9" class="outline-4">
+<h4 id="sec-9-1-9"><span class="section-number-4">9.1.9</span> Producing an ellipsis</h4>
+<div class="outline-text-4" id="text-9-1-9">
+<p>
+cdots: centered ellipsis<br  />
+ldots: low ellipsis<br  />
+vdots: vertical ellipsis<br  />
+ddots: diagonal dllipsis<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/dots.png" alt="dots.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-1-10" class="outline-4">
+<h4 id="sec-9-1-10"><span class="section-number-4">9.1.10</span> Changing the font style, and size</h4>
+<div class="outline-text-4" id="text-9-1-10">
+
+<div class="figure">
+<p><img src="pics/math_style.png" alt="math_style.png" /><br  />
+</p>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\boldmath</span>
+<span style="color: #8bc34a;">\unboldmath</span>
+</pre>
+</div>
+
+<p>
+Four math styles are available:<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/math_style2.png" alt="math_style2.png" /><br  />
+</p>
+</div>
+
+
+<p>
+The textstyle differs from the displaystyle in mainly two ways; in textstyle, variable sized symbols are smaller and subscripts and superscripts are usually placed beside the expression instead of below and above, respectively. Otherwise the font size is the same.<br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Customizing displayed formulas</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+There are two options that modify the way the formulas are displayed:<br  />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">COMMAND</th>
+<th scope="col" class="left">ABBR</th>
+<th scope="col" class="left">MEANING</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">fleqn</td>
+<td class="left">flush left equation number</td>
+<td class="left">This causes all displayed formulas to be aligned at the left margin.</td>
+</tr>
+
+<tr>
+<td class="left">leqno</td>
+<td class="left">left equation number</td>
+<td class="left">All numbered formulas would get the numbers on the left side instead of the right.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-sec-9-2-1" class="outline-4">
+<h4 id="sec-9-2-1"><span class="section-number-4">9.2.1</span> aligning multi-line equations</h4>
+<div class="outline-text-4" id="text-9-2-1">
+<p>
+package amsmath's multi-line evironment:<br  />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">multline</td>
+<td class="left">First line is left-aligned, last line is right-aligned, all others are centered.</td>
+</tr>
+
+<tr>
+<td class="left">gather</td>
+<td class="left">Each line is centered.</td>
+</tr>
+
+<tr>
+<td class="left">align</td>
+<td class="left">Use &amp; to mark a symbol where the formulas shall be aligned. Use another &amp; to end a column, if you need several aligned columns.</td>
+</tr>
+
+<tr>
+<td class="left">flalign</td>
+<td class="left">Similar to align with more than one column, but the columns are flushed to the left and the right margin, respectively.</td>
+</tr>
+
+<tr>
+<td class="left">alignat</td>
+<td class="left">Alignment at several places, each has to be marked by &amp;.</td>
+</tr>
+
+<tr>
+<td class="left">split</td>
+<td class="left">Similar to align, but within another math environment, thus unnumbered.</td>
+</tr>
+
+<tr>
+<td class="left">aligned</td>
+<td class="left">Used for an aligned block within a math environment. This can be displayed math or in-line math.</td>
+</tr>
+
+<tr>
+<td class="left">gathered</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">alignedat</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2-2" class="outline-4">
+<h4 id="sec-9-2-2"><span class="section-number-4">9.2.2</span> numbering rows in multi-line formulas</h4>
+<div class="outline-text-4" id="text-9-2-2">
+<p>
+In multi-line math environments, each line would be numbered like a normal equation. If you wish to suppress the numbering of a line, write \notag before the end of the line.<br  />
+Use the starred variant like align* , or gather* , if you would like to avoid numbering completely.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2-3" class="outline-4">
+<h4 id="sec-9-2-3"><span class="section-number-4">9.2.3</span> Inserting text into formulas</h4>
+<div class="outline-text-4" id="text-9-2-3">
+<p>
+To insert some text into a formula, standard LaTeX provides the \mbox command. amsmath offers further commands:<br  />
+</p>
+<ol class="org-ol">
+<li>\text{words} inserts text within a math formula. The size is adjusted according to the current math style, that is, \text produces smaller text within subscripts or superscripts.<br  />
+</li>
+<li>\intertext{text} suspends the formula, the text follows in a separate paragraph, then the multi-line formula is resumed, keeping the alignment. Use it for longer text.<br  />
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Fine-tuning formulas</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+<a href="http://mirrors.ustc.edu.cn/CTAN/info/symbols/math/maths-symbols.pdf">http://mirrors.ustc.edu.cn/CTAN/info/symbols/math/maths-symbols.pdf</a><br  />
+</p>
+</div>
+
+<div id="outline-container-sec-9-3-1" class="outline-4">
+<h4 id="sec-9-3-1"><span class="section-number-4">9.3.1</span> using operators</h4>
+<div class="outline-text-4" id="text-9-3-1">
+<p>
+Trigonometric functions, logarithm functions, and other analytic and algebraic functions are commonly written with upright Roman letters. Simply typing log would otherwise look like a product of the three variables, namely, l, o, and g. To ease the input, there are commands for many common functions or so called operators. Here's an alphabetical list of the predefined ones:<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\arccos</span> , <span style="color: #8bc34a;">\arcsin</span> , <span style="color: #8bc34a;">\arctan</span> , <span style="color: #8bc34a;">\arg</span> , <span style="color: #8bc34a;">\bmod</span> , <span style="color: #8bc34a;">\cos</span> , <span style="color: #8bc34a;">\cosh</span> , <span style="color: #8bc34a;">\cot</span> , <span style="color: #8bc34a;">\coth</span> , <span style="color: #8bc34a;">\scs</span> , <span style="color: #8bc34a;">\deg</span> , <span style="color: #8bc34a;">\det</span> , <span style="color: #8bc34a;">\dim</span> ,
+<span style="color: #8bc34a;">\exp</span> , <span style="color: #8bc34a;">\gcd</span> , <span style="color: #8bc34a;">\hom</span> , <span style="color: #8bc34a;">\inf</span> , <span style="color: #8bc34a;">\ker</span> , <span style="color: #8bc34a;">\lg</span> , <span style="color: #8bc34a;">\lim</span> , <span style="color: #8bc34a;">\liminf</span> , <span style="color: #8bc34a;">\limsup</span> , <span style="color: #8bc34a;">\ln</span> , <span style="color: #8bc34a;">\log</span> , <span style="color: #8bc34a;">\max</span> , <span style="color: #8bc34a;">\min</span> ,
+<span style="color: #8bc34a;">\Pr</span> , <span style="color: #8bc34a;">\sec</span> , <span style="color: #8bc34a;">\sin</span> , <span style="color: #8bc34a;">\sinh</span> , <span style="color: #8bc34a;">\sup</span> , <span style="color: #8bc34a;">\tan</span> , <span style="color: #8bc34a;">\tanh</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-2" class="outline-4">
+<h4 id="sec-9-3-2"><span class="section-number-4">9.3.2</span> binary operation symbols</h4>
+<div class="outline-text-4" id="text-9-3-2">
+
+<div class="figure">
+<p><img src="pics/8-bos.png" alt="8-bos.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-3" class="outline-4">
+<h4 id="sec-9-3-3"><span class="section-number-4">9.3.3</span> binary relation symbols</h4>
+<div class="outline-text-4" id="text-9-3-3">
+
+<div class="figure">
+<p><img src="pics/8-brs.png" alt="8-brs.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-4" class="outline-4">
+<h4 id="sec-9-3-4"><span class="section-number-4">9.3.4</span> inequality relation symbols</h4>
+<div class="outline-text-4" id="text-9-3-4">
+
+<div class="figure">
+<p><img src="pics/8-irs.png" alt="8-irs.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-5" class="outline-4">
+<h4 id="sec-9-3-5"><span class="section-number-4">9.3.5</span> subset and superset symbols</h4>
+<div class="outline-text-4" id="text-9-3-5">
+
+<div class="figure">
+<p><img src="pics/8-sss.png" alt="8-sss.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-6" class="outline-4">
+<h4 id="sec-9-3-6"><span class="section-number-4">9.3.6</span> variable sized operators</h4>
+<div class="outline-text-4" id="text-9-3-6">
+
+<div class="figure">
+<p><img src="pics/8-vso.png" alt="8-vso.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-7" class="outline-4">
+<h4 id="sec-9-3-7"><span class="section-number-4">9.3.7</span> arrows</h4>
+<div class="outline-text-4" id="text-9-3-7">
+
+<div class="figure">
+<p><img src="pics/8-a.png" alt="8-a.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-8" class="outline-4">
+<h4 id="sec-9-3-8"><span class="section-number-4">9.3.8</span> harpoons</h4>
+<div class="outline-text-4" id="text-9-3-8">
+
+<div class="figure">
+<p><img src="pics/8-h.png" alt="8-h.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-9" class="outline-4">
+<h4 id="sec-9-3-9"><span class="section-number-4">9.3.9</span> symbols derived from letters</h4>
+<div class="outline-text-4" id="text-9-3-9">
+
+<div class="figure">
+<p><img src="pics/8-sdl.png" alt="8-sdl.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-10" class="outline-4">
+<h4 id="sec-9-3-10"><span class="section-number-4">9.3.10</span> variable sized delimiters</h4>
+<div class="outline-text-4" id="text-9-3-10">
+
+<div class="figure">
+<p><img src="pics/8-vsd.png" alt="8-vsd.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-11" class="outline-4">
+<h4 id="sec-9-3-11"><span class="section-number-4">9.3.11</span> miscellaneous symbols</h4>
+<div class="outline-text-4" id="text-9-3-11">
+
+<div class="figure">
+<p><img src="pics/8-ms.png" alt="8-ms.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-3-12" class="outline-4">
+<h4 id="sec-9-3-12"><span class="section-number-4">9.3.12</span> writing units</h4>
+<div class="outline-text-4" id="text-9-3-12">
+<div class="org-src-container">
+
+<pre class="src src-latex">10\ <span style="color: #8bc34a;">\mathrm</span>{m}
+<span style="color: #fff59d;">\usepackage</span>{<span style="color: #84ffff;">siunitx</span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-4" class="outline-3">
+<h3 id="sec-9-4"><span class="section-number-3">9.4</span> Building math structures</h3>
+<div class="outline-text-3" id="text-9-4">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">array</span>}{}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">array</span>}
+
+<span style="color: #8bc34a;">\binom</span>{n}{k}
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">pmatrix</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">pmatrix</span>}
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">matrix</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">matrix</span>}
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">bmatrix</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">bmatrix</span>}
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">Bmatrix</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">Bmatrix</span>}
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">vmatrix</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">vmatrix</span>}
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">Vmatrix</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">Vmatrix</span>}
+
+<span style="color: #fff59d;">\begin</span>{<span style="color: #84ffff;">smallmatrix</span>}
+<span style="color: #fff59d;">\end</span>{<span style="color: #84ffff;">smallmatrix</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-5" class="outline-3">
+<h3 id="sec-9-5"><span class="section-number-3">9.5</span> Stacking expressions</h3>
+<div class="outline-text-3" id="text-9-5">
+</div><div id="outline-container-sec-9-5-1" class="outline-4">
+<h4 id="sec-9-5-1"><span class="section-number-4">9.5.1</span> under and over</h4>
+<div class="outline-text-4" id="text-9-5-1">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\overline</span>{AB}
+<span style="color: #8bc34a;">\underline</span>{AB}
+N = <span style="color: #8bc34a;">\underbrace</span>{1 + 1 + <span style="color: #8bc34a;">\cdots</span> + 1}_n
+N = <span style="color: #8bc34a;">\overbrace</span>{1 + 1 + <span style="color: #8bc34a;">\cdots</span> + 1}^n
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-5-2" class="outline-4">
+<h4 id="sec-9-5-2"><span class="section-number-4">9.5.2</span> accents</h4>
+<div class="outline-text-4" id="text-9-5-2">
+
+<div class="figure">
+<p><img src="pics/8-accents.png" alt="8-accents.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-5-3" class="outline-4">
+<h4 id="sec-9-5-3"><span class="section-number-4">9.5.3</span> putting a symbol above another</h4>
+<div class="outline-text-4" id="text-9-5-3">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #8bc34a;">\underset</span>{expression below}{expression} <span style="color: #b0bec5;">% puts an expression below another, using the subscript size below.</span>
+<span style="color: #8bc34a;">\overset</span>{expression above}{expression}  <span style="color: #b0bec5;">% puts an expression above another, using the subscript size above.</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-6" class="outline-3">
+<h3 id="sec-9-6"><span class="section-number-3">9.6</span> Writing theorems and definitions</h3>
+<div class="outline-text-3" id="text-9-6">
+<div class="org-src-container">
+
+<pre class="src src-latex"><span style="color: #fff59d;">\newtheorem</span>{<span style="color: #84ffff;">thm</span>}{<span style="color: #84ffff;">Theorem</span>}
+<span style="color: #fff59d;">\newtheorem</span>{<span style="color: #84ffff;">dfn</span>}{<span style="color: #84ffff;">thm</span>}{Definition}
+</pre>
+</div>
+
+<p>
+The mathtools package extends amsmath . If you need a certain feature and cannot find it, neither in standard LaTeX nor in amsmath , always look first at mathtools .<br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Hack Chyson</p>
+<p class="date">Created: 2019-11-22 Fri 18:44</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.2 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

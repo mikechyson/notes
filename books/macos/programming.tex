@@ -1,0 +1,27 @@
+
+\chapter{Programming}
+
+\section{Matplotlib Chinese font}
+
+\subsection{Install Chinese font}
+
+\lstset{language=Sh}
+\begin{lstlisting}
+  conda install fontconfig
+\end{lstlisting}
+
+\subsection{Show all fonts}
+\lstset{language=Python}
+\begin{lstlisting}
+  import matplotlib
+  for i in sorted([f.name for f in matplotlib.font_manager.fontManager.ttflist]):
+    print(i)
+\end{lstlisting}
+
+  
+\subsection{Configuration}
+\begin{lstlisting}
+  plt.rcParams["font.family"] = 'Arial Unicode MS'
+  plt.rcParams['font.sans-serif'] = ['Arial Black'] # to show Chinese charaters
+  plt.rcParams['axes.unicode_minus'] = False # to show minus sign
+\end{lstlisting}

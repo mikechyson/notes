@@ -1,0 +1,389 @@
+* import
+#+BEGIN_SRC python
+import ...
+import ... as ...
+from ... import ...
+from ... import *
+#+END_SRC
+* list
+[]
+
+* string
+"a"
+'a'
+
+* tuple
+'a','b'
+('a','b')
+
+* mapping unpacking
+the mapping unpacking operator is ** and it can be applied to a mapping to produce a key-value list.
+**locals()
+
+
+* sequence unpacking
+Any iterable can unpacked using the sequence unpacking operator (*)
+
+first, *rest = [1,2,3,4,5]
+
+def prouct(a, b, c):
+    return a * b * c
+
+l = [1,2,3]
+product(*l)
+
+
+
+* private method
+the method name begins with a leading understore.
+
+Sale = collections.namedtuple('Sale', 'productid price')
+sale = Sale('book', 100)
+'{book} {price}'.format(**sale._asdict())
+
+* hashable
+Hashable objects are objects which have a __hash__() speical method 
+whose return value is always the same throughout the object's lifetime, and 
+which can be compared for equality using the __eq__() special method.
+
+
+All the built-in immutable data types are hashable.
+The built-in mutable data types, such as dict, list, and set are not hashable.
+
+* list comprehension
+[expression for item in iterable if condition]
+
+
+
+* set
+{}
+
+* data create with data type
+- with one argument, create a empty object.
+- one same data type argument, a shallow copy
+- one different data type argument, a conversion attempt
+- two or more, depends
+
+for example:
+list()
+list('hello')
+list([1])
+
+str()
+str(1)
+str('hello')
+
+* program format
+1. shebang
+2. docstring
+   1. brief description
+   2. one black line
+   3. description
+   4. example
+3. import
+   1. built-in
+   2. standard library
+   3. custom
+4. __all__
+5. code
+
+
+* path separator
+#+BEGIN_SRC python
+import os
+path.replace("/",os.sep)
+#+END_SRC
+
+* random choice
+#+BEGIN_SRC python
+l = [1,2,3,4]
+import random
+random.choice(l)
+
+#+END_SRC
+
+* random sample
+#+BEGIN_SRC python
+import random
+l = list(range(100))
+print(random.sample(l,30))  # unique element 
+
+#+END_SRC
+* help
+#+BEGIN_SRC python
+help(iter)
+#+END_SRC
+
+
+* type
+#+BEGIN_SRC python
+a = 1
+type(a)
+#+END_SRC
+
+
+* sort
+#+BEGIN_SRC python
+x = []
+for i in zip(range(-10, 0, 1), range(0, 10, 2), range(1, 10, 2)):
+    x += i
+print(x)  # [-10, 0, 1, -9, 2, 3, -8, 4, 5, -7, 6, 7, -6, 8, 9]
+
+y = []
+for i in zip(range(-10, 0, 1), range(0, 10, 2), range(1, 10, 2)):
+    y.append(i)
+print(y)  # [(-10, 0, 1), (-9, 2, 3), (-8, 4, 5), (-7, 6, 7), (-6, 8, 9)]
+
+print(sorted(x))  # [-10, -9, -8, -7, -6, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(sorted(x, reverse=True))  # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -6, -7, -8, -9, -10]
+print(sorted(x, key=abs))  # [0, 1, 2, 3, 4, 5, 6, -6, -7, 7, -8, 8, -9, 9, -10]
+#+END_SRC
+
+* plateform
+#+BEGIN_SRC python
+offset = 20 if sys.platform.startswith('win') else 10
+#+END_SRC
+
+* file number
+#+BEGIN_SRC python
+print('{} file{}'.format((count if count != 0 else 'no'), ('s' if count != 1 else ''))
+#+END_SRC
+
+* list find
+like list find method.
+
+while version:
+#+BEGIN_SRC python
+def list_find(lst, target):
+    index = 0
+    while index < len(lst):
+        if lst[index] == target:
+            break
+        index += 1
+    else:
+        index = -1
+    return index
+#+END_SRC
+
+loop version:
+#+BEGIN_SRC python
+def list_find(lst,target):
+    for index, x in enumerate(lst):
+        if x == target:
+            break
+    else:
+        index = -1
+    return index
+#+END_SRC 
+
+exception version:
+#+BEGIN_SRC python
+def list_find(lst,target):
+    try:
+        index = lst.index(target)
+    except ValueError:
+        index = -1
+    return index
+#+END_SRC
+
+* if
+conditional branch statement:
+#+BEGIN_SRC python
+if boolean_expression1:
+    suite1
+elif boolean_expression2:
+    suite2
+...
+elif boolean_expressionN:
+    suiteN
+else:
+    else_suite
+#+END_SRC
+There can be zero or more elif clauses, and the final else clause is optional.
+
+conditional expression:
+#+BEGIN_SRC python
+expression1 if boolean_expression else expression2
+#+END_SRC
+
+* loop
+#+BEGIN_SRC python
+while boolean_expression:
+    while_suite
+else:
+    else_suite
+#+END_SRC
+
+#+BEGIN_SRC python
+for expression in iterable:
+    for_suite
+else:
+    else_suite
+#+END_SRC
+
+* try ... catch
+#+BEGIN_SRC python
+try:
+    try_suite
+except exception_group1 as variable1:
+    except_suite1
+...
+except exception_groupN as variableN:
+    except_suiteN
+else:
+    else_suite
+finally:
+    finally_suite
+#+END_SRC
+
+* raise exception
+#+BEGIN_SRC python
+raise exception(args)
+raise exception(args) from original_exception
+raise
+#+END_SRC
+
+* function
+#+BEGIN_SRC python
+def functionName(parameters):
+    suite
+#+END_SRC
+
+
+* lambda
+#+BEGIN_SRC python
+lambda parameters: expression
+#+END_SRC
+
+* assert
+#+BEGIN_SRC python
+assert boolean_expression, optional_expression
+#+END_SRC
+
+
+* writing text to files
+Python provides tow different ways of writing text to files.
+1. use a file object's write() method
+2. use the print() function
+#+BEGIN_SRC python
+import sys
+sys.stdout.write("message\n")
+print("message", file=sys.stdout)
+#+END_SRC
+
+#+BEGIN_SRC python
+# to restore back to stdout
+sys.stdout = sys.__stdout__
+#+END_SRC
+* capture output intended to go to a file
+#+BEGIN_SRC python
+import io
+import sys
+
+sys.stdout = io.StringIO()
+print('hello')
+print('world')
+content = sys.stdout.getvalue()
+sys.stdout = sys.__stdout__
+print(content)
+#+END_SRC
+
+* command line options
+#+BEGIN_SRC python
+parser = optparse.OptionParser()
+parser.set_usage("%prog inputfile outputfile [options]")
+parser.add_option("-m", "--mode", dest="mode",
+                  help="available values: encrypt|enc|decrypt|dec [default: %default]")
+parser.add_option('-k', '--key', dest='key',
+                  help='the key for encryption and decryption [default: %default')
+parser.set_defaults(mode="enc", key='123456')
+opts, args = parser.parse_args()
+
+inputfile = args[0]
+outputfile = args[1]
+mode = opts.mode
+key = opts.key
+#+END_SRC
+
+"%default" rext replaced with the option's default value;
+the options are available using the "dest" names.
+
+If an error occurs when parsing the command line, the optparse parser will call sys.exit(2).
+* doctest
+#+BEGIN_SRC python
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod() # test module
+#+END_SRC
+* unit test
+#+BEGIN_SRC python
+import unittest
+#+END_SRC
+* eval
+#+BEGIN_SRC python
+import Shape
+
+
+p = Shape.Point(3, 9)
+print(repr(p))  # Point(3, 9)
+
+# We must give the module name when eval()ing if we used import Shape.
+# if from Shape import Point is used, it is used necessary
+q = eval(p.__module__ + "." + repr(p))
+print(repr(q))  # Point(3, 9)
+
+#+END_SRC
+
+* special attributes
+| __name__   |   |
+| __module__ |   |
+| __class__  |   |
+
+| @property     |   |
+| @staticmethod |   |
+| @classmethod  |   |
+
+| __lt__(self, other) | <  |
+| __le__(self, other) | <= |
+| __eq__(self, other) | == |
+| __ne__(self, other) | != |
+| __ge__(self, other) | >= |
+| __gt__(self, other) | >  |
+
+
+| __bool__(self)               |
+| __format__(self,format_spec) |
+| __hash__(self)               |
+| __init__(self,args)          |
+| __new__(cls,args)            |
+| __repr__(self)               |
+| __str__(self)                |
+
+
+| __abs__(self)  |
+| __pos__(self)  |
+| __add__(self)  |
+| __iadd__(self) |
+| __radd__(self) |
+| __xor__(self)  |
+| __ixor__(self) |
+| __rxor__(self) |
+
+* @staticmethod and @classmethod
+@classmethod must have a reference to a class object as the first parameter, whereas @staticmethod can have no parameters at all.
+#+BEGIN_SRC python
+# The first parameter is the object instance reference.
+def instancemethod_(self, ...)
+    suit
+
+
+# The first parameter is the class reference.
+@classmethod
+def classmethod_(cls, ...)
+    suit
+
+
+# There is no reference to the instance or class.
+@staticmethod(...)
+    suit
+#+END_SRC

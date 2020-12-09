@@ -1,0 +1,1969 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>deep-learning-for-computer-vision-with-python-starter</title>
+<!-- 2019-12-09 Mon 15:27 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">deep-learning-for-computer-vision-with-python-starter</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introductions</a></li>
+<li><a href="#sec-2">2. Image Fundamentals</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Pixels: The Building Blocks of Images</a></li>
+<li><a href="#sec-2-2">2.2. The Image Coordinate System</a></li>
+<li><a href="#sec-2-3">2.3. Scaling and Aspect Ratios</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Image Classification Basics</a>
+<ul>
+<li><a href="#sec-3-1">3.1. What Is Image Classification?</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. The Semantic Gap</a></li>
+<li><a href="#sec-3-1-2">3.1.2. Challenges</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2. Types of Learning</a></li>
+<li><a href="#sec-3-3">3.3. The Deep Laerning Classification Pipeline</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Datasets for Image Classification</a>
+<ul>
+<li><a href="#sec-4-1">4.1. MNIST</a></li>
+<li><a href="#sec-4-2">4.2. CIFAR-10</a></li>
+<li><a href="#sec-4-3">4.3. SMILES</a></li>
+<li><a href="#sec-4-4">4.4. Flower-17</a></li>
+<li><a href="#sec-4-5">4.5. CALTECH-101</a></li>
+<li><a href="#sec-4-6">4.6. Adience</a></li>
+<li><a href="#sec-4-7">4.7. ImangeNet</a></li>
+<li><a href="#sec-4-8">4.8. Kaggle: Facial Expression Recognition Challenge</a></li>
+<li><a href="#sec-4-9">4.9. Indoor CVPR</a></li>
+<li><a href="#sec-4-10">4.10. Stanford Cars</a></li>
+<li><a href="#sec-4-11">4.11. COCO</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Configuring Your Development Environment</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Libraries and Packages</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Your First Image Classifier</a>
+<ul>
+<li><a href="#sec-6-1">6.1. Working with Image Dataset</a></li>
+<li><a href="#sec-6-2">6.2. k-NN: A Simple Classifier</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Parameterized Learning</a>
+<ul>
+<li><a href="#sec-7-1">7.1. An Introduction to Linear Classification</a>
+<ul>
+<li><a href="#sec-7-1-1">7.1.1. Four part of machine learning:</a></li>
+<li><a href="#sec-7-1-2">7.1.2. Advantages of Parameterized Learning and Linear Classification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-8">8. Gradient Descent</a></li>
+<li><a href="#sec-9">9. Neural Network Fundamentals</a>
+<ul>
+<li><a href="#sec-9-1">9.1. Introduction to Neural Networks</a></li>
+<li><a href="#sec-9-2">9.2. The Perceptron Algorithm</a>
+<ul>
+<li><a href="#sec-9-2-1">9.2.1. AND, OR and XOR Datasets</a></li>
+<li><a href="#sec-9-2-2">9.2.2. Perceptron Architecture</a></li>
+<li><a href="#sec-9-2-3">9.2.3. Perceptron Training Procedure and the Delta Rule</a></li>
+<li><a href="#sec-9-2-4">9.2.4. Implementation with Python</a></li>
+<li><a href="#sec-9-2-5">9.2.5. Evaluating the Perceptron Bitwise Datasets</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-3">9.3. Backpropagation and Multi-layer Network</a></li>
+<li><a href="#sec-9-4">9.4. The Four Ingredients in a Neural Network Recipe</a></li>
+<li><a href="#sec-9-5">9.5. Weight initialization</a>
+<ul>
+<li><a href="#sec-9-5-1">9.5.1. Constant Initialization</a></li>
+<li><a href="#sec-9-5-2">9.5.2. Uniform and Normal Distributions</a></li>
+<li><a href="#sec-9-5-3">9.5.3. LeCun Uniform and Normal</a></li>
+<li><a href="#sec-9-5-4">9.5.4. Glorot Uniform and Normal</a></li>
+<li><a href="#sec-9-5-5">9.5.5. He et al./Kaiming/MSRA Uniform and Normal</a></li>
+<li><a href="#sec-9-5-6">9.5.6. Differences in Initialization Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-10">10. Convolutional Neural Networks</a>
+<ul>
+<li><a href="#sec-10-1">10.1. Understanding Convolutions</a></li>
+<li><a href="#sec-10-2">10.2. CNN Building Blocks</a></li>
+<li><a href="#sec-10-3">10.3. Common Architectures and Training Patterns</a></li>
+<li><a href="#sec-10-4">10.4. Are CNNs Invariant to Translation, Rotation, and Scaling?</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">11. Training Your First CNN</a>
+<ul>
+<li><a href="#sec-11-1">11.1. Keras Configuration</a></li>
+</ul>
+</li>
+<li><a href="#sec-12">12. Saving and Loading Your Models</a></li>
+<li><a href="#sec-13">13. LeNet: Recoginizing Handwritten Digits</a></li>
+<li><a href="#sec-14">14. MiniVGGNet: Going Deeper with CNNs</a>
+<ul>
+<li><a href="#sec-14-1">14.1. The VGG Family of Networks</a></li>
+<li><a href="#sec-14-2">14.2. The MiniVGGNet Architecture</a></li>
+<li><a href="#sec-14-3">14.3. Batch Normalization</a></li>
+<li><a href="#sec-14-4">14.4. Cost</a></li>
+</ul>
+</li>
+<li><a href="#sec-15">15. Learning Rate Schedulers</a>
+<ul>
+<li><a href="#sec-15-1">15.1. The Standard Decay Schedule in Keras</a></li>
+<li><a href="#sec-15-2">15.2. Step-based Decay</a></li>
+<li><a href="#sec-15-3">15.3. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-16">16. Spotting Underfitting and Overfitting</a>
+<ul>
+<li><a href="#sec-16-1">16.1. Effect of Learning Rates</a></li>
+<li><a href="#sec-16-2">16.2. What if Validation Loss Is Lower than Training Loss?</a></li>
+<li><a href="#sec-16-3">16.3. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-17">17. Case Study: Breaking Captchas with a CNN</a></li>
+<li><a href="#sec-18">18. Checkpointing Models</a></li>
+<li><a href="#sec-19">19. Visualizing Network Architectures</a>
+<ul>
+<li><a href="#sec-19-1">19.1. The Importance of Architecture Visualization</a></li>
+<li><a href="#sec-19-2">19.2. Installing graphviz and pydot</a></li>
+<li><a href="#sec-19-3">19.3. Summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-20">20. Out-of-the-box CNNs for Classification</a>
+<ul>
+<li><a href="#sec-20-1">20.1. VGG</a></li>
+<li><a href="#sec-20-2">20.2. ResNet</a></li>
+<li><a href="#sec-20-3">20.3. Inception V3</a></li>
+<li><a href="#sec-20-4">20.4. Xception</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introductions</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Until you take your theoretical knowledge and implement it, you haven’t actually learned anything yet.<br  />
+</p>
+
+<p>
+Reading about red-black trees and then actually implementing them from scratch requires two different skill sets.<br  />
+</p>
+
+<pre class="example">
+If you take anything from my personal experience, it should be this:
+1. You don’t need a decade of theory to get started in deep learning.
+2. You don’t need pages and pages of equations.
+3. And you certainly don’t need a degree in computer science (although it can be helpful).
+</pre>
+
+<pre class="example">
+Theoretical knowledge is not enough – we need to be practitioners in our respective fields as well. 
+The most important step you can take right now is to simply get started.
+</pre>
+
+<p>
+Python is the best way to work with deep learning algorithms.<br  />
+</p>
+
+
+<p>
+TensorFlow and Theano are libraries for defining abstract, general-purpose computation graphs.<br  />
+Keras is a deep learning framework. Under the hood, Keras uses either the TensorFlow or Theano computational backend, allowing it to take advantage of these powerful computation engines.<br  />
+The mxnet package provides bindings to the Python programming language and specializes in distributed, multi-machine learning – the ability to parallelize training across GPUs/devices/nodes is critical when training deep neural network architectures on massive datasets (such as ImageNet).<br  />
+</p>
+
+<p>
+Remember, deep learning is only one facet of computer vision – there are a number of computer vision techniques you should study to round out your knowledge.<br  />
+</p>
+
+<pre class="example">
+A way to turn knowledge into your knowledge: Use existing deep learning libraries to build our own custom Python-based toolset.
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Image Fundamentals</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Pixels: The Building Blocks of Images</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+A pixel is considered the "color" or the "intensity" of light that appears in a given place in our images.<br  />
+<img src="pics/cv_3_image.png" alt="cv_3_image.png" /><br  />
+</p>
+
+<p>
+Most pixels are represented in two ways:<br  />
+</p>
+<ol class="org-ol">
+<li>Grayscale/single channel<br  />
+</li>
+<li>Color<br  />
+</li>
+</ol>
+
+<p>
+In a grayscale image, each pixel is a scalar value between 0 and 255, where zero corresponds to “black” and 255 being “white”.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/cv_gray.png" alt="cv_gray.png" /><br  />
+</p>
+</div>
+
+<p>
+Color pixels are normally represented in the RGB color space. Pixels in the RGB color space are represented by a list of three values: one value for the Red component, one for Green, and another for Blue. Each Red, Green, and Blue channel can have values defined in the range [0, 255] for a total of 256 “shades”, where 0 indicates no representation and 255 demonstrates full representation.<br  />
+</p>
+
+<pre class="example">
+We’ll often preprocess our image by performing mean subtraction or scaling, which will require us to convert the image to a floating point data type.
+</pre>
+
+<p>
+The RGB color space is an example of an additive color space: the more of each color is added, the brighter the pixel becomes and closer to white.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/cv_3_rgb.png" alt="cv_3_rgb.png" /><br  />
+</p>
+</div>
+
+<p>
+The primary drawbacks of the RGB color space include:<br  />
+</p>
+<ul class="org-ul">
+<li>Its additive nature makes it a bit unintuitive for humans to easily define shades of color.<br  />
+</li>
+<li>It doesn’t mimic how humans perceive color.<br  />
+</li>
+</ul>
+
+
+<p>
+We can conceptualize an RGB image as consisting of three independent matrices of width W and height H, one for each of the RGB components, as shown in Figure 3.5. We can combine these three matrices to obtain a multi-dimensional array with shape W × H × D where D is the depth or number of channels (for the RGB color space, D=3):<br  />
+<img src="pics/cv_3_forming.png" alt="cv_3_forming.png" /><br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> The Image Coordinate System</h3>
+<div class="outline-text-3" id="text-2-2">
+
+<div class="figure">
+<p><img src="pics/cv_3_coordinate.png" alt="cv_3_coordinate.png" /><br  />
+</p>
+</div>
+
+<p>
+Image processing libraries such as OpenCV and scikit-image represent RGB images as multidimensional NumPy arrays with shape (height, width, depth).<br  />
+</p>
+
+<pre class="example">
+Why does the height come before the width when we normally think of an image in terms of width first then height?
+The answer is due to matrix notation.
+When defining the dimensions of matrix, we always write it as rows x columns. The number of rows in an image is its height whereas the number of columns is the image’s width. The depth will still remain the depth.
+</pre>
+
+<pre class="example">
+It’s important to note that OpenCV stores RGB channels in reverse order.
+Why does OpenCV do this? 
+The answer is simply historical reasons. 
+Early developers of the OpenCV library chose the BGR color format because the BGR ordering was popular among camera manufacturers and other software developers at the time.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Scaling and Aspect Ratios</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Scaling, or simply resizing, is the process of increasing or decreasing the size of an image in terms of width and height. When resizing an image, it’s important to keep in mind the aspect ratio. Ignoring the aspect ratio can lead to images that look compressed and distorted.<br  />
+</p>
+
+\begin{equation}
+aspect ratios = \frac{width}{height}
+\end{equation}
+
+
+<div class="figure">
+<p><img src="pics/cv_3_scaling.png" alt="cv_3_scaling.png" /><br  />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/cv_3_scaling2.png" alt="cv_3_scaling2.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Image Classification Basics</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> What Is Image Classification?</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Image classification, at its very core, is the task of assigning a label to an image from a predefined set of categories.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> The Semantic Gap</h4>
+<div class="outline-text-4" id="text-3-1-1">
+
+<div class="figure">
+<p><img src="pics/cv_4_semantic.png" alt="cv_4_semantic.png" /><br  />
+</p>
+</div>
+
+<p>
+Given that all a computer sees is a big matrix of pixels, we arrive at the problem of the semantic gap.The semantic gap is the difference between how a human perceives the contents of an image versus how an image can be represented in a way a computer can understand the process.<br  />
+</p>
+
+<p>
+Computers has no semantic understanding of images.<br  />
+<img src="pics/cv_4_semantic2.png" alt="cv_4_semantic2.png" /><br  />
+</p>
+
+<p>
+We might describe the image as follows:<br  />
+</p>
+<ul class="org-ul">
+<li>Spatial: The sky is at the top of the image and the sand/ocean are at the bottom.<br  />
+</li>
+<li>Color: The sky is dark blue, the ocean water is a lighter blue than the sky, while the sand is tan.<br  />
+</li>
+<li>Texture: The sky has a relatively uniform pattern, while the sand is very coarse.<br  />
+</li>
+</ul>
+
+<p>
+How do we go about encoding all this information in a way that a computer can understand it?<br  />
+The answer is to apply feature extraction to quantify the contents of an image. Feature extraction is the process of taking an input image, applying an algorithm, and obtaining a feature vector that quantifies our image. (One pixel is useless, It is the combination that has meaning.)<br  />
+</p>
+
+<p>
+Feature extraction method:<br  />
+</p>
+<ol class="org-ol">
+<li>hand-engineered<br  />
+</li>
+<li>automatically learned<br  />
+</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Challenges</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+<img src="pics/cv_4_variation.png" alt="cv_4_variation.png" /><br  />
+factors of variations:<br  />
+</p>
+<ul class="org-ul">
+<li>viewpoint variation<br  />
+</li>
+<li>scale variation<br  />
+</li>
+<li>deformation<br  />
+</li>
+<li>occlutions<br  />
+</li>
+<li>illumination<br  />
+</li>
+<li>background clutter<br  />
+</li>
+<li>intra-class variation<br  />
+</li>
+</ul>
+
+<p>
+So how do we account for such an incredible number of variations in objects/images?<br  />
+In general, we try to frame the problem as best we can. We make assumptions regarding the contents of our images and to which variations we want to be tolerant. We also consider the scope of our project – what is the end goal? And what are we trying to build?<br  />
+</p>
+
+<pre class="example">
+Successful computer vision, image classification, and deep learning systems deployed to the real-world make careful assumptions and considerations 
+before a single line of code is ever written.
+</pre>
+
+<pre class="example">
+The key takeaway is to always consider the scope of your image classifier.
+</pre>
+
+<pre class="example">
+ImageNet, the de facto standard benchmark dataset for image classification algorithms, consists of 1,000 objects that we encounter in our everyday lives.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Types of Learning</h3>
+<div class="outline-text-3" id="text-3-2">
+<ol class="org-ol">
+<li>supervised learning<br  />
+</li>
+<li>unsupervised learning<br  />
+</li>
+<li>semi-supervised learning<br  />
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> The Deep Laerning Classification Pipeline</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">rule-based system</span>
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">fib</span>(n):
+<span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">if</span> n == 0:
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">return</span> 0
+<span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">elif</span> n == 1:
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">return</span> 1
+<span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">else</span>:
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">return</span> fib(n - 1) + fib(n - 2)
+
+
+<span style="color: #fff59d;">print</span>(fib(7))
+<span style="color: #fff59d;">print</span>(fib(13))
+<span style="color: #fff59d;">print</span>(fib(35))
+</pre>
+</div>
+<p>
+Rule-based system:<br  />
+</p>
+<ol class="org-ol">
+<li>Accepts an input, returns an output.<br  />
+</li>
+<li>The process is well defined.<br  />
+</li>
+<li>The output is easily verifiable for correctness.<br  />
+</li>
+<li>Lends itself well to code coverage and test suites.<br  />
+</li>
+</ol>
+
+<p>
+Learning system:<br  />
+</p>
+<ol class="org-ol">
+<li>Gather Your Dataset (Notice the class imbalance)<br  />
+</li>
+<li>Split Your Dataset (traning set, testing set, and validation set; traning set and testing set)<br  />
+</li>
+<li>Train Your Network<br  />
+</li>
+<li>Evaluate<br  />
+</li>
+</ol>
+
+
+<pre class="example">
+We normally allocate roughly 10-20% of the training data for validation.
+</pre>
+<pre class="example">
+The test set is only used in evaluating the performance of your network.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Datasets for Image Classification</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> MNIST</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+MNIST: Modified National Institute of Standards and Technology<br  />
+NIST:  National Institute of Standards and Technology<br  />
+</p>
+
+
+
+<div class="figure">
+<p><img src="pics/cv_5_mnist.png" alt="cv_5_mnist.png" /><br  />
+</p>
+</div>
+
+<p>
+MNIST itself consists of 60,000 training images and 10,000 testing images. Each feature vector is 784-dim, corresponding to the 28 × 28 grayscale pixel intensities of the image. These grayscale pixel intensities are unsigned integers, falling into the range [0, 255].<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> CIFAR-10</h3>
+<div class="outline-text-3" id="text-4-2">
+
+<div class="figure">
+<p><img src="pics/cv_5_cifar.png" alt="cv_5_cifar.png" /><br  />
+</p>
+</div>
+
+<p>
+CIFAR-10 consists of 60,000 32 × 32 × 3 (RGB) images. As the name suggests, CIFAR-10 consists of 10 classes, including: airplanes, automobiles, birds, cats, deer, dogs, frogs, horses, ships, and trucks.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> SMILES</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+<img src="pics/cv_5_smile.png" alt="cv_5_smile.png" /><br  />
+The SMILES dataset consists of images of faces that are either smiling or not smiling. In total, there are 13,165 grayscale images in the dataset, with each image having a size of 64 × 64.<br  />
+</p>
+
+<pre class="example">
+Decoupling computer vision preprocessing from machine learning (especially for benchmark datasets) is a common trend.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Flower-17</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+<img src="pics/cv_5_flower.png" alt="cv_5_flower.png" /><br  />
+The Flowers-17 dataset is a 17 category dataset with 80 images per class.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> CALTECH-101</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+The CALTECH-101 dataset is a popular benchmark dataset for object detection. The dataset of 8,677 images includes 101 categories spanning a diverse range of objects. The CALTECH-101 dataset exhibits heavy class imbalances (meaning that there are more example images for some categories than others).<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Adience</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+<img src="pics/cv_5_adience.png" alt="cv_5_adience.png" /><br  />
+The Adience dataset is used to facilitate the study of age and gender recognition. A total of 26,580 images are included in the dataset with ages ranging from 0-60. The goal of this dataset is to correctly predict both the age and gender of the subject in the image.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> ImangeNet</h3>
+<div class="outline-text-3" id="text-4-7">
+<p>
+ImageNet is actually a project aimed at labeling and categorizing images into almost 22,000 categories based on a defined set of words and phrases (WordNet).<br  />
+</p>
+
+<p>
+In the context of computer vision and deep learning, whenever you hear people talking about ImageNet, they are very likely referring to the ImageNet Large Scale Visual Recognition Challenge or simply ILSVRC for short<br  />
+</p>
+
+<p>
+The goal of the image classification track in this challenge is to train a model that can classify an image into 1,000 separate categories using approximately 1.2 million images for training, 50,000 for validation, and 100,000 for testing.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/cv_5_imagenet.png" alt="cv_5_imagenet.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4-8" class="outline-3">
+<h3 id="sec-4-8"><span class="section-number-3">4.8</span> Kaggle: Facial Expression Recognition Challenge</h3>
+<div class="outline-text-3" id="text-4-8">
+<p>
+<img src="pics/cv_5_fer.png" alt="cv_5_fer.png" /><br  />
+The goal of the Facial Expression Recognition Challenge (FER) is to correctly identify the emotion. A total of 35,888 images are provided in the FER challenge with the goal to label a given facial expression into seven different categories:<br  />
+</p>
+<ol class="org-ol">
+<li>Angry<br  />
+</li>
+<li>Disgust (sometimes grouped in with “Fear” due to class imbalance)<br  />
+</li>
+<li>Fear<br  />
+</li>
+<li>Happy<br  />
+</li>
+<li>Sad<br  />
+</li>
+<li>Surprise<br  />
+</li>
+<li>Neutral<br  />
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-4-9" class="outline-3">
+<h3 id="sec-4-9"><span class="section-number-3">4.9</span> Indoor CVPR</h3>
+<div class="outline-text-3" id="text-4-9">
+<p>
+The Indoor Scene Recognition dataset consists of a number of indoor scenes, including stores, houses, leisure spaces, working areas, and public spaces. The goal of this dataset is to correctly train a model that can recognize each of the areas.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-10" class="outline-3">
+<h3 id="sec-4-10"><span class="section-number-3">4.10</span> Stanford Cars</h3>
+<div class="outline-text-3" id="text-4-10">
+<p>
+<img src="pics/cv_5_stanford_car.png" alt="cv_5_stanford_car.png" /><br  />
+the Cars Dataset consists of 16,185 images of 196 classes of cars.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-11" class="outline-3">
+<h3 id="sec-4-11"><span class="section-number-3">4.11</span> COCO</h3>
+<div class="outline-text-3" id="text-4-11">
+<p>
+Mocrosoft Common Ojbects in Context<br  />
+<a href="http://cocodataset.org">http://cocodataset.org</a><br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/coco_dataset.png" alt="coco_dataset.png" /><br  />
+</p>
+</div>
+
+<p>
+COCO is a large-scale object detection, segmentation, and captioning dataset. COCO has several features:<br  />
+</p>
+<ul class="org-ul">
+<li>Object segmentation<br  />
+</li>
+<li>Recognition in context<br  />
+</li>
+<li>Superpixel stuff segmentation<br  />
+</li>
+<li>330K images (&gt;200K labeled)<br  />
+</li>
+<li>1.5 million object instances<br  />
+</li>
+<li>80 object categories<br  />
+</li>
+<li>91 stuff categories<br  />
+</li>
+<li>5 captions per image<br  />
+</li>
+<li>250,000 people with keypoints<br  />
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Configuring Your Development Environment</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+When it comes to learning a new technology (especially deep learning), configuring your development environment tends to be half the battle. Between different operating systems, varying dependency versions, and the actual libraries themselves, configuring your own deep learning development environment can be quite the headache.<br  />
+</p>
+
+<p>
+These issues are all further compounded by the speed in which deep learning libraries are updated and released – new features push innovation, but also break previous versions.<br  />
+</p>
+
+<pre class="example">
+Depending on the timeframe, your environment may be obsolete!
+</pre>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Libraries and Packages</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Python (language)<br  />
+</li>
+<li>Keras (framework)<br  />
+</li>
+<li>Mxnet (distributed)<br  />
+</li>
+<li>Opencv (image processing)<br  />
+</li>
+<li>scikit-image (image processing)<br  />
+</li>
+<li>scikit-learn (split, accuracy)<br  />
+</li>
+</ul>
+
+
+<pre class="example">
+Please keep in mind that if you plan on doing any serious deep
+learning research or development, consider using a Linux environment
+such as Ubuntu.While deep learning work can absolutely be done on
+Windows (not recommended) or macOS (totally acceptable if you are just
+getting started), nearly all production-level environments for deep
+learning leverage Linux-based operating systems – keep this fact in
+mind when you are configuring your own deep learning development
+environment.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Your First Image Classifier</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Working with Image Dataset</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+When working with image datasets, we first must consider the total size of the dataset in terms of bytes. Is our dataset large enough to fit into the available RAM on our machine? Can we load the dataset as if loading a large matrix or array? Or is the dataset so large that it exceeds our machine’s memory, requiring us to “chunk” the dataset into segments and only load parts at a time?<br  />
+</p>
+
+<p>
+You should always be cognizant of your dataset size before even starting to work with image classification algorithms. Taking the time to organize, preprocess, and load your dataset is a critical aspect of building an image classifier.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> k-NN: A Simple Classifier</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+While simple and intuitive, the k-NN algorithm has a number of drawbacks.<br  />
+</p>
+<ol class="org-ol">
+<li>It doesn’t actually "learn" anything.<br  />
+</li>
+<li>Without specialized data structures, the k-NN algorithm scales linearly with the number of data points<br  />
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Parameterized Learning</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Parameterized learning:<br  />
+</p>
+<pre class="example">
+A learning model that summarizes data with a set of parameters of fixed size (independent of the number of traning examples) is called a parametric model.
+No matter how much data you throw at the parametric model, it won't change its mind about how many parameters it needs.
+</pre>
+
+<pre class="example">
+Parameterized learning is the cornerstone of modern machine learning and deep learning algorithms.
+</pre>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> An Introduction to Linear Classification</h3>
+<div class="outline-text-3" id="text-7-1">
+<pre class="example">
+Parameterization is the process of defining the necessary parameters of a given model.
+</pre>
+</div>
+
+<div id="outline-container-sec-7-1-1" class="outline-4">
+<h4 id="sec-7-1-1"><span class="section-number-4">7.1.1</span> Four part of machine learning:</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<ol class="org-ol">
+<li>data<br  />
+</li>
+<li>model<br  />
+</li>
+<li>loss function<br  />
+</li>
+<li>optimization<br  />
+</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-1-2" class="outline-4">
+<h4 id="sec-7-1-2"><span class="section-number-4">7.1.2</span> Advantages of Parameterized Learning and Linear Classification</h4>
+<div class="outline-text-4" id="text-7-1-2">
+<ol class="org-ol">
+<li>Once we are done training our model, we can discard the input data and keep only the weight matrix W and the bias vector b.<br  />
+</li>
+<li>Classifying new test data is fast.<br  />
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Gradient Descent</h2>
+<div class="outline-text-2" id="text-8">
+<pre class="example">
+We call sigmoid activation function becuase the function will "activate" and fire "ON" (output value &gt; 0.5)
+or "OFF" (output value &lt;= 0.5) based on the input.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Neural Network Fundamentals</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Introduction to Neural Networks</h3>
+<div class="outline-text-3" id="text-9-1">
+
+<div class="figure">
+<p><img src="pics/simple-neural-network.png" alt="simple-neural-network.png" /><br  />
+</p>
+</div>
+
+<p>
+Each node performs a simple computation. Each connection then carries a signal (i.e., the output of the computation) from one node to another, labeled by a weight indicating the extent to which the signal is amplified or diminished.<br  />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/neuron-anatomy.png" alt="neuron-anatomy.png" /><br  />
+</p>
+</div>
+
+<p>
+Our brains are composed of approximately 10 billion neurons, each connected to about 10,000 other neurons. The cell body of the neuron is called the soma, where the inputs (dendrites) and outputs (axons) connect soma to other soma.<br  />
+Each neuron receives electrochemical inputs from other neurons at their dendrites. If these electrical inputs are sufficiently powerful to activate the neuron, then the activated neuron transmits the signal along its axon, passing it along to the dendrites of other neurons.<br  />
+</p>
+
+<pre class="example">
+A neuron firing is a binary operation – the neuron either fires or it doesn’t fire. There are no different “grades” of firing.
+
+However, keep in mind that ANNs are simply inspired by what we know about the brain and how it works. The goal of deep learning is not to mimic how our brains function.
+</pre>
+
+
+
+<div class="figure">
+<p><img src="pics/feedforward-network.png" alt="feedforward-network.png" /><br  />
+</p>
+</div>
+
+<p>
+In this type of architecture, a connection between nodes is only allowed from nodes in layer i to nodes in layer i + 1 (hence the term, feedforward). There are no backward or inter-layer connections allowed.<br  />
+</p>
+
+
+<p>
+<b>Neural Learning</b><br  />
+Neural learning refers to the method of modifying the weights and connections between nodes in a network.<br  />
+</p>
+
+<p>
+Biologically, we define learning in terms of Hebb’s principle:<br  />
+</p>
+<pre class="example">
+    "When an axon of cell A is near enough to excite cell B, and repeatedly or
+persistently takes place in firing it, some growth process or metabolic change takes
+place in one or both cells such that A’s efficiency, as one of the cells firing B, is
+increased" – Donald Hebb
+</pre>
+
+<p>
+In terms of ANNs, this principle implies that there should be an increase in strength of connections between nodes that have similar outputs when presented with the same input. We call this correlation learning because the strength of the connections between neurons eventually represents the correlation between outputs.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> The Perceptron Algorithm</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+The Perceptron is a very important algorithm to understand as it sets the stage for more advanced multi-layer networks.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-9-2-1" class="outline-4">
+<h4 id="sec-9-2-1"><span class="section-number-4">9.2.1</span> AND, OR and XOR Datasets</h4>
+<div class="outline-text-4" id="text-9-2-1">
+
+<div class="figure">
+<p><img src="pics/and-or-xor.png" alt="and-or-xor.png" /><br  />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="pics/and-or-xor2.png" alt="and-or-xor2.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2-2" class="outline-4">
+<h4 id="sec-9-2-2"><span class="section-number-4">9.2.2</span> Perceptron Architecture</h4>
+<div class="outline-text-4" id="text-9-2-2">
+
+<div class="figure">
+<p><img src="pics/perceptron-architecture.png" alt="perceptron-architecture.png" /><br  />
+</p>
+</div>
+
+<p>
+In the case of bitwise, the input is two, so there are only x1, and x2.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2-3" class="outline-4">
+<h4 id="sec-9-2-3"><span class="section-number-4">9.2.3</span> Perceptron Training Procedure and the Delta Rule</h4>
+</div>
+
+<div id="outline-container-sec-9-2-4" class="outline-4">
+<h4 id="sec-9-2-4"><span class="section-number-4">9.2.4</span> Implementation with Python</h4>
+</div>
+
+<div id="outline-container-sec-9-2-5" class="outline-4">
+<h4 id="sec-9-2-5"><span class="section-number-4">9.2.5</span> Evaluating the Perceptron Bitwise Datasets</h4>
+</div>
+</div>
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Backpropagation and Multi-layer Network</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+Backpropagation is an important algorithm – without (efficient) backpropagation, it would be impossible to train deep learning networks to the depths that we see today. Backpropagation can be considered the cornerstone of modern neural networks and deep learning.<br  />
+</p>
+
+<p>
+The backpropagation algorithm consists of two phases:<br  />
+</p>
+<ol class="org-ol">
+<li>forward pass (propagate input throught network to output)<br  />
+</li>
+<li>backward pass (compute the gradient and update weights)<br  />
+</li>
+</ol>
+
+<p>
+Example: XOR<br  />
+</p>
+
+<p>
+<b>The Forward Pass</b><br  />
+XOR dataset:<br  />
+<img src="pics/xor_tab.png" alt="xor_tab.png" /><br  />
+</p>
+
+<p>
+XOR network:<br  />
+<img src="pics/xor_network.png" alt="xor_network.png" /><br  />
+</p>
+
+<p>
+Network initialized:<br  />
+<img src="pics/xor_initialized.png" alt="xor_initialized.png" /><br  />
+</p>
+
+<p>
+<b>The backward Pass</b><br  />
+<img src="pics/xor_chain.png" alt="xor_chain.png" /><br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-4" class="outline-3">
+<h3 id="sec-9-4"><span class="section-number-3">9.4</span> The Four Ingredients in a Neural Network Recipe</h3>
+<div class="outline-text-3" id="text-9-4">
+<ol class="org-ol">
+<li>dataset<br  />
+</li>
+<li>model<br  />
+<ol class="org-ol">
+<li>how many data points<br  />
+</li>
+<li>the number of classes<br  />
+</li>
+<li>how similar/dissimilar the classes are<br  />
+</li>
+<li>the intr-class variance<br  />
+</li>
+</ol>
+</li>
+<li>loss function<br  />
+</li>
+<li>optimization method<br  />
+</li>
+</ol>
+
+<p>
+When training deep learning networks, especially when you’re first getting started and learning the ropes, SGD should be your optimizer of choice. You then need to set a proper learning rate and regularization strength, the total number of epochs the network should be trained for, and whether or not momentum (and if so, which value) or Nesterov acceleration should be used. Take the time to experiment with SGD as much as you possibly can and become comfortable with tuning the parameters.<br  />
+</p>
+
+<p>
+Becoming familiar with a given optimization algorithm is similar to mastering how to drive a car – you drive your own car better than other people’s cars because you’ve spent so much time driving it; you understand your car and its intricacies. Often times, a given optimizer is chosen to train a network on a dataset not because the optimizer itself is better, but because the driver (i.e., deep learning practitioner) is more familiar with the optimizer and understands the "art" behind tuning its respective parameters.<br  />
+</p>
+
+<p>
+Keep in mind that obtaining a reasonably performing neural network on even a small/medium dataset can take 10’s to 100’s of experiments even for advanced deep learning users – don’t be discouraged when your network isn’t performing extremely well right out of the gate. Becoming proficient in deep learning will require an investment of your time and many experiments – but it will be worth it once you master how these ingredients come together.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9-5" class="outline-3">
+<h3 id="sec-9-5"><span class="section-number-3">9.5</span> Weight initialization</h3>
+<div class="outline-text-3" id="text-9-5">
+</div><div id="outline-container-sec-9-5-1" class="outline-4">
+<h4 id="sec-9-5-1"><span class="section-number-4">9.5.1</span> Constant Initialization</h4>
+<div class="outline-text-4" id="text-9-5-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">W</span> =np.zeros((64,32))
+<span style="color: #ffcc80;">W</span> =np.ones((64,32))
+<span style="color: #ffcc80;">W</span> =np.zeros((64,32)) * C
+</pre>
+</div>
+
+<p>
+It is rarely used as a neural network weight initializer.<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9-5-2" class="outline-4">
+<h4 id="sec-9-5-2"><span class="section-number-4">9.5.2</span> Uniform and Normal Distributions</h4>
+<div class="outline-text-4" id="text-9-5-2">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">W</span> = np.random.uniform(low=-0.05, high=.05, size=(64,32))
+<span style="color: #ffcc80;">W</span> = np.random.normal(0.0, 0.5, size=(64,32))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-5-3" class="outline-4">
+<h4 id="sec-9-5-3"><span class="section-number-4">9.5.3</span> LeCun Uniform and Normal</h4>
+<div class="outline-text-4" id="text-9-5-3">
+<p>
+The default weight initialization method is called "Efficient Backprop" in PyTorch framworks.<br  />
+F_in: fan in or the number of inputs to the layer<br  />
+F_out: fan out or the number of outputs to the layer<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">F_in</span> = 64  
+<span style="color: #ffcc80;">F_out</span> = 32 
+<span style="color: #ffcc80;">limit</span> = np.sqrt(3 / <span style="color: #ff8A65;">float</span>(F_in))
+<span style="color: #ffcc80;">W</span> = np.random.uniform(low=-limit, high=limit, size=(F_in, F_out))
+
+<span style="color: #ffcc80;">F_in</span> = 64  
+<span style="color: #ffcc80;">F_out</span> = 32 
+<span style="color: #ffcc80;">limit</span> = np.sqrt(1 / <span style="color: #ff8A65;">float</span>(F_in))
+<span style="color: #ffcc80;">W</span> = np.random.normal(0.0, limit, size=(F_in, F_out))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9-5-4" class="outline-4">
+<h4 id="sec-9-5-4"><span class="section-number-4">9.5.4</span> Glorot Uniform and Normal</h4>
+<div class="outline-text-4" id="text-9-5-4">
+<p>
+The default weight initialization method used in the Keras library is called "Glorot initialization".<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">F_in</span> = 64  
+<span style="color: #ffcc80;">F_out</span> = 32 
+<span style="color: #ffcc80;">limit</span> = np.sqrt(2 / <span style="color: #ff8A65;">float</span>(F_in + F_out))
+<span style="color: #ffcc80;">W</span> = np.random.normal(0.0, limit, size=(F_in, F_out))
+
+
+<span style="color: #ffcc80;">F_in</span> = 64  
+<span style="color: #ffcc80;">F_out</span> = 32 
+<span style="color: #ffcc80;">limit</span> = np.sqrt(6 / <span style="color: #ff8A65;">float</span>(F_in + F_out))
+<span style="color: #ffcc80;">W</span> = np.random.uniform(low=-limit, high=limit, size=(F_in, F_out))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9-5-5" class="outline-4">
+<h4 id="sec-9-5-5"><span class="section-number-4">9.5.5</span> He et al./Kaiming/MSRA Uniform and Normal</h4>
+<div class="outline-text-4" id="text-9-5-5">
+<p>
+This technique is named after Kaiming He, the first author of the paper, "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification".<br  />
+</p>
+
+<p>
+We typically used this method when we are training very deep neural networks that use a ReLU-like activation function (in particular, a “PReLU”)<br  />
+</p>
+
+<pre class="example">
+F_in = 64  
+F_out = 32 
+limit = np.sqrt(6 / float(F_in))
+W = np.random.uniform(low=-limit, high=limit, size=(F_in, F_out))
+
+limit = np.sqrt(2 / float(F_in))
+W = np.random.normal(0.0, limit, size=(F_in, F_out))
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-9-5-6" class="outline-4">
+<h4 id="sec-9-5-6"><span class="section-number-4">9.5.6</span> Differences in Initialization Implementation</h4>
+<div class="outline-text-4" id="text-9-5-6">
+<p>
+The actual limit values may vary for LeCun Uniform/Normal, Xavier Uniform/Normal, and He et al. Uniform/Normal. For example, when using Xavier Uniform in Caffe, limit = -np.sqrt(3 / F_in); however, the default Xaiver initialization for Keras uses np.sqrt(6 / (F_in + F_out)). No method is " correct" than the other, but you should read the documentation of your respective deep learning library.<br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Convolutional Neural Networks</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Each layer in a CNN applies a different set of filters, and combines the results, feeding the output into the next layer in the network. During training, a CNN automatically learns the values for these filters.<br  />
+</p>
+</div>
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> Understanding Convolutions</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+It’s normal to hand-define kernels to obtain various image processing functions. In fact, you might already be familiar with blurring (average smoothing, Gaussian smoothing, median smoothing, etc.), edge detection (Laplacian, Sobel, Scharr, Prewitt, etc.), and sharpening – all of these operations are forms of hand-defined kernels that are specifically designed to perform a particular function.<br  />
+</p>
+
+
+
+<div class="figure">
+<p><img src="pics/c11_kernel.png" alt="c11_kernel.png" /><br  />
+</p>
+</div>
+
+<p>
+Kernels can be of arbitrary rectangular size MxN, provided that both M and N are odd integers.<br  />
+We use an odd kernel size to ensure there is a valid integer (x, y)-coordinate at the center of the image (Figure 11.2). On the left, we have a 3 × 3 matrix. The center of the matrix is located at x = 1, y = 1 where the top-left corner of the matrix is used as the origin and our coordinates are zero-indexed. But on the right, we have a 2 × 2 matrix. The center of this matrix would be located at x = 0.5, y = 0.5. But as we know, without applying interpolation, there is no such thing as pixel location (0.5, 0.5) – our pixel coordinates must be integers! This reasoning is exactly why we use odd kernel sizes: to always ensure there is a valid (x, y)-coordinate at the center of the kernel.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> CNN Building Blocks</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Layer Types:<br  />
+</p>
+<ul class="org-ul">
+<li>convolution(CONV)<br  />
+</li>
+<li>activation<br  />
+</li>
+<li>pooling<br  />
+</li>
+<li>full-connected(FC)<br  />
+</li>
+<li>batch normalization(BN)<br  />
+</li>
+<li>dropout(DO)<br  />
+</li>
+</ul>
+
+<p>
+The CONV and FC layers (and BN) are the only layers of the network that actually learn parameters – the other layers are simply responsible for performing a given operation.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> Common Architectures and Training Patterns</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+By far, the most common form of CNN architecture is to stack a few CONV and RELU layers, following them with a POOL operation. We repeat this sequence until the volume width and height is small, at which point we apply one or more FC layers. Therefore, we can derive the most common CNN architecture using the following pattern:<br  />
+</p>
+<pre class="example">
+INPUT =&gt; [[CONV =&gt; RELU]*N =&gt; POOL?]*M =&gt; [FC =&gt; RELU]*K =&gt; FC
+
+Here the * operator implies one or more and the ? indicates an optional operation.
+Common choices for each reputation include:
+• 0 &lt;= N &lt;= 3
+• M &gt;= 0
+• 0 &lt;= K &lt;= 2
+</pre>
+
+<p>
+There are more "exotic" network architectures that deviate from these patterns and, in turn, have created patterns of their own. For example, some architectures remove the POOL operation entirely, relying on CONV layers to downsample the volume – then, at the end of the network, average pooling is applied rather than FC layers to obtain the input to the softmax classifiers.<br  />
+</p>
+
+
+<p>
+Rules of Thumb:<br  />
+</p>
+<ol class="org-ol">
+<li>the images presented to the input layer should be square. (common input layer size include 32 x 32, 64 × 64, 96 × 96, 224 × 224)<br  />
+</li>
+<li>the input layer should also be divisible by two multiple times after the first CONV operation is applied.<br  />
+</li>
+<li>use small filter size such as 3 x 3 and 5 x 5.<br  />
+</li>
+<li>commonly stride = 1 for small spatial input and stride &gt;= 2 for large input volumes<br  />
+</li>
+<li>for max pooling, it is highly uncommon to see receptive fields larger then three since thes operations are very destructive.<br  />
+</li>
+<li>use batch normalization after having a baseline.<br  />
+</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4"><span class="section-number-3">10.4</span> Are CNNs Invariant to Translation, Rotation, and Scaling?</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+Individual filters are not invariant to changes in how an image is rotated. However, a CNN as a whole can learn filters that fire when a pattern is presented at a paricular orientation. The same is to scaling.<br  />
+<img src="pics/c11_invariant.png" alt="c11_invariant.png" /><br  />
+</p>
+
+
+<p>
+Translation invariance is something that a CNN excels at. A filter slides from left-to-right and top-to-bottom across an input, and will activate when it comes across a particular edge-like region, corner, or color blob. During the pooling operation, this large response is found and thus "beats" all its neighbors by having a larger activation. Therefore, CNNs can be seen as "not caring" exactly where an activation fires, simply that it does fire – and, in this way, we naturally handle translation inside a CNN.<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Training Your First CNN</h2>
+<div class="outline-text-2" id="text-11">
+</div><div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> Keras Configuration</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+The first time you import the Keras library, behind the scenes Keras generates a keras.json file in your home directory.<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Saving and Loading Your Models</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+The Process of saving and loading a trained model is called model serializaiton. (serialization is necessary from memory to disk)<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #fff59d;">from</span> keras.models <span style="color: #fff59d;">import</span> load_model
+
+model.save(&lt;path&gt;)
+<span style="color: #ffcc80;">model</span> = load_model(&lt;path&gt;)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> LeNet: Recoginizing Handwritten Digits</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+The LeNet architecture is first introduced by LeCun et al. in their 1998 paper, Gradient-Based Learning Applied to Document Recognition. As the name of the paper suggests, the authors’ motivation behind implementing LeNet was primarily for Optical Character Recognition (OCR).<br  />
+<img src="pics/c14_lenet.png" alt="c14_lenet.png" /><br  />
+</p>
+
+<p>
+In many ways, LeNet + MNIST is the "Hello, World" equivalent of deep learning applied to image classification.<br  />
+</p>
+
+<p>
+Pattern:<br  />
+</p>
+<pre class="example">
+INPUT -&gt; CONV -&gt; TANH -&gt; POOL -&gt; CONV -&gt; TANH -&gt; POOL -&gt; FC -&gt; TANH -&gt; FC
+</pre>
+
+<p>
+Back in 1998 the ReLU had not been used in the context of deep learning — it was more common to use tanh or sigmoid as an activation function. When implementing LeNet today, it’s common to swap out TANH for RELU.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> MiniVGGNet: Going Deeper with CNNs</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+VGGNet, (sometimes referred to as simply VGG), was first introduced by Simonyan and Zisserman in their 2014 paper, Very Deep Learning Convolutional Neural Networks for Large-Scale Image Recognition. The primary contribution of their work was demonstrating that an architecture with very small (3 × 3) filters can be trained to increasingly higher depths (16-19 layers) and obtain state-of-the-art classification on the challenging ImageNet classification challenge.<br  />
+Previously, network architectures in the deep learning literature used a mix of filter sizes:<br  />
+The first layer of the CNN usually includes filter sizes somewhere between 7 × 7 and 11 × 11. From there, filter sizes progressively reduced to 5 × 5. Finally, only the deepest layers of the network used 3 × 3 filters.<br  />
+Any time you see a network architecture that consists entirely of 3 × 3 filters, you can rest assured that it was inspired by VGGNet.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-14-1" class="outline-3">
+<h3 id="sec-14-1"><span class="section-number-3">14.1</span> The VGG Family of Networks</h3>
+<div class="outline-text-3" id="text-14-1">
+<p>
+The VGG family of Convolutional Neural Networks can be characterized by two key components:<br  />
+</p>
+<ol class="org-ol">
+<li>All CONV layers using only 3 x 3 filters.<br  />
+</li>
+<li>Stacking muliple CONV -&gt; RELU layers sets before applying a POOL operation.<br  />
+</li>
+</ol>
+
+
+<p>
+In VGGNet, we stack multiple CONV =&gt; RELU layers prior to applying a single POOL layer. Doing this allows the network to learn more rich features from the CONV layers prior to downsampling the spatial input size via the POOL operation.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-14-2" class="outline-3">
+<h3 id="sec-14-2"><span class="section-number-3">14.2</span> The MiniVGGNet Architecture</h3>
+<div class="outline-text-3" id="text-14-2">
+<pre class="example">
+CONV -&gt; RELU -&gt; CONV -&gt; RELU -&gt; POOL -&gt; FC -&gt; RELU -&gt; FC -&gt; SOFTMAX
+</pre>
+
+
+<div class="figure">
+<p><img src="pics/c15_minivgg.png" alt="c15_minivgg.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-14-3" class="outline-3">
+<h3 id="sec-14-3"><span class="section-number-3">14.3</span> Batch Normalization</h3>
+<div class="outline-text-3" id="text-14-3">
+<ol class="org-ol">
+<li>Batch normalization can lead to faster, more stable convergence with higher accuracy.<br  />
+</li>
+<li>However, the advantages will come at the expense of training time.<br  />
+</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-14-4" class="outline-3">
+<h3 id="sec-14-4"><span class="section-number-3">14.4</span> Cost</h3>
+<div class="outline-text-3" id="text-14-4">
+<p>
+The cost time is 1 hour. One epoch time is 90s.<br  />
+(16G, ThinkCenter, i7)<br  />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Parameter</th>
+<th scope="col" class="right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">width</td>
+<td class="right">32</td>
+</tr>
+
+<tr>
+<td class="left">height</td>
+<td class="right">32</td>
+</tr>
+
+<tr>
+<td class="left">epoch</td>
+<td class="right">40</td>
+</tr>
+
+<tr>
+<td class="left">learning rate</td>
+<td class="right">0.01</td>
+</tr>
+
+<tr>
+<td class="left">decay</td>
+<td class="right">0.01/40</td>
+</tr>
+
+<tr>
+<td class="left">mementum</td>
+<td class="right">0.9</td>
+</tr>
+
+<tr>
+<td class="left">batch size</td>
+<td class="right">30</td>
+</tr>
+
+<tr>
+<td class="left">nesterov</td>
+<td class="right">True</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Learning Rate Schedulers</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+By adjusting our learning rate on an epoch-to-epoch basis, we can reduce loss, increase accuracy, and even in certain situations reduce the total amount of time it takes to train a network.<br  />
+</p>
+
+<p>
+The most simple and heavily learning rate schedulers are ones that progressively reduce learning rate over time.<br  />
+</p>
+
+<p>
+There are two primary types of learning rate schedulers:<br  />
+</p>
+<ol class="org-ol">
+<li>Learning rate schedulers that decrease gradually based on the epoch number.<br  />
+</li>
+<li>Learning rate schedulers that drop based on specific epoch.<br  />
+</li>
+</ol>
+</div>
+
+
+<div id="outline-container-sec-15-1" class="outline-3">
+<h3 id="sec-15-1"><span class="section-number-3">15.1</span> The Standard Decay Schedule in Keras</h3>
+<div class="outline-text-3" id="text-15-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ffcc80;">opt</span> = SGD(lr=0.01, decay=0.01 / 40, momentum=0.9, nesterov=<span style="color: #8bc34a;">True</span>)
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #84ffff;">@interfaces.legacy_get_updates_support</span>
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">get_updates</span>(<span style="color: #fff59d;">self</span>, loss, params):
+<span style="background-color: #37474f;"> </span>   <span style="color: #ffcc80;">grads</span> = <span style="color: #fff59d;">self</span>.get_gradients(loss, params)
+<span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">self</span>.updates = [K.update_add(<span style="color: #fff59d;">self</span>.iterations, 1)]
+
+<span style="background-color: #37474f;"> </span>   <span style="color: #ffcc80;">lr</span> = <span style="color: #fff59d;">self</span>.lr
+<span style="background-color: #37474f;"> </span>   <span style="color: #fff59d;">if</span> <span style="color: #fff59d;">self</span>.initial_decay &gt; 0:
+<span style="background-color: #37474f;"> </span>   <span style="background-color: #37474f;"> </span>   <span style="color: #ffcc80;">lr</span> *= (1. / (1. + <span style="color: #fff59d;">self</span>.decay * K.cast(<span style="color: #fff59d;">self</span>.iterations, K.dtype(<span style="color: #fff59d;">self</span>.decay))))
+</pre>
+</div>
+
+\begin{equation}
+\alpha_{e+1} = \alpha_e \times \frac{1}{1+d\dot e}
+\end{equation}
+<p>
+where \(\alpha\) for learning rate, \(e\) for epoch, \(d\) for decay.<br  />
+</p>
+
+<p>
+By using learning rate decay we can often not only improve our classification accuracy but also lessen the affects of overfitting, thereby increasing the ability of our model to generalize.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-15-2" class="outline-3">
+<h3 id="sec-15-2"><span class="section-number-3">15.2</span> Step-based Decay</h3>
+<div class="outline-text-3" id="text-15-2">
+<p>
+Another popular learning rate scheduler is step-based decay where we systematically drop the learning rate after specific epochs during training.<br  />
+</p>
+
+<p>
+When applying step decay to our learning rate, we have two options:<br  />
+</p>
+<ol class="org-ol">
+<li>Define an equation that models the piecewise drop in learning rate we wish to achieve.<br  />
+</li>
+<li>ctrl + c method: we train for some number of epochs at a given learning rate, eventually notice validation performance has stalled, then ctrl + c to stop the script, adjust our learning rate, and continue training.<br  />
+</li>
+</ol>
+
+
+<p>
+The ctrl + c method is more advanced and is normally applied to larger datasets using deeper neural networks where the exact number of epochs required to obtain reasonable accuracy is unknown.<br  />
+</p>
+
+<p>
+When applying step decay, we often drop our learning rate by either (1) half or (2) an order of magnitude after every fixed number of epochs.<br  />
+<img src="pics/c16_step_lr.png" alt="c16_step_lr.png" /><br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-15-3" class="outline-3">
+<h3 id="sec-15-3"><span class="section-number-3">15.3</span> Summary</h3>
+<div class="outline-text-3" id="text-15-3">
+<p>
+Exactly which learning rate scheduler you should use is part of the experimentation process. Typically your first experiment would not use any type of decay or learning rate scheduling so you can obtain a baseline accuracy and loss/accuracy curve.<br  />
+</p>
+
+<p>
+From there you might introduce the standard time-based schedule provided by Keras (with the rule of thumb of \(decay = alpha_init / epochs\)) and run a second experiment to evaluate the results. The next few experiments might involve swapping out a time-bases schedule for a drop-based one using various drop factors.<br  />
+</p>
+
+<p>
+Overall, be prepared to spend a significant amount of time training your networks and evaluating different sets of parameters and learning routines. Even simple datasets and projects can take 10’s to 100’s of experiments to obtain a high accuracy model.<br  />
+</p>
+
+<pre class="example">
+Keep in mind that nothing beats actually running the experiments yourself.
+</pre>
+
+<p>
+The more practice you have at training neural networks, logging the results of what did work and what didn’t, the better you’ll become at it.<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> Spotting Underfitting and Overfitting</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+Up until now, we’ve had to wait until after our network had completed training before we could plot the training loss and accuracy.<br  />
+</p>
+
+<p>
+Waiting until the end of the training process to visualize loss and accuracy can be computationally wasteful, especially if our experiments take a long time to run and we have no way to visualize loss/accuracy during the training process itself – we could spend hours or even days training a network when without realizing that the process should have been stopped after the first few epochs.<br  />
+</p>
+
+<p>
+Instead, it would be much more beneficial if we could plot the training and loss after every epoch and visualize the results. From there we could make better, more informed decisions regarding whether we should terminate the experiment early or keep training.<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-16-1" class="outline-3">
+<h3 id="sec-16-1"><span class="section-number-3">16.1</span> Effect of Learning Rates</h3>
+<div class="outline-text-3" id="text-16-1">
+
+<div class="figure">
+<p><img src="pics/c17_lr.png" alt="c17_lr.png" /><br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-16-2" class="outline-3">
+<h3 id="sec-16-2"><span class="section-number-3">16.2</span> What if Validation Loss Is Lower than Training Loss?</h3>
+<div class="outline-text-3" id="text-16-2">
+<p>
+Shouldn’t the training performance always be better than the validation or testing loss?<br  />
+Not always. In fact, there are multiple reasons for this behavior:<br  />
+</p>
+<ol class="org-ol">
+<li>Your training data is seeing all the "hard" examples to classify, while your validation data consists of the "easy" data points.<br  />
+</li>
+<li>data augmentation.<br  />
+</li>
+<li>Your're not training "hard enough".<br  />
+</li>
+</ol>
+
+<p>
+During the training process we randomly alter the training images by applying random transformations to them such as translation, rotation, resizing, and shearing. Because of these alterations, the network is constantly seeing augmented examples of the training data, which is a form of regularization, enabling the network to generalize better to the validation data while perhaps performing worse on the training set.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-16-3" class="outline-3">
+<h3 id="sec-16-3"><span class="section-number-3">16.3</span> Summary</h3>
+<div class="outline-text-3" id="text-16-3">
+<p>
+when you start to think there are signs of overfitting, don’t become too trigger happy to kill off the experiment. Let the network train for another 10-15 epochs to ensure your hunch is correct and that overfitting is occurring – we often need the context of these epochs to help us make this final decision.<br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><span class="section-number-2">17</span> Case Study: Breaking Captchas with a CNN</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+In the real-world, the struglle is often obtaining the (labeled) data itself. And in many instances, the labeled data is worth a lot more than the deep learning model obtained from training a network on your dataset.<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18"><span class="section-number-2">18</span> Checkpointing Models</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+A good application of checkpoint is to serialize your network to disk each time there is an improvement during training. We define an improvement to be either a decrease in loss or an increase in accuracy.<br  />
+</p>
+
+
+<p>
+How to monitor a given metric (e.x., validation loss, validation accuracy, etc.) during training and then save high performing networks to disk?<br  />
+There are two methods to accomplish this inside Keras:<br  />
+</p>
+<ol class="org-ol">
+<li>Checkpoint incremental improvements.<br  />
+</li>
+<li>Checkpoint only the best model found during the process.<br  />
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19"><span class="section-number-2">19</span> Visualizing Network Architectures</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+Architecture visualization: the process of constructing a graph of nodes and associated connections in a network.<br  />
+Nodes in the graphs represent layers, while connnections between nodes represent the flow of data through the network.<br  />
+These graphs typically include the following components for each layer:<br  />
+</p>
+<ol class="org-ol">
+<li>The input volume size.<br  />
+</li>
+<li>The output volume size.<br  />
+</li>
+<li>And optionally the name of the layer.<br  />
+</li>
+</ol>
+
+<p>
+We typically use network architecture visualization when (1) debugging our own custom network architectures and (2) publication, where a visualization of the architecture is easier to understand than including the actual source code or trying to construct a table to convey the same information.<br  />
+</p>
+</div>
+
+
+<div id="outline-container-sec-19-1" class="outline-3">
+<h3 id="sec-19-1"><span class="section-number-3">19.1</span> The Importance of Architecture Visualization</h3>
+<div class="outline-text-3" id="text-19-1">
+<p>
+Visualizing the architecture of a model is a critical debugging tool, especially if you are:<br  />
+</p>
+<ol class="org-ol">
+<li>Implementing an architecture in a publication, but are unfamiliar with it.<br  />
+</li>
+<li>Implementing your own custom network architecture.<br  />
+</li>
+</ol>
+
+<p>
+Whenever implementing a network architecture, I suggest you visualize the network architecture after every block of CONV and POOL layers, which will enable you to validate your assumptions (and more importantly, catch "bugs" in the network early on).<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-19-2" class="outline-3">
+<h3 id="sec-19-2"><span class="section-number-3">19.2</span> Installing graphviz and pydot</h3>
+<div class="outline-text-3" id="text-19-2">
+<p>
+In order to construct a graph of our network and save it to disk using Keras, we need to install the graphviz prerequisite:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">sudo apt install graphviz
+</pre>
+</div>
+
+<p>
+Once graphviz library is installed, we need to install two Python packages:<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">pip install graphviz pydot-ng
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-19-3" class="outline-3">
+<h3 id="sec-19-3"><span class="section-number-3">19.3</span> Summary</h3>
+<div class="outline-text-3" id="text-19-3">
+<p>
+When implementing my own network architectures, I validate that I’m on the right track by visualizing the architecture every 2-3 layer blocks as I’m actually coding the network – this action helps me find bugs or flaws in my logic early on.<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20"><span class="section-number-2">20</span> Out-of-the-box CNNs for Classification</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+The Keras library ships with five CNNs that have been pre-trained on the ImageNet dataset:<br  />
+</p>
+<ul class="org-ul">
+<li>VGG16<br  />
+</li>
+<li>VGG19<br  />
+</li>
+<li>ResNet50<br  />
+</li>
+<li>Inception V3<br  />
+</li>
+<li>Xception<br  />
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-sec-20-1" class="outline-3">
+<h3 id="sec-20-1"><span class="section-number-3">20.1</span> VGG</h3>
+<div class="outline-text-3" id="text-20-1">
+<p>
+The VGG family of Convolutional Neural Networks can be characterized by two key components:<br  />
+</p>
+<ol class="org-ol">
+<li>All CONV layers using only 3 x 3 filters.<br  />
+</li>
+<li>Stacking muliple CONV -&gt; RELU layers sets before applying a POOL operation.<br  />
+</li>
+</ol>
+
+<p>
+There are two major drawbacks with VGG:<br  />
+</p>
+<ol class="org-ol">
+<li>It is painfully slow to train<br  />
+</li>
+<li>The network weights themselves are quite large. (500+MB)<br  />
+</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-20-2" class="outline-3">
+<h3 id="sec-20-2"><span class="section-number-3">20.2</span> ResNet</h3>
+<div class="outline-text-3" id="text-20-2">
+<p>
+First introduced by He et al. in their 2015 paper, "Deep Residual Learning for Image Recognition", the ResNet architecture has become a seminal work in the deep learning literature, demonstrating that extremely deep networks can be trained using standard SGD (and a reasonable initialization function) through the use of residual modules.<br  />
+Further accuracy can be obtained by updating the residual module to use identity mappings, as demonstrated in their 2016 follow-up publication, "Identity Mappings in Deep Residual Networks".<br  />
+</p>
+
+<p>
+Keep in mind that the ResNet50 (as in 50 weight layers) implementation in the Keras core library is based on the former 2015 paper. Even though ResNet is much deeper than both VGG16 and VGG19, the model size is actually substantially smaller due to the use of global average pooling rather than fully-connected layers, which reduces the model size down to 100+MB for ResNet50.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-20-3" class="outline-3">
+<h3 id="sec-20-3"><span class="section-number-3">20.3</span> Inception V3</h3>
+<div class="outline-text-3" id="text-20-3">
+<p>
+The "Inception" module (and the resulting Inception architecture) was introduced by Szegedy et al. their 2014 paper, "Going Deeper with Convolutions". The goal of the inception module is to act as "multi-level feature extractor" by computing 1 × 1, 3 × 3, and 5 × 5 convolutions within the same module of the network – the output of these filters are then stacked along the channel dimension before being fed into the next layer in the network.<br  />
+The original incarnation of this architecture was called GoogLeNet, but subsequent manifestations have simply been named Inception vN where N refers to the version number put out by Google. The Inception V3 architecture included in the Keras core comes from the later by publication by Szegedy et al., "Rethinking the Inception Architecture for Computer Vision". The weights for Inception V3 are smaller than both VGG and ResNet, coming in at 90+MB.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-20-4" class="outline-3">
+<h3 id="sec-20-4"><span class="section-number-3">20.4</span> Xception</h3>
+<div class="outline-text-3" id="text-20-4">
+<p>
+Xception was proposed by none other than François Chollet himself, the creator and chief maintainer of the Keras library, in his 2016 paper, "Xception: Deep Learning with Depthwise Separable Convolutions". Xception is an extension to the Inception architecture which replaces the standard Inception modules with depthwise separable convolutions. The Xception weights are the smallest of the pre-trained networks included in the Keras library, weighing in at 91MB.<br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2019-12-09 Mon 15:27</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

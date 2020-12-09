@@ -1,0 +1,29 @@
+\chapter{Cross Referencing}
+\begin{lstlisting}
+  \label % mark the label
+  \ref % refer after marking
+  \pageref
+  % notice, typeset twice to produce the corrent reference
+
+  % If the \label command appeared in ordinary text, then the current sectional unit,
+  % like the chapter or the section, would be assigned.
+  % If the \label would be placed within a numbered environment, that environment
+  % would be assigned to the key.
+
+  \newcommand{\fullref}[1]{\ref{#1} on page~\pageref{#1}}
+\end{lstlisting}
+
+For example:
+
+\begin{lstlisting}
+  Hello World\label{hello-label}
+
+  Refer to \ref{hello-label}
+\end{lstlisting}
+
+\begin{tcolorbox}
+Hello World\label{hello-label}
+
+Refer to \ref{hello-label}
+\end{tcolorbox}
+

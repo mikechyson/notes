@@ -1,0 +1,2471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-16 Thu 14:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mike Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org58c8e6a">1. Image Retrieval Using BIM and Features from Pretrained VGG Network for Indoor Localization</a>
+<ul>
+<li><a href="#org700b0bd">1.1. network</a></li>
+<li><a href="#org2ce213b">1.2. two experimental:</a></li>
+<li><a href="#orgec1e1a4">1.3. study content</a></li>
+<li><a href="#org1875970">1.4. result</a></li>
+<li><a href="#org66abe1b">1.5. problem</a></li>
+</ul>
+</li>
+<li><a href="#org9de7244">2. Very Deep Convolutional Networks for Large-Scale Image Recognition</a>
+<ul>
+<li><a href="#org7f13197">2.1. main work</a></li>
+<li><a href="#org7f562e5">2.2. introduction</a></li>
+<li><a href="#org99f2592">2.3. convnet configuration</a>
+<ul>
+<li><a href="#org2b5f7bb">2.3.1. architecture</a></li>
+<li><a href="#org1eb4a06">2.3.2. configurations</a></li>
+</ul>
+</li>
+<li><a href="#orgd17f192">2.4. classification framework</a>
+<ul>
+<li><a href="#org506a1c3">2.4.1. training</a></li>
+<li><a href="#org8135478">2.4.2. testing</a></li>
+</ul>
+</li>
+<li><a href="#org4ad6e75">2.5. classification experiments</a>
+<ul>
+<li><a href="#org2d9354d">2.5.1. single scale evaluation</a></li>
+</ul>
+</li>
+<li><a href="#org2f1b611">2.6. Localisation</a></li>
+<li><a href="#orgf56fcee">2.7. generalisation of very deep features</a></li>
+</ul>
+</li>
+<li><a href="#orgc7bd84a">3. Visualizing and Understanding Convolutional Networks</a>
+<ul>
+<li><a href="#org1f59497">3.1. intruduction</a></li>
+<li><a href="#orgea9a381">3.2. Approach</a></li>
+<li><a href="#orgb22eb27">3.3. Training Details</a></li>
+<li><a href="#orgccbe561">3.4. Convnet Visualization</a>
+<ul>
+<li><a href="#org7df08f1">3.4.1. Feature visualization</a></li>
+<li><a href="#org9bb6c80">3.4.2. Feature Evolution during Training</a></li>
+<li><a href="#org7a52b2e">3.4.3. Feature Invariance</a></li>
+<li><a href="#orga40b20c">3.4.4. Occlusion Sensitivity</a></li>
+<li><a href="#org413c995">3.4.5. Correspondence Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9534d55">4. BIM Tracker: A model based visual tracking approach for indoor localisation using a 3D building model</a></li>
+<li><a href="#org55950b6">5. BIM-PoseNet: Indoor camera localisation using a 3D indoor model and deep</a>
+<ul>
+<li><a href="#org7d6c356">5.1. Introduction</a></li>
+<li><a href="#org9b9a76d">5.2. Background and related work</a></li>
+<li><a href="#org02b6bad">5.3. Methodology</a></li>
+<li><a href="#org0bb9ad6">5.4. experiments and result</a>
+<ul>
+<li><a href="#org3006a58">5.4.1. dataset</a></li>
+<li><a href="#orge767df8">5.4.2. baseline performance using real images</a></li>
+<li><a href="#org518e770">5.4.3. fine-tuning with synthetic images</a></li>
+</ul>
+</li>
+<li><a href="#orgb936b3f">5.5. effects of level-of-detail of 3D models</a></li>
+</ul>
+</li>
+<li><a href="#org499ce14">6. Learning to Compare Image Patches via Convolutional Neural Networks</a></li>
+<li><a href="#orgf72744e">7. Structure Extraction from Texture via Relative Total Variation</a></li>
+<li><a href="#orgf2cb96d">8. Cross-Domain 3D Model Retrieval via Visual Domain Adaptation</a></li>
+<li><a href="#org71f1d58">9. Cross-domain Image Retrieval with a Dual Attribute-aware Ranking Network</a>
+<ul>
+<li><a href="#orga0614c3">9.1. Related Work</a></li>
+<li><a href="#org55b7308">9.2. Data Collection</a></li>
+</ul>
+</li>
+<li><a href="#org49b4b0e">10. You Only Look Once: Unified, Real-Time Object Detection</a>
+<ul>
+<li><a href="#orgd5d05f3">10.1. Introduction</a></li>
+<li><a href="#org3d4ed5e">10.2. Unified Detections</a>
+<ul>
+<li><a href="#org92e9100">10.2.1. Network Design</a></li>
+<li><a href="#org48f7e41">10.2.2. Training</a></li>
+<li><a href="#org2fd68d4">10.2.3. Limitations of YOLO</a></li>
+</ul>
+</li>
+<li><a href="#org27df9a0">10.3. Comparison to Other Detection Systems</a></li>
+</ul>
+</li>
+<li><a href="#org464a481">11. A Review on Deep Learning Techniques Applied to Semantic Segmentation</a>
+<ul>
+<li><a href="#org7be77cc">11.1. Summary</a></li>
+</ul>
+</li>
+<li><a href="#org6d53db6">12. Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation</a>
+<ul>
+<li><a href="#org16339c5">12.1. Abstract</a></li>
+</ul>
+</li>
+<li><a href="#org261531a">13. Data-driven Visual Similarity for Cross-domain Image Matching</a>
+<ul>
+<li><a href="#orgad56504">13.1. Introduction</a></li>
+<li><a href="#org14dcd0f">13.2. Approach</a>
+<ul>
+<li><a href="#org2a1069b">13.2.1. Data-driven Uniqueness</a></li>
+<li><a href="#org9870858">13.2.2. Algorithm Description</a></li>
+<li><a href="#org43c3df7">13.2.3. Other Features</a></li>
+<li><a href="#orgb9d9940">13.2.4. Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc8b5334">14. H-Net: Neural Network for Cross-domain Image Patch Matching</a></li>
+<li><a href="#orgd460169">15. Deep sketch feature for cross-domain image retrieval</a></li>
+<li><a href="#org9ab6d32">16. An End-to-End Deep Learning Architecture for Graph Classification</a>
+<ul>
+<li><a href="#org1021854">16.1. Abstract</a></li>
+<li><a href="#org8b4f48c">16.2. introduction</a></li>
+<li><a href="#org2ac6e1f">16.3. DGCNN (Deep Graph Convolutional Neural Network)</a>
+<ul>
+<li><a href="#org3a8ac31">16.3.1. Graph convolutional layers</a></li>
+<li><a href="#orgc8a59c6">16.3.2. Connection with Weisfeiler-Lehman subtree kernel</a></li>
+<li><a href="#org23a715a">16.3.3. Connection with propagation kernel</a></li>
+</ul>
+</li>
+<li><a href="#org446f483">16.4. The SortPooling layer</a></li>
+</ul>
+</li>
+<li><a href="#org3fe02d4">17. Hypergraph Neural Networks</a>
+<ul>
+<li><a href="#org4ceaf8c">17.1. Hypergraph Neural Network</a>
+<ul>
+<li><a href="#orgb52594f">17.1.1. <span class="todo TODO">TODO</span> node(vertex) classification problem on hypergraph</a></li>
+</ul>
+</li>
+<li><a href="#org08d3aa0">17.2. Spectral convolution on hypergraph</a></li>
+<li><a href="#org53c4f3c">17.3. Hypergraph construction</a></li>
+<li><a href="#orgaf010f2">17.4. Converting 3D model to graph</a></li>
+</ul>
+</li>
+<li><a href="#org1dff490">18. Learning with Hypergraphs: Clustering, Classification, and Embedding</a>
+<ul>
+<li><a href="#orga56cc0b">18.1. Preliminaries</a></li>
+<li><a href="#org03a8a28">18.2. Normailized hypergraph cut</a></li>
+<li><a href="#orgb0d4e4a">18.3. Random walk explanation</a></li>
+</ul>
+</li>
+<li><a href="#orgd37e827">19. A comprehensive survery on graph neural network</a>
+<ul>
+<li><a href="#orgc68c224">19.1. Graph neural network history</a></li>
+<li><a href="#org5834de6">19.2. Graph neural networks vs. network embedding</a></li>
+<li><a href="#orga2ff4df">19.3. Graph neural networks vs. graph kernel methods</a></li>
+</ul>
+</li>
+<li><a href="#orgf055ad9">20. Volumetric and Multi-View CNNs for Object Classification on 3D Data</a></li>
+<li><a href="#org597a307">21. Weisfeiler-Lehman graph kernels</a>
+<ul>
+<li><a href="#org05ba920">21.1. Introduction</a></li>
+<li><a href="#org3a5bee4">21.2. Review of graph kernels</a></li>
+<li><a href="#orgea5c237">21.3. The general Weisfeiler-Lehman kernels</a>
+<ul>
+<li><a href="#orgd8441e1">21.3.1. The Weisfeiler-Lehman kernel framework</a></li>
+<li><a href="#org75ecf28">21.3.2. The Weisfeiler-Lehman subtree kernel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org58c8e6a" class="outline-2">
+<h2 id="org58c8e6a"><span class="section-number-2">1</span> Image Retrieval Using BIM and Features from Pretrained VGG Network for Indoor Localization</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org700b0bd" class="outline-3">
+<h3 id="org700b0bd"><span class="section-number-3">1.1</span> network</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+VGG16 and VGG19<br />
+</p>
+
+<p>
+ImageNet pretrained network<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org2ce213b" class="outline-3">
+<h3 id="org2ce213b"><span class="section-number-3">1.2</span> two experimental:</h3>
+<div class="outline-text-3" id="text-1-2">
+<ol class="org-ol">
+<li>in corridor<br /></li>
+<li>in hall<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgec1e1a4" class="outline-3">
+<h3 id="orgec1e1a4"><span class="section-number-3">1.3</span> study content</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+view overlap<br />
+which layer is best<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1875970" class="outline-3">
+<h3 id="org1875970"><span class="section-number-3">1.4</span> result</h3>
+<div class="outline-text-3" id="text-1-4">
+<ol class="org-ol">
+<li>version-based method is more efficient<br /></li>
+<li>the fourth layer feature map is best<br /></li>
+<li>ImageNet network can extract generic features<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org66abe1b" class="outline-3">
+<h3 id="org66abe1b"><span class="section-number-3">1.5</span> problem</h3>
+<div class="outline-text-3" id="text-1-5">
+<ol class="org-ol">
+<li>large object effect like a picture frame or a poster<br /></li>
+<li>structure similarity (multiple pictures)<br /></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9de7244" class="outline-2">
+<h2 id="org9de7244"><span class="section-number-2">2</span> Very Deep Convolutional Networks for Large-Scale Image Recognition</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+VGG: Visual Geometry Group<br />
+</p>
+</div>
+<div id="outline-container-org7f13197" class="outline-3">
+<h3 id="org7f13197"><span class="section-number-3">2.1</span> main work</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+investigate the effect of the convolutional network depth on its accuracy in the large-scale image recognition setting.<br />
+</p>
+
+<p>
+VGG16-19 winned that ImageNet Challenge 2014 first in localisation and classification tracks.<br />
+</p>
+
+<p>
+VGG representations generalise well to other datasets.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org7f562e5" class="outline-3">
+<h3 id="org7f562e5"><span class="section-number-3">2.2</span> introduction</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+ImageNet Large-Scale Visual Recognition Challenge (ILSVRC)<br />
+</p>
+
+<p>
+attempts to improve accuracy:<br />
+</p>
+<ol class="org-ol">
+<li>utilise smaller receptive window size and samller stride of the first cnvolutional layer (Zeiler &amp; Fergus, 2013; Sermanet et al., 2014)<br /></li>
+<li>train and test the networks densely over the whole image and over multiple scales (Sermanet et al., 2014; Howard, 2014)<br /></li>
+<li>increase the depth of the network by adding more convolutional layers (this paper)<br /></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org99f2592" class="outline-3">
+<h3 id="org99f2592"><span class="section-number-3">2.3</span> convnet configuration</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org2b5f7bb" class="outline-4">
+<h4 id="org2b5f7bb"><span class="section-number-4">2.3.1</span> architecture</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">input</td>
+<td class="org-left">224 x 224 RGB image</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">preprocessing</td>
+<td class="org-left">substract the mean RGB value, from each pixel</td>
+<td class="org-left">(why?)</td>
+</tr>
+
+<tr>
+<td class="org-left">conv. filter</td>
+<td class="org-left">kernel=3 x 3 or 1 x 1; stride=1</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">spatial pooling</td>
+<td class="org-left">max-pooling, 2 x 2, stride=2</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">activation</td>
+<td class="org-left">rectification(ReLU)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+filters with a very small recptive field: 3 x 3 (the smallest size to capture the notion of left/right, up/down, center)<br />
+1 x 1 convolution filter: can be seen as a linear transformation of the input channels (followed by non-linearity)<br />
+</p>
+
+
+<p>
+Spatial padding is such that the spatial resolution is preserved after convolution. (i.e. the padding is 1 pixel for 3 x 3 conv. layers) (why?)<br />
+</p>
+
+<p>
+LRN: local response normalization (why? it des not improve the performance on the ILSVRC dataset)<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1eb4a06" class="outline-4">
+<h4 id="org1eb4a06"><span class="section-number-4">2.3.2</span> configurations</h4>
+<div class="outline-text-4" id="text-2-3-2">
+
+<div class="figure">
+<p><img src="pics/vgg.png" alt="vgg.png" /><br />
+</p>
+</div>
+
+<p>
+In spite of a large depth, the number of weights in our nets is not greater than the number of weights<br />
+in a more shallow net with larger conv. layer widths and receptive fields.<br />
+(That's one reason of using small kernel)<br />
+</p>
+
+
+<p>
+benefits of using three 3 x 3 conv. layer instead of a single 7 x 7 layer:<br />
+</p>
+<ol class="org-ol">
+<li>incorporate three non-linear rectification layers instead of a single one ==&gt; make the decision function more discriminative<br /></li>
+<li>less parameters ==&gt; imposing a regularisation on the 7 x 7 conv. filters, forcing them to have decomposition through the 3 x 3 filters<br /></li>
+</ol>
+
+
+<p>
+The incorporation of 1 × 1 conv. layers is a way to increase the non-linearity<br />
+of the decision function without affecting the receptive fields of the conv. layers.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd17f192" class="outline-3">
+<h3 id="orgd17f192"><span class="section-number-3">2.4</span> classification framework</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-org506a1c3" class="outline-4">
+<h4 id="org506a1c3"><span class="section-number-4">2.4.1</span> training</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+The training is carried out by optimising the multinomial logistic regression objective<br />
+using mini-batch gradient descent (based on back-propagation (LeCun et al., 1989)) with momentum.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">batch size</td>
+<td class="org-right">256</td>
+</tr>
+
+<tr>
+<td class="org-left">momentum</td>
+<td class="org-right">0.9</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+FC layers<br />
+first layer regularisation: weight decay (the \(L_2\) penalty multiplier set to \(5\cdot 10^{-4}\))<br />
+second layer regularisation: dropout (dropout ratio set to 0.5)<br />
+</p>
+
+
+<p>
+The learning rate was initially set to \(10^{-2}\) , and then decreased by a factor of 10 when the validation set accuracy stopped improving.<br />
+</p>
+
+<p>
+The net converged after 74 epoches because of: (less epoches)<br />
+</p>
+<ol class="org-ol">
+<li>implicit regularisation imposed b greater depth and smaller convolution filter sizes<br /></li>
+<li>pre-initialisation of certain layers<br /></li>
+</ol>
+
+
+<p>
+The initialisation of the network weights is important, since bad initialisation can stall learning<br />
+due to the instability of gradient in deep nets. ("Understanding the difficulty of training deep feedforward neural networks")<br />
+</p>
+
+<p>
+The author of this paper used pre-training emthod tu circumvent the initialisation of the network.<br />
+Although, the pre-training method is unnecessary for the initialisation, how is it done?<br />
+</p>
+
+
+<p>
+training set:<br />
+</p>
+<ol class="org-ol">
+<li>cropped from rescaled training images (one crop per image per SGD iteration)<br /></li>
+<li>random horizontal flipping<br /></li>
+<li>random RGB colour shift<br /></li>
+</ol>
+
+<p>
+Training image size:<br />
+equal to or greater than 224 x 224.<br />
+If the image is greater than 224 x 224, a crop will be done.<br />
+</p>
+
+<p>
+isotropically-rescaled <i>ai sou 'tro pi kerli</i><br />
+</p>
+
+<p>
+scale jittering (one method of training set augmentation):<br />
+Each training image is individually rescaled by randomly sampling S from a certain range \([S_{min}, S_{max}]\) .<br />
+Crop S size input from sampled images.<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org8135478" class="outline-4">
+<h4 id="org8135478"><span class="section-number-4">2.4.2</span> testing</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<ol class="org-ol">
+<li>rescale to a pre-defined smallest image side<br /></li>
+<li>network applied densely over the rescaled image<br /></li>
+<li>to obtain a fixed-size vector of class scores for the image, the class score is spatially averaged (sum-pooled)<br /></li>
+</ol>
+
+<p>
+multi-crop evaluation vs dense evalution:<br />
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org4ad6e75" class="outline-3">
+<h3 id="org4ad6e75"><span class="section-number-3">2.5</span> classification experiments</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Dataset:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">training</td>
+<td class="org-left">1.3M images</td>
+</tr>
+
+<tr>
+<td class="org-left">validation</td>
+<td class="org-left">50K images</td>
+</tr>
+
+<tr>
+<td class="org-left">testing</td>
+<td class="org-left">100K images</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+classification performance:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">top-1 error</td>
+<td class="org-left">the portion of incorrectly classified images</td>
+</tr>
+
+<tr>
+<td class="org-left">top-5 error</td>
+<td class="org-left">the portion of images such that the ground-truth category is outside the top-5 predicted categories</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-org2d9354d" class="outline-4">
+<h4 id="org2d9354d"><span class="section-number-4">2.5.1</span> single scale evaluation</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<p>
+A deep net with small filters outperforms a shallow net with larger filters.<br />
+Training set augmentation by scale jittering is indeed helpful for capturing multi-scale image statistics<br />
+</p>
+
+<p>
+What is convolution boundary condition?<br />
+</p>
+
+<p>
+Emsembling improves the performance duo to complementarity of the models.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f1b611" class="outline-3">
+<h3 id="org2f1b611"><span class="section-number-3">2.6</span> Localisation</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+bounding box prediction:<br />
+SCR: single-class regression?<br />
+PCR: per-class regression?<br />
+</p>
+
+<p>
+logistic regression &#x2013;&gt; Euclidean loss<br />
+</p>
+
+<p>
+To come up with the final prediction:<br />
+greedy merging procedure<br />
+</p>
+<ol class="org-ol">
+<li>merge spatially close predictions (by averaging their coordinates)<br /></li>
+<li>rates them on the class scores<br /></li>
+</ol>
+
+<p>
+localisation error in ILSVRC criterion:<br />
+\(IoU = \frac{P\cap G}{P\cup G} < 0.5\) <br />
+</p>
+
+<p>
+Conclution: The preformance in localisation can be improved with very deep convolution nets.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf56fcee" class="outline-3">
+<h3 id="orgf56fcee"><span class="section-number-3">2.7</span> generalisation of very deep features</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+ConvNets, pre-trained on ILSVRC, generalise well on other, smaller, datasets,<br />
+where training large models from scratch is not feasible due to over-fitting.<br />
+</p>
+
+<p>
+How:<br />
+remove the lst fully-connected layer and use 4096-D activation of the penultimate layer as image features<br />
+</p>
+
+<p>
+aggregation of feature:<br />
+</p>
+<ol class="org-ol">
+<li>an image is rescaled<br /></li>
+<li>the network is densely applied<br /></li>
+<li>perform global average pooling on the resulting feature map (produces a 4096-D image descriptor)<br /></li>
+<li>the descriptor is averaged with the descriptor of a horizontally flipped image<br /></li>
+<li>extract feature over several scales<br /></li>
+<li>the resulting multi-scale features can be either stacked or pooled across scales<br /></li>
+</ol>
+
+
+
+<p>
+20% of training images were used as a validation set for hyper-parameter selection.<br />
+hyper-parameter: set by human being. (learning rate, tree depth)<br />
+parameter: learned from a algorithm. (matrix weight of CNN)<br />
+</p>
+
+
+<p>
+If the dataset contains multi-scale image, stacking and pooling of feature are almost same.<br />
+Otherwise, stacking allows a classifier to expolit scale-specific representations, and behaves better.<br />
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgc7bd84a" class="outline-2">
+<h2 id="orgc7bd84a"><span class="section-number-2">3</span> Visualizing and Understanding Convolutional Networks</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org1f59497" class="outline-3">
+<h3 id="org1f59497"><span class="section-number-3">3.1</span> intruduction</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Without clear understanding of how and why they work, the development of better models is reduced to trial-and-error.<br />
+</p>
+
+<p>
+To study the CNN:<br />
+</p>
+<ol class="org-ol">
+<li>visualizing with multi-layer deconvolutinal network<br /></li>
+<li>sensitivity analysis of the classifier output by occluding portions of the input images.<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgea9a381" class="outline-3">
+<h3 id="orgea9a381"><span class="section-number-3">3.2</span> Approach</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+deconvnet: map features to pixels<br />
+</p>
+
+<p>
+switches: record the location of the local max in each pooling region.<br />
+</p>
+
+<p>
+In convnet, the max pooling operation is non-invertible, however we can obtain an approximate inverse with <b>swithes</b><br />
+<img src="pics/switches.png" alt="switches.png" /><br />
+</p>
+
+<p>
+As these switch settings are peculiar to a given input image, the reconstruction obtained from  a single activation thus resembles a small piece of the original input image, with structures weighted according to their contribution toward to the feature activation.<br />
+</p>
+
+<p>
+deconvent:<br />
+</p>
+<ol class="org-ol">
+<li>unpooling with switches<br /></li>
+<li>rectification with relu (same with convnet)<br /></li>
+<li>filtering with transposed filter<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgb22eb27" class="outline-3">
+<h3 id="orgb22eb27"><span class="section-number-3">3.3</span> Training Details</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+preprocess:<br />
+</p>
+<ol class="org-ol">
+<li>resize the smallest dimension to 256<br /></li>
+<li>crop the center 256*256 region<br /></li>
+<li>substracting the per-pixel mean<br /></li>
+<li>use 10 different sub-corps of size 224*224<br /></li>
+</ol>
+
+<p>
+optimization:<br />
+SGD with mini-batch (128)<br />
+</p>
+
+<p>
+Renormalize each filter whose RMS(root mean square) value exceeds a fixed radius of \(10^{-1}\) to this fixed radius to avoid a few of filters dominate.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgccbe561" class="outline-3">
+<h3 id="orgccbe561"><span class="section-number-3">3.4</span> Convnet Visualization</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+<div id="outline-container-org7df08f1" class="outline-4">
+<h4 id="org7df08f1"><span class="section-number-4">3.4.1</span> Feature visualization</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+<img src="pics/cnn-feature-visualization.png" alt="cnn-feature-visualization.png" /><br />
+<img src="pics/cnn-feature-visualization2.png" alt="cnn-feature-visualization2.png" /><br />
+</p>
+<ol class="org-ol">
+<li>strong grouping within each feature map<br /></li>
+<li>greater invariance at higher layers<br /></li>
+<li>exaggeration of discriminative parts of the image<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org9bb6c80" class="outline-4">
+<h4 id="org9bb6c80"><span class="section-number-4">3.4.2</span> Feature Evolution during Training</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+The latter layer need more epoches to converge.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org7a52b2e" class="outline-4">
+<h4 id="org7a52b2e"><span class="section-number-4">3.4.3</span> Feature Invariance</h4>
+<div class="outline-text-4" id="text-3-4-3">
+<p>
+For max pooling, the network output is stable to translations and scaling. In general, the output is not invariant to rotation.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga40b20c" class="outline-4">
+<h4 id="orga40b20c"><span class="section-number-4">3.4.4</span> Occlusion Sensitivity</h4>
+<div class="outline-text-4" id="text-3-4-4">
+<p>
+method: occlude different parts of the image.<br />
+</p>
+
+<p>
+The model is localizing the objects as the probability of the correct class drops significantly<br />
+when the object is occluded.<br />
+</p>
+
+<p>
+This shows that the visualization genuinely corresponds to the image structure<br />
+that stimulates that feature map.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org413c995" class="outline-4">
+<h4 id="org413c995"><span class="section-number-4">3.4.5</span> Correspondence Analysis</h4>
+<div class="outline-text-4" id="text-3-4-5">
+<p>
+method: masking out specified parts and random parts of a image.<br />
+</p>
+
+<p>
+At layer 5, the model does establish some degree of correspondence<br />
+by comparing Mean Feature Sign Change with masking out left eye, right eye, nose and random region.<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9534d55" class="outline-2">
+<h2 id="org9534d55"><span class="section-number-2">4</span> BIM Tracker: A model based visual tracking approach for indoor localisation using a 3D building model</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+localization with edges search and matching.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org55950b6" class="outline-2">
+<h2 id="org55950b6"><span class="section-number-2">5</span> BIM-PoseNet: Indoor camera localisation using a 3D indoor model and deep</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+result: indoor localization in real-time with an accuracy of approximately 2 meters.<br />
+</p>
+</div>
+<div id="outline-container-org7d6c356" class="outline-3">
+<h3 id="org7d6c356"><span class="section-number-3">5.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+objective: investigate whether pose estimation can be done by fine-tuning a pre-trained<br />
+           network using synthetic images derived from a 3D indoor model rather than geotagged images<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org9b9a76d" class="outline-3">
+<h3 id="org9b9a76d"><span class="section-number-3">5.2</span> Background and related work</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+The visual localization approaches in the literature can be classified as:<br />
+</p>
+<dl class="org-dl">
+<dt>appearance-based</dt><dd>image retrieval problem<br /></dd>
+<dt>pose eistimation-base</dt><dd>directly estimate the 6-DOF pose of a<br />
+<dl class="org-dl">
+<dt>matching point features with 3D point clouds</dt><dd>requirement of point clouds (usually derived from SfM)<br /></dd>
+<dt>pose regression using RGB-D images</dt><dd>fast and precise, but need RGB-D camera<br /></dd>
+<dt>pose regression using images only</dt><dd></dd>
+</dl></dd>
+</dl>
+
+<p>
+RGB-D: RGB + depth (distance between pixel and the sensors)<br />
+</p>
+
+<p>
+They fine-tuned a pre-trained network on image samples with ground-truth poses derived from the SfM methods.<br />
+</p>
+
+<p>
+They state: deep convolutional neural network trained for the task of classification preserve pose information till the final layer by leveraging transfer learning, despite being trained for a different task with a different dataset.<br />
+drawback (using ground-truth images): dependent on SfMmethods to estimate the ground truch camera poses,<br />
+required during fine-tuning the network.<br />
+</p>
+
+<p>
+synthetic images generated from 3D object models is used to eliminate the challenge of creating<br />
+manually labelled images (ground truth images)<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org02b6bad" class="outline-3">
+<h3 id="org02b6bad"><span class="section-number-3">5.3</span> Methodology</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+current CNN network -&gt; based on -&gt; PoseNet(Kendall,2015) -&gt; based on -&gt; GoogLeNet(Szegedy,2015)<br />
+</p>
+
+<p>
+Thw weights are updated from a pre-trained network of GooLeNet that is trained on Places dataset(Zhou,2014)<br />
+</p>
+
+\begin{equation}
+p=[x,q]
+\end{equation}
+<p>
+x is a vector representing;<br />
+q is a orientation representing;<br />
+</p>
+
+\begin{equation}
+\mathrm{loss}(I)=||\hat{x}-x||_2+\beta \left |\left | \hat{q}-\frac{q}{||q||} \right | \right |_2
+\end{equation}
+
+<p>
+\(\beta\) is a hyperparameter balancing the error of location and orientation.<br />
+</p>
+
+
+
+<p>
+The author of (Peng,2015) show that features derived from DCNNs are invariant to color, texture, pose and context.<br />
+In other words, if a network is invariant to an object's texture,<br />
+then it will have similar activations of neurons for the object with or without texture.<br />
+The network hallucinates the right texture when given a texutre-less object's shape.<br />
+(? don't understand)<br />
+</p>
+
+<p>
+Whether different model renderings and processing the real images to make them similar<br />
+to the synthetic images will increase the pose estimation accuracy.<br />
+</p>
+
+<p>
+To test this, we transform the synthetic and real images in a common feature space of edge gradient magnitude (gradmag) images.<br />
+(Converting images to edge gradmag comes at the cost of loss of information such as<br />
+colour and texture, but on the other hand, the main geometrical features of the images are preserved. )<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org0bb9ad6" class="outline-3">
+<h3 id="org0bb9ad6"><span class="section-number-3">5.4</span> experiments and result</h3>
+<div class="outline-text-3" id="text-5-4">
+<ol class="org-ol">
+<li>experiment 1: creating a baseline accuracy using real images<br /></li>
+<li>experiment 2: fine-tuning with synthetic image dataset and test<br /></li>
+<li>experiment 3: explore accuracy with detail<br /></li>
+</ol>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Caffe library on Linux</td>
+</tr>
+
+<tr>
+<td class="org-left">loss optimization</td>
+<td class="org-left">Adagrad gradient descent optimization algorithm</td>
+</tr>
+
+<tr>
+<td class="org-left">learing rate</td>
+<td class="org-left">\(10^{-3}\).</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">NVIDIA GTX980M</td>
+</tr>
+
+<tr>
+<td class="org-left">batch size</td>
+<td class="org-left">40</td>
+</tr>
+
+<tr>
+<td class="org-left">resize to resolution</td>
+<td class="org-left">320*240</td>
+</tr>
+
+<tr>
+<td class="org-left">crop</td>
+<td class="org-left">224*224</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-org3006a58" class="outline-4">
+<h4 id="org3006a58"><span class="section-number-4">5.4.1</span> dataset</h4>
+<div class="outline-text-4" id="text-5-4-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgef7843c"></a>synthetic image dataset<br />
+<div class="outline-text-5" id="text-5-4-1-1">
+<p>
+The BIM contains the main building elements including walls, floors, ceilings, doors, ceiling tube-lights,<br />
+and stairs, but not details such as material, fabrication, assembly and installation information<br />
+</p>
+
+<p>
+The height of the trajectory was kept in the range of \(1.5 - 1.8\) meters from the floor.<br />
+</p>
+
+<p>
+we have rendered images along the trajectory at 0.05 meters interval and \(\pm 10\) tilt.<br />
+</p>
+</div>
+</li>
+<li><a id="org98ad3e0"></a>real image dataset<br />
+<div class="outline-text-5" id="text-5-4-1-2">
+<p>
+A total number of 1000 images of 640x480 pixels resolution were acquired at a constant 30 frames per second.<br />
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orge767df8" class="outline-4">
+<h4 id="orge767df8"><span class="section-number-4">5.4.2</span> baseline performance using real images</h4>
+<div class="outline-text-4" id="text-5-4-2">
+<p>
+The value of \(\beta\) lies in the range of 120 to 750. (beta seleted)<br />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/saliency-map.png" alt="saliency-map.png" /><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org518e770" class="outline-4">
+<h4 id="org518e770"><span class="section-number-4">5.4.3</span> fine-tuning with synthetic images</h4>
+<div class="outline-text-4" id="text-5-4-3">
+<p>
+The author showed that: different parts of a image make a difference in importance.<br />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/dif-importance.png" alt="dif-importance.png" /><br />
+</p>
+</div>
+
+
+<p>
+elements to case error:<br />
+</p>
+<ol class="org-ol">
+<li>photo blur<br /></li>
+<li>external elements (like poster)<br /></li>
+<li>structral difference<br /></li>
+</ol>
+
+<p>
+Lighting of the scene plays a vital role in the appearance of the scene.<br />
+</p>
+
+<p>
+The high errors might be a result of the learnt features for each network,<br />
+which might not be suitable for pose regression with real images.<br />
+This fact is reflected in the saliency maps of the real images as predicted by the fine-tuned networks.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb936b3f" class="outline-3">
+<h3 id="orgb936b3f"><span class="section-number-3">5.5</span> effects of level-of-detail of 3D models</h3>
+</div>
+</div>
+<div id="outline-container-org499ce14" class="outline-2">
+<h2 id="org499ce14"><span class="section-number-2">6</span> Learning to Compare Image Patches via Convolutional Neural Networks</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+show how to learn directly from image data a general similarity function for comparing image patches.<br />
+</p>
+
+<p>
+Requirement: large datasets that contain patch correspondences between images.<br />
+This is not suitable from indoor localization, becuase this is no such large<br />
+dataset of camera pictures.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgf72744e" class="outline-2">
+<h2 id="orgf72744e"><span class="section-number-2">7</span> Structure Extraction from Texture via Relative Total Variation</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+a picture = meaningful structures + textured surfaces (commonly)<br />
+</p>
+
+<p>
+inherent variation and relative total variation to distinguish them<br />
+</p>
+
+<p>
+In psychology:<br />
+the overall structural features are the primary data<br />
+of human perception, not the individual details<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgf2cb96d" class="outline-2">
+<h2 id="orgf2cb96d"><span class="section-number-2">8</span> Cross-Domain 3D Model Retrieval via Visual Domain Adaptation</h2>
+</div>
+<div id="outline-container-org71f1d58" class="outline-2">
+<h2 id="org71f1d58"><span class="section-number-2">9</span> Cross-domain Image Retrieval with a Dual Attribute-aware Ranking Network</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+DARN: Dual Attribute-aware Randing Network<br />
+</p>
+
+<p>
+retrieval feature learing.<br />
+</p>
+
+<p>
+two sub-networks, whose retrieval feature representations are driven by semantic attribute learning.<br />
+</p>
+
+<p>
+attribute-guided learning is a key factor for retrieval accuracy improvement.<br />
+</p>
+</div>
+
+<div id="outline-container-orga0614c3" class="outline-3">
+<h3 id="orga0614c3"><span class="section-number-3">9.1</span> Related Work</h3>
+<div class="outline-text-3" id="text-9-1">
+<ol class="org-ol">
+<li>Fashion Dataset<br /></li>
+<li>Visual Analysis of Clothing with Fashion Datasetn<br /></li>
+<li>Visual Attibutes<br /></li>
+<li>Deep Learning (explicitly use attribute prediction as a regularizer in deep network)<br /></li>
+</ol>
+
+<p>
+Attributes are usually referred as semantic properties of objects or scenes that are shared across categories.<br />
+</p>
+
+<p>
+Richer supervision conveying annotator <i>'an nou tei ter</i> rationales based on visual attributes, can be considered as a form of privileged information.<br />
+Cross-domain image retrieval can benefit from feature learning that simultaneously optimizes a loss function that takes into account visual similarity and attribute classification.<br />
+</p>
+
+<p>
+A poselet describes a particular part of the human pose under a given viewpoint.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org55b7308" class="outline-3">
+<h3 id="org55b7308"><span class="section-number-3">9.2</span> Data Collection</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+&lt;key,value&gt; pair attribute.<br />
+key: attribute category.<br />
+value: attribute label.<br />
+</p>
+
+
+<p>
+9 categories of clothing attributes with 179 attribute values.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49b4b0e" class="outline-2">
+<h2 id="org49b4b0e"><span class="section-number-2">10</span> You Only Look Once: Unified, Real-Time Object Detection</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+How?<br />
+We frame object detection as a regression problem to spatically separated bounding boxes and associated class probabilites. A single neural network predicts bounding boxes and class probabilities directly from full images in one evaluation. Since the whole detection pipeline is a single network, it can be optimized end-to-end directly on detection performance.<br />
+</p>
+</div>
+
+<div id="outline-container-orgd5d05f3" class="outline-3">
+<h3 id="orgd5d05f3"><span class="section-number-3">10.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-10-1">
+
+<div class="figure">
+<p><img src="pics/yolo-figure1.png" alt="yolo-figure1.png" /><br />
+</p>
+</div>
+
+<p>
+Benefits:<br />
+</p>
+<ol class="org-ol">
+<li>YOLO extremely fast.<br /></li>
+<li>YOLO reasons globally about the image when make predictions.<br /></li>
+<li>YOLO learns generalizable representations of objects.<br /></li>
+</ol>
+
+<p>
+Disadvantage:<br />
+YOLO logs behind state-of-art detection systems in accuracy.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org3d4ed5e" class="outline-3">
+<h3 id="org3d4ed5e"><span class="section-number-3">10.2</span> Unified Detections</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+end-to-end<br />
+</p>
+
+<p>
+At traning time:<br />
+</p>
+<ol class="org-ol">
+<li>Divide the input image into an \(S \times S\) grid. If the center of an object falls into a grid cell, that grid cell is responsible for detecting that object.<br /></li>
+<li>Each grid cell predicts \(B\) bounding boxes and confidence scores for those boxes. \(Pr(Object) * IOU_{pred}^{truth}\)<br /></li>
+<li>Each bounding box consists of 5 predictions: \(x,y,w,h\) and confidence.<br /></li>
+<li>Each grid cell also predicts C conditional class probabilities, \(Pr(Class_i |Object)\).<br /></li>
+</ol>
+
+
+<div class="figure">
+<p><img src="pics/yolo-figure2.png" alt="yolo-figure2.png" /><br />
+</p>
+</div>
+
+<p>
+At test time:<br />
+class-specific confidence scores for each box is given by:<br />
+</p>
+\begin{equation}
+Pr(Class_i|Object) * Pr(Object) * IOU_{pred}^{truth} = Pr(Class_i)*IOU_{pred}^{truth}
+\end{equation}
+</div>
+
+<div id="outline-container-org92e9100" class="outline-4">
+<h4 id="org92e9100"><span class="section-number-4">10.2.1</span> Network Design</h4>
+<div class="outline-text-4" id="text-10-2-1">
+
+<div class="figure">
+<p><img src="pics/yolo-figure3.png" alt="yolo-figure3.png" /><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org48f7e41" class="outline-4">
+<h4 id="org48f7e41"><span class="section-number-4">10.2.2</span> Training</h4>
+<div class="outline-text-4" id="text-10-2-2">
+</div>
+<ol class="org-ol">
+<li><a id="org286d442"></a>activation function: (leaky rectified linear activation)<br />
+<div class="outline-text-5" id="text-10-2-2-1">
+\begin{equation}
+\phi(x) = 
+\begin{cases}
+x, \quad \mathrm{if} x > 0 \\
+0.1x, \quad \mathrm{otherwise}
+\end{cases}
+\end{equation}
+</div>
+</li>
+<li><a id="org15afb96"></a>loss (sum-quared error)<br />
+<div class="outline-text-5" id="text-10-2-2-2">
+<p>
+We use sum-squared error because it is easy to optimize, however it does not perfectly align with our goal of maximizing average precision. It weights localization error equally with classification error which may not be ideal. Also, in every image many grid cells do not contain any object. This pushes the “confidence” scores of those cells towards zero, often overpowering the gradient from cells that do contain objects. This can lead to model instability, causing training to diverge early on.<br />
+</p>
+
+<p>
+To remedy this, we increase the loss from bounding box coordinate predictions and decrease the loss from confidence predictions for boxes that don’t contain objects. We use two parameters, \(\lambda_{coord}\) and \(\lambda_{noobj}\) to accomplish this. We set \(\lambda_{coord} = 5 \ \mathrm{and}\ \lambda_{noobj} = .5\).<br />
+</p>
+
+<p>
+Sum-squared error also equally weights errors in large boxes and small boxes. Our error metric should reflect that small deviations in large boxes matter less than in small boxes. To partially address this we predict the square root of the bounding box width and height instead of the width and height directly.<br />
+</p>
+
+\begin{equation}
+\begin{matrix}
+\lambda_{coord}\sum_{i=0}^{S^2}\sum_{j=0}^B \mathbb{1}_{i,j}^{obj}[(x_i-\hat{x}_i)^2+(y_i-\hat{y}_i)^2 + (\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2] \\
++ \sum_{i=0}^{S^2}\sum_{j=0}^B \mathbb{1}_{i,j}^{obj}(C_i-\hat{C}_i)^2 \\
++ \lambda_{noobj} \sum_{i=0}^{S^2}\sum_{j=0}^B \mathbb{1}_{i,j}^{noobj}(C_i-\hat{C}_i)^2 \\
++ \sum_{i=0}^{S^2}\mathbb{1}_i^{obj}\sum_{c\in \mathrm{classes}}(p_i(c)-\hat{p}_i(c))^2
+\end{matrix}
+\end{equation}
+<p>
+where \(\mathbb{1}_i^{obj}\) denotes if object appears in cell \(i\) and \(1_{i,j}^{obj}\) denotes that the $j$th bounding box predictor in cell \(i\) is "responsible" for that prediction.<br />
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">epochs</td>
+<td class="org-right">135</td>
+</tr>
+
+<tr>
+<td class="org-left">batch size</td>
+<td class="org-right">64</td>
+</tr>
+
+<tr>
+<td class="org-left">mementum</td>
+<td class="org-right">0.9</td>
+</tr>
+
+<tr>
+<td class="org-left">dacay</td>
+<td class="org-right">0.0005</td>
+</tr>
+
+<tr>
+<td class="org-left">dropout</td>
+<td class="org-right">0.5</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+learning rate:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">first epochs</td>
+<td class="org-left">\(10^{-3} \rightarrow 10^{-2}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">75 epochs</td>
+<td class="org-left">\(10^{-2}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">30 epochs</td>
+<td class="org-left">\(10^{-3}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">30 epochs</td>
+<td class="org-left">\(10^{-4}\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org2fd68d4" class="outline-4">
+<h4 id="org2fd68d4"><span class="section-number-4">10.2.3</span> Limitations of YOLO</h4>
+<div class="outline-text-4" id="text-10-2-3">
+<ol class="org-ol">
+<li>YOLO imposes strong spatial constraints on bounding box predictions since each grid cell only predicts two boxes and can only have one class.<br /></li>
+<li>Since our model learns to predict bounding boxes from data, it struggles to generalize to objects in new or unusual aspect ratios or configurations.<br /></li>
+<li>Our loss function treats errors the same in small bounding boxes versus large bounding boxes. A small error in a large box is generally benign but a small error in a small box has a much greater effect on IOU. Our main source of error is incorrect localizations.<br /></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org27df9a0" class="outline-3">
+<h3 id="org27df9a0"><span class="section-number-3">10.3</span> Comparison to Other Detection Systems</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+Detectors for single classes like faces or people can be highly optimized since they have to deal with much less variation. YOLO is a general purpose detector that learns to detect a variety of objects simultaneously.<br />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org464a481" class="outline-2">
+<h2 id="org464a481"><span class="section-number-2">11</span> A Review on Deep Learning Techniques Applied to Semantic Segmentation</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org7be77cc" class="outline-3">
+<h3 id="org7be77cc"><span class="section-number-3">11.1</span> Summary</h3>
+<div class="outline-text-3" id="text-11-1">
+<ol class="org-ol">
+<li>no reproducibility<br />
+<ul class="org-ul">
+<li>no setup<br /></li>
+<li>no source code<br /></li>
+<li>no model weight<br /></li>
+</ul></li>
+<li>focus on accuracy<br />
+<ul class="org-ul">
+<li>no time consideration<br /></li>
+<li>no space consideration<br /></li>
+</ul></li>
+<li>current best methods<br />
+<ul class="org-ul">
+<li>DeepLab on single RGB images dataset<br /></li>
+<li>LSTM-CF on 2.5D or multimodal datasets<br /></li>
+<li>PointNet on 3D data segmentation<br /></li>
+<li>Clockwork Convnets on video sequences<br /></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d53db6" class="outline-2">
+<h2 id="org6d53db6"><span class="section-number-2">12</span> Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org16339c5" class="outline-3">
+<h3 id="org16339c5"><span class="section-number-3">12.1</span> Abstract</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+Spatial pyramid pooling module or encode-decoder structure are used in deep neural networks for semantic segmentation task. The former networks are able to encode multi-scale contextual information by probing the incoming features with filters or pooling operations at multiple rates and multiple effective fields-of-view, while the latter networks can capture sharper object boundaries by gradually recovering the spatial information. In this work, we propose to combine the advantages from both methods.<br />
+</p>
+
+<p>
+Model: <a href="https://github.com/tensorflow/models/tree/master/research/deeplab">https://github.com/tensorflow/models/tree/master/research/deeplab</a><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org261531a" class="outline-2">
+<h2 id="org261531a"><span class="section-number-2">13</span> Data-driven Visual Similarity for Cross-domain Image Matching</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-orgad56504" class="outline-3">
+<h3 id="orgad56504"><span class="section-number-3">13.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-13-1">
+<p>
+In general, visual matching approaches can be divided into three broad classes, with different techniques tailored for each:<br />
+</p>
+<ol class="org-ol">
+<li>exact matching<br />
+<ul class="org-ul">
+<li>bag-of-words [Sivic and Zisserman 2003]<br />
+<ul class="org-ul">
+<li>SIFT descriptor [Lowe 2004]<br /></li>
+</ul></li>
+</ul></li>
+<li>approximating matching<br />
+<ul class="org-ul">
+<li>GIST descriptor [Oliva and Torralba 2006]<br /></li>
+<li>HoG (Histogram of Gradients) descriptor [Dalal and Triggs 2005]<br /></li>
+<li>pyramid of visual words [Lazebnik et al. 2009]<br /></li>
+<li>CBIR (Content-Based Image Retrieval) [Datta et al. 2008]<br /></li>
+</ul></li>
+<li>cross-domain matching<br />
+<ul class="org-ul">
+<li>sketches to photographs [Chen et al. 2009; Eitz et al. 2010]<br /></li>
+<li>drawings/paintings to photographs [Russell et al. 2011]<br /></li>
+<li>photos under different illuminants [Chong et al. 2008]<br /></li>
+<li>local self-similarity descriptor [Shechtman and Irani 2007]<br /></li>
+<li>train a discriminative classifier using a single positive instance and a large body of negatives , provided that the negatives do not contain any images similar to the positive instance. [Wolf et al. 2009; Malisiewicz et al. 2011]<br /></li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org14dcd0f" class="outline-3">
+<h3 id="org14dcd0f"><span class="section-number-3">13.2</span> Approach</h3>
+<div class="outline-text-3" id="text-13-2">
+<p>
+Develop a right similarity distance function, which can "pick" which parts of the representation are most important for matching.<br />
+</p>
+</div>
+
+<div id="outline-container-org2a1069b" class="outline-4">
+<h4 id="org2a1069b"><span class="section-number-4">13.2.1</span> Data-driven Uniqueness</h4>
+<div class="outline-text-4" id="text-13-2-1">
+<p>
+The visual similarity function is based on the idea of "data-driven uniqueness".<br />
+</p>
+
+<p>
+However, estimating "uniqueness" of a visual signal is not at all an easy task, since it requires a very detailed model of our entire visual world, since only then we can know if something is truly unique. Therefore, instead we propose to compute uniqueness in a data-driven way — against a very large dataset of randomly selected images.<br />
+</p>
+
+<p>
+The basic idea behind our approach is that the features of an image that exhibit high "uniqueness" will also be the features that would best discriminate this image (the positive sample) against the rest of the data (the negative samples).<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9870858" class="outline-4">
+<h4 id="org9870858"><span class="section-number-4">13.2.2</span> Algorithm Description</h4>
+<div class="outline-text-4" id="text-13-2-2">
+<p>
+We set up the learning problem using a single positive and a very large negative set of samples.<br />
+</p>
+
+<p>
+Each query image (\(I_q\)) is represented with a rigid grid-like HoG feature template (\(x_q\)).<br />
+</p>
+
+<p>
+To add robustness to small errors, we create a set of extra positive point \(\mathcal{P}\) by applying small transformations to the query image and generating \(x_i\) for each sample.<br />
+</p>
+
+<p>
+The SVM classifier is learned using \(I_q\) and \(\mathcal{P}\) as positive samples, and a set containing millions of sub-images \(\mathcal{N}\) (extracted from 10000 randomly selected Flickr images), as negatives.<br />
+</p>
+
+<p>
+Learning the weight vector \(w_q\) amounts to minimizing the following convex objective functions:<br />
+</p>
+\begin{equation}
+L(\mathbf{w}_q)=\sum_{\mathbf{x}_i\in \mathcal{P}\cup I_q} h(\mathbf{w}_q^T \mathbf{x}_i) + \sum_{\mathbf{x}_j\in \mathcal{N}} h(-\mathbf{w}_q^T \mathbf{x}_j) + \lambda||\mathbf{w}_q||^2
+\end{equation}
+
+<p>
+We use LIBSVM for learning \(\mathbf{w}_q\) with a common regularization parameter \(\lambda=100\) and the standard hingle loss functions \(h(x) = \max(0,1-x)\).<br />
+</p>
+
+<p>
+The hinge-loss allows us to cope with millions of negative windows because the solution only depends on a small set of negative support vectors.<br />
+</p>
+
+<p>
+In hard-negative mining, one first train an initial classifier using a small set of training examples, and then use the trained classifier to search the full training set exhaustively for false positives (hard examples).<br />
+</p>
+
+<p>
+Once sufficient number of hard negatives are found in the training set, one retrains the classifier \(\mathbf{w}_q\) using this set of hard examples.<br />
+</p>
+
+
+<p>
+We alternate between learning \(\mathbf{w}_q\) given a current set of hard-negative examples, and mining additional negative examples using the current \(\mathbf{w}_q\). (Histograms of Oriented Gradients for Human Detection)<br />
+</p>
+
+<p>
+We use 10 interations of hard-mining procedures.<br />
+</p>
+
+<p>
+Empirically, we found that more than 10 iterations did not provide enough improvement to justify the run-time cost.<br />
+</p>
+
+
+<hr />
+
+<p>
+The standard sliding window set up (Histograms of Oriented Gradients for Human Detection) is used to evaluate all the sub-windows of each image.<br />
+</p>
+
+<p>
+For this, the trained classifier is convolved with the HoG feature pyramid at multiple scales for each image in the database. (?)<br />
+</p>
+
+<p>
+We use simple non-maxima suppresion to remove highly-overlapping redundant matches.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org43c3df7" class="outline-4">
+<h4 id="org43c3df7"><span class="section-number-4">13.2.3</span> Other Features</h4>
+<div class="outline-text-4" id="text-13-2-3">
+<p>
+Our framework should be able to work with any rigid grid-like image representation where the template captures feature distribution in some form of histogram of high-enough dimensionality.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb9d9940" class="outline-4">
+<h4 id="orgb9d9940"><span class="section-number-4">13.2.4</span> Limitations</h4>
+<div class="outline-text-4" id="text-13-2-4">
+<p>
+Speed remains the central limitation of the proposed approach, since it requires training an SVM (with hard-negative mining) at query time.<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc8b5334" class="outline-2">
+<h2 id="orgc8b5334"><span class="section-number-2">14</span> H-Net: Neural Network for Cross-domain Image Patch Matching</h2>
+</div>
+
+<div id="outline-container-orgd460169" class="outline-2">
+<h2 id="orgd460169"><span class="section-number-2">15</span> Deep sketch feature for cross-domain image retrieval</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+end-to-end neural network trained by mixing data of sketches and natural images.<br />
+</p>
+
+<p>
+two contributions:<br />
+</p>
+<ol class="org-ol">
+<li>an edge-preserving image resizing method.<br /></li>
+<li>visual angle can affect the object recognition of humans -&gt; multi-angle voting sheme for the sketch classification.<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org9ab6d32" class="outline-2">
+<h2 id="org9ab6d32"><span class="section-number-2">16</span> An End-to-End Deep Learning Architecture for Graph Classification</h2>
+<div class="outline-text-2" id="text-16">
+</div>
+<div id="outline-container-org1021854" class="outline-3">
+<h3 id="org1021854"><span class="section-number-3">16.1</span> Abstract</h3>
+<div class="outline-text-3" id="text-16-1">
+<p>
+Input: graph \(G=(V,E)\)<br />
+output: class \(y\)<br />
+</p>
+
+<p>
+two main challenges:<br />
+</p>
+<ol class="org-ol">
+<li>how to extract useful features characterizing the rich information encoded in a graph for classification purpose<br /></li>
+<li>how to sequentially read a graph in a meaningful and consistent order<br /></li>
+</ol>
+
+<p>
+solutions:<br />
+</p>
+<ol class="org-ol">
+<li>localized graph convlution for challenge 1<br /></li>
+<li>sortpooling layer for challenge 2<br /></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org8b4f48c" class="outline-3">
+<h3 id="org8b4f48c"><span class="section-number-3">16.2</span> introduction</h3>
+<div class="outline-text-3" id="text-16-2">
+<p>
+generalizing neural network to graph:<br />
+</p>
+<ol class="org-ol">
+<li>spectral<br /></li>
+<li>spatial<br /></li>
+</ol>
+
+
+<p>
+To keep much more vertex information and learn from the global graph topology.<br />
+</p>
+
+<p>
+A key innovation is a new SortPooling layer, which takes as input a graph’s unordered vertex features from spatial graph convolutions.<br />
+Instead of summing up these vertex features, SortPooling arranges them in a consistent order, and outputs a sorted graph representation with a fixed size, so that traditional convolutional neural networks can read vertices in a consistent order and be trained on this representation.<br />
+</p>
+
+<pre class="example">
+There is no high or low, simple or complex, good or bad thought, there is only suitable or not thought.
+I replace summing operation with concaternation operation in VGG + consine similarity experiment.
+Teacher Zhou said, it is a simple idea, there is no breakthrough.
+In this paper, the author add a new SortPooling layer.
+
+Instead of summing up these vertex features, SortPooling arranges them in a consistent order, and outputs a sorted graph representation with a fixed size, so that traditional convolutional neural networks can read vertices in a consistent order and be trained on this representation.
+
+It is also the idea of replacing summing with concaternation! 
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2ac6e1f" class="outline-3">
+<h3 id="org2ac6e1f"><span class="section-number-3">16.3</span> DGCNN (Deep Graph Convolutional Neural Network)</h3>
+<div class="outline-text-3" id="text-16-3">
+<p>
+3 sequential stages:<br />
+</p>
+<ol class="org-ol">
+<li>graph convolution layer<br /></li>
+<li>SortPooling layer<br /></li>
+<li>traditional convolutional and dense layers<br /></li>
+</ol>
+
+
+
+<div class="figure">
+<p><img src="pics/dgcnn.png" alt="dgcnn.png" /><br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org3a8ac31" class="outline-4">
+<h4 id="org3a8ac31"><span class="section-number-4">16.3.1</span> Graph convolutional layers</h4>
+<div class="outline-text-4" id="text-16-3-1">
+<p>
+For example:<br />
+There are 5 vertices, \(A\) denote the adjacency matrix, \(X\) donote the node information matrix.<br />
+</p>
+
+<p>
+Graph:<br />
+<img src="pics/dgcnn-graph.png" alt="dgcnn-graph.png" /><br />
+</p>
+
+<p>
+A:<br />
+<img src="pics/dgcnn-a.png" alt="dgcnn-a.png" /><br />
+</p>
+
+<p>
+X:<br />
+<img src="pics/dgcnn-x.png" alt="dgcnn-x.png" /><br />
+</p>
+
+
+
+<p>
+Graph convolution layer takes the form:<br />
+</p>
+\begin{equation}
+Z=f(\tilde{D}^{-1}\tilde{A}XW)
+\end{equation}
+
+<p>
+where \(\tilde{A} = A + I\) is the adjacency matrix of the graph with added self-loops,<br />
+\(\tilde{D}\) is the diagonal degree matrix with \(\tilde{D}_{ii} = \sum_{j}\tilde{A}_{ij}, W \in \mathbb{R}^{c\times c'}\) is a matrix of trainable graph convolution parameters, \(f\) is a nonlinear activation function, and \(Z\in \mathbb{R}^{n\times c'}\) is the output activation matrix.<br />
+</p>
+
+<p>
+After all several layers, the output are concaternated.<br />
+</p>
+
+
+<p>
+For this example graph<br />
+</p>
+
+<p>
+\(\tilde{A}\):<br />
+<img src="pics/dgcnn-a-tilde.png" alt="dgcnn-a-tilde.png" /><br />
+</p>
+
+
+<p>
+\(\tilde{D}\):<br />
+<img src="pics/dgcnn-d-tilde.png" alt="dgcnn-d-tilde.png" /><br />
+</p>
+
+
+
+<div class="figure">
+<p><img src="pics/dgcnn-cnn.png" alt="dgcnn-cnn.png" /><br />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc8a59c6" class="outline-4">
+<h4 id="orgc8a59c6"><span class="section-number-4">16.3.2</span> Connection with Weisfeiler-Lehman subtree kernel</h4>
+<div class="outline-text-4" id="text-16-3-2">
+<p>
+WL is widely used in graph isomorphism checking: if two graphs are isomorphic, they will have the same multiset of WL colors at any iteration.<br />
+</p>
+
+<p>
+The intuition is that two graphs are similar if they have many common subtrees rooted at their vertices, which are characterized by colors (same color ⇔ same WL signature ⇔ same rooted subtree).<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org23a715a" class="outline-4">
+<h4 id="org23a715a"><span class="section-number-4">16.3.3</span> Connection with propagation kernel</h4>
+<div class="outline-text-4" id="text-16-3-3">
+<p>
+The CNN layer proposed here is formed from two ideas:<br />
+</p>
+<ol class="org-ol">
+<li>Weisfeiler-Lehman subtree kernel (compare the subtree)<br /></li>
+<li>propagation kernel (compare the label distribution)<br /></li>
+</ol>
+
+
+<pre class="example">
+create with combination here.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org446f483" class="outline-3">
+<h3 id="org446f483"><span class="section-number-3">16.4</span> The SortPooling layer</h3>
+<div class="outline-text-3" id="text-16-4">
+<p>
+The main function of the SortPooling layer is to sort the feature descriptors, each of which represents a vertex, in a consistent order before feeding them into traditional 1-D convolutional and dense layers.<br />
+</p>
+
+<p>
+Sort vertices according to their structural roles in the graph.<br />
+</p>
+
+<p>
+In the SortPooling layer, the input \(Z^{1:h}\) is first sorted row-wise according to \(Z^h\).<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3fe02d4" class="outline-2">
+<h2 id="org3fe02d4"><span class="section-number-2">17</span> Hypergraph Neural Networks</h2>
+<div class="outline-text-2" id="text-17">
+<pre class="example">
+CNN is suitable for grid-like structure.
+</pre>
+
+
+<p>
+HGNN: hypergraph neural networks<br />
+GCN: graph convolution network<br />
+why: Confronting the challenges of learning representation for complex data<br />
+how: a hyperedge convolution operation is designed to handle the data correlation during representation learning.<br />
+</p>
+
+
+<p>
+graph convolution:<br />
+</p>
+<ol class="org-ol">
+<li>is able to encode the graph structure.<br /></li>
+<li>can be used in semi-supervised learning.<br /></li>
+</ol>
+
+
+
+<p>
+two contributions:<br />
+</p>
+<ol class="org-ol">
+<li>HGNN for representation learning using hypergraph structure.<br /></li>
+<li>extensive experiments on citation network classification and visual object classification tasks. (not meaningful)<br /></li>
+</ol>
+
+
+<p>
+two approaches:<br />
+</p>
+<ol class="org-ol">
+<li>special operation for special data structure (CNN for grid-like image, GCN for graph, HGNN for hypergraph)<br /></li>
+<li>special operation for different data structure (CNN for graph)<br /></li>
+</ol>
+
+
+<p>
+CNN on graph:<br />
+</p>
+<ol class="org-ol">
+<li>spectral approaches<br /></li>
+<li>spatial approaches<br /></li>
+</ol>
+
+
+<pre class="example">
+Hypergraph learning is first introduced in "Learning with Hypergraphs: Clustering, Classification, and Embedding"
+The first graph CNN: "Spectral Networks and Locally Connected Networks on Graphs"
+</pre>
+</div>
+
+<div id="outline-container-org4ceaf8c" class="outline-3">
+<h3 id="org4ceaf8c"><span class="section-number-3">17.1</span> Hypergraph Neural Network</h3>
+<div class="outline-text-3" id="text-17-1">
+</div>
+<div id="outline-container-orgb52594f" class="outline-4">
+<h4 id="orgb52594f"><span class="section-number-4">17.1.1</span> <span class="todo TODO">TODO</span> node(vertex) classification problem on hypergraph</h4>
+<div class="outline-text-4" id="text-17-1-1">
+\begin{equation}
+\arg\min_{f\in\mathbb{R}^{|V|}}\{R_{emp}(f)+\mu\Omega(f)\}
+\end{equation}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org08d3aa0" class="outline-3">
+<h3 id="org08d3aa0"><span class="section-number-3">17.2</span> Spectral convolution on hypergraph</h3>
+<div class="outline-text-3" id="text-17-2">
+<p>
+identity matrix (W): equal weights for all hyperedges<br />
+</p>
+
+<p>
+hyperedge convolution:<br />
+</p>
+\begin{equation}
+Y=D_v^{-\frac{1}{2}} HWD_e^{-1}H^\top D_v^{-\frac{1}{2}} X\Theta
+\end{equation}
+
+<p>
+The HGNN layer extract the high-order correlation on hypergraph by the node-edge-node transform.<br />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/hgnn-layer.png" alt="hgnn-layer.png" /><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org53c4f3c" class="outline-3">
+<h3 id="org53c4f3c"><span class="section-number-3">17.3</span> Hypergraph construction</h3>
+<div class="outline-text-3" id="text-17-3">
+<p>
+We build the hypergraph according to the distance between two features.<br />
+More specifically, Euclidean distance is used to calculate \(d(\mathbf{x}_i,\mathbf{x}_j)\).<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgaf010f2" class="outline-3">
+<h3 id="orgaf010f2"><span class="section-number-3">17.4</span> Converting 3D model to graph</h3>
+<div class="outline-text-3" id="text-17-4">
+<p>
+a probability graph based on the distance of nodes.<br />
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org1dff490" class="outline-2">
+<h2 id="org1dff490"><span class="section-number-2">18</span> Learning with Hypergraphs: Clustering, Classification, and Embedding</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+Why hypergraph?<br />
+In many real-world problems, however, relationships among the objects of our interest are more complex than pairwise.<br />
+Naively squeezing the complex relationships into pairwise ones will inevitably lead to loss of information which can be expected valuable for our learning tasks however.<br />
+</p>
+
+<p>
+main work:<br />
+generalize spectral clustering techniques to hypergraphs.<br />
+</p>
+</div>
+
+<div id="outline-container-orga56cc0b" class="outline-3">
+<h3 id="orga56cc0b"><span class="section-number-3">18.1</span> Preliminaries</h3>
+<div class="outline-text-3" id="text-18-1">
+<p>
+A hyperedge \(e\) is said to be incident with a vertex \(v\) when \(v\in e\).<br />
+</p>
+
+<p>
+The adjacency matrix A of a hypergraph G is define as \(A=HWH^{\mathrm{T}}-D_v\),<br />
+where \(D_v\) is the degree matrix, \(H\) is the incidence matrix, \(W\) is the weight matrix, \(H^\mathrm{T}\) is the transpose of H.<br />
+</p>
+
+<p>
+Given an arbitrary set \(S\), let \(|S|\) denote the cardinality of \(S\).<br />
+For a hyperedge \(e\in E\), its degree is defined to be \(\delta(e)=|e|\).<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org03a8a28" class="outline-3">
+<h3 id="org03a8a28"><span class="section-number-3">18.2</span> Normailized hypergraph cut</h3>
+<div class="outline-text-3" id="text-18-2">
+<p>
+Similar to the graph cut, a hypergraph cut is defined as follows:<br />
+For a vertex subset \(S\subset V\), lset \(S^c\) denote the compliment of \(S\).<br />
+A cut of a hypergraph \(G=(V,E,w)\) is a partition of \(V\) into two parts \(S\) and \(S^c\).<br />
+We say that a hypergraph \(e\) is a cut if it is incident with the vertices in \(S\) and \(S^c\) simultaneously.<br />
+</p>
+
+
+
+<p>
+Given a vertex subset \(S\subset V\), define the hyperedge boundary \(\partial S\) of \(S\) to be a hyperedge set which consists of hyperedges which are cut, i.e.<br />
+</p>
+\begin{equation}
+\partial S := \{e\in E | e \cap S \ne \emptyset, e \cap S^c \ne \emptyset\}
+\end{equation}
+
+<p>
+Define the volume vol\(S\) of \(S\) to the sum of the degrees of the vertices in \(S\).<br />
+</p>
+
+
+\begin{equation}
+\mathrm{vol}\partial S := \sum_{e\in \partial S}  \frac{w(e)}{\delta(e)} |e\cap S| |e\cap S^c|.
+\end{equation}
+<p>
+where w(e) is the weight function, \(\partial S\) is the hyperedge boundary, \(\delta(e)\) is the degree of the edge \(e\) (\(\delta(e)=|e|\))<br />
+</p>
+
+
+<div class="figure">
+<p><img src="pics/hypergraph-cut.png" alt="hypergraph-cut.png" /><br />
+</p>
+</div>
+
+<p>
+Naturally, we try to obtain a partition in which the connection among the vertices in the same cluster is dense while the connection between two clusters is sparse.<br />
+</p>
+
+\begin{equation}
+\mathop{\arg\min}_{\emptyset \ne S \subset V} c(S) := \mathrm{vol} \partial S \left(\frac{1}{\mathrm{vol}S} + \frac{1}{\mathrm{vol}S^c}\right)
+\end{equation}
+
+
+<p>
+Compute to understand:<br />
+</p>
+\begin{equation}
+\sum_{e\in \partial S} \frac{w(e)}{\delta(e)} |e \cap S| | e \cap S^c| \frac{\mathrm{vol}S + \mathrm{vol}S^c}{\mathrm{vol}S \cdot \mathrm{vol}S^c}
+\propto \sum_{e\in \partial S} \frac{w(e)}{\delta(e)}
+\end{equation}
+
+<p>
+That is, the cut destroy the connection as less as possible.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb0d4e4a" class="outline-3">
+<h3 id="orgb0d4e4a"><span class="section-number-3">18.3</span> Random walk explanation</h3>
+</div>
+</div>
+
+<div id="outline-container-orgd37e827" class="outline-2">
+<h2 id="orgd37e827"><span class="section-number-2">19</span> A comprehensive survery on graph neural network</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+GNN networks:<br />
+</p>
+<ul class="org-ul">
+<li>RecGNN<br /></li>
+<li>ConvGNN<br />
+<ul class="org-ul">
+<li>spectrual-based<br /></li>
+<li>spatial-based<br /></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgc68c224" class="outline-3">
+<h3 id="orgc68c224"><span class="section-number-3">19.1</span> Graph neural network history</h3>
+<div class="outline-text-3" id="text-19-1">
+<p>
+The first GNN research mainly fall into RecGNN.(They learn a target node’s representation by propagating neighbor information in an iterative manner until a stable fixed point is reached.)<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5834de6" class="outline-3">
+<h3 id="org5834de6"><span class="section-number-3">19.2</span> Graph neural networks vs. network embedding</h3>
+<div class="outline-text-3" id="text-19-2">
+<p>
+Network embedding aims at representing network nodes as low-dimensional vector representations, preserving both network topology structure and node content information, so that any subsequent graph analytics task such as classification, clustering, and recommendation can be easily performed using simple off-the-shelf machine learning algorithms.<br />
+The main distinction between GNNs and network embedding is that GNNs are a group of neural network models which are designed for various tasks while network embedding covers various kinds of methods targeting the same task.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga2ff4df" class="outline-3">
+<h3 id="orga2ff4df"><span class="section-number-3">19.3</span> Graph neural networks vs. graph kernel methods</h3>
+<div class="outline-text-3" id="text-19-3">
+<p>
+Graph kernel methods employ a kernel function to measure the similarity between pairs of graphs so that kernel-based algorithms like support vector machines can be used for supervised learning on graphs.<br />
+Graph kernels can embed graphs or nodes into vector spaces by a mapping function. The difference is that this mapping function is deterministic rather than learnable.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf055ad9" class="outline-2">
+<h2 id="orgf055ad9"><span class="section-number-2">20</span> Volumetric and Multi-View CNNs for Object Classification on 3D Data</h2>
+</div>
+
+<div id="outline-container-org597a307" class="outline-2">
+<h2 id="org597a307"><span class="section-number-2">21</span> Weisfeiler-Lehman graph kernels</h2>
+<div class="outline-text-2" id="text-21">
+</div>
+<div id="outline-container-org05ba920" class="outline-3">
+<h3 id="org05ba920"><span class="section-number-3">21.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-21-1">
+<p>
+A common assumption is that molecules with similar structure have similar functional properties.<br />
+The probelm of measuring the similarity of graphs is therefroe at the core of learning on graphs.<br />
+</p>
+
+<p>
+graph similarity measures<br />
+</p>
+<ol class="org-ol">
+<li>subgraph isomorphism<br /></li>
+<li>largest subgraph<br /></li>
+<li>topologically identical (i.e. isomorphic.) ( most natural)<br /></li>
+<li>inexact matching of graphs<br /></li>
+<li>graph edit distances<br /></li>
+<li>optimal assignment kernels<br /></li>
+</ol>
+
+<p>
+The graph isomorphism problem is in NP, but has been neither proven NP-complete nor found to be solved by a polynomial time algorithm. (Garey nad Johnson, 1979)<br />
+</p>
+
+<p>
+The problem of subgraph isomorphsim has been proven to be NP-complete.<br />
+Finding the largest commmon subgraph of two graphs is NP-complete.<br />
+</p>
+
+<p>
+Besides being computationally expensive or even intractable, similarity measures based on graph isomorphism and its variants are too restrictive in the sense that graphs have to be exactly identical or contain large identical subgraphs in order to be deemed similar by these measures.<br />
+</p>
+
+
+<p>
+<b>Graph kernels</b> respect and exploit graph topolgy, but restrict themselves to comparing substructures of graphs that are computable in polynomial time.<br />
+Graph kernels bridge the gap between graph-structured data and a large spectrum of machine learning algorithms called kernel methods.<br />
+</p>
+
+<p>
+Informally, a kernel is a function of two objects that quantifies their similarity.<br />
+Mathematically, it corresponds to an inner product in a reproducing kernel Hilbert space.<br />
+</p>
+
+
+<hr />
+<p>
+In functional analysis, a reproducing kernel Hilbert space (RKHS) is a Hilbert space of functions in which point evaluation is a continuous linear functional.<br />
+Roughly speaking, this means that if two functions \(f\) and \(f\) in the RKHS are close in norm, i.e. \(||f-g||\) is small, then \(f\) and \(g\) are also pointwise close, i.e. \(|f(x)-g(x)|\) is small for all \(x\).<br />
+The reverse need not to be true.<br />
+</p>
+
+<p>
+An RKHS is associated with a kernel that reproduces every function in the space in the sense that for any \(x\) in the set on which the functions are defined, "evaluation at \(x\)" can be performed by taking an inner product with a function determined by the kernel.<br />
+Such a reproducing kernel exists if and only if every evaluation functional is continous.<br />
+</p>
+<hr />
+</div>
+</div>
+
+<div id="outline-container-org3a5bee4" class="outline-3">
+<h3 id="org3a5bee4"><span class="section-number-3">21.2</span> Review of graph kernels</h3>
+<div class="outline-text-3" id="text-21-2">
+\begin{equation}
+G=(V,E,l)
+\end{equation}
+<p>
+where \(V\) is the set of vertices, \(E\) is the set of edges, \(l\) is a functiong that assining labels to vertices.<br />
+</p>
+
+<p>
+\(N(v) = \{u| (v,u) \in E\}\) donte the neighbourhood of node \(v\).<br />
+</p>
+
+<p>
+A walk is a sequence of nodes in a graph, in which consective nodes are connected by a edge.<br />
+A path is walk that consists of distinct nodes only.<br />
+</p>
+
+<p>
+A (rooted) substree is a subgraph of a graph, which has no cycles, but a designated root node.<br />
+Just as the notion of walk is extending the notion of path by allowing nodes to be equal, the notion of subtrees can be extended to subtree patterns.<br />
+This repetitions of the same node are then treated as distinct nodes, such that the pattern is still a cycle-free tree.<br />
+</p>
+
+<pre class="example">
+All subtree kernels compare subtree patterns in two graph, not (strict) substrees.
+</pre>
+
+<p>
+graph kernels:<br />
+</p>
+<ol class="org-ol">
+<li>based on walks nad paths<br /></li>
+<li>based on limited-size subgraphs<br /></li>
+<li>based on subtree patterns<br /></li>
+</ol>
+
+<p>
+Graph kernels based on walks and paths compute the number of matchings of pairs of random walks in two graphs.<br />
+</p>
+
+<p>
+Graph kernels based on limited-size subgraphs represent graphs as counts of all types of subgraphs of size \(k\in \{3,4,5\}\). (apply to unlabeled graphs only)<br />
+</p>
+
+<p>
+Subtree kernels (defined by Ramon and \(G\ddot{a}rtner\) compare all matchings between neighbours of tow nodes \(v\) from \(G\) and \(v'\) from \(G'\).<br />
+The subtree kernels in (Mahé and Vert, 2009) and (Bach, 2008) refine the Ramon-Gärtner kernel.<br />
+They propose to consider $&alpha;$-ary subtrees with at most \(\alpha\) children per node.<br />
+This restricts the set of matchings to matchings of up to \(\alpha\) nodes.<br />
+</p>
+
+
+<pre class="example">
+It is a general limitation of all the aforementioned graph kernels that they scale poorly to large, labeled graphs with more than 100 nodes.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgea5c237" class="outline-3">
+<h3 id="orgea5c237"><span class="section-number-3">21.3</span> The general Weisfeiler-Lehman kernels</h3>
+<div class="outline-text-3" id="text-21-3">
+</div>
+<div id="outline-container-orgd8441e1" class="outline-4">
+<h4 id="orgd8441e1"><span class="section-number-4">21.3.1</span> The Weisfeiler-Lehman kernel framework</h4>
+<div class="outline-text-4" id="text-21-3-1">
+<ol class="org-ol">
+<li>WL sequence<br /></li>
+<li>kernel distribution<br /></li>
+<li>positive semidefinite<br /></li>
+</ol>
+
+\begin{equation}
+k_{WL}^{(h)}(G,G') = \alpha_0k(G_0,G_0') + \alpha_1k(G_1,G_1') + ... + \alpha_h k(G_h,G_h')
+\end{equation}
+</div>
+</div>
+
+
+<div id="outline-container-org75ecf28" class="outline-4">
+<h4 id="org75ecf28"><span class="section-number-4">21.3.2</span> The Weisfeiler-Lehman subtree kernel</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mike Chyson</p>
+<p class="date">Created: 2020-07-16 Thu 14:35</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

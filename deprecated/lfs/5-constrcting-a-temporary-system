@@ -1,0 +1,552 @@
+* two steps
+1. build a new and host-independent toolchain (compiler, assembler, linker, libraries, and a few useful utilities)
+2. use this toolchain to build the other essential tools
+
+
+* for each package
+Using the tar program, extract the package to be built. In this procedure, ensure you are the lfs user when extracting the package.
+Change to the directory created when the package was extracted.
+Follow the book's instructions for building the package.
+Change back to the sources directory.
+Delete the extracted source directory unless instructed otherwise.
+
+
+
+* binutils
+** unpack
+tar -Jxvf binutils-2.31.1.tar.xz
+cd binutils-2.31.1
+mkdir -v build
+cd build
+
+** configure
+../configure --prefix=/tools            \
+             --with-sysroot=$LFS        \
+             --with-lib-path=/tools/lib \
+             --target=$LFS_TGT          \
+             --disable-nls              \
+             --disable-werror
+
+
+** result
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking target system type... x86_64-lfs-linux-gnu
+checking for a BSD-compatible install... /bin/install -c
+checking whether ln works... yes
+checking whether ln -s works... yes
+checking for a sed that does not truncate output... /bin/sed
+checking for gawk... gawk
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking whether g++ accepts -static-libstdc++ -static-libgcc... yes
+checking for gnatbind... no
+checking for gnatmake... no
+checking whether compiler driver understands Ada... no
+checking how to compare bootstrapped objects... cmp --ignore-initial=16 $$f1 $$f2
+checking for objdir... .libs
+checking for isl 0.15 or later... no
+required isl version is 0.15 or later
+checking for default BUILD_CONFIG... 
+checking for --enable-vtable-verify... no
+checking for bison... bison -y
+checking for bison... bison
+checking for gm4... no
+checking for gnum4... no
+checking for m4... m4
+checking for flex... no
+checking for lex... no
+checking for flex... no
+checking for makeinfo... makeinfo
+checking for expect... no
+checking for runtest... no
+checking for ar... ar
+checking for as... as
+checking for dlltool... no
+checking for ld... ld
+checking for lipo... no
+checking for nm... nm
+checking for ranlib... ranlib
+checking for strip... strip
+checking for windres... no
+checking for windmc... no
+checking for objcopy... objcopy
+checking for objdump... objdump
+checking for readelf... readelf
+checking for x86_64-lfs-linux-gnu-cc... no
+checking for x86_64-lfs-linux-gnu-gcc... no
+checking for x86_64-lfs-linux-gnu-c++... no
+checking for x86_64-lfs-linux-gnu-g++... no
+checking for x86_64-lfs-linux-gnu-cxx... no
+checking for x86_64-lfs-linux-gnu-gxx... no
+checking for x86_64-lfs-linux-gnu-gcc... no
+checking for x86_64-lfs-linux-gnu-gfortran... no
+checking for x86_64-lfs-linux-gnu-gccgo... no
+checking for x86_64-lfs-linux-gnu-ar... no
+checking for x86_64-lfs-linux-gnu-as... no
+checking for x86_64-lfs-linux-gnu-dlltool... no
+checking for x86_64-lfs-linux-gnu-ld... no
+checking for x86_64-lfs-linux-gnu-lipo... no
+checking for x86_64-lfs-linux-gnu-nm... no
+checking for x86_64-lfs-linux-gnu-objcopy... no
+checking for x86_64-lfs-linux-gnu-objdump... no
+checking for x86_64-lfs-linux-gnu-ranlib... no
+checking for x86_64-lfs-linux-gnu-readelf... no
+checking for x86_64-lfs-linux-gnu-strip... no
+checking for x86_64-lfs-linux-gnu-windres... no
+checking for x86_64-lfs-linux-gnu-windmc... no
+checking where to find the target ar... just compiled
+checking where to find the target as... just compiled
+checking where to find the target cc... pre-installed
+checking where to find the target c++... pre-installed
+checking where to find the target c++ for libstdc++... pre-installed
+checking where to find the target dlltool... just compiled
+checking where to find the target gcc... pre-installed
+checking where to find the target gfortran... pre-installed
+checking where to find the target gccgo... pre-installed
+checking where to find the target ld... just compiled
+checking where to find the target lipo... pre-installed
+checking where to find the target nm... just compiled
+checking where to find the target objcopy... just compiled
+checking where to find the target objdump... just compiled
+checking where to find the target ranlib... just compiled
+checking where to find the target readelf... just compiled
+checking where to find the target strip... just compiled
+checking where to find the target windres... just compiled
+checking where to find the target windmc... just compiled
+checking whether to enable maintainer-specific portions of Makefiles... no
+configure: creating ./config.status
+config.status: creating Makefile
+
+
+
+
+
+** make
+make
+
+case $(uname -m) in
+  x86_64) mkdir -v /tools/lib && ln -sv lib /tools/lib64 ;;
+esac
+
+make install
+
+** go back and delete the extracted directory
+cd $LFS/sources
+rm -rf binutils-2.31.1
+
+
+* gcc
+** unpack
+tar -Jxvf gcc-8.2.0.tar.xz
+cd gcc-8.2.0
+
+*** GCC now requires the GMP, MPFR and MPC packages.
+tar -xf ../mpfr-4.0.1.tar.xz
+mv -v mpfr-4.0.1 mpfr
+tar -xf ../gmp-6.1.2.tar.xz
+mv -v gmp-6.1.2 gmp
+tar -xf ../mpc-1.1.0.tar.gz
+mv -v mpc-1.1.0 mpc
+
+
+** change the location of GCC's default dynamic linker to use the one installed in /tools; removes /usr/include from GCC's include search path
+for file in gcc/config/{linux,i386/linux{,64}}.h
+do
+  cp -uv $file{,.orig}
+  sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
+      -e 's@/usr@/tools@g' $file.orig > $file
+  echo '
+#undef STANDARD_STARTFILE_PREFIX_1
+#undef STANDARD_STARTFILE_PREFIX_2
+#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"
+#define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
+  touch $file.orig
+done
+
+
+@ before a regular expression
+
+
+
+** on x86_64 hosts, set the default directory name for 64-bit libraries to “lib
+case $(uname -m) in
+  x86_64)
+    sed -e '/m64=/s/lib64/lib/' \
+        -i.orig gcc/config/i386/t-linux64
+ ;;
+esac
+
+** make build dir
+mkdir -v build
+cd       build
+
+
+** configure
+../configure                                       \
+    --target=$LFS_TGT                              \
+    --prefix=/tools                                \
+    --with-glibc-version=2.11                      \
+    --with-sysroot=$LFS                            \
+    --with-newlib                                  \
+    --without-headers                              \
+    --with-local-prefix=/tools                     \
+    --with-native-system-header-dir=/tools/include \
+    --disable-nls                                  \
+    --disable-shared                               \
+    --disable-multilib                             \
+    --disable-decimal-float                        \
+    --disable-threads                              \
+    --disable-libatomic                            \
+    --disable-libgomp                              \
+    --disable-libmpx                               \
+    --disable-libquadmath                          \
+    --disable-libssp                               \
+    --disable-libvtv                               \
+    --disable-libstdcxx                            \
+    --enable-languages=c,c++
+
+
+** make and make install
+make
+make install
+
+
+
+* linux
+The Linux API Headers (in linux-4.18.5.tar.xz) expose the kernel's API for use by Glibc.
+This is done by way of sanitizing various C header files that are shipped in the Linux kernel source tarball. 
+
+** unpack
+tar -Jxvf linux-4.18.5.tar.xz
+cd linux-4.18.5
+
+
+** delete all compiled files, kernel config file and all backup files.n
+make mrproper
+
+This is executed before the first kernel compilation.
+
+
+
+** extract and move
+make INSTALL_HDR_PATH=dest headers_install
+cp -rv dest/include/* /tools/include
+
+
+** delete
+cd $LFS/sources
+rm -rf linux-4.18.5
+
+
+* glibc
+** unpack
+tar -Jxvf glibc-2.28.tar.xz
+cd glibc-2.28
+
+** patch
+patch -p1 < ../glibc-2.28-fhs-1.patch
+
+
+** seperate build directory
+mkdir -v build
+cd       build
+
+** configure
+../configure                             \
+      --prefix=/tools                    \
+      --host=$LFS_TGT                    \
+      --build=$(../scripts/config.guess) \
+      --enable-kernel=3.2             \
+      --with-headers=/tools/include      \
+      libc_cv_forced_unwind=yes          \
+      libc_cv_c_cleanup=yes
+
+
+** make and make install
+make
+make install
+
+** test
+echo 'int main(){}' > dummy.c
+$LFS_TGT-gcc dummy.c
+readelf -l a.out | grep ': /tools'
+
+If everything is working correctly, there should be no errors, and the output of the last command will be of the form: 
+[Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]
+
+rm -v dummy.c a.out
+
+** delete
+cd $LFS/sources
+rm -rf glibc-2.28
+
+
+* libstdc++
+Libstdc++ is part of the GCC sources. You should first unpack the GCC tarball and change to the gcc-8.2.0 directory.
+
+
+** unpack
+tar -Jxvf gcc-8.2.0.tar.xz
+cd gcc-8.2.0
+
+
+
+** seperate build directory
+mkdir -v build
+cd       build
+
+
+** configure
+../libstdc++-v3/configure           \
+    --host=$LFS_TGT                 \
+    --prefix=/tools                 \
+    --disable-multilib              \
+    --disable-nls                   \
+    --disable-libstdcxx-threads     \
+    --disable-libstdcxx-pch         \
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/8.2.0
+
+** make and make install
+make
+make install
+
+** delete
+cd $LFS/sources
+rm -rf gcc-8.2.0
+
+* binutils
+tar -Jxvf binutils-2.31.1.tar.xz 
+cd binutils-2.31.1
+mkdir -v build
+cd build
+
+CC=$LFS_TGT-gcc                \
+AR=$LFS_TGT-ar                 \
+RANLIB=$LFS_TGT-ranlib         \
+../configure                   \
+    --prefix=/tools            \
+    --disable-nls              \
+    --disable-werror           \
+    --with-lib-path=/tools/lib \
+    --with-sysroot
+
+make
+make install
+
+make -C ld clean
+make -C ld LIB_PATH=/usr/lib:/lib
+cp -v ld/ld-new /tools/bin
+
+cd $LFS/sources
+rm -rf binutils-2.31.1
+
+* gcc
+tar -Jxvf gcc-8.2.0.tar.xz
+cd gcc-8.2.0
+
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
+  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
+
+
+for file in gcc/config/{linux,i386/linux{,64}}.h
+do
+  cp -uv $file{,.orig}
+  sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
+      -e 's@/usr@/tools@g' $file.orig > $file
+  echo '
+#undef STANDARD_STARTFILE_PREFIX_1
+#undef STANDARD_STARTFILE_PREFIX_2
+#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"
+#define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
+  touch $file.orig
+done
+
+case $(uname -m) in
+  x86_64)
+    sed -e '/m64=/s/lib64/lib/' \
+        -i.orig gcc/config/i386/t-linux64
+  ;;
+esac
+
+
+tar -xf ../mpfr-4.0.1.tar.xz
+mv -v mpfr-4.0.1 mpfr
+tar -xf ../gmp-6.1.2.tar.xz
+mv -v gmp-6.1.2 gmp
+tar -xf ../mpc-1.1.0.tar.gz
+mv -v mpc-1.1.0 mpc
+
+
+mkdir -v build
+cd       build
+
+
+CC=$LFS_TGT-gcc                                    \
+CXX=$LFS_TGT-g++                                   \
+AR=$LFS_TGT-ar                                     \
+RANLIB=$LFS_TGT-ranlib                             \
+../configure                                       \
+    --prefix=/tools                                \
+    --with-local-prefix=/tools                     \
+    --with-native-system-header-dir=/tools/include \
+    --enable-languages=c,c++                       \
+    --disable-libstdcxx-pch                        \
+    --disable-multilib                             \
+    --disable-bootstrap                            \
+    --disable-libgomp
+
+
+make
+make install
+
+ln -sv gcc /tools/bin/cc
+
+
+** test
+echo 'int main(){}' > dummy.c
+cc dummy.c
+readelf -l a.out | grep ': /tools'
+
+
+If everything is working correctly, there should be no errors, and the output of the last command will be of the form: 
+[Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]
+
+
+rm -v dummy.c a.out
+
+cd $LFS/sources/
+rm -rf gcc-8.2.0
+
+
+
+
+
+
+* tcl
+tar -zxvf tcl8.6.8-src.tar.gz 
+cd tcl8.6.8
+
+cd unix
+./configure --prefix=/tools
+
+make
+
+TZ=UTC make test
+
+make install
+
+
+chmod -v u+w /tools/lib/libtcl8.6.so
+
+make install-private-headers
+
+ln -sv tclsh8.6 /tools/bin/tclsh
+
+cd $LFS/sources/
+rm -rf tcl8.6.8
+
+* expect
+
+tar -zxvf expect5.45.4.tar.gz
+cd expect5.45.4
+
+cp -v configure{,.orig}
+sed 's:/usr/local/bin:/bin:' configure.orig > configure
+
+./configure --prefix=/tools       \
+            --with-tcl=/tools/lib \
+            --with-tclinclude=/tools/include
+
+
+
+make
+make test
+make SCRIPTS="" install
+
+cd $LFS/sources/
+rm -rf expect5.45.4
+
+
+* dejagnu
+tar -zxvf dejagnu-1.6.1.tar.gz
+cd dejagnu-1.6.1
+
+./configure --prefix=/tools
+make
+make install
+
+
+cd $LFS/sources/
+rm -rf dejagnu-1.6.1
+
+
+* m4
+tar -Jxvf m4-1.4.18.tar.xz
+cd m4-1.4.18
+
+sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c
+echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
+
+./configure --prefix=/tools
+
+make
+make check
+make install
+
+cd $LFS/sources/
+rm -rf m4-1.4.18
+
+* ncurses
+tar -zxvf ncurses-6.1.tar.gz 
+cd ncurses-6.1
+
+sed -i s/mawk// configure
+
+
+./configure --prefix=/tools \
+            --with-shared   \
+            --without-debug \
+            --without-ada   \
+            --enable-widec  \
+            --enable-overwrite
+
+
+make && make install
+
+
+* bash
+tar -zxvf bash-4.4.18.tar.gz
+cd bash-4.4.18
+
+./configure --prefix=/tools --without-bash-malloc
+
+
+make
+make test
+make install
+ln -sv bash /tools/bin/sh
+
+* bison
+tar -Jxvf bison-3.0.5.tar.xz 
+cd bison-3.0.5
+./configure --prefix=/tools
+make check
+make install
+
+cd $LFS/sources/
+rm -rf bison-3.0.5
+
+
+** error
+g++ failed

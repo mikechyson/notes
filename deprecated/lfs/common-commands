@@ -1,0 +1,15 @@
+illustrate the current search paths and their order:
+ld --verbose | grep SEARCH
+
+show all the files successfully opened during the linking:
+gcc dummy.c -Wl,--verbose 2>&1 | grep succeeded
+
+To find out which standard linker gcc will use:
+gcc -print-prog-name=ld
+
+
+
+to measure the time it takes:
+time { ./configure ... && ... && make install; }
+
+

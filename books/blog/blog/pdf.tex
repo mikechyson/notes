@@ -1,0 +1,176 @@
+
+\chapter{PDF}
+
+\section{Model}
+
+models.py:
+\lstset{language=Python}
+\begin{lstlisting}
+from django.db import models
+
+
+# Create your models here.
+
+class Category(models.Model):
+    category_name = models.CharField('Category', max_length=200)
+
+    def __str__(self):
+        return self.category_name
+
+
+class PDF(models.Model):
+    name = models.CharField(max_length=200)
+    author = models.CharField(max_length=200, null=True, blank=True)
+    keywords = models.CharField(max_length=200, null=True, blank=True)
+    date = models.DateTimeField(blank=True)
+    url = models.CharField(max_length=200)
+    category = models.ManyToManyField(to=Category)
+    introduction = models.CharField(max_length=1000, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Comment(models.Model):
+    pdf = models.ForeignKey(PDF, on_delete=models.CASCADE)
+    content = models.CharField('Content', max_length=10000)
+    author = models.CharField('Author', max_length=200)
+    date = models.DateTimeField('Date', auto_now_add=True)
+    email = models.CharField('Email', max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.content
+  
+\end{lstlisting}
+
+\verb|null=True| is used to allow null value in database.
+\verb|blank=True| is used to allow null in admin view.
+
+\verb|__str__| is used to show name instead of info table primary key.
+This is usefull in showing foreign key.
+
+
+\section{View}
+
+views.py:
+\begin{lstlisting}
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, FileResponse, Http404
+from .models import PDF, Comment
+from django.template import loader
+from django.views.generic import DetailView, ListView
+from django.core.paginator import Paginator
+
+
+# Create your views here.
+
+def index(request):
+    pdf_list = PDF.objects.order_by('-name').reverse()
+    paginator = Paginator(pdf_list, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'page_obj': page_obj
+    }
+    return render(request, 'pdf/index.html', context)
+
+
+def detail(request, pk):
+    pdf = get_object_or_404(PDF, pk=pk)
+    comments = Comment.objects.filter(pdf=pk)[:5]
+    context = {
+        'pdf': pdf,
+        'comments': comments
+    }
+    return render(request, 'pdf/detail.html', context)
+
+\end{lstlisting}
+
+
+Paginator is easy to use class to provide page function.
+The corresponding \verb|index.html| is:
+\lstset{language=Html}
+\begin{lstlisting}
+{% if page_obj %}
+    <div class="pdf_list">
+        <table>
+            <tr>
+                <th>PDF NAME</th>
+                <th>AUTHOR</th>
+                <th>KEY WORDS</th>
+            </tr>
+            {% for pdf in page_obj %}
+                <tr>
+                    <th><a href="{% url 'pdf:detail' pdf.id %}">{{ pdf.name }}</a></th>
+                    <th>{{ pdf.author }}</th>
+                    <th>{{ pdf.keywords }}</th>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+    </div>
+{% else %}
+    <p>No pdfs are available.</p>
+{% endif %}
+\end{lstlisting}
+
+
+\section{Url}
+
+urls.py:
+\lstset{language=Python}
+\begin{lstlisting}
+from django.urls import path
+
+from . import views
+
+app_name = 'pdf'
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('<int:pk>/', views.detail, name='detail')
+]
+
+\end{lstlisting}
+
+\section{Install app in admin}
+
+admin.py:
+\begin{lstlisting}
+from django.contrib import admin
+from .models import PDF, Comment, Category
+
+  
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('content', 'author', 'date', 'pdf')
+    search_fields = ['content', 'author', 'pdf']
+    list_filter = ['pdf']
+
+
+class PDFAdmin(admin.ModelAdmin):
+    list_display = ('name', 'author', 'date')
+    list_filter = ['date']
+    search_fields = ['name']
+
+
+admin.site.register(Comment, CommentAdmin)
+admin.site.register(PDF, PDFAdmin)
+admin.site.register(Category)
+
+\end{lstlisting}

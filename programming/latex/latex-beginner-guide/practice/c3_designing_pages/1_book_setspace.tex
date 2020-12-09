@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt]{book} % the document class book, suitable for book-like documents
+\usepackage[a4paper, inner=1.5cm, outer=3cm, top=2cm, bottom=3cm, bindingoffset=1cm]{geometry}
+%% paper=name
+%% paperwidth=7in
+%% paperheight=10in
+%% papersize={7in,10in}
+%% landscape
+%% portrait
+%% textwidth=140mm
+%% textheight=180mm
+%% lines=25
+%% includedhead % cause the header of the page to be included into the body area
+%% includefoot
+%% left=2cm
+%% right=2cm
+%% bindingoffset % reserves space on the left margin (one-size), respectively the inner margin (two-sided) for the binding
+
+%% default margin ratio:
+%% top:bottom = 2:3
+%% left:right = 1:1 for one-side documents
+%% inner:outer = 2:3 for two-side documents
+
+\usepackage[onehalfspacing]{setspace}
+%% singlespacing, onehalfspacing, doublespacing
+%% \begin{spacing}{2.4}
+%% This text is stretched by a factor of 2.4.
+%% \end{spacing}
+
+\usepackage[english]{babel} % useful especially for typesetting in other languages than English regarding hyphenation, language-specific characters, and more
+\usepackage{blindtext}      % to produce filler text
+\begin{document}
+\chapter{Exploring the page layout}
+In this chapter we will study the layout of pages.
+\section{Some filler text}
+\blindtext
+\section{A lot more filler text}
+More dummy text will follow.
+\subsection{Plenty of filler text}
+\blindtext[10]
+\end{document}

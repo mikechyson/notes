@@ -1,0 +1,32 @@
+There is some difference between appand and +.
+For example:
+#+BEGIN_SRC python
+from collections import defaultdict
+
+lst = [1, 2, 3, 'hello', 1, 1]
+d = defaultdict(list)
+for i, j in enumerate(lst):
+    d[j] = d[j] + [i]
+
+print(d)
+#+END_SRC
+
+The example works well but the folloing example will report a bug:
+
+#+BEGIN_SRC python
+from collections import defaultdict
+
+lst = [1, 2, 3, 'hello', 1, 1]
+d = defaultdict(list)
+for i, j in enumerate(lst):
+    d[j] = d[j].append(i)
+
+print(d)
+#+END_SRC
+The bug is:
+#+BEGIN_EXAMPLE
+Traceback (most recent call last):
+  File ... , line ... , in <module>
+    d[j] = d[j].append(i)
+AttributeError: 'NoneType' object has no attribute 'append'
+#+END_EXAMPLE

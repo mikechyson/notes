@@ -1,0 +1,223 @@
+* Preface
+Programs accept data and produce data.
+Designing a program requires a thorough understanding of data; a good program reflects the shape of the data it deals with.
+Most collections of data and hence most programs, are recursive.
+Recursion is the act of defining an object or solving a problem in terms of itself.
+
+
+Scheme is inherently symbolic - the programmer does not have to think about the relationship between the symbols of his own language and the representations in the computer.
+Recursion is Scheme's natural computational mechanism; the primary programming activity is the creation of (potentially) recursive definitions.
+
+Since our only concern is recursive programming, out treatment is limited to the whys and wherefores of just a few Scheme features:
+car
+cdr
+cons
+eq?
+null?
+zero?
+add1
+sub1
+number?
+and
+or
+quote
+lambda
+define
+cond
+
+
+* Toys
+
+
+atom: a string of characters beginning with a letter or special character other than a left "(" or right ")" parenthesis.
+
+car: Content of the Address Register
+cdr: Content of the Decrement Register
+lat: List of AToms
+cons: CONStruct
+
+S-expression: Symbolic expression
+
+(quote ()) is a notation for the null list, '().
+
+
+* Do It, Do It Again, and Agian, and Again
+
+* Cons the Magnificent
+
+* Numbers Games
+all numbers are atoms
+
+the only numbers we use are the nonnegative integers (i.e. 0,1,2,3,4,...)
+
+tup: tuple, a list of numbers.
+
+we have two different functions for testing equality of atoms:
+= for atoms that are numbers
+eq? for the others
+
+
+* *Oh My Gawd*: It's Full of Stars
+all *-functions: ask three questions and recur with the car as well as with the cdr, whenever the car is a list.
+
+(or ...) asks questions one at a time until it finds one that is true. Then (or ...) stops, making its value true. If it cannot find a true argument, the value of (or ...) is false.
+
+(and ...) asks questions one at a time until it finds one whose value is false. Then (and ...) stops with false. If none of the expressions are false, (and ...) is true.
+
+An S-expression is either an atom or a (possibly empty) list of S-expressions.
+
+* Shadows
+
+For the prupose of this chapter, an arithmetic expression is either an atom (including numbers), or two arithmetic expressions combined by +, x, or ^.
+
+
+different arithmetic expression representation:
+(1 + 2)
+(1 2 +)
+(+ 1 2)
+(plus 1 2)
+
+numbers are representations.
+
+For example 4 stands for the concept four.
+(() () () ()) would have served just as well.
+What about ((((()))))?
+How about (I V)?
+
+four primitives for numbers:
+number?
+zero?
+add1
+sub1
+
+
+
+* Friends and Relations
+set: a list of different atoms
+
+pair: a list with only two S-expression
+
+rel: relation
+fun: function, all the first elements is a set
+
+finite function: a list of pairs in which no first element of any pair is the same as any other first element
+
+* Lambda the Ultimate
+
+
+(lambda (a l) ...)
+is a function of two arguments, a and l
+
+
+
+(lambda (a)
+  (lambda (x)
+    (eq? x a)))
+It is a function that, when passed an argument a ,reuturns the function
+(lambda (x)
+  (eq? x a))
+where a is just that arguemnt.
+This is called "Curry-ing"
+Moses Schonfinkel (1889-1942)
+Haskell B. Curry (1900-1982)
+
+Using (define ...) give the preceding function a name.
+(define eq?-c
+  (lambda (a)
+    (lambda (x)
+      (eq? x a))))
+
+
+
+What is (eq?-c k) where k is salad?
+Its value is a function that takes x as an argument and test whether it is eq? to salad.
+
+(define eq?-salad (eq?-c k))
+where k is salad
+
+
+A collector is sometimes called a continuation.
+
+
+* ... and Again, and Again, and Again, ...
+
+answer came there none -- And this was scarely odd, beacuse They'd eaten every one.
+                  The Walrus and The Carpenter
+                                 -- Lewis Carroll
+
+
+
+
+(define will-stop?
+  (lambda (f)
+    ...))
+
+
+(define last-try
+  (lambda (x)
+    (and (will-stop? last-try)
+         (eternity x))))
+
+If we can define will-stop?, then (will-stop? last-try) must yield
+either #t or #f. But it cannot -- due to the very definition of
+what will-stop? is supposed to do.
+This must mean that will-stop? cannot be defined.
+
+This is unique.
+It makes will-stop? the first function that we can describe precisely
+but cannot define in our language.
+Alan M. Turing (1912-1954)
+Kurt Godel (1906-1978)
+
+
+
+(define length
+  (lambda (l)
+    (cond
+     ((null? l) 0)
+     (else
+      (add1 (length (cdr l)))))))
+Whiout (define ...) nothing, and especially not the body of length, could refer to length.
+
+* What Is the Value of All of This?
+entry: a pair of lists whose first list is a set. also, the two lists must be of equeal length.
+
+table: (also called an environment) is a list of entries.
+
+value is the function that returns the natural value of expressions.
+
+six types:
+ *const
+ *quote
+ *identifier
+ *lambda
+ *cond
+ *application
+
+How do you think we should represent types?
+We choose functions. We call these functions "actions".
+
+actions are functions that do the "right thing" when applied to the appropriate type of expression.
+
+What should value do?
+it would have to find out the type of expression it was passed and then use the associated action.
+
+Action do speak louder than words.
+
+const: constant
+
+non-primitives are defined by their arguments and their function bodies.
+
+(cond ...) is a special form that takes any number of cond-lines. It considers each line in turn. If the question part on the left is false, it looks at the rest of the lines. Otherwise it proceeds to answer the right part. If it sees an else-line, it treats that cond-line as if its question part were true.
+
+
+
+
+An application is a list of expressions whose car position contains an expression whose value is a function.
+
+How does an application differ from a special form, like (and ...) (or ...) or (cond ...)
+An application must always determines the meaning of all its arguments.
+
+we can run the interpreter on the interpreter if we do the transformation with the Y conbinator?
+
+

@@ -1,0 +1,78 @@
+* problem
+Input: A sequence of numbers $(a_1,a_2,\cdots,a_n)$
+Output: A permutation (reordering) $(a_1^{'},a_2^{'},\cdots,a_n^{'})$ of the input sequence such that $a^{'}_1 \le a^{'}_2 \le \cdots \le a_n^{'}$
+
+
+* case
+[[file:pics/selection-sort.jpg]]
+
+
+* pseudocode
+#+BEGIN_EXAMPLE
+SELECTION-SORT(T)
+
+for i = 1 to A.length - 1
+    min_index = i
+
+    j = i + 1
+    while j < A.length 
+        if A[min_index] > A[j]
+            min_index = j
+	j = j + 1
+
+    // Swap 
+    tmp = A[i]
+    A[i] = A[min_index]
+    A[min_index] = tmp
+
+
+#+END_EXAMPLE
+
+* loop invariant
+We use loop invariant to help us to understand why an algorithm is correct.
+
+Initialization: It is true prior to the first iteration of the loop.
+Maintanance:    If it is true before an iteration of the loop, it remains true before the next iteration.
+Termination:    When the loop terminates, the invariant gives us a useful property that helps show that the algorithm is correct.
+
+
+
+Initialization: 
+
+Maintanance: 
+
+Termination: 
+
+
+* python
+#+BEGIN_SRC python
+
+def selection_sort(lst):
+    for i in range(len(lst) - 2):
+        min_idx = i
+        j = i + 1
+        while j < len(lst) - 1:
+            if lst[min_idx] > lst[j]:
+                min_idx = j
+            j = j + 1
+        tmp = lst[i]
+        lst[i] = lst[min_idx]
+        lst[min_idx] = tmp
+    return lst
+
+
+test = [5, 2, 3, 4, 7, 9, 1, 10]
+print(selection_sort(test))
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+[1, 2, 3, 4, 5, 7, 9, 10]
+#+END_EXAMPLE
+
+* analysis of insertion sort
+** bestcase analysis
+If the array is already sorted.
+
+** worst-case analysis
+If the array is reverse sorted.
+

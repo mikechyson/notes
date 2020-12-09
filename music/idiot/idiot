@@ -1,0 +1,199 @@
+* Notes and chords are the building blocks of the language of music.
+
+music theory is important:
+1. communicate with others
+2. understand music
+3. compose music
+4. change instrument
+
+
+* music definition.
+generic:
+music is the art, the craft, and the science of organizing sound and silence in the framwork of time.
+specific:
+music is a succession of tones arranged in a specific rhythm.
+
+
+pitch: discribe the specific frequency of a sound.
+tone: a sound that is played or sung at a specific pitch.
+
+
+A: 440Hz
+
+
+
+
+* music notation evolution(Mary had a little lamb)
+** 1. by frequency
+[[file:frequency.png]]
+
+** 2. by number(relative)
+[[file:number.png]]
+
+** 3. by Solfege(sol-FEZH, relative)
+[[file:solfege.png]]
+
+(tone have value: like frequency, number, solfege)
+(tone have name: ABCDEFG)
+
+** 4. by staff
+notes on a piano keyboard is visual
+[[file:notes-on-piano.png]]
+
+so -> staff
+[[file:notes-on-staff.png]]
+
+
+staff: composed of lines and spaces
+[[file:blank-staff.png]]
+(each line or space represents a specific pitch)
+(the pitches are determined by the clef at the beginning of the staff)
+
+
+* different clefs
+** treble clef
+remeber:
+Every Good Boy Does Fine
+FACE
+[[file:treble-clef.png]]
+
+** bass clef
+[[file:bass-clef.png]]
+remeber:
+Good Boys Do Fine Always
+All Cows Eat Grass
+
+
+** grand staff
+used in piano
+[[file:grand-staff.png]]
+
+** alto clef
+[[file:alto-clef.png]]
+
+** tenor clef
+[[file:tenor-clef.png]]
+
+** octave clef
+[[file:octave-clef.png]]
+
+up(if the 8 is above the clef) an octave
+down(if the 8 is below the clef) an octave
+
+** percussion clef
+[[file:percussion-clef.png]]
+
+* interval
+distance between pitches
+
+* sharp flat and natural sign
+[[file:sharp-flat.png]]
+* step
+the smallest interval in Western music is the half step.
+
+
+* degree
+because of the disadvantage of the step method to describe the intervals between two notes.
+--> degree(relative numbering method)
+
+[[file:degree.png]]
+
+[[file:basic-interval-starting-on-c.png]]
+
+* major and minor intervals
+When measuring by degrees, 
+you see that the second, third, sixth, and seventh notes can be easily flattened. 
+When you flatten one of these notes, you create what is called a minor interval. 
+The natural state of these intervals (in a major scale) is called a major interval.
+
+[[file:major-and-minor.png]]
+
+
+* perfect intervals
+Certain intervals don’t have separate major or minor states (although they can still be flattened or sharpened). 
+These intervals—fourths, fifths, and octaves— exist in one form only, called a perfect interval. 
+
+perfect fifth: 3:2
+perfect fourth: 4:3
+
+[[file:perfect-interval.png]]
+
+* augmented and diminished intervals
+When you raise a per- fect interval a half step, 
+it’s called an augmented interval. 
+When you lower a per- fect interval a half step, 
+it’s called a diminished interval. 
+So don’t call the new intervals major or minor—call them augmented or diminished.
+
+[[file:augmented-and-deminished.png]]
+
+
+* scale
+eight successive pitches within a one-octave range.
+All scales start on one note and end on that same note one octave higher.
+
+* major scale
+happy scale.
+What makes a major scale major are the specific intervals between the notes of the scale. 
+
+(whole whole half whole whole whole half)
+
+C Major is the only major scale that use only the white keys.
+
+
+
+* enharmonic
+two notes that are identical, but spelled differently.
+like, G-sharp and G-flat
+
+* chromatic and diatonic
+Any notes you play outside the scale are called chromatic notes; 
+notes within the scale are said to be diatonic.
+
+* minor scales
+the third note is a minor interval.
+
+** natural minor
+
+(whole half whole whole half whole whole)
+
+** harmonic minor scale
+
+(whole half whole whole half whole-and-a-half half)
+
+** melodic minor scale
+
+(whole half whole whole whole whole half)
+
+
+* key
+When a piece of music is based on a particular musical scale, 
+we say that music is in the “key” of that scale. 
+For example, a song based around the C Major scale is in the key of C Major. 
+
+* key signature
+You designate a key by inserting a key signature at the very start of the music, next to the first clef on the first staff. 
+This key signature indicates the sharps and flats used in that particular key. 
+Then, when you play through the entire piece, you automatically sharpen and flatten the appropriate notes.
+
+[[file:key-signature.png]]
+
+* accident
+When you decide to write a note that isn’t within the current key, you have to manually indicate the change in the music—by using sharp, flat, or natural signs. 
+These “outside the key” notes are called accidentals or chromatic notes; 
+[[file:accidental.png]]
+
+* modulating
+When you change keys in the middle of a song, it’s called modulating to another key. 
+[[file:modulating.png]]
+
+* rhythm
+time.
+drives the music forward and gives it its beat.
+
+* measure
+in songs based around groups of four, each group of four beats is called a measure.
+
+* taking count
+[[file:taking-count.png]]
+

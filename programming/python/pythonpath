@@ -1,0 +1,18 @@
+There are 3 ways to make your module accessable to you:
+1. place it in your path path (like /home/hack/anaconda3/lib/python3.7/site-packages)
+2. place it in the current directory where you execute your python script
+3. define a environment variable PYTHONPYTH referring to your moddule path
+
+In PyCharm, add your module to project interpreter:
+
+1. Open the setting
+[[file:pics/charm1.png]]
+
+2. Show all
+[[file:pics/charm2.png]] 
+
+3. Show paths for the selected interpreter
+[[file:pics/charm3.png]]
+
+4. Add your module path
+[[file:pics/charm4.png]]

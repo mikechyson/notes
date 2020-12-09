@@ -1,0 +1,52 @@
+\chapter {Larger Document}
+
+If you are writing a book, it is better to split the book into several parts.
+
+For example:
+
+\begin{verbatim}
+  \documentclass{book}
+  \input{preamble}
+
+  \hypersetup{pdfauthor={Li Mingming},
+    pdftitle={The Big Book of \LaTeX},
+    pdfsubject={Introduction to \LaTeX and how to use it},
+    pdfkeywords={latex}}
+
+  \begin{document}
+
+  \frontmatter
+  \include{title}
+  \include{dedication}
+  \tableofcontents
+  \listoftables
+  \listoffigures
+  \mainmatter
+  \include{environment}
+  \include{what-is-latex}
+  \include{latex-base}
+  \include{font}
+  \include{box}
+  \include{justification}
+  \include{designing-pages}
+  \include{footnote}
+  \include{list}
+  \include{table}
+  \include{figure}
+  \include{cross-referencing}
+  \include{content}
+  \include{math}
+  \include{large-document}
+  \backmatter
+  \bibliographystyle{plainnat}
+  \bibliography{tex}
+
+
+  \end{document}
+  
+\end{verbatim}
+
+
+
+
+

@@ -1,0 +1,13 @@
+\documentclass{article} % say
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[scale=3]
+  \draw (0,0) -- (1,{tan(30)});
+
+  \path [name path=upward line] (1,0) -- (1,1);
+  \path [name path=sloped line] (0,0) -- (30:1.5cm); % a bit longer, so that there is an intersection
+  \draw [name intersections={of=upward line and sloped line, by=x}] [very thick,orange] (1,0) -- (x);
+  
+  
+\end{tikzpicture}
+\end{document}

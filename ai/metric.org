@@ -1,0 +1,23 @@
+mAP: mean Average Precision
+AP: Average Precision
+
+precision, recall, accuracy, F-measure
+| TP (true positive)  | FP (false positive) |
+| FN (false negative) | TN (true negative)  |
+
+\begin{equation}
+precision=\frac{TP}{TP+FP}
+\end{equation}
+
+\begin{equation}
+recall=\frac{TP}{TP+FN}
+\end{equation}
+
+\begin{equation}
+accuracy=\frac{TP+TN}{TP+FP+FN+TN}
+\end{equation}
+
+\begin{equation}
+F=\frac{(\alpha^2+1)\cdot P\cdot R}{\alpha^2\cdot(P+R)}
+\end{equation}
+where $P,R$ are precision and recall respectively.

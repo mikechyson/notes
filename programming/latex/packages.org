@@ -1,0 +1,20 @@
+xspace: intelligenct space
+url: website typewriter
+hyphenat: hyphenation
+geometry
+typearea
+stespace
+
+endnotes: Places footnotes at the end of the document
+manyfoot: Allows nested footnotes
+bigfoot: Replaces and extends manyfoot , improves page break handling with footnotes
+savefnmark: Useful when you need to use footnotes several times
+footmisc: All-round package; introduces numbering per page, is able to save space when many short footnotes are used, offers symbols instead of numbers as footnote marks, provides hanging indentation and other styles
+
+amsmath
+latexsym
+amssymb
+
+amsthm
+ntheorem
+mathtools: extends amsmath

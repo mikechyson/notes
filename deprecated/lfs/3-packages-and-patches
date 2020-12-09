@@ -1,0 +1,23 @@
+* container
+** make a dirctory to hold the source code:
+mkdir -v $LFS/sources
+
+** make this directory writable and sticky:
+chmod -v a+wt $LFS/sources
+
+** to get a list of packages:
+wget http://linuxfromscratch.org/lfs/view/stable-systemd/wget-list
+
+** download all the packages in the wget-list file:
+wget --input-file=wget-list --continue --directory-prefix=$LFS/sources
+
+
+** download the md5sum file:
+cd $LFS/sources
+wget http://linuxfromscratch.org/lfs/view/stable-systemd/md5sums
+
+** verify them all:
+pushd $LFS/sources
+md5sum -c md5sums
+popd
+

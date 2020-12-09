@@ -1,0 +1,36 @@
+* upload pictures
+Unable to create directory wp-content/uploads/2018/11. Is its parent directory writable by the server?
+
+chmod 777 /var/www/html/wp-content
+
+
+* alter the footer
+wp-content/themes/<your-theme>/footer.php
+
+
+* post not found error(why?)
+alter the /etc/httpd/conf/httpd.conf
+load rewrite module
+
+LoadModule rewrite_module modules/mod_rewrite.so
+
+AllowOverride all
+
+* ftp connection
+add the following content into wp-config.php 
+
+define("FS_METHOD","direct");
+define("FS_CHMOD_DIR", 0777);
+define("FS_CHMOD_FILE", 0777);
+
+
+chmod 777 wp-themes wp-plugins
+
+
+* sitemap page plugin
+
+* Gutenberg editor
+
+* baidu search engine
+https://ziyuan.baidu.com/
+

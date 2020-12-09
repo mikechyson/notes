@@ -1,0 +1,51 @@
+# long sum(long *start, long count)
+# start in %rdi, count in %rsi
+
+my answer:
+
+absSum:
+  irmovq $8, %r8	# constant 8
+  irmovq $1, %r9	# constant 1
+  xorq %rax, %rax	# sum = 0
+  andq %rsi, %rsi	# set CC
+  jmp test
+loop:
+  mrmovq (%rdi), %r10	# get *start
+  addq %r10, %rax	# add to sum
+  rrmovq %rax, %r11	# copy sum
+  subq %r10, %r11	# sum - *start
+  xorq %r12, %r12	# set constant 0
+  subq %r12, %r10	# *start negative or positive
+  cmovle %r11, %rax
+  addq %r8, %rdi
+  subq %r9, %rsi
+test:
+  jne loop	# stop when 0
+  ret
+
+(the question is asked to use conditional jump,
+my answer does not meet the requirement.)
+(another problem, my answer need more computation)
+
+book answer:
+
+absSum:
+  irmovq $8, %r8	# constant 8
+  irmovq $1, %r9	# constant 1
+  xorq %rax, %rax	# sum = 0
+  andq %rsi, %rsi	# set CC
+  jmp test
+loop:
+  mrmovq (%rdi), %r10	# get *start
+  xorq %r11, %r11	# set constant 0
+  subq %r10, %r11	# -x
+  jle pos		# skip if -x <= 0
+  rrmovq %r11, %r10	# x = -x
+pos:
+  addq %r10, %rax	# add to sum
+  addq %r8, %rdi
+  subq %r9, %rsi
+test:
+  jne loop	# stop when 0
+  ret
+  

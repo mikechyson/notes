@@ -1,0 +1,1563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-03 Wed 00:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Hack Chyson" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org98d1fd2">1. +</a></li>
+<li><a href="#org9815ed7">2. &lt;</a></li>
+<li><a href="#org87ef881">3. append-to-buffer</a></li>
+<li><a href="#org0a1b102">4. aref</a></li>
+<li><a href="#orgf5dea5f">5. barf-if-buffer-read-only</a></li>
+<li><a href="#orgb62e34e">6. beginning-of-buffer</a></li>
+<li><a href="#org469d8e1">7. beginning-of-line</a></li>
+<li><a href="#orgb298924">8. buffer-file-name</a></li>
+<li><a href="#orgf8ee5d8">9. buffer-name</a></li>
+<li><a href="#org38c0c23">10. buffer-size</a></li>
+<li><a href="#orgfea947e">11. bufferp</a></li>
+<li><a href="#orgef5a0a9">12. car</a></li>
+<li><a href="#orge3a3384">13. cdr</a></li>
+<li><a href="#org9c7be20">14. char-table-p</a></li>
+<li><a href="#org05af0ce">15. concat</a></li>
+<li><a href="#orgfe823b7">16. cons</a></li>
+<li><a href="#org16e0db0">17. consp</a></li>
+<li><a href="#org9f36295">18. copy-to-buffer</a></li>
+<li><a href="#org1972417">19. count-lines</a></li>
+<li><a href="#org3c077c8">20. current-buffer</a></li>
+<li><a href="#orgafff653">21. descirbe-function</a></li>
+<li><a href="#org8645d18">22. describe-variable</a></li>
+<li><a href="#org13855cd">23. dolist</a></li>
+<li><a href="#orge27bcee">24. end-of-buffer</a></li>
+<li><a href="#orgc15533a">25. erase-buffer</a></li>
+<li><a href="#orga2718fb">26. eval-last-sexp</a></li>
+<li><a href="#org57c422f">27. format</a></li>
+<li><a href="#orga6272c5">28. forward-char</a></li>
+<li><a href="#orga59a56e">29. forward-sentence</a></li>
+<li><a href="#orgd08af56">30. get-buffer-create</a></li>
+<li><a href="#org89c7e15">31. get-buffer-window-list</a></li>
+<li><a href="#org29a2e68">32. if</a></li>
+<li><a href="#org25977be">33. insert-buffer</a></li>
+<li><a href="#org23f502c">34. insert-buffer-substring</a></li>
+<li><a href="#org0ade4c6">35. interactive</a></li>
+<li><a href="#org68bbc8f">36. kill-region</a></li>
+<li><a href="#org81c1a2b">37. length</a></li>
+<li><a href="#org0db80c2">38. let</a></li>
+<li><a href="#org0fc8a6f">39. let*</a></li>
+<li><a href="#org5cbcc5e">40. list</a></li>
+<li><a href="#orgc2836fc">41. listp</a></li>
+<li><a href="#org640607a">42. mark-whole-buffer</a></li>
+<li><a href="#orgc0cac43">43. message</a></li>
+<li><a href="#org56a817a">44. not</a></li>
+<li><a href="#org84e77ec">45. nth</a></li>
+<li><a href="#org04cfe30">46. nthcdr</a></li>
+<li><a href="#orgf43e6ef">47. number-or-marker-p</a></li>
+<li><a href="#orga5965ea">48. number-to-string</a></li>
+<li><a href="#orgadbcf16">49. or</a></li>
+<li><a href="#orgdcedcf8">50. other-buffer</a></li>
+<li><a href="#orgc565779">51. point</a></li>
+<li><a href="#org377d8e2">52. point-max</a></li>
+<li><a href="#org6d1b9c5">53. point-min</a></li>
+<li><a href="#org55798e8">54. prefix-numeric-value</a></li>
+<li><a href="#orgc97d241">55. progn</a></li>
+<li><a href="#orga149859">56. push-mark</a></li>
+<li><a href="#org5a61933">57. quote</a></li>
+<li><a href="#orgf115ae2">58. read-buffer</a></li>
+<li><a href="#org4764bb9">59. read-char</a></li>
+<li><a href="#org1356219">60. region-beginning</a></li>
+<li><a href="#org4b798a5">61. region-end</a></li>
+<li><a href="#orgb22dc45">62. save-excursion</a></li>
+<li><a href="#org0cd2f95">63. save-restriction</a></li>
+<li><a href="#org5fefcfa">64. search-forward</a></li>
+<li><a href="#orgda542bb">65. self-insert-command</a></li>
+<li><a href="#orgfc2c764">66. set</a></li>
+<li><a href="#org2ed0045">67. set-buffer</a></li>
+<li><a href="#orgd75d202">68. set-mark-command</a></li>
+<li><a href="#org81119a2">69. setcar</a></li>
+<li><a href="#orga47f9a0">70. setcdr</a></li>
+<li><a href="#org22d2fb9">71. setq</a></li>
+<li><a href="#org53e888a">72. substring</a></li>
+<li><a href="#org035ca7d">73. switch-to-buffer</a></li>
+<li><a href="#org96d9c9f">74. what-line</a></li>
+<li><a href="#orge769423">75. when</a></li>
+<li><a href="#org06703f0">76. widen</a></li>
+<li><a href="#orgf401a30">77. with-current-buffer</a></li>
+<li><a href="#org24b5889">78. with-no-warnings</a></li>
+<li><a href="#orgd475d51">79. xref-find-definitions</a></li>
+<li><a href="#org173803d">80. zap-to-char</a></li>
+<li><a href="#org472244e">81. zerop</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org98d1fd2" class="outline-2">
+<h2 id="org98d1fd2"><span class="section-number-2">1</span> +</h2>
+</div>
+<div id="outline-container-org9815ed7" class="outline-2">
+<h2 id="org9815ed7"><span class="section-number-2">2</span> &lt;</h2>
+</div>
+<div id="outline-container-org87ef881" class="outline-2">
+<h2 id="org87ef881"><span class="section-number-2">3</span> append-to-buffer</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Most of append-to-buffer is concerted with setting up the conditions for insert-buffer-substring.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">append-to-buffer</span> (buffer start end)
+  <span style="color: #e9b96e;">"Documentation"</span>
+  (<span style="color: #b4fa70;">interactive</span>
+   (list (read-buffer <span style="color: #e9b96e;">"Append to buffer"</span>
+                      (other-buffer (current-buffer) t))
+         (region-beginning)
+         (region-end)))
+  (<span style="color: #b4fa70;">let</span> ((oldbuf (current-buffer)))
+    (<span style="color: #b4fa70;">save-excursion</span>
+      (<span style="color: #b4fa70;">let*</span> ((apend-to (get-buffer-create buffer))
+             (windows (get-buffer-window-list appen-to t t)) <span style="color: #73d216;">;</span><span style="color: #73d216;">the first t is include the nimibufer</span>
+                                        <span style="color: #73d216;">;</span><span style="color: #73d216;">the second t is consider all windows on all existing frames</span>
+             point)
+        (set-buffer append-to)
+        (<span style="color: #b4fa70;">setq</span> point (point))
+        (barf-if-buffer-read-only)      <span style="color: #73d216;">; </span><span style="color: #73d216;">an assert</span>
+        (insert-buffer-substring oldbuf start end)
+        (<span style="color: #b4fa70;">dolist</span> (window windows)
+          (<span style="color: #b4fa70;">when</span> (= (window-point window) point)
+            (set-window-point window (point))))))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0a1b102" class="outline-2">
+<h2 id="org0a1b102"><span class="section-number-2">4</span> aref</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+(aref ARRAY IDX)<br />
+</p>
+
+<p>
+array reference.<br />
+</p>
+
+<p>
+Return the element of ARRAY at index IDX.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf5dea5f" class="outline-2">
+<h2 id="orgf5dea5f"><span class="section-number-2">5</span> barf-if-buffer-read-only</h2>
+</div>
+
+<div id="outline-container-orgb62e34e" class="outline-2">
+<h2 id="orgb62e34e"><span class="section-number-2">6</span> beginning-of-buffer</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">simplified-beginning-of-buffer</span> ()
+  <span style="color: #e9b96e;">"Move point to the beginning of the buffer;</span>
+<span style="color: #e9b96e;">leave mark at previous position."</span>
+  (<span style="color: #b4fa70;">interactive</span>)
+  (push-mark)
+  (goto-char (point-min)))
+</pre>
+</div>
+
+
+<p>
+complete explaination:<br />
+(beginning-of-buffer &amp;optional ARG)<br />
+</p>
+
+<p>
+This function is for interactive use only;<br />
+in Lisp code use `(goto-char (point-min))' instead.<br />
+</p>
+
+<p>
+Move point to the beginning of the buffer.<br />
+With numeric arg N, put point N/10 of the way from the beginning.<br />
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python">(defun beginning-of-<span style="color: #e090d7;">buffer</span> (&amp;optinal arg)
+  <span style="color: #e9b96e;">"Move point to the beginning of the buffer;</span>
+<span style="color: #e9b96e;">leave mark at the previous position.</span>
+<span style="color: #e9b96e;">With \\[universial-argument] prefix,</span>
+<span style="color: #e9b96e;">do not set mark at previous position.</span>
+<span style="color: #e9b96e;">With numberic arg N,</span>
+<span style="color: #e9b96e;">put point N/10 of the way from the beginning.</span>
+
+<span style="color: #e9b96e;">If the buffer is narrowed,</span>
+<span style="color: #e9b96e;">this command uses the beginning and size</span>
+<span style="color: #e9b96e;">of the accessible part of the buffer.</span>
+
+<span style="color: #e9b96e;">Don't use this command in Lisp program!</span>
+<span style="color: #e9b96e;">\(goto-char (point-min)) is faster</span>
+<span style="color: #e9b96e;">and avoids clobbering the mark."</span>
+  (interactive <span style="color: #e9b96e;">"P"</span>)
+  (<span style="color: #b4fa70;">or</span> (consp arg)                       ;<span style="color: #b4fa70;">is</span> the argument <span style="color: #b4fa70;">is</span> a cons cell arg (that <span style="color: #b4fa70;">is</span> C-u prefix without N)
+      (<span style="color: #b4fa70;">and</span> transient-mark-mode mark-active) ;<span style="color: #b4fa70;">in</span> narrowing <span style="color: #b4fa70;">and</span> the region <span style="color: #b4fa70;">is</span> active
+      (push-mark))                          ;record current point <span style="color: #b4fa70;">as</span> mark
+  (let ((size (- (point-<span style="color: #e090d7;">max</span>) (point-<span style="color: #e090d7;">min</span>)))) ;<span style="color: #e090d7;">buffer</span> size
+    (goto-char (<span style="color: #b4fa70;">if</span> (<span style="color: #b4fa70;">and</span> arg (<span style="color: #b4fa70;">not</span> (consp arg))) ;N prefix
+                   (+ (point-<span style="color: #e090d7;">min</span>)
+                      (<span style="color: #b4fa70;">if</span> (&gt; size 10000) ;avoid overflow <span style="color: #b4fa70;">for</span> large <span style="color: #e090d7;">buffer</span> sizes!
+                                        ;divide 10 first
+                          (* (prefix-number-value arg)
+                             (/ size 10))
+                        (/ (+ 10 (* size (prefix-number-value arg)))
+                           10)))
+                 (point-<span style="color: #e090d7;">min</span>))))         ;no N prefix
+                 (<span style="color: #b4fa70;">if</span> (<span style="color: #b4fa70;">and</span> arg (<span style="color: #b4fa70;">not</span> (consp arg)))        ;N prefix
+      (forward-line 1)))                ;make sure the cursor <span style="color: #b4fa70;">is</span> at the beginning of the <span style="color: #e090d7;">next</span> line of the point
+
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org469d8e1" class="outline-2">
+<h2 id="org469d8e1"><span class="section-number-2">7</span> beginning-of-line</h2>
+</div>
+
+<div id="outline-container-orgb298924" class="outline-2">
+<h2 id="orgb298924"><span class="section-number-2">8</span> buffer-file-name</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+the name of the file to which the buffer refers appears in the echo area. (fullpath)<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgf8ee5d8" class="outline-2">
+<h2 id="orgf8ee5d8"><span class="section-number-2">9</span> buffer-name</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+the name of the buffer appears in the echo area.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org38c0c23" class="outline-2">
+<h2 id="org38c0c23"><span class="section-number-2">10</span> buffer-size</h2>
+</div>
+<div id="outline-container-orgfea947e" class="outline-2">
+<h2 id="orgfea947e"><span class="section-number-2">11</span> bufferp</h2>
+</div>
+
+<div id="outline-container-orgef5a0a9" class="outline-2">
+<h2 id="orgef5a0a9"><span class="section-number-2">12</span> car</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+The first item in the list.<br />
+car does not remove the first item from the list; it only reports what it is.<br />
+car is "non-desctructive".<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge3a3384" class="outline-2">
+<h2 id="orge3a3384"><span class="section-number-2">13</span> cdr</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+The rest of the list, that is the part of the list that follows the first item.<br />
+cdr does not remove any elements from the list.<br />
+cdr is "non-desctructive"<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9c7be20" class="outline-2">
+<h2 id="org9c7be20"><span class="section-number-2">14</span> char-table-p</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+(char-table-p OBJECT)<br />
+</p>
+
+<p>
+Return t if OBJECT is a char-table.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org05af0ce" class="outline-2">
+<h2 id="org05af0ce"><span class="section-number-2">15</span> concat</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+concaternate<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgfe823b7" class="outline-2">
+<h2 id="orgfe823b7"><span class="section-number-2">16</span> cons</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+construct lists.<br />
+cons does not change an existing list, but creates a new one.<br />
+</p>
+
+<p>
+cons must have list to attach to.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org16e0db0" class="outline-2">
+<h2 id="org16e0db0"><span class="section-number-2">17</span> consp</h2>
+</div>
+
+<div id="outline-container-org9f36295" class="outline-2">
+<h2 id="org9f36295"><span class="section-number-2">18</span> copy-to-buffer</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+Copy to specified buffer the text of the region.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">copy-to-buffer</span> (buffer start end)
+  <span style="color: #e9b96e;">"..."</span>
+  (<span style="color: #b4fa70;">interactive</span> <span style="color: #e9b96e;">"BCopy to buffer: \nr"</span>)
+  (<span style="color: #b4fa70;">let</span> ((oldbuf (current-buffer)))
+    (<span style="color: #b4fa70;">with-current-buffer</span> (get-buffer-create buffer)
+      (barf-if-buffer-read-only)
+      (erase-buffer)
+      (<span style="color: #b4fa70;">save-excursion</span>
+        (insert-buffer-substring oldbuf start end)))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1972417" class="outline-2">
+<h2 id="org1972417"><span class="section-number-2">19</span> count-lines</h2>
+</div>
+
+<div id="outline-container-org3c077c8" class="outline-2">
+<h2 id="org3c077c8"><span class="section-number-2">20</span> current-buffer</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+Return the current buffer as a Lisp object.<br />
+</p>
+
+<p>
+(current-buffer) ; #&lt;buffer functions.org&gt;<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgafff653" class="outline-2">
+<h2 id="orgafff653"><span class="section-number-2">21</span> descirbe-function</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+C-h f<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org8645d18" class="outline-2">
+<h2 id="org8645d18"><span class="section-number-2">22</span> describe-variable</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+C-h v<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org13855cd" class="outline-2">
+<h2 id="org13855cd"><span class="section-number-2">23</span> dolist</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+(dolist (VAR LIST [RESULT]) BODY&#x2026;)<br />
+</p>
+
+<p>
+Loop over a list.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge27bcee" class="outline-2">
+<h2 id="orge27bcee"><span class="section-number-2">24</span> end-of-buffer</h2>
+<div class="outline-text-2" id="text-24">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">simplified-end-of-buffer</span> ()
+  <span style="color: #e9b96e;">"Move point to the end of the buffer;</span>
+<span style="color: #e9b96e;">leave mark at previous position."</span>
+  (<span style="color: #b4fa70;">interactive</span>)
+  (push-mark)
+  (goto-char (point-max)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc15533a" class="outline-2">
+<h2 id="orgc15533a"><span class="section-number-2">25</span> erase-buffer</h2>
+<div class="outline-text-2" id="text-25">
+<p>
+Delete the entire contents of the current buffer.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga2718fb" class="outline-2">
+<h2 id="orga2718fb"><span class="section-number-2">26</span> eval-last-sexp</h2>
+<div class="outline-text-2" id="text-26">
+<p>
+evaluate last symbolic expression<br />
+bound to C-x C-e<br />
+with C-u prefix, it insert the output in current buffer instead of in echo area.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org57c422f" class="outline-2">
+<h2 id="org57c422f"><span class="section-number-2">27</span> format</h2>
+<div class="outline-text-2" id="text-27">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">%s</td>
+<td class="org-left">string</td>
+</tr>
+
+<tr>
+<td class="org-left">%d</td>
+<td class="org-left">signed number in decimal</td>
+</tr>
+
+<tr>
+<td class="org-left">%o</td>
+<td class="org-left">unsigned number in octal</td>
+</tr>
+
+<tr>
+<td class="org-left">%x</td>
+<td class="org-left">unsigned number in hex</td>
+</tr>
+
+<tr>
+<td class="org-left">%e</td>
+<td class="org-left">number in exponential notation</td>
+</tr>
+
+<tr>
+<td class="org-left">%f</td>
+<td class="org-left">number in decimal-point notation</td>
+</tr>
+
+<tr>
+<td class="org-left">%g</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">%c</td>
+<td class="org-left">a single character</td>
+</tr>
+
+<tr>
+<td class="org-left">%S</td>
+<td class="org-left">any object as an S-expression</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga6272c5" class="outline-2">
+<h2 id="orga6272c5"><span class="section-number-2">28</span> forward-char</h2>
+<div class="outline-text-2" id="text-28">
+<p>
+bound to C-f<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orga59a56e" class="outline-2">
+<h2 id="orga59a56e"><span class="section-number-2">29</span> forward-sentence</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+bound to M-e<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgd08af56" class="outline-2">
+<h2 id="orgd08af56"><span class="section-number-2">30</span> get-buffer-create</h2>
+<div class="outline-text-2" id="text-30">
+<p>
+(get-buffer-create BUFFER-OR-NAME)<br />
+</p>
+
+<p>
+Return the buffer specified by BUFFER-OR-NAME, creating a new one if needed.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org89c7e15" class="outline-2">
+<h2 id="org89c7e15"><span class="section-number-2">31</span> get-buffer-window-list</h2>
+<div class="outline-text-2" id="text-31">
+<p>
+(get-buffer-window-list &amp;optional BUFFER-OR-NAME MINIBUF ALL-FRAMES)<br />
+</p>
+
+<p>
+Return list of all windows displaying BUFFER-OR-NAME, or nil if none.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org29a2e68" class="outline-2">
+<h2 id="org29a2e68"><span class="section-number-2">32</span> if</h2>
+<div class="outline-text-2" id="text-32">
+<p>
+The basic idea behind an if, is that, "if a test is true, then an expression is evaluated;<br />
+if the test is not true, the expression is not evaluated."<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #73d216;">;; </span><span style="color: #73d216;">simple template</span>
+(<span style="color: #b4fa70;">if</span> true-or-false-test
+    action-to-carry-out-if-test-returns-true)
+
+<span style="color: #73d216;">;; </span><span style="color: #73d216;">complex template</span>
+(<span style="color: #b4fa70;">if</span> true-or-false-test
+    action-to-carry-out-if-test-returns-true
+  action-to-carry-out-if-test-returns-false)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">type-of-animal</span> (characteristic)
+  <span style="color: #e9b96e;">"Print message in echo area depending on CHARACTERISTIC.</span>
+<span style="color: #e9b96e;">If the CHARACTERISTIC is the string \"fierce\",</span>
+<span style="color: #e9b96e;">then warn of a tiger; else say it is not fierce."</span>
+  (<span style="color: #b4fa70;">if</span> (equal characteristic <span style="color: #e9b96e;">"fierce"</span>)
+      (message <span style="color: #e9b96e;">"It is a tiger!"</span>)
+    (message <span style="color: #e9b96e;">"It is not fierce"</span>)))
+
+(type-of-animal <span style="color: #e9b96e;">"fierce"</span>)               <span style="color: #73d216;">; </span><span style="color: #73d216;">"It is a tiger!"</span>
+(type-of-animal <span style="color: #e9b96e;">"striped"</span>)              <span style="color: #73d216;">; </span><span style="color: #73d216;">"It is not fierce"</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org25977be" class="outline-2">
+<h2 id="org25977be"><span class="section-number-2">33</span> insert-buffer</h2>
+<div class="outline-text-2" id="text-33">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">insert-buffer</span> (buffer)
+  <span style="color: #e9b96e;">"Insert after point the contents of BUFFER."</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">The asterisk is for the situation when the current buffer is</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">read-only</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">when the current buffer is read-only, a message to this effect</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">is printed in the echo area and the terminal may beep or blink at you</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">The asterisk does not need to be followed by a newline to</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">separate it from the next argument.</span>
+  (<span style="color: #b4fa70;">interactive</span> <span style="color: #e9b96e;">"*bInsert buffer: "</span>)
+  (<span style="color: #b4fa70;">or</span> (bufferp buffer)
+      (<span style="color: #b4fa70;">setq</span> buffer (get-buffer-create buffer)))
+  (<span style="color: #b4fa70;">let</span> (start end newmark)
+    (<span style="color: #b4fa70;">save-excursion</span>
+      (<span style="color: #b4fa70;">save-excursion</span>
+        (set-buffer buffer)
+        (<span style="color: #b4fa70;">setq</span> start (point-min) end (point-max)))
+      (insert-buffer-substring buffer start end)
+      (<span style="color: #b4fa70;">setq</span> newmark (point)))
+    (push-mark newmark)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org23f502c" class="outline-2">
+<h2 id="org23f502c"><span class="section-number-2">34</span> insert-buffer-substring</h2>
+<div class="outline-text-2" id="text-34">
+<p>
+(insert-buffer-substring BUFFER &amp;optional START END)<br />
+</p>
+
+<p>
+Insert before point a substring of the contents of BUFFER.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org0ade4c6" class="outline-2">
+<h2 id="org0ade4c6"><span class="section-number-2">35</span> interactive</h2>
+<div class="outline-text-2" id="text-35">
+<p>
+Specify a way of parsing arguments for interactive use of a function.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Code Letter</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">P</td>
+<td class="org-left">Prefix arg in raw form</td>
+</tr>
+
+<tr>
+<td class="org-left">p</td>
+<td class="org-left">Prefix arg converted to number.  If called interactively without a prefix, 1 is passed.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">B</td>
+<td class="org-left">Name of buffer, possibly nonexistent</td>
+</tr>
+
+<tr>
+<td class="org-left">b</td>
+<td class="org-left">Name of existing buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">c</td>
+<td class="org-left">Character</td>
+</tr>
+
+<tr>
+<td class="org-left">f</td>
+<td class="org-left">Name of existing file</td>
+</tr>
+
+<tr>
+<td class="org-left">r</td>
+<td class="org-left">Region: point and mark as 2 numeric args, smallest first</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Emacs has more than twenty characters predefined for use with interactive.<br />
+In almost every case, one of these options will enable you to pass the right information interactively to a funkction.<br />
+</p>
+
+<p>
+A function with two or more arguments can have information passed to each argument by adding parts to the string that follows interactive.<br />
+The information is passed to each argument in the same order it is specified in the interactive list.<br />
+In the string, each part is separated from the next part by a '\n'.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">name-of-function</span> (arg char)
+  <span style="color: #e9b96e;">"documentation..."</span>
+  (<span style="color: #b4fa70;">interactive</span> <span style="color: #e9b96e;">"p\ncZap to char: "</span>)
+  body-of-function...)
+</pre>
+</div>
+<p>
+arg and char are the symbols to which interactive binds the prefix argument and the specified character.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org68bbc8f" class="outline-2">
+<h2 id="org68bbc8f"><span class="section-number-2">36</span> kill-region</h2>
+<div class="outline-text-2" id="text-36">
+<p>
+(kill-region BEG END &amp;optional REGION)<br />
+</p>
+
+<p>
+Kill ("cut") text between point and mark.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">kill-region</span> (beg end <span style="color: #8cc4ff;">&amp;optional</span> region)
+  <span style="color: #e9b96e;">"Kill (\"cut\") text between point and mark.</span>
+<span style="color: #e9b96e;">This deletes the text from the buffer and saves it in the kill ring.</span>
+<span style="color: #e9b96e;">The command \\[</span><span style="color: #e9b2e3;">yank</span><span style="color: #e9b96e;">] can retrieve it from there.</span>
+<span style="color: #e9b96e;">\(If you want to save the region without killing it, use \\[</span><span style="color: #e9b2e3;">kill-ring-save</span><span style="color: #e9b96e;">].)</span>
+
+<span style="color: #e9b96e;">If you want to append the killed region to the last killed text,</span>
+<span style="color: #e9b96e;">use \\[</span><span style="color: #e9b2e3;">append-next-kill</span><span style="color: #e9b96e;">] before \\[</span><span style="color: #e9b2e3;">kill-region</span><span style="color: #e9b96e;">].</span>
+
+<span style="color: #e9b96e;">Any command that calls this function is a \"kill command\".</span>
+<span style="color: #e9b96e;">If the previous command was also a kill command,</span>
+<span style="color: #e9b96e;">the text killed this time appends to the text killed last time</span>
+<span style="color: #e9b96e;">to make one entry in the kill ring.</span>
+
+<span style="color: #e9b96e;">The killed text is filtered by `</span><span style="color: #e9b2e3;">filter-buffer-substring</span><span style="color: #e9b96e;">' before it is</span>
+<span style="color: #e9b96e;">saved in the kill ring, so the actual saved text might be different</span>
+<span style="color: #e9b96e;">from what was killed.</span>
+
+<span style="color: #e9b96e;">If the buffer is read-only, Emacs will beep and refrain from deleting</span>
+<span style="color: #e9b96e;">the text, but put the text in the kill ring anyway.  This means that</span>
+<span style="color: #e9b96e;">you can use the killing commands to copy text from a read-only buffer.</span>
+
+<span style="color: #e9b96e;">Lisp programs should use this function for killing text.</span>
+<span style="color: #e9b96e;"> (To delete text, use `</span><span style="color: #e9b2e3;">delete-region</span><span style="color: #e9b96e;">'.)</span>
+<span style="color: #e9b96e;">Supply two arguments, character positions BEG and END indicating the</span>
+<span style="color: #e9b96e;"> stretch of text to be killed.  If the optional argument REGION is</span>
+<span style="color: #e9b96e;"> non-nil, the function ignores BEG and END, and kills the current</span>
+<span style="color: #e9b96e;"> region instead."</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">Pass mark first, then point, because the order matters when</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">calling `</span><span style="color: #e9b2e3;">kill-append</span><span style="color: #73d216;">'.</span>
+  (<span style="color: #b4fa70;">interactive</span> (list (mark) (point) 'region))
+  (<span style="color: #b4fa70;">unless</span> (<span style="color: #b4fa70;">and</span> beg end)
+    (<span style="color: #ff4b4b;">user-error</span> <span style="color: #e9b96e;">"The mark is not set now, so there is no region"</span>))
+  (<span style="color: #b4fa70;">condition-case</span> nil
+      (<span style="color: #b4fa70;">let</span> ((string (<span style="color: #b4fa70;">if</span> region
+                        (funcall region-extract-function 'delete)
+                      (filter-buffer-substring beg end 'delete))))
+        (<span style="color: #b4fa70;">when</span> string                    <span style="color: #73d216;">;</span><span style="color: #73d216;">STRING is nil if BEG = END</span>
+          <span style="color: #73d216;">;; </span><span style="color: #73d216;">Add that string to the kill ring, one way or another.</span>
+          (<span style="color: #b4fa70;">if</span> (eq last-command 'kill-region)
+              (kill-append string (&lt; end beg))
+            (kill-new string)))
+        (<span style="color: #b4fa70;">when</span> (<span style="color: #b4fa70;">or</span> string (eq last-command 'kill-region))
+          (<span style="color: #b4fa70;">setq</span> this-command 'kill-region))
+        (<span style="color: #b4fa70;">setq</span> deactivate-mark t)
+        nil)
+    ((buffer-read-only text-read-only)
+     <span style="color: #73d216;">;; </span><span style="color: #73d216;">The code above failed because the buffer, or some of the characters</span>
+     <span style="color: #73d216;">;; </span><span style="color: #73d216;">in the region, are read-only.</span>
+     <span style="color: #73d216;">;; </span><span style="color: #73d216;">We should beep, in case the user just isn't aware of this.</span>
+     <span style="color: #73d216;">;; </span><span style="color: #73d216;">However, there's no harm in putting</span>
+     <span style="color: #73d216;">;; </span><span style="color: #73d216;">the region's text in the kill ring, anyway.</span>
+     (copy-region-as-kill beg end region)
+     <span style="color: #73d216;">;; </span><span style="color: #73d216;">Set this-command now, so it will be set even if we get an error.</span>
+     (<span style="color: #b4fa70;">setq</span> this-command 'kill-region)
+     <span style="color: #73d216;">;; </span><span style="color: #73d216;">This should barf, if appropriate, and give us the correct error.</span>
+     (<span style="color: #b4fa70;">if</span> kill-read-only-ok
+         (<span style="color: #b4fa70;">progn</span> (message <span style="color: #e9b96e;">"Read only text copied to kill ring"</span>) nil)
+       <span style="color: #73d216;">;; </span><span style="color: #73d216;">Signal an error if the buffer is read-only.</span>
+       (barf-if-buffer-read-only)
+       <span style="color: #73d216;">;; </span><span style="color: #73d216;">If the buffer isn't read-only, the text is.</span>
+       (<span style="color: #ff4b4b;">signal</span> 'text-read-only (list (current-buffer)))))))
+
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org81c1a2b" class="outline-2">
+<h2 id="org81c1a2b"><span class="section-number-2">37</span> length</h2>
+<div class="outline-text-2" id="text-37">
+<p>
+(length SEQUENCE)<br />
+</p>
+
+<p>
+Return the length of vector, list or string SEQUENCE.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(length '(a b)) <span style="color: #73d216;">; </span><span style="color: #73d216;">2</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0db80c2" class="outline-2">
+<h2 id="org0db80c2"><span class="section-number-2">38</span> let</h2>
+<div class="outline-text-2" id="text-38">
+<p>
+to bind a symbol to a value locally.<br />
+</p>
+
+<p>
+let creates a name for a local variable that overshadow any use of the same name outside the let expression.<br />
+(Symbols used in argument list work the same way.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #73d216;">;; </span><span style="color: #73d216;">simple template</span>
+(<span style="color: #b4fa70;">let</span> varlist body...)
+
+<span style="color: #73d216;">;; </span><span style="color: #73d216;">complex template</span>
+(<span style="color: #b4fa70;">let</span> ((variable value)
+      (variable value)
+      ...)
+  body...)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">let</span> ((birch 3)
+      pine
+      fir
+      (oak 'some))
+  (message
+   <span style="color: #e9b96e;">"Here are %d variable with %s, %s, and %s value."</span>
+   birch pine fir oak))
+<span style="color: #73d216;">;; </span><span style="color: #73d216;">"Here are 3 variable with nil, nil, and some value."</span>
+</pre>
+</div>
+<p>
+If you do not bind the variable in a let statement to specific initial values,<br />
+they will automatically be bound to an inital value of nil.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0fc8a6f" class="outline-2">
+<h2 id="org0fc8a6f"><span class="section-number-2">39</span> let*</h2>
+<div class="outline-text-2" id="text-39">
+<p>
+(let* VARLIST BODY&#x2026;)<br />
+</p>
+
+<p>
+Bind variables according to VARLIST then eval BODY.<br />
+The value of the last form in BODY is returned.<br />
+Each element of VARLIST is a symbol (which is bound to nil)<br />
+or a list (SYMBOL VALUEFORM) (which binds SYMBOL to the value of VALUEFORM).<br />
+Each VALUEFORM can refer to the symbols already bound by this VARLIST.<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org5cbcc5e" class="outline-2">
+<h2 id="org5cbcc5e"><span class="section-number-2">40</span> list</h2>
+<div class="outline-text-2" id="text-40">
+<p>
+Return a newly created list with specified arguments as elements.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc2836fc" class="outline-2">
+<h2 id="orgc2836fc"><span class="section-number-2">41</span> listp</h2>
+</div>
+<div id="outline-container-org640607a" class="outline-2">
+<h2 id="org640607a"><span class="section-number-2">42</span> mark-whole-buffer</h2>
+<div class="outline-text-2" id="text-42">
+<p>
+C-x h<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python">(defun mark-whole-<span style="color: #e090d7;">buffer</span> ()
+  <span style="color: #e9b96e;">"Put point at beginning and mark at end of buffer.</span>
+<span style="color: #e9b96e;">You probably should not use this function in Lisp programs;</span>
+<span style="color: #e9b96e;">it is usually a mistake for a Lisp function to use any subroutine</span>
+<span style="color: #e9b96e;">that uses or sets the mark."</span>
+  (interactive)
+  (push-mark)
+  (push-mark (point-<span style="color: #e090d7;">max</span>) nil t)
+  (goto-char (point-<span style="color: #e090d7;">min</span>)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc0cac43" class="outline-2">
+<h2 id="orgc0cac43"><span class="section-number-2">43</span> message</h2>
+<div class="outline-text-2" id="text-43">
+<p>
+A message is printed in the echo area.<br />
+<span class="timestamp-wrapper"><span class="timestamp">[2019-03-21 Thu]</span></span><br />
+</p>
+</div>
+</div>
+<div id="outline-container-org56a817a" class="outline-2">
+<h2 id="org56a817a"><span class="section-number-2">44</span> not</h2>
+</div>
+
+<div id="outline-container-org84e77ec" class="outline-2">
+<h2 id="org84e77ec"><span class="section-number-2">45</span> nth</h2>
+<div class="outline-text-2" id="text-45">
+<p>
+(nth N LIST)<br />
+</p>
+
+<p>
+Return the Nth element of LIST.<br />
+N counts from zero.  If LIST is not that long, nil is returned.<br />
+</p>
+
+<p>
+"non-desctructive"<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org04cfe30" class="outline-2">
+<h2 id="org04cfe30"><span class="section-number-2">46</span> nthcdr</h2>
+<div class="outline-text-2" id="text-46">
+<p>
+(nthcdr N LIST)<br />
+</p>
+
+<p>
+Take cdr N times on LIST, return the result.<br />
+</p>
+
+<p>
+"non-desctructive"<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf43e6ef" class="outline-2">
+<h2 id="orgf43e6ef"><span class="section-number-2">47</span> number-or-marker-p</h2>
+<div class="outline-text-2" id="text-47">
+<p>
+number or marker predict<br />
+a predict prefers to a function to determine whether some property is true of false.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orga5965ea" class="outline-2">
+<h2 id="orga5965ea"><span class="section-number-2">48</span> number-to-string</h2>
+</div>
+<div id="outline-container-orgadbcf16" class="outline-2">
+<h2 id="orgadbcf16"><span class="section-number-2">49</span> or</h2>
+<div class="outline-text-2" id="text-49">
+<p>
+(or CONDITIONS&#x2026;)<br />
+</p>
+
+<p>
+Eval args until one of them yields non-nil, then return that value.<br />
+The remaining args are not evalled at all.<br />
+If all args return nil, return nil.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdcedcf8" class="outline-2">
+<h2 id="orgdcedcf8"><span class="section-number-2">50</span> other-buffer</h2>
+<div class="outline-text-2" id="text-50">
+<p>
+(other-buffer &amp;optional BUFFER VISIBLE-OK FRAME)<br />
+</p>
+
+<p>
+Return most recently selected buffer other than BUFFER.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc565779" class="outline-2">
+<h2 id="orgc565779"><span class="section-number-2">51</span> point</h2>
+<div class="outline-text-2" id="text-51">
+<p>
+the current position of the cursor is called point.<br />
+The expression (point) returns a number the tells where the cursor is<br />
+located as a count of the number of characters from the beginning of the buffer to point.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org377d8e2" class="outline-2">
+<h2 id="org377d8e2"><span class="section-number-2">52</span> point-max</h2>
+</div>
+<div id="outline-container-org6d1b9c5" class="outline-2">
+<h2 id="org6d1b9c5"><span class="section-number-2">53</span> point-min</h2>
+</div>
+<div id="outline-container-org55798e8" class="outline-2">
+<h2 id="org55798e8"><span class="section-number-2">54</span> prefix-numeric-value</h2>
+<div class="outline-text-2" id="text-54">
+<p>
+(prefix-numeric-value RAW)<br />
+</p>
+
+<p>
+Return numeric meaning of raw prefix argument RAW.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgc97d241" class="outline-2">
+<h2 id="orgc97d241"><span class="section-number-2">55</span> progn</h2>
+<div class="outline-text-2" id="text-55">
+<p>
+(progn BODY&#x2026;)<br />
+</p>
+
+<p>
+Eval BODY forms sequentially and return value of last one.<br />
+The preceding expressions are evaluated only for the side effects they perform. The values produced by them are discarded.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga149859" class="outline-2">
+<h2 id="orga149859"><span class="section-number-2">56</span> push-mark</h2>
+<div class="outline-text-2" id="text-56">
+<p>
+(push-mark &amp;optional LOCATION NOMSG ACTIVATE)<br />
+</p>
+
+<p>
+Set mark at LOCATION (point, by default) and push old mark on mark ring.<br />
+Display ‘Mark set’ unless the optional second arg NOMSG is non-nil.<br />
+In Transient Mark mode, activate mark if optional third arg ACTIVATE non-nil.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org5a61933" class="outline-2">
+<h2 id="org5a61933"><span class="section-number-2">57</span> quote</h2>
+</div>
+<div id="outline-container-orgf115ae2" class="outline-2">
+<h2 id="orgf115ae2"><span class="section-number-2">58</span> read-buffer</h2>
+<div class="outline-text-2" id="text-58">
+<p>
+Read the name of a buffer and return as a string.<br />
+</p>
+
+<p>
+(read-buffer PROMPT &amp;optional DEF REQUIRE-MATCH PREDICATE)<br />
+</p>
+
+<p>
+Prompt with PROMPT.<br />
+Optional second arg DEF is value to return if user enters an empty line.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4764bb9" class="outline-2">
+<h2 id="org4764bb9"><span class="section-number-2">59</span> read-char</h2>
+<div class="outline-text-2" id="text-59">
+<p>
+(read-char &amp;optional PROMPT INHERIT-INPUT-METHOD SECONDS)<br />
+</p>
+
+<p>
+Read a character from the command input (keyboard or macro).<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1356219" class="outline-2">
+<h2 id="org1356219"><span class="section-number-2">60</span> region-beginning</h2>
+<div class="outline-text-2" id="text-60">
+<p>
+Return the integer value of point or mark, whichever is smaller.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4b798a5" class="outline-2">
+<h2 id="org4b798a5"><span class="section-number-2">61</span> region-end</h2>
+<div class="outline-text-2" id="text-61">
+<p>
+Return the integer value of point or mark, whichever is larger.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb22dc45" class="outline-2">
+<h2 id="orgb22dc45"><span class="section-number-2">62</span> save-excursion</h2>
+<div class="outline-text-2" id="text-62">
+<p>
+It saves the location of point, executes the body of the function, and then restores point to its previous position if its location was changed.<br />
+Its primary purpose it ot keep the user from being surprised and disturbed by expected movement of point.<br />
+</p>
+
+<p>
+function:<br />
+</p>
+<ol class="org-ol">
+<li>save point and restore it<br /></li>
+<li>save buffer and restore it<br /></li>
+</ol>
+
+<p>
+template:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">save-excursion</span>
+  body...)
+
+(<span style="color: #b4fa70;">save-excursion</span>
+  first-expression-in-body
+  second-expression-in-body
+  third-expresion-in-body
+  ...
+  last-expression-in-body)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0cd2f95" class="outline-2">
+<h2 id="org0cd2f95"><span class="section-number-2">63</span> save-restriction</h2>
+<div class="outline-text-2" id="text-63">
+<p>
+When the Lisp interpreter meets with save-restriction, it executes the code in the body of<br />
+the save-restriction expression, and then undoes any changes to narrowing that the code caused.<br />
+</p>
+
+<p>
+When you use both save-excursion and save-restriction, one right after the other, you should<br />
+use save-excursion outermost.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">save-excursion</span>
+  (<span style="color: #b4fa70;">save-restriction</span>
+    body...))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5fefcfa" class="outline-2">
+<h2 id="org5fefcfa"><span class="section-number-2">64</span> search-forward</h2>
+<div class="outline-text-2" id="text-64">
+<p>
+(search-forward STRING &amp;optional BOUND NOERROR COUNT)<br />
+</p>
+
+<p>
+Search forward from point for STRING.<br />
+Set point to the end of the occurrence found, and return point.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgda542bb" class="outline-2">
+<h2 id="orgda542bb"><span class="section-number-2">65</span> self-insert-command</h2>
+<div class="outline-text-2" id="text-65">
+<p>
+simply inserts the character you typed.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgfc2c764" class="outline-2">
+<h2 id="orgfc2c764"><span class="section-number-2">66</span> set</h2>
+</div>
+<div id="outline-container-org2ed0045" class="outline-2">
+<h2 id="org2ed0045"><span class="section-number-2">67</span> set-buffer</h2>
+<div class="outline-text-2" id="text-67">
+<p>
+designed for computers and does one things:<br />
+switch the attention of the computer program to a different buffer.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgd75d202" class="outline-2">
+<h2 id="orgd75d202"><span class="section-number-2">68</span> set-mark-command</h2>
+<div class="outline-text-2" id="text-68">
+<p>
+C-@<br />
+C-SPC<br />
+</p>
+
+
+<p>
+With prefix argument (e.g., C-u), jump to the mark, and set the mark from<br />
+position popped off the local mark ring (this does not affect the global<br />
+mark ring).<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org81119a2" class="outline-2">
+<h2 id="org81119a2"><span class="section-number-2">69</span> setcar</h2>
+</div>
+
+
+<div id="outline-container-orga47f9a0" class="outline-2">
+<h2 id="orga47f9a0"><span class="section-number-2">70</span> setcdr</h2>
+</div>
+
+<div id="outline-container-org22d2fb9" class="outline-2">
+<h2 id="org22d2fb9"><span class="section-number-2">71</span> setq</h2>
+<div class="outline-text-2" id="text-71">
+<p>
+set quote<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org53e888a" class="outline-2">
+<h2 id="org53e888a"><span class="section-number-2">72</span> substring</h2>
+</div>
+<div id="outline-container-org035ca7d" class="outline-2">
+<h2 id="org035ca7d"><span class="section-number-2">73</span> switch-to-buffer</h2>
+<div class="outline-text-2" id="text-73">
+<p>
+bound to C-x b<br />
+switch-to-buffer is designed for humans and does two things:<br />
+</p>
+<ol class="org-ol">
+<li>switch the buffer to which Emacs's attention is directed<br /></li>
+<li>switch the buffer displayed in the window to the new buffer<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org96d9c9f" class="outline-2">
+<h2 id="org96d9c9f"><span class="section-number-2">74</span> what-line</h2>
+<div class="outline-text-2" id="text-74">
+<p>
+Print the current buffer line number and narrowed line number of point.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">simplified-what-line</span> ()
+  <span style="color: #e9b96e;">"Document"</span>
+  (<span style="color: #b4fa70;">interactive</span>)
+  (<span style="color: #b4fa70;">save-restriction</span>
+    (widen)
+    (<span style="color: #b4fa70;">save-excursion</span>
+      (beginning-of-line)
+      (message <span style="color: #e9b96e;">"Line %d"</span> (1+ (count-lines 1 (point)))))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge769423" class="outline-2">
+<h2 id="orge769423"><span class="section-number-2">75</span> when</h2>
+<div class="outline-text-2" id="text-75">
+<p>
+(when COND BODY&#x2026;)<br />
+</p>
+
+<p>
+If COND yields non-nil, do BODY, else return nil.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org06703f0" class="outline-2">
+<h2 id="org06703f0"><span class="section-number-2">76</span> widen</h2>
+</div>
+
+<div id="outline-container-orgf401a30" class="outline-2">
+<h2 id="orgf401a30"><span class="section-number-2">77</span> with-current-buffer</h2>
+<div class="outline-text-2" id="text-77">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">with-current-buffer</span> BUFFER-OR-NAME <span style="color: #8cc4ff;">&amp;rest</span> BODY)
+
+Execute the forms in BODY with BUFFER-OR-NAME temporarily current.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org24b5889" class="outline-2">
+<h2 id="org24b5889"><span class="section-number-2">78</span> with-no-warnings</h2>
+</div>
+
+<div id="outline-container-orgd475d51" class="outline-2">
+<h2 id="orgd475d51"><span class="section-number-2">79</span> xref-find-definitions</h2>
+<div class="outline-text-2" id="text-79">
+<p>
+Find the definition of the identifier at point.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org173803d" class="outline-2">
+<h2 id="org173803d"><span class="section-number-2">80</span> zap-to-char</h2>
+<div class="outline-text-2" id="text-80">
+<p>
+It is bound to M-z.<br />
+</p>
+
+<p>
+(zap-to-char ARG CHAR)<br />
+</p>
+
+<p>
+Kill up to and including ARGth occurrence of CHAR.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">zap-to-char</span> (arg char)
+  <span style="color: #e9b96e;">"Kill up to and including ARGth occurrence of CHAR.</span>
+<span style="color: #e9b96e;">Case is ignored if `</span><span style="color: #e9b2e3;">case-fold-search</span><span style="color: #e9b96e;">' is non-nil in the current buffer.</span>
+<span style="color: #e9b96e;">Goes backward if ARG is negative; error if CHAR not found."</span>
+  (<span style="color: #b4fa70;">interactive</span> (list (prefix-numeric-value current-prefix-arg) <span style="color: #73d216;">;</span><span style="color: #73d216;">arg</span>
+                     (read-char <span style="color: #e9b96e;">"Zap to char: "</span> t)))           <span style="color: #73d216;">;</span><span style="color: #73d216;">char</span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">Avoid "obsolete" warnings for translation-table-for-input.</span>
+  (with-no-warnings
+    (<span style="color: #b4fa70;">if</span> (char-table-p translation-table-for-input)
+        (<span style="color: #b4fa70;">setq</span> char (<span style="color: #b4fa70;">or</span> (aref translation-table-for-input char) char))))
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">The progn special form is necessary because the kill-region command takes two arguments; </span>
+  <span style="color: #73d216;">;; </span><span style="color: #73d216;">and it would fail if search-forward and point expressions were written in sequence as two additional arguments.</span>
+  (kill-region (point) (<span style="color: #b4fa70;">progn</span> 
+                         (search-forward (char-to-string char) nil nil arg)
+                         (point))))
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org472244e" class="outline-2">
+<h2 id="org472244e"><span class="section-number-2">81</span> zerop</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Hack Chyson</p>
+<p class="date">Created: 2019-04-03 Wed 00:20</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+\chapter{Shell Mode}
+
+To invoke shell mode, type \verb|M-x shell|.
+
+
+\section{Common Key Bindings}
+
+Hint: C-c is a prefix command.
+
+
+\begin{description}
+\item [TAB] complete the command or variable at the point 
+\item [M-?] complete dynamically 
+\item [C-c C-b] move the cursor to the backward command 
+\item [C-c C-f] move the cursor to the forward command 
+\item [C-c C-c] like C-c in Terminal 
+\item [C-c C-d] like C-d in Terminal 
+\item [C-c C-l] list the commands you have typed 
+\item [C-c C-p] move the cursor to the previous command line 
+\item [C-c C-n] move the cursor to the next command line 
+\item [C-c C-o] delete the output of the current command line 
+\item [C-M-l] move the cursor to previous command lien output
+\item [C-c C-s] write the privous output into a file (overwrite)
+\item [C-c C-u] kill the input between the first character and the current cursor, like C-u in Terminal
+\item [C-c SPC] accumulate input, like $\backslash$ in terminal
+\item [C-c .] insert the last previous argument
+\item [M-n] next input
+\item [M-p] previous input
+\item [M-r] backward isearch, like C-r in Terminal
+\item [C-c M-r] privious matching input
+\item [C-c M-s] next matching input  
+\item [C-c M-o] clear buffer, like C-l in Terminal
+\end{description}
+
+
+
+\section{Multiple Shell}
+
+To open multiple shell, rename the current shell with \verb|M-x rename-buffer|.
+After the rename, you can open a new shell with \verb|M-x shell|.
+
+

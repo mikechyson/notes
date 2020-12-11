@@ -108,3 +108,25 @@ Here's the oprations that work on MacOS:
 \item Copy the name (Here is my first line ``name (opened by): -*-Menlo-normal-normal-normal-*-9-*-*-*-m-0-iso10646-1'')
 \item add the the Elisp code ``(add-to-list 'default-frame-alist '(font . "-*-Menlo-normal-normal-normal-*-9-*-*-*-m-0-iso10646-1"))''
 \end{enumerate}
+
+\section{Treemacs}
+
+
+Treemacs is a file and project explorer similar to NeoTree or vim’s NerdTree, but largely inspired by the Project Explorer in Eclipse.
+It shows the file system outlines of your projects in a simple tree layout allowing quick navigation and exploration, while also possessing basic file management utilities.
+
+\lstset{language=Elisp}
+\begin{lstlisting}
+  M-x package-install RET
+  treemacs* RET
+\end{lstlisting}
+
+After the installation, type \verb|M-x treemacs| to evoke the treemacs.
+
+The effect is as shown in Figure \ref{fig:treemacs}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{treemacs}
+  \caption{Treemacs}
+  \label{fig:treemacs}
+\end{figure}

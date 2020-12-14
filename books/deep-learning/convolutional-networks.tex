@@ -1,0 +1,98 @@
+
+\chapter{Convolutional Networks}
+
+\keyword{Convolutional networks}, also known as \keyword{convolutional neural networks} or CNNs, are specialized kind of neural network for processing data that has a known \keyword{grid-like} topology.
+Convolution is a specialized kind of linear operation.
+Convolutional networks are simply neural networks that use convolution in place of general matrix multiplication in at least one of their layers.
+
+
+\section{The Convolution Operation}
+
+\begin{equation}
+  \label{eq:convolution}
+  s(t) = \int x(a)w(t-a)da.
+\end{equation}
+This operation is called \keyword{convolution}.
+The convolution operation is typically denoted with an asterisk:
+\begin{equation}
+  s(t) = (x*w)(t).
+\end{equation}
+
+In convolutional network terminology, the first argument (in this example, the function $x$) to the convolution is often referred to as the \keyword{input}, and the second argument (int this example, the function $w$) as the \keyword{kernel}.
+The output is sometimes referred to as the \keyword{feature map}.
+
+If we assume that $x$ and $w$ are defined only on integer $t$, we can define the discrete convolution:
+\begin{equation}
+  \label{eq:discrete-convolution}
+  s(t) = (x*w)(t) = \sum_{a=-\infty}^{\infty} x(a)w(t-a).
+\end{equation}
+
+
+We often use convolutions over more than one axis at a time.
+For example, if we use a two-dimensinal image $I$ as our input, we probably also want to use a two-dimensional kernel $K$:
+\begin{equation}
+  S(i,j) = (I*K)(i,j) = \sum_m\sum_n I(m,n)K(i-m,j-n).
+\end{equation}
+
+
+Convolution is commulative, meaning we can equivalently write
+\begin{equation}
+  S(i,j) = (K*I)(i,j) = \sum_m\sum_n I(i-m,j-n)K(m,n).
+\end{equation}
+
+Usually the latter formula is more stratghtforward to implement in a machine learning library, because there is less variation in the range of valid values of $m$ and $n$.
+
+
+The commulative property of convolution arises becuase we have fipped the kernel relative to the input, in the sense that as $m$ increase, the index into the input increase, but the index into the kernel decrease.
+The only reason to flip the kernel is to obtain the commulative property.
+While the commulative property is useful for writting proofs, it is not usually an important property of a neural network implementation.
+Instead, many neural network libraries implement a related function called the \keyword{cross-correlation}, which is the same as convolution but without flippling the kernel:
+\begin{equation}
+  S(i,j) = (I*K)(i,j) = \sum_m\sum_nI(i+m,j+n)K(m,n).
+\end{equation}
+Many machine learning libraries implement cross-correlation but call it convolution.
+
+
+\section{Motivation}
+
+Convolution leverages three important ideas:
+\begin{itemize}
+\item sparse interaction.
+\item parameter sharing.
+\item equivariant representations.
+\end{itemize}
+
+\subsection{Sparse interaction}
+
+Tradition neural network layers use matrix multiplication by a matrix of parameters with a separate parameter describing the interaction between each input unit and each output unit.
+This means that every output unit interacts with every input unit.
+Convolutional networks typically have sparse interactions.
+This is accomplished by making the kernel smaller than the input.
+
+
+\subsection{Parameter sharing}
+
+Parameter sharing refers to use the same parameter for more than one function in a model.
+In a traditional nerual net, each element of the weight matrix is used exactly once when computing the output of a layer.
+It is multiplied by one element of the input and then never revisited.
+In a convolutional neural net. each member of the kernel is used at every postion of the input.
+The parameter sharing used by the convolution operation means that rather than learning a separate set of parameters for every location, we learn only one set.
+
+\subsection{Equivariant representations}
+
+In the case of convolution, the particular form of a parameter sharing causes the layer to have a property called \keyword{equivariance} to translation.
+To say a function is equivariant means that if the input changes, the output changes in the same way.
+Specifically, a function $f(x)$ is equivariant to a function $g$ if $f(g(x)) = g(f(x))$.
+In the case of convolution, if we let $g$ be any function that translate the input, that is, shifts it, then the convolution function is equivalent to $g$.
+
+For images, convolution creates a 2-D map of where certain features appear in the input.
+If we move the object in the input, its representations will move the same amount in the output.
+This is useful for when we know that some function of a small number of neighboring pixels is useful when applied to multiple input location.
+For example, when processing images, it is useful to detect edges in the first layer of a convolutional network,
+The same edges appear more or less everywhere in the image, so it is practical to share parameters across the intire image.
+
+Convolution is not naturally equivalent to some other transformation, such as changes in the scale or ratation of a image.
+
+
+
+

@@ -1,3 +1,88 @@
 
 \chapter{Theory}
 
+\section{What is algorithm?}
+
+\begin{tcolorbox}
+  \begin{equation*}
+    input \longrightarrow algorithm \longrightarrow output    
+  \end{equation*}
+\end{tcolorbox}
+
+
+An algorithm is a sequence of computational that transform the input into the output, it describe a specific computational procedure for achieving the input/output relationship.
+
+
+\section{Instance of a problem}
+
+An instance of a problem is the input needed to compute a solution to the problem.
+
+\section{Correct algorithm}
+
+For every input instance, a correct algorithm halts out the corrent output.
+
+\section{Data structure}
+
+Data structure is a way to store and organize data in order to faciliate access and modifications.
+No single data structure works well for all purpose.
+
+\section{The core technique}
+
+Learning an algorithm is to learn the technique of algorithm design and analysis.
+
+\section{Algorithm efficiency}
+
+Computers are not infinitely fast and memory is not free, thus the efficiency of a algorithm matters.
+
+
+\section{Algorithms use information}
+
+
+There is information in the problem, the general is, the more information you use, the more efficiency the algorithm is.
+Data structure is a way to use this information.
+
+
+\section{Loop invariant}
+
+There can be infinite input cases, so it is hard to say an algorithm is corrent.
+Loop invariant is a way to guarantee that the algorithm is correct.
+
+
+There are 3 elements in a loop invariant:
+\begin{description}
+\item[initialization] It is true prior to the first iteration of the loop.
+\item[maintanance] If it is true before an iteration of the loop, it remains true before the next iteration.
+\item[termination] When the loop terminates, the invariant gives us a useful property that helps show that the algorithm is correct.
+\end{description}
+
+
+\section{Analyzing an algorithm}
+
+Analyzing an algorithm is to predict the resources consumed.
+The most important resources is time and space.
+
+In general, the time grows with the size of the input,
+so it is traditional to describe the running time as the function of the size of its input.
+
+\subsection{Worst-case analysis}
+
+Becuase the behavior of an algorithm may be different for each possible input, we need a means for summarizing that behavior in simple, easily understood formulas.
+The reason to analyze worst-case running time is as follows:
+\begin{enumerate}
+\item It give an upper bound on the running time.
+\item Worst case ocurrs fairly often.
+\item The ``average case'' is often roughly as bad as the worst case.
+\end{enumerate}
+
+
+\section{Resource model}
+
+
+Before we can analyze an algorithm, we must have a model of the implementation technology that we will use, including a model for the resources of that technology and their costs. 
+However, the focus is algorithm, not the tedious hardware detail.
+We shall assume a generic one-processor, random-access machine (RAM) model of computation as our implementation technology and understand
+that our algorithms will be implemented as computer programs.
+In the RAM model, instructions are executed one after another, with no concurrent operations.
+
+
+

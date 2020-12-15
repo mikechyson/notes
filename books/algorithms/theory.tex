@@ -94,10 +94,71 @@ When we look at input sizes large enought to make only the order of growth of th
 
 \subsection{$\Theta$-notation}
 
+\begin{gather*}
+  \Theta(g(n)) = \{ f(n): \mathrm{there\ exist\ positive\ constant\ } c_1, c_2\ \mathrm{and} \ n_0 \\
+  \mathrm{such\ that\ } 0\le c_1 g(n) \le f(n) \le c_2 g(n) \mathrm{\ for\ all\ } n\ge n_0 \}
+\end{gather*}
 
+Because $\Theta(g(n))$ is a set, we could write ``$f(n) \in \Theta(g(n))$'' to indicate that $f(n)$ is a memeber of $\Theta(g(n))$.
+However, we will usually write ``$f(n)=\Theta(g(n))$'' to express the same notion.
+
+$\Theta$-notation indicates the function is bounded with a asymptotically tight upper bound and a asymptotically tight lower bound.
 
 \subsection{O-notation}
+
+\begin{gather*}
+  O(g(n)) = \{ f(n): \mathrm{there\ exist\ positive\ constant\ } c\ \mathrm{and} \ n_0 \\
+  \mathrm{such\ that\ } 0\le f(n) \le c g(n) \mathrm{\ for\ all\ } n\ge n_0 \}
+\end{gather*}
+
+$O$-notation indicates the function is bounded with a asymptotically tight upper bound.
 
 \subsection{$\Omega$-notation}
 
 
+\begin{gather*}
+  \Omega(g(n)) = \{ f(n): \mathrm{there\ exist\ positive\ constant\ } c\ \mathrm{and} \ n_0 \\
+  \mathrm{such\ that\ } 0 \le c g(n) \le f(n) \mathrm{\ for\ all\ } n\ge n_0 \}
+\end{gather*}
+
+
+$\Omega$-notation indicates the function is bounded with a asymptotically tight lower bound.
+
+
+
+\subsection{Theorem}
+
+For any two functions $f(n)$ and $g(n)$,
+we have $f(n) = \Theta(g(n))$ if and only if
+$f(n) = O(g(n))$ and $f(n) = \Omega(g(n))$.
+
+
+\subsection{o-notation}
+
+\begin{gather*}
+  O(g(n)) = \{ f(n): \mathrm{for\ any\ positive\ constant\ } c\ \mathrm{there\ exist\ a\ constant\ } n_0 > 0 \\
+  \mathrm{such\ that\ } 0\le f(n) < c g(n) \mathrm{\ for\ all\ } n\ge n_0 \}
+\end{gather*}
+
+or
+\begin{equation*}
+  \lim_{n\rightarrow\infty}\frac{f(n)}{g(n)} = 0
+\end{equation*}
+
+$o$-notation indicates the function is bounded with a not asymptotically tight upper bound.
+
+
+\subsection{$\omega$-notation}
+
+
+\begin{gather*}
+  O(g(n)) = \{ f(n): \mathrm{for\ any\ positive\ constant\ } c\ \mathrm{there\ exist\ a\ constant\ } n_0 > 0 \\
+  \mathrm{such\ that\ } 0 \le \le c g(n) < f(n) \mathrm{\ for\ all\ } n\ge n_0 \}
+\end{gather*}
+
+or
+\begin{equation*}
+  \lim_{n\rightarrow\infty}\frac{f(n)}{g(n)} = \infty
+\end{equation*}
+
+$\omega$-nodation indicates the function is bounded with a not asymptotically tight lower bound.

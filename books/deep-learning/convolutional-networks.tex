@@ -96,3 +96,78 @@ Convolution is not naturally equivalent to some other transformation, such as ch
 
 
 
+\section{ Pooling}
+
+A typical layer of a convolutional network consists of three stages:
+\begin{enumerate}
+\item convolution stage: affine transform
+\item detector stage: nonlinearty
+\item pooling stage
+\end{enumerate}
+
+
+In the first stage, the layer performs several convolutions in parallel to produce a set of linear activations.
+In the second stage, each linear activations is run through a nonlinear activation function, such as the rectified linear activation function.
+In the third stage, we use a pooling function to modify the output of the layer further.
+
+
+A pooling function replaces the output of the net at a certain location with a summary statistic of the nearby outputs.
+For example, the max pooling oeration reports the maximum otuput within a rectangular neighborhood.
+Other popular pooling functions include the average of a rectangular neighborhood,
+the $L^2$ norm of a rectangular neighborhood, or a weighted average based on the distance from the central pixel.
+
+
+In all cases, pooling helps to make the representation approximately invariant to small translations of the input.
+Invariant to translation means that if we translate the input by a small amount, the values of most of the pooled outputs do not change.
+Invariance to local translation can be a useful property if we care about whether some feature is present than exactly where it is.
+For example, when determining whether an image contains a face, we need not know the location of the eyes with pixel-perfect accuracy,
+we just need to know that there is an eye on the left side of the face and an eye on the right side of the face.
+In ohter example, it is more important to perserve the location of a feature.
+For example, if we want to find a corner defined by two edges meeting at a specified orientation,
+we need to perserve the location of the edge well enough to test whether they meet.
+
+
+The use of pooling can be viewed as adding a infinitly strong prior that the function the layer learns must be invariant to small translations.
+When this assumption is correct, it can greatly improve the statistical efficiency of the network.
+
+
+\section{Convolution and Pooling as an Infinitely Strong Prior}
+
+A probability distribution over the parameters of a model encodes our beliefs about what models are reasonable, before we see any data.
+
+Prior can be considered weak or strong depending on how concertrated the probability density in the prior is.
+A weak prior is a prior distribution with high entropy.
+A strong prior is a prior distribution with low entropy.
+An infinitely strong prior places zero probability on some parameters and says that these parameter values are completely forbidden,
+regardless of how much support the data give to these values.
+
+
+We can imagine a convolutional net as being similar to a fully connected net, but with an infinitely strong prior over its weights.
+This infinitely strong prior says that the weights for one hidden unit must be identical to the weights of its neighbor, but shifted in space.
+The prior also says that the weights must be zero, except for in the small, spatially contiguous receptive field assigned to that hidden unit.
+Overall, we can think of the use of convolution as introducing an infinitely strong prior probability distribution over the parameters of a layer.
+This prior says that the function the layer should learn contains only local interactions and is equivariant to translation.
+Likewise, the use of pooling is an infinitely strong prior that each unit should be invariant to small translations.
+
+
+
+
+\section{Structured Outputs}
+
+Convolutional networks can be used to output a high-dimensional, structured object, rather than just predicting a class label for a classification task or a real value for a regression task.
+Typically this object is just a tensor, emitted by a standard convolutional layer.
+For example, the model might emit a tensor $S$, where $S_{i,j,k}$ is the probability that pixel $(j,k)$ of the input to the network belongs to class i.
+This allows the model to label every pixel in an image and draw precise masks that follow the outlines of individual objects.
+This the basis of the segmentation model.
+
+
+
+In the kinds of architectures typically used for classification of a single object in an image, the greatest reduction in the spatial dimensions of the network comes from using pooling layers with large stride.
+To produce an output map of similar size as the input, one can:
+\begin{itemize}
+\item avoid pooling altogether
+\item emit a lower-resolution grid of labels
+\item use a pooling operator with unit stride
+\end{itemize}
+
+

@@ -23,6 +23,13 @@ from typing import List
 
 
 def findIndex(nums: List[int], start, end) -> int:
+    """
+    Find the first element that is greater than zero
+    :param nums:
+    :param start:
+    :param end:
+    :return:
+    """
     i = (start + end) // 2
     if nums[i] <= 0 and nums[i + 1] >= 0:
         return i

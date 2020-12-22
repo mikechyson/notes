@@ -1,0 +1,43 @@
+
+\chapter{Practical Methodology}
+
+Successfully applying deep learning techniques requires more than a good knowledge of what algorithms exist and
+the principles that explain how they work.
+A good machine learning practitioner also needs to know how to choose an algorithm for a particular application and
+how to monitor and respond to feedback obtained from experiments in order to improve a machine learning system.
+Practitioners need to decide whether to gather more data,
+increase or decrease model capacity,
+add or remove regularizing features,
+improve the optimization of a model,
+improve approximate inference in a model,
+or debug the software implementation of the model.
+
+
+\begin{tcolorbox}
+  \begin{itemize}
+  \item a good knowledge of what algorithms exist
+  \item the principles that explain how they work
+  \item how to choose an algorithm for a particular application
+  \item how to monitor and respond to feedback
+    \begin{itemize}
+    \item whether to gather more data
+    \item increase or decrease model capacity
+    \item add or remove regularizing features
+    \item improve the optimization 
+    \item improve approximate inference
+    \item debug the software
+    \end{itemize}
+  \end{itemize}
+\end{tcolorbox}
+
+
+Some practical process:
+\begin{enumerate}
+\item Determine your goal -- what error metric to use, and your target value for this error metric.
+  These goals and error metrics should be driven by the problem that the application is intended to solve.
+\item Establish a working end-to-end pipeline as soon as possible, including the estimation of the appropriate performance metrics.
+\item Instrument the system well to determine bottlenecks in performance.
+  Diagnose which components are performing worse than expected and whether poor performance is due to overfitting, underfitting, or a defect in the data or software.
+\item Repeatedly make incremental changes such as gathering new data, adjusting hyperparameters, or changing algorithms, based on specific findings from your instrumentation.
+\end{enumerate}
+

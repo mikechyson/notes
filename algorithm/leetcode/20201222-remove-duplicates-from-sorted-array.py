@@ -1,5 +1,6 @@
-# Given a sorted array nums, remove the duplicates in-place
-# such that each element appears only once and returns the new length.
+# Given a sorted array nums,
+# remove the duplicates in-place such that
+# each element appears only once and returns the new length.
 #
 # Do not allocate extra space for another array,
 # you must do this by modifying the input array in-place with O(1) extra memory.
@@ -32,6 +33,9 @@ from typing import List
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+        if nums is None or len(nums) == 0:
+            return nums
+
         length = len(nums)
         current_index = 0
         check_index = 0
@@ -44,12 +48,18 @@ class Solution:
                 check_index = be_checked_index
                 nums[current_index] = nums[be_checked_index]
             be_checked_index += 1
-        return length
+        return nums[:length]
 
+# A better solution
 
-if __name__ == '__main__':
-    nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-    # nums = [1, 2]
-    s = Solution()
-    length = s.removeDuplicates(nums)
-    print(nums, length)
+# class Solution:
+#     def removeDuplicates(self, nums: List[int]) -> int:
+#         length = len(nums)
+#         if length <= 1:
+#             return length
+#         i = 1
+#         for num in nums:
+#             if nums[i - 1] != num:
+#                 nums[i] = num
+#                 i += 1
+#         return i

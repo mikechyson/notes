@@ -1,0 +1,581 @@
+
+\chapter{Introduction}
+
+\section{Creating and running Pyton programs}
+
+Be default, Python files are assumed to use the UTF-8 character encoding.
+Python files normally have an extension of \verb|.py|.
+Python GUI (Graphical User Interface) programs usually have an extension of \verb|.pyw|.
+
+
+
+\begin{lstlisting}
+  #!/usr/bin/env python3
+
+  print("Hello", "world")
+\end{lstlisting}
+
+
+
+The first line is a comment.
+In Python,comments begin with a \verb|#| and continue to the end of the line.
+The second line is blank.
+Python ignores blank lines, but they are often useful to humans to break up large blocks of code to make them easier to read.
+The third line is Python code.
+
+
+Each statement encountered in a \verb|.py| file is executed in turn, starting with the first one and progressing line by line.
+Python programs are executed by the Python interpreter, and normally this is done inside a console window.
+
+
+
+On Unix, when a program is invoked in the console, the file's first two bytes are read.
+If these bytes are the ASCII chracters \verb|#!|, the shell assume that the file is to be executed by an interpreter and that the file's first line specifies which interpreter to use.
+This line is called the \keyword{shebang} (shell execute) line, and if the present must be the first line in the file.
+
+
+
+The shebang line is commonly written in one of two forms, either:
+\begin{lstlisting}
+#!/usr/bin/python3  
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}
+#!/usr/bin/env python3  
+\end{lstlisting}
+
+
+If written using the first form, the specified interpreter is used.
+If written using the second form, the first \verb|python3| interpreter found in the shell's current environment is used.
+The second form is more versatile because it allows for the possibility that the Python 3 interpreter is ont located in \verb|/usr/bin|
+
+
+
+\section{Python's "Beautiful Heart"}
+
+
+\subsection{Data types}
+
+
+One fundamental thing that any programming language must be able to do is represent items of data.
+
+The size of Python's integers is limited only by machine memory, not by a fixed number of bytes.
+Strings can be delimited by double or single quotes, as long as the same kind are used at both ends.
+
+
+\begin{lstlisting}
+210624583337114373395836055367340864637790190801098222508621955072
+0
+"hello"
+'world'
+\end{lstlisting}
+
+
+Python uses square brackets ([]) to access an item from a sequence such as a string.
+
+\begin{lstlisting}
+'Hello World'[4]
+\end{lstlisting}
+
+
+In Python, both \verb|str| and the basic numeric types such as \verb|int| are \keyword{immutable}.
+At first this appears to be a rather strange limitation, but Python's syntax means that this is a nonissue in practice.
+The only reason for mentioning it is that although we can use square brackets to retrieve the character at a given index position in a string, we cannot use them to set a new character.
+
+
+
+To convert a data item from one type to another we can use the syntax \verb|datatype(item)|.
+\begin{lstlisting}
+int("45")
+str(123)
+\end{lstlisting}
+
+
+
+\subsection{Object references}
+
+Once we have some data types, the next thing we need are variables in which to store them. 
+Python doesn't have variables as such, but instead has \keyword{object references}.
+When it comes to immutable objects like \verb|int|s and \verb|str|s, there is no discernable difference between a variable and an object reference.
+As for mutable objects, there is a difference, but it rarely matters in practice.
+
+
+
+\begin{lstlisting}
+
+x = "blue"
+y = "green"
+z = x
+\end{lstlisting}
+
+
+The syntax is simply \verb|object_reference = value|.
+The \verb|=| operator is not the same as the variable assignment operater in some other languages.
+The \verb|=| operater binds an object reference to an object in memory.
+If the object reference already exists, it is simply re-bound to refer to the object on the right of the \verb|=| operator;
+if the object reference does not exist it is created by the \verb|=| operator.
+
+
+Python uses \keyword{dynamic typing}, which means that an object reference can be rebound to refer to a different object at any time.
+Languages that use strong typing (such as C++ and Java) allow only those operations that are defined for the data types involved to be performed.
+Python also applies this constraint, but it isn’t called strong typing in Python’s case because the valid operations can change --- for example, if an object reference is re-bound to an object of a different data type.
+
+\begin{lstlisting}
+
+route = 123
+print(route, type(route))
+
+route = "North"
+print(route, type(route))
+\end{lstlisting}
+
+
+
+The \verb|type()| function returns the data type (also known as the ``class'') of the data item it is given --- this function can be very useful for testing and debugging, but would not normally appear in production code.
+
+
+\subsection{Collection data types}
+
+To hold entire collections of data items, Python provides several collection data types that can hold items.
+Python tuples and lists can be used to hold any number of data items of any data types.
+Tuples are imuutable while lists are mutable.
+
+
+Tuples are created using commas (,), as these examples show:
+\begin{lstlisting}
+
+>>> "hello", "world", "mike", "chyson"
+("hello", "world", "mike", "chyson")
+>>> "one",
+("one",)
+\end{lstlisting}
+
+
+When Python ouptuts a tuple it encloses it in parentheses.
+An empty tuple is created by using empty parentheses, ().
+The comma is also used to separate arguments in function calls, so if we want to pass a tuple literal as an argument we must enclose it in parentheses to avoid confusion.
+
+
+\begin{lstlisting}
+
+[1,2,3]
+[]
+\end{lstlisting}
+
+One way to create a list is to use square brackets ([]).
+An empty list is create by using empty brackets, [].
+
+
+Under the hood, lists and tuples don't store data items at all, but rather object references.
+When lists and tuples are created (and when items are inserted in the case of lists), they take copies of the object references they are given.
+In the case of literal items such as integers or strings, an object of the appropriate data type is created in memory and suitably initialized, and then an object reference referring to the object is created, and it is this object reference that is put in the list or tuple.
+
+
+
+In precedural programming we can function and often pass in data items as arguments.
+\begin{lstlisting}
+
+>>> len(("one",))
+1
+>>> len([1, 2, "hell", 3])
+4
+\end{lstlisting}
+
+
+
+All Python data items are \keyword{objects} (also called \keyword{instances}) of a particular data type (also called a class).
+
+
+
+\begin{lstlisting}
+
+>>> x = ["zebra", 49, -879, "aardvark", 200] 
+>>> x.append("more")
+>>> x
+['zebra', 49, -879, 'aardvark', 200, 'more']
+
+>>> list.append(x, "extra")
+>>> x
+['zebra', 49, -879, 'aardvark', 200, 'more', 'extra']
+\end{lstlisting}
+
+
+Python has conventional functions called like this \verb|function_name(arguments)|;
+and methods which are called like this \verb|ojbect_name.method_name(arguments)|.
+
+The dot (``access attribute'') operator is used to access an object's attributes.
+
+\section{Logical operations}
+
+Python provides four sets of logical operations.
+
+
+\subsection{The identity operator}
+
+The \verb|is| operator is a binary operator that returns \verb|True| if its left-hand object reference is referencing to the same object as its right-hand object reference.
+
+
+\begin{lstlisting}
+>>> a = ["Retention", 3, None]
+>>> b = ["Retention", 3, None]
+>>> a is b
+False
+>>> b = a
+>>> a is b
+True
+\end{lstlisting}
+
+
+
+One benefit of identity comparisons is that they are very fast.
+This is because the objects referred to do not have to be examined themselves.
+The is operator needs to compare only the memory addresses of the objects --- the same address means the same object.
+
+
+
+The most common use case for \verb|is| is to compare a data item with the built-in null object, \verb|None|.
+
+
+
+The purpose of the identity operator is to see whether two object references refer to the same object, or to see whether an object is \verb|None|.
+If we want to compare object values we should use a comparison operator instead.
+
+\subsection{Comparison operators}
+
+Python provides the standard set of binary comparison operators:
+
+\begin{itemize}
+\item <
+\item <=
+\item ==
+\item !=
+\item >=
+\item >
+\end{itemize}
+
+These operators compare object values, that is, objects that the object references used in the comparison refer to.
+
+
+In some cases, comparing the identity of two strings or numbers will return \verb|True|, even if each has been assigned separately.
+This is because some implementations of Python will reuse the same object (since the value is the same and is immutable) for the sake of efficiency.
+The moral of this is to use \verb|==| and \verb|!=| when comparing \keyword{values}, and to use \verb|is| and \verb|is not| only when comparing with \verb|None| or when we really do want to see if two object references, rather than their values, are the same.
+
+
+
+One particularly nice feature of Python’s comparison operators is that they can be chained.
+For example:
+\begin{lstlisting}
+
+>>> a = 9
+>>> 0 <= a <= 10
+True
+\end{lstlisting}
+
+
+
+This is a nicer way of testing that a given data item is in range than having to do two separate comparisons joined by logical \verb|and|.
+It also has the additional virtue of evaluating the data item only once (since it appears once only in the expression), something that could make a difference if computing the data item's value is expensive, or if accessing the data item causes side effects.
+
+
+\subsection{The membership operator}
+
+For data types that are sequences or collections such as strings, lists, and tuples, we can test for membership using the \verb|in| operator, and for nonmembership using the \verb|not in| operator. For example:
+\begin{lstlisting}
+
+>>> p = (4, "frog", 9, -33, 9, 2) 
+>>> 2 in p
+True
+>>> "dog" not in p
+True
+\end{lstlisting}
+
+
+
+For lists and tuples, the \verb|in| operator uses a linear search which can be slow for very large collections (tens of thousands of items or more).
+On the other hand, \verb|in| is very fast when used on a dictionary or a set.
+
+
+
+\subsection{Logical operators}
+
+Python provides 3 logical operators:
+\begin{itemize}
+\item and
+\item or
+\item not
+\end{itemize}
+
+
+Both \verb|and| and \verb|or| use short-circuit logic and return the operand that determined the result -- they do not return a Boolean (unleass they actually have Boolean operands).
+
+
+\begin{lstlisting}
+
+>>> five = 5
+>>> two = 2
+>>> zero = 0
+>>> five and two
+2
+>>> two and five
+5
+>>> five and zero
+0
+\end{lstlisting}
+
+
+
+If the expression occurs in a Boolean context, the result is evaluated as a Boolean, so the preceding expressions would come out as \verb|True|, \verb|True|, and \verb|False|.
+
+\begin{lstlisting}
+
+>>> nought = 0
+>>> five or two
+5
+>>> two or five
+2
+>>> zero or five
+5
+>>> zero or nought
+0
+\end{lstlisting}
+
+
+
+The \verb|or| operator is similar; here the results in a Boolean context would be \verb|True|, \verb|True|, \verb|True|, and \verb|False|.
+
+
+The \verb|not| unary operator evaluates its argument in a Boolean context and always returns a Boolean result.
+
+
+\section{Control flow statements}
+
+A Boolean expression is anything that can be evaluated to produce a Boolean value (\verb|True| or \verb|False|).
+In Python, such an expression evaluate to \verb|False| if it is the predefined constant \verb|False|, the special object \verb|None|, an empty sequence or collection, or a numeric data item of value 0; anything else is considered to be \verb|True|.
+
+
+In Python-speak a block of code, that is, a sequence of one or more statements, is called a \keyword{suite}.
+Because some of Python's syntax requires that a suite be present, Python provides the keyword \verb|pass| which is a statement that does nothing and that can be used where a suite is required but where no precessing is necessary.
+
+
+
+\subsection{The if statement}
+
+\begin{tcolorbox}
+\begin{verbatim}
+if boolean_expression1:
+    suite1
+elif boolean_expression2:
+    suite2
+...
+elif boolean_expressionN:
+    suiteN
+else:
+    else_suite
+\end{verbatim}
+\end{tcolorbox}
+
+
+Colons are used with \verb|else|, \verb|elif|, and essentially in any other place where a suite is to follow.
+Unlike most other programming languages, Python uses indentation to signify its block structure.
+
+
+\subsection{The while statement}
+
+\begin{tcolorbox}
+\begin{verbatim}
+while boolean_expression:
+    suite
+\end{verbatim}
+\end{tcolorbox}
+
+
+\subsection{The for ... in statement}
+
+\begin{tcolorbox}
+\begin{verbatim}
+for variable in iterable:
+    suite
+\end{verbatim}
+\end{tcolorbox}
+
+
+The \verb|variable| is set to refer to each object in the \verb|iterable| in turn.
+
+
+\subsection{Basic exception handling}
+
+An exception is an object like any other Python object, and when converted to a string, the exception produces a message text.
+A simple form of the syntax for exception handlers is this:
+\begin{tcolorbox}
+\begin{verbatim}
+try:
+    try_suite
+except exceptions1 as variable1:
+    exception_suite1
+...
+except exceptionN as variableN:
+    exception_suiteN
+\end{verbatim}
+\end{tcolorbox}
+
+The \verb|as variable| part is optional.
+
+
+\begin{verbatim}
+s = input("enter an integer: ")
+try:
+    i = int(s)
+    print("valid integer entered:", i)
+except ValueError as err:
+    print(err)
+\end{verbatim}
+
+
+\section{Arithmetic operators}
+
+Four basic mathematical operations:
+\begin{itemize}
+\item +
+\item -
+\item *
+\item /
+\end{itemize}
+
+In addition, many Python data types can be used with augmented assignment operators such as:
+\begin{itemize}
+\item +=
+\item -=
+\item *=
+\item /=
+\end{itemize}
+
+
+The \verb|+|, \verb|-|, and \verb|*| operators all behave as expected when both of their operands are integers.
+Where Python differs from the crowd is when it comes to division:
+\begin{lstlisting}
+
+>>> 12/3
+4.0
+\end{lstlisting}
+
+
+The division operator produces a floating-point value, not a integer.
+If we nned an integer result, we can always convert using \verb|int()| or use the truncating devision operator \verb|//|.
+
+
+\begin{lstlisting}
+
+>>> a = 5
+>>> a
+5
+>>> a += 8
+>>> a
+13
+\end{lstlisting}
+
+
+Comparing to C-like languages, there are two important subtleties, one Python-specific and one to do with augmented operators in any language.
+
+
+The first point to remember is that the \verb|int| data type is immutable.
+So, what actually happens behind the scenes when an augmented assignment operator is used on an immutable object is that the operation is performed, and an object holding the result is created; and then the target object reference is re-bound to refer to the result object rather than the object it referred to before.
+
+
+The second subtlety is that \verb|a operator= b| is not quite the same  as  \verb|a = a operator b|.
+The augmented version looks \verb|a|'s value only once, so it is potentially faster.
+
+
+\begin{lstlisting}
+
+>>> name = 'mike'
+>>> name + 'chyson'
+'mikechyson'
+>>> name += ' chyson'
+>>> name
+'mike chyson'
+>>> a = [1, 2, 3]
+
+>>> a + [4]
+[1, 2, 3, 4]
+>>> a += [4]
+>>> a
+[1, 2, 3, 4]
+\end{lstlisting}
+
+
+Python overloads the \verb|+| and \verb|+=| operators for both strings and lists, the former mearning concatenation and the latter meaning append for strings and extend (append another list) for lists.
+
+
+\section{Input/output}
+
+Rediction:
+\begin{itemize}
+\item > (output)
+\item < (input)
+\end{itemize}
+
+
+Function:
+\begin{itemize}
+\item input()
+\item print()
+\end{itemize}
+
+
+
+\section{Creating and calling functions}
+
+\begin{tcolorbox}
+\begin{verbatim}
+def function_name(arguments):
+    suite
+\end{verbatim}
+\end{tcolorbox}
+
+The \verb|arguments| are optional and multiple arguments must be comma-separated.
+Every Python function has a return value; this defaults to \verb|None| unless we return from the function using the syntax \verb|return value|, in which case \verb|value| is returned.
+
+
+
+\verb|def| is a statement that works in a similar way to the assignment operator.
+When \verb|def| is executed a function object is created and an object reference with the specified name is created and set to refer to the function object.
+Since functions are objects, they can be stored in collection data types and passed as arguments to other functions.
+
+
+
+Although creating our own functions can be very satisfying, in many cases it is not necessary.
+This is because Python has a lot of functions built in, and a great many more functions in the modules in its standard library, so what we want may well already be available.
+
+
+A Python module is just a \verb|.py| file that contains Python code.
+To access the functionality in a module we must import is.
+For example:
+\begin{lstlisting}
+
+import sys
+\end{lstlisting}
+
+
+
+To import a module we use the \verb|import| statement followed by the name of the \verb|.py| file, but omitting the extension.
+Once a module has been imported, we can access any functions, classes, or variables that it contains. For example:
+
+\begin{lstlisting}
+
+print(sys.argv)
+\end{lstlisting}
+
+
+
+
+In general, the syntax for using a function from a module is \\
+$\mathtt{module\_name.function\_name(arguments)}$.
+It makes use of the dot (“access attribute”) operator.
+
+
+
+
+It is conventional to put all the import statements at the beginning of \verb|.py| files, after the shebang line, and after the module’s documentation.
+We recommend importing standard library modules first, then third-party library modules, and finally your own modules.

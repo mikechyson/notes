@@ -1,0 +1,768 @@
+
+\chapter{Control structures and functions}
+
+\section{Control structures}
+
+\subsection{Conditional branching}
+\begin{tcolorbox}
+\begin{verbatim}
+if boolean_expression1:
+    suite1
+elif boolean_expression2:
+    suite2
+...
+elif boolean_expressionN:
+    suiteN
+else:
+    else_suite
+\end{verbatim}
+  
+\end{tcolorbox}
+
+
+
+\keyword{conditional expression}:
+\begin{tcolorbox}
+\begin{verbatim}
+expression1 if boolean_expression else expression2
+\end{verbatim}
+  
+\end{tcolorbox}
+
+One common programming pattern is to set a variable to a default value, and then change the value if necessary.
+
+
+\begin{lstlisting}
+  width = 100 + (10 if margin else 10)
+  print('{} file{}'.format(count if count != 0 else 'no', 's' if count != 1 else ''))
+\end{lstlisting}
+
+\subsection{Looping}
+
+\subsubsection{while loops}
+
+\begin{tcolorbox}
+\begin{verbatim}
+while boolean_expression:
+    while_suite
+else:
+    else_suite
+\end{verbatim}
+  
+\end{tcolorbox}
+
+As long as the \verb|boolean_expression| is \verb|True|, the \verb|while| block's suite is executed.
+If the \verb|boolean_expression| is or becomes False, the loop terminates, and if the optional \verb|else| clause is present, its suite is executed.
+If the loop does not terminate normally, any optional \verb|else| clause's suite is skipped.
+That is, if the loop is broken out of due to a \verb|break| statement, or a \verb|return| statement, or if an exception is raised, the \verb|else| clause's suite is not executed.
+
+
+\begin{lstlisting}
+i = 0
+while i < 100:
+    i += 1
+else:
+    last = i
+print(last)  # 100
+\end{lstlisting}
+
+\begin{lstlisting}
+def list_find(lst, target):
+    """
+    Find the first target's index or -1 if not find.
+
+    :param lst:
+    :param target:
+    :return: index of the target if found or -1 if not found
+    """
+    index = 0
+    while index < len(lst):
+        if lst[index] == target:
+            break
+        index += 1
+    else:
+        index = -1
+    return index  
+\end{lstlisting}
+
+
+
+
+\subsubsection{for loops}
+\begin{tcolorbox}
+
+\begin{verbatim}
+for expression in iterable:
+    for_suite
+else:
+    else_suite
+\end{verbatim}
+  
+\end{tcolorbox}
+
+The rule to run \verb|else_suite| is same for while loop.
+
+\begin{lstlisting}
+def list_find2(lst, target):
+    for index, x in enumerate(lst):
+        if x == target:
+            break
+    else:
+        index = -1
+    return index  
+\end{lstlisting}
+
+
+\section{Exception handling}
+
+\subsection{Catching and raising exceptions}
+
+\begin{tcolorbox}
+\begin{verbatim}
+try:
+    try_suite
+except exception_group1 as variable1:
+    except_suite1
+...
+except exception_groupN as variableN:
+    except_suiteN
+else:
+    else_suite
+finally:
+    finally_suite
+\end{verbatim}
+  
+\end{tcolorbox}
+
+
+There must be at least one \verb|except| block, but both the \verb|else| and the \verb|finally| blocks are optional.
+The \verb|else| block’s suite is executed when the \verb|try| block’s suite has finished normally --- but it is not executed if an exception occurs.
+If there is a \verb|finally| block, it is always executed at the end.
+
+Each \verb|except| clause’s exception group can be a single exception or a parenthesized tuple of exceptions. 
+
+If an exception occurs in the \verb|try| block’s suite, each \verb|except| clause is tried in turn.
+If the exception matches an exception group, the corresponding suite is executed.
+To match an exception group, the exception must be of the same type as the (or one of the) exception types listed in the group, or the same type as the (or one of the) group’s exception types’ subclasses.
+
+
+
+\begin{lstlisting}
+def lst_find(lst, target):
+    try:
+        index = lst.index(target)
+    except ValueError:
+        index = -1
+    return index  
+\end{lstlisting}
+
+
+
+
+Python offers a simpler \verb|try...finally| block:
+\begin{tcolorbox}
+\begin{verbatim}
+try:
+    try_suite
+finally:
+    finally_suite
+\end{verbatim}
+  
+\end{tcolorbox}
+
+
+
+\begin{lstlisting}
+# remove black lines
+def read_data(filename):
+    lines = []
+    fh = None
+    try:
+        fh = open(filename)
+        for line in fh:
+            if line.strip():
+                lines.append(line)
+    except (IOError, OSError) as err:
+        print(err)
+        return []
+    finally:
+        if fh is not None:
+            fh.close()
+    return lines  
+\end{lstlisting}
+
+
+
+\subsubsection{Rasing exceptions}
+
+Exceptions provide a useful means of changing the flow of control.
+
+There are three syntaxes for raising exceptions:
+\begin{tcolorbox}
+
+\begin{verbatim}
+raise exception(args)
+raise exception(args) from original_exception
+raise
+\end{verbatim}
+  
+\end{tcolorbox}
+
+If we give the exception some text as its argument, this text will be output if the exception is printed when it is caught.
+When the third syntax is used, \verb|raise| will reraise the currently active exception --- and if there isn't one it will raise a \verb|TypeError|.
+
+
+\subsection{Custom exceptions}
+
+Custom exceptions are custom data types (classes).
+\begin{tcolorbox}
+\begin{verbatim}
+class exceptionName(baseException): pass
+\end{verbatim}
+  
+\end{tcolorbox}
+
+The base class should be \verb|Exception| or a class that inherits from \verb|Exception|.
+
+
+
+One use of custom exceptions is to break out of deeply nested loops.
+
+\begin{lstlisting}
+def find_word(table, target):
+    found = False
+    for row, record in enumerate(table):
+        for column, field in enumerate(record):
+            for index, item in enumerate(field):
+                if item == target:
+                    found = True
+                    break
+            if found:
+                break
+        if found:
+            break
+
+    if found:
+        print('found at ({}, {}, {})'.format(row, column, index))
+    else:
+        print('not found')
+
+
+def find_word2(table, target):
+    class FoundException(Exception):
+        pass
+
+    try:
+        for row, record in enumerate(table):
+            for column, field in enumerate(record):
+                for index, item in enumerate(field):
+                    if item == target:
+                        raise FoundException
+    except FoundException:
+        print('found at ({}, {}, {})'.format(row, column, index))
+    else:
+        print('not found')  
+\end{lstlisting}
+
+
+\begin{verbatim}
+BaseException
+ +-- SystemExit
+ +-- KeyboardInterrupt
+ +-- GeneratorExit
+ +-- Exception
+      +-- StopIteration
+      +-- StopAsyncIteration
+      +-- ArithmeticError
+      |    +-- FloatingPointError
+      |    +-- OverflowError
+      |    +-- ZeroDivisionError
+      +-- AssertionError
+      +-- AttributeError
+      +-- BufferError
+      +-- EOFError
+      +-- ImportError
+      |    +-- ModuleNotFoundError
+      +-- LookupError
+      |    +-- IndexError
+      |    +-- KeyError
+      +-- MemoryError
+      +-- NameError
+      |    +-- UnboundLocalError
+      +-- OSError
+      |    +-- BlockingIOError
+      |    +-- ChildProcessError
+      |    +-- ConnectionError
+      |    |    +-- BrokenPipeError
+      |    |    +-- ConnectionAbortedError
+      |    |    +-- ConnectionRefusedError
+      |    |    +-- ConnectionResetError
+      |    +-- FileExistsError
+      |    +-- FileNotFoundError
+      |    +-- InterruptedError
+      |    +-- IsADirectoryError
+      |    +-- NotADirectoryError
+      |    +-- PermissionError
+      |    +-- ProcessLookupError
+      |    +-- TimeoutError
+      +-- ReferenceError
+      +-- RuntimeError
+      |    +-- NotImplementedError
+      |    +-- RecursionError
+      +-- SyntaxError
+      |    +-- IndentationError
+      |         +-- TabError
+      +-- SystemError
+      +-- TypeError
+      +-- ValueError
+      |    +-- UnicodeError
+      |         +-- UnicodeDecodeError
+      |         +-- UnicodeEncodeError
+      |         +-- UnicodeTranslateError
+      +-- Warning
+           +-- DeprecationWarning
+           +-- PendingDeprecationWarning
+           +-- RuntimeWarning
+           +-- SyntaxWarning
+           +-- UserWarning
+           +-- FutureWarning
+           +-- ImportWarning
+           +-- UnicodeWarning
+           +-- BytesWarning
+           +-- ResourceWarning
+\end{verbatim}
+
+
+\section{Costom functions}
+
+Functions are a means by which we can package up and parameterize functionality.
+Four kinds of functions can be created in Python:
+\begin{itemize}
+\item global functions
+\item local functions
+\item lambda functions
+\item methods
+\end{itemize}
+
+
+Global objects (including functions) are accessible to any code in the same module (i.e., the same .py file) in which the object is created.
+Global objects can also be accessed from other modules.
+
+Local functions (also called nested functions) are functions that are defined inside other functions.
+These functions are visible only to the function where they are defined.
+
+
+
+
+Lambda functions are expressions, so they can be created at their point of use; however, they are much more limited than normal functions.
+
+Methods are functions that are associated with a particular data types and can be used only in conjunction with the data type.
+
+
+
+The general syntax for creating a (global or local) function is:
+\begin{tcolorbox}
+\begin{verbatim}
+def function_name(parameters):
+    suite
+\end{verbatim}
+\end{tcolorbox}
+
+\begin{lstlisting}
+def my_sum(a, b, c=1):
+    return a + b + c
+
+
+print(my_sum(1, 2, 3)) # 6
+print(my_sum(1, 2))    # 4
+\end{lstlisting}
+
+
+\verb|a,b| is called \keyword{positional arguments}, because each argument passed is set as the value of the parameter in the corresponding position.
+\verb|c| is called \keyword{keyword arguments}, because each argument is passed by keyword not order.
+
+
+When default values are given they are created at the time the \verb|def| statement is executed (i.e., when the function is created), not when the function is called.
+For immutable arguments like numbers and strings this doesn’t make any difference, but for mutable arguments a subtle trap is lurking.
+
+\begin{lstlisting}
+def append_if_even(x, lst=[]):
+    if x % 2 == 0:
+        lst.append(x)
+    return lst
+
+
+def append_if_even2(x, lst=None):
+    lst = [] if lst is None else lst
+    if x % 2 == 0:
+        lst.append(x)
+    return lst
+
+
+for i in range(3):
+    result1 = append_if_even(i)
+    result2 = append_if_even2(i)
+    print(f'{result1=},{i=}')
+    print(f'{result2=},{i=}')  
+
+# result1=[0],i=0
+# result2=[0],i=0
+# result1=[0],i=1
+# result2=[],i=1
+# result1=[0, 2],i=2
+# result2=[2],i=2
+\end{lstlisting}
+
+
+This idiom of having a default of \verb|None| and creating a fresh object should be used for dictionaries, lists, sets, and any other mutable data types that we want to use as default arguments.
+
+
+\subsection{Names and docstrings}
+
+\begin{tcolorbox}
+  A few rules of good names:
+  \begin{itemize}
+  \item Use a naming scheme, and use it consistently.
+    For example:
+    \begin{itemize}
+    \item \verb|UPPERCASE| for constants
+    \item \verb|TitleCase| for classes
+    \item \verb|camelCase| for GUI functions and methods
+    \item \verb|lowercase| or \verb|lowercase_with_underscores| for everything else
+    \end{itemize}
+  \item For all names, avoid abbreviations, unless they are both standardized and widely used.
+  \item Be proprotional with variable and parameter names: \verb|x| is a perfectly good name for an x-coordinate and \verb|i| is fine for a loop counter, but in general the name should be long enough to be descriptive.
+  \item Functions and methods should have names that say what they do or what they return, but never how they do it --- since that might change.
+  \end{itemize}
+\end{tcolorbox}
+
+
+
+We can add documentation to any function by using a \keyword{docstring} --- this is simply a string that comes immediately after the \verb|def| line, and before the function’s code proper begins.
+
+\begin{lstlisting}
+def shorten(text, length=25, indicator="..."):
+    """Returns text or a truncated copy with the indicator added
+
+    text is any string; length is the maximum length of the returned
+    string (including any indicator); indicator is the string added at
+    the end to indicate that the text has been shortened
+
+    >>> shorten("Second Variety")
+    'Second Variety'
+    >>> shorten("Voices from the Street", 17)
+    'Voices from th...'
+    >>> shorten("Radio Free Albemuth", 10, "*")
+    'Radio Fre*'
+    """
+    if len(text) > length:
+        text = text[:length - len(indicator)] + indicator
+    return text  
+\end{lstlisting}
+
+\begin{tcolorbox}
+It is not unusual for a function or method’s documentation to be longer than the function itself.
+One convention is to make
+the first line of the docstring a brief one-line description,
+then have a blank line followed by a full description, and then
+to reproduce some examples as they would appear if typed in interactively.
+\end{tcolorbox}
+
+
+\subsection{Argument and parameter unpacking}
+We can use sequence unpacking operator(*) to supply positional arguments and or mapping unpacking operator(**) to keyword arguemnts.
+\begin{lstlisting}
+def my_sum(a, b, c=1):
+    return a + b + c
+
+print(my_sum(*[1, 2, 3, 4][:3]))    # 6
+print(my_sum(*[1, 2], **{'c': 3}))  # 6  
+\end{lstlisting}
+
+
+We can also use the sequence unpacking operator in a function's parameter list.
+This is useful when we want to create functions that can take a variable number of positional arguments.
+
+\begin{lstlisting}
+def product(*args):
+    result = 1
+    for arg in args:
+        result *= arg
+    return result  
+\end{lstlisting}
+
+Having the * in front means that inside the function the \verb|args| parameter will be a \keyword{tuple} with its itmes set to however many positional arguments are given.
+
+
+\begin{lstlisting}
+def product(*args):
+    result = 1
+    for arg in args:
+        result *= arg
+    return result
+
+
+print(product(*list(range(1, 10))))  # 362880
+print(math.factorial(9))             # 362880
+\end{lstlisting}
+
+
+
+\begin{lstlisting}
+# It is also possible to use * as a “parameter” in its own right.
+# This is used to signify that there can be no positional arguments after the *.
+def heron(a, b, c, *, units='square meters'):
+    s = (a + b + c) / 2
+    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    return f'{area} {units}'
+
+
+print(heron(25, 24, 7))
+print(heron(41, 9, 40, units="sq. inches"))
+print(heron(25, 24, 7, "sq. inches"))   # TypeError
+\end{lstlisting}
+
+
+
+We can also use the mapping unpacking operator with parameters.
+This allows us to create functions that will accept as many keyword arguments as are given.
+
+\begin{lstlisting}
+def print_dict(**kwargs):
+    for key in sorted(kwargs):
+        print(f'{key:10} : {kwargs[key]}')
+
+
+print_dict(**{str(i): f'{100 * i:3}%' for i in range(10)})  
+
+# 0          :   0%
+# 1          : 100%
+# 2          : 200%
+# 3          : 300%
+# 4          : 400%
+# 5          : 500%
+# 6          : 600%
+# 7          : 700%
+# 8          : 800%
+# 9          : 900%
+\end{lstlisting}
+
+\begin{lstlisting}
+def print_args(*args, **kwargs):
+    for i, arg in enumerate(args):
+        print("positional argument {0} = {1}".format(i, arg))
+    for key in kwargs:
+        print("keyword argument {0} = {1}".format(key, kwargs[key]))
+
+
+print_args(*list(range(10)), **locals())  
+\end{lstlisting}
+
+
+
+
+\subsection{Accessing variables in the global scope}
+
+\begin{tcolorbox}
+There are two ways to create a global variable:
+\begin{itemize}
+\item Object defined in \verb|.py| level is global variables.
+\item variables defined with \verb|global| keyword.
+\end{itemize}
+Others are local variables.
+\end{tcolorbox}
+
+\begin{lstlisting}
+AUTHOR = 'Mike'  # global
+
+
+def say_hello():  # global
+    global language  # global
+    language = 'fr'
+    text = 'hello'  # local
+    print(text)
+
+
+class MyException(Exception):  # global
+    pass
+
+
+say_hello()
+print(language)  
+\end{lstlisting}
+
+
+\subsection{Lambda functions}
+
+Lambda functions are functions created using the following syntax:
+\begin{tcolorbox}
+\begin{verbatim}
+lambda parameters: expression
+\end{verbatim}
+\end{tcolorbox}
+
+
+The \keyword{parameters} are optinal, and if supplied they are normally just comma-separated variable names, that is, positional arguments, although the complement argument syntax supported by \verb|def| statements can be used.
+The \verb|expression| can not contain \keyword{branches} or \keyword{loops} (although conditional expressions are allowed), and can not have a \verb|return| (or \verb|yield|) statment.
+The result of a \verb|lambda| expression is an anonymous function.
+When a lambda function is called it returns the result of computing the \verb|expression| as its result.
+
+
+
+\begin{lstlisting}
+lst = list(range(-3, 3))
+print(lst)
+print(sorted(lst, key=lambda x: x ** 2))
+print(sorted(lst, key=lambda key=None: key ** 2))  # seldom used
+
+# [-3, -2, -1, 0, 1, 2]
+# [0, -1, 1, -2, 2, -3]
+# [0, -1, 1, -2, 2, -3]
+\end{lstlisting}
+
+
+\begin{lstlisting}
+s = lambda x: '' if x == 1 else 's'  # use def instead
+print(s(1))  #
+print(s(2))  # s
+
+p = lambda key='hello': print(key)  # use def instead
+p('world')  # world  
+\end{lstlisting}
+
+
+There are two common usage for lambda functions:
+\begin{itemize}
+\item key function
+\item default value
+\end{itemize}
+
+\begin{lstlisting}
+  sorted(lst, key=lambda x: x ** 2))
+  message_dict = collections.defaultdict(lambda: 'No message avaiable')
+\end{lstlisting}
+
+
+
+
+
+\subsection{Assertions}
+
+Preconditions and postconditions can be specified using \verb|assert| statements:
+\begin{tcolorbox}
+\begin{verbatim}
+assert boolean_expression, optional_expression
+\end{verbatim}
+\end{tcolorbox}
+
+
+
+If the \verb|boolean_expression| evaluates to \verb|False| an \verb|AssertionError| exception is raised.
+If the optional \verb|optional_expression| is given, it is used as the argument to the \verb|AssertionError| exception.
+
+
+\begin{lstlisting}
+def product(*args):
+    assert all(args), "0 argument"
+    result = 1
+    for arg in args:
+        result *= arg
+    return result
+
+\end{lstlisting}
+
+\begin{tcolorbox}
+  Note:
+  Assertions are designed for developers, not end-users.
+  Once a program is readly for public release, we can tell Python not to execute \verb|assert| statements.
+  This can be done with:
+  \begin{itemize}
+  \item -0 option in commandline, python -O program.py
+  \item set the \verb|PYTHONOPTIMIZE| environment variable to O.
+  \end{itemize}
+
+  We can use -OO option to strip out both \verb|assert| statements and docstrings.
+  However, there is no environment variable for setting this option.
+\end{tcolorbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

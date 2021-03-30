@@ -37,13 +37,13 @@ This line is called the \keyword{shebang} (shell execute) line, and if the prese
 
 The shebang line is commonly written in one of two forms, either:
 \begin{lstlisting}
-#!/usr/bin/python3  
+#!/usr/bin/python3
 \end{lstlisting}
 
 or
 
 \begin{lstlisting}
-#!/usr/bin/env python3  
+#!/usr/bin/env python3
 \end{lstlisting}
 
 
@@ -96,7 +96,7 @@ str(123)
 
 \subsection{Object references}
 
-Once we have some data types, the next thing we need are variables in which to store them. 
+Once we have some data types, the next thing we need are variables in which to store them.
 Python doesn't have variables as such, but instead has \keyword{object references}.
 When it comes to immutable objects like \verb|int|s and \verb|str|s, there is no discernable difference between a variable and an object reference.
 As for mutable objects, there is a difference, but it rarely matters in practice.
@@ -191,7 +191,7 @@ All Python data items are \keyword{objects} (also called \keyword{instances}) of
 
 \begin{lstlisting}
 
->>> x = ["zebra", 49, -879, "aardvark", 200] 
+>>> x = ["zebra", 49, -879, "aardvark", 200]
 >>> x.append("more")
 >>> x
 ['zebra', 49, -879, 'aardvark', 200, 'more']
@@ -284,7 +284,7 @@ It also has the additional virtue of evaluating the data item only once (since i
 For data types that are sequences or collections such as strings, lists, and tuples, we can test for membership using the \verb|in| operator, and for nonmembership using the \verb|not in| operator. For example:
 \begin{lstlisting}
 
->>> p = (4, "frog", 9, -33, 9, 2) 
+>>> p = (4, "frog", 9, -33, 9, 2)
 >>> 2 in p
 True
 >>> "dog" not in p
@@ -579,3 +579,31 @@ It makes use of the dot (“access attribute”) operator.
 
 It is conventional to put all the import statements at the beginning of \verb|.py| files, after the shebang line, and after the module’s documentation.
 We recommend importing standard library modules first, then third-party library modules, and finally your own modules.
+
+
+\begin{tcolorbox}
+python template:
+\begin{verbatim}
+--------------------------------
+|shebang part                  |
+|(like /usr/bin/env python3)   |
+|                              |
+|------------------------------|
+|                              |
+|documentation part            |
+|                              |
+|------------------------------|
+|                              |
+|import part                   |
+|  ----------------------------|
+|  | import standard library   |
+|  | import third-party library|
+|  | import own library        |
+|  ----------------------------|
+|------------------------------|
+|                              |
+|code                          |
+|                              |
+--------------------------------
+\end{verbatim}
+\end{tcolorbox}

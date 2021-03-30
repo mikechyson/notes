@@ -69,3 +69,41 @@
 
 
 \end{tcolorbox}
+
+
+To wrap automatically in cell, use the \verb|p{width}| parameter.
+For example:
+\begin{lstlisting}
+  
+\begin{table}[htb!]
+  \centering
+  \begin{tabular}{p{0.3\columnwidth}p{0.3\columnwidth}p{0.3\columnwidth}}
+    \toprule{}
+    & \head{advantage} & \head{disadvantage} \\
+    \midrule
+    multiple processes & each process runs independently & communication and data sharing can be inconvenient \\
+    multiple threads & can communicate simply by data sharing & more complex than single-threaded program\\
+    \bottomrule
+  \end{tabular}
+  \caption{multiple processes and multiple threads}
+\end{table}
+\end{lstlisting}
+
+
+\begin{table}[htb!]
+  \centering
+  \begin{tabular}{p{0.3\columnwidth}p{0.3\columnwidth}p{0.3\columnwidth}}
+    \toprule{}
+    & \head{advantage} & \head{disadvantage} \\
+    \midrule
+    multiple processes & each process runs independently & communication and data sharing can be inconvenient \\
+    multiple threads & can communicate simply by data sharing & more complex than single-threaded program\\
+    \bottomrule
+  \end{tabular}
+  \caption{multiple processes and multiple threads}
+\end{table}
+
+
+
+
+

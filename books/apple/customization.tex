@@ -42,3 +42,19 @@ As shown in Figure \ref{fig:emacs-full-disk-access}.
 The first time to visit the icloud directory, you should use
 \verb|M-x ns-open-file-using-panel| to open the icloud directory.
 After that, you can access the icloud directory.
+
+
+\section{Hide dock}
+
+Because some of apple service may depend on dock, it is best not to quite the dock service complete.
+But you can make the dock very small and hide the dock then.
+
+To make dock very small:
+\lstset{language=Sh}
+\begin{lstlisting}
+  defaults write com.apple.dock tilesize -int 1
+  killall Dock # restart dock
+\end{lstlisting}
+
+
+Then make the hiding property on in MacOS dock setting.

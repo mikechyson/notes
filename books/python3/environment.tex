@@ -1,0 +1,39 @@
+
+\chapter{Environment}
+
+\section{Repo}
+
+To set up a repo:
+Create a file \verb|~/.config/pip/pip.conf| and write the following content into it:
+\begin{lstlisting}
+[global]
+index-url = http://mirrors.aliyun.com/pypi/simple/
+[install]
+trusted-host = mirrors.aliyun.com
+\end{lstlisting}
+
+You can alter the repo to your preferred one.
+
+
+\section{Freeze and install packages}
+
+To generate the requirement file:
+\lstset{language=Sh}
+\begin{lstlisting}
+  pip freeze > requirement.txt
+\end{lstlisting}
+
+To install the packages from the requirement file:
+\begin{lstlisting}
+  pip install -r requirement.txt
+\end{lstlisting}
+
+
+\section{Upgrade pip}
+
+\lstset{language=Sh}
+\begin{lstlisting}
+  python -m pip install --upgrade pip
+\end{lstlisting}
+
+

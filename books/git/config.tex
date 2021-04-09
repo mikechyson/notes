@@ -1,0 +1,29 @@
+
+\chapter{Configuration}
+
+In Unix-like system, the configuration file is \verb|~/.gitconfig|.
+
+
+\section{Proxy}
+
+To set up a proxy, there are two ways:
+\begin{enumerate}
+\item command line
+\item configuration file
+\end{enumerate}
+
+
+\subsection{Commandline manner}
+
+\lstset{language=Sh}
+\begin{lstlisting}
+  git config --global http.proxy http://127.0.0.1:2334
+\end{lstlisting}
+
+\subsection{Configuration file manner}
+
+Change the configuration file \verb|~/.gitconfig|:
+\begin{verbatim}
+[https "https://github.com"]
+	proxy = https://127.0.0.1:8001
+\end{verbatim}

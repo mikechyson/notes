@@ -1,0 +1,227 @@
+
+\chapter{Debugging, testing, and profiling}
+
+Writing programs is a mixture of art, craft, and science, and because it is done by \keyword{humans}, mistakes are made.
+
+
+Mistackes fall into sevaral categories:
+\begin{description}
+\item[syntax error] The program can not run.
+\item[logical error] The program runs, but some aspect of its behavior is not what we intended or expected.
+\item[poor performance] This is almost always due to a poor choice of algorithm or data structure or both.
+\end{description}
+
+\section{Debugging}
+
+
+\subsection{Dealing with syntax errors}
+
+\begin{lstlisting}
+for i in range(10)
+    print(1)
+
+#   File "/Users/mike/PycharmProjects/python3/c9_debugging_testing_profiling/t.py", line 10
+#     for i in range(10)
+#                      ^
+# SyntaxError: invalid syntax  
+\end{lstlisting}
+
+If we try to run a program that has a syntax error, Python will stop execution and print the filename, line number, and offending line, with a caret(\^{}) underneath indicating exactly where the error was detected.
+
+
+\begin{lstlisting}
+try:
+    if True:
+        print(''
+except Exception as err:
+    print(err)
+    
+#   File "/Users/mike/PycharmProjects/python3/c9_debugging_testing_profiling/t.py", line 21
+#     except Exception as err:
+#     ^
+# SyntaxError: invalid syntax  
+\end{lstlisting}
+
+There is no syntax error in the line indicated, so both the line number and the caret’s position are wrong.
+We have omite a parenthese, but Python didn't realize this until it reach the \verb|except| keyword on the following line.
+
+
+
+
+\subsection{Dealing with runtime errors}
+
+\begin{lstlisting}
+def div():
+    1 / 0
+
+
+if __name__ == '__main__':
+    div()
+
+# Traceback (most recent call last):
+#   File "/Users/mike/PycharmProjects/python3/c9_debugging_testing_profiling/e3.py", line 17, in <module>
+#     div()
+#   File "/Users/mike/PycharmProjects/python3/c9_debugging_testing_profiling/e3.py", line 13, in div
+#     1 / 0
+# ZeroDivisionError: division by zero  
+\end{lstlisting}
+
+If an unhandled exception occurs at runtime, Python will stop executing our program and print a traceback.
+Tracebacks should be read from their last line back toward their first line.
+The last line specifies the unhandled exception that occurred.
+Above the line, the filename, line number, and function name, followed by the line that caused the exception, are shown.
+
+
+\subsection{Scientific debugging}
+
+To be able to kill a bug we must be able to do the following.
+\begin{enumerate}
+\item Reproduce the bug.
+\item Locate the bug.
+\item Fix the bug.
+\item Test the fix.
+\end{enumerate}
+
+
+Reproducing the bug is sometimes easy -- it always occurs on every run; and sometimes hard -- it occurs intermittently.
+In either case we should try to reduce the bug’s dependencies, that is, find the smallest input and the least amount of processing that can still produce the bug.
+
+
+The scientific method of finding and fixing the bug has three steps:
+\begin{enumerate}
+\item Think up an explanation -- a hypothesis -- that reasonably accounts for the bug.
+\item Create an experiment to test the hypothesis.
+\item Run the experiment.
+\end{enumerate}
+
+
+\section{Unit testing}
+
+A key point of TDD (Test Driven Development) is that when we want to add a feature, we \keyword{frist} write a test for it.
+
+
+Python's standard library provides two unit testing modules, \verb|doctest| and \verb|unittest|.
+Creating doctests is straightforward:
+We write the tests in the module, function, class, and methods’ docstrings, and for modules, we simply add three lines at the end of the module:
+\begin{lstlisting}
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+\end{lstlisting}
+
+To exercise the program's doctests there there are two approaches:
+\begin{enumerate}
+\item Import the \verb|doctest| module and then run the program -- for example, at the console, \verb|python -m doctest yourprogram.py|.
+\item Create a separate test program using the \verb|unittest| module.
+\end{enumerate}
+
+
+
+
+\section{Profiling}
+
+There are some programming habits that are good for performance:
+\begin{itemize}
+\item Prefer tuples to lists when read-only sequence is needed.
+\item Use generators rather than creating large tuples or lists to iterate over.
+\item Use Python’s built-in data structures -- \verb|dicts|, \verb|lists|, and \verb|tuples| -- rather than custom data structures implemented in Python, since the built-in ones are all very highly optimized.
+\item When creating large strings out of lots of small strings, instead of concatenating the small strings, accumulate them all in a list, and join the list of strings into a single string at the end.
+\item If an object (including a function or method) is accessed a large number of times using attribute access (e.g., when accessing a function in a module), or from a data structure, it may be better to create and use a local variable that refers to the object to provide faster access.
+\end{itemize}
+
+
+
+
+The \verb|cProfile| module (or the \verb|profile| module) can be sued to compare the performance of functions and methods.
+And it also shows precisely what is being called and how long each call takes.
+
+
+\begin{lstlisting}
+import cProfile
+import math
+
+
+def log(x, y):
+    return math.log(x, y)
+
+
+code = """
+for i in range(10000):
+    log(10, 2)
+"""
+cProfile.run(code)
+\end{lstlisting}
+
+
+\begin{verbatim}
+         20003 function calls in 0.006 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.002    0.002    0.006    0.006 <string>:2(<module>)
+    10000    0.002    0.000    0.004    0.000 cprofile_.py:5(log)
+        1    0.000    0.000    0.006    0.006 {built-in method builtins.exec}
+    10000    0.002    0.000    0.002    0.000 {built-in method math.log}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+\end{verbatim}
+
+The \verb|ncalls| (``number of calls'') column lists the number of calls to the specified function.
+The \verb|tottime| (``total time'') column lists the total time spent in the function, but excluding time spent inside functions called by the function.
+The first \verb|percall| column lists the average time of each all to the function (\verb|tottime| // \verb|ncalls|).
+The \verb|cumtime| (``cumulative time'') column lists the time spent in the function and includes the time spent inside functions called by the function.
+The second \verb|percall| column lists the average time of each call to the function, including functions called by it.
+
+
+
+
+The \verb|cProfile| module allows us to profile code without instrumenting it.
+The command line to use is \verb|python -m cProfile program_or_module.py|.
+
+\verb|MyModule.py|:
+\begin{lstlisting}
+import math
+
+
+def log(x, y):
+    return math.log(x, y)
+
+
+for i in range(10000):
+    log(10, 2)
+  
+\end{lstlisting}
+
+We can save the complement profile data and analyze it using the \verb|pstats| module.
+
+\begin{lstlisting}
+
+(base) mike@Mikes-MacBook-Pro c9_debugging_testing_profiling % python -m cProfile -o profile.dat MyModule.py
+(base) mike@Mikes-MacBook-Pro c9_debugging_testing_profiling % python -m pstats                             
+Welcome to the profile statistics browser.
+% read profile.dat
+profile.dat% callers log
+   Random listing order was used
+   List reduced from 65 to 2 due to restriction <'log'>
+
+Function                    was called by...
+                                ncalls  tottime  cumtime
+{built-in method math.log}  <-   10000    0.001    0.001  MyModule.py:4(log)
+MyModule.py:4(log)          <-   10000    0.002    0.003  MyModule.py:1(<module>)
+
+
+profile.dat% callees log
+   Random listing order was used
+   List reduced from 65 to 2 due to restriction <'log'>
+
+Function                    called...
+                                ncalls  tottime  cumtime
+{built-in method math.log}  -> 
+MyModule.py:4(log)          ->   10000    0.001    0.001  {built-in method math.log}
+
+
+profile.dat% quit
+Goodbye.
+  
+\end{lstlisting}
+

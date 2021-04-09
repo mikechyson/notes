@@ -1,0 +1,548 @@
+
+\chapter{Networking}
+
+Networking allows computer programs to \keyword{communicate} with each other, even if they are running on different machines.
+
+\section{Console tool}
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+"""
+@project: python3
+@file: Console
+@author: mike
+@time: 2021/2/23
+ 
+@function:
+"""
+import sys
+import datetime
+
+
+class _RangeError(Exception):
+    pass
+
+
+def get_string(message, name="string", default=None,
+               minimum_length=0, maximum_length=80,
+               force_lower=False):
+    message += ": " if default is None else f" [{default}]: "
+    while True:
+        try:
+            line = input(message)
+            if not line:
+                if default is not None:
+                    return default
+                if minimum_length == 0:
+                    return ""
+                else:
+                    raise ValueError(f"{name} may not be empty")
+            if not (minimum_length <= len(line) <= maximum_length):
+                raise ValueError("{0} must have at least {1} and "
+                                 "at most {2} characters".format(
+                    name, minimum_length, maximum_length))
+            return line if not force_lower else line.lower()
+        except ValueError as err:
+            print("ERROR", err)
+
+
+def get_integer(message, name="integer", default=None, minimum=None,
+                maximum=None, allow_zero=True):
+    message += ": " if default is None else f" [{default}]: "
+    while True:
+        try:
+            line = input(message)
+            if not line and default is not None:
+                return default
+            x = int(line)
+            if x == 0:
+                if allow_zero:
+                    return x
+                else:
+                    raise _RangeError(f"{name} may not be 0")
+            if ((minimum is not None and minimum > x) or
+                    (maximum is not None and maximum < x)):
+                raise _RangeError("{0} must be between {1} and {2} "
+                                  "inclusive{3}".format(name, minimum, maximum,
+                                                        (" (or 0)" if allow_zero else "")))
+            return x
+        except _RangeError as err:
+            print("ERROR", err)
+        except ValueError as err:
+            print("ERROR {0} must be an integer".format(name))
+
+
+def get_float(message, name="float", default=None, minimum=None,
+              maximum=None, allow_zero=True):
+    message += ": " if default is None else f" [{default}]: "
+    while True:
+        try:
+            line = input(message)
+            if not line and default is not None:
+                return default
+            x = float(line)
+            if abs(x) < sys.float_info.epsilon:
+                if allow_zero:
+                    return x
+                else:
+                    raise _RangeError(f"{name} may not be 0.0")
+            if ((minimum is not None and minimum > x) or
+                    (maximum is not None and maximum < x)):
+                raise _RangeError("{0} must be between {1} and {2} "
+                                  "inclusive{3}".format(name, minimum, maximum,
+                                                        (" (or 0.0)" if allow_zero else "")))
+            return x
+        except _RangeError as err:
+            print("ERROR", err)
+        except ValueError as err:
+            print("ERROR {0} must be a float".format(name))
+
+
+def get_bool(message, default=None):
+    yes = frozenset({"1", "y", "yes", "t", "true", "ok"})
+    message += " (y/yes/n/no)"
+    message += ": " if default is None else f" [{default}]: "
+    line = input(message)
+    if not line and default is not None:
+        return default in yes
+    return line.lower() in yes
+
+
+def get_date(message, default=None, format="%y-%m-%d"):
+    # message should include the format in human-readable form, e.g.
+    # for %y-%m-%d, "YY-MM-DD".
+    message += ": " if default is None else f" [{default}]: "
+    while True:
+        try:
+            line = input(message)
+            if not line and default is not None:
+                return default
+            return datetime.datetime.strptime(line, format)
+        except ValueError as err:
+            print("ERROR", err)
+
+
+def get_menu_choice(message, valid, default=None, force_lower=False):
+    message += ": " if default is None else " [{0}]: ".format(default)
+    while True:
+        line = input(message)
+        if not line and default is not None:
+            return default
+        if line not in valid:
+            print("ERROR only {0} are valid choices".format(
+                ", ".join(["'{0}'".format(x)
+                           for x in sorted(valid)])))
+        else:
+            return line if not force_lower else line.lower()
+  
+\end{lstlisting}
+
+\section{Creating a TCP client}
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+"""
+@project: python3
+@file: car_registration
+@author: mike
+@time: 2021/2/23
+ 
+@function:
+"""
+import sys
+import Console
+import collections
+import struct
+import pickle
+import socket
+
+Address = ['localhost', 9653]
+CarTuple = collections.namedtuple("CarTuple", "seats mileage owner")
+
+
+def main():
+    if len(sys.argv) > 1:
+        Address[0] = sys.argv[1]
+    call = dict(c=get_car_details,
+                m=change_mileage,
+                o=change_owner,
+                n=new_registration,
+                s=stop_server,
+                q=quit_)
+    menu = '(C)ar Edit (M)ileage Edit (O)wner Edit (N)ew car (S)top server (Q)uit'
+    valid = frozenset('cmonsq')
+    previous_license = None
+    while True:
+        action = Console.get_menu_choice(menu, valid, 'c', True)
+        previous_license = call[action](previous_license)
+
+
+def get_car_details(previous_license):
+    license, car = retrieve_car_details(previous_license)
+    if car is not None:
+        print('License: {0}\nSeats:   {seats}\nMileage: {mileage}\n'
+              'Owner:   {owner}'.format(license, **car._asdict()))
+        return license
+
+
+def retrieve_car_details(previous_license):
+    license = Console.get_string('License', 'license', previous_license)
+    if not license:
+        return previous_license, None
+    license = license.upper()
+    ok, *data = handle_request('GET_CAR_DETAILS', license)
+    if not ok:
+        print(data[0])
+        return previous_license, None
+    return license, CarTuple(*data)
+
+
+def change_mileage(previous_license):
+    license, car = retrieve_car_details(previous_license)
+    if car is None:
+        return previous_license
+    mileage = Console.get_integer('Mileage', 'mileage', car.mileage, 0)
+    if mileage == 0:
+        return license
+    ok, *data = handle_request('CHANGE_MILEAGE', license, mileage)
+    if not ok:
+        print(data[0])
+    else:
+        print('Mileage successfully changed')
+    return license
+
+
+def change_owner(previous_license):
+    license, car = retrieve_car_details(previous_license)
+    if car is None:
+        return previous_license
+    owner = Console.get_string('Owner', 'owner', car.owner)
+    if not owner:
+        return license
+    ok, *data = handle_request('CHANGE_OWNER', license, owner)
+    if not ok:
+        print(data[0])
+    else:
+        print('Owner successfully changed')
+    return license
+
+
+def new_registration(previous_license):
+    license = Console.get_string('License', 'license')
+    if not license:
+        return previous_license
+    license = license.upper()
+    seats = Console.get_integer('Seats', 'seats', 4, 0)
+    if not (1 < seats < 10):
+        return previous_license
+    mileage = Console.get_integer('Mileage', 'mileage', 0, 0)
+    owner = Console.get_string('Owner', 'owner')
+    if not owner:
+        return previous_license
+
+    ok, *data = handle_request('NEW_REGISTRATION', license, seats, mileage, owner)
+    if not ok:
+        print(data[0])
+    else:
+        print(f'Car {license} successfully registered')
+    return license
+
+
+def quit_(*ignore):
+    sys.exit()
+
+
+def stop_server(*ignore):
+    handle_request('SHUTDOWN', wait_for_reply=False)
+    sys.exit()
+
+
+def handle_request(*items, wait_for_reply=True):
+    SizeStruct = struct.Struct('!I')
+    data = pickle.dumps(items, 3)  # 3 is protocol version
+
+    try:
+        with SocketManager(tuple(Address)) as sock:
+            sock.sendall(SizeStruct.pack(len(data)))
+            sock.sendall(data)
+
+            if not wait_for_reply:
+                return
+
+            size_data = sock.recv(SizeStruct.size)
+            size = SizeStruct.unpack(size_data)[0]
+            result = bytearray()
+            while True:
+                data = sock.recv(4000)
+                if not data:
+                    break
+                result.extend(data)
+                if len(result) >= size:
+                    break
+        return pickle.loads(result)
+    except socket.error as err:
+        print(f'{err}: is the server running?')
+        sys.exit(1)
+
+
+class SocketManager:
+    def __init__(self, address):
+        self.address = address
+
+    def __enter__(self):
+        # AF_INET: address family ipv4
+        # SOCK_STREAM: TCP
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.connect(self.address)
+        return self.sock
+
+    def __exit__(self, *ignore):
+        self.sock.close()
+
+
+main()
+  
+\end{lstlisting}
+
+If we choose to quit the program we do a clean termination by calling \verb|sys.exit()|.
+Every menu function is called with the previous license, but we don’t care about the argument in this particular case.
+We cannot write \verb|def quit():| because that would create a function that expects no arguments and so when the function was called with the previous license a \verb|TypeError| exception would be raised saying that no arguments were expected but that one was given.
+So instead we specify a parameter of \verb|*ignore| which can take any number of positional arguments.
+
+
+
+
+\section{Creating a TCP server}
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+"""
+@project: python3
+@file: car_registration_server
+@author: mike
+@time: 2021/2/23
+ 
+@function:
+"""
+import os
+import pickle
+import sys
+import gzip
+import socketserver
+import threading
+import struct
+import copy
+import random
+
+
+class Car:
+    def __init__(self, seats, mileage, owner):
+        self.__seats = seats
+        self.mileage = mileage
+        self.owner = owner
+
+    @property
+    def seats(self):
+        return self.__seats
+
+    @property
+    def mileage(self):
+        return self.__mileage
+
+    @mileage.setter
+    def mileage(self, mileage):
+        self.__mileage = mileage
+
+    @property
+    def owner(self):
+        return self.__owner
+
+    @owner.setter
+    def owner(self, owner):
+        self.__owner = owner
+
+    def __str__(self):
+        return f'{self.seats}, {self.mileage}, {self.owner}'
+
+
+class Finish(Exception):
+    pass
+
+
+def main():
+    filename = os.path.join(os.path.dirname(__file__), 'car_registration.dat')
+    cars = load(filename)
+    print(f'Loaded {len(cars)} car registrations')
+    RequestHandler.Cars = cars  # set Cars attribute into RequestHandler
+    server = None
+    try:
+        server = CarRegistrationServer(('', 9653), RequestHandler)
+        server.serve_forever()
+    except Exception as err:
+        print('ERROR', err)
+    finally:
+        if server is not None:
+            server.shutdown()
+            save(filename, cars)
+            print(f'Save {len(cars)} car registrations')
+
+
+def load(filename):
+    if not os.path.exists(filename):
+        # Generate fake data
+        cars = {}
+        owners = []
+        for forename, surname in zip(
+                ("Warisha", "Elysha", "Liona",
+                 "Kassandra", "Simone", "Halima", "Liona", "Zack",
+                 "Josiah", "Sam", "Braedon", "Eleni"),
+                ("Chandler", "Drennan", "Stead", "Doole", "Reneau",
+                 "Dent", "Sheckles", "Dent", "Reddihough", "Dodwell",
+                 "Conner", "Abson")):
+            owners.append(forename + " " + surname)
+        for license in (
+                "1H1890C", "FHV449", "ABK3035", "215 MZN",
+                "6DQX521", "174-WWA", "999991", "DA 4020", "303 LNM",
+                "BEQ 0549", "1A US923", "A37 4791", "393 TUT", "458 ARW",
+                "024 HYR", "SKM 648", "1253 QA", "4EB S80", "BYC 6654",
+                "SRK-423", "3DB 09J", "3C-5772F", "PYJ 996", "768-VHN",
+                "262 2636", "WYZ-94L", "326-PKF", "EJB-3105", "XXN-5911",
+                "HVP 283", "EKW 6345", "069 DSM", "GZB-6052", "HGD-498",
+                "833-132", "1XG 831", "831-THB", "HMR-299", "A04 4HE",
+                "ERG 827", "XVT-2416", "306-XXL", "530-NBE", "2-4JHJ"):
+            mileage = random.randint(0, 100000)
+            seats = random.choice((2, 4, 5, 6, 7))
+            owner = random.choice(owners)
+            cars[license] = Car(seats, mileage, owner)
+        return cars
+
+    try:
+        with gzip.open(filename, 'rb') as fh:
+            cars = pickle.load(fh)
+            print(cars)
+            return cars
+    except (EnvironmentError, pickle.UnpicklingError) as err:
+        print(f'server cannot load data: {err}')
+        sys.exit(1)
+
+
+def save(filename, cars):
+    try:
+        with gzip.open(filename, 'wb') as fh:
+            pickle.dump(cars, fh, 3)
+    except (EnvironmentError, pickle.UnpicklingError) as err:
+        print(f'server failed to save data: {err}')
+        sys.exit(1)
+
+
+class CarRegistrationServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    pass
+
+
+class RequestHandler(socketserver.StreamRequestHandler):
+    CarsLock = threading.Lock()
+    CallLock = threading.Lock()
+
+    Call = dict(
+        GET_CAR_DETAILS=lambda self, *args: self.get_car_details(*args),
+        CHANGE_MILEAGE=lambda self, *args: self.change_mileage(*args),
+        CHANGE_OWNER=lambda self, *args: self.change_owner(*args),
+        NEW_REGISTRATION=lambda self, *args: self.new_registration(*args),
+        SHUTDOWN=lambda self, *args: self.shutdown(*args)
+    )
+
+    def handle(self) -> None:
+        SizeStruct = struct.Struct('!I')
+        size_data = self.rfile.read(SizeStruct.size)
+        size = SizeStruct.unpack(size_data)[0]
+        data = pickle.loads(self.rfile.read(size))
+
+        try:
+            with RequestHandler.CallLock:
+                function = self.Call[data[0]]
+            reply = function(self, *data[1:])
+        except Finish:
+            return
+        data = pickle.dumps(reply, 3)
+        self.wfile.write(SizeStruct.pack(len(data)))
+        self.wfile.write(data)
+
+    def shutdown(self, *ignore):
+        self.server.shutdown()
+        raise Finish()
+
+    def get_car_details(self, license):
+        with RequestHandler.CarsLock:
+            car = copy.copy(self.Cars.get(license, None))
+        if car is not None:
+            return True, car.seats, car.mileage, car.owner
+        return False, 'This license is not registered'
+
+    def change_mileage(self, license, mileage):
+        if mileage < 0:
+            return False, 'Cannot set a negative mileage'
+        with RequestHandler.CarsLock:
+            car = self.Cars.get(license, None)
+            if car is not None:
+                if car.mileage < mileage:
+                    car.mileage = mileage
+                    return True, None
+                return False, 'Cannot wind the odometer back'
+        return False, 'This license is not registered'
+
+    def change_owner(self, license, owner):
+        with RequestHandler.CarsLock:
+            car = self.Cars.get(license, None)
+            if car is not None:
+                car.owner = owner
+                return True, None
+        return False, 'This license is not registered'
+
+    def new_registration(self, license, seats, mileage, owner):
+        if not license:
+            return False, 'Cannot set an empty license'
+        if seats not in {2, 4, 5, 6, 7, 8, 9}:
+            return False, 'Cannot register car with invalid seats'
+        if mileage < 0:
+            return False, 'Cannot set a negative mileage'
+        if not owner:
+            return False, 'Cannot set an empty owner'
+
+        with RequestHandler.CarsLock:
+            if license not in self.Cars:
+                self.Cars[license] = Car(seats, mileage, owner)
+                return True, None
+        return False, 'Cannot register duplicate license'
+
+
+main()
+\end{lstlisting}
+
+Since the code for creating servers often follows the same design, rather than having to use the low-level \verb|socket| module, we can use the high-level \verb|socketserver| module which takes care of all the housekeeping for us.
+All we have to do is provide a request handler class with a \verb|handle()| method which is used to read requests and write replies.
+
+
+Our request handler class needs to be able to access the \verb|cars| dictionary, but we cannot pass the dictionary to an instance because the server creates the instances for us --- one to handle each request.
+So we set the dictionary to the \verb|RequestHandler.Cars| class variable where it is accessible to all instances.
+
+
+
+Note that the \verb|socketserver| mixin class we used must always be inherited first.
+This is to ensure that the mixin class’s methods are used in preference to the second class’s methods for those methods that are provided by both, since Python looks for methods in the base classes in the order in which the base classes are specified, and uses the first suitable method it finds.
+
+
+The \verb|RequestHandler.Cars| dictionary is a class variable that was added in the \verb|main()| function; it holds all the registration data.
+Adding additional attributes to objects (such as classes and instances) can be done outside the class (in this case in the \verb|main()| function) without formality (as long as the object has a \verb|__dict__|), and can be very convenient.
+
+
+The \verb|Call| dictionary is another class variable.
+We cannot use the methods directly because there is no \verb|self| available at the class level.
+The solution we have used is to provide wrapper functions that will get \verb|self| when they are called, and which in turn call the appropriate method with the given self and any other arguments.
+
+
+\section{Summary}
+
+Creating network clients and servers can be quite straightforward in Python thanks to the standard library’s networking modules, and the \verb|struct| and \verb|pickle| modules.
+
+
+

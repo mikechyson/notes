@@ -1,0 +1,265 @@
+
+\chapter{Object-oriented programming}
+
+\section{Costom classes}
+
+\subsection{Attributes and methods}
+
+
+\begin{tcolorbox}
+\begin{verbatim}
+class className:
+    suite
+
+class className(base_classes):
+    suite
+\end{verbatim}
+\end{tcolorbox}
+
+Just like \verb|def| statements, \verb|class| is a statement, so we can create classes dynamically if we want to.
+Class instances are created by calling the class with any necessary arguments.
+
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+# Copyright (c) 2021-02
+
+import math
+
+
+class Point:
+    def __init__(self, x=0, y=0):
+        """
+        A 2D cartesian coordinate
+        :param x:
+        :param y:
+        """
+        self.x = x
+        self.y = y
+
+    def distance_from_origin(self):
+        return math.hypot(self.x, self.y)
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    def __repr__(self):
+        return f'Point({self.x!r}, {self.y!r})'
+
+    def __str__(self):
+        return f'({self.x!r}, {self.y!r})'
+
+\end{lstlisting}
+
+
+Python automatically supplies the first argument in method calls -- it is an object reference to the object itself.
+We must include this argument in the parameter list, and by convention the parameter is called \verb|self|.
+All object attributes (data and method attributes) must be qualified by \verb|self|.
+
+
+
+To create an object, two steps are necessary:
+\begin{enumerate}
+\item a raw or uninitialized object must be created (\verb|__new__()|)
+\item the object must be initialized, ready for use (\verb|__init__()|)
+\end{enumerate}
+
+
+
+If we call a method on an object and the object's class does not have an implementation of that method,
+Python will automatically go through the object's base classes, and their base classes, and so on, until it finds the method --
+and if the method is not found an \verb|AtributeError| exception is raised.
+
+
+
+Calling \verb|super().__init__()| is to call the base class's \verb|__init__()| method.
+For classes that directly inherit \verb|object| there is no need to do this and we call base class methods only when necessary --
+for example, when creating classes that are designed to be subclassed, or
+when creating classes that don't directly inherit \verb|object|.
+
+
+
+If we want to avoid inappropriate comparisons, we can this:
+\begin{lstlisting}
+    def __eq__(self, other):
+        if not isinstance(other, Point):
+            return NotImplemented
+        return self.x == other.x and self.y == other.y
+\end{lstlisting}
+In this case, if \verb|NotImplemented| is returned, Python will then try calling \verb|other.__eq__(self)| to see
+whether the \verb|other| type supports the comparion with the \verb|Point| type, and
+if there is no such method or if that method alse returns \verb|NotImplemented|, Python will give up and
+raise a \verb|TypeError| exception.
+Only the following methods may return \verb|NotImplemented|:
+\begin{itemize}
+\item \verb|__lt__(self, other)|
+\item \verb|__le__(self, other)|
+\item \verb|__eq__(self, other)|
+\item \verb|__ne__(self, other)|
+\item \verb|__ge__(self, other)|
+\item \verb|__gt__(self, other)|
+\end{itemize}
+
+
+
+
+\begin{tcolorbox}
+  Poweful \verb|eval()|: (\verb|eval(expression)|)
+  \begin{lstlisting}
+    p = Shape.Point(3, 9)
+    repr(p)                                              # returns: 'Point(3, 9)'
+    q = eval(p.__module__ + "." + repr(p))        
+    repr(q)                                              # returns: 'Point(3, 9)'
+  \end{lstlisting}
+
+
+  \begin{lstlisting}
+    a0 = 0
+    a1 = 1
+    a2 = 2
+    a3 = 3
+    
+    for i in range(4):
+        print(eval(f'a{i} * {i}'))
+  \end{lstlisting}
+
+  A more powerful function is \verb|exec()|,
+  it can accept python code not only python expression.
+  \begin{lstlisting}
+    for i in range(3):
+        exec(f'a{i} = {i}')
+        exec(f'print(a{i})')
+    exec('me = "Mike Chyson"')
+    print(me)
+
+    exec('''
+    def say_hello():
+        print('hello')
+    ''')
+    say_hello()
+  \end{lstlisting}
+
+\end{tcolorbox}
+
+
+
+\subsection{Inheritance and plymorphism}
+
+\begin{lstlisting}
+class Circle(Point):
+    def __init__(self, radius, x=0, y=0):
+        super().__init__(x, y)
+        self.radius = radius
+
+    def edge_distance_from_origin(self):
+        return abs(self.distance_from_origin() - self.radius)
+
+    def area(self):
+        return math.pi * (self.radius ** 2)
+
+    def circumference(self):
+        return 2 * math.pi * self.radius
+
+    def __eq__(self, other):
+        return self.radius == other.radius and super().__eq__(other)
+
+    def __repr__(self):
+        return f'Circle({self.radius!r}, {self.x!r}, {self.y!r})'
+
+    def __str__(self):
+        return repr(self)
+\end{lstlisting}
+
+
+
+\subsection{Using properties to control attribute access}
+
+\begin{tcolorbox}
+A property is an item of object data that is accessed like an instance variable
+but where the accesses are handled methods behind the scenes.
+\end{tcolorbox}
+
+
+\begin{lstlisting}
+class Circle(Point):
+    def __init__(self, radius, x=0, y=0):
+        super().__init__(x, y)
+        self.radius = radius
+
+    @property
+    def edge_distance_from_origin(self):
+        return abs(self.distance_from_origin - self.radius)
+
+    @property
+    def area(self):
+        return math.pi * (self.radius ** 2)
+
+    @property
+    def circumference(self):
+        return 2 * math.pi * self.radius
+
+    @roperty
+    def radius(self):
+        return self.__radius
+
+    @property.setter
+    def radius(self, radius):
+        assert radius > 0, 'radius must be nonzero and non-negative'
+        self.__radius = radius  
+\end{lstlisting}
+
+\begin{tcolorbox}
+  A decorator is a function that takes a function or method as its argument and returns a ``decorated'' version,
+  that is, a version of the function or method that is modified in some way.
+  A decorator is indicated by preceding its name with an at symbol (@). 
+\end{tcolorbox}
+
+
+
+The \verb|property()| decorator function is built-in and takes up to four arguments:
+\begin{itemize}
+\item a getter function
+\item a setter function 
+\item a deleter function
+\item a docstring
+\end{itemize}
+
+The effect of using \verb|@property| is the same as calling the \verb|property()| function with just one argument, the getter function.
+We could have created the area property like this:
+\begin{lstlisting}
+  def area(self):
+      return math.pi * (self.radius ** 2)
+  area = property(area)
+\end{lstlisting}
+We rarely use this syntax, since using a decorator is shorter and clearer.
+
+
+
+
+
+To turn an attribute into a readable/writable property we must create a private attribute where the data is actually held and supply getter and setter methods.
+\begin{lstlisting}
+    @property
+    def radius(self):
+        return self.__radius
+
+    @property.setter
+    def radius(self, radius):
+        assert radius > 0, 'radius must be nonzero and non-negative'
+        self.__radius = radius   
+\end{lstlisting}
+
+
+Every property that is created has a \verb|getter|, \verb|setter|, and \verb|deleter| attribute,
+so once the radius property is created using \verb|@property|, the \verb|radius.getter|, \verb|radius.setter|, and
+\verb|radius.deleter| attributes become available.
+The \verb|radius.getter| is set to the getter method by the \verb|@property| decorator.
+The other two are set up by Python so that they do nothing (so the attribute cannot be written to or deleted),
+unless they are used as decorators, in which case they in effect replace themselves with the method they are used to decorate.
+
+
+The \verb|Circle|'s initializer, \verb|Circle.__init__()|, includes the statement \verb|self.radius = radius|;
+this will call the \verb|radius| properity's setter.
+
+
+

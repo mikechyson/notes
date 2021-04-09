@@ -1,0 +1,433 @@
+
+\chapter{Processes and threading}
+
+With the advant of \keyword{multicore} processors, it is more tempting and more practical than ever before to spread the processing load so as to get the most out of all the avaiable cores.
+There are two main approaches to spreading the workload:
+\begin{itemize}
+\item multiple processes
+\item multiple threads
+\end{itemize}
+
+
+
+\begin{table}[htb!]
+  \centering
+  \begin{tabular}{p{0.3\columnwidth}p{0.3\columnwidth}p{0.3\columnwidth}}
+    \toprule{}
+    & \head{advantage} & \head{disadvantage} \\
+    \midrule
+    multiple processes & each process runs independently & communication and data sharing can be inconvenient \\
+    multiple threads & can communicate simply by data sharing & more complex than single-threaded program\\
+    \bottomrule
+  \end{tabular}
+  \caption{multiple processes and multiple threads}
+\end{table}
+
+
+\section{Using the multiprocessing module}
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+"""
+@project: python3
+@file: grepword_p
+@author: mike
+@time: 2021/2/22
+
+@function:
+Searches for a word specified on the command line in the files listed after the word.
+This the parent program. 
+The corresponding child program is grepword_p_child.py.
+"""
+import os
+import sys
+import subprocess
+import optparse
+
+
+def main():
+    child = os.path.join(os.path.dirname(__file__), 'grepword_p_child.py')
+    opts, word, args = parse_options()
+    filelist = get_files(args, opts.recurse)
+    files_per_process = len(filelist) // opts.count
+    # Usually the number of files won’t be an exact multiple of the number of processes,
+    # so we increase the number of files the first process is given by the remainder.
+    start, end = 0, files_per_process + (len(filelist) % opts.count)
+    number = 1
+
+    pipes = []
+    while start < len(filelist):
+        command = [sys.executable, child]
+        if opts.debug:
+            command.append(str(number))
+        pipe = subprocess.Popen(command, stdin=subprocess.PIPE)
+        pipes.append(pipe)
+        pipe.stdin.write(word.encode('utf8') + b'\n')
+        for filename in filelist[start:end]:
+            pipe.stdin.write(filename.encode('utf8') + b'\n')
+        pipe.stdin.close()
+        number += 1
+        start, end = end, end + files_per_process
+
+    while pipes:
+        pipe = pipes.pop()
+        pipe.wait()
+
+
+def parse_options():
+    parser = optparse.OptionParser(
+        usage=("usage: %prog [options] word name1 "
+               "[name2 [... nameN]]\n\n"
+               "names are filenames or paths; paths only "
+               "make sense with the -r option set"))
+    parser.add_option("-p", "--processes", dest="count", default=7,
+                      type="int",
+                      help=("the number of child processes to use (1..20) "
+                            "[default %default]"))
+    parser.add_option("-r", "--recurse", dest="recurse",
+                      default=False, action="store_true",
+                      help="recurse into subdirectories")
+    parser.add_option("-d", "--debug", dest="debug", default=False,
+                      action="store_true")
+    opts, args = parser.parse_args()
+    if len(args) == 0:
+        parser.error("a word and at least one path must be specified")
+    elif len(args) == 1:
+        parser.error("at least one path must be specified")
+    if (not opts.recurse and
+            not any([os.path.isfile(arg) for arg in args])):
+        parser.error("at least one file must be specified; or use -r")
+    if not (1 <= opts.count <= 20):
+        parser.error("process count must be 1..20")
+    return opts, args[0], args[1:]
+
+
+def get_files(args, recurse):
+    filelist = []
+    for path in args:
+        if os.path.isfile(path):
+            filelist.append(path)
+        elif recurse:
+            for root, dirs, files in os.walk(path):
+                for filename in files:
+                    filelist.append(os.path.join(root, filename))
+    return filelist
+
+
+main()  
+\end{lstlisting}
+
+
+The \verb|number| variable (line 22) is used purely for debugging so that we can see which process produce each line of output.
+For each \verb|start:end| slice of the \verb|filelist| we specify the Python interpreter (conveniently available in \verb|sys.executable|) (line 26).
+
+Once all the processes have started we wait for each child process to finish.
+This is not essential, but on Unix-like systems it ensures that we are returned to the console prompt when all the processes are done (otherwise, we must press Enter when they are all finished).
+Another benefit of waiting is that if we interrupt the program (e.g., by pressing Ctrl+C), all the processes that are still running will be interrupted and will terminate with an uncaught \verb|KeyboardInterrupt| exception --
+if we did not wait the main program would finish (and therefore not be interruptible), and the child processes would continue (unless killed by a kill program or a task manager).
+
+
+
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+"""
+@project: python3
+@file: grepword_p_child
+@author: mike
+@time: 2021/2/22
+ 
+@function:
+"""
+import sys
+
+coding = 'utf8'
+BLOCK_SIZE = 8000
+number = f'{sys.argv[1]}' if len(sys.argv) == 2 else ''
+stdin = sys.stdin.buffer.read()
+lines = stdin.decode(coding, 'ignore').splitlines()
+word = lines[0].rstrip()
+
+for filename in lines[1:]:
+    filename = filename.rstrip()
+    previous = ''
+    try:
+        with open(filename, 'rb') as fh:
+            while True:
+                current = fh.read(BLOCK_SIZE)
+                if not current:
+                    break
+                current = current.decode(coding, 'ignore')
+                if word in current or word in previous[-len(word):] + current[:len(word)]:
+                    print(f'{number}{filename}')
+                    break
+                if len(current) != BLOCK_SIZE:
+                    break
+                previous = current
+    except EnvironmentError as err:
+        print(f'{number}{err}')
+  
+\end{lstlisting}
+
+It is possible that some of the files might be very large and this could be a problem, especially if there are 20 child processes running concurrently, all reading big files.
+We handle this by reading each file in blocks, keeping the previous block read to ensure that we don’t miss cases when the only occurrence of the search word happens to fall across two blocks.
+
+
+\section{Using the threading module}
+
+Setting up two or more separate threads of execution in Python is quite straightforward.
+The complexity arises when we want to separate threads to share data.
+
+One common solution is to use some kind of locking mechanism.
+
+
+
+Every Python program has at least one thread, the main thread.
+To create multiple threads we must import the \verb|threading| module and use that to create as many additional threads as want.
+There are two ways to create threads:
+\begin{enumerate}
+\item We can call \verb|threading.Thread()| and pass it a callable object
+\item We can subclass the \verb|threading.Thread| class.
+\end{enumerate}
+
+
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+"""
+@project: python3
+@file: grepword_t
+@author: mike
+@time: 2021/2/22
+ 
+@function:
+"""
+
+import queue
+import os
+import threading
+
+BLOCK_SIZE = 8000
+from grepword_p import parse_options, get_files
+
+
+def main():
+    opts, word, args = parse_options()
+    filelist = get_files(args, opts.recurse)
+    work_queue = queue.Queue()
+    for i in range(opts.count):
+        number = f'{i + 1}: ' if opts.debug else ''
+        worker = Worker(work_queue, word, number)
+        worker.daemon = True
+        worker.start()
+    for filename in filelist:
+        work_queue.put(filename)
+    work_queue.join()
+
+
+class Worker(threading.Thread):
+    def __init__(self, work_queue, word, number):
+        super().__init__()
+        self.work_queue = work_queue
+        self.word = word
+        self.number = number
+
+    def run(self) -> None:
+        while True:
+            try:
+                filename = self.work_queue.get()
+                self.process(filename)
+            finally:
+                self.work_queue.task_done()
+
+    def process(self, filename):
+        previous = ""
+        try:
+            with open(filename, "rb") as fh:
+                while True:
+                    current = fh.read(BLOCK_SIZE)
+                    if not current:
+                        break
+                    current = current.decode("utf8", "ignore")
+                    if (self.word in current or
+                            self.word in previous[-len(self.word):] +
+                            current[:len(self.word)]):
+                        print("{0}{1}".format(self.number, filename))
+                        break
+                    if len(current) != BLOCK_SIZE:
+                        break
+                    previous = current
+        except EnvironmentError as err:
+            print("{0}{1}".format(self.number, err))
+  
+\end{lstlisting}
+
+The program will not terminate while it has any threads running.
+This is a problem because once the worker threads have done their work, although they have finished they are technically still running.
+The solution is to turn the threads into daemons.
+The effect of this is that the program will terminate as soon as the program has no nondaemon threads running.
+The main thread is not a daemon, so once the main thread finishes, the program will cleanly terminate each daemon thread and then terminate itself.
+Of course, this can now create the opposite problem -- once the threads are up and running we must ensure that the main thread dees not finish until the work is done.
+This is achieved by calling \verb|queue.Queue.join()| -- this method blocks until the queue is empty.
+
+
+
+We have made the \verb|run()| emthod infinite loop.
+This is common for daemon threads.
+Once we have a file we process it, and afterward we must tell the queue that we have done that particular job -- calling \verb|queue.Queue.task_done()| is ensential to the correct working of \verb|queue.Queue.join()|.
+
+
+
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+"""
+@project: python3
+@file: findduplicates_t
+@author: mike
+@time: 2021/2/23
+ 
+@function:
+The program iterates over all the files in the current directory (or the specified path),
+recursively going into subdirectories. It compares the lengths of all the files with the
+same name, and for those files that have the same name and the same size it then uses
+the MD5 (Message Digest) algorithm to check whether the files are the same, reporting
+any that are.
+"""
+
+import collections
+import os
+import queue
+import threading
+import hashlib
+import optparse
+
+
+def main():
+    # parse commandline arguments
+    opts, path = parse_options()
+    # prepare the data
+    data = collections.defaultdict(list)
+    for root, dirs, files in os.walk(path):
+        for filename in files:
+            fullname = os.path.join(root, filename)
+            try:
+                key = (os.path.getsize(fullname), filename)
+            except EnvironmentError:
+                continue
+
+            if key[0] == 0:
+                continue
+
+            data[key].append(fullname)
+
+    # Create the worker threads
+    work_queue = queue.PriorityQueue()
+    results_queue = queue.Queue()
+    # Reduce the duplicate computation of the same file
+    md5_from_filename = {}
+    for i in range(opts.count):
+        number = f'{i + 1}: ' if opts.debug else ''
+        worker = Worker(work_queue, md5_from_filename, results_queue, number)
+        worker.daemon = True
+        worker.start()
+
+    # Create the result thread
+    result_thread = threading.Thread(target=lambda: print_results(results_queue))
+    result_thread.daemon = True
+    result_thread.start()
+
+    for size, filename in sorted(data):
+        names = data[size, filename]
+        if len(names) > 1:
+            work_queue.put((size, names))
+        # Blocks until all items in the Queue have been gotten and processed.
+        work_queue.join()
+        results_queue.join()
+
+
+def print_results(results_queue):
+    while True:
+        try:
+            results = results_queue.get()
+            if results:
+                print(results)
+        finally:
+            results_queue.task_done()
+
+
+class Worker(threading.Thread):
+    # class attribute
+    Md5_lock = threading.Lock()
+
+    def __init__(self, work_queue, md5_from_filename, results_queue, number):
+        super().__init__()
+        self.work_queue = work_queue
+        self.md5_from_filename = md5_from_filename
+        self.results_queue = results_queue
+        self.number = number
+
+    def run(self):
+        while True:
+            try:
+                size, names = self.work_queue.get()
+                self.process(size, names)
+            finally:
+                self.work_queue.task_done()
+
+    def process(self, size, filenames):
+        md5s = collections.defaultdict(set)
+        for filename in filenames:
+            with self.Md5_lock:
+                md5 = self.md5_from_filename.get(filename, None)
+            if md5 is not None:
+                md5s[md5].add(filename)
+            else:
+                try:
+                    md5 = hashlib.md5()
+                    with open(filename, 'rb') as fh:
+                        md5.update(fh.read())
+                    md5 = md5.digest()
+                    md5s[md5].add(filename)
+                    with self.Md5_lock:
+                        self.md5_from_filename[filename] = md5
+                except EnvironmentError:
+                    continue
+
+        for filenames in md5s.values():
+            if len(filenames) == 1:
+                continue
+            self.results_queue.put(
+                "{0}Duplicate files ({1:n} bytes): \n\t{2}".format(self.number, size, "\n\t".join(sorted(filenames)))
+            )
+
+
+def parse_options():
+    parser = optparse.OptionParser(
+        usage=("usage: %prog [options] [path]\n"
+               "outputs a list of duplicate files in path "
+               "using the MD5 algorithm\n"
+               "ignores zero-length files\n"
+               "path defaults to ."))
+    parser.add_option("-t", "--threads", dest="count", default=7,
+                      type="int",
+                      help=("the number of threads to use (1..20) "
+                            "[default %default]"))
+    parser.add_option("-v", "--verbose", dest="verbose",
+                      default=False, action="store_true")
+    parser.add_option("-d", "--debug", dest="debug", default=False,
+                      action="store_true")
+    opts, args = parser.parse_args()
+    if not (1 <= opts.count <= 20):
+        parser.error("thread count must be 1..20")
+    return opts, args[0] if args else "."
+
+
+main()  
+\end{lstlisting}
+
+Whether we access the \verb|md5_from_filename| dictionary to read it or to write it, we put the access in the context of a lock (line 79).
+Instances of the \verb|threading.Lock()| class are context managers that acquire the lock on entry and release the lock on exit.
+The \verb|with| statements will block if another thread has the \verb|Md5_lock|, until the lock is released.
+
+

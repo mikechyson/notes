@@ -1,0 +1,19 @@
+
+\chapter{Problems}
+
+\section{Commit activity not shown}
+
+The problem is the email configured in my local git is not same as the github account email.
+
+To show the local git email configuration:
+\begin{lstlisting}
+  git config --global --list  # global
+  git config --list # just for one repository
+\end{lstlisting}
+
+
+To configure the local git email:
+\begin{lstlisting}
+  git config --global user.email <your email>  # change the global email
+  git config user.email <your email>  # change one repository email
+\end{lstlisting}

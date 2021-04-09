@@ -1,0 +1,43 @@
+
+\chapter{File handling}
+
+There are several file formats to choose when you are doing serialization and deserialization, for example:
+\begin{itemize}
+\item binary 
+\item test
+\item XML
+\end{itemize}
+
+
+
+Which is the best file format?
+
+The question is too context-dependent to have a single definitive answer,
+especially since there are pros and cons for each format and for each way of handling them.
+
+
+
+Binary formats are usually very \keyword{fast} to save and load and they can be very \keyword{compact}.
+Binary data doesn’t need parsing since each data type is stored using its \keyword{natural representation}.
+Binary data is \keyword{not human readable or editable}, and without knowing the format in detail
+it is not possible to create separate tools to work with binary data.
+
+
+Text formats are \keyword{human readable and editable}.
+Text formats can be \keyword{tricky to parse} and
+it is not always easy to give good error messages if a text file’s format is broken.
+
+
+
+XML formats are \keyword{human readable and editable}.
+XML formats can be processed using separate tools.
+Parsing XML is straightforward and some parsers have good error reporting.
+XML parsers can be slow, so reading very large XML files can take a lot more time than reading an equivalent binary or text file.
+XML includes metadata and this can make XML more portable than text files.
+
+
+
+Some programs use an XML file format for all the data they handle, whereas others use XML as a convenient import/export format.
+The ability to import and export XML is useful and is always worth considering even if a program’s main format is a text or binary format.
+
+

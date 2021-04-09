@@ -1,0 +1,405 @@
+\chapter{Recursion}
+
+Recursion is an approach to solving problems using a function that calls itself as a subroutine.
+
+The trick is that each time a recursive function calls itself, it reduces the given problem into subproblems.
+The recursion call continues until it reaches a point where the subproblem can be solved without further recursion.
+
+A recursive function should have the following properties so that it does not result in an infinite loop:
+\begin{enumerate}
+\item A simple base case (or cases) — a terminating scenario that does not use recursion to produce an answer.
+\item A set of rules, also known as recurrence relation that reduces all other cases towards the base case.
+\end{enumerate}
+
+
+\section{Memorization}
+
+
+Recursion is often an intuitive and powerful way to implement an algorithm.
+However, it might bring some undesired penalty to the performance, e.g. duplicate calculations, if we do not use it wisely.
+To eliminate the duplicate calculation, one of the ideas would be to store the intermediate results in the cache so that we could reuse them later without re-calculation.
+This idea is also known as \keyword{memoization}, which is a technique that is frequently used together with recursion.
+Memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. 
+
+
+\section{Complexity analysis}
+
+\subsection{Time complexity}
+
+Given a recursion algorithm, its time complexity $O(T)$ is typically the product of the number of recursion invocations (denoted as $R$) and the time complexity of calculation (denoted as $O(s)$) that incurs along with each recursion call:
+
+\begin{equation}
+  O(T) = R \times O(s)
+\end{equation}
+
+\subsection{Space complexity}
+There are mainly two parts of the space consumption:
+\begin{enumerate}
+\item recursion related 
+\item non-recursion related space.
+\end{enumerate}
+
+
+The recursion related space refers to the memory cost that is incurred directly by the recursion, i.e. the stack to keep track of recursive function calls.
+In order to complete a typical function call, the system allocates some space in the stack to hold three important pieces of information:
+\begin{enumerate}
+\item The returning address of the function call. Once the function call is completed, the program must know where to return to, i.e. the line of code after the function call.
+\item The parameters that are passed to the function call. 
+\item The local variables within the function call.
+\end{enumerate}
+
+
+
+The non-recursion related space refers to the memory space that is not directly related to recursion, which typically includes the space (normally in heap) that is allocated for the global variables.
+
+
+Recursion or not, you might need to store the input of the problem as global variables, before any subsequent function calls.
+And you might need to save the intermediate results from the recursive calls as well.
+The latter is also known as memoization.
+
+ 
+
+
+\subsection{Tail recursion}
+
+\keyword{Tail recursion} is a recursion where the recursive call is the final instruction in the recursion function.
+And there should be only one recursive call in the function.
+
+
+
+\begin{lstlisting}
+def sum_non_tail_recursion(ls):
+    """
+    :type ls: List[int]
+    :rtype: int, the sum of the input list.
+    """
+    if len(ls) == 0:
+        return 0
+    
+    # not a tail recursion because it does some computation after the recursive call returned.
+    return ls[0] + sum_non_tail_recursion(ls[1:])
+
+
+def sum_tail_recursion(ls):
+    """
+    :type ls: List[int]
+    :rtype: int, the sum of the input list.
+    """
+    def helper(ls, acc):
+        if len(ls) == 0:
+            return acc
+        # this is a tail recursion because the final instruction is a recursive call.
+        return helper(ls[1:], ls[0] + acc)
+    
+    return helper(ls, 0)  
+\end{lstlisting}
+
+
+The benefit of having tail recursion is that it could avoid the accumulation of stack overheads during the recursive calls, since the system could reuse a fixed amount space in the stack for each recursive call. 
+
+
+\section{Routine}
+
+Here is the general workflow to solve a recursion problem:
+\begin{enumerate}
+\item Define the recursion function;
+\item Write donw the recurrence relation and base case;
+\item Use memeorization to eliminate the duplicate calculation problem, if it exists;
+\item Whenever possible, implement the function as tail recursion, to optimize the space complexisty;
+\end{enumerate}
+
+\section{Devide and conquer}
+
+A divide-and-conquer algorithm works by recursively breaking the problem down into two or more subproblems of the same or related type, until these subproblems become simple enough to be solved directly.
+Then one combines the results of subproblems to form the final solution.
+
+As you can see, divide-and-conquer algorithm is naturally implemented in the form of recursion.
+Another subtle difference that tells a divide-and-conquer algorithm apart from other recursive algorithms is that we break the problem down into two or more subproblems in the divide-and-conquer algorithm, rather than a single smaller subproblem.
+
+
+There are in general three steps that one can follow in order to solve the problem in a divide-and-conquer manner.
+\begin{enumerate}
+\item Divide. Divide the problem $S$ into a set of subproblems: $\{ S_1, S_2, \dots, S_n \}$ when $n \ge 2$, i.e. there are usually more than one subproblems.
+\item Conquer. Sovle each subproblems recursively.
+\item Combine. Combine the results of each subproblem.
+\end{enumerate}
+
+Pseudocode template (Python):
+\begin{lstlisting}
+def divide_and_conquer( S ):
+    # (1). Divide the problem into a set of subproblems.
+    [S1, S2, ... Sn] = divide(S)
+
+    # (2). Solve the subproblem recursively,
+    #   obtain the results of subproblems as [R1, R2... Rn].
+    rets = [divide_and_conquer(Si) for Si in [S1, S2, ... Sn]]
+    [R1, R2,... Rn] = rets
+
+    # (3). combine the results from the subproblems.
+    #   and return the combined result.
+    return combine([R1, R2,... Rn])  
+\end{lstlisting}
+
+
+
+\section{Backtracking}
+
+Backtracking is a general algorithm for finding all (or some) solutions to some computational problems (notably Constraint satisfaction problems or CSPs), which incrementally builds candidates to the solution and abandons a candidate ("backtracks") as soon as it determines that the candidate cannot lead to a valid solution.
+
+Conceptually, one can imagine the procedure of backtracking as the tree traversal.
+Starting from the root node, one sets out to search for solutions that are located at the leaf nodes.
+Each intermediate node represents a partial candidate solution that could potentially lead us to a final valid solution.
+At each node, we would fan out to move one step further to the final solution, i.e. we iterate the child nodes of the current node.
+Once we can determine if a certain node cannot possibly lead to a valid solution, we abandon the current node and backtrack to its parent node to explore other possibilities.
+It is due to this backtracking behaviour, the backtracking algorithms are often much faster than the brute-force search algorithm, since it eliminates many unnecessary exploration.
+
+
+\subsection{Backtracking template}
+
+\begin{lstlisting}
+def backtrack(candidate):
+    if find_solution(candidate):
+        output(candidate)
+        return
+    
+    # iterate all possible candidates.
+    for next_candidate in list_of_candidates:
+        if is_valid(next_candidate):
+            # try this partial candidate solution
+            place(next_candidate)
+            # given the candidate, explore further.
+            backtrack(next_candidate)
+            # backtrack
+            remove(next_candidate)  
+\end{lstlisting}
+
+
+
+\section{Unfold recursion}
+
+unfold the recursion: convert a recursion algorithm to non-recursion one.
+
+
+Recursion could be an elegant and intuitive solution, when applied properly.
+Nevertheless, sometimes, one might have to convert a recursive algorithm to iterative one for various reasons:
+\begin{description}
+\item[Risk of stackoverflow] The recursion often incurs additional memory consumption on the system stack. If not used properly, the recursion algorithm could lead to stackoverflow.
+\item[Efficiency] The recursion could impose at least additional cost of function call, and in worse case duplicate calculation.
+\item[Complexity] The nature of recursion is quite close to the mathematics, which is why the recursion appears to be more intuitive and comprehensive for many people. However, when we abuse the recursion, the recursive program could become more difficult to read and understand than the non-recursive one, e.g. nested recursion etc.
+\end{description}
+
+\begin{tcolorbox}
+  We can always convert a recursion to iteration.
+  In order to do so, in general, we use a data structure of stack or queue, which replaces the role of the system call stack during the process of recursion.
+\end{tcolorbox}
+
+
+\subsection{Example: same tree}
+
+Given two binary trees, write a function to check if they are the same or not.
+Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+
+
+recursive solution:
+\begin{lstlisting}
+class Solution:
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """    
+        # p and q are both None
+        if not p and not q:
+            return True
+        # one of p and q is None
+        if not q or not p:
+            return False
+        if p.val != q.val:
+            return False
+        return self.isSameTree(p.right, q.right) and \
+               self.isSameTree(p.left, q.left)  
+\end{lstlisting}
+
+iterative solution:
+\begin{lstlisting}
+from collections import deque
+class Solution:
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """    
+        def check(p, q):
+            # if both are None
+            if not p and not q:
+                return True
+            # one of p and q is None
+            if not q or not p:
+                return False
+            if p.val != q.val:
+                return False
+            return True
+        
+        deq = deque([(p, q),])
+        while deq:
+            p, q = deq.popleft()
+            if not check(p, q):
+                return False         
+            if p:
+                deq.append((p.left, q.left))
+                deq.append((p.right, q.right))
+        return True  
+\end{lstlisting}
+
+
+To convert a recursion approach to an iteration one, we could perform the following two steps:
+\begin{enumerate}
+\item We use a stack or queue data structure within the function, to replace the role of the system call stack. At each occurrence of recursion, we simply push the parameters as a new element into the data structure that we created, instead of invoking a recursion.
+\item In addition, we create a loop over the data structure that we created before. The chain invocation of recursion would then be replaced with the iteration within the loop.
+\end{enumerate}
+
+
+
+\section{Divide and conquer vs. backtracking}
+\begin{enumerate}
+\item Often the case, the divide-and-conquer problem has a sole solution, while the backtracking problem has unknown number of solutions.
+  For example, when we apply the merge sort algorithm to sort a list, we obtain a single sorted list, while there are many solutions to place the queens for the N-queen problem.
+\item Each step in the divide-and-conquer problem is indispensable to build the final solution, while many steps in backtracking problem might not be useful to build the solution, but serve as atttempts to search for the potential solutions.
+  For example, each step in the merge sort algorithm, i.e. divide, conquer and combine, are all indispensable to build the final solution, while there are many trials and errors during the process of building solutions for the N-queen problem.
+\item When building the solution in the divide-and-conquer algorithm, we have a clear and predefined path, though there might be several different manners to build the path.
+  While in the backtracking problems, one does not know in advance the exact path to the solution.
+  For example, in the top-down merge sort algorithm, we first recursively divide the problems into two subproblems and then combine the solutions of these subproblems.
+  The steps are clearly defined and the number of steps is fixed as well.
+  While in the N-queen problem, if we know exactly where to place the queens, it would only take N steps to do so.
+  When applying the backtracking algorithm to the N-queen problem, we try many candidates and many of them do not eventually lead to a solution but abandoned at the end.
+  As a result, we do not know beforehand how many steps exactly it would take to build a valid solution. 
+\end{enumerate}
+
+
+
+\section{Examples}
+
+\subsection{Skyline}
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+"""
+@project: leetcode
+@file: 20210227_the_skyline
+@author: mike
+@time: 2021/2/27
+ 
+@function:
+A city's skyline is the outer contour of the silhouette formed by
+all the buildings in that city when viewed from a distance.
+Given the locations and heights of all the buildings,
+return the skyline formed by these buildings collectively.
+
+The geometric information of each building is given
+in the array buildings where buildings[i] = [left_i, right_i, height_i]:
+
+left_i is the x coordinate of the left edge of the ith building.
+right_i is the x coordinate of the right edge of the ith building.
+height_i is the height of the ith building.
+
+You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.
+
+The skyline should be represented as a list of "key points"
+sorted by their x-coordinate in the form [[x_1,y_1],[x_2,y_2],...].
+Each key point is the left endpoint of some horizontal segment in the skyline
+except the last point in the list, which always has a y-coordinate 0 and
+is used to mark the skyline's termination where the rightmost building ends.
+Any ground between the leftmost and rightmost buildings should be part of the skyline's contour.
+
+Note: There must be no consecutive horizontal lines of equal height in the output skyline.
+For instance, [...,[2 3],[4 5],[7 5],[11 5],[12 7],...] is not acceptable;
+the three lines of height 5 should be merged into one in the final output
+as such: [...,[2 3],[4 5],[12 7],...]
+
+
+
+Example 1:
+
+
+Input: buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
+Output: [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
+Explanation:
+Figure A shows the buildings of the input.
+Figure B shows the skyline formed by those buildings.
+The red points in figure B represent the key points in the output list.
+Example 2:
+
+Input: buildings = [[0,2,3],[2,5,3]]
+Output: [[0,3],[5,0]]
+
+
+Constraints:
+
+1 <= buildings.length <= 10^4
+0 <= left_i < right_i <= 2^31 - 1
+1 <= height_i <= 2^31 - 1
+buildings is sorted by left_i in non-decreasing order.
+"""
+from typing import List
+
+
+class Solution:
+    def getSkyline(self, building: List[List[int]]) -> List[List[int]]:
+        # Base case
+        if not building:
+            return []
+        if len(building) == 1:
+            return [[building[0][0], building[0][2]], [building[0][1], 0]]
+
+        mid = len(building) // 2
+        left = self.getSkyline(building[:mid])
+        right = self.getSkyline(building[mid:])
+        return self.merge(left, right)
+
+    def merge(self, left, right):
+        h1, h2 = 0, 0
+        i, j = 0, 0
+        result = []
+
+        while i < len(left) and j < len(right):
+            if left[i][0] < right[j][0]:  # x
+                h1 = left[i][1]  # height
+                corner = left[i][0]  # x
+                i += 1
+            elif right[j][0] < left[i][0]:
+                h2 = right[j][1]
+                corner = right[j][0]
+                j += 1
+            else:
+                h1 = left[i][1]
+                h2 = right[j][1]
+                corner = right[j][0]
+                i += 1
+                j += 1
+
+            if self.is_valid(result, max(h1, h2)):
+                result.append([corner, max(h1, h2)])
+        result.extend(right[j:])
+        result.extend(left[i:])
+        return result
+
+    def is_valid(self, result, new_height):
+        return not result or result[-1][1] != new_height
+
+
+if __name__ == '__main__':
+    solutino = Solution()
+    buildings = [[0, 2, 3], [2, 5, 3]]
+    buildings = [[2, 9, 10], [3, 7, 15], [5, 12, 12], [15, 20, 10], [19, 24, 8]]
+    solutino.getSkyline(buildings)
+  
+\end{lstlisting}
+
+
+There are only exact one answer, so this is may be a divide and conquer problem, not the backtrack problem.
+
+For the first time, this problem seems very hard if we combine several buildings at a time.
+This can be simplified by combining only two buildings at a time.
+The rule of combiningg buildings can be simplified if we convert the building into only two points.

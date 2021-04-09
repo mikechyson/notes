@@ -1,0 +1,27 @@
+\documentclass{book}
+\input{preamble}
+\hypersetup{
+  pdfauthor={\pdfauthor},   
+  pdftitle={\pdftitle},     
+  pdfsubject={\pdfsubject}, 
+  pdfkeywords={\pdfkeywords}
+}
+% \includeonly{}
+\begin{document}
+\frontmatter
+\include{title}
+\include{dedication}
+
+\mainmatter
+\tableofcontents
+\include{config}
+\include{problem}
+
+
+% \listoftables
+% \listoffigures
+
+\backmatter
+\bibliographystyle{plainnat}
+\bibliography{tex}
+\end{document}

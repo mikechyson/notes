@@ -1,0 +1,191 @@
+
+\chapter{Binary search}
+
+Binary Search is one of the most fundamental and useful algorithms in Computer Science.
+It describes the process of searching for a specific value in an ordered collection.
+
+
+In its simplest form, Binary Search operates on a contiguous sequence with a specified left and right index.
+This is called the Search Space.
+Binary Search maintains the left, right, and middle indicies of the search space and compares the search target or applies the search condition to the middle value of the collection; if the condition is unsatisfied or values unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful.
+If the search ends with an empty half, the condition cannot be fulfilled and target is not found.
+
+
+
+
+\section{Thress parts of a successful binary search}
+
+
+Binary Search is generally composed of 3 main sections:
+\begin{description}
+\item[Pre-processing] - Sort if collection is unsorted.
+\item[Binary Search] - Using a loop or recursion to divide search space in half after each comparison.
+\item[Post-processing]- Determine viable candidates in the remaining space.
+\end{description}
+
+
+\section{Template I}
+
+\begin{lstlisting}
+def binarySearch(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    """
+    if len(nums) == 0:
+        return -1
+
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    # End Condition: left > right
+    return -1  
+\end{lstlisting}
+
+This template is the most basic and elementary form of Binary Search. It is used to search for an element or condition which can be determined by accessing a single index in the array.
+
+
+
+
+\subsection{Key attributes}
+
+\begin{itemize}
+\item Most basic and elementary form of Binary Search
+\item Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
+\item No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
+\end{itemize}
+
+
+
+\subsection{Distingguishing syntax}
+
+
+\begin{itemize}
+\item Initial Condition: left = 0, right = length - 1
+\item Termination: left > right
+\item Searching Left: right = mid - 1
+\item Searching Right: left = mid + 1
+\end{itemize}
+
+
+\section{Template II}
+
+\begin{lstlisting}
+def binarySearch(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    """
+    if len(nums) == 0:
+        return -1
+
+    left, right = 0, len(nums)
+    while left < right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid
+
+    # Post-processing:
+    # End Condition: left == right
+    if left != len(nums) and nums[left] == target:
+        return left
+    return -1
+\end{lstlisting}
+
+
+Template 2 is an advanced form of Binary Search.
+It is used to search for an element or condition which requires accessing the current index and its immediate right neighbor's index in the array.
+
+
+\subsection{Key attributes}
+
+\begin{itemize}
+\item An advanced way to implement Binary Search.
+\item Search Condition needs to access element's immediate right neighbor
+\item Use element's right neighbor to determine if condition is met and decide whether to go left or right
+\item Gurantees Search Space is at least 2 in size at each step
+\item Post-processing required. Loop/Recursion ends when you have 1 element left. Need to assess if the remaining element meets the condition.
+\end{itemize}
+
+
+
+\subsection{Distingguishing syntax}
+
+\begin{itemize}
+\item Initial Condition: left = 0, right = length
+\item Termination: left == right
+\item Searching Left: right = mid
+\item Searching Right: left = mid + 1
+\end{itemize}
+
+
+\section{Tempalte II}
+
+\begin{lstlisting}
+def binarySearch(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    """
+    if len(nums) == 0:
+        return -1
+
+    left, right = 0, len(nums) - 1
+    while left + 1 < right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid
+        else:
+            right = mid
+
+    # Post-processing:
+    # End Condition: left + 1 == right
+    if nums[left] == target: return left
+    if nums[right] == target: return right
+    return -1  
+\end{lstlisting}
+
+
+
+Template 3 is another unique form of Binary Search.
+It is used to search for an element or condition which requires accessing the current index and its immediate left and right neighbor's index in the array.
+
+
+
+
+\subsection{Key attributes}
+
+\begin{itemize}
+\item Search Condition needs to access element's immediate left and right neighbors
+\item Use element's neighbors to determine if condition is met and decide whether to go left or right
+\item Gurantees Search Space is at least 3 in size at each step
+\item Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
+\end{itemize}
+
+
+\subsection{Distinguishing syntax}
+
+\begin{itemize}
+\item Initial Condition: left = 0, right = length - 1
+\item Termination: left + 1 == right
+\item Searching Left: right = mid
+\item Searching Right: left = mid
+\end{itemize}
+
+

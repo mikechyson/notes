@@ -1,0 +1,66 @@
+
+\chapter{Database Programming}
+
+There are two commonly used database:
+\begin{enumerate}
+\item RDBMS (Relational Database Management System).
+  These systems use tables (spreadsheet-like grids) with rows equating to records and columns equating to fields.
+  The tables and the data they hold are created and manipulated using statements written in SQL (Structured Query Language).
+\item DBM (Database Manager).
+  It stores any number of key-value items.
+\end{enumerate}
+
+
+\section{DBM databases}
+
+The \verb|shelve| module provides a wrapper around a DBM that allows us to interact with the DBM as though it were a dictionary, providing that we use only string keys and pickable values.
+Behind the scenes the \verb|shelve| module converts the keys and values to and from \verb|bytes| objects.
+
+
+\url{https://github.com/mikechyson/python3/blob/master/c12_database/dvds_dbm.py}
+
+
+\section{SQL databases}
+
+To make it as easy as possible to switch between database backends, PEP 249 (Python Database API Specification v2.0) provides an API specification called DB-API 2.0 that database interfaces ought to honor.
+There are two major objects specified by the API, the connection object and the cursor object.
+
+
+\begin{table}[!ht]
+  \centering
+  \begin{tabular}{lp{0.8\columnwidth}}
+    \toprule{}
+    \head{Syntax} & \head{Description} \\
+    \midrule
+    db.close() & Closes the connection. \\
+    db.commit() & Commits any pending transaction to the database; does nothing for databases that don't support transactions. \\
+    db.cursor() & Returns a databse cursor object through which queries can be executed. \\
+    db.rollback() & Rolls back any pending transaction to the state that existed before the transaction began; does nothing for databases that don't support transactions. \\
+    \bottomrule
+  \end{tabular}
+  \caption{DB-API 2.0 Connection Object Methods}
+\end{table}
+
+
+\begin{table}[!ht]
+  \centering
+  \begin{tabular}{p{0.2\columnwidth}p{0.7\columnwidth}}
+    \toprule
+    \head{Syntax} & \head{Description} \\
+    \midrule
+    c.arraysize & The (readable/writable) number of rows that \verb|fetchall()| will return if no size is specified \\
+    c.fetchmany(size) & Returns a sequence of rows (each row it self being a sequence); \verb|size| default to \verb|c.arraysize| \\
+    c.fetchall() & Returns a sequence of all the rows that have not yet been fetched \\
+    c.fetchone() & Returns the next row of the query result set as a sequence, or \verb|None| when the results are exhausted. \\
+    c.description & A read-only sequence of 7-tuples (\verb|name|, \verb|type_code|, \verb|display_size|, \verb|internal_size|, \verb|precision|, \verb|scale|, \verb|null_ok|), describing each successive column of cursor \verb|c| \\
+    c.execute(sql, params) & Executes the SQL query in string \verb|sql|, replacing each palceholder with the corresponding parameter from the \verb|params| sequence of mapping if given \\
+    c.execute(sql, seqofparams) & Executes the SQL query once for each item in the \verb|seq_of_params| sequence of sequences or mappings; this method should not be used for operations that create result sets (such as \verb|SELECT| statements) \\
+    c.close() & Closes the cursor, \verb|c|; this is done automatically when the curosr goes out of scope
+  \end{tabular}
+  \caption{DB-API 2.0 Cursor Object Attributes and Methods}
+\end{table}
+
+
+\url{https://github.com/mikechyson/python3/blob/master/c12_database/dvds_sql.py}
+
+

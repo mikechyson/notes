@@ -1,0 +1,67 @@
+\usepackage[english]{babel}     
+\usepackage[utf8]{inputenc}     % accent symbols
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{natbib}
+\usepackage{tocbibind}          
+\usepackage{amsmath}            % math symbols
+\usepackage{amsthm}             % math symbols
+\usepackage[colorlinks=true,linkcolor=red]{hyperref} % hyper link
+
+% for code
+\usepackage{listings}
+\usepackage{color,xcolor}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.9,0.9,0.9}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{
+backgroundcolor=\color{mygray},
+numbers=left,                    
+columns=fullflexible,
+breaklines=true,      
+captionpos=b,         
+tabsize=4,            
+commentstyle=\color{mygreen}, 
+escapeinside={\%*}{*)},       
+keywordstyle=\color{blue},    
+% stringstyle=\color{mymauve}\monaco,
+frame=single,                        
+rulesepcolor=\color{red!20!green!20!blue!20},
+% identifierstyle=\color{red},
+%% language=c++,
+basicstyle=\tiny
+}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\usepackage[onehalfspacing]{setspace}
+% graph
+\usepackage{pdfpages}
+\usepackage{graphicx}
+% box
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+
+%% user defined command
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\keywords}[1]{\textbf{#1}}
+\newcommand{\important}[1]{\textbf{#1}}
+\newcommand{\lcmd}[1]{\texttt{#1}}
+\newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+\newcommand{\itwords}[1]{\textit{#1}}
+
+\usepackage{float}
+% all symbols
+\usepackage{tipa}
+\usepackage{tipx}
+
+\usepackage{datetime}
+
+
+\usepackage{bm}
+\usepackage{amsfonts}
+
+
+\usepackage[normalem]{ulem}     % use normalem to protect \emph
+\newcommand{\mikebl}{\bgroup\markoverwith{\textcolor{gray}{\rule[-.5ex]{2pt}{2.5ex}}}\ULon}

@@ -1,0 +1,100 @@
+
+\chapter{Trie}
+
+A Trie is a special form of a Nary tree. Typically, a trie is used to store strings. Each Trie node represents a string (a prefix). Each node might have several children nodes while the paths to different children nodes represent different characters. And the strings the child nodes represent will be the origin string represented by the node itself plus the character on the path.
+
+
+
+One important property of Trie is that all the descendants of a node have a common prefix of the string associated with that node. That's why Trie is also called prefix tree.
+
+
+\section{How to represent a Trie?}
+
+There are a lot of different representations of a trie node. Here we provide two of them.
+
+\subsection{Array}
+
+The first solution is to use an array to store children nodes.
+
+\begin{lstlisting}
+// change this value to adapt to different cases
+#define N 26
+
+struct TrieNode {
+    TrieNode* children[N];
+    
+    // you might need some extra values according to different cases
+};
+
+/** Usage:
+ *  Initialization: TrieNode root = new TrieNode();
+ *  Return a specific child node with char c: (root->children)[c - 'a']
+ */
+  
+\end{lstlisting}
+
+It is really fast to visit a child node. It is comparatively easy to visit a specific child since we can easily transfer a character to an index in most cases. But not all children nodes are needed. So there might be some waste of space.
+
+
+\subsection{Hashmap}
+
+The second solution is to use a hashmap to store children nodes.
+
+\begin{lstlisting}
+struct TrieNode {
+    unordered_map<char, TrieNode*> children;
+    
+    // you might need some extra values according to different cases
+};
+
+/** Usage:
+ *  Initialization: TrieNode root = new TrieNode();
+ *  Return a specific child node with char c: (root->children)[c]
+ */
+  
+\end{lstlisting}
+
+It is even easier to visit a specific child directly by the corresponding character. But it might be a little slower than using an array. However, it saves some space since we only store the children nodes we need. It is also more flexible because we are not limited by a fixed length and fixed range.
+
+\section{Insertion in Trie}
+
+
+Here is the pseudo-code:
+\begin{lstlisting}
+1. Initialize: cur = root
+2. for each char c in target string S:
+3.      if cur does not have a child c:
+4.          cur.children[c] = new Trie node
+5.      cur = cur.children[c]
+6. cur is the node which represents the string S  
+\end{lstlisting}
+
+
+
+\section{Search in Trie}
+
+\subsection{Search prefix}
+
+Here is the pseudo-code:
+\begin{lstlisting}
+1. Initialize: cur = root
+2. for each char c in target string S:
+3.   if cur does not have a child c:
+4.     search fails
+5.   cur = cur.children[c]
+6. search successes  
+\end{lstlisting}
+
+
+\subsection{Search word}
+
+
+You might also want to know how to search for a specific word rather than a prefix. We can treat this word as a prefix and search in the same way we mentioned above.  
+
+
+\begin{enumerate}
+\item If search fails which means that no words start with the target word, the target word is definitely not in the Trie.
+\item If search succeeds, we need to check if the target word is only a prefix of words in Trie or it is exactly a word. 
+\end{enumerate}
+
+
